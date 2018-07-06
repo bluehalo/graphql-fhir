@@ -1,0 +1,12 @@
+# Secrets
+secrets.js
+
+# Dependencies
+node_modules
+package-lock.json
+
+# Generated files
+coverage
+npm-debug.log
+.DS_Store
+.idea/
