@@ -102,7 +102,10 @@ module.exports.configureRoutes = server => {
 				// Add our validation middlware
 				authenticationMiddleware(server, version),
 				// middleware wrapper for Graphql Express
-				setupGraphqlServer(server, version, { schema: generateInstanceSchema(version, name, query) })
+				setupGraphqlServer(server, version, {
+					formatError: graphqlErrorFormatter(version),
+					schema: generateInstanceSchema(version, name, query)
+				})
 			);
 		}
 
@@ -116,7 +119,10 @@ module.exports.configureRoutes = server => {
 			// Add our validation middlware
 			authenticationMiddleware(server, version),
 			// middleware wrapper for Graphql Express
-			setupGraphqlServer(server, version, { schema: rootSchema })
+			setupGraphqlServer(server, version, {
+				formatError: graphqlErrorFormatter(version),
+				schema: rootSchema
+			})
 		);
 
 		// Add a graphiql endpoint for exploring only if we're not in production
