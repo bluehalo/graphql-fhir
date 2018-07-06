@@ -37,9 +37,7 @@ function notFound (version, message) {
 function formatErrorForGraphQL (operationOutcome) {
 	// Get the diagnostices from the operation outcome
 	let diagnostics = operationOutcome.issue[0].diagnostics;
-	return new GraphQLError(diagnostics, null, null, null, null, null, {
-		extensions: { resource: operationOutcome }
-	});
+	return new GraphQLError(diagnostics, null, null, null, null, null, { resource: operationOutcome });
 }
 
 module.exports = {

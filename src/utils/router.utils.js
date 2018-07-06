@@ -2,6 +2,7 @@ const authenticationMiddleware = require('../middleware/authentication.middlewar
 const { RESOURCE_CONFIG, VERSION } = require('../config');
 const { resolveFromVersion } = require('./resolve.utils');
 const expressGraphql = require('express-graphql');
+const errorUtils = require('./error.utils');
 const glob = require('glob');
 const path = require('path');
 
@@ -51,6 +52,22 @@ function setupGraphqlServer (server, version, options) {
 		let context = { server, req, res, version };
 		return Object.assign({ context }, options);
 	});
+}
+
+// Helper for formatting graphql errors
+function graphqlErrorFormatter (version) {
+	return (err) => {
+		let extensions = err.extensions
+			? err.extensions
+			: errorUtils.internal(version, err.message);
+
+		return {
+			path: err.path,
+			message: err.message,
+			locations: err.locations,
+			extensions: extensions
+		};
+	};
 }
 
 /**
@@ -110,7 +127,11 @@ module.exports.configureRoutes = server => {
 				// Add our validation middlware
 				authenticationMiddleware(server, version),
 				// middleware wrapper for Graphql Express
-				setupGraphqlServer(server, version, { schema: rootSchema, graphiql: true })
+				setupGraphqlServer(server, version, {
+					formatError: graphqlErrorFormatter(version),
+					schema: rootSchema,
+					graphiql: true
+				})
 			);
 		}
 
