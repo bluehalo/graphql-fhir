@@ -14,7 +14,7 @@ You should have a basic understanding of working in Node.js and at least a basic
 
 1. Installation
 ```shell
-git clone <url>
+git clone https://github.com/Asymmetrik/graphql-fhir.git
 cd graphql-fhir
 yarn install
 ```
