@@ -4,11 +4,11 @@ GraphQL-FHIR
 
 ## Disclaimer
 
-This is a work in progress and currently more proof of concept than a production ready facade FHIR server. You will need to add a connection to your data source and write the queries, but this will get all the endpoints and schemas up and running for you, as well as add best practices for security. We have added documentation below about the current architecture and how everything works, as well as the roadmap for this particular repository. See the [Getting Started](#/getting-started) section for notes on how to quickly get this up and running.
+This is a work in progress and currently more proof of concept than a production ready facade FHIR server. You will need to add a connection to your data source and write the queries, but this will get all the endpoints and schemas up and running for you, as well as add best practices for security. We have added documentation below about the current architecture and how everything works, as well as the roadmap for this particular repository. See the [Getting Started](#getting-started) section for notes on how to quickly get this up and running.
 
 ## Prerequisites
 
-You should have a basic understanding of working in Node.js and at least a basic understanding of what GraphQL is and how it works. The [architecture](#/architecture) defined at the bottom should give you an idea of what is where in this repository and where to start writing your queries.
+You should have a basic understanding of working in Node.js and at least a basic understanding of what GraphQL is and how it works. The [architecture](#architecture) defined at the bottom should give you an idea of what is where in this repository and where to start writing your queries.
 
 ## Getting Started
 
@@ -35,7 +35,7 @@ yarn lint
 
 ### Where to go from here
 
-As we previously mentioned, this is a proof of concept and it currently only supports the Patient resource for FHIR version 3.0.1. You can query, create, update, or delete a single patient record, or query for a list of patients. You can browse the Graphiql documentation explorer at the url above to see what parameters are supported and what fields can be returned. See [Architecture](#/architecture) below for an explanation on the structure and how to begin customizing your GraphQL server. Currently, each query and mutation operation is hardcoded to return a sample patient record so not all fields are available and the resolvers have no logic in them, they just return the hardcoded patient.
+As we previously mentioned, this is a proof of concept and it currently only supports the Patient resource for FHIR version 3.0.1. You can query, create, update, or delete a single patient record, or query for a list of patients. You can browse the Graphiql documentation explorer at the url above to see what parameters are supported and what fields can be returned. See [Architecture](#architecture) below for an explanation on the structure and how to begin customizing your GraphQL server. Currently, each query and mutation operation is hardcoded to return a sample patient record so not all fields are available and the resolvers have no logic in them, they just return the hardcoded patient.
 
 ### Connecting to a data source
 
@@ -99,25 +99,23 @@ module.exports.patientResolver = function patientResolver (root, args, context, 
 	// Let's do a fake id query, a real resolver needs much more capability than this
 	return new Promise((resolve, reject) => {
 		db.find({ id: args._id }, (err, patient) => {
+			// Use our special error handlers to make your error a operation outcome
+			// and place it in a GraphQL error, note this particular detail is subject
+			// to change while we entertain ideas for more flexible and easy to use errors
 			if (err) {
-				// Use our special error handlers to make your error a operation outcome
-				// and place it in a GraphQL error, note this particular detail is subject
-				// to change while we entertain ideas for more flexible and easy to use errors
-				if (err) {
-					// This is where knowledge of FHIR comes in, you need to know which kind of
-					// error to throw based on the err, let's assume a simple internal server
-					// error for this example
-					let error = errorUtils.internal(version, err.message);
-					// Log the error
-					logger.error(error);
-					// reject it so GraphQL can return a proper GraphQL Error
-					// This is really important as we need to return errors in a format
-					// compatible with both specifications, FHIR and GraphQL
-					reject(errorUtils.formatErrorForGraphQL(error));
-				}
-				else {
-					resolve(patient);
-				}
+				// This is where knowledge of FHIR comes in, you need to know which kind of
+				// error to throw based on the err, let's assume a simple internal server
+				// error for this example
+				let error = errorUtils.internal(version, err.message);
+				// Log the error
+				logger.error(error);
+				// reject it so GraphQL can return a proper GraphQL Error
+				// This is really important as we need to return errors in a format
+				// compatible with both specifications, FHIR and GraphQL
+				reject(errorUtils.formatErrorForGraphQL(error));
+			}
+			else {
+				resolve(patient);
 			}
 		});
 	});
@@ -127,7 +125,7 @@ module.exports.patientResolver = function patientResolver (root, args, context, 
 
 ## Architecture
 
-The current folder structure can be seen below. It's designed this way so we can support multiple versions simultaneously and because we plan to generate a lot of this code from [Structure Definitions](https://www.hl7.org/fhir/structuredefinition.html). Specifically everything in `src/resources` will be generated from structure definitions, which will make it very easy to control what your server can and can't do. The code that does this generation will be open sourced soon.
+The current folder structure can be seen below. It's designed this way so we can support multiple versions simultaneously and because we plan to generate a lot of this code from [Structure Definitions](https://www.hl7.org/fhir/structuredefinition.html). Specifically everything in `src/resources` will be generated from structure definitions, which will make it very easy to control what your server can and can't do. The code generation tool we used for this will be open sourced soon.
 
 ```shell
 src
