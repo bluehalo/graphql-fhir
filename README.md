@@ -129,68 +129,68 @@ The current folder structure can be seen below. It's designed this way so we can
 
 ```shell
 src
-|  # config.js contains application configuration be careful editing this file unless you have
-|  # read the code and understand what you are doing this may change as this is developed and once this
-|  # repo is a little more stable, this will be documented so you can understand how to leverage more
-|  # advanced server configurations
 |- config.js
-|  # index.js is the entry to the application. It grabs the server class and builds the graphql
-|  # server. More information on the server class will be coming soon, it gives you flexibility so
-|  # add your own middleware or express settings.
+|  # config.js contains application configuration. Be careful when editing this file unless you have
+|  # read the code and understand what you are doing. This section is subject to change as we work on
+|  # making this repo a little more stable. Documentation for configurations is coming soon.
 |- index.js
-|  # src/lib directory contains the winston logger and server class documentation for these classes
-|  # can be seen in code. The server instance is passed to graphql resolvers via context.
+|  # index.js is the entry to the application. It grabs the server class and builds the graphql server.
 |- src/lib
-|  # src/middleware contains middleware for express. There is an authentication stub that will be used
-|  # to connect to OAuth or Smart on FHIR. It currently just calls next and shows how we can look at
-|  # the incoming query and make decisions on whether or not to allow the request.
+|  # src/lib directory contains the winston logger and server class. Documentation for these classes
+|  # can be seen in code. The server instance is passed to graphql resolvers via context.
 |- src/middleware
-|  # src/scripts contains development and test scripts.
+|  # src/middleware contains various middleware for express. There is an authentication stub that will
+|  # eventually be used to connect to OAuth or Smart on FHIR. It currently just calls next and shows
+|  # how we can look at the incoming query and make decisions on whether or not to allow the request.
 |- src/scripts
+|  # src/scripts contains development and test scripts.
+|- src/utils
 |  # src/utils contains various utilities for routing, error handling and formatting, resolving file
 |  # locations in the application, and working with graphql schemas (such as extending fields from
-|  # other, schemas and validating data against an input).
-|- src/utils
+|  # other schemas and validating data against an json).
+|- src/resources
 |  # src/resources contains all the FHIR resource code for declaring schemas, parameters, custom
 |  # types, enums, queries, mutations, resolvers, and what operations you want to support.
-|- src/resources
-|  |  # 3_0_1 contains all code related to resources on FHIR version 3.0.1.
 |  |- 3_0_1
-|  |  |  # inputs contains input schemas. This defines inputs for all resource types so they can
-|  |  |  # be used as arguments when creating resources. This allows validation on write
+|  |  # 3_0_1 contains all code related to resources on FHIR version 3.0.1. We may have various
+|  |  # version folders alongside this in the future.
 |  |  |- inputs
-|  |  |  # parameters defines what arguments can be provided to search operations.
+|  |  |  # inputs contains input schemas. This defines inputs for all resource types so they can
+|  |  |  # be used as arguments when creating resources, which allows validation on write.
 |  |  |- parameters
+|  |  |  # parameters defines what arguments can be provided to search operations.
+|  |  |- scalars
 |  |  |  # scalars contains some custom FHIR types and map to types defined in structure definitions.
 |  |  |  # This allows types like datetime, instant, and code to be used as input and output types.
-|  |  |- scalars
-|  |  |  # schemas contains all the output schemas. These will cover all resources from
-|  |  |  # BackboneElements to Patient. This currently has the minimum number of schemas to support
-|  |  |  # Patient profiles.
+|  |  |  # as well as stricter enforcement on fhir primitives.
 |  |  |- schemas
+|  |  |  # schemas contains all the output schemas. These will cover all resources from
+|  |  |  # BackboneElement to Patient. This currently has the minimum number of schemas to support
+|  |  |  # Patient profiles.
+|  |  |- profiles
 |  |  |  # profiles contains all the queries and mutations for GraphQL. It also contains the
 |  |  |  # resolvers, which is where query logic should go, and a index file declaring which
-|  |  |  # operations we support on this profile.
-|  |  |- profiles
-|  |  |  |  # profiles will be defined here, there will eventually be one for each profile
-|  |  |  |  # supported. All the files here will eventually be generated but index.js and 
-|  |  |  |  # resolver.js can be customized.
+|  |  |  # operations you want to support on the profile.
 |  |  |  |- patient
+|  |  |  |  # Code for the patient profile will be here. All the files here will eventually be
+|  |  |  |  # generated.  You will most likely be using index.js and resolver.js.
+|  |  |  |  |- index.js
 |  |  |  |  |  # Look at the current version for an example. Initially Read, ReadList, Create,
 |  |  |  |  |  # Update, Delete, and InstanceRead are supported. You can remove any one of these
 |  |  |  |  |  # operations if you do not want to support them. The server will locate all
 |  |  |  |  |  # profiles and add any operations defined in the index.js files.
-|  |  |  |  |- index.js
-|  |  |  |  |  # mutation.js be generated. Mutations are defined here but included in the app
-|  |  |  |  |  # via the index.js file
 |  |  |  |  |- mutation.js
-|  |  |  |  |  # query.js will be generated. Queries are defined here but included in the app
-|  |  |  |  |  # via the index.js file
+|  |  |  |  |  # mutation.js will be generated. Mutations are defined here but included in the app
+|  |  |  |  |  # via the index.js file. You should not need to change this file unless your adding
+|  |  |  |  |  # nested queries or directive support.
 |  |  |  |  |- query.js
+|  |  |  |  |  # query.js will be generated. Queries are defined here but included in the app
+|  |  |  |  |  # via the index.js file. You should not need to change this file unless your adding
+|  |  |  |  |  # nested queries or directive support.
+|  |  |  |  |- resolver.js
 |  |  |  |  |  # resolver.js contains query logic. This is where you will query your backend and
 |  |  |  |  |  # return FHIR formatted data to GraphQL. GraphQL will validate data coming back
-|  |  |  |  |  # in from your source and pass errors back to the client.
-|  |  |  |  |- resolver.js
+|  |  |  |  |  # from your data source and pass the results or errors back to the client.
 ```
 
 ## Roadmap for the future
