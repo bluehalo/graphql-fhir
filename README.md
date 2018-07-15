@@ -199,6 +199,7 @@ src
 
 - Authentication Initializers and passport support
 - Better documentation on setup and configurations
+- Change return format for ResourceList queries to a FHIR Bundle instead of a GraphQLList
 - Implementation guides and demos
 - Support for more resources
 	- Starting with support for the USCore resources, but we will eventually be able to include any resource we would like.

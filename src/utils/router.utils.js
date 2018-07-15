@@ -57,9 +57,12 @@ function setupGraphqlServer (server, version, options) {
 // Helper for formatting graphql errors
 function graphqlErrorFormatter (version) {
 	return (err) => {
-		let extensions = err.extensions
-			? err.extensions
-			: errorUtils.internal(version, err.message);
+		// If we already have a graphql formatted error than this error is probably
+		// intentionally thrown. If it is not, the FHIR spec says for GraphQL errors
+		// to be placed in extensions under a resource property.
+		let extensions = err.extensions ? err.extensions : {
+			resource: errorUtils.internal(version, err.message)
+		};
 
 		return {
 			path: err.path,
