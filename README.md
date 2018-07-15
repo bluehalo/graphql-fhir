@@ -30,7 +30,7 @@ yarn test --coverage
 # Run the linter
 yarn lint
 ```
-3. View `http://localhost/:3000/3_0_1/$graphiql` to explore the available queries and mutations in the graphiql interface. The standard graphql endpoint is available at `http://localhost/:3000/3_0_1/$graphql`.
+3. View `http://localhost:3000/3_0_1/$graphiql` to explore the available queries and mutations in the graphiql interface. The standard graphql endpoint is available at `http://localhost:3000/3_0_1/$graphql`.
 
 
 ### Where to go from here
