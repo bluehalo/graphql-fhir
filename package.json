@@ -9,8 +9,8 @@
   "scripts": {
     "start": "node src/index;",
     "nodemon": "node src/scripts/nodemon;",
-		"test": "node src/scripts/test --env=jsdom",
-		"lint": "eslint \"src/**/*.js\""
+    "test": "node src/scripts/test --env=jsdom",
+    "lint": "eslint \"src/**/*.js\""
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -29,18 +29,19 @@
     "xss": "^1.0.3"
   },
   "devDependencies": {
+    "eslint": "^5.1.0",
     "jest": "^23.2.0"
   },
-	"jest": {
-		"verbose": true,
-		"collectCoverage": true,
-		"coverageReporters": [
-			"text",
-			"lcov",
-			"json"
-		],
-		"testPathIgnorePatterns": [
-			"<rootDir>/src/scripts/"
-		]
-	}
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "json"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/src/scripts/"
+    ]
+  }
 }
