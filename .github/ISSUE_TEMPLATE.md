@@ -1,4 +1,4 @@
-### Do you want to request a feature, improve documentation, or ask a question?
+### Do you want to submit a request for change, improve documentation, or ask a question?
 
 ### Are you reporting a bug?
 
