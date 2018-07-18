@@ -1,44 +1,33 @@
-const {
-	GraphQLInputObjectType,
-	GraphQLEnumType,
-	GraphQLString
-} = require('graphql');
+const CodeScalar = require('../scalars/code.scalar');
+const XhtmlScalar = require('../scalars/xhtml.scalar');
+const { GraphQLInputObjectType, GraphQLNonNull } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
-
-let NarrativeStatusType = new GraphQLEnumType({
-	name: 'NarrativeStatusTypeInput',
-	values: {
-		generated: { value: 'generated' },
-		extensions: { value: 'extensions' },
-		additional: { value: 'additional' },
-		empty: { value: 'empty' }
-	}
-});
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Narrative Fields
+ * @summary Narrative Input Schema
  */
-let NarrativeInput = new GraphQLInputObjectType({
-	name: 'NarrativeInput',
-	description: 'A human-readable formatted text, including images.',
+module.exports = new GraphQLInputObjectType({
+	name: 'Narrative_Input',
+	description: 'Base StructureDefinition for Narrative Type.',
 	fields: () => extendSchema(require('./element.input'), {
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/narrative-status
 		status: {
-			type: NarrativeStatusType,
-			description: 'Identifies the purpose for this name.'
+			type: new GraphQLNonNull(CodeScalar),
+			description: 'The status of the narrative - whether it\'s entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.'
 		},
 		_status: {
-			type: require('./extension.input'),
-			description: 'Extensions for status'
+			type: require('./element.input'),
+			description: 'The status of the narrative - whether it\'s entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.'
 		},
 		div: {
-			type: GraphQLString,
+			type: new GraphQLNonNull(XhtmlScalar),
+			description: 'The actual narrative content, a stripped down version of XHTML.'
+		},
+		_div: {
+			type: require('./element.input'),
 			description: 'The actual narrative content, a stripped down version of XHTML.'
 		}
 	})
 });
-
-module.exports = NarrativeInput;

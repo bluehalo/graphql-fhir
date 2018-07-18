@@ -1,18 +1,14 @@
-const {
-	GraphQLInputObjectType
-} = require('graphql');
+const { GraphQLInputObjectType } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Ratio Fields
+ * @summary Ratio Input Schema
  */
-let RatioInput = new GraphQLInputObjectType({
-	name: 'RatioInput',
-	description: 'A set of ordered Quantities defined by a low and high limit.',
+module.exports = new GraphQLInputObjectType({
+	name: 'Ratio_Input',
+	description: 'Base StructureDefinition for Ratio Type.',
 	fields: () => extendSchema(require('./element.input'), {
 		numerator: {
 			type: require('./quantity.input'),
@@ -24,5 +20,3 @@ let RatioInput = new GraphQLInputObjectType({
 		}
 	})
 });
-
-module.exports = RatioInput;

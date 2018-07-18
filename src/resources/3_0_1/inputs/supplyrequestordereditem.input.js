@@ -1,0 +1,28 @@
+const { GraphQLInputObjectType, GraphQLNonNull } = require('graphql');
+
+const { extendSchema } = require('../../../utils/schema.utils');
+
+/**
+ * @name exports
+ * @summary SupplyRequestOrderedItem Input Schema
+ */
+module.exports = new GraphQLInputObjectType({
+	name: 'SupplyRequestOrderedItem_Input',
+	description: 'The item being requested.',
+	fields: () => extendSchema(require('./backboneelement.input'), {
+		quantity: {
+			type: new GraphQLNonNull(require('./quantity.input')),
+			description: 'The amount that is being ordered of the indicated item.'
+		},
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supply-item
+		itemCodeableConcept: {
+			type: require('./codeableconcept.input'),
+			description: 'The item that is requested to be supplied. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.'
+		},
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supply-item
+		itemReference: {
+			type: require('./reference.input'),
+			description: 'The item that is requested to be supplied. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.'
+		}
+	})
+});

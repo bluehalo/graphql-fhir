@@ -1,67 +1,33 @@
-const {
-	GraphQLObjectType,
-	GraphQLBoolean,
-	GraphQLString,
-	GraphQLFloat,
-	// GraphQLList,
-	GraphQLInt
-} = require('graphql');
-
-// Scalars
-const Base64BinaryScalar = require('../scalars/base64.scalar');
-const DateScalar = require('../scalars/date.scalar');
-const TimeScalar = require('../scalars/time.scalar');
-const DateTimeScalar = require('../scalars/datetime.scalar');
-const PositiveIntScalar = require('../scalars/positiveint.scalar');
-const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
+const UriScalar = require('../scalars/uri.scalar');
+const Base64BinaryScalar = require('../scalars/base64binary.scalar');
 const CodeScalar = require('../scalars/code.scalar');
-const UuidScalar = require('../scalars/uuid.scalar');
-const OidScalar = require('../scalars/oid.scalar');
+const DateScalar = require('../scalars/date.scalar');
+const DateTimeScalar = require('../scalars/datetime.scalar');
 const IdScalar = require('../scalars/id.scalar');
+const InstantScalar = require('../scalars/instant.scalar');
+const OidScalar = require('../scalars/oid.scalar');
+const PositiveIntScalar = require('../scalars/positiveint.scalar');
+const TimeScalar = require('../scalars/time.scalar');
+const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
+const { GraphQLObjectType, GraphQLNonNull, GraphQLBoolean, GraphQLFloat, GraphQLInt, GraphQLString } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Extension Fields
+ * @summary Extension Schema
  */
-let Extension = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Extension',
-	description: 'Optional Extension Element - found in all resources.',
+	description: 'Base StructureDefinition for Extension Type.',
 	fields: () => extendSchema(require('./element.schema'), {
 		url: {
-			type: GraphQLString,
+			type: new GraphQLNonNull(UriScalar),
 			description: 'Source of the definition for the extension code - a logical name or a URL.'
 		},
 		_url: {
 			type: require('./element.schema'),
-			description: 'Extensions for url'
-		},
-		valueBoolean: {
-			type: GraphQLBoolean,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueBoolean: {
-			type: require('./element.schema'),
-			description: 'Extensions for valueBoolean'
-		},
-		valueInteger: {
-			type: GraphQLInt,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueInteger: {
-			type: require('./element.schema'),
-			description: 'Extensions for valueInteger'
-		},
-		valueDecimal: {
-			type: GraphQLFloat,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueDecimal: {
-			type: require('./element.schema'),
-			description: 'Extensions for valueDecimal'
+			description: 'Source of the definition for the extension code - a logical name or a URL.'
 		},
 		valueBase64Binary: {
 			type: Base64BinaryScalar,
@@ -69,55 +35,15 @@ let Extension = new GraphQLObjectType({
 		},
 		_valueBase64Binary: {
 			type: require('./element.schema'),
-			description: 'Extensions for valueBase64Binary'
-		},
-		valueInstant: {
-			type: GraphQLString,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valueInstant: {
-			type: require('./element.schema'),
-			description: 'Extensions for valueInstant'
-		},
-		valueString: {
-			type: GraphQLString,
+		valueBoolean: {
+			type: GraphQLBoolean,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valueString: {
+		_valueBoolean: {
 			type: require('./element.schema'),
-			description: 'Extensions for valueString'
-		},
-		valueUri: {
-			type: GraphQLString,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueUri: {
-			type: require('./element.schema'),
-			description: 'Extensions for valueUri'
-		},
-		valueDate: {
-			type: DateScalar,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueDate: {
-			type: require('./element.schema'),
-			description: 'Extensions for valueDate'
-		},
-		valueDateTime: {
-			type: DateTimeScalar,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueDateTime: {
-			type: require('./element.schema'),
-			description: 'Extensions for valueDateTime'
-		},
-		valueTime: {
-			type: TimeScalar,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueTime: {
-			type: require('./element.schema'),
-			description: 'Extensions for valueTime'
 		},
 		valueCode: {
 			type: CodeScalar,
@@ -125,23 +51,31 @@ let Extension = new GraphQLObjectType({
 		},
 		_valueCode: {
 			type: require('./element.schema'),
-			description: 'Extensions for valueCode'
-		},
-		valueOid: {
-			type: OidScalar,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valueOid: {
-			type: require('./element.schema'),
-			description: 'Extensions for valueOid'
-		},
-		valueUuid: {
-			type: UuidScalar,
+		valueDate: {
+			type: DateScalar,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valueUuid: {
+		_valueDate: {
 			type: require('./element.schema'),
-			description: 'Extensions for valueUuid'
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueDateTime: {
+			type: DateTimeScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueDateTime: {
+			type: require('./element.schema'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueDecimal: {
+			type: GraphQLFloat,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueDecimal: {
+			type: require('./element.schema'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
 		valueId: {
 			type: IdScalar,
@@ -149,23 +83,23 @@ let Extension = new GraphQLObjectType({
 		},
 		_valueId: {
 			type: require('./element.schema'),
-			description: 'Extensions for valueId'
-		},
-		valueUnsignedInt: {
-			type: UnsignedIntScalar,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valueUnsignedInt: {
-			type: require('./element.schema'),
-			description: 'Extensions for valueUnsignedInt'
-		},
-		valuePositiveInt: {
-			type: PositiveIntScalar,
+		valueInstant: {
+			type: InstantScalar,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valuePositiveInt: {
+		_valueInstant: {
 			type: require('./element.schema'),
-			description: 'Extensions for valuePositiveInt'
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueInteger: {
+			type: GraphQLInt,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueInteger: {
+			type: require('./element.schema'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
 		valueMarkdown: {
 			type: GraphQLString,
@@ -173,7 +107,55 @@ let Extension = new GraphQLObjectType({
 		},
 		_valueMarkdown: {
 			type: require('./element.schema'),
-			description: 'Extensions for valueMarkdown'
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueOid: {
+			type: OidScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueOid: {
+			type: require('./element.schema'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valuePositiveInt: {
+			type: PositiveIntScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valuePositiveInt: {
+			type: require('./element.schema'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueString: {
+			type: GraphQLString,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueString: {
+			type: require('./element.schema'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueTime: {
+			type: TimeScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueTime: {
+			type: require('./element.schema'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueUnsignedInt: {
+			type: UnsignedIntScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueUnsignedInt: {
+			type: require('./element.schema'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueUri: {
+			type: UriScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueUri: {
+			type: require('./element.schema'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
 		valueAddress: {
 			type: require('./address.schema'),
@@ -265,5 +247,3 @@ let Extension = new GraphQLObjectType({
 		}
 	})
 });
-
-module.exports = Extension;

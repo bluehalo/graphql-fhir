@@ -1,24 +1,18 @@
-const {
-	GraphQLObjectType,
-	GraphQLString,
-	GraphQLList
-} = require('graphql');
+const { GraphQLObjectType, GraphQLList, GraphQLString } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CodeableConcept Fields
+ * @summary CodeableConcept Schema
  */
-let CodeableConcept = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'CodeableConcept',
-	description: 'A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.',
+	description: 'Base StructureDefinition for CodeableConcept Type.',
 	fields: () => extendSchema(require('./element.schema'), {
 		coding: {
 			type: new GraphQLList(require('./coding.schema')),
-			description: 'The start of the period. The boundary is inclusive.'
+			description: 'A reference to a code defined by a terminology system.'
 		},
 		text: {
 			type: GraphQLString,
@@ -26,9 +20,7 @@ let CodeableConcept = new GraphQLObjectType({
 		},
 		_text: {
 			type: require('./element.schema'),
-			description: 'Extensions for text'
+			description: 'A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.'
 		}
 	})
 });
-
-module.exports = CodeableConcept;

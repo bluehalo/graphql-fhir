@@ -1,35 +1,27 @@
-const {
-	GraphQLObjectType,
-	GraphQLString,
-	GraphQLFloat
-} = require('graphql');
-
-// Scalars
 const PositiveIntScalar = require('../scalars/positiveint.scalar');
+const { GraphQLObjectType, GraphQLNonNull, GraphQLFloat, GraphQLString } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary SampledData Fields
+ * @summary SampledData Schema
  */
-let SampledData = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'SampledData',
-	description: 'A set of ordered Quantities defined by a low and high limit.',
+	description: 'Base StructureDefinition for SampledData Type.',
 	fields: () => extendSchema(require('./element.schema'), {
 		origin: {
-			type: require('./quantity.schema'),
+			type: new GraphQLNonNull(require('./quantity.schema')),
 			description: 'The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series.'
 		},
 		period: {
-			type: GraphQLFloat,
+			type: new GraphQLNonNull(GraphQLFloat),
 			description: 'The length of time between sampling times, measured in milliseconds.'
 		},
 		_period: {
 			type: require('./element.schema'),
-			description: 'Extensions for period'
+			description: 'The length of time between sampling times, measured in milliseconds.'
 		},
 		factor: {
 			type: GraphQLFloat,
@@ -37,42 +29,39 @@ let SampledData = new GraphQLObjectType({
 		},
 		_factor: {
 			type: require('./element.schema'),
-			description: 'Extensions for factor'
+			description: 'A correction factor that is applied to the sampled data points before they are added to the origin.'
 		},
 		lowerLimit: {
 			type: GraphQLFloat,
-			description: 'The lower limit of detection of the measured points. This is needed if any of the data points have the value \"L\" (lower than detection limit).'
+			description: 'The lower limit of detection of the measured points. This is needed if any of the data points have the value \'L\' (lower than detection limit).'
 		},
 		_lowerLimit: {
 			type: require('./element.schema'),
-			description: 'Extensions for lowerLimit'
+			description: 'The lower limit of detection of the measured points. This is needed if any of the data points have the value \'L\' (lower than detection limit).'
 		},
 		upperLimit: {
 			type: GraphQLFloat,
-			description: 'The upper limit of detection of the measured points. This is needed if any of the data points have the value \"U\" (higher than detection limit).'
+			description: 'The upper limit of detection of the measured points. This is needed if any of the data points have the value \'U\' (higher than detection limit).'
 		},
 		_upperLimit: {
 			type: require('./element.schema'),
-			description: 'Extensions for upperLimit'
+			description: 'The upper limit of detection of the measured points. This is needed if any of the data points have the value \'U\' (higher than detection limit).'
 		},
 		dimensions: {
-			type: PositiveIntScalar,
+			type: new GraphQLNonNull(PositiveIntScalar),
 			description: 'The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.'
 		},
 		_dimensions: {
 			type: require('./element.schema'),
-			description: 'Extensions for dimensions'
+			description: 'The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.'
 		},
 		data: {
-			type: GraphQLString,
-			description: 'A series of data points which are decimal values separated by a single space (character u20).'
-				+ ' The special values \"E\" (error), \"L\" (below detection limit) and \"U\" (above detection limit) can also be used in place of a decimal value.'
+			type: new GraphQLNonNull(GraphQLString),
+			description: 'A series of data points which are decimal values separated by a single space (character u20). The special values \'E\' (error), \'L\' (below detection limit) and \'U\' (above detection limit) can also be used in place of a decimal value.'
 		},
 		_data: {
 			type: require('./element.schema'),
-			description: 'Extensions for data'
+			description: 'A series of data points which are decimal values separated by a single space (character u20). The special values \'E\' (error), \'L\' (below detection limit) and \'U\' (above detection limit) can also be used in place of a decimal value.'
 		}
 	})
 });
-
-module.exports = SampledData;

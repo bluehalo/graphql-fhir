@@ -1,41 +1,32 @@
-const {
-	GraphQLObjectType,
-	GraphQLBoolean,
-	GraphQLString
-} = require('graphql');
-
-// Scalars
+const UriScalar = require('../scalars/uri.scalar');
 const CodeScalar = require('../scalars/code.scalar');
+const { GraphQLObjectType, GraphQLString, GraphQLBoolean } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Coding Fields
+ * @summary Coding Schema
  */
-let Coding = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Coding',
-	description: 'A reference to a code defined by a terminology system.',
+	description: 'Base StructureDefinition for Coding Type.',
 	fields: () => extendSchema(require('./element.schema'), {
 		system: {
-			type: GraphQLString,
+			type: UriScalar,
 			description: 'The identification of the code system that defines the meaning of the symbol in the code.'
 		},
 		_system: {
 			type: require('./element.schema'),
-			description: 'Extensions for system'
+			description: 'The identification of the code system that defines the meaning of the symbol in the code.'
 		},
 		version: {
 			type: GraphQLString,
-			description: 'The version of the code system which was used when choosing this code.'
-				+ ' Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions.'
-				+ ' However this cannot consistently be assured, and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.'
+			description: 'The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.'
 		},
 		_version: {
 			type: require('./element.schema'),
-			description: 'Extensions for version'
+			description: 'The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.'
 		},
 		code: {
 			type: CodeScalar,
@@ -43,7 +34,7 @@ let Coding = new GraphQLObjectType({
 		},
 		_code: {
 			type: require('./element.schema'),
-			description: 'Extensions for code'
+			description: 'A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).'
 		},
 		display: {
 			type: GraphQLString,
@@ -51,7 +42,7 @@ let Coding = new GraphQLObjectType({
 		},
 		_display: {
 			type: require('./element.schema'),
-			description: 'Extensions for display'
+			description: 'A representation of the meaning of the code in the system, following the rules of the system.'
 		},
 		userSelected: {
 			type: GraphQLBoolean,
@@ -59,9 +50,7 @@ let Coding = new GraphQLObjectType({
 		},
 		_userSelected: {
 			type: require('./element.schema'),
-			description: 'Extensions for userSelected'
+			description: 'Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).'
 		}
 	})
 });
-
-module.exports = Coding;

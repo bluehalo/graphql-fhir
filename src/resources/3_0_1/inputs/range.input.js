@@ -1,18 +1,14 @@
-const {
-	GraphQLInputObjectType
-} = require('graphql');
+const { GraphQLInputObjectType } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Range Fields
+ * @summary Range Input Schema
  */
-let RangeInput = new GraphQLInputObjectType({
-	name: 'RangeInput',
-	description: 'A set of ordered Quantities defined by a low and high limit.',
+module.exports = new GraphQLInputObjectType({
+	name: 'Range_Input',
+	description: 'Base StructureDefinition for Range Type.',
 	fields: () => extendSchema(require('./element.input'), {
 		low: {
 			type: require('./quantity.input'),
@@ -24,5 +20,3 @@ let RangeInput = new GraphQLInputObjectType({
 		}
 	})
 });
-
-module.exports = RangeInput;

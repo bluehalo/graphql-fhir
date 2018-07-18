@@ -1,29 +1,26 @@
-const {
-	GraphQLObjectType,
-	GraphQLString
-} = require('graphql');
+const { GraphQLObjectType, GraphQLString } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Reference Fields
+ * @summary Reference Schema
  */
-let Reference = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Reference',
-	description: 'A technical identifier - identifies some entity uniquely and unambiguously.',
+	description: 'Base StructureDefinition for Reference Type.',
 	fields: () => extendSchema(require('./element.schema'), {
 		reference: {
 			type: GraphQLString,
-			description: 'A reference to a location at which the other resource is found.'
-				+ ' The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found.'
-				+ ' The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with \u0027#\u0027) refer to contained resources.'
+			description: 'A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with \'#\') refer to contained resources.'
 		},
 		_reference: {
 			type: require('./element.schema'),
-			description: 'Extensions for reference'
+			description: 'A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with \'#\') refer to contained resources.'
+		},
+		identifier: {
+			type: require('./identifier.schema'),
+			description: 'An identifier for the other resource. This is used when there is no way to reference the other resource directly, either because the entity is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.'
 		},
 		display: {
 			type: GraphQLString,
@@ -31,15 +28,7 @@ let Reference = new GraphQLObjectType({
 		},
 		_display: {
 			type: require('./element.schema'),
-			description: 'Extensions for display'
-		},
-		identifier: {
-			type: require('./reference.schema'),
-			description: 'An identifier for the other resource.'
-				+ ' This is used when there is no way to reference the other resource directly, either because the entity is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location.'
-				+ ' There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.'
+			description: 'Plain text narrative that identifies the resource in addition to the resource reference.'
 		}
 	})
 });
-
-module.exports = Reference;

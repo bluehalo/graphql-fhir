@@ -1,58 +1,33 @@
-const {
-	GraphQLObjectType,
-	GraphQLEnumType,
-	GraphQLString,
-	GraphQLList
-} = require('graphql');
+const CodeScalar = require('../scalars/code.scalar');
+const { GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
-
-let AddressUseType = new GraphQLEnumType({
-	name: 'AddressUseType',
-	values: {
-		home: { value: 'home' },
-		work: { value: 'work' },
-		temp: { value: 'temp' },
-		old: { value: 'old' }
-	}
-});
-
-let AddressTypeType = new GraphQLEnumType({
-	name: 'AddressTypeType',
-	values: {
-		both: { value: 'both' },
-		postal: { value: 'postal' },
-		physical: { value: 'physical' }
-	}
-});
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Address Fields
+ * @summary Address Schema
  */
-let Address = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Address',
-	description: 'An address expressed using postal conventions (as opposed to GPS or other location definition formats).'
-		+ ' This data type may be used to convey addresses for use in delivering mail as well as for visiting locations which might not be valid for mail delivery.'
-		+ ' There are a variety of postal address formats defined around the world.',
+	description: 'Base StructureDefinition for Address Type.',
 	fields: () => extendSchema(require('./element.schema'), {
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/address-use
 		use: {
-			type: AddressUseType,
+			type: CodeScalar,
 			description: 'The purpose of this address.'
 		},
 		_use: {
 			type: require('./element.schema'),
-			description: 'Extensions for use'
+			description: 'The purpose of this address.'
 		},
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/address-type
 		type: {
-			type: AddressTypeType,
+			type: CodeScalar,
 			description: 'Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.'
 		},
 		_type: {
 			type: require('./element.schema'),
-			description: 'Extensions for type'
+			description: 'Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.'
 		},
 		text: {
 			type: GraphQLString,
@@ -60,7 +35,7 @@ let Address = new GraphQLObjectType({
 		},
 		_text: {
 			type: require('./element.schema'),
-			description: 'Extensions for text'
+			description: 'A full text representation of the address.'
 		},
 		line: {
 			type: new GraphQLList(GraphQLString),
@@ -68,7 +43,7 @@ let Address = new GraphQLObjectType({
 		},
 		_line: {
 			type: require('./element.schema'),
-			description: 'Extensions for line'
+			description: 'This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.'
 		},
 		city: {
 			type: GraphQLString,
@@ -76,7 +51,7 @@ let Address = new GraphQLObjectType({
 		},
 		_city: {
 			type: require('./element.schema'),
-			description: 'Extensions for city'
+			description: 'The name of the city, town, village or other community or delivery center.'
 		},
 		district: {
 			type: GraphQLString,
@@ -84,7 +59,7 @@ let Address = new GraphQLObjectType({
 		},
 		_district: {
 			type: require('./element.schema'),
-			description: 'Extensions for district'
+			description: 'The name of the administrative area (county).'
 		},
 		state: {
 			type: GraphQLString,
@@ -92,7 +67,7 @@ let Address = new GraphQLObjectType({
 		},
 		_state: {
 			type: require('./element.schema'),
-			description: 'Extensions for state'
+			description: 'Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).'
 		},
 		postalCode: {
 			type: GraphQLString,
@@ -100,15 +75,15 @@ let Address = new GraphQLObjectType({
 		},
 		_postalCode: {
 			type: require('./element.schema'),
-			description: 'Extensions for postalCode'
+			description: 'A postal code designating a region defined by the postal service.'
 		},
 		country: {
 			type: GraphQLString,
-			description: 'Country - a nation as commonly understood or generally accepted (e.g. can be ISO 3166 2 or 3 letter code).'
+			description: 'Country - a nation as commonly understood or generally accepted.'
 		},
 		_country: {
 			type: require('./element.schema'),
-			description: 'Extensions for country'
+			description: 'Country - a nation as commonly understood or generally accepted.'
 		},
 		period: {
 			type: require('./period.schema'),
@@ -116,5 +91,3 @@ let Address = new GraphQLObjectType({
 		}
 	})
 });
-
-module.exports = Address;

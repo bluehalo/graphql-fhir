@@ -1,19 +1,13 @@
-const {
-	GraphQLInputObjectType
-} = require('graphql');
+const { GraphQLInputObjectType } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Distance Fields
+ * @summary Distance Input Schema
  */
-let DistanceInput = new GraphQLInputObjectType({
-	name: 'DistanceInput',
-	description: 'A length - a value with a unit that is a physical distance.',
+module.exports = new GraphQLInputObjectType({
+	name: 'Distance_Input',
+	description: 'Base StructureDefinition for Distance Type.',
 	fields: () => extendSchema(require('./quantity.input'))
 });
-
-module.exports = DistanceInput;

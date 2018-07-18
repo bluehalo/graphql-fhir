@@ -1,19 +1,13 @@
-const {
-	GraphQLInputObjectType
-} = require('graphql');
+const { GraphQLInputObjectType } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Duration Fields
+ * @summary Duration Input Schema
  */
-let DurationInput = new GraphQLInputObjectType({
-	name: 'DurationInput',
-	description: 'A length of time.',
+module.exports = new GraphQLInputObjectType({
+	name: 'Duration_Input',
+	description: 'Base StructureDefinition for Duration Type.',
 	fields: () => extendSchema(require('./quantity.input'))
 });
-
-module.exports = DurationInput;

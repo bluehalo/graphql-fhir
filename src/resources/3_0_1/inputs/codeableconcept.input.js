@@ -1,34 +1,26 @@
-const {
-	GraphQLInputObjectType,
-	GraphQLString,
-	GraphQLList
-} = require('graphql');
+const { GraphQLInputObjectType, GraphQLList, GraphQLString } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CodeableConcept Fields
+ * @summary CodeableConcept Input Schema
  */
-let CodeableConceptInput = new GraphQLInputObjectType({
-	name: 'CodeableConceptInput',
-	description: 'A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.',
+module.exports = new GraphQLInputObjectType({
+	name: 'CodeableConcept_Input',
+	description: 'Base StructureDefinition for CodeableConcept Type.',
 	fields: () => extendSchema(require('./element.input'), {
 		coding: {
 			type: new GraphQLList(require('./coding.input')),
-			description: 'The start of the period. The boundary is inclusive.'
+			description: 'A reference to a code defined by a terminology system.'
 		},
 		text: {
 			type: GraphQLString,
 			description: 'A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.'
 		},
 		_text: {
-			type: require('./extension.input'),
-			description: 'Extensions for text'
+			type: require('./element.input'),
+			description: 'A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.'
 		}
 	})
 });
-
-module.exports = CodeableConceptInput;

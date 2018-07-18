@@ -1,22 +1,15 @@
-const {
-	GraphQLInputObjectType,
-	GraphQLString
-} = require('graphql');
-
-// Scalars
 const DateTimeScalar = require('../scalars/datetime.scalar');
+const { GraphQLInputObjectType, GraphQLString, GraphQLNonNull } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Annotation Fields
+ * @summary Annotation Input Schema
  */
-let AnnotationInput = new GraphQLInputObjectType({
-	name: 'AnnotationInput',
-	description: 'A text note which also  contains information about who made the statement and when.',
+module.exports = new GraphQLInputObjectType({
+	name: 'Annotation_Input',
+	description: 'Base StructureDefinition for Annotation Type.',
 	fields: () => extendSchema(require('./element.input'), {
 		authorReference: {
 			type: require('./reference.input'),
@@ -27,26 +20,24 @@ let AnnotationInput = new GraphQLInputObjectType({
 			description: 'The individual responsible for making the annotation.'
 		},
 		_authorString: {
-			type: require('./extension.input'),
-			description: 'Extensions for authorString'
+			type: require('./element.input'),
+			description: 'The individual responsible for making the annotation.'
 		},
 		time: {
 			type: DateTimeScalar,
 			description: 'Indicates when this particular annotation was made.'
 		},
 		_time: {
-			type: require('./extension.input'),
-			description: 'Extensions for time'
+			type: require('./element.input'),
+			description: 'Indicates when this particular annotation was made.'
 		},
 		text: {
-			type: GraphQLString,
+			type: new GraphQLNonNull(GraphQLString),
 			description: 'The text of the annotation.'
 		},
 		_text: {
-			type: require('./extension.input'),
-			description: 'Extensions for text'
+			type: require('./element.input'),
+			description: 'The text of the annotation.'
 		}
 	})
 });
-
-module.exports = AnnotationInput;

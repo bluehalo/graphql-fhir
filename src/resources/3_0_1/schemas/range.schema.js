@@ -1,18 +1,14 @@
-const {
-	GraphQLObjectType
-} = require('graphql');
+const { GraphQLObjectType } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Range Fields
+ * @summary Range Schema
  */
-let Range = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Range',
-	description: 'A set of ordered Quantities defined by a low and high limit.',
+	description: 'Base StructureDefinition for Range Type.',
 	fields: () => extendSchema(require('./element.schema'), {
 		low: {
 			type: require('./quantity.schema'),
@@ -24,5 +20,3 @@ let Range = new GraphQLObjectType({
 		}
 	})
 });
-
-module.exports = Range;

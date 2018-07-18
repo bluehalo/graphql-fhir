@@ -1,22 +1,15 @@
-const {
-	GraphQLObjectType,
-	GraphQLString
-} = require('graphql');
-
-// Scalars
 const DateTimeScalar = require('../scalars/datetime.scalar');
+const { GraphQLObjectType, GraphQLString, GraphQLNonNull } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Annotation Fields
+ * @summary Annotation Schema
  */
-let Annotation = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Annotation',
-	description: 'A text note which also  contains information about who made the statement and when.',
+	description: 'Base StructureDefinition for Annotation Type.',
 	fields: () => extendSchema(require('./element.schema'), {
 		authorReference: {
 			type: require('./reference.schema'),
@@ -28,7 +21,7 @@ let Annotation = new GraphQLObjectType({
 		},
 		_authorString: {
 			type: require('./element.schema'),
-			description: 'Extensions for authorString'
+			description: 'The individual responsible for making the annotation.'
 		},
 		time: {
 			type: DateTimeScalar,
@@ -36,17 +29,15 @@ let Annotation = new GraphQLObjectType({
 		},
 		_time: {
 			type: require('./element.schema'),
-			description: 'Extensions for time'
+			description: 'Indicates when this particular annotation was made.'
 		},
 		text: {
-			type: GraphQLString,
+			type: new GraphQLNonNull(GraphQLString),
 			description: 'The text of the annotation.'
 		},
 		_text: {
 			type: require('./element.schema'),
-			description: 'Extensions for text'
+			description: 'The text of the annotation.'
 		}
 	})
 });
-
-module.exports = Annotation;

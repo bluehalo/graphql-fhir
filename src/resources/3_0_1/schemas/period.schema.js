@@ -1,20 +1,15 @@
-const {
-	GraphQLObjectType
-} = require('graphql');
-
 const DateTimeScalar = require('../scalars/datetime.scalar');
+const { GraphQLObjectType } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Period Fields
+ * @summary Period Schema
  */
-let Period = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Period',
-	description: 'A time period defined by a start and end date and optionally time.',
+	description: 'Base StructureDefinition for Period Type.',
 	fields: () => extendSchema(require('./element.schema'), {
 		start: {
 			type: DateTimeScalar,
@@ -22,18 +17,15 @@ let Period = new GraphQLObjectType({
 		},
 		_start: {
 			type: require('./element.schema'),
-			description: 'Extensions for start'
+			description: 'The start of the period. The boundary is inclusive.'
 		},
 		end: {
 			type: DateTimeScalar,
-			description: 'The end of the period. If the end of the period is missing, it means that the period is ongoing.'
-				+ ' The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.'
+			description: 'The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.'
 		},
 		_end: {
 			type: require('./element.schema'),
-			description: 'Extensions for end'
+			description: 'The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.'
 		}
 	})
 });
-
-module.exports = Period;

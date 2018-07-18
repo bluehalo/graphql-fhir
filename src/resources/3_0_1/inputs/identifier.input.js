@@ -1,62 +1,50 @@
-const {
-	GraphQLInputObjectType,
-	GraphQLEnumType,
-	GraphQLString
-} = require('graphql');
+const CodeScalar = require('../scalars/code.scalar');
+const UriScalar = require('../scalars/uri.scalar');
+const { GraphQLInputObjectType, GraphQLString } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
-
-let IdentifierUseType = new GraphQLEnumType({
-	name: 'IdentifierUseTypeInput',
-	values: {
-		usual: { value: 'usual' },
-		official: { value: 'official' },
-		temp: { value: 'temp' },
-		secondary: { value: 'secondary' }
-	}
-});
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Identifier Fields
+ * @summary Identifier Input Schema
  */
-let IdentifierInput = new GraphQLInputObjectType({
-	name: 'IdentifierInput',
-	description: 'A technical identifier - identifies some entity uniquely and unambiguously.',
+module.exports = new GraphQLInputObjectType({
+	name: 'Identifier_Input',
+	description: 'Base StructureDefinition for Identifier Type.',
 	fields: () => extendSchema(require('./element.input'), {
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-use
 		use: {
-			type: IdentifierUseType,
+			type: CodeScalar,
 			description: 'The purpose of this identifier.'
 		},
 		_use: {
-			type: require('./extension.input'),
-			description: 'Extensions for use'
+			type: require('./element.input'),
+			description: 'The purpose of this identifier.'
+		},
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-type
+		type: {
+			type: require('./codeableconcept.input'),
+			description: 'A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.'
 		},
 		system: {
-			type: GraphQLString,
+			type: UriScalar,
 			description: 'Establishes the namespace for the value - that is, a URL that describes a set values that are unique.'
 		},
 		_system: {
-			type: require('./extension.input'),
-			description: 'Extensions for system'
+			type: require('./element.input'),
+			description: 'Establishes the namespace for the value - that is, a URL that describes a set values that are unique.'
 		},
 		value: {
 			type: GraphQLString,
 			description: 'The portion of the identifier typically relevant to the user and which is unique within the context of the system.'
 		},
 		_value: {
-			type: require('./extension.input'),
-			description: 'Extensions for value'
-		},
-		type: {
-			type: require('./codeableconcept.input'),
-			description: 'A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.'
+			type: require('./element.input'),
+			description: 'The portion of the identifier typically relevant to the user and which is unique within the context of the system.'
 		},
 		period: {
 			type: require('./period.input'),
-			description: 'Time period when id is/was valid for use.'
+			description: 'Time period during which identifier is/was valid for use.'
 		},
 		assigner: {
 			type: require('./reference.input'),
@@ -64,5 +52,3 @@ let IdentifierInput = new GraphQLInputObjectType({
 		}
 	})
 });
-
-module.exports = IdentifierInput;

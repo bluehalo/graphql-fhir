@@ -1,44 +1,33 @@
-const {
-	GraphQLObjectType,
-	GraphQLEnumType,
-	GraphQLString
-} = require('graphql');
+const CodeScalar = require('../scalars/code.scalar');
+const XhtmlScalar = require('../scalars/xhtml.scalar');
+const { GraphQLObjectType, GraphQLNonNull } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
-
-let NarrativeStatusType = new GraphQLEnumType({
-	name: 'NarrativeStatusType',
-	values: {
-		generated: { value: 'generated' },
-		extensions: { value: 'extensions' },
-		additional: { value: 'additional' },
-		empty: { value: 'empty' }
-	}
-});
+const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary Narrative Fields
+ * @summary Narrative Schema
  */
-let Narrative = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Narrative',
-	description: 'A human-readable formatted text, including images.',
+	description: 'Base StructureDefinition for Narrative Type.',
 	fields: () => extendSchema(require('./element.schema'), {
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/narrative-status
 		status: {
-			type: NarrativeStatusType,
-			description: 'Identifies the purpose for this name.'
+			type: new GraphQLNonNull(CodeScalar),
+			description: 'The status of the narrative - whether it\'s entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.'
 		},
 		_status: {
 			type: require('./element.schema'),
-			description: 'Extensions for status'
+			description: 'The status of the narrative - whether it\'s entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.'
 		},
 		div: {
-			type: GraphQLString,
+			type: new GraphQLNonNull(XhtmlScalar),
+			description: 'The actual narrative content, a stripped down version of XHTML.'
+		},
+		_div: {
+			type: require('./element.schema'),
 			description: 'The actual narrative content, a stripped down version of XHTML.'
 		}
 	})
 });
-
-module.exports = Narrative;
