@@ -42,6 +42,9 @@
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/src/scripts/"
+		],
+		"coveragePathIgnorePatterns": [
+      "<rootDir>/src/resources/"
     ]
   }
 }
