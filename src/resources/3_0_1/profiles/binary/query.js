@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const BinarySchema = require('../../schemas/binary.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const BinaryArgs = require('../../parameters/binary.parameters');

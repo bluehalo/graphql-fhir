@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ReferralRequestSchema = require('../../schemas/referralrequest.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ReferralRequestArgs = require('../../parameters/referralrequest.parameters');

@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ProcedureRequestSchema = require('../../schemas/procedurerequest.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ProcedureRequestArgs = require('../../parameters/procedurerequest.parameters');

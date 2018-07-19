@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const AllergyIntoleranceSchema = require('../../schemas/allergyintolerance.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const AllergyIntoleranceArgs = require('../../parameters/allergyintolerance.parameters');

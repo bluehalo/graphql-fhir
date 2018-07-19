@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const AuditEventSchema = require('../../schemas/auditevent.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const AuditEventArgs = require('../../parameters/auditevent.parameters');

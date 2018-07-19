@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const SubscriptionSchema = require('../../schemas/subscription.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const SubscriptionArgs = require('../../parameters/subscription.parameters');

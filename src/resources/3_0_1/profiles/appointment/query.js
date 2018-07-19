@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const AppointmentSchema = require('../../schemas/appointment.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const AppointmentArgs = require('../../parameters/appointment.parameters');

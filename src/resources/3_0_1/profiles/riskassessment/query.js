@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const RiskAssessmentSchema = require('../../schemas/riskassessment.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const RiskAssessmentArgs = require('../../parameters/riskassessment.parameters');

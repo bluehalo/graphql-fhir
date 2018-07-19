@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const CompositionSchema = require('../../schemas/composition.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const CompositionArgs = require('../../parameters/composition.parameters');

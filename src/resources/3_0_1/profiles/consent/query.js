@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ConsentSchema = require('../../schemas/consent.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ConsentArgs = require('../../parameters/consent.parameters');

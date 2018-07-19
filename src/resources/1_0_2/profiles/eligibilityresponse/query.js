@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const EligibilityResponseSchema = require('../../schemas/eligibilityresponse.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const EligibilityResponseArgs = require('../../parameters/eligibilityresponse.parameters');

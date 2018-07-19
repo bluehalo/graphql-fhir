@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const AdverseEventSchema = require('../../schemas/adverseevent.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const AdverseEventArgs = require('../../parameters/adverseevent.parameters');

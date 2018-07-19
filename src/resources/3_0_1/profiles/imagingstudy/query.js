@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ImagingStudySchema = require('../../schemas/imagingstudy.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ImagingStudyArgs = require('../../parameters/imagingstudy.parameters');

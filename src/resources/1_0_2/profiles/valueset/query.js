@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ValueSetSchema = require('../../schemas/valueset.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ValueSetArgs = require('../../parameters/valueset.parameters');

@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const BodySiteSchema = require('../../schemas/bodysite.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const BodySiteArgs = require('../../parameters/bodysite.parameters');

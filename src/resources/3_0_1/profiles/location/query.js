@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const LocationSchema = require('../../schemas/location.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const LocationArgs = require('../../parameters/location.parameters');

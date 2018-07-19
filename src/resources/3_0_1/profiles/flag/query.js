@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const FlagSchema = require('../../schemas/flag.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const FlagArgs = require('../../parameters/flag.parameters');

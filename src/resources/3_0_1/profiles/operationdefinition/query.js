@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const OperationDefinitionSchema = require('../../schemas/operationdefinition.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const OperationDefinitionArgs = require('../../parameters/operationdefinition.parameters');

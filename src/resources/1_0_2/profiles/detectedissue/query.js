@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const DetectedIssueSchema = require('../../schemas/detectedissue.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const DetectedIssueArgs = require('../../parameters/detectedissue.parameters');

@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ImmunizationSchema = require('../../schemas/immunization.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ImmunizationArgs = require('../../parameters/immunization.parameters');

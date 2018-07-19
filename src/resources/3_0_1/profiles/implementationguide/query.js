@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ImplementationGuideSchema = require('../../schemas/implementationguide.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ImplementationGuideArgs = require('../../parameters/implementationguide.parameters');

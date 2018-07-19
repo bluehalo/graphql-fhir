@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const EncounterSchema = require('../../schemas/encounter.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const EncounterArgs = require('../../parameters/encounter.parameters');

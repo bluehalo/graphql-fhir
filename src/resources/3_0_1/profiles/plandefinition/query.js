@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const PlanDefinitionSchema = require('../../schemas/plandefinition.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const PlanDefinitionArgs = require('../../parameters/plandefinition.parameters');

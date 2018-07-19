@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const QuestionnaireResponseSchema = require('../../schemas/questionnaireresponse.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const QuestionnaireResponseArgs = require('../../parameters/questionnaireresponse.parameters');

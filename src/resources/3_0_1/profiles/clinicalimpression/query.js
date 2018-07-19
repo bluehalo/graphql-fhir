@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ClinicalImpressionSchema = require('../../schemas/clinicalimpression.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ClinicalImpressionArgs = require('../../parameters/clinicalimpression.parameters');

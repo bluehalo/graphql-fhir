@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const FamilyMemberHistorySchema = require('../../schemas/familymemberhistory.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const FamilyMemberHistoryArgs = require('../../parameters/familymemberhistory.parameters');

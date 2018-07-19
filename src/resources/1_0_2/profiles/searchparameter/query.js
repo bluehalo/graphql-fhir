@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const SearchParameterSchema = require('../../schemas/searchparameter.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const SearchParameterArgs = require('../../parameters/searchparameter.parameters');

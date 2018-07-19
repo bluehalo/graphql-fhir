@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const GraphDefinitionSchema = require('../../schemas/graphdefinition.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const GraphDefinitionArgs = require('../../parameters/graphdefinition.parameters');

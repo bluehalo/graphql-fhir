@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ScheduleSchema = require('../../schemas/schedule.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ScheduleArgs = require('../../parameters/schedule.parameters');

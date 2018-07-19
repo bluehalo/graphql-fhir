@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const TaskSchema = require('../../schemas/task.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const TaskArgs = require('../../parameters/task.parameters');

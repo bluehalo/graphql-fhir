@@ -1,5 +1,4 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments

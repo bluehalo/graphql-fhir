@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const NutritionOrderSchema = require('../../schemas/nutritionorder.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const NutritionOrderArgs = require('../../parameters/nutritionorder.parameters');

@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const CodeSystemSchema = require('../../schemas/codesystem.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const CodeSystemArgs = require('../../parameters/codesystem.parameters');

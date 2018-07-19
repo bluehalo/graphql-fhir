@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const SupplyRequestSchema = require('../../schemas/supplyrequest.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const SupplyRequestArgs = require('../../parameters/supplyrequest.parameters');

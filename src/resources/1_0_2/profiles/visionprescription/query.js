@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const VisionPrescriptionSchema = require('../../schemas/visionprescription.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const VisionPrescriptionArgs = require('../../parameters/visionprescription.parameters');

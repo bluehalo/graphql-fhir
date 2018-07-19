@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const SlotSchema = require('../../schemas/slot.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const SlotArgs = require('../../parameters/slot.parameters');

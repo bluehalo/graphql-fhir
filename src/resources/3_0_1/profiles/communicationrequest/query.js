@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const CommunicationRequestSchema = require('../../schemas/communicationrequest.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const CommunicationRequestArgs = require('../../parameters/communicationrequest.parameters');

@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const DeviceUseStatementSchema = require('../../schemas/deviceusestatement.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const DeviceUseStatementArgs = require('../../parameters/deviceusestatement.parameters');

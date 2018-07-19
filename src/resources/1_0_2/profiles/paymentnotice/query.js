@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const PaymentNoticeSchema = require('../../schemas/paymentnotice.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const PaymentNoticeArgs = require('../../parameters/paymentnotice.parameters');

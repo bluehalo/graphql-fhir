@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const GroupSchema = require('../../schemas/group.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const GroupArgs = require('../../parameters/group.parameters');

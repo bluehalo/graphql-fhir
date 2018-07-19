@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const PaymentReconciliationSchema = require('../../schemas/paymentreconciliation.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const PaymentReconciliationArgs = require('../../parameters/paymentreconciliation.parameters');

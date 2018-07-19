@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const SubstanceSchema = require('../../schemas/substance.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const SubstanceArgs = require('../../parameters/substance.parameters');

@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const EndpointSchema = require('../../schemas/endpoint.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const EndpointArgs = require('../../parameters/endpoint.parameters');

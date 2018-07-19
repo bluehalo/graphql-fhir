@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ResearchStudySchema = require('../../schemas/researchstudy.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ResearchStudyArgs = require('../../parameters/researchstudy.parameters');

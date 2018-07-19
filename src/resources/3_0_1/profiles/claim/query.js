@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ClaimSchema = require('../../schemas/claim.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ClaimArgs = require('../../parameters/claim.parameters');

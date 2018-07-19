@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const MessageHeaderSchema = require('../../schemas/messageheader.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const MessageHeaderArgs = require('../../parameters/messageheader.parameters');

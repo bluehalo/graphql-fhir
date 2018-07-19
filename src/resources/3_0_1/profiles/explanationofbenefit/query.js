@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ExplanationOfBenefitSchema = require('../../schemas/explanationofbenefit.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ExplanationOfBenefitArgs = require('../../parameters/explanationofbenefit.parameters');

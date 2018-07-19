@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const CareTeamSchema = require('../../schemas/careteam.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const CareTeamArgs = require('../../parameters/careteam.parameters');

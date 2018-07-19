@@ -13,7 +13,7 @@ const {
 
 
 // Helper function for generating GraphQL schemas
-function generateRootSchema (version, query_fields = {}, mutation_fields = {}) {
+function generateRootSchema (version, query_fields, mutation_fields) {
 	let schema = {};
 	// If we have query fields, add a query schema
 	if (Object.getOwnPropertyNames(query_fields).length) {
@@ -36,7 +36,7 @@ function generateRootSchema (version, query_fields = {}, mutation_fields = {}) {
 }
 
 // Helper for generating instance schemas
-function generateInstanceSchema (version, name, query = {}) {
+function generateInstanceSchema (version, name, query) {
 	return new GraphQLSchema({
 		query: new GraphQLObjectType({
 			name: `${name}_Query`,
@@ -74,12 +74,12 @@ function graphqlErrorFormatter (version) {
 }
 
 /**
- * @name exports.configureRoutes
+ * @name configureRoutes
  * @summary Setup GraphQL Routes based on profile registration
  * @description Find all the profile configurations and register
  * any queries, mutations, or subscriptions found
  */
-module.exports.configureRoutes = server => {
+function configureRoutes (server) {
 	// We need to setup a server for each route configured in VERSION
 	let versions = Object.values(VERSION);
 
@@ -146,15 +146,21 @@ module.exports.configureRoutes = server => {
 
 	});
 
-};
+}
 
 /**
- * @name exports.parseVersionFromUrl
+ * @name parseVersionFromUrl
  * @summary Attempt to parse the version from the url
  */
-module.exports.parseVersionFromUrl = function parseVersionFromUrl (url, server_config) {
+function parseVersionFromUrl (url, server_config) {
 	let possible_version = url.split('/')[1];
 	return VERSION[possible_version]
 		? VERSION[possible_version]
 		: server_config.defaultVersion;
+}
+
+module.exports = {
+	graphqlErrorFormatter,
+	parseVersionFromUrl,
+	configureRoutes
 };

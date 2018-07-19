@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const MeasureReportSchema = require('../../schemas/measurereport.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const MeasureReportArgs = require('../../parameters/measurereport.parameters');

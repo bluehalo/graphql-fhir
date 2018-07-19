@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const LibrarySchema = require('../../schemas/library.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const LibraryArgs = require('../../parameters/library.parameters');

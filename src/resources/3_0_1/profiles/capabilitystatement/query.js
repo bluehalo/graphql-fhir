@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const CapabilityStatementSchema = require('../../schemas/capabilitystatement.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const CapabilityStatementArgs = require('../../parameters/capabilitystatement.parameters');

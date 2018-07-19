@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const LinkageSchema = require('../../schemas/linkage.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const LinkageArgs = require('../../parameters/linkage.parameters');

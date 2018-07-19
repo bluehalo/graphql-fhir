@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const CompartmentDefinitionSchema = require('../../schemas/compartmentdefinition.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const CompartmentDefinitionArgs = require('../../parameters/compartmentdefinition.parameters');

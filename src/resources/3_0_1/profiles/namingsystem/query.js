@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const NamingSystemSchema = require('../../schemas/namingsystem.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const NamingSystemArgs = require('../../parameters/namingsystem.parameters');

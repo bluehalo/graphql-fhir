@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ActivityDefinitionSchema = require('../../schemas/activitydefinition.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ActivityDefinitionArgs = require('../../parameters/activitydefinition.parameters');

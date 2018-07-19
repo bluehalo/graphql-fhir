@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ImagingObjectSelectionSchema = require('../../schemas/imagingobjectselection.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ImagingObjectSelectionArgs = require('../../parameters/imagingobjectselection.parameters');

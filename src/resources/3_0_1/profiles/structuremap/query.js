@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const StructureMapSchema = require('../../schemas/structuremap.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const StructureMapArgs = require('../../parameters/structuremap.parameters');

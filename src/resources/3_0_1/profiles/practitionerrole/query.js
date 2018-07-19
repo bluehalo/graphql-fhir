@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const PractitionerRoleSchema = require('../../schemas/practitionerrole.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const PractitionerRoleArgs = require('../../parameters/practitionerrole.parameters');

@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const DataElementSchema = require('../../schemas/dataelement.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const DataElementArgs = require('../../parameters/dataelement.parameters');

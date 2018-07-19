@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const OrderResponseSchema = require('../../schemas/orderresponse.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const OrderResponseArgs = require('../../parameters/orderresponse.parameters');

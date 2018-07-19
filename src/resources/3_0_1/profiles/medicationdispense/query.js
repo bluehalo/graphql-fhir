@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const MedicationDispenseSchema = require('../../schemas/medicationdispense.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const MedicationDispenseArgs = require('../../parameters/medicationdispense.parameters');

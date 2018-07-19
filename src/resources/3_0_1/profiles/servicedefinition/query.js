@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ServiceDefinitionSchema = require('../../schemas/servicedefinition.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ServiceDefinitionArgs = require('../../parameters/servicedefinition.parameters');

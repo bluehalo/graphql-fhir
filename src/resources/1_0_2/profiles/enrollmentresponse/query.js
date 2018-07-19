@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const EnrollmentResponseSchema = require('../../schemas/enrollmentresponse.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const EnrollmentResponseArgs = require('../../parameters/enrollmentresponse.parameters');

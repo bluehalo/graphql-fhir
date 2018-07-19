@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ExpansionProfileSchema = require('../../schemas/expansionprofile.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ExpansionProfileArgs = require('../../parameters/expansionprofile.parameters');

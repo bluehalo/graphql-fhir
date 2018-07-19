@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ProcessResponseSchema = require('../../schemas/processresponse.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ProcessResponseArgs = require('../../parameters/processresponse.parameters');

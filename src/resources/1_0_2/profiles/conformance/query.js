@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ConformanceSchema = require('../../schemas/conformance.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ConformanceArgs = require('../../parameters/conformance.parameters');

@@ -1,6 +1,6 @@
 // Schemas
-const BundleSchema = require('../schemas/bundle.schema');
 const ConceptMapSchema = require('../../schemas/conceptmap.schema');
+const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const ConceptMapArgs = require('../../parameters/conceptmap.parameters');
