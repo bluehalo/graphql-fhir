@@ -1,7 +1,15 @@
 const DateTimeScalar = require('../scalars/datetime.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let RiskAssessmentResourceInputType = new GraphQLEnumType({
+	name: 'RiskAssessmentResourceInputType',
+	values: {
+		RiskAssessment: { value: 'RiskAssessment' }
+	}
+});
 
 /**
  * @name exports
@@ -11,9 +19,8 @@ module.exports = new GraphQLInputObjectType({
 	name: 'RiskAssessment_Input',
 	description: 'Base StructureDefinition for RiskAssessment Resource.',
 	fields: () => extendSchema(require('./domainresource.input'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(RiskAssessmentResourceInputType),
 			description: 'Type of this resource'
 		},
 		subject: {

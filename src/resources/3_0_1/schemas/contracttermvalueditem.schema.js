@@ -3,6 +3,8 @@ const { GraphQLObjectType, GraphQLFloat } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary ContractTermValuedItem Schema

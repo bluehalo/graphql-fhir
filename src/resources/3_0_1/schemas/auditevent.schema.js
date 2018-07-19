@@ -1,8 +1,16 @@
 const CodeScalar = require('../scalars/code.scalar');
 const InstantScalar = require('../scalars/instant.scalar');
-const { GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let AuditEventResourceType = new GraphQLEnumType({
+	name: 'AuditEventResourceType',
+	values: {
+		AuditEvent: { value: 'AuditEvent' }
+	}
+});
 
 /**
  * @name exports
@@ -12,9 +20,8 @@ module.exports = new GraphQLObjectType({
 	name: 'AuditEvent',
 	description: 'Base StructureDefinition for AuditEvent Resource.',
 	fields: () => extendSchema(require('./domainresource.schema'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(AuditEventResourceType),
 			description: 'Type of this resource'
 		},
 		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/audit-event-type

@@ -1,7 +1,15 @@
 const DateTimeScalar = require('../scalars/datetime.scalar');
-const { GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let VisionPrescriptionResourceType = new GraphQLEnumType({
+	name: 'VisionPrescriptionResourceType',
+	values: {
+		VisionPrescription: { value: 'VisionPrescription' }
+	}
+});
 
 /**
  * @name exports
@@ -11,9 +19,8 @@ module.exports = new GraphQLObjectType({
 	name: 'VisionPrescription',
 	description: 'Base StructureDefinition for VisionPrescription Resource.',
 	fields: () => extendSchema(require('./domainresource.schema'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(VisionPrescriptionResourceType),
 			description: 'Type of this resource'
 		},
 		identifier: {

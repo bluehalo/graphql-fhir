@@ -1,6 +1,14 @@
-const { GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLBoolean, GraphQLList } = require('graphql');
+const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLBoolean, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let LinkageResourceType = new GraphQLEnumType({
+	name: 'LinkageResourceType',
+	values: {
+		Linkage: { value: 'Linkage' }
+	}
+});
 
 /**
  * @name exports
@@ -10,9 +18,8 @@ module.exports = new GraphQLObjectType({
 	name: 'Linkage',
 	description: 'Base StructureDefinition for Linkage Resource.',
 	fields: () => extendSchema(require('./domainresource.schema'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(LinkageResourceType),
 			description: 'Type of this resource'
 		},
 		active: {

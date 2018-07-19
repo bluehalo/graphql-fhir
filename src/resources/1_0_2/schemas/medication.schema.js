@@ -1,6 +1,14 @@
-const { GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLBoolean } = require('graphql');
+const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLBoolean } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let MedicationResourceType = new GraphQLEnumType({
+	name: 'MedicationResourceType',
+	values: {
+		Medication: { value: 'Medication' }
+	}
+});
 
 /**
  * @name exports
@@ -10,9 +18,8 @@ module.exports = new GraphQLObjectType({
 	name: 'Medication',
 	description: 'Base StructureDefinition for Medication Resource.',
 	fields: () => extendSchema(require('./domainresource.schema'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(MedicationResourceType),
 			description: 'Type of this resource'
 		},
 		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes

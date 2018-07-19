@@ -1,6 +1,14 @@
-const { GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLBoolean } = require('graphql');
+const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLBoolean } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let ScheduleResourceType = new GraphQLEnumType({
+	name: 'ScheduleResourceType',
+	values: {
+		Schedule: { value: 'Schedule' }
+	}
+});
 
 /**
  * @name exports
@@ -10,9 +18,8 @@ module.exports = new GraphQLObjectType({
 	name: 'Schedule',
 	description: 'Base StructureDefinition for Schedule Resource.',
 	fields: () => extendSchema(require('./domainresource.schema'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(ScheduleResourceType),
 			description: 'Type of this resource'
 		},
 		identifier: {

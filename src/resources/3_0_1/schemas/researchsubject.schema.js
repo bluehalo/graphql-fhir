@@ -1,7 +1,15 @@
 const CodeScalar = require('../scalars/code.scalar');
-const { GraphQLObjectType, GraphQLNonNull, GraphQLString } = require('graphql');
+const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let ResearchSubjectResourceType = new GraphQLEnumType({
+	name: 'ResearchSubjectResourceType',
+	values: {
+		ResearchSubject: { value: 'ResearchSubject' }
+	}
+});
 
 /**
  * @name exports
@@ -11,9 +19,8 @@ module.exports = new GraphQLObjectType({
 	name: 'ResearchSubject',
 	description: 'Base StructureDefinition for ResearchSubject Resource.',
 	fields: () => extendSchema(require('./domainresource.schema'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(ResearchSubjectResourceType),
 			description: 'Type of this resource'
 		},
 		identifier: {

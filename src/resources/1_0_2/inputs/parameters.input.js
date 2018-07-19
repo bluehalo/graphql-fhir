@@ -1,6 +1,14 @@
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let ParametersResourceInputType = new GraphQLEnumType({
+	name: 'ParametersResourceInputType',
+	values: {
+		Parameters: { value: 'Parameters' }
+	}
+});
 
 /**
  * @name exports
@@ -10,9 +18,8 @@ module.exports = new GraphQLInputObjectType({
 	name: 'Parameters_Input',
 	description: 'Base StructureDefinition for Parameters Resource.',
 	fields: () => extendSchema(require('./resource.input'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(ParametersResourceInputType),
 			description: 'Type of this resource'
 		},
 		parameter: {

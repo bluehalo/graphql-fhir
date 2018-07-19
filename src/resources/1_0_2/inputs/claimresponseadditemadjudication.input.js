@@ -2,6 +2,8 @@ const { GraphQLInputObjectType, GraphQLNonNull, GraphQLFloat } = require('graphq
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary ClaimResponseAddItemAdjudication Input Schema

@@ -3,6 +3,8 @@ const { GraphQLObjectType, GraphQLBoolean, GraphQLString, GraphQLList, GraphQLIn
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary TestScriptMetadataCapability Schema

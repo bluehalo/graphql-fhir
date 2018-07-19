@@ -3,6 +3,8 @@ const { GraphQLObjectType, GraphQLNonNull, GraphQLBoolean, GraphQLString } = req
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary ImplementationGuidePackageResource Schema

@@ -1,7 +1,15 @@
 const InstantScalar = require('../scalars/instant.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let MessageHeaderResourceInputType = new GraphQLEnumType({
+	name: 'MessageHeaderResourceInputType',
+	values: {
+		MessageHeader: { value: 'MessageHeader' }
+	}
+});
 
 /**
  * @name exports
@@ -11,9 +19,8 @@ module.exports = new GraphQLInputObjectType({
 	name: 'MessageHeader_Input',
 	description: 'Base StructureDefinition for MessageHeader Resource.',
 	fields: () => extendSchema(require('./domainresource.input'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(MessageHeaderResourceInputType),
 			description: 'Type of this resource'
 		},
 		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/message-events

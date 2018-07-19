@@ -1,7 +1,15 @@
 const CodeScalar = require('../scalars/code.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLBoolean, GraphQLList } = require('graphql');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLBoolean, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let MedicationResourceInputType = new GraphQLEnumType({
+	name: 'MedicationResourceInputType',
+	values: {
+		Medication: { value: 'Medication' }
+	}
+});
 
 /**
  * @name exports
@@ -11,9 +19,8 @@ module.exports = new GraphQLInputObjectType({
 	name: 'Medication_Input',
 	description: 'Base StructureDefinition for Medication Resource.',
 	fields: () => extendSchema(require('./domainresource.input'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(MedicationResourceInputType),
 			description: 'Type of this resource'
 		},
 		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes

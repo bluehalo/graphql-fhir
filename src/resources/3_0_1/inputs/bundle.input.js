@@ -1,8 +1,16 @@
 const CodeScalar = require('../scalars/code.scalar');
 const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let BundleResourceInputType = new GraphQLEnumType({
+	name: 'BundleResourceInputType',
+	values: {
+		Bundle: { value: 'Bundle' }
+	}
+});
 
 /**
  * @name exports
@@ -12,9 +20,8 @@ module.exports = new GraphQLInputObjectType({
 	name: 'Bundle_Input',
 	description: 'Base StructureDefinition for Bundle Resource.',
 	fields: () => extendSchema(require('./resource.input'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(BundleResourceInputType),
 			description: 'Type of this resource'
 		},
 		identifier: {

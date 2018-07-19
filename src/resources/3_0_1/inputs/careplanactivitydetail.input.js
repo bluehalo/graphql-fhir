@@ -3,6 +3,8 @@ const { GraphQLInputObjectType, GraphQLList, GraphQLNonNull, GraphQLString, Grap
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary CarePlanActivityDetail Input Schema

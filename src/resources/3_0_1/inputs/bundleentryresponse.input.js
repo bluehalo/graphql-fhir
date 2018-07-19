@@ -4,6 +4,8 @@ const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString } = require('graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary BundleEntryResponse Input Schema
@@ -44,7 +46,6 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The date/time that the resource was modified on the server.'
 		},
-		// TODO: What to do here
 		// outcome: {
 		// 	type: require('./resourcelist.input'),
 		// 	description: 'An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction.'

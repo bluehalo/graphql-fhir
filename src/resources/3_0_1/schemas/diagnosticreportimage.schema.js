@@ -2,6 +2,8 @@ const { GraphQLObjectType, GraphQLString, GraphQLNonNull } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary DiagnosticReportImage Schema

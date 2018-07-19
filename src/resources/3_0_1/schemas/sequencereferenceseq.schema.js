@@ -2,6 +2,8 @@ const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull } = require
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary SequenceReferenceSeq Schema

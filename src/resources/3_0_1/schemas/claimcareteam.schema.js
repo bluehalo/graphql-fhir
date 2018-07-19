@@ -3,6 +3,8 @@ const { GraphQLObjectType, GraphQLNonNull, GraphQLBoolean } = require('graphql')
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary ClaimCareTeam Schema

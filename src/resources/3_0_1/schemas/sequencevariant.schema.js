@@ -2,6 +2,8 @@ const { GraphQLObjectType, GraphQLInt, GraphQLString } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary SequenceVariant Schema

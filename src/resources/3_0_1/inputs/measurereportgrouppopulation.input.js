@@ -2,6 +2,8 @@ const { GraphQLInputObjectType, GraphQLInt } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary MeasureReportGroupPopulation Input Schema

@@ -6,6 +6,8 @@ const { GraphQLObjectType, GraphQLNonNull, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary Signature Schema

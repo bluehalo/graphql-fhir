@@ -1,8 +1,16 @@
 const CodeScalar = require('../scalars/code.scalar');
 const DateTimeScalar = require('../scalars/datetime.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let AdverseEventResourceInputType = new GraphQLEnumType({
+	name: 'AdverseEventResourceInputType',
+	values: {
+		AdverseEvent: { value: 'AdverseEvent' }
+	}
+});
 
 /**
  * @name exports
@@ -12,9 +20,8 @@ module.exports = new GraphQLInputObjectType({
 	name: 'AdverseEvent_Input',
 	description: 'Base StructureDefinition for AdverseEvent Resource.',
 	fields: () => extendSchema(require('./domainresource.input'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(AdverseEventResourceInputType),
 			description: 'Type of this resource'
 		},
 		identifier: {

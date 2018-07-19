@@ -1,8 +1,16 @@
 const InstantScalar = require('../scalars/instant.scalar');
 const CodeScalar = require('../scalars/code.scalar');
-const { GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let DeviceComponentResourceType = new GraphQLEnumType({
+	name: 'DeviceComponentResourceType',
+	values: {
+		DeviceComponent: { value: 'DeviceComponent' }
+	}
+});
 
 /**
  * @name exports
@@ -12,9 +20,8 @@ module.exports = new GraphQLObjectType({
 	name: 'DeviceComponent',
 	description: 'Base StructureDefinition for DeviceComponent Resource.',
 	fields: () => extendSchema(require('./domainresource.schema'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(DeviceComponentResourceType),
 			description: 'Type of this resource'
 		},
 		type: {

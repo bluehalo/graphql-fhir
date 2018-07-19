@@ -1,8 +1,16 @@
 const CodeScalar = require('../scalars/code.scalar');
 const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLBoolean } = require('graphql');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLBoolean } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let GroupResourceInputType = new GraphQLEnumType({
+	name: 'GroupResourceInputType',
+	values: {
+		Group: { value: 'Group' }
+	}
+});
 
 /**
  * @name exports
@@ -12,9 +20,8 @@ module.exports = new GraphQLInputObjectType({
 	name: 'Group_Input',
 	description: 'Base StructureDefinition for Group Resource.',
 	fields: () => extendSchema(require('./domainresource.input'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(GroupResourceInputType),
 			description: 'Type of this resource'
 		},
 		identifier: {

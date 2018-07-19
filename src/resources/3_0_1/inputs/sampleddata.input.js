@@ -3,6 +3,8 @@ const { GraphQLInputObjectType, GraphQLNonNull, GraphQLFloat, GraphQLString } = 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary SampledData Input Schema

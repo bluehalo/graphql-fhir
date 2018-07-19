@@ -5,6 +5,8 @@ const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString } = require('graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary TriggerDefinition Input Schema

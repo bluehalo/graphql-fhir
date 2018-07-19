@@ -1,7 +1,15 @@
 const PositiveIntScalar = require('../scalars/positiveint.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let CoverageResourceInputType = new GraphQLEnumType({
+	name: 'CoverageResourceInputType',
+	values: {
+		Coverage: { value: 'Coverage' }
+	}
+});
 
 /**
  * @name exports
@@ -11,9 +19,8 @@ module.exports = new GraphQLInputObjectType({
 	name: 'Coverage_Input',
 	description: 'Base StructureDefinition for Coverage Resource.',
 	fields: () => extendSchema(require('./domainresource.input'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(CoverageResourceInputType),
 			description: 'Type of this resource'
 		},
 		issuer: {

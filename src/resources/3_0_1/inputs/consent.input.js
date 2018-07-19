@@ -1,9 +1,17 @@
 const CodeScalar = require('../scalars/code.scalar');
 const DateTimeScalar = require('../scalars/datetime.scalar');
 const UriScalar = require('../scalars/uri.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let ConsentResourceInputType = new GraphQLEnumType({
+	name: 'ConsentResourceInputType',
+	values: {
+		Consent: { value: 'Consent' }
+	}
+});
 
 /**
  * @name exports
@@ -13,9 +21,8 @@ module.exports = new GraphQLInputObjectType({
 	name: 'Consent_Input',
 	description: 'Base StructureDefinition for Consent Resource.',
 	fields: () => extendSchema(require('./domainresource.input'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(ConsentResourceInputType),
 			description: 'Type of this resource'
 		},
 		identifier: {

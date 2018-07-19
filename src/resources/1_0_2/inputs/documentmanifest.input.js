@@ -1,9 +1,17 @@
 const DateTimeScalar = require('../scalars/datetime.scalar');
 const UriScalar = require('../scalars/uri.scalar');
 const CodeScalar = require('../scalars/code.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let DocumentManifestResourceInputType = new GraphQLEnumType({
+	name: 'DocumentManifestResourceInputType',
+	values: {
+		DocumentManifest: { value: 'DocumentManifest' }
+	}
+});
 
 /**
  * @name exports
@@ -13,9 +21,8 @@ module.exports = new GraphQLInputObjectType({
 	name: 'DocumentManifest_Input',
 	description: 'Base StructureDefinition for DocumentManifest Resource.',
 	fields: () => extendSchema(require('./domainresource.input'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(DocumentManifestResourceInputType),
 			description: 'Type of this resource'
 		},
 		masterIdentifier: {

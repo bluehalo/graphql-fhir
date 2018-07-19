@@ -3,6 +3,8 @@ const { GraphQLObjectType, GraphQLNonNull, GraphQLInt, GraphQLFloat } = require(
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary SequenceQuality Schema

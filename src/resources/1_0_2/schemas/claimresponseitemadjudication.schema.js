@@ -2,6 +2,8 @@ const { GraphQLObjectType, GraphQLNonNull, GraphQLFloat } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary ClaimResponseItemAdjudication Schema

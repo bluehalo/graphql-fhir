@@ -4,6 +4,8 @@ const { GraphQLObjectType, GraphQLNonNull, GraphQLList, GraphQLString } = requir
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary AuditEventEvent Schema

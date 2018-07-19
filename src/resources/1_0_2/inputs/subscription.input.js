@@ -1,8 +1,16 @@
 const CodeScalar = require('../scalars/code.scalar');
 const InstantScalar = require('../scalars/instant.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let SubscriptionResourceInputType = new GraphQLEnumType({
+	name: 'SubscriptionResourceInputType',
+	values: {
+		Subscription: { value: 'Subscription' }
+	}
+});
 
 /**
  * @name exports
@@ -12,9 +20,8 @@ module.exports = new GraphQLInputObjectType({
 	name: 'Subscription_Input',
 	description: 'Base StructureDefinition for Subscription Resource.',
 	fields: () => extendSchema(require('./domainresource.input'), {
-		// TODO: Make enum as this can only be one type
 		resourceType: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: new GraphQLNonNull(SubscriptionResourceInputType),
 			description: 'Type of this resource'
 		},
 		criteria: {

@@ -3,6 +3,8 @@ const { GraphQLObjectType, GraphQLBoolean } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary ImmunizationReaction Schema

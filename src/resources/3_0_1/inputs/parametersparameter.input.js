@@ -13,6 +13,8 @@ const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLBoolean, G
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary ParametersParameter Input Schema
@@ -245,7 +247,6 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./meta.input'),
 			description: 'If the parameter is a data type.'
 		},
-		// TODO: What to do here
 		// resource: {
 		// 	type: require('./resourcelist.input'),
 		// 	description: 'If the parameter is a whole resource.'

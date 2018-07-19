@@ -3,6 +3,8 @@ const { GraphQLInputObjectType, GraphQLNonNull, GraphQLBoolean, GraphQLString, G
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
+
+
 /**
  * @name exports
  * @summary ClaimCoverage Input Schema
