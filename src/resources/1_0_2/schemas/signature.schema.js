@@ -13,7 +13,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'Signature',
 	description: 'Base StructureDefinition for Signature Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.schema'), {
 		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/signature-type
 		type: {
 			type: new GraphQLList(new GraphQLNonNull(require('./coding.schema'))),

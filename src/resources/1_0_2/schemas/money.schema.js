@@ -9,7 +9,5 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'Money',
 	description: 'An amount of money. With regard to precision, see [Decimal Precision](datatypes.html#precision).',
-	fields: () => extendSchema({
-
-	})
+	fields: () => extendSchema(require('./quantity.schema'))
 });

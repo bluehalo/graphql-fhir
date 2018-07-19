@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'CodeableConcept_Input',
 	description: 'Base StructureDefinition for CodeableConcept Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		coding: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'A reference to a code defined by a terminology system.'

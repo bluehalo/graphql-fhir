@@ -10,7 +10,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Annotation_Input',
 	description: 'Base StructureDefinition for Annotation Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		authorReference: {
 			type: require('./reference.input'),
 			description: 'The individual responsible for making the annotation.'

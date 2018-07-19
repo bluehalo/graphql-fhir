@@ -11,7 +11,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Narrative_Input',
 	description: 'Base StructureDefinition for Narrative Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/narrative-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),

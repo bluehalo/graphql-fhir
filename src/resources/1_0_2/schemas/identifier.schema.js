@@ -11,7 +11,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'Identifier',
 	description: 'Base StructureDefinition for Identifier Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.schema'), {
 		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-use
 		use: {
 			type: CodeScalar,

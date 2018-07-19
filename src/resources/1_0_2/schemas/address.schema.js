@@ -10,7 +10,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'Address',
 	description: 'Base StructureDefinition for Address Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.schema'), {
 		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/address-use
 		use: {
 			type: CodeScalar,

@@ -11,7 +11,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Quantity_Input',
 	description: 'Base StructureDefinition for Quantity Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		value: {
 			type: GraphQLFloat,
 			description: 'The value of the measured amount. The value includes an implicit precision in the presentation of the value.'

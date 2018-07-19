@@ -10,7 +10,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Period_Input',
 	description: 'Base StructureDefinition for Period Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		start: {
 			type: DateTimeScalar,
 			description: 'The start of the period. The boundary is inclusive.'

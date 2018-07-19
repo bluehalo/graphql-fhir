@@ -20,7 +20,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'ElementDefinition_Input',
 	description: 'Base StructureDefinition for ElementDefinition Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		path: {
 			type: new GraphQLNonNull(GraphQLString),
 			description: 'The path identifies the element and is expressed as a \'.\'-separated list of ancestor elements, beginning with the name of the resource or extension.'

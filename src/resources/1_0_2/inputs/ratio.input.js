@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Ratio_Input',
 	description: 'Base StructureDefinition for Ratio Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		numerator: {
 			type: require('./quantity.input'),
 			description: 'The value of the numerator.'

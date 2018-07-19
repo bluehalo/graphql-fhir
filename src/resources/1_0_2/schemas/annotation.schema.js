@@ -10,7 +10,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'Annotation',
 	description: 'Base StructureDefinition for Annotation Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.schema'), {
 		authorReference: {
 			type: require('./reference.schema'),
 			description: 'The individual responsible for making the annotation.'

@@ -9,7 +9,5 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Count_Input',
 	description: 'A count of a discrete element (no unit).',
-	fields: () => extendSchema({
-
-	})
+	fields: () => extendSchema(require('./quantity.input'))
 });

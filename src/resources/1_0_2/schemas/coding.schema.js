@@ -11,7 +11,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'Coding',
 	description: 'Base StructureDefinition for Coding Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.schema'), {
 		system: {
 			type: UriScalar,
 			description: 'The identification of the code system that defines the meaning of the symbol in the code.'

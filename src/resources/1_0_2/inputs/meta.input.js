@@ -12,7 +12,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Meta_Input',
 	description: 'Base StructureDefinition for Meta Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		versionId: {
 			type: IdScalar,
 			description: 'The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.'

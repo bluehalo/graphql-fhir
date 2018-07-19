@@ -11,7 +11,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'ReferralRequest_Input',
 	description: 'Base StructureDefinition for ReferralRequest Resource.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./domainresource.input'), {
 		// TODO: Make enum as this can only be one type
 		resourceType: {
 			type: new GraphQLNonNull(GraphQLString),

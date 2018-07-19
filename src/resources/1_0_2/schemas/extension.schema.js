@@ -20,7 +20,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'Extension',
 	description: 'Base StructureDefinition for Extension Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.schema'), {
 		url: {
 			type: new GraphQLNonNull(UriScalar),
 			description: 'Source of the definition for the extension code - a logical name or a URL.'

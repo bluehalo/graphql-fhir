@@ -9,7 +9,5 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'Count',
 	description: 'A count of a discrete element (no unit).',
-	fields: () => extendSchema({
-
-	})
+	fields: () => extendSchema(require('./quantity.schema'))
 });

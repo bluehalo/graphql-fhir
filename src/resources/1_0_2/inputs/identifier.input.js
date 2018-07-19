@@ -11,7 +11,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Identifier_Input',
 	description: 'Base StructureDefinition for Identifier Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-use
 		use: {
 			type: CodeScalar,

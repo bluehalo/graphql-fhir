@@ -9,7 +9,5 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Duration_Input',
 	description: 'A length of time.',
-	fields: () => extendSchema({
-
-	})
+	fields: () => extendSchema(require('./quantity.input'))
 });

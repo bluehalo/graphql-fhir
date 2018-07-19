@@ -9,7 +9,5 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Age_Input',
 	description: 'A duration (length of time) with a UCUM code.',
-	fields: () => extendSchema({
-
-	})
+	fields: () => extendSchema(require('./quantity.input'))
 });

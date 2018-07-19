@@ -11,7 +11,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'Binary',
 	description: 'Base StructureDefinition for Binary Resource.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./resource.schema'), {
 		// TODO: Make enum as this can only be one type
 		resourceType: {
 			type: new GraphQLNonNull(GraphQLString),

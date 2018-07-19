@@ -11,7 +11,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'ContactPoint_Input',
 	description: 'Base StructureDefinition for ContactPoint Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contact-point-system
 		system: {
 			type: CodeScalar,

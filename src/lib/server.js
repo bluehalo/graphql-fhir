@@ -97,6 +97,7 @@ class Server {
 
 	// Setup profile routes
 	setProfileRoutes () {
+		this.logger.info('Loading GraphQL schemas and setting routes');
 		// Pass this instance so I can grab the express app and any config
 		// that may or may not be necessary for the router utils
 		configureRoutes(this);

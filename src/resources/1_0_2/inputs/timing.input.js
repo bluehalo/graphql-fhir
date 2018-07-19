@@ -10,7 +10,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Timing_Input',
 	description: 'Base StructureDefinition for Timing Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		event: {
 			type: new GraphQLList(DateTimeScalar),
 			description: 'Identifies specific times when the event occurs.'

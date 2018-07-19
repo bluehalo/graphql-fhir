@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'OperationOutcome',
 	description: 'Base StructureDefinition for OperationOutcome Resource.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./domainresource.schema'), {
 		// TODO: Make enum as this can only be one type
 		resourceType: {
 			type: new GraphQLNonNull(GraphQLString),

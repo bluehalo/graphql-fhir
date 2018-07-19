@@ -10,7 +10,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'HumanName',
 	description: 'Base StructureDefinition for HumanName Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.schema'), {
 		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/name-use
 		use: {
 			type: CodeScalar,

@@ -20,7 +20,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Extension_Input',
 	description: 'Base StructureDefinition for Extension Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		url: {
 			type: new GraphQLNonNull(UriScalar),
 			description: 'Source of the definition for the extension code - a logical name or a URL.'

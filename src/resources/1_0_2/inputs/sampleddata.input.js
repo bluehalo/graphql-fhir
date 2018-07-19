@@ -10,7 +10,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'SampledData_Input',
 	description: 'Base StructureDefinition for SampledData Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		origin: {
 			type: new GraphQLNonNull(require('./quantity.input')),
 			description: 'The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series.'

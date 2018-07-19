@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'CodeableConcept',
 	description: 'Base StructureDefinition for CodeableConcept Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.schema'), {
 		coding: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'A reference to a code defined by a terminology system.'

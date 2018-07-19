@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'Ratio',
 	description: 'Base StructureDefinition for Ratio Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.schema'), {
 		numerator: {
 			type: require('./quantity.schema'),
 			description: 'The value of the numerator.'

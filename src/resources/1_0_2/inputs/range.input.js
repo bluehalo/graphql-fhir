@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Range_Input',
 	description: 'Base StructureDefinition for Range Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		low: {
 			type: require('./quantity.input'),
 			description: 'The low limit. The boundary is inclusive.'

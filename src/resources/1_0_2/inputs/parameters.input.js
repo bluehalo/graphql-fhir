@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Parameters_Input',
 	description: 'Base StructureDefinition for Parameters Resource.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./resource.input'), {
 		// TODO: Make enum as this can only be one type
 		resourceType: {
 			type: new GraphQLNonNull(GraphQLString),

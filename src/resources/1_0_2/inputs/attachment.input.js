@@ -14,7 +14,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Attachment_Input',
 	description: 'Base StructureDefinition for Attachment Type.',
-	fields: () => extendSchema({
+	fields: () => extendSchema(require('./element.input'), {
 		contentType: {
 			type: CodeScalar,
 			description: 'Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.'
