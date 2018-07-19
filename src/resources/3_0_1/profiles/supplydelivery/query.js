@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const SupplyDeliverySchema = require('../../schemas/supplydelivery.schema');
 
 // Arguments
 const SupplyDeliveryArgs = require('../../parameters/supplydelivery.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	supplydeliveryResolver,
@@ -32,7 +31,7 @@ module.exports.SupplyDeliveryListQuery = {
 	args: Object.assign({}, CommonArgs, SupplyDeliveryArgs),
 	description: 'Query for multiple SupplyDeliverys',
 	resolve: supplydeliveryListResolver,
-	type: new GraphQLList(SupplyDeliverySchema)
+	type: BundleSchema
 };
 
 /**

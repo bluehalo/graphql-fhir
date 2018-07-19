@@ -17,7 +17,7 @@ module.exports.supplydeliveryResolver = function supplydeliveryResolver (root, a
  */
 module.exports.supplydeliveryListResolver = function supplydeliveryListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

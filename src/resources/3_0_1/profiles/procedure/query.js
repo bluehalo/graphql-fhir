@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ProcedureSchema = require('../../schemas/procedure.schema');
 
 // Arguments
 const ProcedureArgs = require('../../parameters/procedure.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	procedureResolver,
@@ -32,7 +31,7 @@ module.exports.ProcedureListQuery = {
 	args: Object.assign({}, CommonArgs, ProcedureArgs),
 	description: 'Query for multiple Procedures',
 	resolve: procedureListResolver,
-	type: new GraphQLList(ProcedureSchema)
+	type: BundleSchema
 };
 
 /**

@@ -17,7 +17,7 @@ module.exports.accountResolver = function accountResolver (root, args, context, 
  */
 module.exports.accountListResolver = function accountListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

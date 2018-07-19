@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const GoalSchema = require('../../schemas/goal.schema');
 
 // Arguments
 const GoalArgs = require('../../parameters/goal.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	goalResolver,
@@ -32,7 +31,7 @@ module.exports.GoalListQuery = {
 	args: Object.assign({}, CommonArgs, GoalArgs),
 	description: 'Query for multiple Goals',
 	resolve: goalListResolver,
-	type: new GraphQLList(GoalSchema)
+	type: BundleSchema
 };
 
 /**

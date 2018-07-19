@@ -17,7 +17,7 @@ module.exports.searchparameterResolver = function searchparameterResolver (root,
  */
 module.exports.searchparameterListResolver = function searchparameterListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

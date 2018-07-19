@@ -17,7 +17,7 @@ module.exports.dataelementResolver = function dataelementResolver (root, args, c
  */
 module.exports.dataelementListResolver = function dataelementListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

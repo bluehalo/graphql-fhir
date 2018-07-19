@@ -17,7 +17,7 @@ module.exports.flagResolver = function flagResolver (root, args, context, info) 
  */
 module.exports.flagListResolver = function flagListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

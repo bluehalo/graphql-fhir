@@ -17,7 +17,7 @@ module.exports.medicationrequestResolver = function medicationrequestResolver (r
  */
 module.exports.medicationrequestListResolver = function medicationrequestListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -17,7 +17,7 @@ module.exports.relatedpersonResolver = function relatedpersonResolver (root, arg
  */
 module.exports.relatedpersonListResolver = function relatedpersonListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

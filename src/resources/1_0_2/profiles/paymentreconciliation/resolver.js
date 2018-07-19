@@ -17,7 +17,7 @@ module.exports.paymentreconciliationResolver = function paymentreconciliationRes
  */
 module.exports.paymentreconciliationListResolver = function paymentreconciliationListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

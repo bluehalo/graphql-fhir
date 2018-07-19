@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const AuditEventSchema = require('../../schemas/auditevent.schema');
 
 // Arguments
 const AuditEventArgs = require('../../parameters/auditevent.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	auditeventResolver,
@@ -32,7 +31,7 @@ module.exports.AuditEventListQuery = {
 	args: Object.assign({}, CommonArgs, AuditEventArgs),
 	description: 'Query for multiple AuditEvents',
 	resolve: auditeventListResolver,
-	type: new GraphQLList(AuditEventSchema)
+	type: BundleSchema
 };
 
 /**

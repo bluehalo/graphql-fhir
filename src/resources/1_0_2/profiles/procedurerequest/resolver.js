@@ -17,7 +17,7 @@ module.exports.procedurerequestResolver = function procedurerequestResolver (roo
  */
 module.exports.procedurerequestListResolver = function procedurerequestListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

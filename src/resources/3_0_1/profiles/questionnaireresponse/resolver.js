@@ -17,7 +17,7 @@ module.exports.questionnaireresponseResolver = function questionnaireresponseRes
  */
 module.exports.questionnaireresponseListResolver = function questionnaireresponseListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

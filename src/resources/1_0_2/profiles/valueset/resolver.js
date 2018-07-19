@@ -17,7 +17,7 @@ module.exports.valuesetResolver = function valuesetResolver (root, args, context
  */
 module.exports.valuesetListResolver = function valuesetListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

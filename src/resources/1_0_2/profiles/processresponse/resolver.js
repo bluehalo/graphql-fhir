@@ -17,7 +17,7 @@ module.exports.processresponseResolver = function processresponseResolver (root,
  */
 module.exports.processresponseListResolver = function processresponseListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const PractitionerRoleSchema = require('../../schemas/practitionerrole.schema');
 
 // Arguments
 const PractitionerRoleArgs = require('../../parameters/practitionerrole.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	practitionerroleResolver,
@@ -32,7 +31,7 @@ module.exports.PractitionerRoleListQuery = {
 	args: Object.assign({}, CommonArgs, PractitionerRoleArgs),
 	description: 'Query for multiple PractitionerRoles',
 	resolve: practitionerroleListResolver,
-	type: new GraphQLList(PractitionerRoleSchema)
+	type: BundleSchema
 };
 
 /**

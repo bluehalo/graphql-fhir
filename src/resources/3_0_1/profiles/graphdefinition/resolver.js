@@ -17,7 +17,7 @@ module.exports.graphdefinitionResolver = function graphdefinitionResolver (root,
  */
 module.exports.graphdefinitionListResolver = function graphdefinitionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

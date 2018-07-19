@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ImagingObjectSelectionSchema = require('../../schemas/imagingobjectselection.schema');
 
 // Arguments
 const ImagingObjectSelectionArgs = require('../../parameters/imagingobjectselection.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	imagingobjectselectionResolver,
@@ -32,7 +31,7 @@ module.exports.ImagingObjectSelectionListQuery = {
 	args: Object.assign({}, CommonArgs, ImagingObjectSelectionArgs),
 	description: 'Query for multiple ImagingObjectSelections',
 	resolve: imagingobjectselectionListResolver,
-	type: new GraphQLList(ImagingObjectSelectionSchema)
+	type: BundleSchema
 };
 
 /**

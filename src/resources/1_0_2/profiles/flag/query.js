@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const FlagSchema = require('../../schemas/flag.schema');
 
 // Arguments
 const FlagArgs = require('../../parameters/flag.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	flagResolver,
@@ -32,7 +31,7 @@ module.exports.FlagListQuery = {
 	args: Object.assign({}, CommonArgs, FlagArgs),
 	description: 'Query for multiple Flags',
 	resolve: flagListResolver,
-	type: new GraphQLList(FlagSchema)
+	type: BundleSchema
 };
 
 /**

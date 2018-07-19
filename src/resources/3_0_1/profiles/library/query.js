@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const LibrarySchema = require('../../schemas/library.schema');
 
 // Arguments
 const LibraryArgs = require('../../parameters/library.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	libraryResolver,
@@ -32,7 +31,7 @@ module.exports.LibraryListQuery = {
 	args: Object.assign({}, CommonArgs, LibraryArgs),
 	description: 'Query for multiple Librarys',
 	resolve: libraryListResolver,
-	type: new GraphQLList(LibrarySchema)
+	type: BundleSchema
 };
 
 /**

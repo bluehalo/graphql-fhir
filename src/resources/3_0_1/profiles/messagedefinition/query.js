@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const MessageDefinitionSchema = require('../../schemas/messagedefinition.schema');
 
 // Arguments
 const MessageDefinitionArgs = require('../../parameters/messagedefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	messagedefinitionResolver,
@@ -32,7 +31,7 @@ module.exports.MessageDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, MessageDefinitionArgs),
 	description: 'Query for multiple MessageDefinitions',
 	resolve: messagedefinitionListResolver,
-	type: new GraphQLList(MessageDefinitionSchema)
+	type: BundleSchema
 };
 
 /**

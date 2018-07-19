@@ -17,7 +17,7 @@ module.exports.diagnosticreportResolver = function diagnosticreportResolver (roo
  */
 module.exports.diagnosticreportListResolver = function diagnosticreportListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ImagingStudySchema = require('../../schemas/imagingstudy.schema');
 
 // Arguments
 const ImagingStudyArgs = require('../../parameters/imagingstudy.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	imagingstudyResolver,
@@ -32,7 +31,7 @@ module.exports.ImagingStudyListQuery = {
 	args: Object.assign({}, CommonArgs, ImagingStudyArgs),
 	description: 'Query for multiple ImagingStudys',
 	resolve: imagingstudyListResolver,
-	type: new GraphQLList(ImagingStudySchema)
+	type: BundleSchema
 };
 
 /**

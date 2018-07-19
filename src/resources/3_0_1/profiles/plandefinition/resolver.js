@@ -17,7 +17,7 @@ module.exports.plandefinitionResolver = function plandefinitionResolver (root, a
  */
 module.exports.plandefinitionListResolver = function plandefinitionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

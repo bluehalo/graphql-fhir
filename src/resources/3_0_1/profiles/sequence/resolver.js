@@ -17,7 +17,7 @@ module.exports.sequenceResolver = function sequenceResolver (root, args, context
  */
 module.exports.sequenceListResolver = function sequenceListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

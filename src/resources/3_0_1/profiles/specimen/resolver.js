@@ -17,7 +17,7 @@ module.exports.specimenResolver = function specimenResolver (root, args, context
  */
 module.exports.specimenListResolver = function specimenListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

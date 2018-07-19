@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const MediaSchema = require('../../schemas/media.schema');
 
 // Arguments
 const MediaArgs = require('../../parameters/media.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	mediaResolver,
@@ -32,7 +31,7 @@ module.exports.MediaListQuery = {
 	args: Object.assign({}, CommonArgs, MediaArgs),
 	description: 'Query for multiple Medias',
 	resolve: mediaListResolver,
-	type: new GraphQLList(MediaSchema)
+	type: BundleSchema
 };
 
 /**

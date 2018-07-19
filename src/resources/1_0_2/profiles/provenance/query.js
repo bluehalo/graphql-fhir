@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ProvenanceSchema = require('../../schemas/provenance.schema');
 
 // Arguments
 const ProvenanceArgs = require('../../parameters/provenance.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	provenanceResolver,
@@ -32,7 +31,7 @@ module.exports.ProvenanceListQuery = {
 	args: Object.assign({}, CommonArgs, ProvenanceArgs),
 	description: 'Query for multiple Provenances',
 	resolve: provenanceListResolver,
-	type: new GraphQLList(ProvenanceSchema)
+	type: BundleSchema
 };
 
 /**

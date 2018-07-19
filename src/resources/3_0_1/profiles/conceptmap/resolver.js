@@ -17,7 +17,7 @@ module.exports.conceptmapResolver = function conceptmapResolver (root, args, con
  */
 module.exports.conceptmapListResolver = function conceptmapListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

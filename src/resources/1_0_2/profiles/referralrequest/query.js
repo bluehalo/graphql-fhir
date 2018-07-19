@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ReferralRequestSchema = require('../../schemas/referralrequest.schema');
 
 // Arguments
 const ReferralRequestArgs = require('../../parameters/referralrequest.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	referralrequestResolver,
@@ -32,7 +31,7 @@ module.exports.ReferralRequestListQuery = {
 	args: Object.assign({}, CommonArgs, ReferralRequestArgs),
 	description: 'Query for multiple ReferralRequests',
 	resolve: referralrequestListResolver,
-	type: new GraphQLList(ReferralRequestSchema)
+	type: BundleSchema
 };
 
 /**

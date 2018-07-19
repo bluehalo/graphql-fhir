@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const EndpointSchema = require('../../schemas/endpoint.schema');
 
 // Arguments
 const EndpointArgs = require('../../parameters/endpoint.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	endpointResolver,
@@ -32,7 +31,7 @@ module.exports.EndpointListQuery = {
 	args: Object.assign({}, CommonArgs, EndpointArgs),
 	description: 'Query for multiple Endpoints',
 	resolve: endpointListResolver,
-	type: new GraphQLList(EndpointSchema)
+	type: BundleSchema
 };
 
 /**

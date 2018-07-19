@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ScheduleSchema = require('../../schemas/schedule.schema');
 
 // Arguments
 const ScheduleArgs = require('../../parameters/schedule.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	scheduleResolver,
@@ -32,7 +31,7 @@ module.exports.ScheduleListQuery = {
 	args: Object.assign({}, CommonArgs, ScheduleArgs),
 	description: 'Query for multiple Schedules',
 	resolve: scheduleListResolver,
-	type: new GraphQLList(ScheduleSchema)
+	type: BundleSchema
 };
 
 /**

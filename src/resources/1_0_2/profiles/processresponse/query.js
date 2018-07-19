@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ProcessResponseSchema = require('../../schemas/processresponse.schema');
 
 // Arguments
 const ProcessResponseArgs = require('../../parameters/processresponse.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	processresponseResolver,
@@ -32,7 +31,7 @@ module.exports.ProcessResponseListQuery = {
 	args: Object.assign({}, CommonArgs, ProcessResponseArgs),
 	description: 'Query for multiple ProcessResponses',
 	resolve: processresponseListResolver,
-	type: new GraphQLList(ProcessResponseSchema)
+	type: BundleSchema
 };
 
 /**

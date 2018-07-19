@@ -17,7 +17,7 @@ module.exports.clinicalimpressionResolver = function clinicalimpressionResolver 
  */
 module.exports.clinicalimpressionListResolver = function clinicalimpressionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

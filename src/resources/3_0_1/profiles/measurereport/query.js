@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const MeasureReportSchema = require('../../schemas/measurereport.schema');
 
 // Arguments
 const MeasureReportArgs = require('../../parameters/measurereport.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	measurereportResolver,
@@ -32,7 +31,7 @@ module.exports.MeasureReportListQuery = {
 	args: Object.assign({}, CommonArgs, MeasureReportArgs),
 	description: 'Query for multiple MeasureReports',
 	resolve: measurereportListResolver,
-	type: new GraphQLList(MeasureReportSchema)
+	type: BundleSchema
 };
 
 /**

@@ -17,7 +17,7 @@ module.exports.conditionResolver = function conditionResolver (root, args, conte
  */
 module.exports.conditionListResolver = function conditionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

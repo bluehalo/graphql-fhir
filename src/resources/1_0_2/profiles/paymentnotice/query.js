@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const PaymentNoticeSchema = require('../../schemas/paymentnotice.schema');
 
 // Arguments
 const PaymentNoticeArgs = require('../../parameters/paymentnotice.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	paymentnoticeResolver,
@@ -32,7 +31,7 @@ module.exports.PaymentNoticeListQuery = {
 	args: Object.assign({}, CommonArgs, PaymentNoticeArgs),
 	description: 'Query for multiple PaymentNotices',
 	resolve: paymentnoticeListResolver,
-	type: new GraphQLList(PaymentNoticeSchema)
+	type: BundleSchema
 };
 
 /**

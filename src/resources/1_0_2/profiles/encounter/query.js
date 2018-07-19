@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const EncounterSchema = require('../../schemas/encounter.schema');
 
 // Arguments
 const EncounterArgs = require('../../parameters/encounter.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	encounterResolver,
@@ -32,7 +31,7 @@ module.exports.EncounterListQuery = {
 	args: Object.assign({}, CommonArgs, EncounterArgs),
 	description: 'Query for multiple Encounters',
 	resolve: encounterListResolver,
-	type: new GraphQLList(EncounterSchema)
+	type: BundleSchema
 };
 
 /**

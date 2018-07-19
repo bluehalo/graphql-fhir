@@ -17,7 +17,7 @@ module.exports.guidanceresponseResolver = function guidanceresponseResolver (roo
  */
 module.exports.guidanceresponseListResolver = function guidanceresponseListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

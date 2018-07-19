@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ConformanceSchema = require('../../schemas/conformance.schema');
 
 // Arguments
 const ConformanceArgs = require('../../parameters/conformance.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	conformanceResolver,
@@ -32,7 +31,7 @@ module.exports.ConformanceListQuery = {
 	args: Object.assign({}, CommonArgs, ConformanceArgs),
 	description: 'Query for multiple Conformances',
 	resolve: conformanceListResolver,
-	type: new GraphQLList(ConformanceSchema)
+	type: BundleSchema
 };
 
 /**

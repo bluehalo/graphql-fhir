@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ClinicalImpressionSchema = require('../../schemas/clinicalimpression.schema');
 
 // Arguments
 const ClinicalImpressionArgs = require('../../parameters/clinicalimpression.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	clinicalimpressionResolver,
@@ -32,7 +31,7 @@ module.exports.ClinicalImpressionListQuery = {
 	args: Object.assign({}, CommonArgs, ClinicalImpressionArgs),
 	description: 'Query for multiple ClinicalImpressions',
 	resolve: clinicalimpressionListResolver,
-	type: new GraphQLList(ClinicalImpressionSchema)
+	type: BundleSchema
 };
 
 /**

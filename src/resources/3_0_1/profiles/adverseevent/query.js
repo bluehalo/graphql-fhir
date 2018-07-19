@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const AdverseEventSchema = require('../../schemas/adverseevent.schema');
 
 // Arguments
 const AdverseEventArgs = require('../../parameters/adverseevent.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	adverseeventResolver,
@@ -32,7 +31,7 @@ module.exports.AdverseEventListQuery = {
 	args: Object.assign({}, CommonArgs, AdverseEventArgs),
 	description: 'Query for multiple AdverseEvents',
 	resolve: adverseeventListResolver,
-	type: new GraphQLList(AdverseEventSchema)
+	type: BundleSchema
 };
 
 /**

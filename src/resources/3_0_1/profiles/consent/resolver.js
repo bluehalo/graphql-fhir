@@ -17,7 +17,7 @@ module.exports.consentResolver = function consentResolver (root, args, context, 
  */
 module.exports.consentListResolver = function consentListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

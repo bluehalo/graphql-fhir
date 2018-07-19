@@ -17,7 +17,7 @@ module.exports.mediaResolver = function mediaResolver (root, args, context, info
  */
 module.exports.mediaListResolver = function mediaListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

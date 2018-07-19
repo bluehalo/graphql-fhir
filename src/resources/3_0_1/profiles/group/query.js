@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const GroupSchema = require('../../schemas/group.schema');
 
 // Arguments
 const GroupArgs = require('../../parameters/group.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	groupResolver,
@@ -32,7 +31,7 @@ module.exports.GroupListQuery = {
 	args: Object.assign({}, CommonArgs, GroupArgs),
 	description: 'Query for multiple Groups',
 	resolve: groupListResolver,
-	type: new GraphQLList(GroupSchema)
+	type: BundleSchema
 };
 
 /**

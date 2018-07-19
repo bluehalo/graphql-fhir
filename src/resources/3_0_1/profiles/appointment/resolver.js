@@ -17,7 +17,7 @@ module.exports.appointmentResolver = function appointmentResolver (root, args, c
  */
 module.exports.appointmentListResolver = function appointmentListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

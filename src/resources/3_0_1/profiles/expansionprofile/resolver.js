@@ -17,7 +17,7 @@ module.exports.expansionprofileResolver = function expansionprofileResolver (roo
  */
 module.exports.expansionprofileListResolver = function expansionprofileListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

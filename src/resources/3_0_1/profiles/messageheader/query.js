@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const MessageHeaderSchema = require('../../schemas/messageheader.schema');
 
 // Arguments
 const MessageHeaderArgs = require('../../parameters/messageheader.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	messageheaderResolver,
@@ -32,7 +31,7 @@ module.exports.MessageHeaderListQuery = {
 	args: Object.assign({}, CommonArgs, MessageHeaderArgs),
 	description: 'Query for multiple MessageHeaders',
 	resolve: messageheaderListResolver,
-	type: new GraphQLList(MessageHeaderSchema)
+	type: BundleSchema
 };
 
 /**

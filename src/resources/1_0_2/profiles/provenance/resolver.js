@@ -17,7 +17,7 @@ module.exports.provenanceResolver = function provenanceResolver (root, args, con
  */
 module.exports.provenanceListResolver = function provenanceListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

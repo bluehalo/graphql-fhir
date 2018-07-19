@@ -17,7 +17,7 @@ module.exports.contractResolver = function contractResolver (root, args, context
  */
 module.exports.contractListResolver = function contractListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

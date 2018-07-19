@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ListSchema = require('../../schemas/list.schema');
 
 // Arguments
 const ListArgs = require('../../parameters/list.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	listResolver,
@@ -32,7 +31,7 @@ module.exports.ListListQuery = {
 	args: Object.assign({}, CommonArgs, ListArgs),
 	description: 'Query for multiple Lists',
 	resolve: listListResolver,
-	type: new GraphQLList(ListSchema)
+	type: BundleSchema
 };
 
 /**

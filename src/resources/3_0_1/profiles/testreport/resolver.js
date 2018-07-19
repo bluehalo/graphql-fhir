@@ -17,7 +17,7 @@ module.exports.testreportResolver = function testreportResolver (root, args, con
  */
 module.exports.testreportListResolver = function testreportListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

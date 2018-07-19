@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const DeviceRequestSchema = require('../../schemas/devicerequest.schema');
 
 // Arguments
 const DeviceRequestArgs = require('../../parameters/devicerequest.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	devicerequestResolver,
@@ -32,7 +31,7 @@ module.exports.DeviceRequestListQuery = {
 	args: Object.assign({}, CommonArgs, DeviceRequestArgs),
 	description: 'Query for multiple DeviceRequests',
 	resolve: devicerequestListResolver,
-	type: new GraphQLList(DeviceRequestSchema)
+	type: BundleSchema
 };
 
 /**

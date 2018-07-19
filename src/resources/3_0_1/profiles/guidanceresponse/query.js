@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const GuidanceResponseSchema = require('../../schemas/guidanceresponse.schema');
 
 // Arguments
 const GuidanceResponseArgs = require('../../parameters/guidanceresponse.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	guidanceresponseResolver,
@@ -32,7 +31,7 @@ module.exports.GuidanceResponseListQuery = {
 	args: Object.assign({}, CommonArgs, GuidanceResponseArgs),
 	description: 'Query for multiple GuidanceResponses',
 	resolve: guidanceresponseListResolver,
-	type: new GraphQLList(GuidanceResponseSchema)
+	type: BundleSchema
 };
 
 /**

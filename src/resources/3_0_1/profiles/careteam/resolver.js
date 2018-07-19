@@ -17,7 +17,7 @@ module.exports.careteamResolver = function careteamResolver (root, args, context
  */
 module.exports.careteamListResolver = function careteamListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

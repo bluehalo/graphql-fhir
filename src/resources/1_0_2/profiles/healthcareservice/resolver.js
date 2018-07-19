@@ -17,7 +17,7 @@ module.exports.healthcareserviceResolver = function healthcareserviceResolver (r
  */
 module.exports.healthcareserviceListResolver = function healthcareserviceListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -17,7 +17,7 @@ module.exports.eligibilityresponseResolver = function eligibilityresponseResolve
  */
 module.exports.eligibilityresponseListResolver = function eligibilityresponseListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

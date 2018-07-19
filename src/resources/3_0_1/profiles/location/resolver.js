@@ -17,7 +17,7 @@ module.exports.locationResolver = function locationResolver (root, args, context
  */
 module.exports.locationListResolver = function locationListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const SpecimenSchema = require('../../schemas/specimen.schema');
 
 // Arguments
 const SpecimenArgs = require('../../parameters/specimen.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	specimenResolver,
@@ -32,7 +31,7 @@ module.exports.SpecimenListQuery = {
 	args: Object.assign({}, CommonArgs, SpecimenArgs),
 	description: 'Query for multiple Specimens',
 	resolve: specimenListResolver,
-	type: new GraphQLList(SpecimenSchema)
+	type: BundleSchema
 };
 
 /**

@@ -17,7 +17,7 @@ module.exports.observationResolver = function observationResolver (root, args, c
  */
 module.exports.observationListResolver = function observationListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

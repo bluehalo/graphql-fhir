@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const SlotSchema = require('../../schemas/slot.schema');
 
 // Arguments
 const SlotArgs = require('../../parameters/slot.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	slotResolver,
@@ -32,7 +31,7 @@ module.exports.SlotListQuery = {
 	args: Object.assign({}, CommonArgs, SlotArgs),
 	description: 'Query for multiple Slots',
 	resolve: slotListResolver,
-	type: new GraphQLList(SlotSchema)
+	type: BundleSchema
 };
 
 /**

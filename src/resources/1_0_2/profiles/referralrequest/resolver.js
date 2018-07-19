@@ -17,7 +17,7 @@ module.exports.referralrequestResolver = function referralrequestResolver (root,
  */
 module.exports.referralrequestListResolver = function referralrequestListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

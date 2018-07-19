@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const SequenceSchema = require('../../schemas/sequence.schema');
 
 // Arguments
 const SequenceArgs = require('../../parameters/sequence.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	sequenceResolver,
@@ -32,7 +31,7 @@ module.exports.SequenceListQuery = {
 	args: Object.assign({}, CommonArgs, SequenceArgs),
 	description: 'Query for multiple Sequences',
 	resolve: sequenceListResolver,
-	type: new GraphQLList(SequenceSchema)
+	type: BundleSchema
 };
 
 /**

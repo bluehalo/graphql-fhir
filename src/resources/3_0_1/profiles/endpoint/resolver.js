@@ -17,7 +17,7 @@ module.exports.endpointResolver = function endpointResolver (root, args, context
  */
 module.exports.endpointListResolver = function endpointListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

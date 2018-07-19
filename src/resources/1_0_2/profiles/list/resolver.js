@@ -17,7 +17,7 @@ module.exports.listResolver = function listResolver (root, args, context, info) 
  */
 module.exports.listListResolver = function listListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ServiceDefinitionSchema = require('../../schemas/servicedefinition.schema');
 
 // Arguments
 const ServiceDefinitionArgs = require('../../parameters/servicedefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	servicedefinitionResolver,
@@ -32,7 +31,7 @@ module.exports.ServiceDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, ServiceDefinitionArgs),
 	description: 'Query for multiple ServiceDefinitions',
 	resolve: servicedefinitionListResolver,
-	type: new GraphQLList(ServiceDefinitionSchema)
+	type: BundleSchema
 };
 
 /**

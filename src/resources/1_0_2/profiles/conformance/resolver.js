@@ -17,7 +17,7 @@ module.exports.conformanceResolver = function conformanceResolver (root, args, c
  */
 module.exports.conformanceListResolver = function conformanceListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

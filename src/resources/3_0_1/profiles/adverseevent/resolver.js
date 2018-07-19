@@ -17,7 +17,7 @@ module.exports.adverseeventResolver = function adverseeventResolver (root, args,
  */
 module.exports.adverseeventListResolver = function adverseeventListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

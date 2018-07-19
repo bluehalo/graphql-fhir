@@ -17,7 +17,7 @@ module.exports.encounterResolver = function encounterResolver (root, args, conte
  */
 module.exports.encounterListResolver = function encounterListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

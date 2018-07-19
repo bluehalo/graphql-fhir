@@ -17,7 +17,7 @@ module.exports.paymentnoticeResolver = function paymentnoticeResolver (root, arg
  */
 module.exports.paymentnoticeListResolver = function paymentnoticeListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

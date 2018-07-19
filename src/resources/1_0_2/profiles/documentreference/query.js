@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const DocumentReferenceSchema = require('../../schemas/documentreference.schema');
 
 // Arguments
 const DocumentReferenceArgs = require('../../parameters/documentreference.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	documentreferenceResolver,
@@ -32,7 +31,7 @@ module.exports.DocumentReferenceListQuery = {
 	args: Object.assign({}, CommonArgs, DocumentReferenceArgs),
 	description: 'Query for multiple DocumentReferences',
 	resolve: documentreferenceListResolver,
-	type: new GraphQLList(DocumentReferenceSchema)
+	type: BundleSchema
 };
 
 /**

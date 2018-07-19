@@ -17,7 +17,7 @@ module.exports.researchsubjectResolver = function researchsubjectResolver (root,
  */
 module.exports.researchsubjectListResolver = function researchsubjectListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const PlanDefinitionSchema = require('../../schemas/plandefinition.schema');
 
 // Arguments
 const PlanDefinitionArgs = require('../../parameters/plandefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	plandefinitionResolver,
@@ -32,7 +31,7 @@ module.exports.PlanDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, PlanDefinitionArgs),
 	description: 'Query for multiple PlanDefinitions',
 	resolve: plandefinitionListResolver,
-	type: new GraphQLList(PlanDefinitionSchema)
+	type: BundleSchema
 };
 
 /**

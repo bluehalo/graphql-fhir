@@ -17,7 +17,7 @@ module.exports.slotResolver = function slotResolver (root, args, context, info) 
  */
 module.exports.slotListResolver = function slotListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

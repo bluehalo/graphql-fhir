@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const BodySiteSchema = require('../../schemas/bodysite.schema');
 
 // Arguments
 const BodySiteArgs = require('../../parameters/bodysite.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	bodysiteResolver,
@@ -32,7 +31,7 @@ module.exports.BodySiteListQuery = {
 	args: Object.assign({}, CommonArgs, BodySiteArgs),
 	description: 'Query for multiple BodySites',
 	resolve: bodysiteListResolver,
-	type: new GraphQLList(BodySiteSchema)
+	type: BundleSchema
 };
 
 /**

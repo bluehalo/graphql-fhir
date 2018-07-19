@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ActivityDefinitionSchema = require('../../schemas/activitydefinition.schema');
 
 // Arguments
 const ActivityDefinitionArgs = require('../../parameters/activitydefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	activitydefinitionResolver,
@@ -32,7 +31,7 @@ module.exports.ActivityDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, ActivityDefinitionArgs),
 	description: 'Query for multiple ActivityDefinitions',
 	resolve: activitydefinitionListResolver,
-	type: new GraphQLList(ActivityDefinitionSchema)
+	type: BundleSchema
 };
 
 /**

@@ -17,7 +17,7 @@ module.exports.chargeitemResolver = function chargeitemResolver (root, args, con
  */
 module.exports.chargeitemListResolver = function chargeitemListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

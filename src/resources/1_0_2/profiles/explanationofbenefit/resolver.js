@@ -17,7 +17,7 @@ module.exports.explanationofbenefitResolver = function explanationofbenefitResol
  */
 module.exports.explanationofbenefitListResolver = function explanationofbenefitListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

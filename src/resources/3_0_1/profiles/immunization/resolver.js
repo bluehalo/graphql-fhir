@@ -17,7 +17,7 @@ module.exports.immunizationResolver = function immunizationResolver (root, args,
  */
 module.exports.immunizationListResolver = function immunizationListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const DocumentManifestSchema = require('../../schemas/documentmanifest.schema');
 
 // Arguments
 const DocumentManifestArgs = require('../../parameters/documentmanifest.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	documentmanifestResolver,
@@ -32,7 +31,7 @@ module.exports.DocumentManifestListQuery = {
 	args: Object.assign({}, CommonArgs, DocumentManifestArgs),
 	description: 'Query for multiple DocumentManifests',
 	resolve: documentmanifestListResolver,
-	type: new GraphQLList(DocumentManifestSchema)
+	type: BundleSchema
 };
 
 /**

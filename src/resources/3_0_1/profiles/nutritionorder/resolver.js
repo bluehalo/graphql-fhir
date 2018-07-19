@@ -17,7 +17,7 @@ module.exports.nutritionorderResolver = function nutritionorderResolver (root, a
  */
 module.exports.nutritionorderListResolver = function nutritionorderListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

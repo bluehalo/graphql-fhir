@@ -17,7 +17,7 @@ module.exports.practitionerroleResolver = function practitionerroleResolver (roo
  */
 module.exports.practitionerroleListResolver = function practitionerroleListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

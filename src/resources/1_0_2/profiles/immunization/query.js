@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ImmunizationSchema = require('../../schemas/immunization.schema');
 
 // Arguments
 const ImmunizationArgs = require('../../parameters/immunization.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	immunizationResolver,
@@ -32,7 +31,7 @@ module.exports.ImmunizationListQuery = {
 	args: Object.assign({}, CommonArgs, ImmunizationArgs),
 	description: 'Query for multiple Immunizations',
 	resolve: immunizationListResolver,
-	type: new GraphQLList(ImmunizationSchema)
+	type: BundleSchema
 };
 
 /**

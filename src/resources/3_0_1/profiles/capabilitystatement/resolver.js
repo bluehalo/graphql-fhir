@@ -17,7 +17,7 @@ module.exports.capabilitystatementResolver = function capabilitystatementResolve
  */
 module.exports.capabilitystatementListResolver = function capabilitystatementListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

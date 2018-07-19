@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const CommunicationSchema = require('../../schemas/communication.schema');
 
 // Arguments
 const CommunicationArgs = require('../../parameters/communication.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	communicationResolver,
@@ -32,7 +31,7 @@ module.exports.CommunicationListQuery = {
 	args: Object.assign({}, CommonArgs, CommunicationArgs),
 	description: 'Query for multiple Communications',
 	resolve: communicationListResolver,
-	type: new GraphQLList(CommunicationSchema)
+	type: BundleSchema
 };
 
 /**

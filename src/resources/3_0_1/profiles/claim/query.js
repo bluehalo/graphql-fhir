@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ClaimSchema = require('../../schemas/claim.schema');
 
 // Arguments
 const ClaimArgs = require('../../parameters/claim.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	claimResolver,
@@ -32,7 +31,7 @@ module.exports.ClaimListQuery = {
 	args: Object.assign({}, CommonArgs, ClaimArgs),
 	description: 'Query for multiple Claims',
 	resolve: claimListResolver,
-	type: new GraphQLList(ClaimSchema)
+	type: BundleSchema
 };
 
 /**

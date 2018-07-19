@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const BinarySchema = require('../../schemas/binary.schema');
 
 // Arguments
 const BinaryArgs = require('../../parameters/binary.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	binaryResolver,
@@ -32,7 +31,7 @@ module.exports.BinaryListQuery = {
 	args: Object.assign({}, CommonArgs, BinaryArgs),
 	description: 'Query for multiple Binarys',
 	resolve: binaryListResolver,
-	type: new GraphQLList(BinarySchema)
+	type: BundleSchema
 };
 
 /**

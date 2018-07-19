@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const OrderResponseSchema = require('../../schemas/orderresponse.schema');
 
 // Arguments
 const OrderResponseArgs = require('../../parameters/orderresponse.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	orderresponseResolver,
@@ -32,7 +31,7 @@ module.exports.OrderResponseListQuery = {
 	args: Object.assign({}, CommonArgs, OrderResponseArgs),
 	description: 'Query for multiple OrderResponses',
 	resolve: orderresponseListResolver,
-	type: new GraphQLList(OrderResponseSchema)
+	type: BundleSchema
 };
 
 /**

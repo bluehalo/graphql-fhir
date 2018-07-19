@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const OrganizationSchema = require('../../schemas/organization.schema');
 
 // Arguments
 const OrganizationArgs = require('../../parameters/organization.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	organizationResolver,
@@ -32,7 +31,7 @@ module.exports.OrganizationListQuery = {
 	args: Object.assign({}, CommonArgs, OrganizationArgs),
 	description: 'Query for multiple Organizations',
 	resolve: organizationListResolver,
-	type: new GraphQLList(OrganizationSchema)
+	type: BundleSchema
 };
 
 /**

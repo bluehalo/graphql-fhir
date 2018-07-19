@@ -17,7 +17,7 @@ module.exports.substanceResolver = function substanceResolver (root, args, conte
  */
 module.exports.substanceListResolver = function substanceListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

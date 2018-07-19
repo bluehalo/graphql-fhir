@@ -17,7 +17,7 @@ module.exports.riskassessmentResolver = function riskassessmentResolver (root, a
  */
 module.exports.riskassessmentListResolver = function riskassessmentListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

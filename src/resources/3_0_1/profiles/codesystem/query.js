@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const CodeSystemSchema = require('../../schemas/codesystem.schema');
 
 // Arguments
 const CodeSystemArgs = require('../../parameters/codesystem.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	codesystemResolver,
@@ -32,7 +31,7 @@ module.exports.CodeSystemListQuery = {
 	args: Object.assign({}, CommonArgs, CodeSystemArgs),
 	description: 'Query for multiple CodeSystems',
 	resolve: codesystemListResolver,
-	type: new GraphQLList(CodeSystemSchema)
+	type: BundleSchema
 };
 
 /**

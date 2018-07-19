@@ -17,7 +17,7 @@ module.exports.groupResolver = function groupResolver (root, args, context, info
  */
 module.exports.groupListResolver = function groupListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

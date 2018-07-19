@@ -17,7 +17,7 @@ module.exports.detectedissueResolver = function detectedissueResolver (root, arg
  */
 module.exports.detectedissueListResolver = function detectedissueListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

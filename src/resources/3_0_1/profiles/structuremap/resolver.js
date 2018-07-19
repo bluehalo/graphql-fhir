@@ -17,7 +17,7 @@ module.exports.structuremapResolver = function structuremapResolver (root, args,
  */
 module.exports.structuremapListResolver = function structuremapListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -17,7 +17,7 @@ module.exports.familymemberhistoryResolver = function familymemberhistoryResolve
  */
 module.exports.familymemberhistoryListResolver = function familymemberhistoryListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

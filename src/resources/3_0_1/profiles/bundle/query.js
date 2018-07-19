@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const BundleSchema = require('../../schemas/bundle.schema');
 
 // Arguments
 const BundleArgs = require('../../parameters/bundle.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	bundleResolver,
@@ -32,7 +31,7 @@ module.exports.BundleListQuery = {
 	args: Object.assign({}, CommonArgs, BundleArgs),
 	description: 'Query for multiple Bundles',
 	resolve: bundleListResolver,
-	type: new GraphQLList(BundleSchema)
+	type: BundleSchema
 };
 
 /**

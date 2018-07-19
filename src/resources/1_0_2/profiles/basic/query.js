@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const BasicSchema = require('../../schemas/basic.schema');
 
 // Arguments
 const BasicArgs = require('../../parameters/basic.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	basicResolver,
@@ -32,7 +31,7 @@ module.exports.BasicListQuery = {
 	args: Object.assign({}, CommonArgs, BasicArgs),
 	description: 'Query for multiple Basics',
 	resolve: basicListResolver,
-	type: new GraphQLList(BasicSchema)
+	type: BundleSchema
 };
 
 /**

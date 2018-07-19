@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const SubstanceSchema = require('../../schemas/substance.schema');
 
 // Arguments
 const SubstanceArgs = require('../../parameters/substance.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	substanceResolver,
@@ -32,7 +31,7 @@ module.exports.SubstanceListQuery = {
 	args: Object.assign({}, CommonArgs, SubstanceArgs),
 	description: 'Query for multiple Substances',
 	resolve: substanceListResolver,
-	type: new GraphQLList(SubstanceSchema)
+	type: BundleSchema
 };
 
 /**

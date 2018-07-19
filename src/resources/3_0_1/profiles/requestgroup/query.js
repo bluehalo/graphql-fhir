@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const RequestGroupSchema = require('../../schemas/requestgroup.schema');
 
 // Arguments
 const RequestGroupArgs = require('../../parameters/requestgroup.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	requestgroupResolver,
@@ -32,7 +31,7 @@ module.exports.RequestGroupListQuery = {
 	args: Object.assign({}, CommonArgs, RequestGroupArgs),
 	description: 'Query for multiple RequestGroups',
 	resolve: requestgroupListResolver,
-	type: new GraphQLList(RequestGroupSchema)
+	type: BundleSchema
 };
 
 /**

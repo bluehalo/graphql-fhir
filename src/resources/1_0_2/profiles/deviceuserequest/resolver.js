@@ -17,7 +17,7 @@ module.exports.deviceuserequestResolver = function deviceuserequestResolver (roo
  */
 module.exports.deviceuserequestListResolver = function deviceuserequestListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

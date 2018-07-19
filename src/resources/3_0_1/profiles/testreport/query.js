@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const TestReportSchema = require('../../schemas/testreport.schema');
 
 // Arguments
 const TestReportArgs = require('../../parameters/testreport.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	testreportResolver,
@@ -32,7 +31,7 @@ module.exports.TestReportListQuery = {
 	args: Object.assign({}, CommonArgs, TestReportArgs),
 	description: 'Query for multiple TestReports',
 	resolve: testreportListResolver,
-	type: new GraphQLList(TestReportSchema)
+	type: BundleSchema
 };
 
 /**

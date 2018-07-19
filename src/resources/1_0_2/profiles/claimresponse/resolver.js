@@ -17,7 +17,7 @@ module.exports.claimresponseResolver = function claimresponseResolver (root, arg
  */
 module.exports.claimresponseListResolver = function claimresponseListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

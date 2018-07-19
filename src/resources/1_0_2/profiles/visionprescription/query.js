@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const VisionPrescriptionSchema = require('../../schemas/visionprescription.schema');
 
 // Arguments
 const VisionPrescriptionArgs = require('../../parameters/visionprescription.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	visionprescriptionResolver,
@@ -32,7 +31,7 @@ module.exports.VisionPrescriptionListQuery = {
 	args: Object.assign({}, CommonArgs, VisionPrescriptionArgs),
 	description: 'Query for multiple VisionPrescriptions',
 	resolve: visionprescriptionListResolver,
-	type: new GraphQLList(VisionPrescriptionSchema)
+	type: BundleSchema
 };
 
 /**

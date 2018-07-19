@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const SupplyRequestSchema = require('../../schemas/supplyrequest.schema');
 
 // Arguments
 const SupplyRequestArgs = require('../../parameters/supplyrequest.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	supplyrequestResolver,
@@ -32,7 +31,7 @@ module.exports.SupplyRequestListQuery = {
 	args: Object.assign({}, CommonArgs, SupplyRequestArgs),
 	description: 'Query for multiple SupplyRequests',
 	resolve: supplyrequestListResolver,
-	type: new GraphQLList(SupplyRequestSchema)
+	type: BundleSchema
 };
 
 /**

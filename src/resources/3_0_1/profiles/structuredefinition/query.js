@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const StructureDefinitionSchema = require('../../schemas/structuredefinition.schema');
 
 // Arguments
 const StructureDefinitionArgs = require('../../parameters/structuredefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	structuredefinitionResolver,
@@ -32,7 +31,7 @@ module.exports.StructureDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, StructureDefinitionArgs),
 	description: 'Query for multiple StructureDefinitions',
 	resolve: structuredefinitionListResolver,
-	type: new GraphQLList(StructureDefinitionSchema)
+	type: BundleSchema
 };
 
 /**

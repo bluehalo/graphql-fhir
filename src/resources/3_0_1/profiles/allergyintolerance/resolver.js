@@ -17,7 +17,7 @@ module.exports.allergyintoleranceResolver = function allergyintoleranceResolver 
  */
 module.exports.allergyintoleranceListResolver = function allergyintoleranceListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

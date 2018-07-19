@@ -17,7 +17,7 @@ module.exports.compartmentdefinitionResolver = function compartmentdefinitionRes
  */
 module.exports.compartmentdefinitionListResolver = function compartmentdefinitionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const LocationSchema = require('../../schemas/location.schema');
 
 // Arguments
 const LocationArgs = require('../../parameters/location.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	locationResolver,
@@ -32,7 +31,7 @@ module.exports.LocationListQuery = {
 	args: Object.assign({}, CommonArgs, LocationArgs),
 	description: 'Query for multiple Locations',
 	resolve: locationListResolver,
-	type: new GraphQLList(LocationSchema)
+	type: BundleSchema
 };
 
 /**

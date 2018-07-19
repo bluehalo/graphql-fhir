@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const LinkageSchema = require('../../schemas/linkage.schema');
 
 // Arguments
 const LinkageArgs = require('../../parameters/linkage.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	linkageResolver,
@@ -32,7 +31,7 @@ module.exports.LinkageListQuery = {
 	args: Object.assign({}, CommonArgs, LinkageArgs),
 	description: 'Query for multiple Linkages',
 	resolve: linkageListResolver,
-	type: new GraphQLList(LinkageSchema)
+	type: BundleSchema
 };
 
 /**

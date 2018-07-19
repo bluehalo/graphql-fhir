@@ -17,7 +17,7 @@ module.exports.devicecomponentResolver = function devicecomponentResolver (root,
  */
 module.exports.devicecomponentListResolver = function devicecomponentListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

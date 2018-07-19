@@ -17,7 +17,7 @@ module.exports.taskResolver = function taskResolver (root, args, context, info) 
  */
 module.exports.taskListResolver = function taskListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

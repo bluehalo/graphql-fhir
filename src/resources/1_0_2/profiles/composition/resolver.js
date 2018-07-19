@@ -17,7 +17,7 @@ module.exports.compositionResolver = function compositionResolver (root, args, c
  */
 module.exports.compositionListResolver = function compositionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

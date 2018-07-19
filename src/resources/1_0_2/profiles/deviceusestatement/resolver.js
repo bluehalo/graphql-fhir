@@ -17,7 +17,7 @@ module.exports.deviceusestatementResolver = function deviceusestatementResolver 
  */
 module.exports.deviceusestatementListResolver = function deviceusestatementListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

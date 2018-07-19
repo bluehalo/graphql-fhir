@@ -17,7 +17,7 @@ module.exports.orderResolver = function orderResolver (root, args, context, info
  */
 module.exports.orderListResolver = function orderListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

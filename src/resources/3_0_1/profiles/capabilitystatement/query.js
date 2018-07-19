@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const CapabilityStatementSchema = require('../../schemas/capabilitystatement.schema');
 
 // Arguments
 const CapabilityStatementArgs = require('../../parameters/capabilitystatement.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	capabilitystatementResolver,
@@ -32,7 +31,7 @@ module.exports.CapabilityStatementListQuery = {
 	args: Object.assign({}, CommonArgs, CapabilityStatementArgs),
 	description: 'Query for multiple CapabilityStatements',
 	resolve: capabilitystatementListResolver,
-	type: new GraphQLList(CapabilityStatementSchema)
+	type: BundleSchema
 };
 
 /**

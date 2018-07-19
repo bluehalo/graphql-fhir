@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const MedicationOrderSchema = require('../../schemas/medicationorder.schema');
 
 // Arguments
 const MedicationOrderArgs = require('../../parameters/medicationorder.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	medicationorderResolver,
@@ -32,7 +31,7 @@ module.exports.MedicationOrderListQuery = {
 	args: Object.assign({}, CommonArgs, MedicationOrderArgs),
 	description: 'Query for multiple MedicationOrders',
 	resolve: medicationorderListResolver,
-	type: new GraphQLList(MedicationOrderSchema)
+	type: BundleSchema
 };
 
 /**

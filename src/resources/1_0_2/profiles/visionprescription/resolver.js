@@ -17,7 +17,7 @@ module.exports.visionprescriptionResolver = function visionprescriptionResolver 
  */
 module.exports.visionprescriptionListResolver = function visionprescriptionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

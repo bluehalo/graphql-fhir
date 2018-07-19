@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ImplementationGuideSchema = require('../../schemas/implementationguide.schema');
 
 // Arguments
 const ImplementationGuideArgs = require('../../parameters/implementationguide.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	implementationguideResolver,
@@ -32,7 +31,7 @@ module.exports.ImplementationGuideListQuery = {
 	args: Object.assign({}, CommonArgs, ImplementationGuideArgs),
 	description: 'Query for multiple ImplementationGuides',
 	resolve: implementationguideListResolver,
-	type: new GraphQLList(ImplementationGuideSchema)
+	type: BundleSchema
 };
 
 /**

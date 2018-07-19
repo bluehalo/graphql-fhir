@@ -17,7 +17,7 @@ module.exports.immunizationrecommendationResolver = function immunizationrecomme
  */
 module.exports.immunizationrecommendationListResolver = function immunizationrecommendationListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -17,7 +17,7 @@ module.exports.communicationResolver = function communicationResolver (root, arg
  */
 module.exports.communicationListResolver = function communicationListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

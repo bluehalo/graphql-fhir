@@ -17,7 +17,7 @@ module.exports.codesystemResolver = function codesystemResolver (root, args, con
  */
 module.exports.codesystemListResolver = function codesystemListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

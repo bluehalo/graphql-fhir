@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const RiskAssessmentSchema = require('../../schemas/riskassessment.schema');
 
 // Arguments
 const RiskAssessmentArgs = require('../../parameters/riskassessment.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	riskassessmentResolver,
@@ -32,7 +31,7 @@ module.exports.RiskAssessmentListQuery = {
 	args: Object.assign({}, CommonArgs, RiskAssessmentArgs),
 	description: 'Query for multiple RiskAssessments',
 	resolve: riskassessmentListResolver,
-	type: new GraphQLList(RiskAssessmentSchema)
+	type: BundleSchema
 };
 
 /**

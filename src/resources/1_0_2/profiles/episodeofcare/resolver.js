@@ -17,7 +17,7 @@ module.exports.episodeofcareResolver = function episodeofcareResolver (root, arg
  */
 module.exports.episodeofcareListResolver = function episodeofcareListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

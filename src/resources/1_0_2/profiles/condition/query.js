@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ConditionSchema = require('../../schemas/condition.schema');
 
 // Arguments
 const ConditionArgs = require('../../parameters/condition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	conditionResolver,
@@ -32,7 +31,7 @@ module.exports.ConditionListQuery = {
 	args: Object.assign({}, CommonArgs, ConditionArgs),
 	description: 'Query for multiple Conditions',
 	resolve: conditionListResolver,
-	type: new GraphQLList(ConditionSchema)
+	type: BundleSchema
 };
 
 /**

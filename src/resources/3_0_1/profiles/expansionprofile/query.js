@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ExpansionProfileSchema = require('../../schemas/expansionprofile.schema');
 
 // Arguments
 const ExpansionProfileArgs = require('../../parameters/expansionprofile.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	expansionprofileResolver,
@@ -32,7 +31,7 @@ module.exports.ExpansionProfileListQuery = {
 	args: Object.assign({}, CommonArgs, ExpansionProfileArgs),
 	description: 'Query for multiple ExpansionProfiles',
 	resolve: expansionprofileListResolver,
-	type: new GraphQLList(ExpansionProfileSchema)
+	type: BundleSchema
 };
 
 /**

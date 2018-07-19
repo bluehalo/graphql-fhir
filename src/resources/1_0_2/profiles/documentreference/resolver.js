@@ -17,7 +17,7 @@ module.exports.documentreferenceResolver = function documentreferenceResolver (r
  */
 module.exports.documentreferenceListResolver = function documentreferenceListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const TestScriptSchema = require('../../schemas/testscript.schema');
 
 // Arguments
 const TestScriptArgs = require('../../parameters/testscript.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	testscriptResolver,
@@ -32,7 +31,7 @@ module.exports.TestScriptListQuery = {
 	args: Object.assign({}, CommonArgs, TestScriptArgs),
 	description: 'Query for multiple TestScripts',
 	resolve: testscriptListResolver,
-	type: new GraphQLList(TestScriptSchema)
+	type: BundleSchema
 };
 
 /**

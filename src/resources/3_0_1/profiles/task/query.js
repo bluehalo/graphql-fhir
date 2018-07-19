@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const TaskSchema = require('../../schemas/task.schema');
 
 // Arguments
 const TaskArgs = require('../../parameters/task.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	taskResolver,
@@ -32,7 +31,7 @@ module.exports.TaskListQuery = {
 	args: Object.assign({}, CommonArgs, TaskArgs),
 	description: 'Query for multiple Tasks',
 	resolve: taskListResolver,
-	type: new GraphQLList(TaskSchema)
+	type: BundleSchema
 };
 
 /**

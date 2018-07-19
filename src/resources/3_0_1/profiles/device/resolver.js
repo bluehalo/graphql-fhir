@@ -17,7 +17,7 @@ module.exports.deviceResolver = function deviceResolver (root, args, context, in
  */
 module.exports.deviceListResolver = function deviceListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

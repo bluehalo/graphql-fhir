@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const DataElementSchema = require('../../schemas/dataelement.schema');
 
 // Arguments
 const DataElementArgs = require('../../parameters/dataelement.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	dataelementResolver,
@@ -32,7 +31,7 @@ module.exports.DataElementListQuery = {
 	args: Object.assign({}, CommonArgs, DataElementArgs),
 	description: 'Query for multiple DataElements',
 	resolve: dataelementListResolver,
-	type: new GraphQLList(DataElementSchema)
+	type: BundleSchema
 };
 
 /**

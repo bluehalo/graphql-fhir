@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const StructureMapSchema = require('../../schemas/structuremap.schema');
 
 // Arguments
 const StructureMapArgs = require('../../parameters/structuremap.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	structuremapResolver,
@@ -32,7 +31,7 @@ module.exports.StructureMapListQuery = {
 	args: Object.assign({}, CommonArgs, StructureMapArgs),
 	description: 'Query for multiple StructureMaps',
 	resolve: structuremapListResolver,
-	type: new GraphQLList(StructureMapSchema)
+	type: BundleSchema
 };
 
 /**

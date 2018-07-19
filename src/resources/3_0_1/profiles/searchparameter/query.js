@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const SearchParameterSchema = require('../../schemas/searchparameter.schema');
 
 // Arguments
 const SearchParameterArgs = require('../../parameters/searchparameter.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	searchparameterResolver,
@@ -32,7 +31,7 @@ module.exports.SearchParameterListQuery = {
 	args: Object.assign({}, CommonArgs, SearchParameterArgs),
 	description: 'Query for multiple SearchParameters',
 	resolve: searchparameterListResolver,
-	type: new GraphQLList(SearchParameterSchema)
+	type: BundleSchema
 };
 
 /**

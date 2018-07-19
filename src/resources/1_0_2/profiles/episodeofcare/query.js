@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const EpisodeOfCareSchema = require('../../schemas/episodeofcare.schema');
 
 // Arguments
 const EpisodeOfCareArgs = require('../../parameters/episodeofcare.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	episodeofcareResolver,
@@ -32,7 +31,7 @@ module.exports.EpisodeOfCareListQuery = {
 	args: Object.assign({}, CommonArgs, EpisodeOfCareArgs),
 	description: 'Query for multiple EpisodeOfCares',
 	resolve: episodeofcareListResolver,
-	type: new GraphQLList(EpisodeOfCareSchema)
+	type: BundleSchema
 };
 
 /**

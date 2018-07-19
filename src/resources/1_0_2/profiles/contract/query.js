@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ContractSchema = require('../../schemas/contract.schema');
 
 // Arguments
 const ContractArgs = require('../../parameters/contract.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	contractResolver,
@@ -32,7 +31,7 @@ module.exports.ContractListQuery = {
 	args: Object.assign({}, CommonArgs, ContractArgs),
 	description: 'Query for multiple Contracts',
 	resolve: contractListResolver,
-	type: new GraphQLList(ContractSchema)
+	type: BundleSchema
 };
 
 /**

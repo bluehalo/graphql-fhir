@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ResearchSubjectSchema = require('../../schemas/researchsubject.schema');
 
 // Arguments
 const ResearchSubjectArgs = require('../../parameters/researchsubject.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	researchsubjectResolver,
@@ -32,7 +31,7 @@ module.exports.ResearchSubjectListQuery = {
 	args: Object.assign({}, CommonArgs, ResearchSubjectArgs),
 	description: 'Query for multiple ResearchSubjects',
 	resolve: researchsubjectListResolver,
-	type: new GraphQLList(ResearchSubjectSchema)
+	type: BundleSchema
 };
 
 /**

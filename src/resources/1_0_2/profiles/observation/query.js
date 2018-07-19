@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ObservationSchema = require('../../schemas/observation.schema');
 
 // Arguments
 const ObservationArgs = require('../../parameters/observation.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	observationResolver,
@@ -32,7 +31,7 @@ module.exports.ObservationListQuery = {
 	args: Object.assign({}, CommonArgs, ObservationArgs),
 	description: 'Query for multiple Observations',
 	resolve: observationListResolver,
-	type: new GraphQLList(ObservationSchema)
+	type: BundleSchema
 };
 
 /**

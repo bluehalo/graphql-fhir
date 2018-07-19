@@ -17,7 +17,7 @@ module.exports.scheduleResolver = function scheduleResolver (root, args, context
  */
 module.exports.scheduleListResolver = function scheduleListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

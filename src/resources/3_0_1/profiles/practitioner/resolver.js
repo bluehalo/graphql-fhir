@@ -17,7 +17,7 @@ module.exports.practitionerResolver = function practitionerResolver (root, args,
  */
 module.exports.practitionerListResolver = function practitionerListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const DiagnosticReportSchema = require('../../schemas/diagnosticreport.schema');
 
 // Arguments
 const DiagnosticReportArgs = require('../../parameters/diagnosticreport.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	diagnosticreportResolver,
@@ -32,7 +31,7 @@ module.exports.DiagnosticReportListQuery = {
 	args: Object.assign({}, CommonArgs, DiagnosticReportArgs),
 	description: 'Query for multiple DiagnosticReports',
 	resolve: diagnosticreportListResolver,
-	type: new GraphQLList(DiagnosticReportSchema)
+	type: BundleSchema
 };
 
 /**

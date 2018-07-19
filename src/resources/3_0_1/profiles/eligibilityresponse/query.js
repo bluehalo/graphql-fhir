@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const EligibilityResponseSchema = require('../../schemas/eligibilityresponse.schema');
 
 // Arguments
 const EligibilityResponseArgs = require('../../parameters/eligibilityresponse.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	eligibilityresponseResolver,
@@ -32,7 +31,7 @@ module.exports.EligibilityResponseListQuery = {
 	args: Object.assign({}, CommonArgs, EligibilityResponseArgs),
 	description: 'Query for multiple EligibilityResponses',
 	resolve: eligibilityresponseListResolver,
-	type: new GraphQLList(EligibilityResponseSchema)
+	type: BundleSchema
 };
 
 /**

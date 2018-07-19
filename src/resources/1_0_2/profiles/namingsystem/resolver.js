@@ -17,7 +17,7 @@ module.exports.namingsystemResolver = function namingsystemResolver (root, args,
  */
 module.exports.namingsystemListResolver = function namingsystemListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -17,7 +17,7 @@ module.exports.subscriptionResolver = function subscriptionResolver (root, args,
  */
 module.exports.subscriptionListResolver = function subscriptionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

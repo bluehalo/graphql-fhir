@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const AllergyIntoleranceSchema = require('../../schemas/allergyintolerance.schema');
 
 // Arguments
 const AllergyIntoleranceArgs = require('../../parameters/allergyintolerance.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	allergyintoleranceResolver,
@@ -32,7 +31,7 @@ module.exports.AllergyIntoleranceListQuery = {
 	args: Object.assign({}, CommonArgs, AllergyIntoleranceArgs),
 	description: 'Query for multiple AllergyIntolerances',
 	resolve: allergyintoleranceListResolver,
-	type: new GraphQLList(AllergyIntoleranceSchema)
+	type: BundleSchema
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const SubscriptionSchema = require('../../schemas/subscription.schema');
 
 // Arguments
 const SubscriptionArgs = require('../../parameters/subscription.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	subscriptionResolver,
@@ -32,7 +31,7 @@ module.exports.SubscriptionListQuery = {
 	args: Object.assign({}, CommonArgs, SubscriptionArgs),
 	description: 'Query for multiple Subscriptions',
 	resolve: subscriptionListResolver,
-	type: new GraphQLList(SubscriptionSchema)
+	type: BundleSchema
 };
 
 /**

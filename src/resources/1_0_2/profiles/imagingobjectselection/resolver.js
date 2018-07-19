@@ -17,7 +17,7 @@ module.exports.imagingobjectselectionResolver = function imagingobjectselectionR
  */
 module.exports.imagingobjectselectionListResolver = function imagingobjectselectionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

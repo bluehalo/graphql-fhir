@@ -17,7 +17,7 @@ module.exports.operationdefinitionResolver = function operationdefinitionResolve
  */
 module.exports.operationdefinitionListResolver = function operationdefinitionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

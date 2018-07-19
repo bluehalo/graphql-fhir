@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const OperationDefinitionSchema = require('../../schemas/operationdefinition.schema');
 
 // Arguments
 const OperationDefinitionArgs = require('../../parameters/operationdefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	operationdefinitionResolver,
@@ -32,7 +31,7 @@ module.exports.OperationDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, OperationDefinitionArgs),
 	description: 'Query for multiple OperationDefinitions',
 	resolve: operationdefinitionListResolver,
-	type: new GraphQLList(OperationDefinitionSchema)
+	type: BundleSchema
 };
 
 /**

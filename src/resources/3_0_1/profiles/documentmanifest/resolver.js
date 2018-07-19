@@ -17,7 +17,7 @@ module.exports.documentmanifestResolver = function documentmanifestResolver (roo
  */
 module.exports.documentmanifestListResolver = function documentmanifestListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const CompositionSchema = require('../../schemas/composition.schema');
 
 // Arguments
 const CompositionArgs = require('../../parameters/composition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	compositionResolver,
@@ -32,7 +31,7 @@ module.exports.CompositionListQuery = {
 	args: Object.assign({}, CommonArgs, CompositionArgs),
 	description: 'Query for multiple Compositions',
 	resolve: compositionListResolver,
-	type: new GraphQLList(CompositionSchema)
+	type: BundleSchema
 };
 
 /**

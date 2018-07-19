@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const PaymentReconciliationSchema = require('../../schemas/paymentreconciliation.schema');
 
 // Arguments
 const PaymentReconciliationArgs = require('../../parameters/paymentreconciliation.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	paymentreconciliationResolver,
@@ -32,7 +31,7 @@ module.exports.PaymentReconciliationListQuery = {
 	args: Object.assign({}, CommonArgs, PaymentReconciliationArgs),
 	description: 'Query for multiple PaymentReconciliations',
 	resolve: paymentreconciliationListResolver,
-	type: new GraphQLList(PaymentReconciliationSchema)
+	type: BundleSchema
 };
 
 /**

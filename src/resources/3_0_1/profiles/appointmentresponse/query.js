@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const AppointmentResponseSchema = require('../../schemas/appointmentresponse.schema');
 
 // Arguments
 const AppointmentResponseArgs = require('../../parameters/appointmentresponse.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	appointmentresponseResolver,
@@ -32,7 +31,7 @@ module.exports.AppointmentResponseListQuery = {
 	args: Object.assign({}, CommonArgs, AppointmentResponseArgs),
 	description: 'Query for multiple AppointmentResponses',
 	resolve: appointmentresponseListResolver,
-	type: new GraphQLList(AppointmentResponseSchema)
+	type: BundleSchema
 };
 
 /**

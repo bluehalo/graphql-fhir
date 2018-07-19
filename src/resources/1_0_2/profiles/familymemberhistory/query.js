@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const FamilyMemberHistorySchema = require('../../schemas/familymemberhistory.schema');
 
 // Arguments
 const FamilyMemberHistoryArgs = require('../../parameters/familymemberhistory.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	familymemberhistoryResolver,
@@ -32,7 +31,7 @@ module.exports.FamilyMemberHistoryListQuery = {
 	args: Object.assign({}, CommonArgs, FamilyMemberHistoryArgs),
 	description: 'Query for multiple FamilyMemberHistorys',
 	resolve: familymemberhistoryListResolver,
-	type: new GraphQLList(FamilyMemberHistorySchema)
+	type: BundleSchema
 };
 
 /**

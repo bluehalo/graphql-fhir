@@ -17,7 +17,7 @@ module.exports.imagingstudyResolver = function imagingstudyResolver (root, args,
  */
 module.exports.imagingstudyListResolver = function imagingstudyListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

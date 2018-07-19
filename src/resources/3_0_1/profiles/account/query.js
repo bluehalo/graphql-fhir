@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const AccountSchema = require('../../schemas/account.schema');
 
 // Arguments
 const AccountArgs = require('../../parameters/account.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	accountResolver,
@@ -32,7 +31,7 @@ module.exports.AccountListQuery = {
 	args: Object.assign({}, CommonArgs, AccountArgs),
 	description: 'Query for multiple Accounts',
 	resolve: accountListResolver,
-	type: new GraphQLList(AccountSchema)
+	type: BundleSchema
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const CompartmentDefinitionSchema = require('../../schemas/compartmentdefinition.schema');
 
 // Arguments
 const CompartmentDefinitionArgs = require('../../parameters/compartmentdefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	compartmentdefinitionResolver,
@@ -32,7 +31,7 @@ module.exports.CompartmentDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, CompartmentDefinitionArgs),
 	description: 'Query for multiple CompartmentDefinitions',
 	resolve: compartmentdefinitionListResolver,
-	type: new GraphQLList(CompartmentDefinitionSchema)
+	type: BundleSchema
 };
 
 /**

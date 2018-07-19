@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const RelatedPersonSchema = require('../../schemas/relatedperson.schema');
 
 // Arguments
 const RelatedPersonArgs = require('../../parameters/relatedperson.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	relatedpersonResolver,
@@ -32,7 +31,7 @@ module.exports.RelatedPersonListQuery = {
 	args: Object.assign({}, CommonArgs, RelatedPersonArgs),
 	description: 'Query for multiple RelatedPersons',
 	resolve: relatedpersonListResolver,
-	type: new GraphQLList(RelatedPersonSchema)
+	type: BundleSchema
 };
 
 /**

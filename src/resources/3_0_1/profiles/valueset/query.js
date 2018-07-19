@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ValueSetSchema = require('../../schemas/valueset.schema');
 
 // Arguments
 const ValueSetArgs = require('../../parameters/valueset.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	valuesetResolver,
@@ -32,7 +31,7 @@ module.exports.ValueSetListQuery = {
 	args: Object.assign({}, CommonArgs, ValueSetArgs),
 	description: 'Query for multiple ValueSets',
 	resolve: valuesetListResolver,
-	type: new GraphQLList(ValueSetSchema)
+	type: BundleSchema
 };
 
 /**

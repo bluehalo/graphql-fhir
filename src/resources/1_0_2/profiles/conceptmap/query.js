@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ConceptMapSchema = require('../../schemas/conceptmap.schema');
 
 // Arguments
 const ConceptMapArgs = require('../../parameters/conceptmap.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	conceptmapResolver,
@@ -32,7 +31,7 @@ module.exports.ConceptMapListQuery = {
 	args: Object.assign({}, CommonArgs, ConceptMapArgs),
 	description: 'Query for multiple ConceptMaps',
 	resolve: conceptmapListResolver,
-	type: new GraphQLList(ConceptMapSchema)
+	type: BundleSchema
 };
 
 /**

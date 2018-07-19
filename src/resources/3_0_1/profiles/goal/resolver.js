@@ -17,7 +17,7 @@ module.exports.goalResolver = function goalResolver (root, args, context, info) 
  */
 module.exports.goalListResolver = function goalListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

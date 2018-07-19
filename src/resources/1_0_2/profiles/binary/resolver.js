@@ -17,7 +17,7 @@ module.exports.binaryResolver = function binaryResolver (root, args, context, in
  */
 module.exports.binaryListResolver = function binaryListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

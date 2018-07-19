@@ -17,7 +17,7 @@ module.exports.bodysiteResolver = function bodysiteResolver (root, args, context
  */
 module.exports.bodysiteListResolver = function bodysiteListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

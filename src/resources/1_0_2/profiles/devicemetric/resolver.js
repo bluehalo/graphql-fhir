@@ -17,7 +17,7 @@ module.exports.devicemetricResolver = function devicemetricResolver (root, args,
  */
 module.exports.devicemetricListResolver = function devicemetricListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

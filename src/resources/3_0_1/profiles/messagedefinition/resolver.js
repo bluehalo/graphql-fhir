@@ -17,7 +17,7 @@ module.exports.messagedefinitionResolver = function messagedefinitionResolver (r
  */
 module.exports.messagedefinitionListResolver = function messagedefinitionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

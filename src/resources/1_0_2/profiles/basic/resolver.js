@@ -17,7 +17,7 @@ module.exports.basicResolver = function basicResolver (root, args, context, info
  */
 module.exports.basicListResolver = function basicListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

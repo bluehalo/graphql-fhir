@@ -17,7 +17,7 @@ module.exports.enrollmentrequestResolver = function enrollmentrequestResolver (r
  */
 module.exports.enrollmentrequestListResolver = function enrollmentrequestListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

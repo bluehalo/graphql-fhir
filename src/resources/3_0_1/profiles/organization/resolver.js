@@ -17,7 +17,7 @@ module.exports.organizationResolver = function organizationResolver (root, args,
  */
 module.exports.organizationListResolver = function organizationListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

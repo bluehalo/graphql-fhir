@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const NamingSystemSchema = require('../../schemas/namingsystem.schema');
 
 // Arguments
 const NamingSystemArgs = require('../../parameters/namingsystem.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	namingsystemResolver,
@@ -32,7 +31,7 @@ module.exports.NamingSystemListQuery = {
 	args: Object.assign({}, CommonArgs, NamingSystemArgs),
 	description: 'Query for multiple NamingSystems',
 	resolve: namingsystemListResolver,
-	type: new GraphQLList(NamingSystemSchema)
+	type: BundleSchema
 };
 
 /**

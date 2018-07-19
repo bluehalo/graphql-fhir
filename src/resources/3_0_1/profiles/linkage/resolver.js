@@ -17,7 +17,7 @@ module.exports.linkageResolver = function linkageResolver (root, args, context, 
  */
 module.exports.linkageListResolver = function linkageListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

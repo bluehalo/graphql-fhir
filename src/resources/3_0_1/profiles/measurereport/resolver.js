@@ -17,7 +17,7 @@ module.exports.measurereportResolver = function measurereportResolver (root, arg
  */
 module.exports.measurereportListResolver = function measurereportListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

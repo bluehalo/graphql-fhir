@@ -17,7 +17,7 @@ module.exports.servicedefinitionResolver = function servicedefinitionResolver (r
  */
 module.exports.servicedefinitionListResolver = function servicedefinitionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

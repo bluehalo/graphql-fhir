@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ImagingManifestSchema = require('../../schemas/imagingmanifest.schema');
 
 // Arguments
 const ImagingManifestArgs = require('../../parameters/imagingmanifest.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	imagingmanifestResolver,
@@ -32,7 +31,7 @@ module.exports.ImagingManifestListQuery = {
 	args: Object.assign({}, CommonArgs, ImagingManifestArgs),
 	description: 'Query for multiple ImagingManifests',
 	resolve: imagingmanifestListResolver,
-	type: new GraphQLList(ImagingManifestSchema)
+	type: BundleSchema
 };
 
 /**

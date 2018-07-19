@@ -17,7 +17,7 @@ module.exports.messageheaderResolver = function messageheaderResolver (root, arg
  */
 module.exports.messageheaderListResolver = function messageheaderListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

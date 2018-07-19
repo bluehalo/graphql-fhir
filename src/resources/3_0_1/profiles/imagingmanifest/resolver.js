@@ -17,7 +17,7 @@ module.exports.imagingmanifestResolver = function imagingmanifestResolver (root,
  */
 module.exports.imagingmanifestListResolver = function imagingmanifestListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

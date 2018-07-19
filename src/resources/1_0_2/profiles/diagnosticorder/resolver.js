@@ -17,7 +17,7 @@ module.exports.diagnosticorderResolver = function diagnosticorderResolver (root,
  */
 module.exports.diagnosticorderListResolver = function diagnosticorderListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

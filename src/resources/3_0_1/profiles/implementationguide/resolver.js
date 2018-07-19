@@ -17,7 +17,7 @@ module.exports.implementationguideResolver = function implementationguideResolve
  */
 module.exports.implementationguideListResolver = function implementationguideListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

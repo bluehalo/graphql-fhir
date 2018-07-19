@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ExplanationOfBenefitSchema = require('../../schemas/explanationofbenefit.schema');
 
 // Arguments
 const ExplanationOfBenefitArgs = require('../../parameters/explanationofbenefit.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	explanationofbenefitResolver,
@@ -32,7 +31,7 @@ module.exports.ExplanationOfBenefitListQuery = {
 	args: Object.assign({}, CommonArgs, ExplanationOfBenefitArgs),
 	description: 'Query for multiple ExplanationOfBenefits',
 	resolve: explanationofbenefitListResolver,
-	type: new GraphQLList(ExplanationOfBenefitSchema)
+	type: BundleSchema
 };
 
 /**

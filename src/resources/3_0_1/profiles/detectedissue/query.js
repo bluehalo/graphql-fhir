@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const DetectedIssueSchema = require('../../schemas/detectedissue.schema');
 
 // Arguments
 const DetectedIssueArgs = require('../../parameters/detectedissue.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	detectedissueResolver,
@@ -32,7 +31,7 @@ module.exports.DetectedIssueListQuery = {
 	args: Object.assign({}, CommonArgs, DetectedIssueArgs),
 	description: 'Query for multiple DetectedIssues',
 	resolve: detectedissueListResolver,
-	type: new GraphQLList(DetectedIssueSchema)
+	type: BundleSchema
 };
 
 /**

@@ -1,11 +1,10 @@
 // Schemas
+const BundleSchema = require('../schemas/bundle.schema');
 const ChargeItemSchema = require('../../schemas/chargeitem.schema');
 
 // Arguments
 const ChargeItemArgs = require('../../parameters/chargeitem.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
-
-const { GraphQLList } = require('graphql');
 
 const {
 	chargeitemResolver,
@@ -32,7 +31,7 @@ module.exports.ChargeItemListQuery = {
 	args: Object.assign({}, CommonArgs, ChargeItemArgs),
 	description: 'Query for multiple ChargeItems',
 	resolve: chargeitemListResolver,
-	type: new GraphQLList(ChargeItemSchema)
+	type: BundleSchema
 };
 
 /**

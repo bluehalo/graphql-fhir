@@ -17,7 +17,7 @@ module.exports.structuredefinitionResolver = function structuredefinitionResolve
  */
 module.exports.structuredefinitionListResolver = function structuredefinitionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

@@ -17,7 +17,7 @@ module.exports.activitydefinitionResolver = function activitydefinitionResolver 
  */
 module.exports.activitydefinitionListResolver = function activitydefinitionListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

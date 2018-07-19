@@ -17,7 +17,7 @@ module.exports.requestgroupResolver = function requestgroupResolver (root, args,
  */
 module.exports.requestgroupListResolver = function requestgroupListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**

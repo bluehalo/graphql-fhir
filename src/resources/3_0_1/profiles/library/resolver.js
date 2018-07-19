@@ -17,7 +17,7 @@ module.exports.libraryResolver = function libraryResolver (root, args, context, 
  */
 module.exports.libraryListResolver = function libraryListResolver (root, args, context, info) {
 	let { server, req, res, version } = context;
-	return [ {} ];
+	return {};
 };
 
 /**
