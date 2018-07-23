@@ -14,13 +14,19 @@ module.exports = new GraphQLScalarType({
 	// TODO: Implement proper parsing and sanitization here
 	// Throw a GraphQL Error if unable to parse or sanitize error
 	parseValue: (value, ast) => {
-		return value;
+		/* date pattern was simplified from document specified pattern of:
+			/-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?/
+			The day portion of the date is optional. ie 2018-12 or 2018-12-01 are both valid */
+		let date_pattern = /^[12]\d{3}-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?$/
+		let sanitized_value = xss(sanitize(value));
+		let is_date = date_pattern.test(sanitized_value);
+		return is_date
+			? moment(sanitized_value).tz(DATE_CONFIG.timezone).format(DATE_CONFIG.datetime_format)
+			: new GraphQLError(`Invalid dateTime provided to DateTimeScalar. Format should be ${DATE_CONFIG.datetime_format} and date's missing time will be filled with 0's.`, [ ast ]);
 	},
 	// TODO: Implement proper parsing and sanitization here
 	parseLiteral: ast => {
-		let { kind, value } = ast;
-		return kind === Kind.STRING
-			? value
-			: undefined;
+		let { value } = ast;
+		return parseValue(value, ast);
 	}
 });

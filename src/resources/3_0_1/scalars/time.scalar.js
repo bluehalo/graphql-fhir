@@ -14,13 +14,16 @@ module.exports = new GraphQLScalarType({
 	// TODO: Implement proper parsing and sanitization here
 	// Throw a GraphQL Error if unable to parse or sanitize error
 	parseValue: (value, ast) => {
-		return value;
+		let time_pattern = /([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
+		let sanitized_value = xss(sanitize(value)).trim();
+		let is_time = time_pattern.test(sanitized_value);
+		return is_time
+			? moment(sanitized_value).tz(DATE_CONFIG.timezone).format(DATE_CONFIG.time_format)
+			: new GraphQLError(`Invalid time provided to TimeScalar. Format should be ${DATE_CONFIG}`, [ ast ]);
 	},
 	// TODO: Implement proper parsing and sanitization here
 	parseLiteral: ast => {
-		let { kind, value } = ast;
-		return kind === Kind.STRING
-			? value
-			: undefined;
+		let { value } = ast;
+		return parseValue(value, ast);
 	}
 });

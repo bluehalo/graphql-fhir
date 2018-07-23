@@ -14,13 +14,13 @@ module.exports = new GraphQLScalarType({
 	// TODO: Implement proper parsing and sanitization here
 	// Throw a GraphQL Error if unable to parse or sanitize error
 	parseValue: (value, ast) => {
-		return value;
+		return validator.isInt(value, { min: 1, max: Number.MAX_SAFE_INTEGER })
+			? validator.toInt(value, 10)
+			: new GraphQLError('Invalid value provided to UnsignedIntScalar. Int must be > 0.', [ ast ]);
 	},
 	// TODO: Implement proper parsing and sanitization here
 	parseLiteral: ast => {
-		let { kind, value } = ast;
-		return kind === Kind.STRING
-			? value
-			: undefined;
+		let { value } = ast;
+		return parseValue(value, ast);
 	}
 });
