@@ -65,7 +65,7 @@ function graphqlErrorFormatter (server, version) {
 		};
 
 		// Log the resource portions of the error
-		server.logger.error('Unexpected GraphQL Error', extensions);
+		server.logger.error('Unexpected GraphQL Error', extensions.resource);
 
 		// return our custom formatted error, any additional info
 		// should be placed under extensions
