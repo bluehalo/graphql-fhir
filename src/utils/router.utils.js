@@ -92,24 +92,30 @@ module.exports.configureRoutes = server => {
 		let query_fields = {}, mutation_fields = {};
 
 		for (let i = 0; i < configs.length; i++) {
-			let config = configs[i];
+			let config = configs[i] || {};
+			// If we have properties, than there are no capabilities defined for this profile
+			if (Object.getOwnPropertyNames(config).length === 0) {
+				continue;
+			}
 			// Assign new properties from each one into queries and mutations
 			Object.assign(query_fields, config.query);
 			Object.assign(mutation_fields, config.mutation);
-			// Go ahead and add the endpoint for instances
-			let { path: instance_path, query, name } = config.instance_query;
+			// Go ahead and add the endpoint for instances if it is defined
+			if (config.instance_query) {
+				let { path: instance_path, query, name } = config.instance_query;
 
-			server.app.use(
-				// Path for this graphql endpoint
-				path.join(instance_path, '([\$])graphql'),
-				// Add our validation middlware
-				authenticationMiddleware(server, version),
-				// middleware wrapper for Graphql Express
-				setupGraphqlServer(server, version, {
-					formatError: graphqlErrorFormatter(version),
-					schema: generateInstanceSchema(version, name, query)
-				})
-			);
+				server.app.use(
+					// Path for this graphql endpoint
+					path.join(instance_path, '([\$])graphql'),
+					// Add our validation middlware
+					authenticationMiddleware(server, version),
+					// middleware wrapper for Graphql Express
+					setupGraphqlServer(server, version, {
+						formatError: graphqlErrorFormatter(version),
+						schema: generateInstanceSchema(version, name, query)
+					})
+				);
+			}
 		}
 
 		// Generate a top-level schema for all resources in this version
