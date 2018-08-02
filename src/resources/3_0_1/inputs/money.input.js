@@ -1,19 +1,15 @@
-const {
-	GraphQLInputObjectType
-} = require('graphql');
+const { GraphQLInputObjectType } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
+
+
 
 /**
  * @name exports
- * @summary Money Fields
+ * @summary Money Input Schema
  */
-let MoneyInput = new GraphQLInputObjectType({
-	name: 'MoneyInput',
-	description: 'An amount of economic utility in some recognized currency.',
+module.exports = new GraphQLInputObjectType({
+	name: 'Money_Input',
+	description: 'Base StructureDefinition for Money Type.',
 	fields: () => extendSchema(require('./quantity.input'))
 });
-
-module.exports = MoneyInput;

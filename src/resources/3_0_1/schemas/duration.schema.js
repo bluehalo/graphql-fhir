@@ -1,19 +1,15 @@
-const {
-	GraphQLObjectType
-} = require('graphql');
+const { GraphQLObjectType } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
+
+
 
 /**
  * @name exports
- * @summary Duration Fields
+ * @summary Duration Schema
  */
-let Duration = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Duration',
-	description: 'A length of time.',
+	description: 'Base StructureDefinition for Duration Type.',
 	fields: () => extendSchema(require('./quantity.schema'))
 });
-
-module.exports = Duration;

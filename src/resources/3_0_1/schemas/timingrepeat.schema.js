@@ -1,64 +1,17 @@
-const {
-	GraphQLObjectType,
-	GraphQLEnumType,
-	GraphQLFloat,
-	GraphQLList,
-	GraphQLInt
-} = require('graphql');
-
-// Scalars
-const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
-const TimeScalar = require('../scalars/time.scalar');
 const CodeScalar = require('../scalars/code.scalar');
+const TimeScalar = require('../scalars/time.scalar');
+const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
+const { GraphQLObjectType, GraphQLInt, GraphQLFloat, GraphQLList } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
-let TimingRepeatDurationUnitType = new GraphQLEnumType({
-	name: 'TimingRepeatDurationUnitType',
-	values: {
-		s: { value: 's' },
-		min: { value: 'min' },
-		h: { value: 'h' },
-		d: { value: 'd' },
-		wk: { value: 'wk' },
-		mo: { value: 'mo' },
-		a: { value: 'a' }
-	}
-});
 
-let TimingRepeatPeriodUnitType = new GraphQLEnumType({
-	name: 'TimingRepeatPeriodUnitType',
-	values: {
-		s: { value: 's' },
-		min: { value: 'min' },
-		h: { value: 'h' },
-		d: { value: 'd' },
-		wk: { value: 'wk' },
-		mo: { value: 'mo' },
-		a: { value: 'a' }
-	}
-});
-
-let TimingRepeatDayOfWeekType = new GraphQLEnumType({
-	name: 'TimingRepeatDayOfWeekType',
-	values: {
-		mon: { value: 'mon' },
-		tue: { value: 'tue' },
-		wed: { value: 'wed' },
-		thu: { value: 'thu' },
-		fri: { value: 'fri' },
-		sat: { value: 'sat' },
-		sun: { value: 'sun' }
-	}
-});
 
 /**
  * @name exports
- * @summary TimingRepeat Fields
+ * @summary TimingRepeat Schema
  */
-let TimingRepeat = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'TimingRepeat',
 	description: 'A set of rules that describe when the event is scheduled.',
 	fields: () => extendSchema(require('./element.schema'), {
@@ -80,7 +33,7 @@ let TimingRepeat = new GraphQLObjectType({
 		},
 		_count: {
 			type: require('./element.schema'),
-			description: 'Extensions for count'
+			description: 'A total count of the desired number of repetitions.'
 		},
 		countMax: {
 			type: GraphQLInt,
@@ -88,7 +41,7 @@ let TimingRepeat = new GraphQLObjectType({
 		},
 		_countMax: {
 			type: require('./element.schema'),
-			description: 'Extensions for countMax'
+			description: 'A maximum value for the count of the desired repetitions (e.g. do something 6-8 times).'
 		},
 		duration: {
 			type: GraphQLFloat,
@@ -96,7 +49,7 @@ let TimingRepeat = new GraphQLObjectType({
 		},
 		_duration: {
 			type: require('./element.schema'),
-			description: 'Extensions for duration'
+			description: 'How long this thing happens for when it happens.'
 		},
 		durationMax: {
 			type: GraphQLFloat,
@@ -104,15 +57,16 @@ let TimingRepeat = new GraphQLObjectType({
 		},
 		_durationMax: {
 			type: require('./element.schema'),
-			description: 'Extensions for durationMax'
+			description: 'The upper limit of how long this thing happens for when it happens.'
 		},
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/units-of-time
 		durationUnit: {
-			type: TimingRepeatDurationUnitType,
+			type: CodeScalar,
 			description: 'The units of time for the duration, in UCUM units.'
 		},
 		_durationUnit: {
 			type: require('./element.schema'),
-			description: 'Extensions for durationUnit'
+			description: 'The units of time for the duration, in UCUM units.'
 		},
 		frequency: {
 			type: GraphQLInt,
@@ -120,7 +74,7 @@ let TimingRepeat = new GraphQLObjectType({
 		},
 		_frequency: {
 			type: require('./element.schema'),
-			description: 'Extensions for frequency'
+			description: 'The number of times to repeat the action within the specified period / period range (i.e. both period and periodMax provided).'
 		},
 		frequencyMax: {
 			type: GraphQLInt,
@@ -128,39 +82,41 @@ let TimingRepeat = new GraphQLObjectType({
 		},
 		_frequencyMax: {
 			type: require('./element.schema'),
-			description: 'Extensions for frequencyMax'
+			description: 'If present, indicates that the frequency is a range - so to repeat between [frequency] and [frequencyMax] times within the period or period range.'
 		},
 		period: {
 			type: GraphQLFloat,
-			description: 'Indicates the duration of time over which repetitions are to occur; e.g. to express \"3 times per day\", 3 would be the frequency and \"1 day\" would be the period.'
+			description: 'Indicates the duration of time over which repetitions are to occur; e.g. to express \'3 times per day\', 3 would be the frequency and \'1 day\' would be the period.'
 		},
 		_period: {
 			type: require('./element.schema'),
-			description: 'Extensions for period'
+			description: 'Indicates the duration of time over which repetitions are to occur; e.g. to express \'3 times per day\', 3 would be the frequency and \'1 day\' would be the period.'
 		},
 		periodMax: {
 			type: GraphQLFloat,
-			description: 'If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as \"do this once every 3-5 days.'
+			description: 'If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as \'do this once every 3-5 days.'
 		},
 		_periodMax: {
 			type: require('./element.schema'),
-			description: 'Extensions for periodMax'
+			description: 'If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as \'do this once every 3-5 days.'
 		},
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/units-of-time
 		periodUnit: {
-			type: TimingRepeatPeriodUnitType,
+			type: CodeScalar,
 			description: 'The units of time for the period in UCUM units.'
 		},
 		_periodUnit: {
 			type: require('./element.schema'),
-			description: 'Extensions for periodUnit'
+			description: 'The units of time for the period in UCUM units.'
 		},
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/days-of-week
 		dayOfWeek: {
-			type: new GraphQLList(TimingRepeatDayOfWeekType),
+			type: new GraphQLList(CodeScalar),
 			description: 'If one or more days of week is provided, then the action happens only on the specified day(s).'
 		},
 		_dayOfWeek: {
 			type: require('./element.schema'),
-			description: 'Extensions for dayOfWeek'
+			description: 'If one or more days of week is provided, then the action happens only on the specified day(s).'
 		},
 		timeOfDay: {
 			type: new GraphQLList(TimeScalar),
@@ -168,15 +124,16 @@ let TimingRepeat = new GraphQLObjectType({
 		},
 		_timeOfDay: {
 			type: require('./element.schema'),
-			description: 'Extensions for timeOfDay'
+			description: 'Specified time of day for action to take place.'
 		},
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/event-timing
 		when: {
 			type: new GraphQLList(CodeScalar),
 			description: 'Real world events that the occurrence of the event should be tied to.'
 		},
 		_when: {
 			type: require('./element.schema'),
-			description: 'Extensions for when'
+			description: 'Real world events that the occurrence of the event should be tied to.'
 		},
 		offset: {
 			type: UnsignedIntScalar,
@@ -184,9 +141,7 @@ let TimingRepeat = new GraphQLObjectType({
 		},
 		_offset: {
 			type: require('./element.schema'),
-			description: 'Extensions for offset'
+			description: 'The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event.'
 		}
 	})
 });
-
-module.exports = TimingRepeat;

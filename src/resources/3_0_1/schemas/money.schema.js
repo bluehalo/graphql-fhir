@@ -1,19 +1,15 @@
-const {
-	GraphQLObjectType
-} = require('graphql');
+const { GraphQLObjectType } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
+
+
 
 /**
  * @name exports
- * @summary Money Fields
+ * @summary Money Schema
  */
-let Money = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Money',
-	description: 'An amount of economic utility in some recognized currency.',
+	description: 'Base StructureDefinition for Money Type.',
 	fields: () => extendSchema(require('./quantity.schema'))
 });
-
-module.exports = Money;

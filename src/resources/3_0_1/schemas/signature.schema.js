@@ -1,61 +1,53 @@
-const {
-	GraphQLObjectType,
-	GraphQLString,
-	GraphQLFloat,
-	GraphQLList
-} = require('graphql');
-
-// Scalars
 const InstantScalar = require('../scalars/instant.scalar');
-const Base64Scalar = require('../scalars/base64.scalar');
+const UriScalar = require('../scalars/uri.scalar');
 const CodeScalar = require('../scalars/code.scalar');
+const Base64BinaryScalar = require('../scalars/base64binary.scalar');
+const { GraphQLObjectType, GraphQLNonNull, GraphQLList } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
+
+
 
 /**
  * @name exports
- * @summary Signature Fields
+ * @summary Signature Schema
  */
-let Signature = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Signature',
-	description: 'A digital signature along with supporting context.'
-		+ ' The signature may be electronic/cryptographic in nature, or a graphical image representing a hand-written signature, or a signature process.'
-		+ ' Different signature approaches have different utilities.',
+	description: 'Base StructureDefinition for Signature Type.',
 	fields: () => extendSchema(require('./element.schema'), {
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/signature-type
 		type: {
-			type: new GraphQLList(require('./coding.schema')),
-			description: 'An indication of the reason that the entity signed this document.'
-				+ ' This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.'
+			type: new GraphQLList(new GraphQLNonNull(require('./coding.schema'))),
+			description: 'An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.'
 		},
 		when: {
-			type: InstantScalar,
+			type: new GraphQLNonNull(InstantScalar),
 			description: 'When the digital signature was signed.'
 		},
 		_when: {
 			type: require('./element.schema'),
-			description: 'Extensions for numerator'
+			description: 'When the digital signature was signed.'
 		},
 		whoUri: {
-			type: GraphQLFloat,
+			type: new GraphQLNonNull(UriScalar),
 			description: 'A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).'
 		},
 		_whoUri: {
 			type: require('./element.schema'),
-			description: 'Extensions for whoUri'
+			description: 'A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).'
 		},
 		whoReference: {
-			type: require('./reference.schema'),
+			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).'
 		},
 		onBehalfOfUri: {
-			type: GraphQLString,
+			type: UriScalar,
 			description: 'A reference to an application-usable description of the identity that is represented by the signature.'
 		},
 		_onBehalfOfUri: {
 			type: require('./element.schema'),
-			description: 'Extensions for onBehalfOfUri'
+			description: 'A reference to an application-usable description of the identity that is represented by the signature.'
 		},
 		onBehalfOfReference: {
 			type: require('./reference.schema'),
@@ -67,17 +59,15 @@ let Signature = new GraphQLObjectType({
 		},
 		_contentType: {
 			type: require('./element.schema'),
-			description: 'Extensions for contentType'
+			description: 'A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc.'
 		},
 		blob: {
-			type: Base64Scalar,
+			type: Base64BinaryScalar,
 			description: 'The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.'
 		},
 		_blob: {
 			type: require('./element.schema'),
-			description: 'Extensions for blob'
+			description: 'The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.'
 		}
 	})
 });
-
-module.exports = Signature;

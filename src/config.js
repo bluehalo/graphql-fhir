@@ -3,7 +3,7 @@
  * @summary Versions constants. These are the versions we support
  */
 const VERSION = {
-	// DSTU2: 'dstu2',
+	'1_0_2': '1_0_2',
 	'3_0_1': '3_0_1',
 	// R4: 'r4'
 };

@@ -1,19 +1,15 @@
-const {
-	GraphQLInputObjectType
-} = require('graphql');
+const { GraphQLInputObjectType } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
+
+
 
 /**
  * @name exports
- * @summary Age Fields
+ * @summary Age Input Schema
  */
-let AgeInput = new GraphQLInputObjectType({
-	name: 'AgeInput',
-	description: 'A time period defined by a start and end date and optionally time.',
+module.exports = new GraphQLInputObjectType({
+	name: 'Age_Input',
+	description: 'Base StructureDefinition for Age Type.',
 	fields: () => extendSchema(require('./quantity.input'))
 });
-
-module.exports = AgeInput;

@@ -1,4 +1,5 @@
-const { internal, notFound } = require('./error.utils');
+const { internal, notFound, formatErrorForGraphQL } = require('./error.utils');
+const { GraphQLError } = require('graphql');
 const { VERSION } = require('../config');
 
 describe('Error Utils Test', () => {
@@ -7,12 +8,14 @@ describe('Error Utils Test', () => {
 
 		test('should return an operation outcome', () => {
 			let error = internal(VERSION['3_0_1']);
+
 			expect(error.resourceType).toEqual('OperationOutcome');
 		});
 
 		test('should return an operation outcome with issue code of not-found', () => {
 			let error = internal(VERSION['3_0_1']);
 			let [ issue ] = error.issue;
+
 			expect(issue.code).toEqual('exception');
 			expect(issue.severity).toEqual('error');
 		});
@@ -20,6 +23,7 @@ describe('Error Utils Test', () => {
 		test('should return an operation outcome with the provided diagnostics', () => {
 			let error = internal(VERSION['3_0_1'], 'Some Message');
 			let [ issue ] = error.issue;
+
 			expect(issue.diagnostics).toEqual('Some Message');
 		});
 
@@ -29,12 +33,14 @@ describe('Error Utils Test', () => {
 
 		test('should return an operation outcome', () => {
 			let error = notFound(VERSION['3_0_1']);
+
 			expect(error.resourceType).toEqual('OperationOutcome');
 		});
 
 		test('should return an operation outcome with issue code of not-found', () => {
 			let error = notFound(VERSION['3_0_1']);
 			let [ issue ] = error.issue;
+
 			expect(issue.code).toEqual('not-found');
 			expect(issue.severity).toEqual('error');
 		});
@@ -42,7 +48,27 @@ describe('Error Utils Test', () => {
 		test('should return an operation outcome with the provided diagnostics', () => {
 			let error = notFound(VERSION['3_0_1'], 'Some Message');
 			let [ issue ] = error.issue;
+
 			expect(issue.diagnostics).toEqual('Some Message');
+		});
+
+	});
+
+	describe('formatErrorForGraphQL', () => {
+
+		test('should return a valid GraphQL error', () => {
+			let operationOutcome = { issue: [{ diagnostics: 'FUBAR' }] };
+			let error = formatErrorForGraphQL(operationOutcome);
+
+			expect(error instanceof GraphQLError).toBeTruthy();
+		});
+
+		test('should return any provided JSON embedded in the extensions property', () => {
+			let operationOutcome = { issue: [{ diagnostics: 'FUBAR' }] };
+			let error = formatErrorForGraphQL(operationOutcome);
+
+			expect(error.extensions.resource).toBeDefined();
+			expect(error.extensions.resource).toEqual(operationOutcome);
 		});
 
 	});

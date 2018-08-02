@@ -35,7 +35,8 @@ function notFound (version, message) {
 // This should only be called with an operationOutcome, normal errors should first be
 // converted to an operationOutcome before calling this
 function formatErrorForGraphQL (operationOutcome) {
-	// Get the diagnostices from the operation outcome
+	// Get the diagnostics from the operation outcome. This should throw if
+	// they are not available, they're required properties on operation outcome
 	let diagnostics = operationOutcome.issue[0].diagnostics;
 	return new GraphQLError(diagnostics, null, null, null, null, null, { resource: operationOutcome });
 }
