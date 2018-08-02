@@ -1,19 +1,15 @@
-const {
-	GraphQLObjectType
-} = require('graphql');
+const { GraphQLObjectType } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
+
+
 
 /**
  * @name exports
- * @summary Distance Fields
+ * @summary Distance Schema
  */
-let Distance = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Distance',
-	description: 'A length - a value with a unit that is a physical distance.',
+	description: 'Base StructureDefinition for Distance Type.',
 	fields: () => extendSchema(require('./quantity.schema'))
 });
-
-module.exports = Distance;

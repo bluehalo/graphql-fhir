@@ -1,25 +1,21 @@
-const {
-	GraphQLObjectType,
-	GraphQLString
-} = require('graphql');
-
-// Scalars
+const CodeScalar = require('../scalars/code.scalar');
+const Base64BinaryScalar = require('../scalars/base64binary.scalar');
+const UriScalar = require('../scalars/uri.scalar');
 const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
 const DateTimeScalar = require('../scalars/datetime.scalar');
-const Base64Scalar = require('../scalars/base64.scalar');
-const CodeScalar = require('../scalars/code.scalar');
+const { GraphQLObjectType, GraphQLString } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
+
+
 
 /**
  * @name exports
- * @summary Attachment Fields
+ * @summary Attachment Schema
  */
-let Attachment = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'Attachment',
-	description: 'For referring to data content defined in other formats.',
+	description: 'Base StructureDefinition for Attachment Type.',
 	fields: () => extendSchema(require('./element.schema'), {
 		contentType: {
 			type: CodeScalar,
@@ -27,31 +23,32 @@ let Attachment = new GraphQLObjectType({
 		},
 		_contentType: {
 			type: require('./element.schema'),
-			description: 'Extensions for contentType'
+			description: 'Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.'
 		},
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/languages
 		language: {
 			type: CodeScalar,
 			description: 'The human language of the content. The value can be any valid value according to BCP 47.'
 		},
 		_language: {
 			type: require('./element.schema'),
-			description: 'Extensions for language'
+			description: 'The human language of the content. The value can be any valid value according to BCP 47.'
 		},
 		data: {
-			type: Base64Scalar,
+			type: Base64BinaryScalar,
 			description: 'The actual data of the attachment - a sequence of bytes. In XML, represented using base64.'
 		},
 		_data: {
 			type: require('./element.schema'),
-			description: 'Extensions for data'
+			description: 'The actual data of the attachment - a sequence of bytes. In XML, represented using base64.'
 		},
 		url: {
-			type: GraphQLString,
+			type: UriScalar,
 			description: 'An alternative location where the data can be accessed.'
 		},
 		_url: {
 			type: require('./element.schema'),
-			description: 'Extensions for url'
+			description: 'An alternative location where the data can be accessed.'
 		},
 		size: {
 			type: UnsignedIntScalar,
@@ -59,15 +56,15 @@ let Attachment = new GraphQLObjectType({
 		},
 		_size: {
 			type: require('./element.schema'),
-			description: 'Extensions for size'
+			description: 'The number of bytes of data that make up this attachment (before base64 encoding, if that is done).'
 		},
 		hash: {
-			type: Base64Scalar,
+			type: Base64BinaryScalar,
 			description: 'The calculated hash of the data using SHA-1. Represented using base64.'
 		},
 		_hash: {
 			type: require('./element.schema'),
-			description: 'Extensions for hash'
+			description: 'The calculated hash of the data using SHA-1. Represented using base64.'
 		},
 		title: {
 			type: GraphQLString,
@@ -75,7 +72,7 @@ let Attachment = new GraphQLObjectType({
 		},
 		_title: {
 			type: require('./element.schema'),
-			description: 'Extensions for title'
+			description: 'A label or set of text to display in place of the data.'
 		},
 		creation: {
 			type: DateTimeScalar,
@@ -83,9 +80,7 @@ let Attachment = new GraphQLObjectType({
 		},
 		_creation: {
 			type: require('./element.schema'),
-			description: 'Extensions for creation'
+			description: 'The date that the attachment was first created.'
 		}
 	})
 });
-
-module.exports = Attachment;

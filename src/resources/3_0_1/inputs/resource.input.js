@@ -1,22 +1,36 @@
-const {
-	GraphQLInputObjectType,
-	GraphQLString
-} = require('graphql');
-
-// Scalars
-const CodeScalar = require('../scalars/code.scalar');
 const IdScalar = require('../scalars/id.scalar');
+const UriScalar = require('../scalars/uri.scalar');
+const CodeScalar = require('../scalars/code.scalar');
+const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString } = require('graphql');
+
+const { extendSchema } = require('../../../utils/schema.utils');
+
+// TODO: Verify this is the correct resourceType
+let ResourceResourceInputType = new GraphQLEnumType({
+	name: 'ResourceResourceInputType',
+	values: {
+		Resource: { value: 'Resource' }
+	}
+});
 
 /**
  * @name exports
- * @summary Resource Fields
+ * @summary Resource Input Schema
  */
-let ResourceInput = new GraphQLInputObjectType({
-	name: 'ResourceInput',
-	description: 'This is the base resource type for everything.',
-	fields: () => ({
+module.exports = new GraphQLInputObjectType({
+	name: 'Resource_Input',
+	description: 'Base StructureDefinition for Resource Resource.',
+	fields: () => extendSchema({
+		resourceType: {
+			type: new GraphQLNonNull(ResourceResourceInputType),
+			description: 'Type of this resource'
+		},
 		id: {
 			type: IdScalar,
+			description: 'The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.'
+		},
+		_id: {
+			type: require('./element.input'),
 			description: 'The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.'
 		},
 		meta: {
@@ -24,14 +38,21 @@ let ResourceInput = new GraphQLInputObjectType({
 			description: 'The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.'
 		},
 		implicitRules: {
-			type: GraphQLString,
+			type: UriScalar,
 			description: 'A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.'
 		},
+		_implicitRules: {
+			type: require('./element.input'),
+			description: 'A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.'
+		},
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/languages
 		language: {
 			type: CodeScalar,
+			description: 'The base language in which the resource is written.'
+		},
+		_language: {
+			type: require('./element.input'),
 			description: 'The base language in which the resource is written.'
 		}
 	})
 });
-
-module.exports = ResourceInput;

@@ -97,6 +97,7 @@ class Server {
 
 	// Setup profile routes
 	setProfileRoutes () {
+		this.logger.info('Loading GraphQL schemas and setting routes');
 		// Pass this instance so I can grab the express app and any config
 		// that may or may not be necessary for the router utils
 		configureRoutes(this);
@@ -112,7 +113,7 @@ class Server {
 			// If there is an internal error, log the error and pass it on
 			// it should already be formatted as a GraphQL error at this point
 			if (err) {
-				this.logger.error(err);
+				this.logger.error('Unexpected Server error', err);
 				// Whenever a FHIR resource is sent back, the mimetype must be application/fhir+json
 				res.type('application/fhir+json');
 				return res.status(500).json(err);
@@ -127,7 +128,7 @@ class Server {
 			let version = parseVersionFromUrl(req.path, this.config);
 			let error = errorUtils.notFound(version);
 			// Log the error and send the response
-			this.logger.error(error);
+			this.logger.error('Not Found Error', error);
 			// Whenever a FHIR resource is sent back, the mimetype must be application/fhir+json
 			res.type('application/fhir+json');
 			res.status(404).json(error);

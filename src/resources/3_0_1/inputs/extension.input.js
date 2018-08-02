@@ -1,179 +1,163 @@
-const {
-	GraphQLInputObjectType,
-	GraphQLBoolean,
-	GraphQLString,
-	GraphQLFloat,
-	// GraphQLList,
-	GraphQLInt
-} = require('graphql');
-
-// Scalars
-const Base64BinaryScalar = require('../scalars/base64.scalar');
-const DateScalar = require('../scalars/date.scalar');
-const TimeScalar = require('../scalars/time.scalar');
-const DateTimeScalar = require('../scalars/datetime.scalar');
-const PositiveIntScalar = require('../scalars/positiveint.scalar');
-const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
+const UriScalar = require('../scalars/uri.scalar');
+const Base64BinaryScalar = require('../scalars/base64binary.scalar');
 const CodeScalar = require('../scalars/code.scalar');
-const UuidScalar = require('../scalars/uuid.scalar');
-const OidScalar = require('../scalars/oid.scalar');
+const DateScalar = require('../scalars/date.scalar');
+const DateTimeScalar = require('../scalars/datetime.scalar');
 const IdScalar = require('../scalars/id.scalar');
+const InstantScalar = require('../scalars/instant.scalar');
+const OidScalar = require('../scalars/oid.scalar');
+const PositiveIntScalar = require('../scalars/positiveint.scalar');
+const TimeScalar = require('../scalars/time.scalar');
+const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
+const { GraphQLInputObjectType, GraphQLNonNull, GraphQLBoolean, GraphQLFloat, GraphQLInt, GraphQLString } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
+
+
 
 /**
  * @name exports
- * @summary Extension Fields
+ * @summary Extension Input Schema
  */
-let ExtensionInput = new GraphQLInputObjectType({
-	name: 'ExtensionInput',
-	description: 'Optional Extension Element - found in all resources.',
+module.exports = new GraphQLInputObjectType({
+	name: 'Extension_Input',
+	description: 'Base StructureDefinition for Extension Type.',
 	fields: () => extendSchema(require('./element.input'), {
 		url: {
-			type: GraphQLString,
+			type: new GraphQLNonNull(UriScalar),
 			description: 'Source of the definition for the extension code - a logical name or a URL.'
 		},
 		_url: {
-			type: require('./extension.input'),
-			description: 'Extensions for url'
-		},
-		valueBoolean: {
-			type: GraphQLBoolean,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueBoolean: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueBoolean'
-		},
-		valueInteger: {
-			type: GraphQLInt,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueInteger: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueInteger'
-		},
-		valueDecimal: {
-			type: GraphQLFloat,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueDecimal: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueDecimal'
+			type: require('./element.input'),
+			description: 'Source of the definition for the extension code - a logical name or a URL.'
 		},
 		valueBase64Binary: {
 			type: Base64BinaryScalar,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
 		_valueBase64Binary: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueBase64Binary'
-		},
-		valueInstant: {
-			type: GraphQLString,
+			type: require('./element.input'),
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valueInstant: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueInstant'
-		},
-		valueString: {
-			type: GraphQLString,
+		valueBoolean: {
+			type: GraphQLBoolean,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valueString: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueString'
-		},
-		valueUri: {
-			type: GraphQLString,
+		_valueBoolean: {
+			type: require('./element.input'),
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueUri: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueUri'
-		},
-		valueDate: {
-			type: DateScalar,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueDate: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueDate'
-		},
-		valueDateTime: {
-			type: DateTimeScalar,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueDateTime: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueDateTime'
-		},
-		valueTime: {
-			type: TimeScalar,
-			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
-		},
-		_valueTime: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueTime'
 		},
 		valueCode: {
 			type: CodeScalar,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
 		_valueCode: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueCode'
-		},
-		valueOid: {
-			type: OidScalar,
+			type: require('./element.input'),
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valueOid: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueOid'
-		},
-		valueUuid: {
-			type: UuidScalar,
+		valueDate: {
+			type: DateScalar,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valueUuid: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueUuid'
+		_valueDate: {
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueDateTime: {
+			type: DateTimeScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueDateTime: {
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueDecimal: {
+			type: GraphQLFloat,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueDecimal: {
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
 		valueId: {
 			type: IdScalar,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
 		_valueId: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueId'
-		},
-		valueUnsignedInt: {
-			type: UnsignedIntScalar,
+			type: require('./element.input'),
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valueUnsignedInt: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueUnsignedInt'
-		},
-		valuePositiveInt: {
-			type: PositiveIntScalar,
+		valueInstant: {
+			type: InstantScalar,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
-		_valuePositiveInt: {
-			type: require('./extension.input'),
-			description: 'Extensions for valuePositiveInt'
+		_valueInstant: {
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueInteger: {
+			type: GraphQLInt,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueInteger: {
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
 		valueMarkdown: {
 			type: GraphQLString,
 			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
 		_valueMarkdown: {
-			type: require('./extension.input'),
-			description: 'Extensions for valueMarkdown'
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueOid: {
+			type: OidScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueOid: {
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valuePositiveInt: {
+			type: PositiveIntScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valuePositiveInt: {
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueString: {
+			type: GraphQLString,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueString: {
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueTime: {
+			type: TimeScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueTime: {
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueUnsignedInt: {
+			type: UnsignedIntScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueUnsignedInt: {
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		valueUri: {
+			type: UriScalar,
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
+		},
+		_valueUri: {
+			type: require('./element.input'),
+			description: 'Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).'
 		},
 		valueAddress: {
 			type: require('./address.input'),
@@ -265,5 +249,3 @@ let ExtensionInput = new GraphQLInputObjectType({
 		}
 	})
 });
-
-module.exports = ExtensionInput;

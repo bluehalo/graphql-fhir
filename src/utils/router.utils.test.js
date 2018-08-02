@@ -1,4 +1,7 @@
-const { configureRoutes, parseVersionFromUrl } = require('./router.utils');
+const { configureRoutes, parseVersionFromUrl, graphqlErrorFormatter } = require('./router.utils');
+const { formatErrorForGraphQL } = require('./error.utils');
+const { GraphQLError } = require('graphql');
+const { VERSION } = require('../config');
 
 let server;
 
@@ -16,14 +19,6 @@ describe('Router Utils Test', () => {
 	});
 
 	describe('configureRoutes', () => {
-
-		test('should be able to configure routes without an error', () => {
-			function setupRoutes () {
-				configureRoutes(server);
-			}
-
-			expect(setupRoutes).not.toThrow();
-		});
 
 		test('should invoke the expressGraphql module with options and context', () => {
 			// Grab a mock
@@ -46,19 +41,10 @@ describe('Router Utils Test', () => {
 				// check that schema is never invalid
 				expect(result.schema).toBeDefined();
 			});
-		});
-
-		test('should not add a graphiql endpoint if IS_PRODUCTION is true', () => {
-			// configure routes
-			configureRoutes(server);
-			// check the calls to server.app.use
-			let mock = server.app.use.mock;
-			// We should have one per profile per version and one per version
-			// we can check for length > 0
-			expect(mock.calls.length).toBeGreaterThan(0);
-			// the last one for production should be a root schema with
-			// the path ending with /([\$])graphql
-			let args = mock.calls[mock.calls.length - 1];
+			// It should also add a graphql endpoint as the last entry
+			// to app.use as opposed to a graphiql endpoint
+			let use_mock = server.app.use.mock;
+			let args = use_mock.calls[mock.calls.length - 1];
 			expect(args[0]).toEqual(expect.stringContaining('/([\$])graphql'));
 		});
 
@@ -97,6 +83,52 @@ describe('Router Utils Test', () => {
 		test('should default to the defaultVersion if unable to parse a valid version', () => {
 			let version = parseVersionFromUrl('/12_0_2/graphiql', { defaultVersion: '3_0_2' });
 			expect(version).toEqual('3_0_2');
+		});
+
+	});
+
+	// NOTE: For all these tests to pass, VERSION must refer to a valid version
+	// that contains an operation outcome
+	describe('graphqlErrorFormatter', () => {
+
+		test('should return an error formatting function', () => {
+			let errorFormatter = graphqlErrorFormatter(VERSION['3_0_1']);
+
+			expect(typeof errorFormatter).toBe('function');
+		});
+
+		test('the error formatting function should return JSON formatted for GraphQL', () => {
+			let mockOperationOutcome = { issue: [{ diagnostics: 'FUBAR' }] };
+			let mockError = formatErrorForGraphQL(mockOperationOutcome);
+			let errorFormatter = graphqlErrorFormatter(VERSION['3_0_1']);
+			let results = errorFormatter(mockError);
+
+			// All four of these keys should be present, even if some of the values are undefined
+			let property_keys = Object.keys(results);
+			expect(property_keys.indexOf('path')).not.toBe(-1);
+			expect(property_keys.indexOf('message')).not.toBe(-1);
+			expect(property_keys.indexOf('locations')).not.toBe(-1);
+			expect(property_keys.indexOf('extensions')).not.toBe(-1);
+		});
+
+		test('the error formatting function should pass an error through if it contains extensions', () => {
+			let mockOperationOutcome = { issue: [{ diagnostics: 'FUBAR' }] };
+			let mockError = formatErrorForGraphQL(mockOperationOutcome);
+			let errorFormatter = graphqlErrorFormatter(VERSION['3_0_1']);
+			let results = errorFormatter(mockError);
+
+			expect(results.message).toEqual('FUBAR');
+			expect(results.extensions.resource).toEqual(mockOperationOutcome);
+		});
+
+		test('the error formatting function should create an operation outcome if extensions are not present', () => {
+			let mockError = new GraphQLError('NormalError');
+			let errorFormatter = graphqlErrorFormatter(VERSION['3_0_1']);
+			let results = errorFormatter(mockError);
+
+			expect(results.message).toBe('NormalError');
+			expect(results.extensions.resource).toBeDefined();
+			expect(results.extensions.resource.resourceType).toBe('OperationOutcome');
 		});
 
 	});

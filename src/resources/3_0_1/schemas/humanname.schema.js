@@ -1,42 +1,26 @@
-const {
-	GraphQLObjectType,
-	GraphQLEnumType,
-	GraphQLString,
-	GraphQLList
-} = require('graphql');
+const CodeScalar = require('../scalars/code.scalar');
+const { GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql');
 
-// Utils
-const { resolve } = require('../../../utils/resolve.utils');
-const { extendSchema } = require(resolve('utils/schema.utils'));
+const { extendSchema } = require('../../../utils/schema.utils');
 
-let HumanNameUseType = new GraphQLEnumType({
-	name: 'HumanNameUseType',
-	values: {
-		usual: { value: 'usual' },
-		official: { value: 'official' },
-		temp: { value: 'temp' },
-		nickname: { value: 'nickname' },
-		anonymous: { value: 'anonymous' },
-		old: { value: 'old' },
-		maiden: { value: 'maiden' }
-	}
-});
+
 
 /**
  * @name exports
- * @summary HumanName Fields
+ * @summary HumanName Schema
  */
-let HumanName = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
 	name: 'HumanName',
-	description: 'A human\'s name with the ability to identify parts and usage.',
+	description: 'Base StructureDefinition for HumanName Type.',
 	fields: () => extendSchema(require('./element.schema'), {
+		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/name-use
 		use: {
-			type: HumanNameUseType,
+			type: CodeScalar,
 			description: 'Identifies the purpose for this name.'
 		},
 		_use: {
 			type: require('./element.schema'),
-			description: 'Extensions for use'
+			description: 'Identifies the purpose for this name.'
 		},
 		text: {
 			type: GraphQLString,
@@ -44,7 +28,7 @@ let HumanName = new GraphQLObjectType({
 		},
 		_text: {
 			type: require('./element.schema'),
-			description: 'Extensions for text'
+			description: 'A full text representation of the name.'
 		},
 		family: {
 			type: GraphQLString,
@@ -52,7 +36,7 @@ let HumanName = new GraphQLObjectType({
 		},
 		_family: {
 			type: require('./element.schema'),
-			description: 'Extensions for family'
+			description: 'The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.'
 		},
 		given: {
 			type: new GraphQLList(GraphQLString),
@@ -60,7 +44,7 @@ let HumanName = new GraphQLObjectType({
 		},
 		_given: {
 			type: require('./element.schema'),
-			description: 'Extensions for given'
+			description: 'Given name.'
 		},
 		prefix: {
 			type: new GraphQLList(GraphQLString),
@@ -68,7 +52,7 @@ let HumanName = new GraphQLObjectType({
 		},
 		_prefix: {
 			type: require('./element.schema'),
-			description: 'Extensions for prefix'
+			description: 'Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.'
 		},
 		suffix: {
 			type: new GraphQLList(GraphQLString),
@@ -76,14 +60,11 @@ let HumanName = new GraphQLObjectType({
 		},
 		_suffix: {
 			type: require('./element.schema'),
-			description: 'Extensions for suffix'
+			description: 'Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.'
 		},
-
 		period: {
 			type: require('./period.schema'),
 			description: 'Indicates the period of time when this name was valid for the named person.'
 		}
 	})
 });
-
-module.exports = HumanName;
