@@ -248,13 +248,13 @@ module.exports.patientResolver = function patientResolver (root, args, context, 
 ### Short term goals:
 
 - [ ] Authentication Initializers and passport support
-- [ ] Better documentation on setup and configurations
+- [x] Better documentation on setup and configurations
 - [x] Change return format for ResourceList queries to a FHIR Bundle instead of a GraphQLList
 - [ ] Implementation guides and demos
 - [ ] Support for more resources
-	- [ ] Starting with support for the USCore resources, but we will eventually be able to include any resource we would like.
+	- [ ] USCore resources.
 - [ ] Support for more versions
-	- [x] DSTU2 (1.0.2) is coming soon. We are updating our generator which will generate all the necessary schemas, parameters, scalars, input types, and GraphQL code.
+	- [x] DSTU2 (1.0.2).
 	- [x] STU3 (3.0.1).
 	- [ ] R4
 	
