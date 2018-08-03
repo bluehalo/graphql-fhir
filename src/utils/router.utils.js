@@ -55,7 +55,7 @@ function setupGraphqlServer (server, version, options) {
 }
 
 // Helper for formatting graphql errors
-function graphqlErrorFormatter (version) {
+function graphqlErrorFormatter (server, version) {
 	return (err) => {
 		// If we already have a graphql formatted error than this error is probably
 		// intentionally thrown. If it is not, the FHIR spec says for GraphQL errors
@@ -64,6 +64,11 @@ function graphqlErrorFormatter (version) {
 			resource: errorUtils.internal(version, err.message)
 		};
 
+		// Log the resource portions of the error
+		server.logger.error('Unexpected GraphQL Error', extensions.resource);
+
+		// return our custom formatted error, any additional info
+		// should be placed under extensions
 		return {
 			path: err.path,
 			message: err.message,
@@ -137,7 +142,7 @@ function configureRoutes (server) {
 				authenticationMiddleware(server, version),
 				// middleware wrapper for Graphql Express
 				setupGraphqlServer(server, version, {
-					formatError: graphqlErrorFormatter(version),
+					formatError: graphqlErrorFormatter(server, version),
 					schema: rootSchema,
 					graphiql: true
 				})
