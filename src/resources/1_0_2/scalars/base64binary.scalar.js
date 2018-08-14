@@ -1,5 +1,4 @@
 const { GraphQLScalarType } = require('graphql');
-const { GraphQLError } = require('graphql/error');
 const { Kind } = require('graphql/language');
 
 /**
