@@ -39,7 +39,6 @@ function allowedScopes (name, action) {
 */
 function scopeInvariant (options, resolver) {
 	let { action, name, version } = options;
-	// let errorMessage = `You do not have sufficient scope to access this ${name} resource.`;
 
 	return function scopeInvariantResolver (root, args, ctx, info) {
 		let token = context.req && context.req.user && context.req.user.token;
