@@ -1,5 +1,4 @@
 const { GraphQLScalarType } = require('graphql');
-const { GraphQLError } = require('graphql/error');
 const { Kind } = require('graphql/language');
 
 /**
@@ -13,14 +12,10 @@ module.exports = new GraphQLScalarType({
 	serialize: value => value,
 	// TODO: Implement proper parsing and sanitization here
 	// Throw a GraphQL Error if unable to parse or sanitize error
-	parseValue: (value, ast) => {
-		return value;
-	},
+	parseValue: (value, ast) => value,
 	// TODO: Implement proper parsing and sanitization here
 	parseLiteral: ast => {
-		let { kind, value } = ast;
-		return kind === Kind.STRING
-			? value
-			: undefined;
+		let { value } = ast;
+		return value;
 	}
 });
