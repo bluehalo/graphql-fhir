@@ -95,7 +95,7 @@ describe('Router Utils Test', () => {
 	describe('graphqlErrorFormatter', () => {
 
 		test('should return an error formatting function', () => {
-			let errorFormatter = graphqlErrorFormatter(console, VERSION['3_0_1']);
+			let errorFormatter = graphqlErrorFormatter(logger, VERSION['3_0_1']);
 
 			expect(typeof errorFormatter).toBe('function');
 		});
