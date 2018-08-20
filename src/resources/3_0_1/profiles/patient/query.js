@@ -12,16 +12,6 @@ const {
 	patientInstanceResolver
 } = require('./resolver');
 
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
-
-let scopeOptions = {
-	name: 'Patient',
-	action: 'read',
-	version: '3_0_1'
-};
-
 /**
  * @name exports.PatientQuery
  * @summary Patient Query.
@@ -29,7 +19,7 @@ let scopeOptions = {
 module.exports.PatientQuery = {
 	args: Object.assign({}, CommonArgs, PatientArgs),
 	description: 'Query for a single Patient',
-	resolve: scopeInvariant(scopeOptions, patientResolver),
+	resolve: patientResolver,
 	type: PatientSchema
 };
 
@@ -40,7 +30,7 @@ module.exports.PatientQuery = {
 module.exports.PatientListQuery = {
 	args: Object.assign({}, CommonArgs, PatientArgs),
 	description: 'Query for multiple Patients',
-	resolve: scopeInvariant(scopeOptions, patientListResolver),
+	resolve: patientListResolver,
 	type: BundleSchema
 };
 
@@ -50,6 +40,6 @@ module.exports.PatientListQuery = {
  */
 module.exports.PatientInstanceQuery = {
 	description: 'Get information about a single Patient',
-	resolve: scopeInvariant(scopeOptions, patientInstanceResolver),
+	resolve: patientInstanceResolver,
 	type: PatientSchema
 };
