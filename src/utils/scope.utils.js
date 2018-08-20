@@ -4,6 +4,10 @@ const {
 	formatErrorForGraphQL
 } = require('./error.utils');
 
+const {
+	SERVER_CONFIG
+} = require('../config');
+
 /**
 * @name allowedScopes
 * @description Generate an array of expected scopes. If a user is accessing a
@@ -15,16 +19,15 @@ const {
 * for the request to be successful
 */
 function allowedScopes (name, action) {
-	let lowercaseName = name.toLowerCase();
 	return [
 		'user/*.*',
 		`user/*.${action}`,
-		`user/${lowercaseName}.*`,
-		`user/${lowercaseName}.${action}`,
-		`${lowercaseName}/*.*`,
-		`${lowercaseName}/*.${action}`,
-		`${lowercaseName}/${name}.*`,
-		`${lowercaseName}/${name}.${action}`
+		`user/${name}.*`,
+		`user/${name}.${action}`,
+		'patient/*.*',
+		`patient/*.${action}`,
+		`patient/${name}.*`,
+		`patient/${name}.${action}`
 	];
 }
 
@@ -37,17 +40,39 @@ function allowedScopes (name, action) {
 * @example Usage
 * scopeInvariant({ action: 'read', name: 'Account', version: '3_0_1' }, accountResolver);
 */
-function scopeInvariant (options, resolver) {
+function scopeInvariant (options = {}, resolver) {
 	let { action, name, version } = options;
 
+	// If any of these arguments are missing, this check will not be able to work
+	// correctly, return an internal server error with a helpful message
+	if (!action || !name || !version) {
+		let errorMessage = 'Insufficent arguments provided to `scopeInvariant`. ';
+		errorMessage += 'You must provide an options object with name, action, ';
+		errorMessage += `and version. You provided ${JSON.stringify(options)}`;
+
+		return formatErrorForGraphQL(
+			internal(version || SERVER_CONFIG.defaultVersion, errorMessage)
+		);
+	}
+
+	// If the developer configured this incorrectly, let's give him a useful
+	// error message.
+	if (typeof resolver !== 'function') {
+		let errorMessage = 'The resolver function provided to `scopeInvariant` ';
+		errorMessage += 'must be a function. Did you forget to include your ';
+		errorMessage += 'resolver when you called scopeInvariant with ' + name;
+
+		return formatErrorForGraphQL(internal(version, errorMessage));
+	}
+
 	return function scopeInvariantResolver (root, args, ctx, info) {
-		let token = context.req && context.req.user && context.req.user.token;
+		let token = ctx && ctx.req && ctx.req.user && ctx.req.user.token;
 		let expectedScopes = allowedScopes(name, action);
-		let actualScopes = token.scopes;
+		let userScopes = token && token.scopes || [];
 
 		// Check if any of the expected scopes are present in the actual scopes
 		let hasSufficientScope = expectedScopes.some(validScope =>
-			actualScopes.indexOf(validScope) > -1
+			userScopes.indexOf(validScope) > -1
 		);
 
 		// If not, throw an insufficientScope error
@@ -56,16 +81,6 @@ function scopeInvariant (options, resolver) {
 			errorMessage += `access on this ${name} resource.`;
 
 			return formatErrorForGraphQL(insufficientScope(version, errorMessage));
-		}
-
-		// If the developer configured this incorrectly, give him an actually
-		// useful error message.
-		if (typeof resolver !== 'function') {
-			let errorMessage = 'The resolver function provided to `scopeInvariant` ';
-			errorMessage += 'must be a function. Did you forget to include your ';
-			errorMessage += 'resolver when you called scopeInvariant with ' + name;
-
-			return formatErrorForGraphQL(internal(version, errorMessage));
 		}
 		// We have passed scope and context checks, pass the request off
 		// to the actual resolver now

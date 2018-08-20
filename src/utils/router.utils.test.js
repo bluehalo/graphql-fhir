@@ -8,6 +8,9 @@ let server;
 // Mock the express-graphql module
 jest.mock('express-graphql', () => jest.fn());
 
+// Create a mock logger for our error handler
+let logger = { error: jest.fn() };
+
 describe('Router Utils Test', () => {
 
 	beforeEach(() => {
@@ -92,7 +95,7 @@ describe('Router Utils Test', () => {
 	describe('graphqlErrorFormatter', () => {
 
 		test('should return an error formatting function', () => {
-			let errorFormatter = graphqlErrorFormatter(VERSION['3_0_1']);
+			let errorFormatter = graphqlErrorFormatter(console, VERSION['3_0_1']);
 
 			expect(typeof errorFormatter).toBe('function');
 		});
@@ -100,7 +103,7 @@ describe('Router Utils Test', () => {
 		test('the error formatting function should return JSON formatted for GraphQL', () => {
 			let mockOperationOutcome = { issue: [{ diagnostics: 'FUBAR' }] };
 			let mockError = formatErrorForGraphQL(mockOperationOutcome);
-			let errorFormatter = graphqlErrorFormatter(VERSION['3_0_1']);
+			let errorFormatter = graphqlErrorFormatter(logger, VERSION['3_0_1']);
 			let results = errorFormatter(mockError);
 
 			// All four of these keys should be present, even if some of the values are undefined
@@ -114,7 +117,7 @@ describe('Router Utils Test', () => {
 		test('the error formatting function should pass an error through if it contains extensions', () => {
 			let mockOperationOutcome = { issue: [{ diagnostics: 'FUBAR' }] };
 			let mockError = formatErrorForGraphQL(mockOperationOutcome);
-			let errorFormatter = graphqlErrorFormatter(VERSION['3_0_1']);
+			let errorFormatter = graphqlErrorFormatter(logger, VERSION['3_0_1']);
 			let results = errorFormatter(mockError);
 
 			expect(results.message).toEqual('FUBAR');
@@ -123,7 +126,7 @@ describe('Router Utils Test', () => {
 
 		test('the error formatting function should create an operation outcome if extensions are not present', () => {
 			let mockError = new GraphQLError('NormalError');
-			let errorFormatter = graphqlErrorFormatter(VERSION['3_0_1']);
+			let errorFormatter = graphqlErrorFormatter(logger, VERSION['3_0_1']);
 			let results = errorFormatter(mockError);
 
 			expect(results.message).toBe('NormalError');
