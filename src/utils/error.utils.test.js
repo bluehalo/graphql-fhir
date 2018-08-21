@@ -1,6 +1,12 @@
-const { internal, notFound, formatErrorForGraphQL } = require('./error.utils');
 const { GraphQLError } = require('graphql');
 const { VERSION } = require('../config');
+
+const {
+	internal,
+	notFound,
+	insufficientScope,
+	formatErrorForGraphQL
+} = require('./error.utils');
 
 describe('Error Utils Test', () => {
 
@@ -47,6 +53,31 @@ describe('Error Utils Test', () => {
 
 		test('should return an operation outcome with the provided diagnostics', () => {
 			let error = notFound(VERSION['3_0_1'], 'Some Message');
+			let [ issue ] = error.issue;
+
+			expect(issue.diagnostics).toEqual('Some Message');
+		});
+
+	});
+
+	describe('insufficientScope', () => {
+
+		test('should return an operation outcome', () => {
+			let error = insufficientScope(VERSION['3_0_1']);
+
+			expect(error.resourceType).toEqual('OperationOutcome');
+		});
+
+		test('should return an operation outcome with issue code of forbidden', () => {
+			let error = insufficientScope(VERSION['3_0_1']);
+			let [ issue ] = error.issue;
+
+			expect(issue.code).toEqual('forbidden');
+			expect(issue.severity).toEqual('error');
+		});
+
+		test('should return an operation outcome with the provided diagnostics', () => {
+			let error = insufficientScope(VERSION['3_0_1'], 'Some Message');
 			let [ issue ] = error.issue;
 
 			expect(issue.diagnostics).toEqual('Some Message');

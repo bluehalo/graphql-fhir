@@ -31,6 +31,20 @@ function notFound (version, message) {
 	return value;
 }
 
+// Generate an not found error as an operation outcome
+function insufficientScope (version, message) {
+	let OperationOutcome = require(resolveFromVersion(version, 'inputs/operationoutcome.input'));
+	let { value } = mapJsonToSchema({
+		resourceType: 'OperationOutcome',
+		issue: {
+			code: 'forbidden',
+			severity: 'error',
+			diagnostics: message || '403: Insufficient scope'
+		}
+	}, OperationOutcome);
+	return value;
+}
+
 // Generate an error for GraphQL that puts an operation outcome in the extension field
 // This should only be called with an operationOutcome, normal errors should first be
 // converted to an operationOutcome before calling this
@@ -43,6 +57,7 @@ function formatErrorForGraphQL (operationOutcome) {
 
 module.exports = {
 	formatErrorForGraphQL,
+	insufficientScope,
 	notFound,
 	internal
 };

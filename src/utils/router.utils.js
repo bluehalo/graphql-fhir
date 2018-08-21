@@ -55,7 +55,7 @@ function setupGraphqlServer (server, version, options) {
 }
 
 // Helper for formatting graphql errors
-function graphqlErrorFormatter (server, version) {
+function graphqlErrorFormatter (logger, version) {
 	return (err) => {
 		// If we already have a graphql formatted error than this error is probably
 		// intentionally thrown. If it is not, the FHIR spec says for GraphQL errors
@@ -65,7 +65,7 @@ function graphqlErrorFormatter (server, version) {
 		};
 
 		// Log the resource portions of the error
-		server.logger.error('Unexpected GraphQL Error', extensions.resource);
+		logger.error('Unexpected GraphQL Error', extensions.resource);
 
 		// return our custom formatted error, any additional info
 		// should be placed under extensions
@@ -97,24 +97,30 @@ function configureRoutes (server) {
 		let query_fields = {}, mutation_fields = {};
 
 		for (let i = 0; i < configs.length; i++) {
-			let config = configs[i];
+			let config = configs[i] || {};
+			// If we have properties, than there are no capabilities defined for this profile
+			if (Object.getOwnPropertyNames(config).length === 0) {
+				continue;
+			}
 			// Assign new properties from each one into queries and mutations
 			Object.assign(query_fields, config.query);
 			Object.assign(mutation_fields, config.mutation);
-			// Go ahead and add the endpoint for instances
-			let { path: instance_path, query, name } = config.instance_query;
+			// Go ahead and add the endpoint for instances if it is defined
+			if (config.instance_query) {
+				let { path: instance_path, query, name } = config.instance_query;
 
-			server.app.use(
-				// Path for this graphql endpoint
-				path.join(instance_path, '([\$])graphql'),
-				// Add our validation middlware
-				authenticationMiddleware(server, version),
-				// middleware wrapper for Graphql Express
-				setupGraphqlServer(server, version, {
-					formatError: graphqlErrorFormatter(version),
-					schema: generateInstanceSchema(version, name, query)
-				})
-			);
+				server.app.use(
+					// Path for this graphql endpoint
+					path.join(instance_path, '([\$])graphql'),
+					// Add our validation middlware
+					authenticationMiddleware(server, version),
+					// middleware wrapper for Graphql Express
+					setupGraphqlServer(server, version, {
+						formatError: graphqlErrorFormatter(server.logger, version),
+						schema: generateInstanceSchema(version, name, query)
+					})
+				);
+			}
 		}
 
 		// Generate a top-level schema for all resources in this version
@@ -128,7 +134,7 @@ function configureRoutes (server) {
 			authenticationMiddleware(server, version),
 			// middleware wrapper for Graphql Express
 			setupGraphqlServer(server, version, {
-				formatError: graphqlErrorFormatter(version),
+				formatError: graphqlErrorFormatter(server.logger, version),
 				schema: rootSchema
 			})
 		);
@@ -142,7 +148,7 @@ function configureRoutes (server) {
 				authenticationMiddleware(server, version),
 				// middleware wrapper for Graphql Express
 				setupGraphqlServer(server, version, {
-					formatError: graphqlErrorFormatter(server, version),
+					formatError: graphqlErrorFormatter(server.logger, version),
 					schema: rootSchema,
 					graphiql: true
 				})

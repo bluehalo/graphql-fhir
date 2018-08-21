@@ -4,8 +4,7 @@
  */
 const VERSION = {
 	'1_0_2': '1_0_2',
-	'3_0_1': '3_0_1',
-	// R4: 'r4'
+	'3_0_1': '3_0_1'
 };
 
 /**
@@ -14,6 +13,8 @@ const VERSION = {
  */
 const DATE_CONFIG = {
 	timezone: 'America/New_York',
+	// The following should not be edited unless you are using defaults that
+	// are different from what's defined in 3.0.1 structure defintions
 	date_format: 'YYYY-MM-DD',
 	time_format: 'HH:mm:ss',
 	datetime_format: 'YYYY-MM-DDTHH:mm:ss.SSSSZ'
@@ -37,7 +38,8 @@ const SERVER_CONFIG = {
 
 /**
  * @name RESOURCE_CONFIG
- * @summary Resource configurations.
+ * @summary Resource configuration locations. These path's tell our
+ * server where to locate resources so we can enable them in GraphQL
  */
 const RESOURCE_CONFIG = {
 	// base folder for all the resources relative to src
