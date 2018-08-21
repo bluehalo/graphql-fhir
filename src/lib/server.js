@@ -126,7 +126,6 @@ class Server {
 		// Errors should be passed through with next
 		this.app.use((err, req, res, next) => {
 			// If there is an internal error, log the error and pass it on
-			// it the error is not formatted as an operation outcome, do so now
 			if (err) {
 				let version = parseVersionFromUrl(req.path, this.config);
 				let error = errorUtils.internal(version, err.message);
