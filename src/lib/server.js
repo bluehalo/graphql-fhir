@@ -126,12 +126,15 @@ class Server {
 		// Errors should be passed through with next
 		this.app.use((err, req, res, next) => {
 			// If there is an internal error, log the error and pass it on
-			// it should already be formatted as a GraphQL error at this point
+			// it the error is not formatted as an operation outcome, do so now
 			if (err) {
-				this.logger.error('Unexpected Server error', err);
+				let version = parseVersionFromUrl(req.path, this.config);
+				let error = errorUtils.internal(version, err.message);
+				// Log the error and send the response
+				this.logger.error('Unexpected Server error', error);
 				// Whenever a FHIR resource is sent back, the mimetype must be application/fhir+json
 				res.type('application/fhir+json');
-				return res.status(500).json(err);
+				return res.status(500).json(error);
 			}
 			// No error
 			next();

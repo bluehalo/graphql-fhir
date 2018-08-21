@@ -5,8 +5,8 @@ const superagent = require('superagent');
 module.exports = new Strategy(function bearer (token, done) {
 	// If we do not have a valid instrospection url, we cannot use this strategy
 	if (!auth.introspectionUrl) {
-		let errorMessage = 'No instrospection endpoint provided. You cannot use';
-		errorMessage += ' the bearer strategy without a valid instrospection url.';
+		let errorMessage = 'No instrospection endpoint provided. The server cannot';
+		errorMessage += ' use the bearer strategy without an instrospection url.';
 		return done(new Error(errorMessage));
 	}
 
