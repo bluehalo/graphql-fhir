@@ -4,7 +4,7 @@ const path = require('path');
 let base = path.join(__dirname, '../');
 
 let resolveFromVersion = (version = VERSION['3_0_1'], relative_path = '') => {
-	return path.join(base, RESOURCE_CONFIG.resource_base, version, relative_path);
+	return path.join(base, RESOURCE_CONFIG.resourceBase, version, relative_path);
 };
 
 let resolve = (relative_path = '') => {

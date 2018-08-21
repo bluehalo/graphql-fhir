@@ -12,7 +12,7 @@ const parse = (value, ast) => {
 	let sanitized_value = xss(sanitize(value)).trim();
 	let is_time = time_pattern.test(sanitized_value);
 	return is_time
-		? moment(sanitized_value, DATE_CONFIG.time_format).tz(DATE_CONFIG.timezone).format(DATE_CONFIG.time_format)
+		? moment(sanitized_value, DATE_CONFIG.timeFormat).tz(DATE_CONFIG.timezone).format(DATE_CONFIG.timeFormat)
 		: new GraphQLError(`Invalid time provided to TimeScalar. Format should be ${DATE_CONFIG}`);
 }
 

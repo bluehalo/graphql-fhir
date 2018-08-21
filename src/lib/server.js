@@ -2,6 +2,7 @@ const { configureRoutes, parseVersionFromUrl } = require('../utils/router.utils'
 const errorUtils = require('../utils/error.utils');
 const compression = require('compression');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const Winston = require('./winston');
 const express = require('express');
 const helmet = require('helmet');
@@ -79,6 +80,20 @@ class Server {
 			// Needs https running first
 			hsts: this.env.USE_HTTPS
 		}));
+		// return self for chaining
+		return this;
+	}
+
+	configurePassport () {
+		let { auth } = this.config;
+		// Only add passport if we have valid configurations
+		if (auth.strategy && auth.name) {
+			// Coerce the boolean for auth to true if we have a strategy
+			// to guard against misconfiguration of the server
+			auth.enabled = true;
+			// Add the strategy to passport
+			passport.use(require(auth.strategy));
+		}
 		// return self for chaining
 		return this;
 	}

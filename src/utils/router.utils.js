@@ -48,6 +48,8 @@ function generateInstanceSchema (version, name, query) {
 
 // Helper function for generating graphql server
 function setupGraphqlServer (server, version, options) {
+	// let { auth } = server.config;
+
 	return expressGraphql((req, res) => {
 		let context = { server, req, res, version };
 		return Object.assign({ context }, options);
@@ -90,7 +92,7 @@ function configureRoutes (server) {
 
 	versions.forEach(version => {
 		// Locate all the profile configurations for setting up routes
-		let config_paths = glob.sync(resolveFromVersion(version, RESOURCE_CONFIG.profiles_relative_path));
+		let config_paths = glob.sync(resolveFromVersion(version, RESOURCE_CONFIG.profilesRelativePath));
 		let configs = config_paths.map(require);
 		// Grab all the necessary properties from each config
 		// Ignore instance_queries for now, we will add them in later
@@ -113,7 +115,7 @@ function configureRoutes (server) {
 					// Path for this graphql endpoint
 					path.join(instance_path, '([\$])graphql'),
 					// Add our validation middlware
-					authenticationMiddleware(server, version),
+					authenticationMiddleware(server.config),
 					// middleware wrapper for Graphql Express
 					setupGraphqlServer(server, version, {
 						formatError: graphqlErrorFormatter(server.logger, version),
@@ -131,7 +133,7 @@ function configureRoutes (server) {
 			// Path for this graphql endpoint
 			`/${version}/([\$])graphql`,
 			// Add our validation middlware
-			authenticationMiddleware(server, version),
+			authenticationMiddleware(server.config),
 			// middleware wrapper for Graphql Express
 			setupGraphqlServer(server, version, {
 				formatError: graphqlErrorFormatter(server.logger, version),
@@ -144,8 +146,6 @@ function configureRoutes (server) {
 			server.app.use(
 				// Path for this graphiql endpoint
 				`/${version}/([\$])graphiql`,
-				// Add our validation middlware
-				authenticationMiddleware(server, version),
 				// middleware wrapper for Graphql Express
 				setupGraphqlServer(server, version, {
 					formatError: graphqlErrorFormatter(server.logger, version),
