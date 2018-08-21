@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let AllergyIntoleranceResourceType = new GraphQLEnumType({
 	name: 'AllergyIntoleranceResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-clinical-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-clinical-status
 		clinicalStatus: {
 			type: CodeScalar,
 			description: 'The clinical status of the allergy or intolerance.'
@@ -37,7 +36,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The clinical status of the allergy or intolerance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-verification-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-verification-status
 		verificationStatus: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).'
@@ -46,7 +45,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-type
 		type: {
 			type: CodeScalar,
 			description: 'Identification of the underlying physiological mechanism for the reaction risk.'
@@ -55,7 +54,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Identification of the underlying physiological mechanism for the reaction risk.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-category
 		category: {
 			type: new GraphQLList(CodeScalar),
 			description: 'Category of the identified substance.'
@@ -64,7 +63,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Category of the identified substance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality
 		criticality: {
 			type: CodeScalar,
 			description: 'Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance.'
@@ -73,7 +72,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/allergyintolerance-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/allergyintolerance-code
 		code: {
 			type: require('./codeableconcept.schema'),
 			description: 'Code for an allergy or intolerance statement (either a positive or a negated/excluded statement).  This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., \'Latex\'), an allergy or intolerance condition (e.g., \'Latex allergy\'), or a negated/excluded code for a specific substance or class (e.g., \'No latex allergy\') or a general or categorical negated statement (e.g.,  \'No known allergy\', \'No known drug allergies\').'

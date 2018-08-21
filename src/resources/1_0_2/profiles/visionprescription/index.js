@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'VisionPrescription',
-		path: '/3_0_1/VisionPrescription/:id',
+		path: '/1_0_2/VisionPrescription/:id',
 		query: VisionPrescriptionInstanceQuery
 	}
 };

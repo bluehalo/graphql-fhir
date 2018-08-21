@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const CommunicationArgs = require('../../parameters/communication.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	communicationResolver,
 	communicationListResolver,
 	communicationInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Communication',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.CommunicationQuery
@@ -19,7 +31,7 @@ const {
 module.exports.CommunicationQuery = {
 	args: Object.assign({}, CommonArgs, CommunicationArgs),
 	description: 'Query for a single Communication',
-	resolve: communicationResolver,
+	resolve: scopeInvariant(scopeOptions, communicationResolver),
 	type: CommunicationSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.CommunicationQuery = {
 module.exports.CommunicationListQuery = {
 	args: Object.assign({}, CommonArgs, CommunicationArgs),
 	description: 'Query for multiple Communications',
-	resolve: communicationListResolver,
+	resolve: scopeInvariant(scopeOptions, communicationListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.CommunicationListQuery = {
  */
 module.exports.CommunicationInstanceQuery = {
 	description: 'Get information about a single Communication',
-	resolve: communicationInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, communicationInstanceResolver),
 	type: CommunicationSchema
 };

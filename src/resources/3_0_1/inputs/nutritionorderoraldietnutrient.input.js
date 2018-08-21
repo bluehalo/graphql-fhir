@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'NutritionOrderOralDietNutrient_Input',
 	description: 'Class that defines the quantity and type of nutrient modifications (for example carbohydrate, fiber or sodium) required for the oral diet.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/nutrient-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/nutrient-code
 		modifier: {
 			type: require('./codeableconcept.input'),
 			description: 'The nutrient that is being modified such as carbohydrate or sodium.'

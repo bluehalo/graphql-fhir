@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ConsentArgs = require('../../parameters/consent.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	consentResolver,
 	consentListResolver,
 	consentInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Consent',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.ConsentQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ConsentQuery = {
 	args: Object.assign({}, CommonArgs, ConsentArgs),
 	description: 'Query for a single Consent',
-	resolve: consentResolver,
+	resolve: scopeInvariant(scopeOptions, consentResolver),
 	type: ConsentSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ConsentQuery = {
 module.exports.ConsentListQuery = {
 	args: Object.assign({}, CommonArgs, ConsentArgs),
 	description: 'Query for multiple Consents',
-	resolve: consentListResolver,
+	resolve: scopeInvariant(scopeOptions, consentListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ConsentListQuery = {
  */
 module.exports.ConsentInstanceQuery = {
 	description: 'Get information about a single Consent',
-	resolve: consentInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, consentInstanceResolver),
 	type: ConsentSchema
 };

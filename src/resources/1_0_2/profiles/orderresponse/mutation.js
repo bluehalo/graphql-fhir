@@ -7,12 +7,26 @@ const OrderResponseSchema = require('../../schemas/orderresponse.schema');
 // Inputs
 const OrderResponseInput = require('../../inputs/orderresponse.input');
 
-
+// Resolvers
 const {
 	orderresponseCreateResolver,
 	orderresponseUpdateResolver,
 	orderresponseDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'OrderResponse',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a OrderResponse record.'
 	},
 	resource: {
-		type: OrderResponseInput,
+		type: new GraphQLNonNull(OrderResponseInput),
 		description: 'OrderResponse Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a OrderResponse record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.OrderResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a OrderResponse',
-	resolve: orderresponseCreateResolver,
+	resolve: scopeInvariant(scopeOptions, orderresponseCreateResolver),
 	type: OrderResponseSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.OrderResponseCreateMutation = {
 module.exports.OrderResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple OrderResponses',
-	resolve: orderresponseUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, orderresponseUpdateResolver),
 	type: OrderResponseSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.OrderResponseUpdateMutation = {
 module.exports.OrderResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single OrderResponse',
-	resolve: orderresponseDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, orderresponseDeleteResolver),
 	type: OrderResponseSchema
 };

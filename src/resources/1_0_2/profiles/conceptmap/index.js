@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'ConceptMap',
-		path: '/3_0_1/ConceptMap/:id',
+		path: '/1_0_2/ConceptMap/:id',
 		query: ConceptMapInstanceQuery
 	}
 };

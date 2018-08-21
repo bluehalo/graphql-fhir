@@ -36,17 +36,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).    Specifically if \'boolean\' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/approach-site-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/approach-site-codes
 		siteCodeableConcept: {
 			type: require('./codeableconcept.schema'),
 			description: 'A coded specification of or a reference to the anatomic site where the medication first enters the body.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/approach-site-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/approach-site-codes
 		siteReference: {
 			type: require('./reference.schema'),
 			description: 'A coded specification of or a reference to the anatomic site where the medication first enters the body.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/route-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/route-codes
 		route: {
 			type: require('./codeableconcept.schema'),
 			description: 'A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject.'

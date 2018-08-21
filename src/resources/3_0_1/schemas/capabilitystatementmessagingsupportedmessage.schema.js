@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'CapabilityStatementMessagingSupportedMessage',
 	description: 'References to message definitions for messages this system can send or receive.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/event-capability-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/event-capability-mode
 		mode: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The mode of this event declaration - whether application is sender or receiver.'

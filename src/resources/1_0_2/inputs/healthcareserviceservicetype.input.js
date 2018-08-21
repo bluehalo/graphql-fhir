@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'HealthcareServiceServiceType_Input',
 	description: 'A specific type of service that may be delivered or performed.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		type: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'The specific type of service being delivered or performed.'

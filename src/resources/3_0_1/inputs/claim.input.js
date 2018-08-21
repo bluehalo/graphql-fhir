@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ClaimResourceInputType = new GraphQLEnumType({
 	name: 'ClaimResourceInputType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'The business identifier for the instance: claim number, pre-determination or pre-authorization number.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -37,17 +36,17 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The status of the resource instance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-type
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'The category of claim, eg, oral, pharmacy, vision, insitutional, professional.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-subtype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-subtype
 		subType: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'A finer grained suite of claim subtype codes which may convey Inpatient vs Outpatient and/or a specialty service. In the US the BillType.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-use
 		use: {
 			type: CodeScalar,
 			description: 'Complete (Bill or Claim), Proposed (Pre-Authorization), Exploratory (Pre-determination).'
@@ -88,12 +87,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The organization which is responsible for the bill, claim pre-determination, pre-authorization.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/process-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/process-priority
 		priority: {
 			type: require('./codeableconcept.input'),
 			description: 'Immediate (STAT), best effort (NORMAL), deferred (DEFER).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fundsreserve
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fundsreserve
 		fundsReserve: {
 			type: require('./codeableconcept.input'),
 			description: 'In the case of a Pre-Determination/Pre-Authorization the provider may request that funds in the amount of the expected Benefit be reserved (\'Patient\' or \'Provider\') to pay for the Benefits determined on the subsequent claim(s). \'None\' explicitly indicates no funds reserving is requested.'

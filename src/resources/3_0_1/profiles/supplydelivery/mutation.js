@@ -7,12 +7,26 @@ const SupplyDeliverySchema = require('../../schemas/supplydelivery.schema');
 // Inputs
 const SupplyDeliveryInput = require('../../inputs/supplydelivery.input');
 
-
+// Resolvers
 const {
 	supplydeliveryCreateResolver,
 	supplydeliveryUpdateResolver,
 	supplydeliveryDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'SupplyDelivery',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a SupplyDelivery record.'
 	},
 	resource: {
-		type: SupplyDeliveryInput,
+		type: new GraphQLNonNull(SupplyDeliveryInput),
 		description: 'SupplyDelivery Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a SupplyDelivery record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.SupplyDeliveryCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a SupplyDelivery',
-	resolve: supplydeliveryCreateResolver,
+	resolve: scopeInvariant(scopeOptions, supplydeliveryCreateResolver),
 	type: SupplyDeliverySchema
 };
 
@@ -50,7 +64,7 @@ module.exports.SupplyDeliveryCreateMutation = {
 module.exports.SupplyDeliveryUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple SupplyDeliverys',
-	resolve: supplydeliveryUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, supplydeliveryUpdateResolver),
 	type: SupplyDeliverySchema
 };
 
@@ -61,6 +75,6 @@ module.exports.SupplyDeliveryUpdateMutation = {
 module.exports.SupplyDeliveryDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single SupplyDelivery',
-	resolve: supplydeliveryDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, supplydeliveryDeleteResolver),
 	type: SupplyDeliverySchema
 };

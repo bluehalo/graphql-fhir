@@ -41,7 +41,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The contract number of a business agreement which describes the terms and conditions.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/relationship
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/relationship
 		relationship: {
 			type: new GraphQLNonNull(require('./coding.schema')),
 			description: 'The relationship of the patient to the subscriber.'
@@ -58,7 +58,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The Coverages adjudication details.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		originalRuleset: {
 			type: require('./coding.schema'),
 			description: 'The style (standard) and version of the original material which was converted into this resource.'

@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'DeviceComponentProductionSpecification_Input',
 	description: 'The production specification such as component revision, serial number, etc.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/specification-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/specification-type
 		specType: {
 			type: require('./codeableconcept.input'),
 			description: 'The specification type, such as, serial number, part number, hardware revision, software revision, etc.'

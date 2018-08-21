@@ -7,12 +7,26 @@ const FamilyMemberHistorySchema = require('../../schemas/familymemberhistory.sch
 // Inputs
 const FamilyMemberHistoryInput = require('../../inputs/familymemberhistory.input');
 
-
+// Resolvers
 const {
 	familymemberhistoryCreateResolver,
 	familymemberhistoryUpdateResolver,
 	familymemberhistoryDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'FamilyMemberHistory',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a FamilyMemberHistory record.'
 	},
 	resource: {
-		type: FamilyMemberHistoryInput,
+		type: new GraphQLNonNull(FamilyMemberHistoryInput),
 		description: 'FamilyMemberHistory Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a FamilyMemberHistory record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.FamilyMemberHistoryCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a FamilyMemberHistory',
-	resolve: familymemberhistoryCreateResolver,
+	resolve: scopeInvariant(scopeOptions, familymemberhistoryCreateResolver),
 	type: FamilyMemberHistorySchema
 };
 
@@ -50,7 +64,7 @@ module.exports.FamilyMemberHistoryCreateMutation = {
 module.exports.FamilyMemberHistoryUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple FamilyMemberHistorys',
-	resolve: familymemberhistoryUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, familymemberhistoryUpdateResolver),
 	type: FamilyMemberHistorySchema
 };
 
@@ -61,6 +75,6 @@ module.exports.FamilyMemberHistoryUpdateMutation = {
 module.exports.FamilyMemberHistoryDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single FamilyMemberHistory',
-	resolve: familymemberhistoryDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, familymemberhistoryDeleteResolver),
 	type: FamilyMemberHistorySchema
 };

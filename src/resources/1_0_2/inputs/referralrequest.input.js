@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ReferralRequestResourceInputType = new GraphQLEnumType({
 	name: 'ReferralRequestResourceInputType',
 	values: {
@@ -24,7 +23,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLNonNull(ReferralRequestResourceInputType),
 			description: 'Type of this resource'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/referralstatus
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/referralstatus
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The workflow status of the referral or transfer of care request.'
@@ -49,12 +48,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./codeableconcept.input'),
 			description: 'An indication of the type of referral (or where applicable the type of transfer of care) request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/practitioner-specialty
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/practitioner-specialty
 		specialty: {
 			type: require('./codeableconcept.input'),
 			description: 'Indication of the clinical domain or discipline to which the referral or transfer of care request is sent.  For example: Cardiology Gastroenterology Diabetology.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-priority
 		priority: {
 			type: require('./codeableconcept.input'),
 			description: 'An indication of the urgency of referral (or where applicable the type of transfer of care) request.'
@@ -95,7 +94,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The reason element gives a short description of why the referral is being made, the description expands on this to support a more complete clinical summary.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		serviceRequested: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The service(s) that is/are requested to be provided to the patient.  For example: cardiac pacemaker insertion.'

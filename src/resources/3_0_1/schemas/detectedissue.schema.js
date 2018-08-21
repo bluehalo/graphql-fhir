@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DetectedIssueResourceType = new GraphQLEnumType({
 	name: 'DetectedIssueResourceType',
 	values: {
@@ -29,7 +28,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'Business identifier associated with the detected issue record.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/observation-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates the status of the detected issue.'
@@ -38,12 +37,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Indicates the status of the detected issue.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/detectedissue-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/detectedissue-category
 		category: {
 			type: require('./codeableconcept.schema'),
 			description: 'Identifies the general type of issue identified.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/detectedissue-severity
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/detectedissue-severity
 		severity: {
 			type: CodeScalar,
 			description: 'Indicates the degree of importance associated with the identified issue based on the potential impact on the patient.'

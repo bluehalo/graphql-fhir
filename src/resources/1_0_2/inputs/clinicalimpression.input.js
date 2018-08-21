@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ClinicalImpressionResourceInputType = new GraphQLEnumType({
 	name: 'ClinicalImpressionResourceInputType',
 	values: {
@@ -33,7 +32,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The clinician performing the assessment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-impression-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-impression-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Identifies the workflow status of the assessment.'
@@ -66,12 +65,12 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'This a list of the general problems/conditions for a patient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
 		triggerCodeableConcept: {
 			type: require('./codeableconcept.input'),
 			description: 'The request or event that necessitated this assessment. This may be a diagnosis, a Care Plan, a Request Referral, or some other resource.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
 		triggerReference: {
 			type: require('./reference.input'),
 			description: 'The request or event that necessitated this assessment. This may be a diagnosis, a Care Plan, a Request Referral, or some other resource.'
@@ -100,7 +99,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./clinicalimpressionfinding.input')),
 			description: 'Specific findings or diagnoses that was considered likely or relevant to ongoing treatment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		resolved: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Diagnoses/conditions resolved since the last assessment.'

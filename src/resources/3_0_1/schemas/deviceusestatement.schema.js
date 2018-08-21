@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DeviceUseStatementResourceType = new GraphQLEnumType({
 	name: 'DeviceUseStatementResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'An external identifier for this statement such as an IRI.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/device-statement-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/device-statement-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'A code representing the patient or other source\'s judgment about the state of the device used that this statement is about.  Generally this will be active or completed.'
@@ -81,7 +80,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Reason or justification for the use of the device.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		bodySite: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates the site on the subject\'s body where the device was used ( i.e. the target site).'

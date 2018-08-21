@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CarePlanResourceInputType = new GraphQLEnumType({
 	name: 'CarePlanResourceInputType',
 	values: {
@@ -32,7 +31,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Identifies the patient or group whose intended care is described by the plan.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.'
@@ -61,7 +60,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Identifies the most recent date on which the plan has been revised.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-category
 		category: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Identifies what \'kind\' of plan this is to support differentiation between multiple co-existing plans; e.g. \'Home health\', \'psychiatric\', \'asthma\', \'disease management\', \'wellness plan\', etc.'

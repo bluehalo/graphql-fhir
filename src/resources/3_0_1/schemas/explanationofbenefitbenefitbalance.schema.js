@@ -12,12 +12,12 @@ module.exports = new GraphQLObjectType({
 	name: 'ExplanationOfBenefitBenefitBalance',
 	description: 'Balance by Benefit Category.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-category
 		category: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Dental, Vision, Medical, Pharmacy, Rehab etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-subcategory
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-subcategory
 		subCategory: {
 			type: require('./codeableconcept.schema'),
 			description: 'Dental: basic, major, ortho; Vision exam, glasses, contacts; etc.'
@@ -46,17 +46,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A richer description of the benefit, for example \'DENT2 covers 100% of basic, 50% of major but exclused Ortho, Implants and Costmetic services\'.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-network
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-network
 		network: {
 			type: require('./codeableconcept.schema'),
 			description: 'Network designation.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-unit
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-unit
 		unit: {
 			type: require('./codeableconcept.schema'),
 			description: 'Unit designation: individual or family.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-term
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-term
 		term: {
 			type: require('./codeableconcept.schema'),
 			description: 'The term or period of the values such as \'maximum lifetime benefit\' or \'maximum annual vistis\'.'

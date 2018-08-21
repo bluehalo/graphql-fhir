@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Group',
-		path: '/3_0_1/Group/:id',
+		path: '/1_0_2/Group/:id',
 		query: GroupInstanceQuery
 	}
 };

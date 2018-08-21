@@ -14,7 +14,7 @@ module.exports = new GraphQLObjectType({
 	name: 'SubscriptionChannel',
 	description: 'Details where to send notifications when resources are received that meet the criteria.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/subscription-channel-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/subscription-channel-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of channel to send notifications on.'

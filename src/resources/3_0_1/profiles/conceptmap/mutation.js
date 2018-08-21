@@ -7,12 +7,26 @@ const ConceptMapSchema = require('../../schemas/conceptmap.schema');
 // Inputs
 const ConceptMapInput = require('../../inputs/conceptmap.input');
 
-
+// Resolvers
 const {
 	conceptmapCreateResolver,
 	conceptmapUpdateResolver,
 	conceptmapDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ConceptMap',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ConceptMap record.'
 	},
 	resource: {
-		type: ConceptMapInput,
+		type: new GraphQLNonNull(ConceptMapInput),
 		description: 'ConceptMap Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ConceptMap record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ConceptMapCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ConceptMap',
-	resolve: conceptmapCreateResolver,
+	resolve: scopeInvariant(scopeOptions, conceptmapCreateResolver),
 	type: ConceptMapSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ConceptMapCreateMutation = {
 module.exports.ConceptMapUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ConceptMaps',
-	resolve: conceptmapUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, conceptmapUpdateResolver),
 	type: ConceptMapSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ConceptMapUpdateMutation = {
 module.exports.ConceptMapDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ConceptMap',
-	resolve: conceptmapDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, conceptmapDeleteResolver),
 	type: ConceptMapSchema
 };

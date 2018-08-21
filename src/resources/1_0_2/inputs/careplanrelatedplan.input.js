@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'CarePlanRelatedPlan_Input',
 	description: 'Identifies CarePlans with some sort of formal relationship to the current plan.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-relationship
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-relationship
 		code: {
 			type: CodeScalar,
 			description: 'Identifies the type of relationship this plan has to the target plan.'

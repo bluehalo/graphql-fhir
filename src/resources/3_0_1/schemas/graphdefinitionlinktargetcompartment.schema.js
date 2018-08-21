@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'GraphDefinitionLinkTargetCompartment',
 	description: 'Compartment Consistency Rules.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/compartment-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/compartment-type
 		code: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Identifies the compartment.'
@@ -22,7 +22,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Identifies the compartment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/graph-compartment-rule
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/graph-compartment-rule
 		rule: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'identical | matching | different | no-rule | custom.'

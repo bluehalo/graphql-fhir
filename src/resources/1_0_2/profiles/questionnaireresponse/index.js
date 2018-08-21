@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'QuestionnaireResponse',
-		path: '/3_0_1/QuestionnaireResponse/:id',
+		path: '/1_0_2/QuestionnaireResponse/:id',
 		query: QuestionnaireResponseInstanceQuery
 	}
 };

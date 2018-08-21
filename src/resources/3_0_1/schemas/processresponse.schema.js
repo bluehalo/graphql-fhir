@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ProcessResponseResourceType = new GraphQLEnumType({
 	name: 'ProcessResponseResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'The Response business identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -53,7 +52,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Original request resource reference.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/process-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/process-outcome
 		outcome: {
 			type: require('./codeableconcept.schema'),
 			description: 'Transaction status: error, complete, held.'
@@ -74,7 +73,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The organization which is responsible for the services rendered to the patient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/forms
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/forms
 		form: {
 			type: require('./codeableconcept.schema'),
 			description: 'The form to be used for printing the content.'
@@ -83,7 +82,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./processresponseprocessnote.schema')),
 			description: 'Suite of processing notes or additional requirements if the processing has been held.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication-error
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication-error
 		error: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Processing errors.'

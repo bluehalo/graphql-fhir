@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'DiagnosticOrderEvent_Input',
 	description: 'A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status for the event.'
@@ -23,7 +23,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The status for the event.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-event
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-event
 		description: {
 			type: require('./codeableconcept.input'),
 			description: 'Additional information about the event that occurred - e.g. if the status remained unchanged.'

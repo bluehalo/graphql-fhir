@@ -7,12 +7,26 @@ const CompartmentDefinitionSchema = require('../../schemas/compartmentdefinition
 // Inputs
 const CompartmentDefinitionInput = require('../../inputs/compartmentdefinition.input');
 
-
+// Resolvers
 const {
 	compartmentdefinitionCreateResolver,
 	compartmentdefinitionUpdateResolver,
 	compartmentdefinitionDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'CompartmentDefinition',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a CompartmentDefinition record.'
 	},
 	resource: {
-		type: CompartmentDefinitionInput,
+		type: new GraphQLNonNull(CompartmentDefinitionInput),
 		description: 'CompartmentDefinition Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a CompartmentDefinition record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.CompartmentDefinitionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a CompartmentDefinition',
-	resolve: compartmentdefinitionCreateResolver,
+	resolve: scopeInvariant(scopeOptions, compartmentdefinitionCreateResolver),
 	type: CompartmentDefinitionSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.CompartmentDefinitionCreateMutation = {
 module.exports.CompartmentDefinitionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple CompartmentDefinitions',
-	resolve: compartmentdefinitionUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, compartmentdefinitionUpdateResolver),
 	type: CompartmentDefinitionSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.CompartmentDefinitionUpdateMutation = {
 module.exports.CompartmentDefinitionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single CompartmentDefinition',
-	resolve: compartmentdefinitionDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, compartmentdefinitionDeleteResolver),
 	type: CompartmentDefinitionSchema
 };

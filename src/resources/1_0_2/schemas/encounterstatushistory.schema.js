@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'EncounterStatusHistory',
 	description: 'The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-state
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-state
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'planned | arrived | in-progress | onleave | finished | cancelled.'

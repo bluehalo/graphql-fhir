@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ProcedurePerformer_Input',
 	description: 'Limited to \'real\' people rather than equipment.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/performer-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/performer-role
 		role: {
 			type: require('./codeableconcept.input'),
 			description: 'For example: surgeon, anaethetist, endoscopist.'

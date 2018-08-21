@@ -7,12 +7,26 @@ const PractitionerRoleSchema = require('../../schemas/practitionerrole.schema');
 // Inputs
 const PractitionerRoleInput = require('../../inputs/practitionerrole.input');
 
-
+// Resolvers
 const {
 	practitionerroleCreateResolver,
 	practitionerroleUpdateResolver,
 	practitionerroleDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'PractitionerRole',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a PractitionerRole record.'
 	},
 	resource: {
-		type: PractitionerRoleInput,
+		type: new GraphQLNonNull(PractitionerRoleInput),
 		description: 'PractitionerRole Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a PractitionerRole record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.PractitionerRoleCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a PractitionerRole',
-	resolve: practitionerroleCreateResolver,
+	resolve: scopeInvariant(scopeOptions, practitionerroleCreateResolver),
 	type: PractitionerRoleSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.PractitionerRoleCreateMutation = {
 module.exports.PractitionerRoleUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple PractitionerRoles',
-	resolve: practitionerroleUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, practitionerroleUpdateResolver),
 	type: PractitionerRoleSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.PractitionerRoleUpdateMutation = {
 module.exports.PractitionerRoleDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single PractitionerRole',
-	resolve: practitionerroleDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, practitionerroleDeleteResolver),
 	type: PractitionerRoleSchema
 };

@@ -21,7 +21,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The name of used to identify the parameter.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/operation-parameter-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/operation-parameter-use
 		use: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Whether this is an input or an output parameter.'
@@ -54,7 +54,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Describes the meaning or use of this parameter.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/operation-parameter-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/operation-parameter-type
 		type: {
 			type: CodeScalar,
 			description: 'The type for this parameter.'

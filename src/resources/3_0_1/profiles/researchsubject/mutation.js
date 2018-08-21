@@ -7,12 +7,26 @@ const ResearchSubjectSchema = require('../../schemas/researchsubject.schema');
 // Inputs
 const ResearchSubjectInput = require('../../inputs/researchsubject.input');
 
-
+// Resolvers
 const {
 	researchsubjectCreateResolver,
 	researchsubjectUpdateResolver,
 	researchsubjectDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ResearchSubject',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ResearchSubject record.'
 	},
 	resource: {
-		type: ResearchSubjectInput,
+		type: new GraphQLNonNull(ResearchSubjectInput),
 		description: 'ResearchSubject Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ResearchSubject record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ResearchSubjectCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ResearchSubject',
-	resolve: researchsubjectCreateResolver,
+	resolve: scopeInvariant(scopeOptions, researchsubjectCreateResolver),
 	type: ResearchSubjectSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ResearchSubjectCreateMutation = {
 module.exports.ResearchSubjectUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ResearchSubjects',
-	resolve: researchsubjectUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, researchsubjectUpdateResolver),
 	type: ResearchSubjectSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ResearchSubjectUpdateMutation = {
 module.exports.ResearchSubjectDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ResearchSubject',
-	resolve: researchsubjectDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, researchsubjectDeleteResolver),
 	type: ResearchSubjectSchema
 };

@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const DocumentReferenceArgs = require('../../parameters/documentreference.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	documentreferenceResolver,
 	documentreferenceListResolver,
 	documentreferenceInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'DocumentReference',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.DocumentReferenceQuery
@@ -19,7 +31,7 @@ const {
 module.exports.DocumentReferenceQuery = {
 	args: Object.assign({}, CommonArgs, DocumentReferenceArgs),
 	description: 'Query for a single DocumentReference',
-	resolve: documentreferenceResolver,
+	resolve: scopeInvariant(scopeOptions, documentreferenceResolver),
 	type: DocumentReferenceSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.DocumentReferenceQuery = {
 module.exports.DocumentReferenceListQuery = {
 	args: Object.assign({}, CommonArgs, DocumentReferenceArgs),
 	description: 'Query for multiple DocumentReferences',
-	resolve: documentreferenceListResolver,
+	resolve: scopeInvariant(scopeOptions, documentreferenceListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.DocumentReferenceListQuery = {
  */
 module.exports.DocumentReferenceInstanceQuery = {
 	description: 'Get information about a single DocumentReference',
-	resolve: documentreferenceInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, documentreferenceInstanceResolver),
 	type: DocumentReferenceSchema
 };

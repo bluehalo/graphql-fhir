@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MedicationDispenseResourceType = new GraphQLEnumType({
 	name: 'MedicationDispenseResourceType',
 	values: {
@@ -32,7 +31,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'The procedure that the dispense is done because of.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-dispense-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-dispense-status
 		status: {
 			type: CodeScalar,
 			description: 'A code specifying the state of the set of dispense events.'
@@ -41,17 +40,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A code specifying the state of the set of dispense events.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-dispense-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-dispense-category
 		category: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates type of medication dispense and where the medication is expected to be consumed or administered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		medicationCodeableConcept: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		medicationReference: {
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.'
@@ -76,7 +75,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'Indicates the medication order that is being dispensed against.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.'

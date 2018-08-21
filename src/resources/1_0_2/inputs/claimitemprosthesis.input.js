@@ -29,7 +29,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Date of the initial placement.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/oral-prosthodontic-material
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/oral-prosthodontic-material
 		priorMaterial: {
 			type: require('./coding.input'),
 			description: 'Material of the prior denture or bridge prosthesis. (Oral).'

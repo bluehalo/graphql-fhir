@@ -63,7 +63,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Organization that is charged with issuing UDIs for devices.  For example, the US FDA issuers include : 1) GS1:  http://hl7.org/fhir/NamingSystem/gs1-di,  2) HIBCC: http://hl7.org/fhir/NamingSystem/hibcc-dI,  3) ICCBBA for blood containers: http://hl7.org/fhir/NamingSystem/iccbba-blood-di,  4) ICCBA for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/udi-entry-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/udi-entry-type
 		entryType: {
 			type: CodeScalar,
 			description: 'A coded entry to indicate how the data was entered.'

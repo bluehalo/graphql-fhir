@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MessageHeaderResourceInputType = new GraphQLEnumType({
 	name: 'MessageHeaderResourceInputType',
 	values: {
@@ -31,7 +30,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The time that the message was sent.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/message-events
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/message-events
 		event: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value \'http://hl7.org/fhir/message-events\'.'
@@ -64,7 +63,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The person or organization that accepts overall responsibility for the contents of the message. The implication is that the message event happened under the policies of the responsible party.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/message-reason-encounter
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/message-reason-encounter
 		reason: {
 			type: require('./codeableconcept.input'),
 			description: 'Coded indication of the cause for the event - indicates  a reason for the occurrence of the event that is a focus of this message.'

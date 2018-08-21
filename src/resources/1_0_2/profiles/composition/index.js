@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Composition',
-		path: '/3_0_1/Composition/:id',
+		path: '/1_0_2/Composition/:id',
 		query: CompositionInstanceQuery
 	}
 };

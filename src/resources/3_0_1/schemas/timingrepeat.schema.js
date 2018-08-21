@@ -59,7 +59,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The upper limit of how long this thing happens for when it happens.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/units-of-time
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/units-of-time
 		durationUnit: {
 			type: CodeScalar,
 			description: 'The units of time for the duration, in UCUM units.'
@@ -100,7 +100,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as \'do this once every 3-5 days.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/units-of-time
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/units-of-time
 		periodUnit: {
 			type: CodeScalar,
 			description: 'The units of time for the period in UCUM units.'
@@ -109,7 +109,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The units of time for the period in UCUM units.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/days-of-week
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/days-of-week
 		dayOfWeek: {
 			type: new GraphQLList(CodeScalar),
 			description: 'If one or more days of week is provided, then the action happens only on the specified day(s).'
@@ -126,7 +126,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Specified time of day for action to take place.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/event-timing
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/event-timing
 		when: {
 			type: new GraphQLList(CodeScalar),
 			description: 'Real world events that the occurrence of the event should be tied to.'

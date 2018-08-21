@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DiagnosticOrderResourceInputType = new GraphQLEnumType({
 	name: 'DiagnosticOrderResourceInputType',
 	values: {
@@ -39,7 +38,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'An encounter that provides additional information about the healthcare context in which this request is made.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		reason: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'An explanation or justification for why this diagnostic investigation is being requested.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.'
@@ -52,7 +51,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'One or more specimens that the diagnostic investigation is about.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the order.'
@@ -61,7 +60,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The status of the order.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-priority
 		priority: {
 			type: CodeScalar,
 			description: 'The clinical priority associated with this order.'

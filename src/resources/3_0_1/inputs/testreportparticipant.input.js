@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'TestReportParticipant_Input',
 	description: 'A participant in the test execution, either the execution engine, a client, or a server.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/report-participant-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/report-participant-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of participant.'

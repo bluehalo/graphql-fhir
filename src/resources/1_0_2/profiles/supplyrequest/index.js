@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'SupplyRequest',
-		path: '/3_0_1/SupplyRequest/:id',
+		path: '/1_0_2/SupplyRequest/:id',
 		query: SupplyRequestInstanceQuery
 	}
 };

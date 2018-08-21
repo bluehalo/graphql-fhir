@@ -30,7 +30,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Identity (code or path) or the element/item that the map refers to.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/concept-map-equivalence
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/concept-map-equivalence
 		equivalence: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from target to source (e.g. the target is \'wider\' than the source).'

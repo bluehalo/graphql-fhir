@@ -7,12 +7,26 @@ const EpisodeOfCareSchema = require('../../schemas/episodeofcare.schema');
 // Inputs
 const EpisodeOfCareInput = require('../../inputs/episodeofcare.input');
 
-
+// Resolvers
 const {
 	episodeofcareCreateResolver,
 	episodeofcareUpdateResolver,
 	episodeofcareDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'EpisodeOfCare',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a EpisodeOfCare record.'
 	},
 	resource: {
-		type: EpisodeOfCareInput,
+		type: new GraphQLNonNull(EpisodeOfCareInput),
 		description: 'EpisodeOfCare Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a EpisodeOfCare record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.EpisodeOfCareCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a EpisodeOfCare',
-	resolve: episodeofcareCreateResolver,
+	resolve: scopeInvariant(scopeOptions, episodeofcareCreateResolver),
 	type: EpisodeOfCareSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.EpisodeOfCareCreateMutation = {
 module.exports.EpisodeOfCareUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple EpisodeOfCares',
-	resolve: episodeofcareUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, episodeofcareUpdateResolver),
 	type: EpisodeOfCareSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.EpisodeOfCareUpdateMutation = {
 module.exports.EpisodeOfCareDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single EpisodeOfCare',
-	resolve: episodeofcareDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, episodeofcareDeleteResolver),
 	type: EpisodeOfCareSchema
 };

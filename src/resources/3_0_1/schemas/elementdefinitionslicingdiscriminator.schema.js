@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ElementDefinitionSlicingDiscriminator',
 	description: 'Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.',
 	fields: () => extendSchema(require('./element.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/discriminator-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/discriminator-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'How the element value is interpreted when discrimination is evaluated.'

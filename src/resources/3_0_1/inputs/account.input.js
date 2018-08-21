@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let AccountResourceInputType = new GraphQLEnumType({
 	name: 'AccountResourceInputType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'Unique identifier used to reference the account.  May or may not be intended for human use (e.g. credit card number).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/account-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/account-status
 		status: {
 			type: CodeScalar,
 			description: 'Indicates whether the account is presently used/usable or not.'
@@ -36,7 +35,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Indicates whether the account is presently used/usable or not.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/account-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/account-type
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'Categorizes the account for reporting and searching purposes.'

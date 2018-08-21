@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let FamilyMemberHistoryResourceInputType = new GraphQLEnumType({
 	name: 'FamilyMemberHistoryResourceInputType',
 	values: {
@@ -33,7 +32,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'A protocol or questionnaire that was adhered to in whole or in part by this event.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/history-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/history-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'A code specifying the status of the record of the family history of a specific family member.'
@@ -50,7 +49,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'If true, indicates the taking of an individual family member\'s history did not occur. The notDone element should not be used to document negated conditions, such as a family member that did not have a condition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/history-not-done-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/history-not-done-reason
 		notDoneReason: {
 			type: require('./codeableconcept.input'),
 			description: 'Describes why the family member\'s history is absent.'
@@ -75,12 +74,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'This will either be a name or a description; e.g. \'Aunt Susan\', \'my cousin with the red hair\'.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-FamilyMember
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-FamilyMember
 		relationship: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'The type of relationship this person has to the patient (father, mother, brother etc.).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
 		gender: {
 			type: CodeScalar,
 			description: 'Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes.'
@@ -165,7 +164,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Describes why the family member history occurred in coded or textual form.'

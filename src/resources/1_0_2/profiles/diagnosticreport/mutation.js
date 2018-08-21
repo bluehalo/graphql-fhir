@@ -7,12 +7,26 @@ const DiagnosticReportSchema = require('../../schemas/diagnosticreport.schema');
 // Inputs
 const DiagnosticReportInput = require('../../inputs/diagnosticreport.input');
 
-
+// Resolvers
 const {
 	diagnosticreportCreateResolver,
 	diagnosticreportUpdateResolver,
 	diagnosticreportDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'DiagnosticReport',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a DiagnosticReport record.'
 	},
 	resource: {
-		type: DiagnosticReportInput,
+		type: new GraphQLNonNull(DiagnosticReportInput),
 		description: 'DiagnosticReport Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a DiagnosticReport record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.DiagnosticReportCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DiagnosticReport',
-	resolve: diagnosticreportCreateResolver,
+	resolve: scopeInvariant(scopeOptions, diagnosticreportCreateResolver),
 	type: DiagnosticReportSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.DiagnosticReportCreateMutation = {
 module.exports.DiagnosticReportUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DiagnosticReports',
-	resolve: diagnosticreportUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, diagnosticreportUpdateResolver),
 	type: DiagnosticReportSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.DiagnosticReportUpdateMutation = {
 module.exports.DiagnosticReportDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DiagnosticReport',
-	resolve: diagnosticreportDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, diagnosticreportDeleteResolver),
 	type: DiagnosticReportSchema
 };

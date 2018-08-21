@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DataElementResourceInputType = new GraphQLEnumType({
 	name: 'DataElementResourceInputType',
 	values: {
@@ -53,7 +52,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The term used by humans to refer to the data element.  Should ideally be unique within the context in which the data element is expected to be used.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the data element.'
@@ -90,7 +89,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The date this version of the data element was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the data element  changes.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
 		useContext: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of data element definitions.'
@@ -103,7 +102,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A copyright statement relating to the definition of the data element. Copyright statements are generally legal restrictions on the use and publishing of the details of the definition of the data element.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/dataelement-stringency
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/dataelement-stringency
 		stringency: {
 			type: CodeScalar,
 			description: 'Identifies how precise the data element is in its definition.'

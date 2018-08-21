@@ -20,7 +20,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Server adds CORS headers when responding to requests - this enables javascript applications to use the server.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/restful-security-service
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/restful-security-service
 		service: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Types of security services that are supported/required by the system.'

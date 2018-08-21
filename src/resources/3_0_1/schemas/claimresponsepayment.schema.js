@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ClaimResponsePayment',
 	description: 'Payment details for the claim if the claim has been paid.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ex-paymenttype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ex-paymenttype
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'Whether this represents partial or complete payment of the claim.'
@@ -22,7 +22,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./money.schema'),
 			description: 'Adjustment to the payment of this transaction which is not related to adjudication of this transaction.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/payment-adjustment-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/payment-adjustment-reason
 		adjustmentReason: {
 			type: require('./codeableconcept.schema'),
 			description: 'Reason for the payment adjustment.'

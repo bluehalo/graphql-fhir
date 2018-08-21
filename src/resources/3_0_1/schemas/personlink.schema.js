@@ -17,7 +17,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'The resource to which this actual person is associated.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/identity-assuranceLevel
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/identity-assuranceLevel
 		assurance: {
 			type: CodeScalar,
 			description: 'Level of assurance that this link is actually associated with the target resource.'

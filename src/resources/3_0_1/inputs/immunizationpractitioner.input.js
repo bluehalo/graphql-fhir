@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ImmunizationPractitioner_Input',
 	description: 'Indicates who or what performed the event.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-role
 		role: {
 			type: require('./codeableconcept.input'),
 			description: 'Describes the type of performance (e.g. ordering provider, administering provider, etc.).'

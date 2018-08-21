@@ -24,7 +24,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLNonNull(require('./identifier.input')),
 			description: 'Identifier of the source where the event was detected.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/audit-source-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/audit-source-type
 		type: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'Code specifying the type of source where event originated.'

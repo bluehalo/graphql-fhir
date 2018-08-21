@@ -20,17 +20,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Free text dosage can be used for cases where the dosage administered is too complex to code. When coded dosage is present, the free text dosage may still be present for display to humans.  The dosage instructions should reflect the dosage of the medication that was administered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/approach-site-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/approach-site-codes
 		site: {
 			type: require('./codeableconcept.schema'),
 			description: 'A coded specification of the anatomic site where the medication first entered the body.  For example, \'left arm\'.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/route-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/route-codes
 		route: {
 			type: require('./codeableconcept.schema'),
 			description: 'A code specifying the route or physiological path of administration of a therapeutic agent into or onto the patient.  For example, topical, intravenous, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/administration-method-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/administration-method-codes
 		method: {
 			type: require('./codeableconcept.schema'),
 			description: 'A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.'

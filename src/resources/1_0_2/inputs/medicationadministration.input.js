@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MedicationAdministrationResourceInputType = new GraphQLEnumType({
 	name: 'MedicationAdministrationResourceInputType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-admin-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-admin-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.'
@@ -61,12 +60,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Set this to true if the record is saying that the medication was NOT administered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes
 		reasonNotGiven: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'A code indicating why the administration was not performed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-given-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-given-codes
 		reasonGiven: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'A code indicating why the medication was given.'

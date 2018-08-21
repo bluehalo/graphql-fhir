@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SlotResourceInputType = new GraphQLEnumType({
 	name: 'SlotResourceInputType',
 	values: {
@@ -28,22 +27,22 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'External Ids for this item.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-category
 		serviceCategory: {
 			type: require('./codeableconcept.input'),
 			description: 'A broad categorisation of the service that is to be performed during this appointment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-type
 		serviceType: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the availability resource.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		specialty: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The specialty of a practitioner that would be required to perform the service requested in this appointment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0276
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0276
 		appointmentType: {
 			type: require('./codeableconcept.input'),
 			description: 'The style of appointment or patient that may be booked in the slot (not service type).'
@@ -52,7 +51,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLNonNull(require('./reference.input')),
 			description: 'The schedule resource that this slot defines an interval of status information.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/slotstatus
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/slotstatus
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'busy | free | busy-unavailable | busy-tentative | entered-in-error.'

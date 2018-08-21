@@ -30,12 +30,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Date and optionally time the procedure was performed .'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/icd-10-procedures
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/icd-10-procedures
 		procedureCodeableConcept: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'The procedure code.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/icd-10-procedures
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/icd-10-procedures
 		procedureReference: {
 			type: new GraphQLNonNull(require('./reference.input')),
 			description: 'The procedure code.'

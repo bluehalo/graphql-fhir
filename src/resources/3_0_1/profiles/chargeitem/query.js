@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ChargeItemArgs = require('../../parameters/chargeitem.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	chargeitemResolver,
 	chargeitemListResolver,
 	chargeitemInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ChargeItem',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.ChargeItemQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ChargeItemQuery = {
 	args: Object.assign({}, CommonArgs, ChargeItemArgs),
 	description: 'Query for a single ChargeItem',
-	resolve: chargeitemResolver,
+	resolve: scopeInvariant(scopeOptions, chargeitemResolver),
 	type: ChargeItemSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ChargeItemQuery = {
 module.exports.ChargeItemListQuery = {
 	args: Object.assign({}, CommonArgs, ChargeItemArgs),
 	description: 'Query for multiple ChargeItems',
-	resolve: chargeitemListResolver,
+	resolve: scopeInvariant(scopeOptions, chargeitemListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ChargeItemListQuery = {
  */
 module.exports.ChargeItemInstanceQuery = {
 	description: 'Get information about a single ChargeItem',
-	resolve: chargeitemInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, chargeitemInstanceResolver),
 	type: ChargeItemSchema
 };

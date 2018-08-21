@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ImmunizationPractitioner',
 	description: 'Indicates who or what performed the event.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-role
 		role: {
 			type: require('./codeableconcept.schema'),
 			description: 'Describes the type of performance (e.g. ordering provider, administering provider, etc.).'

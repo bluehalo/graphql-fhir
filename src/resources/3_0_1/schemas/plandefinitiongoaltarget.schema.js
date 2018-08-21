@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'PlanDefinitionGoalTarget',
 	description: 'Indicates what should be done and within what timeframe.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/observation-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-codes
 		measure: {
 			type: require('./codeableconcept.schema'),
 			description: 'The parameter whose value is to be tracked, e.g. body weigth, blood pressure, or hemoglobin A1c level.'

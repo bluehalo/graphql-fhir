@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ExplanationOfBenefitResourceType = new GraphQLEnumType({
 	name: 'ExplanationOfBenefitResourceType',
 	values: {
@@ -29,7 +28,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'The EOB Business Identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/explanationofbenefit-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/explanationofbenefit-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -38,12 +37,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The status of the resource instance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-type
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'The category of claim, eg, oral, pharmacy, vision, insitutional, professional.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-subtype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-subtype
 		subType: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A finer grained suite of claim subtype codes which may convey Inpatient vs Outpatient and/or a specialty service. In the US the BillType.'
@@ -96,7 +95,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The business identifier for the instance: invoice number, claim number, pre-determination or pre-authorization number.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
 		outcome: {
 			type: require('./codeableconcept.schema'),
 			description: 'Processing outcome errror, partial or complete processing.'
@@ -189,7 +188,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./explanationofbenefitpayment.schema'),
 			description: 'Payment details for the claim if the claim has been paid.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/forms
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/forms
 		form: {
 			type: require('./codeableconcept.schema'),
 			description: 'The form to be used for printing the content.'

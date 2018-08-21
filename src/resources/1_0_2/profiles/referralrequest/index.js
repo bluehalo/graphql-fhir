@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'ReferralRequest',
-		path: '/3_0_1/ReferralRequest/:id',
+		path: '/1_0_2/ReferralRequest/:id',
 		query: ReferralRequestInstanceQuery
 	}
 };

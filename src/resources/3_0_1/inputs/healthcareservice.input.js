@@ -2,7 +2,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let HealthcareServiceResourceInputType = new GraphQLEnumType({
 	name: 'HealthcareServiceResourceInputType',
 	values: {
@@ -38,17 +37,17 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The organization that provides this healthcare service.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-category
 		category: {
 			type: require('./codeableconcept.input'),
 			description: 'Identifies the broad category of service being performed or delivered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-type
 		type: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The specific type of service that may be delivered or performed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		specialty: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Collection of specialties handled by the service site. This is more of a medical term.'
@@ -93,7 +92,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'The location(s) that this service is available to (not where the service is provided).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-provision-conditions
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-provision-conditions
 		serviceProvisionCode: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The code(s) that detail the conditions under which the healthcare service is available/offered.'
@@ -122,7 +121,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Collection of characteristics (attributes).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-referral-method
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-referral-method
 		referralMethod: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Ways that the service accepts referrals, if this is not provided then it is implied that no referral is required.'

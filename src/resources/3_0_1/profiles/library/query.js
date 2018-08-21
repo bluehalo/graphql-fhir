@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const LibraryArgs = require('../../parameters/library.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	libraryResolver,
 	libraryListResolver,
 	libraryInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Library',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.LibraryQuery
@@ -19,7 +31,7 @@ const {
 module.exports.LibraryQuery = {
 	args: Object.assign({}, CommonArgs, LibraryArgs),
 	description: 'Query for a single Library',
-	resolve: libraryResolver,
+	resolve: scopeInvariant(scopeOptions, libraryResolver),
 	type: LibrarySchema
 };
 
@@ -30,7 +42,7 @@ module.exports.LibraryQuery = {
 module.exports.LibraryListQuery = {
 	args: Object.assign({}, CommonArgs, LibraryArgs),
 	description: 'Query for multiple Librarys',
-	resolve: libraryListResolver,
+	resolve: scopeInvariant(scopeOptions, libraryListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.LibraryListQuery = {
  */
 module.exports.LibraryInstanceQuery = {
 	description: 'Get information about a single Library',
-	resolve: libraryInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, libraryInstanceResolver),
 	type: LibrarySchema
 };

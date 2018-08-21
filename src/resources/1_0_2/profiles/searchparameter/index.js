@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'SearchParameter',
-		path: '/3_0_1/SearchParameter/:id',
+		path: '/1_0_2/SearchParameter/:id',
 		query: SearchParameterInstanceQuery
 	}
 };

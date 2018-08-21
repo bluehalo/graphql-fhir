@@ -7,12 +7,26 @@ const DocumentManifestSchema = require('../../schemas/documentmanifest.schema');
 // Inputs
 const DocumentManifestInput = require('../../inputs/documentmanifest.input');
 
-
+// Resolvers
 const {
 	documentmanifestCreateResolver,
 	documentmanifestUpdateResolver,
 	documentmanifestDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'DocumentManifest',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a DocumentManifest record.'
 	},
 	resource: {
-		type: DocumentManifestInput,
+		type: new GraphQLNonNull(DocumentManifestInput),
 		description: 'DocumentManifest Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a DocumentManifest record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.DocumentManifestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DocumentManifest',
-	resolve: documentmanifestCreateResolver,
+	resolve: scopeInvariant(scopeOptions, documentmanifestCreateResolver),
 	type: DocumentManifestSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.DocumentManifestCreateMutation = {
 module.exports.DocumentManifestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DocumentManifests',
-	resolve: documentmanifestUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, documentmanifestUpdateResolver),
 	type: DocumentManifestSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.DocumentManifestUpdateMutation = {
 module.exports.DocumentManifestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DocumentManifest',
-	resolve: documentmanifestDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, documentmanifestDeleteResolver),
 	type: DocumentManifestSchema
 };

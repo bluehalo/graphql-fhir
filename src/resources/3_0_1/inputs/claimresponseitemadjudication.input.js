@@ -12,12 +12,12 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ClaimResponseItemAdjudication_Input',
 	description: 'The adjudication results.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication
 		category: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication-reason
 		reason: {
 			type: require('./codeableconcept.input'),
 			description: 'Adjudication reason such as limit reached.'

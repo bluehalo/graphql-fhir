@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'GraphDefinitionLinkTarget_Input',
 	description: 'Potential target for the link.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Type of resource this link refers to.'

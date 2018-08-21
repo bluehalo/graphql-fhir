@@ -12,12 +12,12 @@ module.exports = new GraphQLObjectType({
 	name: 'ExplanationOfBenefitPayee',
 	description: 'The party to be reimbursed for the services.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/payeetype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/payeetype
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'Type of Party to be reimbursed: Subscriber, provider, other.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-type-link
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-type-link
 		resourceType: {
 			type: require('./codeableconcept.schema'),
 			description: 'organization | patient | practitioner | relatedperson.'

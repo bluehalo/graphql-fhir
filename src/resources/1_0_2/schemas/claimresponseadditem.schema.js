@@ -21,7 +21,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'List of input service items which this service line is intended to replace.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
 		service: {
 			type: new GraphQLNonNull(require('./coding.schema')),
 			description: 'A code to indicate the Professional Service or Product supplied.'

@@ -16,12 +16,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The organization where the Practitioner performs the roles associated.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/practitioner-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/practitioner-role
 		role: {
 			type: require('./codeableconcept.input'),
 			description: 'Roles which this practitioner is authorized to perform for the organization.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/practitioner-specialty
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/practitioner-specialty
 		specialty: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Specific specialty of the practitioner.'

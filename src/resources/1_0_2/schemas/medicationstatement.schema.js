@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MedicationStatementResourceType = new GraphQLEnumType({
 	name: 'MedicationStatementResourceType',
 	values: {
@@ -44,7 +43,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The date when the medication statement was asserted by the information source.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-statement-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-statement-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'A code representing the patient or other source\'s judgment about the state of the medication used that this statement is about.  Generally this will be active or completed.'
@@ -61,17 +60,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Set this to true if the record is saying that the medication was NOT taken.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes
 		reasonNotTaken: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A code indicating why the medication was not taken.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		reasonForUseCodeableConcept: {
 			type: require('./codeableconcept.schema'),
 			description: 'A reason for why the medication is being/was taken.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		reasonForUseReference: {
 			type: require('./reference.schema'),
 			description: 'A reason for why the medication is being/was taken.'

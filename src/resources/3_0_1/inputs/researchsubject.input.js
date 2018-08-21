@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString }
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ResearchSubjectResourceInputType = new GraphQLEnumType({
 	name: 'ResearchSubjectResourceInputType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./identifier.input'),
 			description: 'Identifiers assigned to this research study by the sponsor or other systems.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/research-subject-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/research-subject-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The current state of the subject.'

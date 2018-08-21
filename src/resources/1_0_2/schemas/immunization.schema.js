@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ImmunizationResourceType = new GraphQLEnumType({
 	name: 'ImmunizationResourceType',
 	values: {
@@ -29,7 +28,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'A unique identifier assigned to this immunization record.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-admin-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-admin-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates the current status of the vaccination event.'
@@ -46,7 +45,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Date vaccine administered or was to be administered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/vaccine-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/vaccine-code
 		vaccineCode: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Vaccine that was administered or was to be administered.'
@@ -107,12 +106,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Date vaccine batch expires.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-site
 		site: {
 			type: require('./codeableconcept.schema'),
 			description: 'Body site where vaccine was administered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-route
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-route
 		route: {
 			type: require('./codeableconcept.schema'),
 			description: 'The path by which the vaccine product is taken into the body.'

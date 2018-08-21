@@ -7,12 +7,26 @@ const CompositionSchema = require('../../schemas/composition.schema');
 // Inputs
 const CompositionInput = require('../../inputs/composition.input');
 
-
+// Resolvers
 const {
 	compositionCreateResolver,
 	compositionUpdateResolver,
 	compositionDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Composition',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Composition record.'
 	},
 	resource: {
-		type: CompositionInput,
+		type: new GraphQLNonNull(CompositionInput),
 		description: 'Composition Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Composition record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.CompositionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Composition',
-	resolve: compositionCreateResolver,
+	resolve: scopeInvariant(scopeOptions, compositionCreateResolver),
 	type: CompositionSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.CompositionCreateMutation = {
 module.exports.CompositionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Compositions',
-	resolve: compositionUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, compositionUpdateResolver),
 	type: CompositionSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.CompositionUpdateMutation = {
 module.exports.CompositionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Composition',
-	resolve: compositionDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, compositionDeleteResolver),
 	type: CompositionSchema
 };

@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const NamingSystemArgs = require('../../parameters/namingsystem.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	namingsystemResolver,
 	namingsystemListResolver,
 	namingsystemInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'NamingSystem',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.NamingSystemQuery
@@ -19,7 +31,7 @@ const {
 module.exports.NamingSystemQuery = {
 	args: Object.assign({}, CommonArgs, NamingSystemArgs),
 	description: 'Query for a single NamingSystem',
-	resolve: namingsystemResolver,
+	resolve: scopeInvariant(scopeOptions, namingsystemResolver),
 	type: NamingSystemSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.NamingSystemQuery = {
 module.exports.NamingSystemListQuery = {
 	args: Object.assign({}, CommonArgs, NamingSystemArgs),
 	description: 'Query for multiple NamingSystems',
-	resolve: namingsystemListResolver,
+	resolve: scopeInvariant(scopeOptions, namingsystemListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.NamingSystemListQuery = {
  */
 module.exports.NamingSystemInstanceQuery = {
 	description: 'Get information about a single NamingSystem',
-	resolve: namingsystemInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, namingsystemInstanceResolver),
 	type: NamingSystemSchema
 };

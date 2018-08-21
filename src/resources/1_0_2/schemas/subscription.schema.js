@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SubscriptionResourceType = new GraphQLEnumType({
 	name: 'SubscriptionResourceType',
 	values: {
@@ -44,7 +43,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A description of why this subscription is defined.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/subscription-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/subscription-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the subscription, which marks the server state for managing the subscription.'
@@ -73,7 +72,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The time for the server to turn the subscription off.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/subscription-tag
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/subscription-tag
 		tag: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'A tag to add to any resource that matches the criteria, after the subscription is processed.'

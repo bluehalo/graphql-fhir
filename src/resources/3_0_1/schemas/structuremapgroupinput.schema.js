@@ -30,7 +30,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Type for this instance of data.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/map-input-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/map-input-mode
 		mode: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Mode for this instance of data.'

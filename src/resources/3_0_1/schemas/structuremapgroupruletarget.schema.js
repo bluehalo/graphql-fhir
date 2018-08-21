@@ -22,7 +22,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Type or variable this rule applies to.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/map-context-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/map-context-type
 		contextType: {
 			type: CodeScalar,
 			description: 'How to interpret the context.'
@@ -47,7 +47,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Named context for field, if desired, and a field is specified.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/map-target-list-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/map-target-list-mode
 		listMode: {
 			type: new GraphQLList(CodeScalar),
 			description: 'If field is a list, how to manage the list.'
@@ -64,7 +64,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Internal rule reference for shared list items.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/map-transform
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/map-transform
 		transform: {
 			type: CodeScalar,
 			description: 'How the data is copied / created.'

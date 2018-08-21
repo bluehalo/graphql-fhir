@@ -7,12 +7,26 @@ const GoalSchema = require('../../schemas/goal.schema');
 // Inputs
 const GoalInput = require('../../inputs/goal.input');
 
-
+// Resolvers
 const {
 	goalCreateResolver,
 	goalUpdateResolver,
 	goalDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Goal',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Goal record.'
 	},
 	resource: {
-		type: GoalInput,
+		type: new GraphQLNonNull(GoalInput),
 		description: 'Goal Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Goal record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.GoalCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Goal',
-	resolve: goalCreateResolver,
+	resolve: scopeInvariant(scopeOptions, goalCreateResolver),
 	type: GoalSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.GoalCreateMutation = {
 module.exports.GoalUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Goals',
-	resolve: goalUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, goalUpdateResolver),
 	type: GoalSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.GoalUpdateMutation = {
 module.exports.GoalDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Goal',
-	resolve: goalDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, goalDeleteResolver),
 	type: GoalSchema
 };

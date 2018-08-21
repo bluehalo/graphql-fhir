@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let RequestGroupResourceType = new GraphQLEnumType({
 	name: 'RequestGroupResourceType',
 	values: {
@@ -44,7 +43,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'A shared identifier common to all requests that were authorized more or less simultaneously by a single author, representing the identifier of the requisition, prescription or similar form.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The current state of the request. For request groups, the status reflects the status of all the requests in the group.'
@@ -53,7 +52,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The current state of the request. For request groups, the status reflects the status of all the requests in the group.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-intent
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-intent
 		intent: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates the level of authority/intentionality associated with the request and where the request fits into the workflow chain.'
@@ -62,7 +61,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Indicates the level of authority/intentionality associated with the request and where the request fits into the workflow chain.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
 		priority: {
 			type: CodeScalar,
 			description: 'Indicates how quickly the request should be addressed with respect to other requests.'

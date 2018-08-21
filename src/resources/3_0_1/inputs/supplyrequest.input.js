@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SupplyRequestResourceInputType = new GraphQLEnumType({
 	name: 'SupplyRequestResourceInputType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./identifier.input'),
 			description: 'Unique identifier for this supply request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-status
 		status: {
 			type: CodeScalar,
 			description: 'Status of the supply request.'
@@ -37,12 +36,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Status of the supply request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-kind
 		category: {
 			type: require('./codeableconcept.input'),
 			description: 'Category of supply, e.g.  central, non-stock, etc. This is used to support work flows associated with the supply process.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
 		priority: {
 			type: CodeScalar,
 			description: 'Indicates how quickly this SupplyRequest should be addressed with respect to other requests.'
@@ -87,12 +86,12 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'Who is intended to fulfill the request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-reason
 		reasonCodeableConcept: {
 			type: require('./codeableconcept.input'),
 			description: 'Why the supply item was requested.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-reason
 		reasonReference: {
 			type: require('./reference.input'),
 			description: 'Why the supply item was requested.'

@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let OperationDefinitionResourceType = new GraphQLEnumType({
 	name: 'OperationDefinitionResourceType',
 	values: {
@@ -49,7 +48,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A natural language name identifying the operation definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this operation definition. Enables tracking the life-cycle of the content.'
@@ -58,7 +57,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The status of this operation definition. Enables tracking the life-cycle of the content.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/operation-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/operation-kind
 		kind: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Whether this is an operation or a named query.'
@@ -107,7 +106,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./usagecontext.schema')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate operation definition instances.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A legal or geographic region in which the operation definition is intended to be used.'
@@ -148,7 +147,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Indicates that this operation definition is a constraining profile on the base.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		resource: {
 			type: new GraphQLList(CodeScalar),
 			description: 'The types on which this operation can be executed.'

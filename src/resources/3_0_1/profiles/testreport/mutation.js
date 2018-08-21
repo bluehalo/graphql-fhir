@@ -7,12 +7,26 @@ const TestReportSchema = require('../../schemas/testreport.schema');
 // Inputs
 const TestReportInput = require('../../inputs/testreport.input');
 
-
+// Resolvers
 const {
 	testreportCreateResolver,
 	testreportUpdateResolver,
 	testreportDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'TestReport',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a TestReport record.'
 	},
 	resource: {
-		type: TestReportInput,
+		type: new GraphQLNonNull(TestReportInput),
 		description: 'TestReport Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a TestReport record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.TestReportCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a TestReport',
-	resolve: testreportCreateResolver,
+	resolve: scopeInvariant(scopeOptions, testreportCreateResolver),
 	type: TestReportSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.TestReportCreateMutation = {
 module.exports.TestReportUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple TestReports',
-	resolve: testreportUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, testreportUpdateResolver),
 	type: TestReportSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.TestReportUpdateMutation = {
 module.exports.TestReportDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single TestReport',
-	resolve: testreportDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, testreportDeleteResolver),
 	type: TestReportSchema
 };

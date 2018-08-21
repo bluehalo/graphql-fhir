@@ -7,12 +7,26 @@ const CapabilityStatementSchema = require('../../schemas/capabilitystatement.sch
 // Inputs
 const CapabilityStatementInput = require('../../inputs/capabilitystatement.input');
 
-
+// Resolvers
 const {
 	capabilitystatementCreateResolver,
 	capabilitystatementUpdateResolver,
 	capabilitystatementDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'CapabilityStatement',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a CapabilityStatement record.'
 	},
 	resource: {
-		type: CapabilityStatementInput,
+		type: new GraphQLNonNull(CapabilityStatementInput),
 		description: 'CapabilityStatement Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a CapabilityStatement record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.CapabilityStatementCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a CapabilityStatement',
-	resolve: capabilitystatementCreateResolver,
+	resolve: scopeInvariant(scopeOptions, capabilitystatementCreateResolver),
 	type: CapabilityStatementSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.CapabilityStatementCreateMutation = {
 module.exports.CapabilityStatementUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple CapabilityStatements',
-	resolve: capabilitystatementUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, capabilitystatementUpdateResolver),
 	type: CapabilityStatementSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.CapabilityStatementUpdateMutation = {
 module.exports.CapabilityStatementDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single CapabilityStatement',
-	resolve: capabilitystatementDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, capabilitystatementDeleteResolver),
 	type: CapabilityStatementSchema
 };

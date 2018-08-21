@@ -2,7 +2,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DomainResourceResourceInputType = new GraphQLEnumType({
 	name: 'DomainResourceResourceInputType',
 	values: {
@@ -26,6 +25,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./narrative.input'),
 			description: 'A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \'clinically safe\' for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.'
 		},
+		// TODO: Figure out how to handle this
 		// contained: {
 		// 	type: new GraphQLList(require('./resourcelist.input')),
 		// 	description: 'These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.'

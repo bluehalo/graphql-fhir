@@ -7,12 +7,26 @@ const ChargeItemSchema = require('../../schemas/chargeitem.schema');
 // Inputs
 const ChargeItemInput = require('../../inputs/chargeitem.input');
 
-
+// Resolvers
 const {
 	chargeitemCreateResolver,
 	chargeitemUpdateResolver,
 	chargeitemDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ChargeItem',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ChargeItem record.'
 	},
 	resource: {
-		type: ChargeItemInput,
+		type: new GraphQLNonNull(ChargeItemInput),
 		description: 'ChargeItem Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ChargeItem record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ChargeItemCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ChargeItem',
-	resolve: chargeitemCreateResolver,
+	resolve: scopeInvariant(scopeOptions, chargeitemCreateResolver),
 	type: ChargeItemSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ChargeItemCreateMutation = {
 module.exports.ChargeItemUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ChargeItems',
-	resolve: chargeitemUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, chargeitemUpdateResolver),
 	type: ChargeItemSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ChargeItemUpdateMutation = {
 module.exports.ChargeItemDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ChargeItem',
-	resolve: chargeitemDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, chargeitemDeleteResolver),
 	type: ChargeItemSchema
 };

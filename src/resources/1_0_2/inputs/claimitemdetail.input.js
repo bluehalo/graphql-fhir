@@ -21,12 +21,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A service line number.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActInvoiceGroupCode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActInvoiceGroupCode
 		type: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'The type of product or service.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
 		service: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'If a grouping item then \'GROUP\' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied.'
@@ -59,7 +59,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./quantity.input'),
 			description: 'The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/udi
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/udi
 		udi: {
 			type: require('./coding.input'),
 			description: 'List of Unique Device Identifiers associated with this line item.'

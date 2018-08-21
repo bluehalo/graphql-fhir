@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Flag',
-		path: '/3_0_1/Flag/:id',
+		path: '/1_0_2/Flag/:id',
 		query: FlagInstanceQuery
 	}
 };

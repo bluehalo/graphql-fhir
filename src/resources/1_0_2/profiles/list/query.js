@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ListArgs = require('../../parameters/list.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	listResolver,
 	listListResolver,
 	listInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'List',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.ListQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ListQuery = {
 	args: Object.assign({}, CommonArgs, ListArgs),
 	description: 'Query for a single List',
-	resolve: listResolver,
+	resolve: scopeInvariant(scopeOptions, listResolver),
 	type: ListSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ListQuery = {
 module.exports.ListListQuery = {
 	args: Object.assign({}, CommonArgs, ListArgs),
 	description: 'Query for multiple Lists',
-	resolve: listListResolver,
+	resolve: scopeInvariant(scopeOptions, listListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ListListQuery = {
  */
 module.exports.ListInstanceQuery = {
 	description: 'Get information about a single List',
-	resolve: listInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, listInstanceResolver),
 	type: ListSchema
 };

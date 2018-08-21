@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'MedicationProduct_Input',
 	description: 'Information that only applies to products (not packages).',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-form-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-form-codes
 		form: {
 			type: require('./codeableconcept.input'),
 			description: 'Describes the form of the item.  Powder; tablets; carton.'

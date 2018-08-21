@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'CapabilityStatementDocument_Input',
 	description: 'A document definition.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/document-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/document-mode
 		mode: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Mode of this document declaration - whether an application is a producer or consumer.'

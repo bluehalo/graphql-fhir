@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'DeviceComponentProductionSpecification',
 	description: 'The production specification such as component revision, serial number, etc.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/specification-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/specification-type
 		specType: {
 			type: require('./codeableconcept.schema'),
 			description: 'The specification type, such as, serial number, part number, hardware revision, software revision, etc.'

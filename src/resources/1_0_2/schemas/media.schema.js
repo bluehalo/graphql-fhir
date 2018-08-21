@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MediaResourceType = new GraphQLEnumType({
 	name: 'MediaResourceType',
 	values: {
@@ -25,7 +24,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(MediaResourceType),
 			description: 'Type of this resource'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/digital-media-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/digital-media-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Whether the media is a photo (still image), an audio recording, or a video recording.'
@@ -34,7 +33,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Whether the media is a photo (still image), an audio recording, or a video recording.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/digital-media-subtype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/digital-media-subtype
 		subtype: {
 			type: require('./codeableconcept.schema'),
 			description: 'Details of the type of the media - usually, how it was acquired (what type of device). If images sourced from a DICOM system, are wrapped in a Media resource, then this is the modality.'
@@ -51,7 +50,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The person who administered the collection of the image.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/media-view
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/media-view
 		view: {
 			type: require('./codeableconcept.schema'),
 			description: 'The name of the imaging view e.g. Lateral or Antero-posterior (AP).'

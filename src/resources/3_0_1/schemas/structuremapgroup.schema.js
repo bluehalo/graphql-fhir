@@ -30,7 +30,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Another group that this group adds rules to.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/map-group-type-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/map-group-type-mode
 		typeMode: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'If this is the default rule set to apply for thie source type, or this combination of types.'

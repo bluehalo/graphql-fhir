@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const MeasureArgs = require('../../parameters/measure.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	measureResolver,
 	measureListResolver,
 	measureInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Measure',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.MeasureQuery
@@ -19,7 +31,7 @@ const {
 module.exports.MeasureQuery = {
 	args: Object.assign({}, CommonArgs, MeasureArgs),
 	description: 'Query for a single Measure',
-	resolve: measureResolver,
+	resolve: scopeInvariant(scopeOptions, measureResolver),
 	type: MeasureSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.MeasureQuery = {
 module.exports.MeasureListQuery = {
 	args: Object.assign({}, CommonArgs, MeasureArgs),
 	description: 'Query for multiple Measures',
-	resolve: measureListResolver,
+	resolve: scopeInvariant(scopeOptions, measureListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.MeasureListQuery = {
  */
 module.exports.MeasureInstanceQuery = {
 	description: 'Get information about a single Measure',
-	resolve: measureInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, measureInstanceResolver),
 	type: MeasureSchema
 };

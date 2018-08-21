@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let RelatedPersonResourceType = new GraphQLEnumType({
 	name: 'RelatedPersonResourceType',
 	values: {
@@ -32,7 +31,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'The patient this person is related to.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype
 		relationship: {
 			type: require('./codeableconcept.schema'),
 			description: 'The nature of the relationship between a patient and the related person.'
@@ -45,7 +44,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./contactpoint.schema')),
 			description: 'A contact detail for the person, e.g. a telephone number or an email address.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
 		gender: {
 			type: CodeScalar,
 			description: 'Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.'

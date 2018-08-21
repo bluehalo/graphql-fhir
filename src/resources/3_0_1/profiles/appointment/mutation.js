@@ -7,12 +7,26 @@ const AppointmentSchema = require('../../schemas/appointment.schema');
 // Inputs
 const AppointmentInput = require('../../inputs/appointment.input');
 
-
+// Resolvers
 const {
 	appointmentCreateResolver,
 	appointmentUpdateResolver,
 	appointmentDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Appointment',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Appointment record.'
 	},
 	resource: {
-		type: AppointmentInput,
+		type: new GraphQLNonNull(AppointmentInput),
 		description: 'Appointment Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Appointment record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.AppointmentCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Appointment',
-	resolve: appointmentCreateResolver,
+	resolve: scopeInvariant(scopeOptions, appointmentCreateResolver),
 	type: AppointmentSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.AppointmentCreateMutation = {
 module.exports.AppointmentUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Appointments',
-	resolve: appointmentUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, appointmentUpdateResolver),
 	type: AppointmentSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.AppointmentUpdateMutation = {
 module.exports.AppointmentDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Appointment',
-	resolve: appointmentDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, appointmentDeleteResolver),
 	type: AppointmentSchema
 };

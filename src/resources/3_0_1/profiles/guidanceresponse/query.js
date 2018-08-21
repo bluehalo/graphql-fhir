@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const GuidanceResponseArgs = require('../../parameters/guidanceresponse.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	guidanceresponseResolver,
 	guidanceresponseListResolver,
 	guidanceresponseInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'GuidanceResponse',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.GuidanceResponseQuery
@@ -19,7 +31,7 @@ const {
 module.exports.GuidanceResponseQuery = {
 	args: Object.assign({}, CommonArgs, GuidanceResponseArgs),
 	description: 'Query for a single GuidanceResponse',
-	resolve: guidanceresponseResolver,
+	resolve: scopeInvariant(scopeOptions, guidanceresponseResolver),
 	type: GuidanceResponseSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.GuidanceResponseQuery = {
 module.exports.GuidanceResponseListQuery = {
 	args: Object.assign({}, CommonArgs, GuidanceResponseArgs),
 	description: 'Query for multiple GuidanceResponses',
-	resolve: guidanceresponseListResolver,
+	resolve: scopeInvariant(scopeOptions, guidanceresponseListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.GuidanceResponseListQuery = {
  */
 module.exports.GuidanceResponseInstanceQuery = {
 	description: 'Get information about a single GuidanceResponse',
-	resolve: guidanceresponseInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, guidanceresponseInstanceResolver),
 	type: GuidanceResponseSchema
 };

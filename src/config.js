@@ -33,6 +33,10 @@ const SERVER_CONFIG = {
 	// Logger configurations
 	logging: {
 		level: 'debug'
+	},
+	// Auth configurations
+	auth: {
+		enabled: false
 	}
 };
 

@@ -46,6 +46,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The date/time that the resource was modified on the server.'
 		},
+		// TODO: Figure out how to handle this
 		// outcome: {
 		// 	type: require('./resourcelist.input'),
 		// 	description: 'An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction.'

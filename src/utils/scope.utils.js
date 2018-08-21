@@ -5,8 +5,8 @@ const {
 } = require('./error.utils');
 
 const {
-	SERVER_CONFIG
-} = require('../config');
+	defaultVersion
+} = require('../config').SERVER_CONFIG;
 
 /**
 * @name allowedScopes
@@ -51,7 +51,7 @@ function scopeInvariant (options = {}, resolver) {
 		errorMessage += `and version. You provided ${JSON.stringify(options)}`;
 
 		return formatErrorForGraphQL(
-			internal(version || SERVER_CONFIG.defaultVersion, errorMessage)
+			internal(version || defaultVersion, errorMessage)
 		);
 	}
 
@@ -66,6 +66,12 @@ function scopeInvariant (options = {}, resolver) {
 	}
 
 	return function scopeInvariantResolver (root, args, ctx, info) {
+		let serverConfig = ctx && ctx.server && ctx.server.config;
+		// If authorization is disabled, just bail now
+		if (serverConfig && serverConfig.auth && serverConfig.auth.enabled === false) {
+			return resolver(root, args, ctx, info);
+		}
+
 		let token = ctx && ctx.req && ctx.req.user && ctx.req.user.token;
 		let expectedScopes = allowedScopes(name, action);
 		let userScopes = token && token.scopes || [];
@@ -84,9 +90,7 @@ function scopeInvariant (options = {}, resolver) {
 		}
 		// We have passed scope and context checks, pass the request off
 		// to the actual resolver now
-		else {
-			return resolver(root, args, ctx, info);
-		}
+		return resolver(root, args, ctx, info);
 	};
 }
 

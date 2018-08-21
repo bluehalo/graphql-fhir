@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let EncounterResourceInputType = new GraphQLEnumType({
 	name: 'EncounterResourceInputType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'Identifier(s) by which this encounter is known.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-state
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-state
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'planned | arrived | in-progress | onleave | finished | cancelled.'
@@ -40,7 +39,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./encounterstatushistory.input')),
 			description: 'The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-class
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-class
 		class: {
 			type: CodeScalar,
 			description: 'inpatient | outpatient | ambulatory | emergency +.'
@@ -49,12 +48,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'inpatient | outpatient | ambulatory | emergency +.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-type
 		type: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-priority
 		priority: {
 			type: require('./codeableconcept.input'),
 			description: 'Indicates the urgency of the encounter.'
@@ -87,7 +86,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./quantity.input'),
 			description: 'Quantity of time the encounter lasted. This excludes the time during leaves of absence.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-reason
 		reason: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.'

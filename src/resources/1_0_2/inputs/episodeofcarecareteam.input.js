@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'EpisodeOfCareCareTeam_Input',
 	description: 'The list of practitioners that may be facilitating this episode of care for specific purposes.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/participant-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/participant-role
 		role: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The role this team member is taking within this episode of care.'

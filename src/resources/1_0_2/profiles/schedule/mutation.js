@@ -7,12 +7,26 @@ const ScheduleSchema = require('../../schemas/schedule.schema');
 // Inputs
 const ScheduleInput = require('../../inputs/schedule.input');
 
-
+// Resolvers
 const {
 	scheduleCreateResolver,
 	scheduleUpdateResolver,
 	scheduleDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Schedule',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Schedule record.'
 	},
 	resource: {
-		type: ScheduleInput,
+		type: new GraphQLNonNull(ScheduleInput),
 		description: 'Schedule Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Schedule record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ScheduleCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Schedule',
-	resolve: scheduleCreateResolver,
+	resolve: scopeInvariant(scopeOptions, scheduleCreateResolver),
 	type: ScheduleSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ScheduleCreateMutation = {
 module.exports.ScheduleUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Schedules',
-	resolve: scheduleUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, scheduleUpdateResolver),
 	type: ScheduleSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ScheduleUpdateMutation = {
 module.exports.ScheduleDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Schedule',
-	resolve: scheduleDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, scheduleDeleteResolver),
 	type: ScheduleSchema
 };

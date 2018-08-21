@@ -7,12 +7,26 @@ const DeviceRequestSchema = require('../../schemas/devicerequest.schema');
 // Inputs
 const DeviceRequestInput = require('../../inputs/devicerequest.input');
 
-
+// Resolvers
 const {
 	devicerequestCreateResolver,
 	devicerequestUpdateResolver,
 	devicerequestDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'DeviceRequest',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a DeviceRequest record.'
 	},
 	resource: {
-		type: DeviceRequestInput,
+		type: new GraphQLNonNull(DeviceRequestInput),
 		description: 'DeviceRequest Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a DeviceRequest record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.DeviceRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DeviceRequest',
-	resolve: devicerequestCreateResolver,
+	resolve: scopeInvariant(scopeOptions, devicerequestCreateResolver),
 	type: DeviceRequestSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.DeviceRequestCreateMutation = {
 module.exports.DeviceRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DeviceRequests',
-	resolve: devicerequestUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, devicerequestUpdateResolver),
 	type: DeviceRequestSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.DeviceRequestUpdateMutation = {
 module.exports.DeviceRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DeviceRequest',
-	resolve: devicerequestDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, devicerequestDeleteResolver),
 	type: DeviceRequestSchema
 };

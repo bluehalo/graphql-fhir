@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const DetectedIssueArgs = require('../../parameters/detectedissue.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	detectedissueResolver,
 	detectedissueListResolver,
 	detectedissueInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'DetectedIssue',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.DetectedIssueQuery
@@ -19,7 +31,7 @@ const {
 module.exports.DetectedIssueQuery = {
 	args: Object.assign({}, CommonArgs, DetectedIssueArgs),
 	description: 'Query for a single DetectedIssue',
-	resolve: detectedissueResolver,
+	resolve: scopeInvariant(scopeOptions, detectedissueResolver),
 	type: DetectedIssueSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.DetectedIssueQuery = {
 module.exports.DetectedIssueListQuery = {
 	args: Object.assign({}, CommonArgs, DetectedIssueArgs),
 	description: 'Query for multiple DetectedIssues',
-	resolve: detectedissueListResolver,
+	resolve: scopeInvariant(scopeOptions, detectedissueListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.DetectedIssueListQuery = {
  */
 module.exports.DetectedIssueInstanceQuery = {
 	description: 'Get information about a single DetectedIssue',
-	resolve: detectedissueInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, detectedissueInstanceResolver),
 	type: DetectedIssueSchema
 };

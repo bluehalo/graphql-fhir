@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ClaimPayee',
 	description: 'The party to be reimbursed for the services.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/payeetype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/payeetype
 		type: {
 			type: require('./coding.schema'),
 			description: 'Party to be reimbursed: Subscriber, provider, other.'

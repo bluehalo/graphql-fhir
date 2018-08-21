@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DocumentManifestResourceInputType = new GraphQLEnumType({
 	name: 'DocumentManifestResourceInputType',
 	values: {
@@ -33,7 +32,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'Other identifiers associated with the document manifest, including version independent  identifiers.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/document-reference-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/document-reference-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this document manifest.'
@@ -42,7 +41,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The status of this document manifest.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-doc-typecodes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-doc-typecodes
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'Specifies the kind of this set of documents (e.g. Patient Summary, Discharge Summary, Prescription, etc.). The type of a set of documents may be the same as one of the documents in it - especially if there is only one - but it may be wider.'

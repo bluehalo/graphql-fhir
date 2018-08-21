@@ -41,12 +41,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./quantity.input'),
 			description: 'The quantity of specimen collected; for instance the volume of a blood sample, or the physical measurement of an anatomic pathology sample.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-collection-method
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-collection-method
 		method: {
 			type: require('./codeableconcept.input'),
 			description: 'A coded value specifying the technique that is used to perform the procedure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		bodySite: {
 			type: require('./codeableconcept.input'),
 			description: 'Anatomical location from which the specimen was collected (if subject is a patient). This is the target site.  This element is not used for environmental specimens.'

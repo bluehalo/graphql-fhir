@@ -21,7 +21,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A code that identifies a property defined in the code system.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/filter-operator
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/filter-operator
 		op: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The kind of operation to perform as a part of the filter criteria.'

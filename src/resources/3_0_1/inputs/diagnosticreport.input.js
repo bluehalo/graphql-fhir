@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DiagnosticReportResourceInputType = new GraphQLEnumType({
 	name: 'DiagnosticReportResourceInputType',
 	values: {
@@ -33,7 +32,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'Details concerning a test or procedure requested.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-report-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-report-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the diagnostic report as a whole.'
@@ -42,12 +41,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The status of the diagnostic report as a whole.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-service-sections
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-service-sections
 		category: {
 			type: require('./codeableconcept.input'),
 			description: 'A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/report-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/report-codes
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'A code or name that describes this diagnostic report.'
@@ -108,7 +107,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Concise and clinically contextualized impression / summary of the diagnostic report.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
 		codedDiagnosis: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Codes for the conclusion.'

@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'Contributor',
 	description: 'Base StructureDefinition for Contributor Type.',
 	fields: () => extendSchema(require('./element.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contributor-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contributor-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of contributor.'

@@ -3,7 +3,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let EnrollmentRequestResourceType = new GraphQLEnumType({
 	name: 'EnrollmentRequestResourceType',
 	values: {
@@ -27,12 +26,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'The Response business identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		ruleset: {
 			type: require('./coding.schema'),
 			description: 'The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		originalRuleset: {
 			type: require('./coding.schema'),
 			description: 'The style (standard) and version of the original material which was converted into this resource.'
@@ -65,7 +64,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'Reference to the program or plan identification, underwriter or payor.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/relationship
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/relationship
 		relationship: {
 			type: new GraphQLNonNull(require('./coding.schema')),
 			description: 'The relationship of the patient to the subscriber.'

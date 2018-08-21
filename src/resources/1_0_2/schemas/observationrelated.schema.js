@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ObservationRelated',
 	description: 'A  reference to another resource (usually another Observation but could  also be a QuestionnaireAnswer) whose relationship is defined by the relationship type code.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/observation-relationshiptypes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-relationshiptypes
 		type: {
 			type: CodeScalar,
 			description: 'A code specifying the kind of relationship that exists with the target resource.'

@@ -2,7 +2,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let OrganizationResourceType = new GraphQLEnumType({
 	name: 'OrganizationResourceType',
 	values: {
@@ -34,7 +33,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Whether the organization\'s record is still in active use.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/organization-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/organization-type
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'The kind of organization that this is.'

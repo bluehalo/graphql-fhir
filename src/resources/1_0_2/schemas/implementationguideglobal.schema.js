@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ImplementationGuideGlobal',
 	description: 'A set of profiles that all resources covered by this implementation guide must conform to.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of resource that all instances must conform to.'

@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const LocationArgs = require('../../parameters/location.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	locationResolver,
 	locationListResolver,
 	locationInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Location',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.LocationQuery
@@ -19,7 +31,7 @@ const {
 module.exports.LocationQuery = {
 	args: Object.assign({}, CommonArgs, LocationArgs),
 	description: 'Query for a single Location',
-	resolve: locationResolver,
+	resolve: scopeInvariant(scopeOptions, locationResolver),
 	type: LocationSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.LocationQuery = {
 module.exports.LocationListQuery = {
 	args: Object.assign({}, CommonArgs, LocationArgs),
 	description: 'Query for multiple Locations',
-	resolve: locationListResolver,
+	resolve: scopeInvariant(scopeOptions, locationListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.LocationListQuery = {
  */
 module.exports.LocationInstanceQuery = {
 	description: 'Get information about a single Location',
-	resolve: locationInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, locationInstanceResolver),
 	type: LocationSchema
 };

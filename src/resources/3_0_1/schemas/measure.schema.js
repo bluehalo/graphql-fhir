@@ -6,7 +6,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MeasureResourceType = new GraphQLEnumType({
 	name: 'MeasureResourceType',
 	values: {
@@ -62,7 +61,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A short, descriptive, user-friendly title for the measure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this measure. Enables tracking the life-cycle of the content.'
@@ -143,12 +142,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./usagecontext.schema')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate measure instances.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A legal or geographic region in which the measure is intended to be used.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/definition-topic
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/definition-topic
 		topic: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Descriptive topics related to the content of the measure. Topics provide a high-level categorization of the type of the measure that can be useful for filtering and searching.'
@@ -185,17 +184,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Notices and disclaimers regarding the use of the measure, or related to intellectual property (such as code systems) referenced by the measure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/measure-scoring
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/measure-scoring
 		scoring: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates how the calculation is performed for the measure, including proportion, ratio, continuous variable, and cohort. The value set is extensible, allowing additional measure scoring types to be represented.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/composite-measure-scoring
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/composite-measure-scoring
 		compositeScoring: {
 			type: require('./codeableconcept.schema'),
 			description: 'If this is a composite measure, the scoring method used to combine the component measures to determine the composite score.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/measure-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/measure-type
 		type: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Indicates whether the measure is used to examine a process, an outcome over time, a patient-reported outcome, or a structure measure such as utilization.'

@@ -6,7 +6,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ActivityDefinitionResourceType = new GraphQLEnumType({
 	name: 'ActivityDefinitionResourceType',
 	values: {
@@ -62,7 +61,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A short, descriptive, user-friendly title for the activity definition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this activity definition. Enables tracking the life-cycle of the content.'
@@ -143,12 +142,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./usagecontext.schema')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate activity definition instances.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A legal or geographic region in which the activity definition is intended to be used.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/definition-topic
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/definition-topic
 		topic: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Descriptive topics related to the content of the activity. Topics provide a high-level categorization of the activity that can be useful for filtering and searching.'
@@ -177,7 +176,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'A reference to a Library resource containing any formal logic used by the asset.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		kind: {
 			type: CodeScalar,
 			description: 'A description of the kind of resource the activity definition is representing. For example, a MedicationRequest, a ProcedureRequest, or a CommunicationRequest. Typically, but not always, this is a Request resource.'
@@ -186,7 +185,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A description of the kind of resource the activity definition is representing. For example, a MedicationRequest, a ProcedureRequest, or a CommunicationRequest. Typically, but not always, this is a Request resource.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-code
 		code: {
 			type: require('./codeableconcept.schema'),
 			description: 'Detailed description of the type of activity; e.g. What lab test, what procedure, what kind of encounter.'
@@ -219,12 +218,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./activitydefinitionparticipant.schema')),
 			description: 'Indicates who should participate in performing the action described.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		productReference: {
 			type: require('./reference.schema'),
 			description: 'Identifies the food, drug or other product being consumed or supplied in the activity.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		productCodeableConcept: {
 			type: require('./codeableconcept.schema'),
 			description: 'Identifies the food, drug or other product being consumed or supplied in the activity.'
@@ -237,7 +236,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./dosage.schema')),
 			description: 'Provides detailed dosage instructions in the same way that they are described for MedicationRequest resources.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		bodySite: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Indicates the sites on the subject\'s body where the procedure should be performed (I.e. the target sites).'

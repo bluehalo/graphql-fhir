@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'DeviceUseRequest',
-		path: '/3_0_1/DeviceUseRequest/:id',
+		path: '/1_0_2/DeviceUseRequest/:id',
 		query: DeviceUseRequestInstanceQuery
 	}
 };

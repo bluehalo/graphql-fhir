@@ -7,12 +7,26 @@ const EligibilityRequestSchema = require('../../schemas/eligibilityrequest.schem
 // Inputs
 const EligibilityRequestInput = require('../../inputs/eligibilityrequest.input');
 
-
+// Resolvers
 const {
 	eligibilityrequestCreateResolver,
 	eligibilityrequestUpdateResolver,
 	eligibilityrequestDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'EligibilityRequest',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a EligibilityRequest record.'
 	},
 	resource: {
-		type: EligibilityRequestInput,
+		type: new GraphQLNonNull(EligibilityRequestInput),
 		description: 'EligibilityRequest Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a EligibilityRequest record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.EligibilityRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a EligibilityRequest',
-	resolve: eligibilityrequestCreateResolver,
+	resolve: scopeInvariant(scopeOptions, eligibilityrequestCreateResolver),
 	type: EligibilityRequestSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.EligibilityRequestCreateMutation = {
 module.exports.EligibilityRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple EligibilityRequests',
-	resolve: eligibilityrequestUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, eligibilityrequestUpdateResolver),
 	type: EligibilityRequestSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.EligibilityRequestUpdateMutation = {
 module.exports.EligibilityRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single EligibilityRequest',
-	resolve: eligibilityrequestDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, eligibilityrequestDeleteResolver),
 	type: EligibilityRequestSchema
 };

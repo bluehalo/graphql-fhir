@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ClaimResponseAddItemDetail',
 	description: 'The second tier service adjudications for payor added services.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
 		service: {
 			type: new GraphQLNonNull(require('./coding.schema')),
 			description: 'A code to indicate the Professional Service or Product supplied.'

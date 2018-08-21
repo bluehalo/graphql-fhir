@@ -7,12 +7,26 @@ const StructureDefinitionSchema = require('../../schemas/structuredefinition.sch
 // Inputs
 const StructureDefinitionInput = require('../../inputs/structuredefinition.input');
 
-
+// Resolvers
 const {
 	structuredefinitionCreateResolver,
 	structuredefinitionUpdateResolver,
 	structuredefinitionDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'StructureDefinition',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a StructureDefinition record.'
 	},
 	resource: {
-		type: StructureDefinitionInput,
+		type: new GraphQLNonNull(StructureDefinitionInput),
 		description: 'StructureDefinition Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a StructureDefinition record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.StructureDefinitionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a StructureDefinition',
-	resolve: structuredefinitionCreateResolver,
+	resolve: scopeInvariant(scopeOptions, structuredefinitionCreateResolver),
 	type: StructureDefinitionSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.StructureDefinitionCreateMutation = {
 module.exports.StructureDefinitionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple StructureDefinitions',
-	resolve: structuredefinitionUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, structuredefinitionUpdateResolver),
 	type: StructureDefinitionSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.StructureDefinitionUpdateMutation = {
 module.exports.StructureDefinitionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single StructureDefinition',
-	resolve: structuredefinitionDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, structuredefinitionDeleteResolver),
 	type: StructureDefinitionSchema
 };

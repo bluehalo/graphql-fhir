@@ -7,12 +7,26 @@ const ExpansionProfileSchema = require('../../schemas/expansionprofile.schema');
 // Inputs
 const ExpansionProfileInput = require('../../inputs/expansionprofile.input');
 
-
+// Resolvers
 const {
 	expansionprofileCreateResolver,
 	expansionprofileUpdateResolver,
 	expansionprofileDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ExpansionProfile',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ExpansionProfile record.'
 	},
 	resource: {
-		type: ExpansionProfileInput,
+		type: new GraphQLNonNull(ExpansionProfileInput),
 		description: 'ExpansionProfile Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ExpansionProfile record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ExpansionProfileCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ExpansionProfile',
-	resolve: expansionprofileCreateResolver,
+	resolve: scopeInvariant(scopeOptions, expansionprofileCreateResolver),
 	type: ExpansionProfileSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ExpansionProfileCreateMutation = {
 module.exports.ExpansionProfileUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ExpansionProfiles',
-	resolve: expansionprofileUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, expansionprofileUpdateResolver),
 	type: ExpansionProfileSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ExpansionProfileUpdateMutation = {
 module.exports.ExpansionProfileDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ExpansionProfile',
-	resolve: expansionprofileDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, expansionprofileDeleteResolver),
 	type: ExpansionProfileSchema
 };

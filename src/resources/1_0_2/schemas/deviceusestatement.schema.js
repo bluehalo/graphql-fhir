@@ -3,7 +3,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DeviceUseStatementResourceType = new GraphQLEnumType({
 	name: 'DeviceUseStatementResourceType',
 	values: {

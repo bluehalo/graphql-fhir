@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ProcedureRequestResourceType = new GraphQLEnumType({
 	name: 'ProcedureRequestResourceType',
 	values: {
@@ -44,7 +43,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'A shared identifier common to all procedure or diagnostic requests that were authorized more or less simultaneously by a single author, representing the composite or group identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the order.'
@@ -53,7 +52,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The status of the order.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-intent
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-intent
 		intent: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Whether the request is a proposal, plan, an original order or a reflex order.'
@@ -62,7 +61,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Whether the request is a proposal, plan, an original order or a reflex order.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
 		priority: {
 			type: CodeScalar,
 			description: 'Indicates how quickly the ProcedureRequest should be addressed with respect to other requests.'
@@ -79,12 +78,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Set this to true if the record is saying that the procedure should NOT be performed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-category
 		category: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A code that classifies the procedure for searching, sorting and display purposes (e.g. \'Surgical Procedure\').'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-code
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'A code that identifies a particular procedure, diagnostic investigation, or panel of investigations, that have been requested.'
@@ -113,7 +112,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./timing.schema'),
 			description: 'The date/time at which the diagnostic testing should occur.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-as-needed-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-as-needed-reason
 		asNeededBoolean: {
 			type: GraphQLBoolean,
 			description: 'If a CodeableConcept is present, it indicates the pre-condition for performing the procedure.  For example \'pain\', \'on flare-up\', etc.'
@@ -122,7 +121,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'If a CodeableConcept is present, it indicates the pre-condition for performing the procedure.  For example \'pain\', \'on flare-up\', etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-as-needed-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-as-needed-reason
 		asNeededCodeableConcept: {
 			type: require('./codeableconcept.schema'),
 			description: 'If a CodeableConcept is present, it indicates the pre-condition for performing the procedure.  For example \'pain\', \'on flare-up\', etc.'
@@ -139,7 +138,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./procedurerequestrequester.schema'),
 			description: 'The individual who initiated the request and has responsibility for its activation.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/participant-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/participant-role
 		performerType: {
 			type: require('./codeableconcept.schema'),
 			description: 'Desired type of performer for doing the diagnostic testing.'
@@ -148,7 +147,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The desired perfomer for doing the diagnostic testing.  For example, the surgeon, dermatopathologist, endoscopist, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'An explanation or justification for why this diagnostic investigation is being requested in coded or textual form.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.'
@@ -165,7 +164,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'One or more specimens that the laboratory procedure will use.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		bodySite: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Anatomic location where the procedure should be performed. This is the target site.'

@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'MessageDefinitionFocus_Input',
 	description: 'Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		code: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The kind of resource that must be the focus for this message.'

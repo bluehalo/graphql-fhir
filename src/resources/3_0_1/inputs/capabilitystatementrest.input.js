@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'CapabilityStatementRest_Input',
 	description: 'A definition of the restful capabilities of the solution, if any.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/restful-capability-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/restful-capability-mode
 		mode: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Identifies whether this portion of the statement is describing the ability to initiate or receive restful operations.'

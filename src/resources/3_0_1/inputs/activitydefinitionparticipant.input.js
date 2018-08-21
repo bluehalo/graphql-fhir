@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ActivityDefinitionParticipant_Input',
 	description: 'Indicates who should participate in performing the action described.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/action-participant-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-participant-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of participant in the action.'
@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The type of participant in the action.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/action-participant-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-participant-role
 		role: {
 			type: require('./codeableconcept.input'),
 			description: 'The role the participant should play in performing the described action.'

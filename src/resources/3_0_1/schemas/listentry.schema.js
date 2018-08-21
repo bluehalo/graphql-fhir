@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ListEntry',
 	description: 'Entries in this list.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/list-item-flag
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/list-item-flag
 		flag: {
 			type: require('./codeableconcept.schema'),
 			description: 'The flag allows the system constructing the list to indicate the role and significance of the item in the list.'

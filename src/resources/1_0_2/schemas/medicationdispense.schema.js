@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MedicationDispenseResourceType = new GraphQLEnumType({
 	name: 'MedicationDispenseResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'Identifier assigned by the dispensing facility - this is an identifier assigned outside FHIR.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-dispense-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-dispense-status
 		status: {
 			type: CodeScalar,
 			description: 'A code specifying the state of the set of dispense events.'
@@ -49,7 +48,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'Indicates the medication order that is being dispensed against.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.'

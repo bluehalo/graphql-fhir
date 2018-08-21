@@ -22,7 +22,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The MessageHeader.id of the message to which this message is a response.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/response-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/response-code
 		code: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not.'

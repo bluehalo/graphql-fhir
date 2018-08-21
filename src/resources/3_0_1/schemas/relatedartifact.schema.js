@@ -14,7 +14,7 @@ module.exports = new GraphQLObjectType({
 	name: 'RelatedArtifact',
 	description: 'Base StructureDefinition for RelatedArtifact Type.',
 	fields: () => extendSchema(require('./element.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/related-artifact-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/related-artifact-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of relationship to the related artifact.'

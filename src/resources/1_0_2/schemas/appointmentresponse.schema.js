@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let AppointmentResponseResourceType = new GraphQLEnumType({
 	name: 'AppointmentResponseResourceType',
 	values: {
@@ -48,7 +47,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'This may be either the same as the appointment request to confirm the details of the appointment, or alternately a new time to request a re-negotiation of the end time.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-participant-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-participant-type
 		participantType: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Role of participant in the appointment.'
@@ -57,7 +56,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'A Person, Location/HealthcareService or Device that is participating in the appointment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/participantstatus
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/participantstatus
 		participantStatus: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Participation status of the participant. When the status is declined or tentative if the start/end times are different to the appointment, then these times should be interpreted as a requested time change. When the status is accepted, the times can either be the time of the appointment (as a confirmation of the time) or can be empty.'

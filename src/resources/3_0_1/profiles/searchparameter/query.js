@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const SearchParameterArgs = require('../../parameters/searchparameter.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	searchparameterResolver,
 	searchparameterListResolver,
 	searchparameterInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'SearchParameter',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.SearchParameterQuery
@@ -19,7 +31,7 @@ const {
 module.exports.SearchParameterQuery = {
 	args: Object.assign({}, CommonArgs, SearchParameterArgs),
 	description: 'Query for a single SearchParameter',
-	resolve: searchparameterResolver,
+	resolve: scopeInvariant(scopeOptions, searchparameterResolver),
 	type: SearchParameterSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.SearchParameterQuery = {
 module.exports.SearchParameterListQuery = {
 	args: Object.assign({}, CommonArgs, SearchParameterArgs),
 	description: 'Query for multiple SearchParameters',
-	resolve: searchparameterListResolver,
+	resolve: scopeInvariant(scopeOptions, searchparameterListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.SearchParameterListQuery = {
  */
 module.exports.SearchParameterInstanceQuery = {
 	description: 'Get information about a single SearchParameter',
-	resolve: searchparameterInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, searchparameterInstanceResolver),
 	type: SearchParameterSchema
 };

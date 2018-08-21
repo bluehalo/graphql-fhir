@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ProvenanceArgs = require('../../parameters/provenance.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	provenanceResolver,
 	provenanceListResolver,
 	provenanceInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Provenance',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.ProvenanceQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ProvenanceQuery = {
 	args: Object.assign({}, CommonArgs, ProvenanceArgs),
 	description: 'Query for a single Provenance',
-	resolve: provenanceResolver,
+	resolve: scopeInvariant(scopeOptions, provenanceResolver),
 	type: ProvenanceSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ProvenanceQuery = {
 module.exports.ProvenanceListQuery = {
 	args: Object.assign({}, CommonArgs, ProvenanceArgs),
 	description: 'Query for multiple Provenances',
-	resolve: provenanceListResolver,
+	resolve: scopeInvariant(scopeOptions, provenanceListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ProvenanceListQuery = {
  */
 module.exports.ProvenanceInstanceQuery = {
 	description: 'Get information about a single Provenance',
-	resolve: provenanceInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, provenanceInstanceResolver),
 	type: ProvenanceSchema
 };

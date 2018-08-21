@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Conformance',
-		path: '/3_0_1/Conformance/:id',
+		path: '/1_0_2/Conformance/:id',
 		query: ConformanceInstanceQuery
 	}
 };

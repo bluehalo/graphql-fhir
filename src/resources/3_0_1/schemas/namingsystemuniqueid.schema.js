@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'NamingSystemUniqueId',
 	description: 'Indicates how the system may be identified when referenced in electronic exchange.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/namingsystem-identifier-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/namingsystem-identifier-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Identifies the unique identifier scheme used for this particular identifier.'

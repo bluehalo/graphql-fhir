@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const PlanDefinitionArgs = require('../../parameters/plandefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	plandefinitionResolver,
 	plandefinitionListResolver,
 	plandefinitionInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'PlanDefinition',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.PlanDefinitionQuery
@@ -19,7 +31,7 @@ const {
 module.exports.PlanDefinitionQuery = {
 	args: Object.assign({}, CommonArgs, PlanDefinitionArgs),
 	description: 'Query for a single PlanDefinition',
-	resolve: plandefinitionResolver,
+	resolve: scopeInvariant(scopeOptions, plandefinitionResolver),
 	type: PlanDefinitionSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.PlanDefinitionQuery = {
 module.exports.PlanDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, PlanDefinitionArgs),
 	description: 'Query for multiple PlanDefinitions',
-	resolve: plandefinitionListResolver,
+	resolve: scopeInvariant(scopeOptions, plandefinitionListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.PlanDefinitionListQuery = {
  */
 module.exports.PlanDefinitionInstanceQuery = {
 	description: 'Get information about a single PlanDefinition',
-	resolve: plandefinitionInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, plandefinitionInstanceResolver),
 	type: PlanDefinitionSchema
 };

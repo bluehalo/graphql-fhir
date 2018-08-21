@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let FlagResourceInputType = new GraphQLEnumType({
 	name: 'FlagResourceInputType',
 	values: {
@@ -27,12 +26,12 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'Identifier assigned to the flag for external use (outside the FHIR environment).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/flag-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/flag-category
 		category: {
 			type: require('./codeableconcept.input'),
 			description: 'Allows an flag to be divided into different categories like clinical, administrative etc. Intended to be used as a means of filtering which flags are displayed to particular user or in a given context.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/flag-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/flag-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Supports basic workflow.'
@@ -57,7 +56,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The person, organization or device that created the flag.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/flag-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/flag-code
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'The coded value or textual component of the flag to display to the user.'

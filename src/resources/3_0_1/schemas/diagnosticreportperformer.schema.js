@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'DiagnosticReportPerformer',
 	description: 'Indicates who or what participated in producing the report.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/performer-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/performer-role
 		role: {
 			type: require('./codeableconcept.schema'),
 			description: 'Describes the type of participation (e.g.  a responsible party, author, or verifier).'

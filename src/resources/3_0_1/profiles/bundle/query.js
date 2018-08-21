@@ -5,11 +5,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const BundleArgs = require('../../parameters/bundle.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	bundleResolver,
 	bundleListResolver,
 	bundleInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Bundle',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.BundleQuery
@@ -18,7 +30,7 @@ const {
 module.exports.BundleQuery = {
 	args: Object.assign({}, CommonArgs, BundleArgs),
 	description: 'Query for a single Bundle',
-	resolve: bundleResolver,
+	resolve: scopeInvariant(scopeOptions, bundleResolver),
 	type: BundleSchema
 };
 
@@ -29,7 +41,7 @@ module.exports.BundleQuery = {
 module.exports.BundleListQuery = {
 	args: Object.assign({}, CommonArgs, BundleArgs),
 	description: 'Query for multiple Bundles',
-	resolve: bundleListResolver,
+	resolve: scopeInvariant(scopeOptions, bundleListResolver),
 	type: BundleSchema
 };
 
@@ -39,6 +51,6 @@ module.exports.BundleListQuery = {
  */
 module.exports.BundleInstanceQuery = {
 	description: 'Get information about a single Bundle',
-	resolve: bundleInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, bundleInstanceResolver),
 	type: BundleSchema
 };

@@ -28,7 +28,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Free text dosage instructions e.g. SIG.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/additional-instruction-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/additional-instruction-codes
 		additionalInstruction: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Supplemental instruction - e.g. \'with meals\'.'
@@ -45,7 +45,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./timing.input'),
 			description: 'When medication should be administered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-as-needed-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-as-needed-reason
 		asNeededBoolean: {
 			type: GraphQLBoolean,
 			description: 'Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).'
@@ -54,22 +54,22 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-as-needed-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-as-needed-reason
 		asNeededCodeableConcept: {
 			type: require('./codeableconcept.input'),
 			description: 'Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/approach-site-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/approach-site-codes
 		site: {
 			type: require('./codeableconcept.input'),
 			description: 'Body site to administer to.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/route-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/route-codes
 		route: {
 			type: require('./codeableconcept.input'),
 			description: 'How drug should enter body.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/administration-method-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/administration-method-codes
 		method: {
 			type: require('./codeableconcept.input'),
 			description: 'Technique for administering medication.'

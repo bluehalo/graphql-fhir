@@ -29,7 +29,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A description of how or why the filter is used.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/filter-operator
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/filter-operator
 		operator: {
 			type: new GraphQLList(new GraphQLNonNull(CodeScalar)),
 			description: 'A list of operators that can be used with the filter.'

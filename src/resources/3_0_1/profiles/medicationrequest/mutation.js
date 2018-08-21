@@ -7,12 +7,26 @@ const MedicationRequestSchema = require('../../schemas/medicationrequest.schema'
 // Inputs
 const MedicationRequestInput = require('../../inputs/medicationrequest.input');
 
-
+// Resolvers
 const {
 	medicationrequestCreateResolver,
 	medicationrequestUpdateResolver,
 	medicationrequestDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'MedicationRequest',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a MedicationRequest record.'
 	},
 	resource: {
-		type: MedicationRequestInput,
+		type: new GraphQLNonNull(MedicationRequestInput),
 		description: 'MedicationRequest Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a MedicationRequest record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.MedicationRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MedicationRequest',
-	resolve: medicationrequestCreateResolver,
+	resolve: scopeInvariant(scopeOptions, medicationrequestCreateResolver),
 	type: MedicationRequestSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.MedicationRequestCreateMutation = {
 module.exports.MedicationRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MedicationRequests',
-	resolve: medicationrequestUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, medicationrequestUpdateResolver),
 	type: MedicationRequestSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.MedicationRequestUpdateMutation = {
 module.exports.MedicationRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MedicationRequest',
-	resolve: medicationrequestDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, medicationrequestDeleteResolver),
 	type: MedicationRequestSchema
 };

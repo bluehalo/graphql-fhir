@@ -14,12 +14,12 @@ module.exports = new GraphQLInputObjectType({
 	name: 'TestScriptSetupActionOperation_Input',
 	description: 'The operation to perform.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/testscript-operation-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/testscript-operation-codes
 		type: {
 			type: require('./coding.input'),
 			description: 'Server interaction or operation type.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/defined-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/defined-types
 		resource: {
 			type: CodeScalar,
 			description: 'The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.'
@@ -44,7 +44,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The description would be used by test engines for tracking and reporting purposes.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/content-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/content-type
 		accept: {
 			type: CodeScalar,
 			description: 'The content-type or mime-type to use for RESTful operation in the \'Accept\' header.'
@@ -53,7 +53,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The content-type or mime-type to use for RESTful operation in the \'Accept\' header.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/content-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/content-type
 		contentType: {
 			type: CodeScalar,
 			description: 'The content-type or mime-type to use for RESTful operation in the \'Content-Type\' header.'

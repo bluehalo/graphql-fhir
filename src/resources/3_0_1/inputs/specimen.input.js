@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SpecimenResourceInputType = new GraphQLEnumType({
 	name: 'SpecimenResourceInputType',
 	values: {
@@ -32,7 +31,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./identifier.input'),
 			description: 'The identifier assigned by the lab when accessioning specimen(s). This is not necessarily the same as the specimen identifier, depending on local lab procedures.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-status
 		status: {
 			type: CodeScalar,
 			description: 'The availability of the specimen.'
@@ -41,7 +40,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The availability of the specimen.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0487
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0487
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'The kind of material that forms the specimen.'

@@ -6,7 +6,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CapabilityStatementResourceType = new GraphQLEnumType({
 	name: 'CapabilityStatementResourceType',
 	values: {
@@ -58,7 +57,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A short, descriptive, user-friendly title for the capability statement.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this capability statement. Enables tracking the life-cycle of the content.'
@@ -107,7 +106,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./usagecontext.schema')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate capability statement instances.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A legal or geographic region in which the capability statement is intended to be used.'
@@ -128,7 +127,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A copyright statement relating to the capability statement and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the capability statement.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/capability-statement-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/capability-statement-kind
 		kind: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The way that this statement is intended to be used, to describe an actual running instance of software, a particular product (kind not instance of software) or a class of implementation (e.g. a desired purchase).'
@@ -161,7 +160,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The version of the FHIR specification on which this capability statement is based.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/unknown-content-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/unknown-content-code
 		acceptUnknown: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'A code that indicates whether the application accepts unknown elements or extensions when reading resources.'

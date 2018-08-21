@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const AccountArgs = require('../../parameters/account.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	accountResolver,
 	accountListResolver,
 	accountInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Account',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.AccountQuery
@@ -19,7 +31,7 @@ const {
 module.exports.AccountQuery = {
 	args: Object.assign({}, CommonArgs, AccountArgs),
 	description: 'Query for a single Account',
-	resolve: accountResolver,
+	resolve: scopeInvariant(scopeOptions, accountResolver),
 	type: AccountSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.AccountQuery = {
 module.exports.AccountListQuery = {
 	args: Object.assign({}, CommonArgs, AccountArgs),
 	description: 'Query for multiple Accounts',
-	resolve: accountListResolver,
+	resolve: scopeInvariant(scopeOptions, accountListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.AccountListQuery = {
  */
 module.exports.AccountInstanceQuery = {
 	description: 'Get information about a single Account',
-	resolve: accountInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, accountInstanceResolver),
 	type: AccountSchema
 };

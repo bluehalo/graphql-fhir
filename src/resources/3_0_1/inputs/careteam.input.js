@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CareTeamResourceInputType = new GraphQLEnumType({
 	name: 'CareTeamResourceInputType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'This records identifiers associated with this care team that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-team-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-team-status
 		status: {
 			type: CodeScalar,
 			description: 'Indicates the current state of the care team.'
@@ -36,7 +35,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Indicates the current state of the care team.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-team-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-team-category
 		category: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Identifies what kind of team.  This is to support differentiation between multiple co-existing teams, such as care plan team, episode of care team, longitudinal care team.'
@@ -65,7 +64,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./careteamparticipant.input')),
 			description: 'Identifies all people and organizations who are expected to be involved in the care team.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Describes why the care team exists.'

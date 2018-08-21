@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ProcedureRequestResourceType = new GraphQLEnumType({
 	name: 'ProcedureRequestResourceType',
 	values: {
@@ -32,22 +31,22 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'The person, animal or group that should receive the procedure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-code
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'The specific procedure that is ordered. Use text if the exact nature of the procedure cannot be coded.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		bodySite: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Indicates the sites on the subject\'s body where the procedure should be performed (I.e. the target sites).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
 		reasonCodeableConcept: {
 			type: require('./codeableconcept.schema'),
 			description: 'The reason why the procedure is being proposed or ordered. This procedure request may be motivated by a Condition for instance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
 		reasonReference: {
 			type: require('./reference.schema'),
 			description: 'The reason why the procedure is being proposed or ordered. This procedure request may be motivated by a Condition for instance.'
@@ -76,7 +75,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'For example, the surgeon, anaethetist, endoscopist, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-request-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-request-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the order.'
@@ -113,7 +112,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The healthcare professional responsible for proposing or ordering the procedure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-request-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-request-priority
 		priority: {
 			type: CodeScalar,
 			description: 'The clinical priority associated with this order.'

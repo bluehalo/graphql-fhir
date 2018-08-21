@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'Narrative_Input',
 	description: 'Base StructureDefinition for Narrative Type.',
 	fields: () => extendSchema(require('./element.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/narrative-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/narrative-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the narrative - whether it\'s entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.'

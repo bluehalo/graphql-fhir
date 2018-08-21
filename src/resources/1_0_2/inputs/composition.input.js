@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CompositionResourceInputType = new GraphQLEnumType({
 	name: 'CompositionResourceInputType',
 	values: {
@@ -36,12 +35,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The composition editing time, when the composition was last logically changed by the author.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/doc-typecodes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/doc-typecodes
 		type: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Specifies the particular kind of composition (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the composition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/doc-classcodes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/doc-classcodes
 		class: {
 			type: require('./codeableconcept.input'),
 			description: 'A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.'
@@ -54,7 +53,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Official human-readable label for the composition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/composition-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/composition-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document.'
@@ -63,7 +62,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-Confidentiality
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-Confidentiality
 		confidentiality: {
 			type: CodeScalar,
 			description: 'The code specifying the level of confidentiality of the Composition.'

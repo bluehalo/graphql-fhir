@@ -20,7 +20,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The location from which the patient came before admission.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-admit-source
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-admit-source
 		admitSource: {
 			type: require('./codeableconcept.input'),
 			description: 'From where patient was admitted (physician referral, transfer).'
@@ -33,17 +33,17 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./codeableconcept.input'),
 			description: 'Whether this hospitalization is a readmission and why if known.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-diet
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-diet
 		dietPreference: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Diet preferences reported by the patient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-special-courtesy
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-special-courtesy
 		specialCourtesy: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Special courtesies (VIP, board member).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-special-arrangements
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-special-arrangements
 		specialArrangement: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Wheelchair, translator, stretcher, etc.'
@@ -52,7 +52,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Location to which the patient is discharged.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-discharge-disposition
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-discharge-disposition
 		dischargeDisposition: {
 			type: require('./codeableconcept.input'),
 			description: 'Category or kind of location after discharge.'

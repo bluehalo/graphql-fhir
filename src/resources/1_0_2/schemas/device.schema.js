@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DeviceResourceType = new GraphQLEnumType({
 	name: 'DeviceResourceType',
 	values: {
@@ -37,7 +36,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./annotation.schema')),
 			description: 'Descriptive information, usage information or implantation information that is not captured in an existing element.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/devicestatus
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/devicestatus
 		status: {
 			type: CodeScalar,
 			description: 'Status of the Device availability.'

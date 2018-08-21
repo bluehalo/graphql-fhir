@@ -30,7 +30,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Description of why this constraint is necessary or appropriate.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/constraint-severity
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/constraint-severity
 		severity: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Identifies the impact constraint violation has on the conformance of the instance.'

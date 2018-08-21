@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ExpansionProfileDesignationIncludeDesignation',
 	description: 'A data group for each designation to be included.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/languages
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
 		language: {
 			type: CodeScalar,
 			description: 'The language this designation is defined for.'
@@ -22,7 +22,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The language this designation is defined for.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/designation-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/designation-use
 		use: {
 			type: require('./coding.schema'),
 			description: 'Which kinds of designation to include in the expansion.'

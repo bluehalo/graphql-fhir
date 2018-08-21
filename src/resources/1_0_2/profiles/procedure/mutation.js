@@ -7,12 +7,26 @@ const ProcedureSchema = require('../../schemas/procedure.schema');
 // Inputs
 const ProcedureInput = require('../../inputs/procedure.input');
 
-
+// Resolvers
 const {
 	procedureCreateResolver,
 	procedureUpdateResolver,
 	procedureDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Procedure',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Procedure record.'
 	},
 	resource: {
-		type: ProcedureInput,
+		type: new GraphQLNonNull(ProcedureInput),
 		description: 'Procedure Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Procedure record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ProcedureCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Procedure',
-	resolve: procedureCreateResolver,
+	resolve: scopeInvariant(scopeOptions, procedureCreateResolver),
 	type: ProcedureSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ProcedureCreateMutation = {
 module.exports.ProcedureUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Procedures',
-	resolve: procedureUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, procedureUpdateResolver),
 	type: ProcedureSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ProcedureUpdateMutation = {
 module.exports.ProcedureDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Procedure',
-	resolve: procedureDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, procedureDeleteResolver),
 	type: ProcedureSchema
 };

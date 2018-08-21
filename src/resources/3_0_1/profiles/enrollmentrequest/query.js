@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const EnrollmentRequestArgs = require('../../parameters/enrollmentrequest.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	enrollmentrequestResolver,
 	enrollmentrequestListResolver,
 	enrollmentrequestInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'EnrollmentRequest',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.EnrollmentRequestQuery
@@ -19,7 +31,7 @@ const {
 module.exports.EnrollmentRequestQuery = {
 	args: Object.assign({}, CommonArgs, EnrollmentRequestArgs),
 	description: 'Query for a single EnrollmentRequest',
-	resolve: enrollmentrequestResolver,
+	resolve: scopeInvariant(scopeOptions, enrollmentrequestResolver),
 	type: EnrollmentRequestSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.EnrollmentRequestQuery = {
 module.exports.EnrollmentRequestListQuery = {
 	args: Object.assign({}, CommonArgs, EnrollmentRequestArgs),
 	description: 'Query for multiple EnrollmentRequests',
-	resolve: enrollmentrequestListResolver,
+	resolve: scopeInvariant(scopeOptions, enrollmentrequestListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.EnrollmentRequestListQuery = {
  */
 module.exports.EnrollmentRequestInstanceQuery = {
 	description: 'Get information about a single EnrollmentRequest',
-	resolve: enrollmentrequestInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, enrollmentrequestInstanceResolver),
 	type: EnrollmentRequestSchema
 };

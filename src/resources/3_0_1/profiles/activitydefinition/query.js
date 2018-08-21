@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ActivityDefinitionArgs = require('../../parameters/activitydefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	activitydefinitionResolver,
 	activitydefinitionListResolver,
 	activitydefinitionInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ActivityDefinition',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.ActivityDefinitionQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ActivityDefinitionQuery = {
 	args: Object.assign({}, CommonArgs, ActivityDefinitionArgs),
 	description: 'Query for a single ActivityDefinition',
-	resolve: activitydefinitionResolver,
+	resolve: scopeInvariant(scopeOptions, activitydefinitionResolver),
 	type: ActivityDefinitionSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ActivityDefinitionQuery = {
 module.exports.ActivityDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, ActivityDefinitionArgs),
 	description: 'Query for multiple ActivityDefinitions',
-	resolve: activitydefinitionListResolver,
+	resolve: scopeInvariant(scopeOptions, activitydefinitionListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ActivityDefinitionListQuery = {
  */
 module.exports.ActivityDefinitionInstanceQuery = {
 	description: 'Get information about a single ActivityDefinition',
-	resolve: activitydefinitionInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, activitydefinitionInstanceResolver),
 	type: ActivityDefinitionSchema
 };

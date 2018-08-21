@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'Address_Input',
 	description: 'Base StructureDefinition for Address Type.',
 	fields: () => extendSchema(require('./element.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/address-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/address-use
 		use: {
 			type: CodeScalar,
 			description: 'The purpose of this address.'
@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The purpose of this address.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/address-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/address-type
 		type: {
 			type: CodeScalar,
 			description: 'Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.'

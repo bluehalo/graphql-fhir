@@ -7,12 +7,26 @@ const GuidanceResponseSchema = require('../../schemas/guidanceresponse.schema');
 // Inputs
 const GuidanceResponseInput = require('../../inputs/guidanceresponse.input');
 
-
+// Resolvers
 const {
 	guidanceresponseCreateResolver,
 	guidanceresponseUpdateResolver,
 	guidanceresponseDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'GuidanceResponse',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a GuidanceResponse record.'
 	},
 	resource: {
-		type: GuidanceResponseInput,
+		type: new GraphQLNonNull(GuidanceResponseInput),
 		description: 'GuidanceResponse Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a GuidanceResponse record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.GuidanceResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a GuidanceResponse',
-	resolve: guidanceresponseCreateResolver,
+	resolve: scopeInvariant(scopeOptions, guidanceresponseCreateResolver),
 	type: GuidanceResponseSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.GuidanceResponseCreateMutation = {
 module.exports.GuidanceResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple GuidanceResponses',
-	resolve: guidanceresponseUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, guidanceresponseUpdateResolver),
 	type: GuidanceResponseSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.GuidanceResponseUpdateMutation = {
 module.exports.GuidanceResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single GuidanceResponse',
-	resolve: guidanceresponseDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, guidanceresponseDeleteResolver),
 	type: GuidanceResponseSchema
 };

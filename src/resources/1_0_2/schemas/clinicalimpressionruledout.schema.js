@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ClinicalImpressionRuledOut',
 	description: 'Diagnosis considered not possible.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		item: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Specific text of code for diagnosis.'

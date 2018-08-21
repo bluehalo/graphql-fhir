@@ -15,7 +15,7 @@ module.exports = new GraphQLObjectType({
 	name: 'BundleEntryRequest',
 	description: 'Additional information about how this entry should be processed as part of a transaction.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/http-verb
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/http-verb
 		method: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The HTTP verb for this entry in either a update history, or a transaction/ transaction response.'

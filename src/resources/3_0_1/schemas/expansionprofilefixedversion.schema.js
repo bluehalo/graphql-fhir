@@ -30,7 +30,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The version of the code system from which codes in the expansion should be included.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/system-version-processing-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/system-version-processing-mode
 		mode: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'How to manage the intersection between a fixed version in a value set, and this fixed version of the system in the expansion profile.'

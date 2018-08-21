@@ -7,12 +7,26 @@ const MedicationAdministrationSchema = require('../../schemas/medicationadminist
 // Inputs
 const MedicationAdministrationInput = require('../../inputs/medicationadministration.input');
 
-
+// Resolvers
 const {
 	medicationadministrationCreateResolver,
 	medicationadministrationUpdateResolver,
 	medicationadministrationDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'MedicationAdministration',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a MedicationAdministration record.'
 	},
 	resource: {
-		type: MedicationAdministrationInput,
+		type: new GraphQLNonNull(MedicationAdministrationInput),
 		description: 'MedicationAdministration Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a MedicationAdministration record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.MedicationAdministrationCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MedicationAdministration',
-	resolve: medicationadministrationCreateResolver,
+	resolve: scopeInvariant(scopeOptions, medicationadministrationCreateResolver),
 	type: MedicationAdministrationSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.MedicationAdministrationCreateMutation = {
 module.exports.MedicationAdministrationUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MedicationAdministrations',
-	resolve: medicationadministrationUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, medicationadministrationUpdateResolver),
 	type: MedicationAdministrationSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.MedicationAdministrationUpdateMutation = {
 module.exports.MedicationAdministrationDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MedicationAdministration',
-	resolve: medicationadministrationDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, medicationadministrationDeleteResolver),
 	type: MedicationAdministrationSchema
 };

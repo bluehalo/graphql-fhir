@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let OperationDefinitionResourceType = new GraphQLEnumType({
 	name: 'OperationDefinitionResourceType',
 	values: {
@@ -49,7 +48,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A free text natural language name identifying the operation.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the profile.'
@@ -58,7 +57,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The status of the profile.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/operation-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/operation-kind
 		kind: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Whether this is an operation or a named query.'
@@ -147,7 +146,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Indicates whether this operation or named query can be invoked at the system level (e.g. without needing to choose a resource type for the context).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		type: {
 			type: new GraphQLList(CodeScalar),
 			description: 'Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a resource type for the context).'
