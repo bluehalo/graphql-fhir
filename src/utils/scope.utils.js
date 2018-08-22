@@ -32,6 +32,20 @@ function allowedScopes (name, action) {
 }
 
 /**
+* @name parseScopes
+* @description Parse scopes from scope string attached to the token
+* In the future, scope may be in different formats, arrays, comma separated,
+* etc., so we can add logic to handle that later
+* @param { object } token - Tokenb containing a scope property
+* @param { string } token.scope - Space separated list of scopes
+* @return { Array<string> } - Array of scopes
+*/
+function parseScopes (token) {
+	let scopes = token && token.scope || '';
+	return scopes.split(' ');
+}
+
+/**
 * @name scopeInvariant
 * @description Check the users scope's and context's and make sure they are
 * allowed to access the resource they are attempting to access. If the user
@@ -66,15 +80,24 @@ function scopeInvariant (options = {}, resolver) {
 	}
 
 	return function scopeInvariantResolver (root, args, ctx, info) {
-		let serverConfig = ctx && ctx.server && ctx.server.config;
+		let req = ctx && ctx.req;
+		let server = ctx && ctx.server;
+		let serverEnv = server && server.env;
+
 		// If authorization is disabled, just bail now
-		if (serverConfig && serverConfig.auth && serverConfig.auth.enabled === false) {
+		if (serverEnv && !serverEnv.AUTHENTICATION) {
 			return resolver(root, args, ctx, info);
 		}
 
-		let token = ctx && ctx.req && ctx.req.user && ctx.req.user.token;
+		// NOTE: If you do not want graphiql to work when auth is enabled
+		// just delete this section below. If we are hitting a graphiql endpoint,
+		// this will bail, check the env as well to make sure we are not in prod
+		if (serverEnv && !serverEnv.IS_PRODUCTION && /\$graphiql$/.test(req.baseUrl)) {
+			return resolver(root, args, ctx, info);
+		}
+
 		let expectedScopes = allowedScopes(name, action);
-		let userScopes = token && token.scopes || [];
+		let userScopes = parseScopes(req && req.user);
 
 		// Check if any of the expected scopes are present in the actual scopes
 		let hasSufficientScope = expectedScopes.some(validScope =>

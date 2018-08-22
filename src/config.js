@@ -1,3 +1,5 @@
+const path = require('path');
+
 /**
  * @name VERSION
  * @summary Versions constants. These are the versions we support
@@ -15,9 +17,9 @@ const DATE_CONFIG = {
 	timezone: 'America/New_York',
 	// The following should not be edited unless you are using defaults that
 	// are different from what's defined in 3.0.1 structure defintions
-	date_format: 'YYYY-MM-DD',
-	time_format: 'HH:mm:ss',
-	datetime_format: 'YYYY-MM-DDTHH:mm:ss.SSSSZ'
+	dateFormat: 'YYYY-MM-DD',
+	timeFormat: 'HH:mm:ss',
+	dateTimeFormat: 'YYYY-MM-DDTHH:mm:ss.SSSSZ'
 };
 
 /**
@@ -36,7 +38,14 @@ const SERVER_CONFIG = {
 	},
 	// Auth configurations
 	auth: {
-		enabled: false
+		name: 'bearer',
+		clientId: process.env.CLIENT_ID,
+		clientSecret: process.env.CLIENT_SECRET,
+		introspectionUrl: process.env.INTROSPECTION_URL,
+		strategy: path.posix.resolve('src/strategies/bearer.strategy.js'),
+		passportOptions: {
+			session: false
+		}
 	}
 };
 
@@ -47,9 +56,9 @@ const SERVER_CONFIG = {
  */
 const RESOURCE_CONFIG = {
 	// base folder for all the resources relative to src
-	resource_base: 'resources',
+	resourceBase: 'resources',
 	// Path is relative to version folder under resources
-	profiles_relative_path: 'profiles/**/index.js'
+	profilesRelativePath: 'profiles/**/index.js'
 };
 
 module.exports = {
