@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ConformanceArgs = require('../../parameters/conformance.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	conformanceResolver,
 	conformanceListResolver,
 	conformanceInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Conformance',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.ConformanceQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ConformanceQuery = {
 	args: Object.assign({}, CommonArgs, ConformanceArgs),
 	description: 'Query for a single Conformance',
-	resolve: conformanceResolver,
+	resolve: scopeInvariant(scopeOptions, conformanceResolver),
 	type: ConformanceSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ConformanceQuery = {
 module.exports.ConformanceListQuery = {
 	args: Object.assign({}, CommonArgs, ConformanceArgs),
 	description: 'Query for multiple Conformances',
-	resolve: conformanceListResolver,
+	resolve: scopeInvariant(scopeOptions, conformanceListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ConformanceListQuery = {
  */
 module.exports.ConformanceInstanceQuery = {
 	description: 'Get information about a single Conformance',
-	resolve: conformanceInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, conformanceInstanceResolver),
 	type: ConformanceSchema
 };

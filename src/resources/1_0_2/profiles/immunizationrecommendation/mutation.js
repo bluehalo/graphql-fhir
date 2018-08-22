@@ -7,12 +7,26 @@ const ImmunizationRecommendationSchema = require('../../schemas/immunizationreco
 // Inputs
 const ImmunizationRecommendationInput = require('../../inputs/immunizationrecommendation.input');
 
-
+// Resolvers
 const {
 	immunizationrecommendationCreateResolver,
 	immunizationrecommendationUpdateResolver,
 	immunizationrecommendationDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ImmunizationRecommendation',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ImmunizationRecommendation record.'
 	},
 	resource: {
-		type: ImmunizationRecommendationInput,
+		type: new GraphQLNonNull(ImmunizationRecommendationInput),
 		description: 'ImmunizationRecommendation Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ImmunizationRecommendation record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ImmunizationRecommendationCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ImmunizationRecommendation',
-	resolve: immunizationrecommendationCreateResolver,
+	resolve: scopeInvariant(scopeOptions, immunizationrecommendationCreateResolver),
 	type: ImmunizationRecommendationSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ImmunizationRecommendationCreateMutation = {
 module.exports.ImmunizationRecommendationUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ImmunizationRecommendations',
-	resolve: immunizationrecommendationUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, immunizationrecommendationUpdateResolver),
 	type: ImmunizationRecommendationSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ImmunizationRecommendationUpdateMutation = {
 module.exports.ImmunizationRecommendationDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ImmunizationRecommendation',
-	resolve: immunizationrecommendationDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, immunizationrecommendationDeleteResolver),
 	type: ImmunizationRecommendationSchema
 };

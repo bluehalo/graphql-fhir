@@ -16,7 +16,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./identifier.input'),
 			description: 'A unique identifier for the population criteria. This identifier is used to report data against this criteria within the measure report.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/measure-population
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/measure-population
 		code: {
 			type: require('./codeableconcept.input'),
 			description: 'The type of population criteria.'

@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CompositionResourceType = new GraphQLEnumType({
 	name: 'CompositionResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/composition-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/composition-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document.'
@@ -37,12 +36,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/doc-typecodes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/doc-typecodes
 		type: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Specifies the particular kind of composition (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the composition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/doc-classcodes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/doc-classcodes
 		class: {
 			type: require('./codeableconcept.schema'),
 			description: 'A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.'
@@ -75,7 +74,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Official human-readable label for the composition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ConfidentialityClassification
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ConfidentialityClassification
 		confidentiality: {
 			type: CodeScalar,
 			description: 'The code specifying the level of confidentiality of the Composition.'

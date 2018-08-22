@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ProcessResponseResourceInputType = new GraphQLEnumType({
 	name: 'ProcessResponseResourceInputType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'The Response business identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -53,7 +52,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Original request resource reference.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/process-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/process-outcome
 		outcome: {
 			type: require('./codeableconcept.input'),
 			description: 'Transaction status: error, complete, held.'
@@ -74,7 +73,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The organization which is responsible for the services rendered to the patient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/forms
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/forms
 		form: {
 			type: require('./codeableconcept.input'),
 			description: 'The form to be used for printing the content.'
@@ -83,7 +82,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./processresponseprocessnote.input')),
 			description: 'Suite of processing notes or additional requirements if the processing has been held.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication-error
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication-error
 		error: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Processing errors.'

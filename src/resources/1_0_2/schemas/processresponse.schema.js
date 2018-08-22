@@ -3,7 +3,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ProcessResponseResourceType = new GraphQLEnumType({
 	name: 'ProcessResponseResourceType',
 	values: {
@@ -31,7 +30,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Original request resource reference.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/process-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/process-outcome
 		outcome: {
 			type: require('./coding.schema'),
 			description: 'Transaction status: error, complete, held.'
@@ -44,12 +43,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A description of the status of the adjudication or processing.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		ruleset: {
 			type: require('./coding.schema'),
 			description: 'The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		originalRuleset: {
 			type: require('./coding.schema'),
 			description: 'The style (standard) and version of the original material which was converted into this resource.'
@@ -74,7 +73,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The organization which is responsible for the services rendered to the patient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/forms
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/forms
 		form: {
 			type: require('./coding.schema'),
 			description: 'The form to be used for printing the content.'
@@ -83,7 +82,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./processresponsenotes.schema')),
 			description: 'Suite of processing note or additional requirements is the processing has been held.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication-error
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication-error
 		error: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'Processing errors.'

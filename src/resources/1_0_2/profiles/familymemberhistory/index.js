@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'FamilyMemberHistory',
-		path: '/3_0_1/FamilyMemberHistory/:id',
+		path: '/1_0_2/FamilyMemberHistory/:id',
 		query: FamilyMemberHistoryInstanceQuery
 	}
 };

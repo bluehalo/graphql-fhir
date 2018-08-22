@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'ProcessRequest',
-		path: '/3_0_1/ProcessRequest/:id',
+		path: '/1_0_2/ProcessRequest/:id',
 		query: ProcessRequestInstanceQuery
 	}
 };

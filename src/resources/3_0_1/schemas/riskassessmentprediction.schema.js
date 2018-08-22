@@ -28,7 +28,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./range.schema'),
 			description: 'How likely is the outcome (in the specified timeframe).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/risk-probability
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/risk-probability
 		qualitativeRisk: {
 			type: require('./codeableconcept.schema'),
 			description: 'How likely is the outcome (in the specified timeframe), expressed as a qualitative value (e.g. low, medium, high).'

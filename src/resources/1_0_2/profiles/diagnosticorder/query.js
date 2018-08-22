@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const DiagnosticOrderArgs = require('../../parameters/diagnosticorder.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	diagnosticorderResolver,
 	diagnosticorderListResolver,
 	diagnosticorderInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'DiagnosticOrder',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.DiagnosticOrderQuery
@@ -19,7 +31,7 @@ const {
 module.exports.DiagnosticOrderQuery = {
 	args: Object.assign({}, CommonArgs, DiagnosticOrderArgs),
 	description: 'Query for a single DiagnosticOrder',
-	resolve: diagnosticorderResolver,
+	resolve: scopeInvariant(scopeOptions, diagnosticorderResolver),
 	type: DiagnosticOrderSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.DiagnosticOrderQuery = {
 module.exports.DiagnosticOrderListQuery = {
 	args: Object.assign({}, CommonArgs, DiagnosticOrderArgs),
 	description: 'Query for multiple DiagnosticOrders',
-	resolve: diagnosticorderListResolver,
+	resolve: scopeInvariant(scopeOptions, diagnosticorderListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.DiagnosticOrderListQuery = {
  */
 module.exports.DiagnosticOrderInstanceQuery = {
 	description: 'Get information about a single DiagnosticOrder',
-	resolve: diagnosticorderInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, diagnosticorderInstanceResolver),
 	type: DiagnosticOrderSchema
 };

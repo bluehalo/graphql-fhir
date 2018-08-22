@@ -21,22 +21,22 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Identifies a specific instance of the participant object. The reference should always be version specific.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/object-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/object-type
 		type: {
 			type: require('./coding.input'),
 			description: 'The type of the object that was involved in this audit event.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/object-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/object-role
 		role: {
 			type: require('./coding.input'),
 			description: 'Code representing the functional application role of Participant Object being audited.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/object-lifecycle
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/object-lifecycle
 		lifecycle: {
 			type: require('./coding.input'),
 			description: 'Identifier for the data life-cycle stage for the participant object.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
 		securityLabel: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'Denotes security labels for the identified object.'

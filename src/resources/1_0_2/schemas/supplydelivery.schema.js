@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SupplyDeliveryResourceType = new GraphQLEnumType({
 	name: 'SupplyDeliveryResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'Identifier assigned by the dispensing facility when the item(s) is dispensed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplydelivery-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplydelivery-status
 		status: {
 			type: CodeScalar,
 			description: 'A code specifying the state of the dispense event.'
@@ -41,7 +40,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'A link to a resource representing the person whom the delivered item is for.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplydelivery-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplydelivery-type
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.'

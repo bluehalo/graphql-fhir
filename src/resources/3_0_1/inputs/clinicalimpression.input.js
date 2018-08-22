@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ClinicalImpressionResourceInputType = new GraphQLEnumType({
 	name: 'ClinicalImpressionResourceInputType',
 	values: {
@@ -29,7 +28,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'A unique identifier assigned to the clinical impression that remains consistent regardless of what server the impression is stored on.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-impression-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-impression-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Identifies the workflow status of the assessment.'
@@ -114,7 +113,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./clinicalimpressionfinding.input')),
 			description: 'Specific findings or diagnoses that was considered likely or relevant to ongoing treatment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/clinicalimpression-prognosis
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/clinicalimpression-prognosis
 		prognosisCodeableConcept: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Estimate of likely outcome.'

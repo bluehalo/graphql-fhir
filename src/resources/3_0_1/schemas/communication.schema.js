@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CommunicationResourceType = new GraphQLEnumType({
 	name: 'CommunicationResourceType',
 	values: {
@@ -40,7 +39,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'Part of this action.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/event-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/event-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the transmission.'
@@ -57,17 +56,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'If true, indicates that the described communication event did not actually occur.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/communication-not-done-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/communication-not-done-reason
 		notDoneReason: {
 			type: require('./codeableconcept.schema'),
 			description: 'Describes why the communication event did not occur in coded and/or textual form.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/communication-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/communication-category
 		category: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The type of message conveyed such as alert, notification, reminder, instruction, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ParticipationMode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ParticipationMode
 		medium: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A channel that was used for this communication (e.g. email, fax).'
@@ -108,7 +107,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The entity (e.g. person, organization, clinical information system, or device) which was the source of the communication.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The reason or justification for the communication.'

@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let PatientResourceType = new GraphQLEnumType({
 	name: 'PatientResourceType',
 	values: {
@@ -45,7 +44,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./contactpoint.schema')),
 			description: 'A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
 		gender: {
 			type: CodeScalar,
 			description: 'Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.'
@@ -82,7 +81,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./address.schema')),
 			description: 'Addresses for the individual.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/marital-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/marital-status
 		maritalStatus: {
 			type: require('./codeableconcept.schema'),
 			description: 'This field contains a patient\'s most recent marital (civil) status.'

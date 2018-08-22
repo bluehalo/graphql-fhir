@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ReferralRequestResourceInputType = new GraphQLEnumType({
 	name: 'ReferralRequestResourceInputType',
 	values: {
@@ -44,7 +43,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./identifier.input'),
 			description: 'The business identifier of the logical \'grouping\' request/order that this referral is a part of.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the authorization/intention reflected by the referral request record.'
@@ -53,7 +52,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The status of the authorization/intention reflected by the referral request record.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-intent
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-intent
 		intent: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Distinguishes the \'level\' of authorization/demand implicit in this request.'
@@ -62,12 +61,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Distinguishes the \'level\' of authorization/demand implicit in this request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/referral-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/referral-type
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'An indication of the type of referral (or where applicable the type of transfer of care) request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
 		priority: {
 			type: CodeScalar,
 			description: 'An indication of the urgency of referral (or where applicable the type of transfer of care) request.'
@@ -76,7 +75,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An indication of the urgency of referral (or where applicable the type of transfer of care) request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		serviceRequested: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The service(s) that is/are requested to be provided to the patient.  For example: cardiac pacemaker insertion.'
@@ -113,7 +112,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./referralrequestrequester.input'),
 			description: 'The individual who initiated the request and has responsibility for its activation.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/practitioner-specialty
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/practitioner-specialty
 		specialty: {
 			type: require('./codeableconcept.input'),
 			description: 'Indication of the clinical domain or discipline to which the referral or transfer of care request is sent.  For example: Cardiology Gastroenterology Diabetology.'
@@ -122,7 +121,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'The healthcare provider(s) or provider organization(s) who/which is to receive the referral/transfer of care request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/clinical-findings
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Description of clinical condition indicating why referral/transfer of care is requested.  For example:  Pathological Anomalies, Disabled (physical or mental),  Behavioral Management.'

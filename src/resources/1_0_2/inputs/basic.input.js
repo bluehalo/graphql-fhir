@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let BasicResourceInputType = new GraphQLEnumType({
 	name: 'BasicResourceInputType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'Identifier assigned to the resource for business purposes, outside the context of FHIR.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/basic-resource-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/basic-resource-type
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Identifies the \'type\' of resource - equivalent to the resource name for other resources.'

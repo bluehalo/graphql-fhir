@@ -7,12 +7,26 @@ const HealthcareServiceSchema = require('../../schemas/healthcareservice.schema'
 // Inputs
 const HealthcareServiceInput = require('../../inputs/healthcareservice.input');
 
-
+// Resolvers
 const {
 	healthcareserviceCreateResolver,
 	healthcareserviceUpdateResolver,
 	healthcareserviceDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'HealthcareService',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a HealthcareService record.'
 	},
 	resource: {
-		type: HealthcareServiceInput,
+		type: new GraphQLNonNull(HealthcareServiceInput),
 		description: 'HealthcareService Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a HealthcareService record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.HealthcareServiceCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a HealthcareService',
-	resolve: healthcareserviceCreateResolver,
+	resolve: scopeInvariant(scopeOptions, healthcareserviceCreateResolver),
 	type: HealthcareServiceSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.HealthcareServiceCreateMutation = {
 module.exports.HealthcareServiceUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple HealthcareServices',
-	resolve: healthcareserviceUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, healthcareserviceUpdateResolver),
 	type: HealthcareServiceSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.HealthcareServiceUpdateMutation = {
 module.exports.HealthcareServiceDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single HealthcareService',
-	resolve: healthcareserviceDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, healthcareserviceDeleteResolver),
 	type: HealthcareServiceSchema
 };

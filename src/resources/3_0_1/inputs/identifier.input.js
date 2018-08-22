@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'Identifier_Input',
 	description: 'Base StructureDefinition for Identifier Type.',
 	fields: () => extendSchema(require('./element.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-use
 		use: {
 			type: CodeScalar,
 			description: 'The purpose of this identifier.'
@@ -23,7 +23,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The purpose of this identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-type
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.'

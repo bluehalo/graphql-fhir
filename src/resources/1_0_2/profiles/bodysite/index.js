@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'BodySite',
-		path: '/3_0_1/BodySite/:id',
+		path: '/1_0_2/BodySite/:id',
 		query: BodySiteInstanceQuery
 	}
 };

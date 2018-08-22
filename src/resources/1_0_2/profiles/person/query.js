@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const PersonArgs = require('../../parameters/person.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	personResolver,
 	personListResolver,
 	personInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Person',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.PersonQuery
@@ -19,7 +31,7 @@ const {
 module.exports.PersonQuery = {
 	args: Object.assign({}, CommonArgs, PersonArgs),
 	description: 'Query for a single Person',
-	resolve: personResolver,
+	resolve: scopeInvariant(scopeOptions, personResolver),
 	type: PersonSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.PersonQuery = {
 module.exports.PersonListQuery = {
 	args: Object.assign({}, CommonArgs, PersonArgs),
 	description: 'Query for multiple Persons',
-	resolve: personListResolver,
+	resolve: scopeInvariant(scopeOptions, personListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.PersonListQuery = {
  */
 module.exports.PersonInstanceQuery = {
 	description: 'Get information about a single Person',
-	resolve: personInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, personInstanceResolver),
 	type: PersonSchema
 };

@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ProcedureResourceType = new GraphQLEnumType({
 	name: 'ProcedureResourceType',
 	values: {
@@ -40,7 +39,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'A larger event of which this particular procedure is a component or step.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/event-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/event-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'A code specifying the state of the procedure. Generally this will be in-progress or completed state.'
@@ -57,17 +56,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Set this to true if the record is saying that the procedure was NOT performed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-not-performed-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-not-performed-reason
 		notDoneReason: {
 			type: require('./codeableconcept.schema'),
 			description: 'A code indicating why the procedure was not performed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-category
 		category: {
 			type: require('./codeableconcept.schema'),
 			description: 'A code that classifies the procedure for searching, sorting and display purposes (e.g. \'Surgical Procedure\').'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-code
 		code: {
 			type: require('./codeableconcept.schema'),
 			description: 'The specific procedure that is performed. Use text if the exact nature of the procedure cannot be coded (e.g. \'Laparoscopic Appendectomy\').'
@@ -100,7 +99,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The location where the procedure actually happened.  E.g. a newborn at home, a tracheostomy at a restaurant.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The coded reason why the procedure was performed. This may be coded entity of some type, or may simply be present as text.'
@@ -109,12 +108,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'The condition that is the reason why the procedure was performed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		bodySite: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-outcome
 		outcome: {
 			type: require('./codeableconcept.schema'),
 			description: 'The outcome of the procedure - did it resolve reasons for the procedure being performed?.'
@@ -123,7 +122,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'This could be a histology result, pathology report, surgical report, etc..'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		complication: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Any complications that occurred during the procedure, or in the immediate post-performance period. These are generally tracked separately from the notes, which will typically describe the procedure itself rather than any \'post procedure\' issues.'
@@ -132,7 +131,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'Any complications that occurred during the procedure, or in the immediate post-performance period.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-followup
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-followup
 		followUp: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'If the procedure required specific follow up - e.g. removal of sutures. The followup may be represented as a simple note, or could potentially be more complex in which case the CarePlan resource can be used.'
@@ -149,7 +148,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'Identifies medications, devices and any other substance used as part of the procedure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/device-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/device-kind
 		usedCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Identifies coded items that were used as part of the procedure.'

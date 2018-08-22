@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'StructureDefinition',
-		path: '/3_0_1/StructureDefinition/:id',
+		path: '/1_0_2/StructureDefinition/:id',
 		query: StructureDefinitionInstanceQuery
 	}
 };

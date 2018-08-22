@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ProcessResponseProcessNote',
 	description: 'Suite of processing notes or additional requirements if the processing has been held.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'The note purpose: Print/Display.'

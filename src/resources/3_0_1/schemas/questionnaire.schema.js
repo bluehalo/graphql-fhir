@@ -6,7 +6,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let QuestionnaireResourceType = new GraphQLEnumType({
 	name: 'QuestionnaireResourceType',
 	values: {
@@ -62,7 +61,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A short, descriptive, user-friendly title for the questionnaire.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this questionnaire. Enables tracking the life-cycle of the content.'
@@ -135,7 +134,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./usagecontext.schema')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate questionnaire instances.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A legal or geographic region in which the questionnaire is intended to be used.'
@@ -152,12 +151,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A copyright statement relating to the questionnaire and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the questionnaire.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-questions
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-questions
 		code: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'An identifier for this question or group of questions in a particular terminology such as LOINC.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		subjectType: {
 			type: new GraphQLList(CodeScalar),
 			description: 'The types of subjects that can be the subject of responses created for the questionnaire.'

@@ -2,7 +2,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ScheduleResourceInputType = new GraphQLEnumType({
 	name: 'ScheduleResourceInputType',
 	values: {
@@ -34,17 +33,17 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Whether this schedule record is in active use, or should not be used (such as was entered in error).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-category
 		serviceCategory: {
 			type: require('./codeableconcept.input'),
 			description: 'A broad categorisation of the service that is to be performed during this appointment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-type
 		serviceType: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The specific service that is to be performed during this appointment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		specialty: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The specialty of a practitioner that would be required to perform the service requested in this appointment.'

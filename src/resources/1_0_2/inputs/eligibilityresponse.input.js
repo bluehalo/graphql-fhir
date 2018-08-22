@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let EligibilityResponseResourceInputType = new GraphQLEnumType({
 	name: 'EligibilityResponseResourceInputType',
 	values: {
@@ -32,7 +31,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Original request resource reference.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
 		outcome: {
 			type: CodeScalar,
 			description: 'Transaction status: error, complete.'
@@ -49,12 +48,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A description of the status of the adjudication.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		ruleset: {
 			type: require('./coding.input'),
 			description: 'The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		originalRuleset: {
 			type: require('./coding.input'),
 			description: 'The style (standard) and version of the original material which was converted into this resource.'

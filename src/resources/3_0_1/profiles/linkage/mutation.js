@@ -7,12 +7,26 @@ const LinkageSchema = require('../../schemas/linkage.schema');
 // Inputs
 const LinkageInput = require('../../inputs/linkage.input');
 
-
+// Resolvers
 const {
 	linkageCreateResolver,
 	linkageUpdateResolver,
 	linkageDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Linkage',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Linkage record.'
 	},
 	resource: {
-		type: LinkageInput,
+		type: new GraphQLNonNull(LinkageInput),
 		description: 'Linkage Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Linkage record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.LinkageCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Linkage',
-	resolve: linkageCreateResolver,
+	resolve: scopeInvariant(scopeOptions, linkageCreateResolver),
 	type: LinkageSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.LinkageCreateMutation = {
 module.exports.LinkageUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Linkages',
-	resolve: linkageUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, linkageUpdateResolver),
 	type: LinkageSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.LinkageUpdateMutation = {
 module.exports.LinkageDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Linkage',
-	resolve: linkageDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, linkageDeleteResolver),
 	type: LinkageSchema
 };

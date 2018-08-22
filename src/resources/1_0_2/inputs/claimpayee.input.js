@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ClaimPayee_Input',
 	description: 'The party to be reimbursed for the services.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/payeetype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/payeetype
 		type: {
 			type: require('./coding.input'),
 			description: 'Party to be reimbursed: Subscriber, provider, other.'

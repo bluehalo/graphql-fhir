@@ -7,12 +7,26 @@ const EndpointSchema = require('../../schemas/endpoint.schema');
 // Inputs
 const EndpointInput = require('../../inputs/endpoint.input');
 
-
+// Resolvers
 const {
 	endpointCreateResolver,
 	endpointUpdateResolver,
 	endpointDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Endpoint',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Endpoint record.'
 	},
 	resource: {
-		type: EndpointInput,
+		type: new GraphQLNonNull(EndpointInput),
 		description: 'Endpoint Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Endpoint record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.EndpointCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Endpoint',
-	resolve: endpointCreateResolver,
+	resolve: scopeInvariant(scopeOptions, endpointCreateResolver),
 	type: EndpointSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.EndpointCreateMutation = {
 module.exports.EndpointUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Endpoints',
-	resolve: endpointUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, endpointUpdateResolver),
 	type: EndpointSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.EndpointUpdateMutation = {
 module.exports.EndpointDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Endpoint',
-	resolve: endpointDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, endpointDeleteResolver),
 	type: EndpointSchema
 };

@@ -37,7 +37,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication-error
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication-error
 		code: {
 			type: new GraphQLNonNull(require('./coding.schema')),
 			description: 'An error code,froma specified code system, which details why the claim could not be adjudicated.'

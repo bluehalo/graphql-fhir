@@ -7,12 +7,26 @@ const RequestGroupSchema = require('../../schemas/requestgroup.schema');
 // Inputs
 const RequestGroupInput = require('../../inputs/requestgroup.input');
 
-
+// Resolvers
 const {
 	requestgroupCreateResolver,
 	requestgroupUpdateResolver,
 	requestgroupDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'RequestGroup',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a RequestGroup record.'
 	},
 	resource: {
-		type: RequestGroupInput,
+		type: new GraphQLNonNull(RequestGroupInput),
 		description: 'RequestGroup Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a RequestGroup record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.RequestGroupCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a RequestGroup',
-	resolve: requestgroupCreateResolver,
+	resolve: scopeInvariant(scopeOptions, requestgroupCreateResolver),
 	type: RequestGroupSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.RequestGroupCreateMutation = {
 module.exports.RequestGroupUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple RequestGroups',
-	resolve: requestgroupUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, requestgroupUpdateResolver),
 	type: RequestGroupSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.RequestGroupUpdateMutation = {
 module.exports.RequestGroupDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single RequestGroup',
-	resolve: requestgroupDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, requestgroupDeleteResolver),
 	type: RequestGroupSchema
 };

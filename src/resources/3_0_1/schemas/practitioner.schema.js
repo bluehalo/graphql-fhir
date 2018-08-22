@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let PractitionerResourceType = new GraphQLEnumType({
 	name: 'PractitionerResourceType',
 	values: {
@@ -48,7 +47,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./address.schema')),
 			description: 'Address(es) of the practitioner that are not role specific (typically home address).  Work addresses are not typically entered in this property as they are usually role dependent.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
 		gender: {
 			type: CodeScalar,
 			description: 'Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.'
@@ -73,7 +72,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./practitionerqualification.schema')),
 			description: 'Qualifications obtained by training and certification.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/languages
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
 		communication: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A language the practitioner is able to use in patient communication.'

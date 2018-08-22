@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let LocationResourceInputType = new GraphQLEnumType({
 	name: 'LocationResourceInputType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'Unique code or number identifying the location to its users.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/location-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/location-status
 		status: {
 			type: CodeScalar,
 			description: 'The status property covers the general availability of the resource, not the current value which may be covered by the operationStatus, or by a schedule/slots if they are configured for the location.'
@@ -36,7 +35,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The status property covers the general availability of the resource, not the current value which may be covered by the operationStatus, or by a schedule/slots if they are configured for the location.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0116
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0116
 		operationalStatus: {
 			type: require('./coding.input'),
 			description: 'The Operational status covers operation values most relevant to beds (but can also apply to rooms/units/chair/etc such as an isolation unit/dialisys chair). This typically covers concepts such as contamination, housekeeping and other activities like maintenance.'
@@ -65,7 +64,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Description of the Location, which helps in finding or referencing the place.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/location-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/location-mode
 		mode: {
 			type: CodeScalar,
 			description: 'Indicates whether a resource instance represents a specific location or a class of locations.'
@@ -74,7 +73,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Indicates whether a resource instance represents a specific location or a class of locations.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ServiceDeliveryLocationRoleType
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ServiceDeliveryLocationRoleType
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'Indicates the type of function performed at the location.'
@@ -87,7 +86,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./address.input'),
 			description: 'Physical location.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/location-physical-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/location-physical-type
 		physicalType: {
 			type: require('./codeableconcept.input'),
 			description: 'Physical form of the location, e.g. building, room, vehicle, road.'

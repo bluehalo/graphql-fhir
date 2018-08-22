@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Schedule',
-		path: '/3_0_1/Schedule/:id',
+		path: '/1_0_2/Schedule/:id',
 		query: ScheduleInstanceQuery
 	}
 };

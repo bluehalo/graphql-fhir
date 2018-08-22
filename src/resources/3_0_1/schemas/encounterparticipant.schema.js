@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'EncounterParticipant',
 	description: 'The list of people responsible for providing the service.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-participant-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-participant-type
 		type: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Role of participant in encounter.'

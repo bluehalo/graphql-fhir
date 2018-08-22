@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let TestReportResourceType = new GraphQLEnumType({
 	name: 'TestReportResourceType',
 	values: {
@@ -36,7 +35,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A free text natural language name identifying the executed TestScript.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/report-status-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/report-status-codes
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The current state of this test report.'
@@ -49,7 +48,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'Ideally this is an absolute URL that is used to identify the version-specific TestScript that was executed, matching the `TestScript.url`.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/report-result-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/report-result-codes
 		result: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The overall result from the execution of the TestScript.'

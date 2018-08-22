@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ImplementationGuideArgs = require('../../parameters/implementationguide.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	implementationguideResolver,
 	implementationguideListResolver,
 	implementationguideInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ImplementationGuide',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.ImplementationGuideQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ImplementationGuideQuery = {
 	args: Object.assign({}, CommonArgs, ImplementationGuideArgs),
 	description: 'Query for a single ImplementationGuide',
-	resolve: implementationguideResolver,
+	resolve: scopeInvariant(scopeOptions, implementationguideResolver),
 	type: ImplementationGuideSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ImplementationGuideQuery = {
 module.exports.ImplementationGuideListQuery = {
 	args: Object.assign({}, CommonArgs, ImplementationGuideArgs),
 	description: 'Query for multiple ImplementationGuides',
-	resolve: implementationguideListResolver,
+	resolve: scopeInvariant(scopeOptions, implementationguideListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ImplementationGuideListQuery = {
  */
 module.exports.ImplementationGuideInstanceQuery = {
 	description: 'Get information about a single ImplementationGuide',
-	resolve: implementationguideInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, implementationguideInstanceResolver),
 	type: ImplementationGuideSchema
 };

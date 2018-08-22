@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ImagingObjectSelectionResourceType = new GraphQLEnumType({
 	name: 'ImagingObjectSelectionResourceType',
 	values: {
@@ -36,7 +35,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'A patient resource reference which is the patient subject of all DICOM SOP Instances in this ImagingObjectSelection.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/kos-title
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/kos-title
 		title: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'The reason for, or significance of, the selection of objects referenced in the resource.'

@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Bundle',
-		path: '/3_0_1/Bundle/:id',
+		path: '/1_0_2/Bundle/:id',
 		query: BundleInstanceQuery
 	}
 };

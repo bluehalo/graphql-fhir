@@ -20,7 +20,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./quantity.schema'),
 			description: 'The value of the high bound of the reference range.  The high bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9).   If the high bound is omitted,  it is assumed to be meaningless (e.g. reference range is >= 2.3).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/referencerange-meaning
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/referencerange-meaning
 		meaning: {
 			type: require('./codeableconcept.schema'),
 			description: 'Code for the meaning of the reference range.'

@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const SpecimenArgs = require('../../parameters/specimen.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	specimenResolver,
 	specimenListResolver,
 	specimenInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Specimen',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.SpecimenQuery
@@ -19,7 +31,7 @@ const {
 module.exports.SpecimenQuery = {
 	args: Object.assign({}, CommonArgs, SpecimenArgs),
 	description: 'Query for a single Specimen',
-	resolve: specimenResolver,
+	resolve: scopeInvariant(scopeOptions, specimenResolver),
 	type: SpecimenSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.SpecimenQuery = {
 module.exports.SpecimenListQuery = {
 	args: Object.assign({}, CommonArgs, SpecimenArgs),
 	description: 'Query for multiple Specimens',
-	resolve: specimenListResolver,
+	resolve: scopeInvariant(scopeOptions, specimenListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.SpecimenListQuery = {
  */
 module.exports.SpecimenInstanceQuery = {
 	description: 'Get information about a single Specimen',
-	resolve: specimenInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, specimenInstanceResolver),
 	type: SpecimenSchema
 };

@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SpecimenResourceType = new GraphQLEnumType({
 	name: 'SpecimenResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'Id for specimen.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-status
 		status: {
 			type: CodeScalar,
 			description: 'The availability of the specimen.'
@@ -37,7 +36,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The availability of the specimen.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0487
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0487
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'The kind of material that forms the specimen.'

@@ -33,7 +33,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A reference to an [ElementDefinition](elementdefinition.html) that provides the details for the item. If a definition is provided, then the following element values can be inferred from the definition:   * code (ElementDefinition.code) * type (ElementDefinition.type) * required (ElementDefinition.min) * repeats (ElementDefinition.max) * maxLength (ElementDefinition.maxLength) * options (ElementDefinition.binding)  Any information provided in these elements on a Questionnaire Item overrides the information from the definition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-questions
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-questions
 		code: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'A terminology code that corresponds to this group or question (e.g. a code from LOINC, which defines many questions and answers).'
@@ -54,7 +54,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The name of a section, the text of a question or text content for a display item.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/item-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/item-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of questionnaire item this is - whether text for display, a grouping of other items or a particular type of data to be captured (string, integer, coded choice, etc.).'
@@ -107,7 +107,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./questionnaireitemoption.schema')),
 			description: 'One of the permitted answers for a \'choice\' or \'open-choice\' question.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialBoolean: {
 			type: GraphQLBoolean,
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
@@ -116,7 +116,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialDecimal: {
 			type: GraphQLFloat,
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
@@ -125,7 +125,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialInteger: {
 			type: GraphQLInt,
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
@@ -134,7 +134,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialDate: {
 			type: DateScalar,
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
@@ -143,7 +143,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialDateTime: {
 			type: DateTimeScalar,
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
@@ -152,7 +152,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialTime: {
 			type: TimeScalar,
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
@@ -161,7 +161,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialString: {
 			type: GraphQLString,
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
@@ -170,7 +170,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialUri: {
 			type: UriScalar,
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
@@ -179,22 +179,22 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialAttachment: {
 			type: require('./attachment.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialCoding: {
 			type: require('./coding.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialQuantity: {
 			type: require('./quantity.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		initialReference: {
 			type: require('./reference.schema'),
 			description: 'The value that should be defaulted when initially rendering the questionnaire for user input.'

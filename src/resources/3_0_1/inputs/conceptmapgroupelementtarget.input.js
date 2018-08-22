@@ -29,7 +29,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The display for the code. The display is only provided to help editors when editing the concept map.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/concept-map-equivalence
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/concept-map-equivalence
 		equivalence: {
 			type: CodeScalar,
 			description: 'The equivalence between the source and target concepts (counting for the dependencies and products). The equivalence is read from target to source (e.g. the target is \'wider\' than the source).'

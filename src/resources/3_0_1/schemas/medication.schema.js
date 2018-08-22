@@ -3,7 +3,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MedicationResourceType = new GraphQLEnumType({
 	name: 'MedicationResourceType',
 	values: {
@@ -23,12 +22,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(MedicationResourceType),
 			description: 'Type of this resource'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		code: {
 			type: require('./codeableconcept.schema'),
 			description: 'A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-status
 		status: {
 			type: CodeScalar,
 			description: 'A code to indicate if the medication is in active use.'
@@ -57,7 +56,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Describes the details of the manufacturer of the medication product.  This is not intended to represent the distributor of a medication product.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-form-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-form-codes
 		form: {
 			type: require('./codeableconcept.schema'),
 			description: 'Describes the form of the item.  Powder; tablets; capsule.'

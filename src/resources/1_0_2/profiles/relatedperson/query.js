@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const RelatedPersonArgs = require('../../parameters/relatedperson.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	relatedpersonResolver,
 	relatedpersonListResolver,
 	relatedpersonInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'RelatedPerson',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.RelatedPersonQuery
@@ -19,7 +31,7 @@ const {
 module.exports.RelatedPersonQuery = {
 	args: Object.assign({}, CommonArgs, RelatedPersonArgs),
 	description: 'Query for a single RelatedPerson',
-	resolve: relatedpersonResolver,
+	resolve: scopeInvariant(scopeOptions, relatedpersonResolver),
 	type: RelatedPersonSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.RelatedPersonQuery = {
 module.exports.RelatedPersonListQuery = {
 	args: Object.assign({}, CommonArgs, RelatedPersonArgs),
 	description: 'Query for multiple RelatedPersons',
-	resolve: relatedpersonListResolver,
+	resolve: scopeInvariant(scopeOptions, relatedpersonListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.RelatedPersonListQuery = {
  */
 module.exports.RelatedPersonInstanceQuery = {
 	description: 'Get information about a single RelatedPerson',
-	resolve: relatedpersonInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, relatedpersonInstanceResolver),
 	type: RelatedPersonSchema
 };

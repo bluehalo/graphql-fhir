@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MedicationRequestResourceType = new GraphQLEnumType({
 	name: 'MedicationRequestResourceType',
 	values: {
@@ -40,7 +39,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'A shared identifier common to all requests that were authorized more or less simultaneously by a single author, representing the identifier of the requisition or prescription.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-request-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-request-status
 		status: {
 			type: CodeScalar,
 			description: 'A code specifying the current state of the order.  Generally this will be active or completed state.'
@@ -49,7 +48,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A code specifying the current state of the order.  Generally this will be active or completed state.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-request-intent
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-request-intent
 		intent: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Whether the request is a proposal, plan, or an original order.'
@@ -58,12 +57,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Whether the request is a proposal, plan, or an original order.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-request-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-request-category
 		category: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates the type of medication order and where the medication is expected to be consumed or administered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-request-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-request-priority
 		priority: {
 			type: CodeScalar,
 			description: 'Indicates how quickly the Medication Request should be addressed with respect to other requests.'
@@ -72,12 +71,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Indicates how quickly the Medication Request should be addressed with respect to other requests.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		medicationCodeableConcept: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Identifies the medication being requested. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		medicationReference: {
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'Identifies the medication being requested. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.'
@@ -110,7 +109,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The person who entered the order on behalf of another individual for example in the case of a verbal or a telephone order.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The reason or the indication for ordering the medication.'

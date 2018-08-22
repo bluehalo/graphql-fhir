@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ValueSetComposeIncludeConceptDesignation',
 	description: 'Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/languages
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
 		language: {
 			type: CodeScalar,
 			description: 'The language this designation is defined for.'
@@ -22,7 +22,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The language this designation is defined for.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/designation-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/designation-use
 		use: {
 			type: require('./coding.schema'),
 			description: 'A code that details how this designation would be used.'

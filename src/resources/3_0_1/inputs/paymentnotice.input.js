@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let PaymentNoticeResourceInputType = new GraphQLEnumType({
 	name: 'PaymentNoticeResourceInputType',
 	values: {
@@ -29,7 +28,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'The notice business identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -74,7 +73,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The organization which is responsible for the services rendered to the patient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/payment-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/payment-status
 		paymentStatus: {
 			type: require('./codeableconcept.input'),
 			description: 'The payment status, typically paid: payment sent, cleared: payment received.'

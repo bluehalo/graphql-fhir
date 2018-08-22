@@ -2,7 +2,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ScheduleResourceInputType = new GraphQLEnumType({
 	name: 'ScheduleResourceInputType',
 	values: {
@@ -26,7 +25,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'External Ids for this item.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		type: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The schedule type can be used for the categorization of healthcare services or other appointment types.'

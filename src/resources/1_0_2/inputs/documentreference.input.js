@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DocumentReferenceResourceInputType = new GraphQLEnumType({
 	name: 'DocumentReferenceResourceInputType',
 	values: {
@@ -37,12 +36,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Who or what the document is about. The document can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-doc-typecodes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-doc-typecodes
 		type: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-doc-classcodes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-doc-classcodes
 		class: {
 			type: require('./codeableconcept.input'),
 			description: 'A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type.'
@@ -75,7 +74,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'When the document reference was created.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/document-reference-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/document-reference-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this document reference.'
@@ -84,7 +83,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The status of this document reference.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/composition-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/composition-status
 		docStatus: {
 			type: require('./codeableconcept.input'),
 			description: 'The status of the underlying document.'
@@ -101,7 +100,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Human-readable description of the source document. This is sometimes known as the \'title\'.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
 		securityLabel: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'A set of Security-Tag codes specifying the level of privacy/security of the Document. Note that DocumentReference.meta.security contains the security labels of the \'reference\' to the document, while DocumentReference.securityLabel contains a snapshot of the security labels on the document the reference refers to.'

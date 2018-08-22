@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ClaimResponseResourceType = new GraphQLEnumType({
 	name: 'ClaimResponseResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'The Response business identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -65,7 +64,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Original request resource referrence.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
 		outcome: {
 			type: require('./codeableconcept.schema'),
 			description: 'Processing outcome errror, partial or complete processing.'
@@ -78,7 +77,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A description of the status of the adjudication.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/payeetype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/payeetype
 		payeeType: {
 			type: require('./codeableconcept.schema'),
 			description: 'Party to be reimbursed: Subscriber, provider, other.'
@@ -111,12 +110,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./claimresponsepayment.schema'),
 			description: 'Payment details for the claim if the claim has been paid.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fundsreserve
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fundsreserve
 		reserved: {
 			type: require('./coding.schema'),
 			description: 'Status of funds reservation (For provider, for Patient, None).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/forms
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/forms
 		form: {
 			type: require('./codeableconcept.schema'),
 			description: 'The form to be used for printing the content.'

@@ -6,7 +6,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ImplementationGuideResourceType = new GraphQLEnumType({
 	name: 'ImplementationGuideResourceType',
 	values: {
@@ -50,7 +49,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A free text natural language name identifying the Implementation Guide.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the Implementation Guide.'
@@ -95,7 +94,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A free text natural language description of the Implementation Guide and its use.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
 		useContext: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of implementation guides. The most common use of this element is to represent the country / jurisdiction for which this implementation guide was defined.'

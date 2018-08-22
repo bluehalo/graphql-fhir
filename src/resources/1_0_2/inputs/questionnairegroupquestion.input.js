@@ -21,7 +21,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An identifier that is unique within the questionnaire allowing linkage to the equivalent group in a [[[QuestionnaireResponse]]] resource.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-questions
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-questions
 		concept: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'Identifies a how this question is known in a particular terminology such as LOINC.'
@@ -34,7 +34,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The actual question as shown to the user to prompt them for an answer.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/answer-format
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/answer-format
 		type: {
 			type: CodeScalar,
 			description: 'The expected format of the answer, e.g. the type of input (string, integer) or whether a (multiple) choice is expected.'
@@ -63,7 +63,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Reference to a value set containing a list of codes representing permitted answers for the question.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		option: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'For a \'choice\' question, identifies one of the permitted answers for the question.'

@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ExplanationOfBenefitBenefitBalanceFinancial',
 	description: 'Benefits Used to date.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-type
 		type: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Deductable, visits, benefit amount.'

@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ConceptMapResourceType = new GraphQLEnumType({
 	name: 'ConceptMapResourceType',
 	values: {
@@ -53,7 +52,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A free text natural language name describing the concept map.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the concept map.'
@@ -98,7 +97,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
 		useContext: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of concept map instances.'

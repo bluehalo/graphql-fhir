@@ -21,7 +21,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'An integer associated with each note which may be referred to from each service line item.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
 		type: {
 			type: require('./coding.schema'),
 			description: 'The note purpose: Print/Display.'

@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'NutritionOrderSupplement',
 	description: 'Oral nutritional products given in order to add further nutritional value to the patient\'s diet.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplement-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplement-type
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'The kind of nutritional supplement product required such as a high protein or pediatric clear liquid supplement.'

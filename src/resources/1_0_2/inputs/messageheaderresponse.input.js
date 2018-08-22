@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The id of the message that this message is a response to.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/response-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/response-code
 		code: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not.'

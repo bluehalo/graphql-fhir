@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'OrganizationContact_Input',
 	description: 'Contact for the organization for a certain purpose.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contactentity-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contactentity-type
 		purpose: {
 			type: require('./codeableconcept.input'),
 			description: 'Indicates a purpose for which the contact can be reached.'

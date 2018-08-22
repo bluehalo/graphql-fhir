@@ -22,12 +22,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Sequence of the information element which serves to provide a link.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-informationcategory
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-informationcategory
 		category: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'The general class of the information supplied: information; exception; accident, employment; onset, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-exception
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-exception
 		code: {
 			type: require('./codeableconcept.input'),
 			description: 'System and code pertaining to the specific information regarding special conditions relating to the setting, treatment or patient  for which care is sought which may influence the adjudication.'
@@ -64,7 +64,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/missing-tooth-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/missing-tooth-reason
 		reason: {
 			type: require('./codeableconcept.input'),
 			description: 'For example, provides the reason for: the additional stay, or missing tooth or any other situation where a reason code is required in addition to the content.'

@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'MedicationProduct',
 	description: 'Information that only applies to products (not packages).',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-form-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-form-codes
 		form: {
 			type: require('./codeableconcept.schema'),
 			description: 'Describes the form of the item.  Powder; tablets; carton.'

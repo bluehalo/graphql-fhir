@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DocumentManifestResourceType = new GraphQLEnumType({
 	name: 'DocumentManifestResourceType',
 	values: {
@@ -41,7 +40,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'A patient, practitioner, or organization for which this set of documents is intended.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-doc-typecodes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-doc-typecodes
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'Specifies the kind of this set of documents (e.g. Patient Summary, Discharge Summary, Prescription, etc.). The type of a set of documents may be the same as one of the documents in it - especially if there is only one - but it may be wider.'
@@ -66,7 +65,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Identifies the source system, application, or software that produced the document manifest.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/document-reference-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/document-reference-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this document manifest.'

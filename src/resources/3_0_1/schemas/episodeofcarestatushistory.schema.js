@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'EpisodeOfCareStatusHistory',
 	description: 'The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/episode-of-care-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/episode-of-care-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'planned | waitlist | active | onhold | finished | cancelled.'

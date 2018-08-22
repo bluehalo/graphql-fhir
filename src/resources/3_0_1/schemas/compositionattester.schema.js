@@ -14,7 +14,7 @@ module.exports = new GraphQLObjectType({
 	name: 'CompositionAttester',
 	description: 'A participant who has attested to the accuracy of the composition/document.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/composition-attestation-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/composition-attestation-mode
 		mode: {
 			type: new GraphQLList(new GraphQLNonNull(CodeScalar)),
 			description: 'The type of attestation the authenticator offers.'

@@ -7,12 +7,26 @@ const ProcedureRequestSchema = require('../../schemas/procedurerequest.schema');
 // Inputs
 const ProcedureRequestInput = require('../../inputs/procedurerequest.input');
 
-
+// Resolvers
 const {
 	procedurerequestCreateResolver,
 	procedurerequestUpdateResolver,
 	procedurerequestDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ProcedureRequest',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ProcedureRequest record.'
 	},
 	resource: {
-		type: ProcedureRequestInput,
+		type: new GraphQLNonNull(ProcedureRequestInput),
 		description: 'ProcedureRequest Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ProcedureRequest record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ProcedureRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ProcedureRequest',
-	resolve: procedurerequestCreateResolver,
+	resolve: scopeInvariant(scopeOptions, procedurerequestCreateResolver),
 	type: ProcedureRequestSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ProcedureRequestCreateMutation = {
 module.exports.ProcedureRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ProcedureRequests',
-	resolve: procedurerequestUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, procedurerequestUpdateResolver),
 	type: ProcedureRequestSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ProcedureRequestUpdateMutation = {
 module.exports.ProcedureRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ProcedureRequest',
-	resolve: procedurerequestDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, procedurerequestDeleteResolver),
 	type: ProcedureRequestSchema
 };

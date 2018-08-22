@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CommunicationRequestResourceInputType = new GraphQLEnumType({
 	name: 'CommunicationRequestResourceInputType',
 	values: {
@@ -40,7 +39,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./identifier.input'),
 			description: 'A shared identifier common to all requests that were authorized more or less simultaneously by a single author, representing the identifier of the requisition, prescription or similar form.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the proposal or order.'
@@ -49,12 +48,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The status of the proposal or order.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/communication-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/communication-category
 		category: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The type of message to be sent such as alert, notification, reminder, instruction, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
 		priority: {
 			type: CodeScalar,
 			description: 'Characterizes how quickly the proposed act must be initiated. Includes concepts such as stat, urgent, routine.'
@@ -63,7 +62,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Characterizes how quickly the proposed act must be initiated. Includes concepts such as stat, urgent, routine.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ParticipationMode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ParticipationMode
 		medium: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'A channel that was used for this communication (e.g. email, fax).'
@@ -116,7 +115,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./communicationrequestrequester.input'),
 			description: 'The individual who initiated the request and has responsibility for its activation.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActReason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActReason
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Describes why the request is being made in coded or textual form.'

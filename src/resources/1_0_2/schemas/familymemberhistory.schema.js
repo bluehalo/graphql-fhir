@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let FamilyMemberHistoryResourceType = new GraphQLEnumType({
 	name: 'FamilyMemberHistoryResourceType',
 	values: {
@@ -41,7 +40,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The date (and possibly time) when the family member history was taken.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/history-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/history-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'A code specifying a state of a Family Member History record.'
@@ -58,12 +57,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'This will either be a name or a description; e.g. \'Aunt Susan\', \'my cousin with the red hair\'.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-FamilyMember
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-FamilyMember
 		relationship: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'The type of relationship this person has to the patient (father, mother, brother etc.).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
 		gender: {
 			type: CodeScalar,
 			description: 'Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes.'

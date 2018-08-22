@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DeviceMetricResourceInputType = new GraphQLEnumType({
 	name: 'DeviceMetricResourceInputType',
 	values: {
@@ -27,12 +26,12 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLNonNull(require('./identifier.input')),
 			description: 'Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID.  It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/devicemetric-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/devicemetric-type
 		type: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Describes the type of the metric. For example: Heart Rate, PEEP Setting, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/devicemetric-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/devicemetric-type
 		unit: {
 			type: require('./codeableconcept.input'),
 			description: 'Describes the unit that an observed value determined for this metric will have. For example: Percent, Seconds, etc.'
@@ -45,7 +44,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device. An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/metric-operational-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/metric-operational-status
 		operationalStatus: {
 			type: CodeScalar,
 			description: 'Indicates current operational state of the device. For example: On, Off, Standby, etc.'
@@ -54,7 +53,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Indicates current operational state of the device. For example: On, Off, Standby, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/metric-color
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/metric-color
 		color: {
 			type: CodeScalar,
 			description: 'Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta.'
@@ -63,7 +62,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/metric-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/metric-category
 		category: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation.'

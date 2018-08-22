@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let EnrollmentResponseResourceInputType = new GraphQLEnumType({
 	name: 'EnrollmentResponseResourceInputType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'The Response business identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -41,7 +40,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Original request resource reference.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
 		outcome: {
 			type: require('./codeableconcept.input'),
 			description: 'Processing status: error, complete.'

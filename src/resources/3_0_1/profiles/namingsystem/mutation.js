@@ -7,12 +7,26 @@ const NamingSystemSchema = require('../../schemas/namingsystem.schema');
 // Inputs
 const NamingSystemInput = require('../../inputs/namingsystem.input');
 
-
+// Resolvers
 const {
 	namingsystemCreateResolver,
 	namingsystemUpdateResolver,
 	namingsystemDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'NamingSystem',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a NamingSystem record.'
 	},
 	resource: {
-		type: NamingSystemInput,
+		type: new GraphQLNonNull(NamingSystemInput),
 		description: 'NamingSystem Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a NamingSystem record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.NamingSystemCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a NamingSystem',
-	resolve: namingsystemCreateResolver,
+	resolve: scopeInvariant(scopeOptions, namingsystemCreateResolver),
 	type: NamingSystemSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.NamingSystemCreateMutation = {
 module.exports.NamingSystemUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple NamingSystems',
-	resolve: namingsystemUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, namingsystemUpdateResolver),
 	type: NamingSystemSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.NamingSystemUpdateMutation = {
 module.exports.NamingSystemDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single NamingSystem',
-	resolve: namingsystemDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, namingsystemDeleteResolver),
 	type: NamingSystemSchema
 };

@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const GraphDefinitionArgs = require('../../parameters/graphdefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	graphdefinitionResolver,
 	graphdefinitionListResolver,
 	graphdefinitionInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'GraphDefinition',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.GraphDefinitionQuery
@@ -19,7 +31,7 @@ const {
 module.exports.GraphDefinitionQuery = {
 	args: Object.assign({}, CommonArgs, GraphDefinitionArgs),
 	description: 'Query for a single GraphDefinition',
-	resolve: graphdefinitionResolver,
+	resolve: scopeInvariant(scopeOptions, graphdefinitionResolver),
 	type: GraphDefinitionSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.GraphDefinitionQuery = {
 module.exports.GraphDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, GraphDefinitionArgs),
 	description: 'Query for multiple GraphDefinitions',
-	resolve: graphdefinitionListResolver,
+	resolve: scopeInvariant(scopeOptions, graphdefinitionListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.GraphDefinitionListQuery = {
  */
 module.exports.GraphDefinitionInstanceQuery = {
 	description: 'Get information about a single GraphDefinition',
-	resolve: graphdefinitionInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, graphdefinitionInstanceResolver),
 	type: GraphDefinitionSchema
 };

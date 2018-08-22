@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let EligibilityResponseResourceInputType = new GraphQLEnumType({
 	name: 'EligibilityResponseResourceInputType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'The Response business identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -57,7 +56,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Original request resource reference.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
 		outcome: {
 			type: require('./codeableconcept.input'),
 			description: 'Transaction status: error, complete.'
@@ -86,7 +85,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./eligibilityresponseinsurance.input')),
 			description: 'The insurer may provide both the details for the requested coverage as well as details for additional coverages known to the insurer.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/forms
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/forms
 		form: {
 			type: require('./codeableconcept.input'),
 			description: 'The form to be used for printing the content.'

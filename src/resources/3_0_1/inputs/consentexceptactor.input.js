@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ConsentExceptActor_Input',
 	description: 'Who or what is controlled by this Exception. Use group to identify a set of actors by some property they share (e.g. \'admitting officers\').',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/security-role-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/security-role-type
 		role: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'How the individual is involved in the resources content that is described in the exception.'

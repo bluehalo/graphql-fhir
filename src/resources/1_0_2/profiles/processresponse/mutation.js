@@ -7,12 +7,26 @@ const ProcessResponseSchema = require('../../schemas/processresponse.schema');
 // Inputs
 const ProcessResponseInput = require('../../inputs/processresponse.input');
 
-
+// Resolvers
 const {
 	processresponseCreateResolver,
 	processresponseUpdateResolver,
 	processresponseDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ProcessResponse',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ProcessResponse record.'
 	},
 	resource: {
-		type: ProcessResponseInput,
+		type: new GraphQLNonNull(ProcessResponseInput),
 		description: 'ProcessResponse Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ProcessResponse record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ProcessResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ProcessResponse',
-	resolve: processresponseCreateResolver,
+	resolve: scopeInvariant(scopeOptions, processresponseCreateResolver),
 	type: ProcessResponseSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ProcessResponseCreateMutation = {
 module.exports.ProcessResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ProcessResponses',
-	resolve: processresponseUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, processresponseUpdateResolver),
 	type: ProcessResponseSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ProcessResponseUpdateMutation = {
 module.exports.ProcessResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ProcessResponse',
-	resolve: processresponseDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, processresponseDeleteResolver),
 	type: ProcessResponseSchema
 };

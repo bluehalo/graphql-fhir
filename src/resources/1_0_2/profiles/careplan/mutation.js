@@ -7,12 +7,26 @@ const CarePlanSchema = require('../../schemas/careplan.schema');
 // Inputs
 const CarePlanInput = require('../../inputs/careplan.input');
 
-
+// Resolvers
 const {
 	careplanCreateResolver,
 	careplanUpdateResolver,
 	careplanDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'CarePlan',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a CarePlan record.'
 	},
 	resource: {
-		type: CarePlanInput,
+		type: new GraphQLNonNull(CarePlanInput),
 		description: 'CarePlan Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a CarePlan record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.CarePlanCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a CarePlan',
-	resolve: careplanCreateResolver,
+	resolve: scopeInvariant(scopeOptions, careplanCreateResolver),
 	type: CarePlanSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.CarePlanCreateMutation = {
 module.exports.CarePlanUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple CarePlans',
-	resolve: careplanUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, careplanUpdateResolver),
 	type: CarePlanSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.CarePlanUpdateMutation = {
 module.exports.CarePlanDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single CarePlan',
-	resolve: careplanDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, careplanDeleteResolver),
 	type: CarePlanSchema
 };

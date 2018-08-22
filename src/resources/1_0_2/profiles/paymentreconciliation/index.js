@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'PaymentReconciliation',
-		path: '/3_0_1/PaymentReconciliation/:id',
+		path: '/1_0_2/PaymentReconciliation/:id',
 		query: PaymentReconciliationInstanceQuery
 	}
 };

@@ -7,7 +7,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let AppointmentResourceType = new GraphQLEnumType({
 	name: 'AppointmentResourceType',
 	values: {
@@ -31,7 +30,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'This records identifiers associated with this appointment concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/appointmentstatus
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/appointmentstatus
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status.'
@@ -40,27 +39,27 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-category
 		serviceCategory: {
 			type: require('./codeableconcept.schema'),
 			description: 'A broad categorisation of the service that is to be performed during this appointment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-type
 		serviceType: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The specific service that is to be performed during this appointment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		specialty: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The specialty of a practitioner that would be required to perform the service requested in this appointment.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0276
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0276
 		appointmentType: {
 			type: require('./codeableconcept.schema'),
 			description: 'The style of appointment or patient that has been booked in the slot (not service type).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-reason
 		reason: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The reason that this appointment is being scheduled. This is more clinical than administrative.'

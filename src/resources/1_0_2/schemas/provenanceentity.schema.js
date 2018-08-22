@@ -14,7 +14,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ProvenanceEntity',
 	description: 'An entity used in this activity.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/provenance-entity-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/provenance-entity-role
 		role: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'How the entity was used during the activity.'
@@ -23,7 +23,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'How the entity was used during the activity.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		type: {
 			type: new GraphQLNonNull(require('./coding.schema')),
 			description: 'The type of the entity. If the entity is a resource, then this is a resource type.'

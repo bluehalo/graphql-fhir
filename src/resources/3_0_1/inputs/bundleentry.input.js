@@ -21,6 +21,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The Absolute URL for the resource.  The fullUrl SHALL not disagree with the id in the resource. The fullUrl is a version independent reference to the resource. The fullUrl element SHALL have a value except that:  * fullUrl can be empty on a POST (although it does not need to when specifying a temporary id for reference in the bundle) * Results from operations might involve resources that are not identified.'
 		},
+		// TODO: Figure out how to handle this
 		// resource: {
 		// 	type: require('./resourcelist.input'),
 		// 	description: 'The Resources for the entry.'

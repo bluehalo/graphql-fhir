@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ProcessRequestResourceType = new GraphQLEnumType({
 	name: 'ProcessRequestResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'The ProcessRequest business identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -37,7 +36,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The status of the resource instance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/actionlist
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/actionlist
 		action: {
 			type: CodeScalar,
 			description: 'The type of processing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest.'

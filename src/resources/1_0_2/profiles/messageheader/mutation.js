@@ -7,12 +7,26 @@ const MessageHeaderSchema = require('../../schemas/messageheader.schema');
 // Inputs
 const MessageHeaderInput = require('../../inputs/messageheader.input');
 
-
+// Resolvers
 const {
 	messageheaderCreateResolver,
 	messageheaderUpdateResolver,
 	messageheaderDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'MessageHeader',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a MessageHeader record.'
 	},
 	resource: {
-		type: MessageHeaderInput,
+		type: new GraphQLNonNull(MessageHeaderInput),
 		description: 'MessageHeader Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a MessageHeader record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.MessageHeaderCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MessageHeader',
-	resolve: messageheaderCreateResolver,
+	resolve: scopeInvariant(scopeOptions, messageheaderCreateResolver),
 	type: MessageHeaderSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.MessageHeaderCreateMutation = {
 module.exports.MessageHeaderUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MessageHeaders',
-	resolve: messageheaderUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, messageheaderUpdateResolver),
 	type: MessageHeaderSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.MessageHeaderUpdateMutation = {
 module.exports.MessageHeaderDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MessageHeader',
-	resolve: messageheaderDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, messageheaderDeleteResolver),
 	type: MessageHeaderSchema
 };

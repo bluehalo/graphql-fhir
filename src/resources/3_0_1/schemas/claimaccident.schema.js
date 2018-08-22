@@ -21,7 +21,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Date of an accident which these services are addressing.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActIncidentCode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActIncidentCode
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'Type of accident: work, auto, etc.'

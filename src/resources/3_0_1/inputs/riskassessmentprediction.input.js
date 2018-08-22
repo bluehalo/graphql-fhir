@@ -28,7 +28,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./range.input'),
 			description: 'How likely is the outcome (in the specified timeframe).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/risk-probability
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/risk-probability
 		qualitativeRisk: {
 			type: require('./codeableconcept.input'),
 			description: 'How likely is the outcome (in the specified timeframe), expressed as a qualitative value (e.g. low, medium, high).'

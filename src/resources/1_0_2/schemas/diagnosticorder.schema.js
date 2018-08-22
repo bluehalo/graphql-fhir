@@ -3,7 +3,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DiagnosticOrderResourceType = new GraphQLEnumType({
 	name: 'DiagnosticOrderResourceType',
 	values: {
@@ -39,7 +38,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'An encounter that provides additional information about the healthcare context in which this request is made.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		reason: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'An explanation or justification for why this diagnostic investigation is being requested.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.'
@@ -52,7 +51,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'One or more specimens that the diagnostic investigation is about.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the order.'
@@ -61,7 +60,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The status of the order.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-priority
 		priority: {
 			type: CodeScalar,
 			description: 'The clinical priority associated with this order.'

@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const CommunicationRequestArgs = require('../../parameters/communicationrequest.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	communicationrequestResolver,
 	communicationrequestListResolver,
 	communicationrequestInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'CommunicationRequest',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.CommunicationRequestQuery
@@ -19,7 +31,7 @@ const {
 module.exports.CommunicationRequestQuery = {
 	args: Object.assign({}, CommonArgs, CommunicationRequestArgs),
 	description: 'Query for a single CommunicationRequest',
-	resolve: communicationrequestResolver,
+	resolve: scopeInvariant(scopeOptions, communicationrequestResolver),
 	type: CommunicationRequestSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.CommunicationRequestQuery = {
 module.exports.CommunicationRequestListQuery = {
 	args: Object.assign({}, CommonArgs, CommunicationRequestArgs),
 	description: 'Query for multiple CommunicationRequests',
-	resolve: communicationrequestListResolver,
+	resolve: scopeInvariant(scopeOptions, communicationrequestListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.CommunicationRequestListQuery = {
  */
 module.exports.CommunicationRequestInstanceQuery = {
 	description: 'Get information about a single CommunicationRequest',
-	resolve: communicationrequestInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, communicationrequestInstanceResolver),
 	type: CommunicationRequestSchema
 };

@@ -16,7 +16,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'An identifier that applies to this person\'s qualification in this role.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/anzsco-occupations
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/anzsco-occupations
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Coded representation of the qualification.'

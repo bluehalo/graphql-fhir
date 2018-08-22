@@ -7,12 +7,26 @@ const DeviceMetricSchema = require('../../schemas/devicemetric.schema');
 // Inputs
 const DeviceMetricInput = require('../../inputs/devicemetric.input');
 
-
+// Resolvers
 const {
 	devicemetricCreateResolver,
 	devicemetricUpdateResolver,
 	devicemetricDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'DeviceMetric',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a DeviceMetric record.'
 	},
 	resource: {
-		type: DeviceMetricInput,
+		type: new GraphQLNonNull(DeviceMetricInput),
 		description: 'DeviceMetric Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a DeviceMetric record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.DeviceMetricCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DeviceMetric',
-	resolve: devicemetricCreateResolver,
+	resolve: scopeInvariant(scopeOptions, devicemetricCreateResolver),
 	type: DeviceMetricSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.DeviceMetricCreateMutation = {
 module.exports.DeviceMetricUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DeviceMetrics',
-	resolve: devicemetricUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, devicemetricUpdateResolver),
 	type: DeviceMetricSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.DeviceMetricUpdateMutation = {
 module.exports.DeviceMetricDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DeviceMetric',
-	resolve: devicemetricDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, devicemetricDeleteResolver),
 	type: DeviceMetricSchema
 };

@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let GroupResourceInputType = new GraphQLEnumType({
 	name: 'GroupResourceInputType',
 	values: {
@@ -36,7 +35,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Indicates whether the record for the group is available for use or is merely being retained for historical purposes.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/group-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/group-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Identifies the broad classification of the kind of resources the group includes.'

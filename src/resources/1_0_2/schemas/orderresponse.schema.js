@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let OrderResponseResourceType = new GraphQLEnumType({
 	name: 'OrderResponseResourceType',
 	values: {
@@ -44,7 +43,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The person, organization, or device credited with making the response.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/order-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/order-status
 		orderStatus: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'What this response says about the status of the original order.'

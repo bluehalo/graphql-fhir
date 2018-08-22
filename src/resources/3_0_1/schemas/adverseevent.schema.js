@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let AdverseEventResourceType = new GraphQLEnumType({
 	name: 'AdverseEventResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'The identifier(s) of this adverse event that are assigned by business processes and/or used to refer to it when a direct URL reference to the resource itsefl is not appropriate.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-category
 		category: {
 			type: CodeScalar,
 			description: 'The type of event which is important to characterize what occurred and caused harm to the subject, or had the potential to cause harm to the subject.'
@@ -37,7 +36,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The type of event which is important to characterize what occurred and caused harm to the subject, or had the potential to cause harm to the subject.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-type
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'This element defines the specific type of event that occurred or that was prevented from occurring.'
@@ -62,12 +61,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The information about where the adverse event occurred.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-seriousness
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-seriousness
 		seriousness: {
 			type: require('./codeableconcept.schema'),
 			description: 'Describes the seriousness or severity of the adverse event.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-outcome
 		outcome: {
 			type: require('./codeableconcept.schema'),
 			description: 'Describes the type of outcome from the adverse event.'

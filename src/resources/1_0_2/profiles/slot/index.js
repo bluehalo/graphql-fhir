@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Slot',
-		path: '/3_0_1/Slot/:id',
+		path: '/1_0_2/Slot/:id',
 		query: SlotInstanceQuery
 	}
 };

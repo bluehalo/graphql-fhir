@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ResearchStudyArgs = require('../../parameters/researchstudy.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	researchstudyResolver,
 	researchstudyListResolver,
 	researchstudyInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ResearchStudy',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.ResearchStudyQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ResearchStudyQuery = {
 	args: Object.assign({}, CommonArgs, ResearchStudyArgs),
 	description: 'Query for a single ResearchStudy',
-	resolve: researchstudyResolver,
+	resolve: scopeInvariant(scopeOptions, researchstudyResolver),
 	type: ResearchStudySchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ResearchStudyQuery = {
 module.exports.ResearchStudyListQuery = {
 	args: Object.assign({}, CommonArgs, ResearchStudyArgs),
 	description: 'Query for multiple ResearchStudys',
-	resolve: researchstudyListResolver,
+	resolve: scopeInvariant(scopeOptions, researchstudyListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ResearchStudyListQuery = {
  */
 module.exports.ResearchStudyInstanceQuery = {
 	description: 'Get information about a single ResearchStudy',
-	resolve: researchstudyInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, researchstudyInstanceResolver),
 	type: ResearchStudySchema
 };

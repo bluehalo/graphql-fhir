@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let GroupResourceType = new GraphQLEnumType({
 	name: 'GroupResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'A unique business identifier for this group.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/group-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/group-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Identifies the broad classification of the kind of resources the group includes.'

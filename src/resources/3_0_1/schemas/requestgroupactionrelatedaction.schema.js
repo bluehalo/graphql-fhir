@@ -22,7 +22,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The element id of the action this is related to.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/action-relationship-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-relationship-type
 		relationship: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The relationship of this action to the related action.'

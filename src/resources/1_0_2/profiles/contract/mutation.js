@@ -7,12 +7,26 @@ const ContractSchema = require('../../schemas/contract.schema');
 // Inputs
 const ContractInput = require('../../inputs/contract.input');
 
-
+// Resolvers
 const {
 	contractCreateResolver,
 	contractUpdateResolver,
 	contractDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Contract',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Contract record.'
 	},
 	resource: {
-		type: ContractInput,
+		type: new GraphQLNonNull(ContractInput),
 		description: 'Contract Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Contract record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ContractCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Contract',
-	resolve: contractCreateResolver,
+	resolve: scopeInvariant(scopeOptions, contractCreateResolver),
 	type: ContractSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ContractCreateMutation = {
 module.exports.ContractUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Contracts',
-	resolve: contractUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, contractUpdateResolver),
 	type: ContractSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ContractUpdateMutation = {
 module.exports.ContractDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Contract',
-	resolve: contractDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, contractDeleteResolver),
 	type: ContractSchema
 };

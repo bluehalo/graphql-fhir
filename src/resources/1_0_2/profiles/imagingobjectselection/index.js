@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'ImagingObjectSelection',
-		path: '/3_0_1/ImagingObjectSelection/:id',
+		path: '/1_0_2/ImagingObjectSelection/:id',
 		query: ImagingObjectSelectionInstanceQuery
 	}
 };

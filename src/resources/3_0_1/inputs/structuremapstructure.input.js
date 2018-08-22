@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The canonical URL that identifies the structure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/map-model-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/map-model-mode
 		mode: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'How the referenced structure is used in this mapping.'

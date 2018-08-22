@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ConsentActor',
 	description: 'Who or what is controlled by this consent. Use group to identify a set of actors by some property they share (e.g. \'admitting officers\').',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/security-role-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/security-role-type
 		role: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'How the individual is involved in the resources content that is described in the consent.'

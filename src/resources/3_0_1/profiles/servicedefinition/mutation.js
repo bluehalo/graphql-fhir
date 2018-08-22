@@ -7,12 +7,26 @@ const ServiceDefinitionSchema = require('../../schemas/servicedefinition.schema'
 // Inputs
 const ServiceDefinitionInput = require('../../inputs/servicedefinition.input');
 
-
+// Resolvers
 const {
 	servicedefinitionCreateResolver,
 	servicedefinitionUpdateResolver,
 	servicedefinitionDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ServiceDefinition',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ServiceDefinition record.'
 	},
 	resource: {
-		type: ServiceDefinitionInput,
+		type: new GraphQLNonNull(ServiceDefinitionInput),
 		description: 'ServiceDefinition Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ServiceDefinition record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ServiceDefinitionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ServiceDefinition',
-	resolve: servicedefinitionCreateResolver,
+	resolve: scopeInvariant(scopeOptions, servicedefinitionCreateResolver),
 	type: ServiceDefinitionSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ServiceDefinitionCreateMutation = {
 module.exports.ServiceDefinitionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ServiceDefinitions',
-	resolve: servicedefinitionUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, servicedefinitionUpdateResolver),
 	type: ServiceDefinitionSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ServiceDefinitionUpdateMutation = {
 module.exports.ServiceDefinitionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ServiceDefinition',
-	resolve: servicedefinitionDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, servicedefinitionDeleteResolver),
 	type: ServiceDefinitionSchema
 };

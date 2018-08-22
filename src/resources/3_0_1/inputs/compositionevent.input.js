@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'CompositionEvent_Input',
 	description: 'The clinical service, such as a colonoscopy or an appendectomy, being documented.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActCode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActCode
 		code: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a \'History and Physical Report\' in which the procedure being documented is necessarily a \'History and Physical\' act.'

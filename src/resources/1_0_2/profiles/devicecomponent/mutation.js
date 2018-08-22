@@ -7,12 +7,26 @@ const DeviceComponentSchema = require('../../schemas/devicecomponent.schema');
 // Inputs
 const DeviceComponentInput = require('../../inputs/devicecomponent.input');
 
-
+// Resolvers
 const {
 	devicecomponentCreateResolver,
 	devicecomponentUpdateResolver,
 	devicecomponentDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'DeviceComponent',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a DeviceComponent record.'
 	},
 	resource: {
-		type: DeviceComponentInput,
+		type: new GraphQLNonNull(DeviceComponentInput),
 		description: 'DeviceComponent Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a DeviceComponent record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.DeviceComponentCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DeviceComponent',
-	resolve: devicecomponentCreateResolver,
+	resolve: scopeInvariant(scopeOptions, devicecomponentCreateResolver),
 	type: DeviceComponentSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.DeviceComponentCreateMutation = {
 module.exports.DeviceComponentUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DeviceComponents',
-	resolve: devicecomponentUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, devicecomponentUpdateResolver),
 	type: DeviceComponentSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.DeviceComponentUpdateMutation = {
 module.exports.DeviceComponentDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DeviceComponent',
-	resolve: devicecomponentDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, devicecomponentDeleteResolver),
 	type: DeviceComponentSchema
 };

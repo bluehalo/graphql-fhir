@@ -6,7 +6,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MediaResourceType = new GraphQLEnumType({
 	name: 'MediaResourceType',
 	values: {
@@ -34,7 +33,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'A procedure that is fulfilled in whole or in part by the creation of this media.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/digital-media-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/digital-media-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Whether the media is a photo (still image), an audio recording, or a video recording.'
@@ -43,12 +42,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Whether the media is a photo (still image), an audio recording, or a video recording.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/digital-media-subtype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/digital-media-subtype
 		subtype: {
 			type: require('./codeableconcept.schema'),
 			description: 'Details of the type of the media - usually, how it was acquired (what type of device). If images sourced from a DICOM system, are wrapped in a Media resource, then this is the modality.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/media-view
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/media-view
 		view: {
 			type: require('./codeableconcept.schema'),
 			description: 'The name of the imaging view e.g. Lateral or Antero-posterior (AP).'
@@ -77,12 +76,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The person who administered the collection of the image.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Describes why the event occurred in coded or textual form.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		bodySite: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates the site on the subject\'s body where the media was collected (i.e. the target site).'

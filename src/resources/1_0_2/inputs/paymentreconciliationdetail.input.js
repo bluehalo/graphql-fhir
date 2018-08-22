@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'PaymentReconciliationDetail_Input',
 	description: 'List of individual settlement amounts and the corresponding transaction.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/payment-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/payment-type
 		type: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'Code to indicate the nature of the payment, adjustment, funds advance, etc.'

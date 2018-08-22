@@ -7,12 +7,26 @@ const QuestionnaireSchema = require('../../schemas/questionnaire.schema');
 // Inputs
 const QuestionnaireInput = require('../../inputs/questionnaire.input');
 
-
+// Resolvers
 const {
 	questionnaireCreateResolver,
 	questionnaireUpdateResolver,
 	questionnaireDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Questionnaire',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Questionnaire record.'
 	},
 	resource: {
-		type: QuestionnaireInput,
+		type: new GraphQLNonNull(QuestionnaireInput),
 		description: 'Questionnaire Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Questionnaire record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.QuestionnaireCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Questionnaire',
-	resolve: questionnaireCreateResolver,
+	resolve: scopeInvariant(scopeOptions, questionnaireCreateResolver),
 	type: QuestionnaireSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.QuestionnaireCreateMutation = {
 module.exports.QuestionnaireUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Questionnaires',
-	resolve: questionnaireUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, questionnaireUpdateResolver),
 	type: QuestionnaireSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.QuestionnaireUpdateMutation = {
 module.exports.QuestionnaireDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Questionnaire',
-	resolve: questionnaireDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, questionnaireDeleteResolver),
 	type: QuestionnaireSchema
 };

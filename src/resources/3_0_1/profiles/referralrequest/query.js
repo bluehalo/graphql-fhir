@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ReferralRequestArgs = require('../../parameters/referralrequest.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	referralrequestResolver,
 	referralrequestListResolver,
 	referralrequestInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ReferralRequest',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.ReferralRequestQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ReferralRequestQuery = {
 	args: Object.assign({}, CommonArgs, ReferralRequestArgs),
 	description: 'Query for a single ReferralRequest',
-	resolve: referralrequestResolver,
+	resolve: scopeInvariant(scopeOptions, referralrequestResolver),
 	type: ReferralRequestSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ReferralRequestQuery = {
 module.exports.ReferralRequestListQuery = {
 	args: Object.assign({}, CommonArgs, ReferralRequestArgs),
 	description: 'Query for multiple ReferralRequests',
-	resolve: referralrequestListResolver,
+	resolve: scopeInvariant(scopeOptions, referralrequestListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ReferralRequestListQuery = {
  */
 module.exports.ReferralRequestInstanceQuery = {
 	description: 'Get information about a single ReferralRequest',
-	resolve: referralrequestInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, referralrequestInstanceResolver),
 	type: ReferralRequestSchema
 };

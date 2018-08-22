@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DeviceComponentResourceType = new GraphQLEnumType({
 	name: 'DeviceComponentResourceType',
 	values: {
@@ -56,7 +55,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./codeableconcept.schema'),
 			description: 'Describes the parameter group supported by the current device component that is based on some nomenclature, e.g. cardiovascular.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/measurement-principle
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/measurement-principle
 		measurementPrinciple: {
 			type: CodeScalar,
 			description: 'Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc.'

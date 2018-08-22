@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SearchParameterResourceType = new GraphQLEnumType({
 	name: 'SearchParameterResourceType',
 	values: {
@@ -49,7 +48,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A natural language name identifying the search parameter. This name should be usable as an identifier for the module by machine processing applications such as code generation.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this search parameter. Enables tracking the life-cycle of the content.'
@@ -90,7 +89,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./usagecontext.schema')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate search parameter instances.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A legal or geographic region in which the search parameter is intended to be used.'
@@ -111,7 +110,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The code used in the URL or the parameter name in a parameters resource for this search parameter.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		base: {
 			type: new GraphQLList(new GraphQLNonNull(CodeScalar)),
 			description: 'The base resource type(s) that this search parameter can be used against.'
@@ -120,7 +119,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The base resource type(s) that this search parameter can be used against.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/search-param-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/search-param-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of value a search parameter refers to, and how the content is interpreted.'
@@ -161,7 +160,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'An XPath expression that returns a set of elements for the search parameter.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/search-xpath-usage
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/search-xpath-usage
 		xpathUsage: {
 			type: CodeScalar,
 			description: 'How the search parameter relates to the set of elements returned by evaluating the xpath query.'
@@ -170,7 +169,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'How the search parameter relates to the set of elements returned by evaluating the xpath query.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		target: {
 			type: new GraphQLList(CodeScalar),
 			description: 'Types of resource (if a resource is referenced).'
@@ -179,7 +178,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Types of resource (if a resource is referenced).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/search-comparator
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/search-comparator
 		comparator: {
 			type: new GraphQLList(CodeScalar),
 			description: 'Comparators supported for the search parameter.'
@@ -188,7 +187,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Comparators supported for the search parameter.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/search-modifier-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/search-modifier-code
 		modifier: {
 			type: new GraphQLList(CodeScalar),
 			description: 'A modifier supported for the search parameter.'

@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ConditionResourceInputType = new GraphQLEnumType({
 	name: 'ConditionResourceInputType',
 	values: {
@@ -49,17 +48,17 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A date, when  the Condition statement was documented.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Identification of the condition, problem or diagnosis.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-category
 		category: {
 			type: require('./codeableconcept.input'),
 			description: 'A category assigned to the condition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-clinical
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-clinical
 		clinicalStatus: {
 			type: CodeScalar,
 			description: 'The clinical status of the condition.'
@@ -68,7 +67,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The clinical status of the condition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-ver-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-ver-status
 		verificationStatus: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The verification status to support the clinical status of the condition.'
@@ -77,7 +76,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The verification status to support the clinical status of the condition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-severity
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-severity
 		severity: {
 			type: require('./codeableconcept.input'),
 			description: 'A subjective assessment of the severity of the condition as evaluated by the clinician.'
@@ -154,7 +153,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./conditionevidence.input')),
 			description: 'Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		bodySite: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The anatomical location where this condition manifests itself.'

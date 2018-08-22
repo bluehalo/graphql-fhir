@@ -13,11 +13,15 @@ let noScopesContext = {
 let scopesContext = {
 	req: {
 		user: {
-			token: {
-				scopes: [
-					'user/Patient.read'
-				]
-			}
+			scope: 'user/Patient.read'
+		}
+	}
+};
+
+let authDisabledContext = {
+	server: {
+		env: {
+			AUTHENTICATION: false
 		}
 	}
 };
@@ -78,7 +82,7 @@ describe('Scope Utils Test', () => {
 			expect(typeof resolver).toEqual('function');
 		});
 
-		test('should return an insufficient scope error if no user is logged in', () => {
+		test('should return insufficient scope error if no user is logged in', () => {
 			let resolver = scopeInvariant({
 				name: 'Test',
 				version: '3_0_1',
@@ -94,7 +98,7 @@ describe('Scope Utils Test', () => {
 			expect(issue.severity).toEqual('error');
 		});
 
-		test('should return an insufficient scope error if no scopes are present', () => {
+		test('should return insufficient scope error if no scopes are present', () => {
 			let resolver = scopeInvariant({
 				name: 'Test',
 				version: '3_0_1',
@@ -110,7 +114,7 @@ describe('Scope Utils Test', () => {
 			expect(issue.severity).toEqual('error');
 		});
 
-		test('should return an insufficient scope error if insufficient scopes are present', () => {
+		test('should return insufficient scope error if insufficient scopes are present', () => {
 			let resolver = scopeInvariant({
 				name: 'Test',
 				version: '3_0_1',
@@ -126,7 +130,7 @@ describe('Scope Utils Test', () => {
 			expect(issue.severity).toEqual('error');
 		});
 
-		test('should be able to invoke the resolver without error if valid scopes are present', () => {
+		test('should invoke the resolver without error if valid scopes are present', () => {
 			let mockResult = 'DATAAAAAAAAA';
 			let resolver = scopeInvariant({
 				name: 'Patient',
@@ -135,6 +139,20 @@ describe('Scope Utils Test', () => {
 			}, () => mockResult);
 
 			let results = resolver(null, null, scopesContext);
+			expect(results).toEqual(mockResult);
+		});
+
+		test('should invoke the resolver if auth is disabled', () => {
+			let mockResult = 'DATAAAAAAAAA';
+			let resolver = scopeInvariant({
+				name: 'Patient',
+				version: '3_0_1',
+				action: 'read'
+			}, () => mockResult);
+
+			// In this case, the middleware should pass as auth is explicitly disabled
+			// even though they do not have any valid scopes
+			let results = resolver(null, null, authDisabledContext);
 			expect(results).toEqual(mockResult);
 		});
 

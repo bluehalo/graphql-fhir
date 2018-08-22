@@ -13,17 +13,17 @@ module.exports = new GraphQLInputObjectType({
 	name: 'CarePlanActivityDetail_Input',
 	description: 'A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn\'t know about specific resources such as procedure etc.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity-category
 		category: {
 			type: require('./codeableconcept.input'),
 			description: 'High-level categorization of the type of activity in a care plan.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity
 		code: {
 			type: require('./codeableconcept.input'),
 			description: 'Detailed description of the type of planned activity; e.g. What lab test, what procedure, what kind of encounter.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/activity-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/activity-reason
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Provides the rationale that drove the inclusion of this particular activity as part of the plan.'
@@ -36,7 +36,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'Internal reference that identifies the goals that this activity is intended to contribute towards meeting.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity-status
 		status: {
 			type: CodeScalar,
 			description: 'Identifies what progress is being made for the specific activity.'
@@ -45,7 +45,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Identifies what progress is being made for the specific activity.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/goal-status-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/goal-status-reason
 		statusReason: {
 			type: require('./codeableconcept.input'),
 			description: 'Provides reason why the activity isn\'t yet started, is on hold, was cancelled, etc.'
@@ -82,12 +82,12 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'Identifies who\'s expected to be involved in the activity.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		productCodeableConcept: {
 			type: require('./codeableconcept.input'),
 			description: 'Identifies the food, drug or other product to be consumed or supplied in the activity.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		productReference: {
 			type: require('./reference.input'),
 			description: 'Identifies the food, drug or other product to be consumed or supplied in the activity.'

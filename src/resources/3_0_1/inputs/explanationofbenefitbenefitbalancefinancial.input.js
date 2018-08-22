@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ExplanationOfBenefitBenefitBalanceFinancial_Input',
 	description: 'Benefits Used to date.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-type
 		type: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Deductable, visits, benefit amount.'

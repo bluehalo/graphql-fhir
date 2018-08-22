@@ -18,8 +18,8 @@ const parse = (value, ast) => {
 	let sanitized_value = xss(sanitize(value));
 	let is_date = date_pattern.test(sanitized_value);
 	return is_date
-		? moment(sanitized_value).tz(DATE_CONFIG.timezone).format(DATE_CONFIG.datetime_format)
-		: new GraphQLError(`Invalid dateTime provided to DateTimeScalar. Format should be ${DATE_CONFIG.datetime_format} and date's missing time will be filled with 0's.`);
+		? moment(sanitized_value).tz(DATE_CONFIG.timezone).format(DATE_CONFIG.dateTimeFormat)
+		: new GraphQLError(`Invalid dateTime provided to DateTimeScalar. Format should be ${DATE_CONFIG.dateTimeFormat} and date's missing time will be filled with 0's.`);
 }
 
 /**

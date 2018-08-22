@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ProvenanceAgent_Input',
 	description: 'An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/provenance-agent-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/provenance-agent-role
 		role: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'The function of the agent with respect to the activity.'

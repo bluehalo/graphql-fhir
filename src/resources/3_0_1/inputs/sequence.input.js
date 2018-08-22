@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SequenceResourceInputType = new GraphQLEnumType({
 	name: 'SequenceResourceInputType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'A unique identifier for this particular sequence instance. This is a FHIR-defined id.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/sequence-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/sequence-type
 		type: {
 			type: CodeScalar,
 			description: 'Amino Acid Sequence/ DNA Sequence / RNA Sequence.'

@@ -14,7 +14,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ImplementationGuidePackageResource',
 	description: 'A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/guide-resource-purpose
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/guide-resource-purpose
 		purpose: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Why the resource is included in the guide.'

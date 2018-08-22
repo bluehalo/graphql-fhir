@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ConditionEvidence',
 	description: 'Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/manifestation-or-symptom
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/manifestation-or-symptom
 		code: {
 			type: require('./codeableconcept.schema'),
 			description: 'A manifestation or symptom that led to the recording of this condition.'

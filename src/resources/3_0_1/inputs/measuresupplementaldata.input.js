@@ -16,7 +16,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./identifier.input'),
 			description: 'An identifier for the supplemental data.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/measure-data-usage
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/measure-data-usage
 		usage: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'An indicator of the intended usage for the supplemental data element. Supplemental data indicates the data is additional information requested to augment the measure information. Risk adjustment factor indicates the data is additional information used to calculate risk adjustment factors when applying a risk model to the measure calculation.'

@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Binary',
-		path: '/3_0_1/Binary/:id',
+		path: '/1_0_2/Binary/:id',
 		query: BinaryInstanceQuery
 	}
 };

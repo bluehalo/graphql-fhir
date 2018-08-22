@@ -21,7 +21,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Sequence of diagnosis which serves to order and provide a link.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/icd-10
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/icd-10
 		diagnosis: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'The diagnosis.'

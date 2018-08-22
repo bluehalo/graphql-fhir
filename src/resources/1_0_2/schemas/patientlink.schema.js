@@ -17,7 +17,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'The other patient resource that the link refers to.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/link-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/link-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of link between this patient resource and another patient resource.'

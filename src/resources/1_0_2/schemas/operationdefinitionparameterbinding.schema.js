@@ -14,7 +14,7 @@ module.exports = new GraphQLObjectType({
 	name: 'OperationDefinitionParameterBinding',
 	description: 'Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/binding-strength
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/binding-strength
 		strength: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.'

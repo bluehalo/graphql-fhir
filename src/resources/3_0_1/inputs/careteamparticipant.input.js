@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'CareTeamParticipant_Input',
 	description: 'Identifies all people and organizations who are expected to be involved in the care team.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/participant-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/participant-role
 		role: {
 			type: require('./codeableconcept.input'),
 			description: 'Indicates specific responsibility of an individual within the care team, such as \'Primary care physician\', \'Trained social worker counselor\', \'Caregiver\', etc.'

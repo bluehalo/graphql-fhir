@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Communication',
-		path: '/3_0_1/Communication/:id',
+		path: '/1_0_2/Communication/:id',
 		query: CommunicationInstanceQuery
 	}
 };

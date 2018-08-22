@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'NamingSystem',
-		path: '/3_0_1/NamingSystem/:id',
+		path: '/1_0_2/NamingSystem/:id',
 		query: NamingSystemInstanceQuery
 	}
 };

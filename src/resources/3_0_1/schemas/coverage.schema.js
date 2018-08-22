@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CoverageResourceType = new GraphQLEnumType({
 	name: 'CoverageResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatination of the Coverage.SubscriberID and the Coverage.dependant.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -37,7 +36,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The status of the resource instance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/coverage-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/coverage-type
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organization.'
@@ -62,7 +61,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The party who benefits from the insurance coverage., the patient when services are provided.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/policyholder-relationship
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/policyholder-relationship
 		relationship: {
 			type: require('./codeableconcept.schema'),
 			description: 'The relationship of beneficiary (patient) to the subscriber.'

@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'HumanName_Input',
 	description: 'Base StructureDefinition for HumanName Type.',
 	fields: () => extendSchema(require('./element.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/name-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/name-use
 		use: {
 			type: CodeScalar,
 			description: 'Identifies the purpose for this name.'

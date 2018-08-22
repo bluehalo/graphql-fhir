@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const SupplyRequestArgs = require('../../parameters/supplyrequest.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	supplyrequestResolver,
 	supplyrequestListResolver,
 	supplyrequestInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'SupplyRequest',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.SupplyRequestQuery
@@ -19,7 +31,7 @@ const {
 module.exports.SupplyRequestQuery = {
 	args: Object.assign({}, CommonArgs, SupplyRequestArgs),
 	description: 'Query for a single SupplyRequest',
-	resolve: supplyrequestResolver,
+	resolve: scopeInvariant(scopeOptions, supplyrequestResolver),
 	type: SupplyRequestSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.SupplyRequestQuery = {
 module.exports.SupplyRequestListQuery = {
 	args: Object.assign({}, CommonArgs, SupplyRequestArgs),
 	description: 'Query for multiple SupplyRequests',
-	resolve: supplyrequestListResolver,
+	resolve: scopeInvariant(scopeOptions, supplyrequestListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.SupplyRequestListQuery = {
  */
 module.exports.SupplyRequestInstanceQuery = {
 	description: 'Get information about a single SupplyRequest',
-	resolve: supplyrequestInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, supplyrequestInstanceResolver),
 	type: SupplyRequestSchema
 };

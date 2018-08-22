@@ -7,12 +7,26 @@ const CareTeamSchema = require('../../schemas/careteam.schema');
 // Inputs
 const CareTeamInput = require('../../inputs/careteam.input');
 
-
+// Resolvers
 const {
 	careteamCreateResolver,
 	careteamUpdateResolver,
 	careteamDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'CareTeam',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a CareTeam record.'
 	},
 	resource: {
-		type: CareTeamInput,
+		type: new GraphQLNonNull(CareTeamInput),
 		description: 'CareTeam Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a CareTeam record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.CareTeamCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a CareTeam',
-	resolve: careteamCreateResolver,
+	resolve: scopeInvariant(scopeOptions, careteamCreateResolver),
 	type: CareTeamSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.CareTeamCreateMutation = {
 module.exports.CareTeamUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple CareTeams',
-	resolve: careteamUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, careteamUpdateResolver),
 	type: CareTeamSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.CareTeamUpdateMutation = {
 module.exports.CareTeamDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single CareTeam',
-	resolve: careteamDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, careteamDeleteResolver),
 	type: CareTeamSchema
 };

@@ -7,12 +7,26 @@ const BasicSchema = require('../../schemas/basic.schema');
 // Inputs
 const BasicInput = require('../../inputs/basic.input');
 
-
+// Resolvers
 const {
 	basicCreateResolver,
 	basicUpdateResolver,
 	basicDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Basic',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Basic record.'
 	},
 	resource: {
-		type: BasicInput,
+		type: new GraphQLNonNull(BasicInput),
 		description: 'Basic Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Basic record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.BasicCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Basic',
-	resolve: basicCreateResolver,
+	resolve: scopeInvariant(scopeOptions, basicCreateResolver),
 	type: BasicSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.BasicCreateMutation = {
 module.exports.BasicUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Basics',
-	resolve: basicUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, basicUpdateResolver),
 	type: BasicSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.BasicUpdateMutation = {
 module.exports.BasicDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Basic',
-	resolve: basicDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, basicDeleteResolver),
 	type: BasicSchema
 };

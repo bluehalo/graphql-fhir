@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Claim',
-		path: '/3_0_1/Claim/:id',
+		path: '/1_0_2/Claim/:id',
 		query: ClaimInstanceQuery
 	}
 };

@@ -7,12 +7,26 @@ const DeviceUseRequestSchema = require('../../schemas/deviceuserequest.schema');
 // Inputs
 const DeviceUseRequestInput = require('../../inputs/deviceuserequest.input');
 
-
+// Resolvers
 const {
 	deviceuserequestCreateResolver,
 	deviceuserequestUpdateResolver,
 	deviceuserequestDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'DeviceUseRequest',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a DeviceUseRequest record.'
 	},
 	resource: {
-		type: DeviceUseRequestInput,
+		type: new GraphQLNonNull(DeviceUseRequestInput),
 		description: 'DeviceUseRequest Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a DeviceUseRequest record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.DeviceUseRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DeviceUseRequest',
-	resolve: deviceuserequestCreateResolver,
+	resolve: scopeInvariant(scopeOptions, deviceuserequestCreateResolver),
 	type: DeviceUseRequestSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.DeviceUseRequestCreateMutation = {
 module.exports.DeviceUseRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DeviceUseRequests',
-	resolve: deviceuserequestUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, deviceuserequestUpdateResolver),
 	type: DeviceUseRequestSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.DeviceUseRequestUpdateMutation = {
 module.exports.DeviceUseRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DeviceUseRequest',
-	resolve: deviceuserequestDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, deviceuserequestDeleteResolver),
 	type: DeviceUseRequestSchema
 };

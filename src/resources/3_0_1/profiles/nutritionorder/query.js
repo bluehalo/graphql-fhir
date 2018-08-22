@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const NutritionOrderArgs = require('../../parameters/nutritionorder.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	nutritionorderResolver,
 	nutritionorderListResolver,
 	nutritionorderInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'NutritionOrder',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.NutritionOrderQuery
@@ -19,7 +31,7 @@ const {
 module.exports.NutritionOrderQuery = {
 	args: Object.assign({}, CommonArgs, NutritionOrderArgs),
 	description: 'Query for a single NutritionOrder',
-	resolve: nutritionorderResolver,
+	resolve: scopeInvariant(scopeOptions, nutritionorderResolver),
 	type: NutritionOrderSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.NutritionOrderQuery = {
 module.exports.NutritionOrderListQuery = {
 	args: Object.assign({}, CommonArgs, NutritionOrderArgs),
 	description: 'Query for multiple NutritionOrders',
-	resolve: nutritionorderListResolver,
+	resolve: scopeInvariant(scopeOptions, nutritionorderListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.NutritionOrderListQuery = {
  */
 module.exports.NutritionOrderInstanceQuery = {
 	description: 'Get information about a single NutritionOrder',
-	resolve: nutritionorderInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, nutritionorderInstanceResolver),
 	type: NutritionOrderSchema
 };

@@ -20,7 +20,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Textual description of procedure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-treatment-procedure
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-treatment-procedure
 		procedure: {
 			type: require('./codeableconcept.schema'),
 			description: 'A coded value specifying the procedure used to process the specimen.'

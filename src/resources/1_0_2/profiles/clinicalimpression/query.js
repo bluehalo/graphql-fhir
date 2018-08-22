@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ClinicalImpressionArgs = require('../../parameters/clinicalimpression.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	clinicalimpressionResolver,
 	clinicalimpressionListResolver,
 	clinicalimpressionInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ClinicalImpression',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.ClinicalImpressionQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ClinicalImpressionQuery = {
 	args: Object.assign({}, CommonArgs, ClinicalImpressionArgs),
 	description: 'Query for a single ClinicalImpression',
-	resolve: clinicalimpressionResolver,
+	resolve: scopeInvariant(scopeOptions, clinicalimpressionResolver),
 	type: ClinicalImpressionSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ClinicalImpressionQuery = {
 module.exports.ClinicalImpressionListQuery = {
 	args: Object.assign({}, CommonArgs, ClinicalImpressionArgs),
 	description: 'Query for multiple ClinicalImpressions',
-	resolve: clinicalimpressionListResolver,
+	resolve: scopeInvariant(scopeOptions, clinicalimpressionListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ClinicalImpressionListQuery = {
  */
 module.exports.ClinicalImpressionInstanceQuery = {
 	description: 'Get information about a single ClinicalImpression',
-	resolve: clinicalimpressionInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, clinicalimpressionInstanceResolver),
 	type: ClinicalImpressionSchema
 };

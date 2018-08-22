@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const SlotArgs = require('../../parameters/slot.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	slotResolver,
 	slotListResolver,
 	slotInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Slot',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.SlotQuery
@@ -19,7 +31,7 @@ const {
 module.exports.SlotQuery = {
 	args: Object.assign({}, CommonArgs, SlotArgs),
 	description: 'Query for a single Slot',
-	resolve: slotResolver,
+	resolve: scopeInvariant(scopeOptions, slotResolver),
 	type: SlotSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.SlotQuery = {
 module.exports.SlotListQuery = {
 	args: Object.assign({}, CommonArgs, SlotArgs),
 	description: 'Query for multiple Slots',
-	resolve: slotListResolver,
+	resolve: scopeInvariant(scopeOptions, slotListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.SlotListQuery = {
  */
 module.exports.SlotInstanceQuery = {
 	description: 'Get information about a single Slot',
-	resolve: slotInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, slotInstanceResolver),
 	type: SlotSchema
 };

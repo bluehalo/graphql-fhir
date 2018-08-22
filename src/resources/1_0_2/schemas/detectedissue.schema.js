@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DetectedIssueResourceType = new GraphQLEnumType({
 	name: 'DetectedIssueResourceType',
 	values: {
@@ -29,12 +28,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Indicates the patient whose record the detected issue is associated with.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/detectedissue-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/detectedissue-category
 		category: {
 			type: require('./codeableconcept.schema'),
 			description: 'Identifies the general type of issue identified.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/detectedissue-severity
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/detectedissue-severity
 		severity: {
 			type: CodeScalar,
 			description: 'Indicates the degree of importance associated with the identified issue based on the potential impact on the patient.'

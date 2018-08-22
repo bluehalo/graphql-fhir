@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let RiskAssessmentResourceInputType = new GraphQLEnumType({
 	name: 'RiskAssessmentResourceInputType',
 	values: {
@@ -36,7 +35,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'A reference to a resource that this risk assessment is part of, such as a Procedure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/observation-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the RiskAssessment, using the same statuses as an Observation.'

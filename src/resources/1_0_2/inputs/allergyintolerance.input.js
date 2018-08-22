@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let AllergyIntoleranceResourceInputType = new GraphQLEnumType({
 	name: 'AllergyIntoleranceResourceInputType',
 	values: {
@@ -56,12 +55,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The source of the information about the allergy that is recorded.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/allergyintolerance-substance-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/allergyintolerance-substance-code
 		substance: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Identification of a substance, or a class of substances, that is considered to be responsible for the adverse reaction risk.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-status
 		status: {
 			type: CodeScalar,
 			description: 'Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified Substance.'
@@ -70,7 +69,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified Substance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality
 		criticality: {
 			type: CodeScalar,
 			description: 'Estimate of the potential clinical harm, or seriousness, of the reaction to the identified Substance.'
@@ -79,7 +78,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Estimate of the potential clinical harm, or seriousness, of the reaction to the identified Substance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-type
 		type: {
 			type: CodeScalar,
 			description: 'Identification of the underlying physiological mechanism for the reaction risk.'
@@ -88,7 +87,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Identification of the underlying physiological mechanism for the reaction risk.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/allergy-intolerance-category
 		category: {
 			type: CodeScalar,
 			description: 'Category of the identified Substance.'

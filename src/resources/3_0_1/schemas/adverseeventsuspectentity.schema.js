@@ -17,7 +17,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'Identifies the actual instance of what caused the adverse event.  May be a substance, medication, medication administration, medication statement or a device.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-causality
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-causality
 		causality: {
 			type: CodeScalar,
 			description: 'causality1 | causality2.'
@@ -26,7 +26,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'causality1 | causality2.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-causality-assess
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-causality-assess
 		causalityAssessment: {
 			type: require('./codeableconcept.schema'),
 			description: 'assess1 | assess2.'
@@ -39,7 +39,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'AdverseEvent.suspectEntity.causalityProductRelatedness.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-causality-method
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-causality-method
 		causalityMethod: {
 			type: require('./codeableconcept.schema'),
 			description: 'method1 | method2.'
@@ -48,7 +48,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'AdverseEvent.suspectEntity.causalityAuthor.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-causality-result
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adverse-event-causality-result
 		causalityResult: {
 			type: require('./codeableconcept.schema'),
 			description: 'result1 | result2.'

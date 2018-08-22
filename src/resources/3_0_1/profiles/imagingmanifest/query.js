@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ImagingManifestArgs = require('../../parameters/imagingmanifest.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	imagingmanifestResolver,
 	imagingmanifestListResolver,
 	imagingmanifestInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ImagingManifest',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.ImagingManifestQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ImagingManifestQuery = {
 	args: Object.assign({}, CommonArgs, ImagingManifestArgs),
 	description: 'Query for a single ImagingManifest',
-	resolve: imagingmanifestResolver,
+	resolve: scopeInvariant(scopeOptions, imagingmanifestResolver),
 	type: ImagingManifestSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ImagingManifestQuery = {
 module.exports.ImagingManifestListQuery = {
 	args: Object.assign({}, CommonArgs, ImagingManifestArgs),
 	description: 'Query for multiple ImagingManifests',
-	resolve: imagingmanifestListResolver,
+	resolve: scopeInvariant(scopeOptions, imagingmanifestListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ImagingManifestListQuery = {
  */
 module.exports.ImagingManifestInstanceQuery = {
 	description: 'Get information about a single ImagingManifest',
-	resolve: imagingmanifestInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, imagingmanifestInstanceResolver),
 	type: ImagingManifestSchema
 };

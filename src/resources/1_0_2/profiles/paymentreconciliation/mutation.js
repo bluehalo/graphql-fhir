@@ -7,12 +7,26 @@ const PaymentReconciliationSchema = require('../../schemas/paymentreconciliation
 // Inputs
 const PaymentReconciliationInput = require('../../inputs/paymentreconciliation.input');
 
-
+// Resolvers
 const {
 	paymentreconciliationCreateResolver,
 	paymentreconciliationUpdateResolver,
 	paymentreconciliationDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'PaymentReconciliation',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a PaymentReconciliation record.'
 	},
 	resource: {
-		type: PaymentReconciliationInput,
+		type: new GraphQLNonNull(PaymentReconciliationInput),
 		description: 'PaymentReconciliation Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a PaymentReconciliation record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.PaymentReconciliationCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a PaymentReconciliation',
-	resolve: paymentreconciliationCreateResolver,
+	resolve: scopeInvariant(scopeOptions, paymentreconciliationCreateResolver),
 	type: PaymentReconciliationSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.PaymentReconciliationCreateMutation = {
 module.exports.PaymentReconciliationUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple PaymentReconciliations',
-	resolve: paymentreconciliationUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, paymentreconciliationUpdateResolver),
 	type: PaymentReconciliationSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.PaymentReconciliationUpdateMutation = {
 module.exports.PaymentReconciliationDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single PaymentReconciliation',
-	resolve: paymentreconciliationDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, paymentreconciliationDeleteResolver),
 	type: PaymentReconciliationSchema
 };

@@ -15,7 +15,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'TriggerDefinition_Input',
 	description: 'Base StructureDefinition for TriggerDefinition Type.',
 	fields: () => extendSchema(require('./element.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/trigger-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/trigger-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of triggering event.'

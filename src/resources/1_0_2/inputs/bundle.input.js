@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let BundleResourceInputType = new GraphQLEnumType({
 	name: 'BundleResourceInputType',
 	values: {
@@ -24,7 +23,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLNonNull(BundleResourceInputType),
 			description: 'Type of this resource'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/bundle-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/bundle-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates the purpose of this bundle- how it was intended to be used.'

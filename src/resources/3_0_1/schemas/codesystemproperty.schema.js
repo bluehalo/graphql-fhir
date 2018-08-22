@@ -38,7 +38,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A description of the property- why it is defined, and how its value might be used.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/concept-property-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/concept-property-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of the property value. Properties of type \'code\' contain a code defined by the code system (e.g. a reference to anotherr defined concept).'

@@ -14,7 +14,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ConceptMapGroupUnmapped',
 	description: 'What to do when there is no match in the mappings in the group.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conceptmap-unmapped-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conceptmap-unmapped-mode
 		mode: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Defines which action to take if there is no match in the group. One of 3 actions is possible: use the unmapped code (this is useful when doing a mapping between versions, and only a few codes have changed), use a fixed code (a default code), or alternatively, a reference to a different concept map can be provided (by canonical URL).'

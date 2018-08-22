@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString } = re
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ResourceResourceType = new GraphQLEnumType({
 	name: 'ResourceResourceType',
 	values: {
@@ -45,7 +44,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/languages
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
 		language: {
 			type: CodeScalar,
 			description: 'The base language in which the resource is written.'

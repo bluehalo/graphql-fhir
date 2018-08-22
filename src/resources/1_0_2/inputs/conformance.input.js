@@ -6,7 +6,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ConformanceResourceInputType = new GraphQLEnumType({
 	name: 'ConformanceResourceInputType',
 	values: {
@@ -50,7 +49,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A free text natural language name identifying the conformance statement.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of this conformance statement.'
@@ -111,7 +110,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A copyright statement relating to the conformance statement and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the system described by the conformance statement.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-statement-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-statement-kind
 		kind: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The way that this statement is intended to be used, to describe an actual running instance of software, a particular product (kind not instance of software) or a class of implementation (e.g. a desired purchase).'
@@ -136,7 +135,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The version of the FHIR specification on which this conformance statement is based.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/unknown-content-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/unknown-content-code
 		acceptUnknown: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'A code that indicates whether the application accepts unknown elements or extensions when reading resources.'

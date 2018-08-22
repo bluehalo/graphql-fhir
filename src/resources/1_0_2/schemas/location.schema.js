@@ -3,7 +3,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let LocationResourceType = new GraphQLEnumType({
 	name: 'LocationResourceType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'Unique code or number identifying the location to its users.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/location-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/location-status
 		status: {
 			type: CodeScalar,
 			description: 'active | suspended | inactive.'
@@ -52,7 +51,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Description of the Location, which helps in finding or referencing the place.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/location-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/location-mode
 		mode: {
 			type: CodeScalar,
 			description: 'Indicates whether a resource instance represents a specific location or a class of locations.'
@@ -61,7 +60,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Indicates whether a resource instance represents a specific location or a class of locations.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ServiceDeliveryLocationRoleType
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ServiceDeliveryLocationRoleType
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates the type of function performed at the location.'
@@ -74,7 +73,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./address.schema'),
 			description: 'Physical location.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/location-physical-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/location-physical-type
 		physicalType: {
 			type: require('./codeableconcept.schema'),
 			description: 'Physical form of the location, e.g. building, room, vehicle, road.'

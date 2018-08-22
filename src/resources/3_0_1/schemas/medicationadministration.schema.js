@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MedicationAdministrationResourceType = new GraphQLEnumType({
 	name: 'MedicationAdministrationResourceType',
 	values: {
@@ -36,7 +35,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'A larger event of which this particular event is a component or step.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-admin-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-admin-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.'
@@ -45,17 +44,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-admin-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-admin-category
 		category: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates the type of medication administration and where the medication is expected to be consumed or administered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		medicationCodeableConcept: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		medicationReference: {
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.'
@@ -96,12 +95,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Set this to true if the record is saying that the medication was NOT administered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes
 		reasonNotGiven: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A code indicating why the administration was not performed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-given-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-given-codes
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A code indicating why the medication was given.'

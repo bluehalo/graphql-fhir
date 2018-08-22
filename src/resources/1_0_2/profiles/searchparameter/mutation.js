@@ -7,12 +7,26 @@ const SearchParameterSchema = require('../../schemas/searchparameter.schema');
 // Inputs
 const SearchParameterInput = require('../../inputs/searchparameter.input');
 
-
+// Resolvers
 const {
 	searchparameterCreateResolver,
 	searchparameterUpdateResolver,
 	searchparameterDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'SearchParameter',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a SearchParameter record.'
 	},
 	resource: {
-		type: SearchParameterInput,
+		type: new GraphQLNonNull(SearchParameterInput),
 		description: 'SearchParameter Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a SearchParameter record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.SearchParameterCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a SearchParameter',
-	resolve: searchparameterCreateResolver,
+	resolve: scopeInvariant(scopeOptions, searchparameterCreateResolver),
 	type: SearchParameterSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.SearchParameterCreateMutation = {
 module.exports.SearchParameterUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple SearchParameters',
-	resolve: searchparameterUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, searchparameterUpdateResolver),
 	type: SearchParameterSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.SearchParameterUpdateMutation = {
 module.exports.SearchParameterDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single SearchParameter',
-	resolve: searchparameterDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, searchparameterDeleteResolver),
 	type: SearchParameterSchema
 };

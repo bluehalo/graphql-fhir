@@ -21,7 +21,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The language this designation is defined for.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/designation-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/designation-use
 		use: {
 			type: require('./coding.input'),
 			description: 'A code that details how this designation would be used.'

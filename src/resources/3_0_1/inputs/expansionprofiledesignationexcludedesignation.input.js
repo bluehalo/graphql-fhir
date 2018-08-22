@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ExpansionProfileDesignationExcludeDesignation_Input',
 	description: 'A data group for each designation to be excluded.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/languages
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
 		language: {
 			type: CodeScalar,
 			description: 'The language this designation is defined for.'
@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The language this designation is defined for.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/designation-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/designation-use
 		use: {
 			type: require('./coding.input'),
 			description: 'Which kinds of designation to exclude from the expansion.'

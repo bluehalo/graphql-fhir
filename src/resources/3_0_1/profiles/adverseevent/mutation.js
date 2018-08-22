@@ -7,12 +7,26 @@ const AdverseEventSchema = require('../../schemas/adverseevent.schema');
 // Inputs
 const AdverseEventInput = require('../../inputs/adverseevent.input');
 
-
+// Resolvers
 const {
 	adverseeventCreateResolver,
 	adverseeventUpdateResolver,
 	adverseeventDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'AdverseEvent',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a AdverseEvent record.'
 	},
 	resource: {
-		type: AdverseEventInput,
+		type: new GraphQLNonNull(AdverseEventInput),
 		description: 'AdverseEvent Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a AdverseEvent record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.AdverseEventCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a AdverseEvent',
-	resolve: adverseeventCreateResolver,
+	resolve: scopeInvariant(scopeOptions, adverseeventCreateResolver),
 	type: AdverseEventSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.AdverseEventCreateMutation = {
 module.exports.AdverseEventUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple AdverseEvents',
-	resolve: adverseeventUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, adverseeventUpdateResolver),
 	type: AdverseEventSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.AdverseEventUpdateMutation = {
 module.exports.AdverseEventDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single AdverseEvent',
-	resolve: adverseeventDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, adverseeventDeleteResolver),
 	type: AdverseEventSchema
 };

@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ChargeItemResourceType = new GraphQLEnumType({
 	name: 'ChargeItemResourceType',
 	values: {
@@ -37,7 +36,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'References the source of pricing information, rules of application for the code this ChargeItem uses.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/chargeitem-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/chargeitem-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The current state of the ChargeItem.'
@@ -50,7 +49,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'ChargeItems can be grouped to larger ChargeItems covering the whole set.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/chargeitem-billingcodes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/chargeitem-billingcodes
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'A code that identifies the charge, like a billing code.'
@@ -95,7 +94,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./quantity.schema'),
 			description: 'Quantity of which the charge item has been serviced.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		bodysite: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The anatomical location where the related service has been applied.'
@@ -132,7 +131,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Date the charge item was entered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/icd-10
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/icd-10
 		reason: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Describes why the event occurred in coded or textual form.'

@@ -16,7 +16,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLNonNull(require('./reference.input')),
 			description: 'The agent assigned a role in this Contract Provision.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contract-actorrole
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contract-actorrole
 		role: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Role played by the agent assigned this role in the execution of this Contract Provision.'

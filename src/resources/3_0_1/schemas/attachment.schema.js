@@ -25,7 +25,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/languages
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
 		language: {
 			type: CodeScalar,
 			description: 'The human language of the content. The value can be any valid value according to BCP 47.'

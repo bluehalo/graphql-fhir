@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const BasicArgs = require('../../parameters/basic.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	basicResolver,
 	basicListResolver,
 	basicInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Basic',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.BasicQuery
@@ -19,7 +31,7 @@ const {
 module.exports.BasicQuery = {
 	args: Object.assign({}, CommonArgs, BasicArgs),
 	description: 'Query for a single Basic',
-	resolve: basicResolver,
+	resolve: scopeInvariant(scopeOptions, basicResolver),
 	type: BasicSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.BasicQuery = {
 module.exports.BasicListQuery = {
 	args: Object.assign({}, CommonArgs, BasicArgs),
 	description: 'Query for multiple Basics',
-	resolve: basicListResolver,
+	resolve: scopeInvariant(scopeOptions, basicListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.BasicListQuery = {
  */
 module.exports.BasicInstanceQuery = {
 	description: 'Get information about a single Basic',
-	resolve: basicInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, basicInstanceResolver),
 	type: BasicSchema
 };

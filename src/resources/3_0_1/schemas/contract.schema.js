@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ContractResourceType = new GraphQLEnumType({
 	name: 'ContractResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'Unique identifier for this Contract.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contract-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contract-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -65,37 +64,37 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'Recognized governance framework or system operating with a circumscribed scope in accordance with specified principles, policies, processes or procedures for managing rights, actions, or behaviors of parties or principals relative to resources.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contract-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contract-type
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'Type of Contract such as an insurance policy, real estate contract, a will, power of attorny, Privacy or Security policy , trust framework agreement, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contract-subtype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contract-subtype
 		subType: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'More specific type or specialization of an overarching or more general contract such as auto insurance, home owner  insurance, prenupial agreement, Advanced-Directive, or privacy consent.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contract-action
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contract-action
 		action: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Action stipulated by this Contract.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse
 		actionReason: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Reason for action stipulated by this Contract.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActConsentDirective
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActConsentDirective
 		decisionType: {
 			type: require('./codeableconcept.schema'),
 			description: 'The type of decision made by a grantor with respect to an offer made by a grantee.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contract-content-derivative
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contract-content-derivative
 		contentDerivative: {
 			type: require('./codeableconcept.schema'),
 			description: 'The minimal content derived from the basal information source at a specific stage in its lifecycle.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
 		securityLabel: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'A set of security labels that define which resources are controlled by this consent. If more than one label is specified, all resources must have all the specified labels.'

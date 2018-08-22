@@ -16,7 +16,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(require('./attachment.schema')),
 			description: 'The document or URL of the document along with critical metadata to prove content has integrity.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/formatcodes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/formatcodes
 		format: {
 			type: require('./coding.schema'),
 			description: 'An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType.'

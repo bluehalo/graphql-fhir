@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ProcedurePerformer',
 	description: 'Limited to \'real\' people rather than equipment.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/performer-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/performer-role
 		role: {
 			type: require('./codeableconcept.schema'),
 			description: 'For example: surgeon, anaethetist, endoscopist.'

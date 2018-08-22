@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const MedicationAdministrationArgs = require('../../parameters/medicationadministration.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	medicationadministrationResolver,
 	medicationadministrationListResolver,
 	medicationadministrationInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'MedicationAdministration',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.MedicationAdministrationQuery
@@ -19,7 +31,7 @@ const {
 module.exports.MedicationAdministrationQuery = {
 	args: Object.assign({}, CommonArgs, MedicationAdministrationArgs),
 	description: 'Query for a single MedicationAdministration',
-	resolve: medicationadministrationResolver,
+	resolve: scopeInvariant(scopeOptions, medicationadministrationResolver),
 	type: MedicationAdministrationSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.MedicationAdministrationQuery = {
 module.exports.MedicationAdministrationListQuery = {
 	args: Object.assign({}, CommonArgs, MedicationAdministrationArgs),
 	description: 'Query for multiple MedicationAdministrations',
-	resolve: medicationadministrationListResolver,
+	resolve: scopeInvariant(scopeOptions, medicationadministrationListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.MedicationAdministrationListQuery = {
  */
 module.exports.MedicationAdministrationInstanceQuery = {
 	description: 'Get information about a single MedicationAdministration',
-	resolve: medicationadministrationInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, medicationadministrationInstanceResolver),
 	type: MedicationAdministrationSchema
 };

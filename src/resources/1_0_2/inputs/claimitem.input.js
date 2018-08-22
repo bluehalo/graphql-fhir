@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A service line number.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActInvoiceGroupCode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActInvoiceGroupCode
 		type: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'The type of product or service.'
@@ -39,7 +39,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Diagnosis applicable for this service or product line.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
 		service: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'If a grouping item then \'GROUP\' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied.'
@@ -80,22 +80,22 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./quantity.input'),
 			description: 'The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/udi
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/udi
 		udi: {
 			type: require('./coding.input'),
 			description: 'List of Unique Device Identifiers associated with this line item.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/tooth
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/tooth
 		bodySite: {
 			type: require('./coding.input'),
 			description: 'Physical service site on the patient (limb, tooth, etc.).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/surface
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/surface
 		subSite: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'A region or surface of the site, e.g. limb region or tooth surface(s).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-modifiers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-modifiers
 		modifier: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'Item typification or modifiers codes, e.g. for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.'

@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ClaimResourceType = new GraphQLEnumType({
 	name: 'ClaimResourceType',
 	values: {
@@ -25,7 +24,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(ClaimResourceType),
 			description: 'Type of this resource'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-type-link
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-type-link
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The category of claim this is.'
@@ -38,12 +37,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'The business identifier for the instance: invoice number, claim number, pre-determination or pre-authorization number.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		ruleset: {
 			type: require('./coding.schema'),
 			description: 'The version of the specification on which this instance relies.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		originalRuleset: {
 			type: require('./coding.schema'),
 			description: 'The version of the specification from which the original instance was created.'
@@ -68,7 +67,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The organization which is responsible for the bill, claim pre-determination, pre-authorization.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-use-link
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-use-link
 		use: {
 			type: CodeScalar,
 			description: 'Complete (Bill or Claim), Proposed (Pre-Authorization), Exploratory (Pre-determination).'
@@ -77,12 +76,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Complete (Bill or Claim), Proposed (Pre-Authorization), Exploratory (Pre-determination).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/process-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/process-priority
 		priority: {
 			type: require('./coding.schema'),
 			description: 'Immediate (stat), best effort (normal), deferred (deferred).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fundsreserve
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fundsreserve
 		fundsReserve: {
 			type: require('./coding.schema'),
 			description: 'In the case of a Pre-Determination/Pre-Authorization the provider may request that funds in the amount of the expected Benefit be reserved (\'Patient\' or \'Provider\') to pay for the Benefits determined on the subsequent claim(s). \'None\' explicitly indicates no funds reserving is requested.'
@@ -115,7 +114,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./claimdiagnosis.schema')),
 			description: 'Ordered list of patient diagnosis for which care is sought.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-conditions
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-conditions
 		condition: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'List of patient conditions for which care is sought.'
@@ -128,7 +127,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./claimcoverage.schema')),
 			description: 'Financial instrument by which payment information for health care.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-exception
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-exception
 		exception: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'Factors which may influence the applicability of coverage.'
@@ -149,12 +148,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Date of an accident which these services are addressing.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActIncidentCode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActIncidentCode
 		accidentType: {
 			type: require('./coding.schema'),
 			description: 'Type of accident: work, auto, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/intervention
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/intervention
 		interventionException: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'A list of intervention and exception codes which may influence the adjudication of the claim.'
@@ -163,7 +162,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./claimitem.schema')),
 			description: 'First tier of goods and services.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/additionalmaterials
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/additionalmaterials
 		additionalMaterials: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'Code to indicate that Xrays, images, emails, documents, models or attachments are being sent in support of this submission.'

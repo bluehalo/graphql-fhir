@@ -29,12 +29,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./period.input'),
 			description: 'Relevant time or time-period when this Contract Provision is applicable.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contract-term-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contract-term-type
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'Type of Contract Provision such as specific requirements, purposes for actions, obligations, prohibitions, e.g. life time maximum benefit.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contract-term-subtype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contract-term-subtype
 		subType: {
 			type: require('./codeableconcept.input'),
 			description: 'Subtype of this Contract Provision, e.g. life time maximum payment for a contract term for specific valued item, e.g. disability payment.'
@@ -43,17 +43,17 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'The matter of concern in the context of this provision of the agrement.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contract-action
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contract-action
 		action: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Action stipulated by this Contract Provision.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse
 		actionReason: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Reason or purpose for the action stipulated by this Contract Provision.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
 		securityLabel: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'A set of security labels that define which terms are controlled by this condition.'

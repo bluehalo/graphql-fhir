@@ -7,12 +7,26 @@ const SupplyRequestSchema = require('../../schemas/supplyrequest.schema');
 // Inputs
 const SupplyRequestInput = require('../../inputs/supplyrequest.input');
 
-
+// Resolvers
 const {
 	supplyrequestCreateResolver,
 	supplyrequestUpdateResolver,
 	supplyrequestDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'SupplyRequest',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a SupplyRequest record.'
 	},
 	resource: {
-		type: SupplyRequestInput,
+		type: new GraphQLNonNull(SupplyRequestInput),
 		description: 'SupplyRequest Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a SupplyRequest record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.SupplyRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a SupplyRequest',
-	resolve: supplyrequestCreateResolver,
+	resolve: scopeInvariant(scopeOptions, supplyrequestCreateResolver),
 	type: SupplyRequestSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.SupplyRequestCreateMutation = {
 module.exports.SupplyRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple SupplyRequests',
-	resolve: supplyrequestUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, supplyrequestUpdateResolver),
 	type: SupplyRequestSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.SupplyRequestUpdateMutation = {
 module.exports.SupplyRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single SupplyRequest',
-	resolve: supplyrequestDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, supplyrequestDeleteResolver),
 	type: SupplyRequestSchema
 };

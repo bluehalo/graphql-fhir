@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'NutritionOrderOralDiet',
 	description: 'Diet given orally in contrast to enteral (tube) feeding.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diet-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diet-type
 		type: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The kind of diet or dietary restriction such as fiber restricted diet or diabetic diet.'
@@ -29,7 +29,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./nutritionorderoraldiettexture.schema')),
 			description: 'Class that describes any texture modifications required for the patient to safely consume various types of solid foods.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/consistency-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/consistency-type
 		fluidConsistencyType: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The required consistency (e.g. honey-thick, nectar-thick, thin, thickened.) of liquids or fluids served to the patient.'

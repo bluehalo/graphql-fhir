@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'AuditEvent',
-		path: '/3_0_1/AuditEvent/:id',
+		path: '/1_0_2/AuditEvent/:id',
 		query: AuditEventInstanceQuery
 	}
 };

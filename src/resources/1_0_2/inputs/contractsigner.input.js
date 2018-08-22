@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ContractSigner_Input',
 	description: 'Party signing this Contract.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contract-signer-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contract-signer-type
 		type: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'Role of this Contract signer, e.g. notary, grantee.'

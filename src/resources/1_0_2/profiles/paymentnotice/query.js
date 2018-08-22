@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const PaymentNoticeArgs = require('../../parameters/paymentnotice.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	paymentnoticeResolver,
 	paymentnoticeListResolver,
 	paymentnoticeInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'PaymentNotice',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.PaymentNoticeQuery
@@ -19,7 +31,7 @@ const {
 module.exports.PaymentNoticeQuery = {
 	args: Object.assign({}, CommonArgs, PaymentNoticeArgs),
 	description: 'Query for a single PaymentNotice',
-	resolve: paymentnoticeResolver,
+	resolve: scopeInvariant(scopeOptions, paymentnoticeResolver),
 	type: PaymentNoticeSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.PaymentNoticeQuery = {
 module.exports.PaymentNoticeListQuery = {
 	args: Object.assign({}, CommonArgs, PaymentNoticeArgs),
 	description: 'Query for multiple PaymentNotices',
-	resolve: paymentnoticeListResolver,
+	resolve: scopeInvariant(scopeOptions, paymentnoticeListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.PaymentNoticeListQuery = {
  */
 module.exports.PaymentNoticeInstanceQuery = {
 	description: 'Get information about a single PaymentNotice',
-	resolve: paymentnoticeInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, paymentnoticeInstanceResolver),
 	type: PaymentNoticeSchema
 };

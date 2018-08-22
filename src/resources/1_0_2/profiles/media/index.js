@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Media',
-		path: '/3_0_1/Media/:id',
+		path: '/1_0_2/Media/:id',
 		query: MediaInstanceQuery
 	}
 };

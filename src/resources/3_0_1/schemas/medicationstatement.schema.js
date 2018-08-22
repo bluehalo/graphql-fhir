@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MedicationStatementResourceType = new GraphQLEnumType({
 	name: 'MedicationStatementResourceType',
 	values: {
@@ -40,7 +39,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The encounter or episode of care that establishes the context for this MedicationStatement.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-statement-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-statement-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'A code representing the patient or other source\'s judgment about the state of the medication used that this statement is about.  Generally this will be active or completed.'
@@ -49,17 +48,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A code representing the patient or other source\'s judgment about the state of the medication used that this statement is about.  Generally this will be active or completed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-statement-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-statement-category
 		category: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates where type of medication statement and where the medication is expected to be consumed or administered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		medicationCodeableConcept: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		medicationReference: {
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.'
@@ -96,7 +95,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'Allows linking the MedicationStatement to the underlying MedicationRequest, or to other information that supports or is used to derive the MedicationStatement.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-statement-taken
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-statement-taken
 		taken: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicator of the certainty of whether the medication was taken by the patient.'
@@ -105,12 +104,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Indicator of the certainty of whether the medication was taken by the patient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-not-taken-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/reason-medication-not-taken-codes
 		reasonNotTaken: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A code indicating why the medication was not taken.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A reason for why the medication is being/was taken.'

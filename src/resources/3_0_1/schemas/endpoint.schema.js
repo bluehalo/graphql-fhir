@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let EndpointResourceType = new GraphQLEnumType({
 	name: 'EndpointResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'Identifier for the organization that is used to identify the endpoint across multiple disparate systems.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/endpoint-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/endpoint-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'active | suspended | error | off | test.'
@@ -37,7 +36,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'active | suspended | error | off | test.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/endpoint-connection-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/endpoint-connection-type
 		connectionType: {
 			type: new GraphQLNonNull(require('./coding.schema')),
 			description: 'A coded value that represents the technical details of the usage of this endpoint, such as what WSDLs should be used in what way. (e.g. XDS.b/DICOM/cds-hook).'
@@ -62,7 +61,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./period.schema'),
 			description: 'The interval during which the endpoint is expected to be operational.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/endpoint-payload-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/endpoint-payload-type
 		payloadType: {
 			type: new GraphQLList(new GraphQLNonNull(require('./codeableconcept.schema'))),
 			description: 'The payload type describes the acceptable content that can be communicated on the endpoint.'

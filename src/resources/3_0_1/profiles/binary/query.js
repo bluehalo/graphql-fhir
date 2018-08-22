@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const BinaryArgs = require('../../parameters/binary.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	binaryResolver,
 	binaryListResolver,
 	binaryInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Binary',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.BinaryQuery
@@ -19,7 +31,7 @@ const {
 module.exports.BinaryQuery = {
 	args: Object.assign({}, CommonArgs, BinaryArgs),
 	description: 'Query for a single Binary',
-	resolve: binaryResolver,
+	resolve: scopeInvariant(scopeOptions, binaryResolver),
 	type: BinarySchema
 };
 
@@ -30,7 +42,7 @@ module.exports.BinaryQuery = {
 module.exports.BinaryListQuery = {
 	args: Object.assign({}, CommonArgs, BinaryArgs),
 	description: 'Query for multiple Binarys',
-	resolve: binaryListResolver,
+	resolve: scopeInvariant(scopeOptions, binaryListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.BinaryListQuery = {
  */
 module.exports.BinaryInstanceQuery = {
 	description: 'Get information about a single Binary',
-	resolve: binaryInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, binaryInstanceResolver),
 	type: BinarySchema
 };

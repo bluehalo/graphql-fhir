@@ -14,7 +14,7 @@ module.exports = new GraphQLObjectType({
 	name: 'SequenceRepository',
 	description: 'Configurations of the external repository. The repository shall store target\'s observedSeq or records related with target\'s observedSeq.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/repository-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/repository-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Click and see / RESTful API / Need login to see / RESTful API with authentication / Other ways to see resource.'

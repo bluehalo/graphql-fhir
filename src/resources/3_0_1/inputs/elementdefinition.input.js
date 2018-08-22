@@ -31,7 +31,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The path identifies the element and is expressed as a \'.\'-separated list of ancestor elements, beginning with the name of the resource or extension.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/property-representation
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/property-representation
 		representation: {
 			type: new GraphQLList(CodeScalar),
 			description: 'Codes that define how this element is represented in instances, when the deviation varies from the normal case.'
@@ -56,7 +56,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A single preferred label which is the text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/observation-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-codes
 		code: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'A code that has the same meaning as the element in a particular terminology.'

@@ -7,12 +7,26 @@ const SequenceSchema = require('../../schemas/sequence.schema');
 // Inputs
 const SequenceInput = require('../../inputs/sequence.input');
 
-
+// Resolvers
 const {
 	sequenceCreateResolver,
 	sequenceUpdateResolver,
 	sequenceDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Sequence',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Sequence record.'
 	},
 	resource: {
-		type: SequenceInput,
+		type: new GraphQLNonNull(SequenceInput),
 		description: 'Sequence Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Sequence record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.SequenceCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Sequence',
-	resolve: sequenceCreateResolver,
+	resolve: scopeInvariant(scopeOptions, sequenceCreateResolver),
 	type: SequenceSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.SequenceCreateMutation = {
 module.exports.SequenceUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Sequences',
-	resolve: sequenceUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, sequenceUpdateResolver),
 	type: SequenceSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.SequenceUpdateMutation = {
 module.exports.SequenceDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Sequence',
-	resolve: sequenceDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, sequenceDeleteResolver),
 	type: SequenceSchema
 };

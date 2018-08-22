@@ -7,12 +7,26 @@ const RiskAssessmentSchema = require('../../schemas/riskassessment.schema');
 // Inputs
 const RiskAssessmentInput = require('../../inputs/riskassessment.input');
 
-
+// Resolvers
 const {
 	riskassessmentCreateResolver,
 	riskassessmentUpdateResolver,
 	riskassessmentDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'RiskAssessment',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a RiskAssessment record.'
 	},
 	resource: {
-		type: RiskAssessmentInput,
+		type: new GraphQLNonNull(RiskAssessmentInput),
 		description: 'RiskAssessment Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a RiskAssessment record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.RiskAssessmentCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a RiskAssessment',
-	resolve: riskassessmentCreateResolver,
+	resolve: scopeInvariant(scopeOptions, riskassessmentCreateResolver),
 	type: RiskAssessmentSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.RiskAssessmentCreateMutation = {
 module.exports.RiskAssessmentUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple RiskAssessments',
-	resolve: riskassessmentUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, riskassessmentUpdateResolver),
 	type: RiskAssessmentSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.RiskAssessmentUpdateMutation = {
 module.exports.RiskAssessmentDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single RiskAssessment',
-	resolve: riskassessmentDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, riskassessmentDeleteResolver),
 	type: RiskAssessmentSchema
 };

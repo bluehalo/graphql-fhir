@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'CapabilityStatementMessagingEndpoint_Input',
 	description: 'An endpoint (network accessible address) to which messages and/or replies are to be sent.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/message-transport
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/message-transport
 		protocol: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'A list of the messaging transport protocol(s) identifiers, supported by this endpoint.'

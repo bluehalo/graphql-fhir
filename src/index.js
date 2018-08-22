@@ -5,6 +5,7 @@ const FHIRServer = require('./lib/server');
 let server = new FHIRServer(SERVER_CONFIG)
 	.initializeDatabaseConnection()
 	.configureMiddleware()
+	.configurePassport()
 	.configureHelmet()
 	.setProfileRoutes()
 	.setErrorRoutes();

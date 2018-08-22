@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const CompartmentDefinitionArgs = require('../../parameters/compartmentdefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	compartmentdefinitionResolver,
 	compartmentdefinitionListResolver,
 	compartmentdefinitionInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'CompartmentDefinition',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.CompartmentDefinitionQuery
@@ -19,7 +31,7 @@ const {
 module.exports.CompartmentDefinitionQuery = {
 	args: Object.assign({}, CommonArgs, CompartmentDefinitionArgs),
 	description: 'Query for a single CompartmentDefinition',
-	resolve: compartmentdefinitionResolver,
+	resolve: scopeInvariant(scopeOptions, compartmentdefinitionResolver),
 	type: CompartmentDefinitionSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.CompartmentDefinitionQuery = {
 module.exports.CompartmentDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, CompartmentDefinitionArgs),
 	description: 'Query for multiple CompartmentDefinitions',
-	resolve: compartmentdefinitionListResolver,
+	resolve: scopeInvariant(scopeOptions, compartmentdefinitionListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.CompartmentDefinitionListQuery = {
  */
 module.exports.CompartmentDefinitionInstanceQuery = {
 	description: 'Get information about a single CompartmentDefinition',
-	resolve: compartmentdefinitionInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, compartmentdefinitionInstanceResolver),
 	type: CompartmentDefinitionSchema
 };

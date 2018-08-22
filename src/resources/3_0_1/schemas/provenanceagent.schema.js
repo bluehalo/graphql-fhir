@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ProvenanceAgent',
 	description: 'An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/security-role-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/security-role-type
 		role: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The function of the agent with respect to the activity. The security role enabling the agent with respect to the activity.'
@@ -42,7 +42,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The individual, device, or organization for whom the change was made.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-RoleLinkType
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-RoleLinkType
 		relatedAgentType: {
 			type: require('./codeableconcept.schema'),
 			description: 'The type of relationship between agents.'

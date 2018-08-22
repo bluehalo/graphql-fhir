@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'HumanName',
 	description: 'Base StructureDefinition for HumanName Type.',
 	fields: () => extendSchema(require('./element.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/name-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/name-use
 		use: {
 			type: CodeScalar,
 			description: 'Identifies the purpose for this name.'

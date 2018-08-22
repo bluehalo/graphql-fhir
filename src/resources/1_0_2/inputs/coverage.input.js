@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CoverageResourceInputType = new GraphQLEnumType({
 	name: 'CoverageResourceInputType',
 	values: {
@@ -35,7 +34,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./period.input'),
 			description: 'Time period during which the coverage is in force. A missing start date indicates the start date isn\'t known, a missing end date means the coverage is continuing to be in force.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActCoverageTypeCode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActCoverageTypeCode
 		type: {
 			type: require('./coding.input'),
 			description: 'The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health.'

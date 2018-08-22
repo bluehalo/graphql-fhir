@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'PractitionerRoleAvailableTime_Input',
 	description: 'A collection of times that the Service Site is available.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/days-of-week
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/days-of-week
 		daysOfWeek: {
 			type: new GraphQLList(CodeScalar),
 			description: 'Indicates which days of the week are available between the start and end Times.'
