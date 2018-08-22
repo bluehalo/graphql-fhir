@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let EpisodeOfCareResourceInputType = new GraphQLEnumType({
 	name: 'EpisodeOfCareResourceInputType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'Identifier(s) by which this EpisodeOfCare is known.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/episode-of-care-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/episode-of-care-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'planned | waitlist | active | onhold | finished | cancelled.'

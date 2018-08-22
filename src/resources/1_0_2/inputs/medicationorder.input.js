@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MedicationOrderResourceInputType = new GraphQLEnumType({
 	name: 'MedicationOrderResourceInputType',
 	values: {
@@ -36,7 +35,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The date (and perhaps time) when the prescription was written.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-order-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-order-status
 		status: {
 			type: CodeScalar,
 			description: 'A code specifying the state of the order.  Generally this will be active or completed state.'
@@ -69,12 +68,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'A link to a resource that identifies the particular occurrence of contact between patient and health care provider.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		reasonCodeableConcept: {
 			type: require('./codeableconcept.input'),
 			description: 'Can be the reason or the indication for writing the prescription.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		reasonReference: {
 			type: require('./reference.input'),
 			description: 'Can be the reason or the indication for writing the prescription.'

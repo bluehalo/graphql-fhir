@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'TestReportSetupActionOperation_Input',
 	description: 'The operation performed.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/report-action-result-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/report-action-result-codes
 		result: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The result of this operation.'

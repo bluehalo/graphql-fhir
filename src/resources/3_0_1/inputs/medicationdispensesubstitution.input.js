@@ -20,12 +20,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'True if the dispenser dispensed a different drug or product from what was prescribed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActSubstanceAdminSubstitutionCode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ActSubstanceAdminSubstitutionCode
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'A code signifying whether a different drug was dispensed from what was prescribed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-SubstanceAdminSubstitutionReason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-SubstanceAdminSubstitutionReason
 		reason: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Indicates the reason for the substitution of (or lack of substitution) from what was prescribed.'

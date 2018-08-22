@@ -28,7 +28,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The human-readable name for this section of the questionnaire.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-questions
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-questions
 		concept: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'Identifies a how this group of questions is known in a particular terminology such as LOINC.'

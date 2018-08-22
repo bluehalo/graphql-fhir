@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Contract',
-		path: '/3_0_1/Contract/:id',
+		path: '/1_0_2/Contract/:id',
 		query: ContractInstanceQuery
 	}
 };

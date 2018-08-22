@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ListEntry_Input',
 	description: 'Entries in this list.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/list-item-flag
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/list-item-flag
 		flag: {
 			type: require('./codeableconcept.input'),
 			description: 'The flag allows the system constructing the list to indicate the role and significance of the item in the list.'

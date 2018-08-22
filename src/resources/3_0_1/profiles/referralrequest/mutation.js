@@ -7,12 +7,26 @@ const ReferralRequestSchema = require('../../schemas/referralrequest.schema');
 // Inputs
 const ReferralRequestInput = require('../../inputs/referralrequest.input');
 
-
+// Resolvers
 const {
 	referralrequestCreateResolver,
 	referralrequestUpdateResolver,
 	referralrequestDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ReferralRequest',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ReferralRequest record.'
 	},
 	resource: {
-		type: ReferralRequestInput,
+		type: new GraphQLNonNull(ReferralRequestInput),
 		description: 'ReferralRequest Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ReferralRequest record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ReferralRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ReferralRequest',
-	resolve: referralrequestCreateResolver,
+	resolve: scopeInvariant(scopeOptions, referralrequestCreateResolver),
 	type: ReferralRequestSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ReferralRequestCreateMutation = {
 module.exports.ReferralRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ReferralRequests',
-	resolve: referralrequestUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, referralrequestUpdateResolver),
 	type: ReferralRequestSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ReferralRequestUpdateMutation = {
 module.exports.ReferralRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ReferralRequest',
-	resolve: referralrequestDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, referralrequestDeleteResolver),
 	type: ReferralRequestSchema
 };

@@ -2,7 +2,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let PractitionerRoleResourceInputType = new GraphQLEnumType({
 	name: 'PractitionerRoleResourceInputType',
 	values: {
@@ -46,12 +45,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The organization where the Practitioner performs the roles associated.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/practitioner-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/practitioner-role
 		code: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Roles which this practitioner is authorized to perform for the organization.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		specialty: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Specific specialty of the practitioner.'

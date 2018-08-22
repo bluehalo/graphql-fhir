@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'CompartmentDefinitionResource_Input',
 	description: 'Information about how a resource is related to the compartment.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		code: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The name of a resource supported by the server.'

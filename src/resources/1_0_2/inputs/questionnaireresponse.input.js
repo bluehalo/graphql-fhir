@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString }
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let QuestionnaireResponseResourceInputType = new GraphQLEnumType({
 	name: 'QuestionnaireResponseResourceInputType',
 	values: {
@@ -32,7 +31,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Indicates the Questionnaire resource that defines the form for which answers are being provided.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The lifecycle status of the questionnaire response as a whole.'

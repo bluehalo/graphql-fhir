@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ClaimResponseResourceType = new GraphQLEnumType({
 	name: 'ClaimResponseResourceType',
 	values: {
@@ -33,12 +32,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Original request resource referrence.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		ruleset: {
 			type: require('./coding.schema'),
 			description: 'The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		originalRuleset: {
 			type: require('./coding.schema'),
 			description: 'The style (standard) and version of the original material which was converted into this resource.'
@@ -63,7 +62,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The organization which is responsible for the services rendered to the patient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/remittance-outcome
 		outcome: {
 			type: CodeScalar,
 			description: 'Transaction status: error, complete.'
@@ -80,7 +79,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A description of the status of the adjudication.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/payeetype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/payeetype
 		payeeType: {
 			type: require('./coding.schema'),
 			description: 'Party to be reimbursed: Subscriber, provider, other.'
@@ -113,7 +112,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./quantity.schema'),
 			description: 'Adjustment to the payment of this transaction which is not related to adjudication of this transaction.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adjustment-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adjustment-reason
 		paymentAdjustmentReason: {
 			type: require('./coding.schema'),
 			description: 'Reason for the payment adjustment.'
@@ -134,12 +133,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'Payment identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fundsreserve
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fundsreserve
 		reserved: {
 			type: require('./coding.schema'),
 			description: 'Status of funds reservation (For provider, for Patient, None).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/forms
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/forms
 		form: {
 			type: require('./coding.schema'),
 			description: 'The form to be used for printing the content.'

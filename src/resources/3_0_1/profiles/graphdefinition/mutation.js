@@ -7,12 +7,26 @@ const GraphDefinitionSchema = require('../../schemas/graphdefinition.schema');
 // Inputs
 const GraphDefinitionInput = require('../../inputs/graphdefinition.input');
 
-
+// Resolvers
 const {
 	graphdefinitionCreateResolver,
 	graphdefinitionUpdateResolver,
 	graphdefinitionDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'GraphDefinition',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a GraphDefinition record.'
 	},
 	resource: {
-		type: GraphDefinitionInput,
+		type: new GraphQLNonNull(GraphDefinitionInput),
 		description: 'GraphDefinition Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a GraphDefinition record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.GraphDefinitionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a GraphDefinition',
-	resolve: graphdefinitionCreateResolver,
+	resolve: scopeInvariant(scopeOptions, graphdefinitionCreateResolver),
 	type: GraphDefinitionSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.GraphDefinitionCreateMutation = {
 module.exports.GraphDefinitionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple GraphDefinitions',
-	resolve: graphdefinitionUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, graphdefinitionUpdateResolver),
 	type: GraphDefinitionSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.GraphDefinitionUpdateMutation = {
 module.exports.GraphDefinitionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single GraphDefinition',
-	resolve: graphdefinitionDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, graphdefinitionDeleteResolver),
 	type: GraphDefinitionSchema
 };

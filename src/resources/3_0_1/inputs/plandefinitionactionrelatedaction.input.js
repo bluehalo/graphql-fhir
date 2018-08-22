@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The element id of the related action.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/action-relationship-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-relationship-type
 		relationship: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The relationship of this action to the related action.'

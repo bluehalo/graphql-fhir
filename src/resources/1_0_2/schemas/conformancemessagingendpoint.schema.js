@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ConformanceMessagingEndpoint',
 	description: 'An endpoint (network accessible address) to which messages and/or replies are to be sent.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/message-transport
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/message-transport
 		protocol: {
 			type: new GraphQLNonNull(require('./coding.schema')),
 			description: 'A list of the messaging transport protocol(s) identifiers, supported by this endpoint.'

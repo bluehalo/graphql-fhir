@@ -39,12 +39,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A list of profiles (references to [StructureDefinition](structuredefinition.html#) resources) that this resource claims to conform to. The URL is a reference to [StructureDefinition.url]().'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
 		security: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/common-tags
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/common-tags
 		tag: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.'

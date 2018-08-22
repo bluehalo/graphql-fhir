@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'DataElement',
-		path: '/3_0_1/DataElement/:id',
+		path: '/1_0_2/DataElement/:id',
 		query: DataElementInstanceQuery
 	}
 };

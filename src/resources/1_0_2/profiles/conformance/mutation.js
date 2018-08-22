@@ -7,12 +7,26 @@ const ConformanceSchema = require('../../schemas/conformance.schema');
 // Inputs
 const ConformanceInput = require('../../inputs/conformance.input');
 
-
+// Resolvers
 const {
 	conformanceCreateResolver,
 	conformanceUpdateResolver,
 	conformanceDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Conformance',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Conformance record.'
 	},
 	resource: {
-		type: ConformanceInput,
+		type: new GraphQLNonNull(ConformanceInput),
 		description: 'Conformance Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Conformance record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ConformanceCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Conformance',
-	resolve: conformanceCreateResolver,
+	resolve: scopeInvariant(scopeOptions, conformanceCreateResolver),
 	type: ConformanceSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ConformanceCreateMutation = {
 module.exports.ConformanceUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Conformances',
-	resolve: conformanceUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, conformanceUpdateResolver),
 	type: ConformanceSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ConformanceUpdateMutation = {
 module.exports.ConformanceDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Conformance',
-	resolve: conformanceDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, conformanceDeleteResolver),
 	type: ConformanceSchema
 };

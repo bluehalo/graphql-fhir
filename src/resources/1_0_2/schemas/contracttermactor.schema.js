@@ -16,7 +16,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'The actor assigned a role in this Contract Provision.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contract-actorrole
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contract-actorrole
 		role: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Role played by the actor assigned this role in this Contract Provision.'

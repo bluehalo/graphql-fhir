@@ -3,7 +3,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let BasicResourceType = new GraphQLEnumType({
 	name: 'BasicResourceType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'Identifier assigned to the resource for business purposes, outside the context of FHIR.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/basic-resource-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/basic-resource-type
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Identifies the \'type\' of resource - equivalent to the resource name for other resources.'

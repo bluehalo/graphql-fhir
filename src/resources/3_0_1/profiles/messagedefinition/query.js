@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const MessageDefinitionArgs = require('../../parameters/messagedefinition.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	messagedefinitionResolver,
 	messagedefinitionListResolver,
 	messagedefinitionInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'MessageDefinition',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.MessageDefinitionQuery
@@ -19,7 +31,7 @@ const {
 module.exports.MessageDefinitionQuery = {
 	args: Object.assign({}, CommonArgs, MessageDefinitionArgs),
 	description: 'Query for a single MessageDefinition',
-	resolve: messagedefinitionResolver,
+	resolve: scopeInvariant(scopeOptions, messagedefinitionResolver),
 	type: MessageDefinitionSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.MessageDefinitionQuery = {
 module.exports.MessageDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, MessageDefinitionArgs),
 	description: 'Query for multiple MessageDefinitions',
-	resolve: messagedefinitionListResolver,
+	resolve: scopeInvariant(scopeOptions, messagedefinitionListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.MessageDefinitionListQuery = {
  */
 module.exports.MessageDefinitionInstanceQuery = {
 	description: 'Get information about a single MessageDefinition',
-	resolve: messagedefinitionInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, messagedefinitionInstanceResolver),
 	type: MessageDefinitionSchema
 };

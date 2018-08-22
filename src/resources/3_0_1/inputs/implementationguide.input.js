@@ -6,7 +6,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ImplementationGuideResourceInputType = new GraphQLEnumType({
 	name: 'ImplementationGuideResourceInputType',
 	values: {
@@ -50,7 +49,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A natural language name identifying the implementation guide. This name should be usable as an identifier for the module by machine processing applications such as code generation.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this implementation guide. Enables tracking the life-cycle of the content.'
@@ -99,7 +98,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./usagecontext.input')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate implementation guide instances.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'A legal or geographic region in which the implementation guide is intended to be used.'

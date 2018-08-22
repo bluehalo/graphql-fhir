@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'CapabilityStatementRestResource',
 	description: 'A specification of the restful capabilities of the solution for a specific resource type.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'A type of resource exposed via the restful interface.'
@@ -38,7 +38,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(new GraphQLNonNull(require('./capabilitystatementrestresourceinteraction.schema'))),
 			description: 'Identifies a restful operation supported by the solution.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/versioning-policy
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/versioning-policy
 		versioning: {
 			type: CodeScalar,
 			description: 'This field is set to no-version to specify that the system does not support (server) or use (client) versioning for this resource type. If this has some other value, the server must at least correctly track and populate the versionId meta-property on resources. If the value is \'versioned-update\', then the server supports all the versioning features, including using e-tags for version integrity in the API.'
@@ -71,7 +71,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A flag that indicates that the server supports conditional create.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conditional-read-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conditional-read-status
 		conditionalRead: {
 			type: CodeScalar,
 			description: 'A code that indicates how the server supports conditional read.'
@@ -88,7 +88,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A flag that indicates that the server supports conditional update.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conditional-delete-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conditional-delete-status
 		conditionalDelete: {
 			type: CodeScalar,
 			description: 'A code that indicates how the server supports conditional delete.'
@@ -97,7 +97,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A code that indicates how the server supports conditional delete.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/reference-handling-policy
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/reference-handling-policy
 		referencePolicy: {
 			type: new GraphQLList(CodeScalar),
 			description: 'A set of flags that defines how references are supported.'

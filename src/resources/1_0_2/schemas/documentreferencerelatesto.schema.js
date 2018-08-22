@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'DocumentReferenceRelatesTo',
 	description: 'Relationships that this document has with other document references that already exist.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/document-relationship-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/document-relationship-type
 		code: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of relationship that this document has with anther document.'

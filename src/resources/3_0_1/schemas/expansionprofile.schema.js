@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ExpansionProfileResourceType = new GraphQLEnumType({
 	name: 'ExpansionProfileResourceType',
 	values: {
@@ -53,7 +52,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A natural language name identifying the expansion profile. This name should be usable as an identifier for the module by machine processing applications such as code generation.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this expansion profile. Enables tracking the life-cycle of the content.'
@@ -102,7 +101,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./usagecontext.schema')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate expansion profile instances.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A legal or geographic region in which the expansion profile is intended to be used.'
@@ -167,7 +166,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Controls whether or not the value set expansion includes post coordinated codes.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/languages
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
 		displayLanguage: {
 			type: CodeScalar,
 			description: 'Specifies the language to be used for description in the expansions i.e. the language to be used for ValueSet.expansion.contains.display.'

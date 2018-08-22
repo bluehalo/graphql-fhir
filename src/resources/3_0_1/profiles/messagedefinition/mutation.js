@@ -7,12 +7,26 @@ const MessageDefinitionSchema = require('../../schemas/messagedefinition.schema'
 // Inputs
 const MessageDefinitionInput = require('../../inputs/messagedefinition.input');
 
-
+// Resolvers
 const {
 	messagedefinitionCreateResolver,
 	messagedefinitionUpdateResolver,
 	messagedefinitionDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'MessageDefinition',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a MessageDefinition record.'
 	},
 	resource: {
-		type: MessageDefinitionInput,
+		type: new GraphQLNonNull(MessageDefinitionInput),
 		description: 'MessageDefinition Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a MessageDefinition record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.MessageDefinitionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MessageDefinition',
-	resolve: messagedefinitionCreateResolver,
+	resolve: scopeInvariant(scopeOptions, messagedefinitionCreateResolver),
 	type: MessageDefinitionSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.MessageDefinitionCreateMutation = {
 module.exports.MessageDefinitionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MessageDefinitions',
-	resolve: messagedefinitionUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, messagedefinitionUpdateResolver),
 	type: MessageDefinitionSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.MessageDefinitionUpdateMutation = {
 module.exports.MessageDefinitionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MessageDefinition',
-	resolve: messagedefinitionDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, messagedefinitionDeleteResolver),
 	type: MessageDefinitionSchema
 };

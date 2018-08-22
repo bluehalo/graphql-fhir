@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const DeviceRequestArgs = require('../../parameters/devicerequest.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	devicerequestResolver,
 	devicerequestListResolver,
 	devicerequestInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'DeviceRequest',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.DeviceRequestQuery
@@ -19,7 +31,7 @@ const {
 module.exports.DeviceRequestQuery = {
 	args: Object.assign({}, CommonArgs, DeviceRequestArgs),
 	description: 'Query for a single DeviceRequest',
-	resolve: devicerequestResolver,
+	resolve: scopeInvariant(scopeOptions, devicerequestResolver),
 	type: DeviceRequestSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.DeviceRequestQuery = {
 module.exports.DeviceRequestListQuery = {
 	args: Object.assign({}, CommonArgs, DeviceRequestArgs),
 	description: 'Query for multiple DeviceRequests',
-	resolve: devicerequestListResolver,
+	resolve: scopeInvariant(scopeOptions, devicerequestListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.DeviceRequestListQuery = {
  */
 module.exports.DeviceRequestInstanceQuery = {
 	description: 'Get information about a single DeviceRequest',
-	resolve: devicerequestInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, devicerequestInstanceResolver),
 	type: DeviceRequestSchema
 };

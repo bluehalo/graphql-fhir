@@ -2,6 +2,7 @@ const { configureRoutes, parseVersionFromUrl } = require('../utils/router.utils'
 const errorUtils = require('../utils/error.utils');
 const compression = require('compression');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const Winston = require('./winston');
 const express = require('express');
 const helmet = require('helmet');
@@ -24,7 +25,8 @@ class Server {
 		// Store some environment settings
 		this.env = {
 			IS_PRODUCTION: process.env.NODE_ENV === 'production',
-			USE_HTTPS: config.ssl && config.ssl.key && config.ssl.cert
+			USE_HTTPS: config.ssl && config.ssl.key && config.ssl.cert,
+			AUTHENTICATION: false
 		};
 		// return self for chaining
 		return this;
@@ -83,6 +85,20 @@ class Server {
 		return this;
 	}
 
+	configurePassport () {
+		let { auth } = this.config;
+		// Only add passport if we have valid configurations
+		if (auth.strategy && auth.name) {
+			// Set this boolean for auth to true if we have a strategy
+			// to make it easy to determine if the server is using authentication
+			this.env.AUTHENTICATION = true;
+			// Add the strategy to passport
+			passport.use(require(auth.strategy));
+		}
+		// return self for chaining
+		return this;
+	}
+
 	// Setup a public directory for static assets
 	setPublicDirectory (publicDir = '') {
 		// Public config can come from the core config as well, let's handle both cases
@@ -111,12 +127,14 @@ class Server {
 		// Errors should be passed through with next
 		this.app.use((err, req, res, next) => {
 			// If there is an internal error, log the error and pass it on
-			// it should already be formatted as a GraphQL error at this point
 			if (err) {
-				this.logger.error('Unexpected Server error', err);
+				let version = parseVersionFromUrl(req.path, this.config);
+				let error = errorUtils.internal(version, err.message);
+				// Log the error and send the response
+				this.logger.error('Unexpected Server error', error);
 				// Whenever a FHIR resource is sent back, the mimetype must be application/fhir+json
 				res.type('application/fhir+json');
-				return res.status(500).json(err);
+				return res.status(500).json(error);
 			}
 			// No error
 			next();

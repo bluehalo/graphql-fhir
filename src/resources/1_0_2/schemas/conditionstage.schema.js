@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ConditionStage',
 	description: 'Clinical stage or grade of a condition. May include formal severity assessments.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-stage
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-stage
 		summary: {
 			type: require('./codeableconcept.schema'),
 			description: 'A simple summary of the stage such as \'Stage 3\'. The determination of the stage is disease-specific.'

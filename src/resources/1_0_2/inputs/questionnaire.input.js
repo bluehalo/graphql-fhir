@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let QuestionnaireResourceInputType = new GraphQLEnumType({
 	name: 'QuestionnaireResourceInputType',
 	values: {
@@ -36,7 +35,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The version number assigned by the publisher for business reasons.  It may remain the same when the resource is updated.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The lifecycle status of the questionnaire as a whole.'
@@ -65,7 +64,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./contactpoint.input')),
 			description: 'Contact details to assist a user in finding and communicating with the publisher.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		subjectType: {
 			type: new GraphQLList(CodeScalar),
 			description: 'Identifies the types of subjects that can be the subject of the questionnaire.'

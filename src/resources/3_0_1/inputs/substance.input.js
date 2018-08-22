@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SubstanceResourceInputType = new GraphQLEnumType({
 	name: 'SubstanceResourceInputType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'Unique identifier for the substance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/substance-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/substance-status
 		status: {
 			type: CodeScalar,
 			description: 'A code to indicate if the substance is actively used.'
@@ -36,12 +35,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A code to indicate if the substance is actively used.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/substance-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/substance-category
 		category: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'A code that classifies the general type of substance.  This is used  for searching, sorting and display purposes.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/substance-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/substance-code
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'A code (or set of codes) that identify this substance.'

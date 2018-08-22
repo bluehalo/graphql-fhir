@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CommunicationResourceType = new GraphQLEnumType({
 	name: 'CommunicationResourceType',
 	values: {
@@ -44,12 +43,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./communicationpayload.schema')),
 			description: 'Text, attachment(s), or resource(s) that was communicated to the recipient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ParticipationMode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ParticipationMode
 		medium: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A channel that was used for this communication (e.g. email, fax).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/communication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/communication-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the transmission.'

@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'DataRequirement_Input',
 	description: 'Base StructureDefinition for DataRequirement Type.',
 	fields: () => extendSchema(require('./element.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/all-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/all-types
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of the required data, specified as the type name of a resource. For profiles, this value is set to the type of the base resource of the profile.'

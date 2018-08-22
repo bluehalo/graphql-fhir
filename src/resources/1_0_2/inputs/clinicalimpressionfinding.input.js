@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ClinicalImpressionFinding_Input',
 	description: 'Specific findings or diagnoses that was considered likely or relevant to ongoing treatment.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		item: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Specific text of code for finding or diagnosis.'

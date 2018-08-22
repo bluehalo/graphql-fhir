@@ -20,7 +20,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Abstract name given to an origin server in this test script.  The name is provided as a number starting at 1.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/testscript-profile-origin-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/testscript-profile-origin-types
 		profile: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'The type of origin profile the test system supports.'

@@ -30,7 +30,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An absolute URI that is a formal reference to where this parameter was first defined, so that a client can be confident of the meaning of the search parameter (a reference to [SearchParameter.url]()).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/search-param-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/search-param-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of value a search parameter refers to, and how the content is interpreted.'

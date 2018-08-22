@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let GoalResourceType = new GraphQLEnumType({
 	name: 'GoalResourceType',
 	values: {
@@ -32,7 +31,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Identifies the patient, group or organization for whom the goal is being established.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/goal-start-event
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/goal-start-event
 		startDate: {
 			type: DateScalar,
 			description: 'The date or event after which the goal should begin being pursued.'
@@ -41,7 +40,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The date or event after which the goal should begin being pursued.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/goal-start-event
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/goal-start-event
 		startCodeableConcept: {
 			type: require('./codeableconcept.schema'),
 			description: 'The date or event after which the goal should begin being pursued.'
@@ -58,7 +57,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./quantity.schema'),
 			description: 'Indicates either the date or the duration after start by which the goal should be met.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/goal-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/goal-category
 		category: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Indicates a category the goal falls within.'
@@ -71,7 +70,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Human-readable description of a specific desired objective of care.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/goal-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/goal-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates whether the goal has been reached and is still considered relevant.'
@@ -88,7 +87,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Identifies when the current status.  I.e. When initially created, when achieved, when cancelled, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/goal-status-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/goal-status-reason
 		statusReason: {
 			type: require('./codeableconcept.schema'),
 			description: 'Captures the reason for the current status.'
@@ -97,7 +96,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Indicates whose goal this is - patient goal, practitioner goal, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/goal-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/goal-priority
 		priority: {
 			type: require('./codeableconcept.schema'),
 			description: 'Identifies the mutually agreed level of importance associated with reaching/sustaining the goal.'

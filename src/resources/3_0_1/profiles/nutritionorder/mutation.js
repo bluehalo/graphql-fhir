@@ -7,12 +7,26 @@ const NutritionOrderSchema = require('../../schemas/nutritionorder.schema');
 // Inputs
 const NutritionOrderInput = require('../../inputs/nutritionorder.input');
 
-
+// Resolvers
 const {
 	nutritionorderCreateResolver,
 	nutritionorderUpdateResolver,
 	nutritionorderDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'NutritionOrder',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a NutritionOrder record.'
 	},
 	resource: {
-		type: NutritionOrderInput,
+		type: new GraphQLNonNull(NutritionOrderInput),
 		description: 'NutritionOrder Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a NutritionOrder record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.NutritionOrderCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a NutritionOrder',
-	resolve: nutritionorderCreateResolver,
+	resolve: scopeInvariant(scopeOptions, nutritionorderCreateResolver),
 	type: NutritionOrderSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.NutritionOrderCreateMutation = {
 module.exports.NutritionOrderUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple NutritionOrders',
-	resolve: nutritionorderUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, nutritionorderUpdateResolver),
 	type: NutritionOrderSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.NutritionOrderUpdateMutation = {
 module.exports.NutritionOrderDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single NutritionOrder',
-	resolve: nutritionorderDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, nutritionorderDeleteResolver),
 	type: NutritionOrderSchema
 };

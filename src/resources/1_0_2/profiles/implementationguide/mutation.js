@@ -7,12 +7,26 @@ const ImplementationGuideSchema = require('../../schemas/implementationguide.sch
 // Inputs
 const ImplementationGuideInput = require('../../inputs/implementationguide.input');
 
-
+// Resolvers
 const {
 	implementationguideCreateResolver,
 	implementationguideUpdateResolver,
 	implementationguideDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ImplementationGuide',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ImplementationGuide record.'
 	},
 	resource: {
-		type: ImplementationGuideInput,
+		type: new GraphQLNonNull(ImplementationGuideInput),
 		description: 'ImplementationGuide Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ImplementationGuide record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ImplementationGuideCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ImplementationGuide',
-	resolve: implementationguideCreateResolver,
+	resolve: scopeInvariant(scopeOptions, implementationguideCreateResolver),
 	type: ImplementationGuideSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ImplementationGuideCreateMutation = {
 module.exports.ImplementationGuideUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ImplementationGuides',
-	resolve: implementationguideUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, implementationguideUpdateResolver),
 	type: ImplementationGuideSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ImplementationGuideUpdateMutation = {
 module.exports.ImplementationGuideDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ImplementationGuide',
-	resolve: implementationguideDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, implementationguideDeleteResolver),
 	type: ImplementationGuideSchema
 };

@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Location',
-		path: '/3_0_1/Location/:id',
+		path: '/1_0_2/Location/:id',
 		query: LocationInstanceQuery
 	}
 };

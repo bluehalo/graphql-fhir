@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ProcessRequestResourceInputType = new GraphQLEnumType({
 	name: 'ProcessRequestResourceInputType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'The ProcessRequest business identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -37,7 +36,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The status of the resource instance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/actionlist
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/actionlist
 		action: {
 			type: CodeScalar,
 			description: 'The type of processing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest.'

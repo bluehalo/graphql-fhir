@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The date the immunization recommendation was created.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/vaccine-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/vaccine-code
 		vaccineCode: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Vaccine that pertains to the recommendation.'
@@ -35,7 +35,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'This indicates the next recommended dose number (e.g. dose 2 is the next recommended dose).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-recommendation-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-recommendation-status
 		forecastStatus: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Vaccine administration status.'

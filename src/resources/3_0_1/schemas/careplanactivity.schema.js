@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'CarePlanActivity',
 	description: 'Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity-outcome
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity-outcome
 		outcomeCodeableConcept: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Identifies the outcome at the point when the status of the activity is assessed.  For example, the outcome of an education activity could be patient understands (or not).'

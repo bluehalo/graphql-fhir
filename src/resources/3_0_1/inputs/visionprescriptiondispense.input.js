@@ -13,12 +13,12 @@ module.exports = new GraphQLInputObjectType({
 	name: 'VisionPrescriptionDispense_Input',
 	description: 'Deals with details of the dispense part of the supply specification.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/vision-product
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/vision-product
 		product: {
 			type: require('./codeableconcept.input'),
 			description: 'Identifies the type of vision correction product which is required for the patient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/vision-eye-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/vision-eye-codes
 		eye: {
 			type: CodeScalar,
 			description: 'The eye for which the lens applies.'
@@ -59,7 +59,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Amount of prism to compensate for eye alignment in fractional units.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/vision-base-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/vision-base-codes
 		base: {
 			type: CodeScalar,
 			description: 'The relative base, or reference lens edge, for the prism.'

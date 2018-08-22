@@ -247,6 +247,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./meta.input'),
 			description: 'If the parameter is a data type.'
 		},
+		// TODO: Figure out how to handle this
 		// resource: {
 		// 	type: require('./resourcelist.input'),
 		// 	description: 'If the parameter is a whole resource.'

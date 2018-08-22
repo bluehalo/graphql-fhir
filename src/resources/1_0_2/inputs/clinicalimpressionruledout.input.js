@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ClinicalImpressionRuledOut_Input',
 	description: 'Diagnosis considered not possible.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		item: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Specific text of code for diagnosis.'

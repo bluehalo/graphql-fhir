@@ -32,7 +32,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An indication that this item should be enabled only if the specified question is answered (hasAnswer=true) or not answered (hasAnswer=false).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerBoolean: {
 			type: GraphQLBoolean,
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
@@ -41,7 +41,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerDecimal: {
 			type: GraphQLFloat,
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
@@ -50,7 +50,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerInteger: {
 			type: GraphQLInt,
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
@@ -59,7 +59,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerDate: {
 			type: DateScalar,
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
@@ -68,7 +68,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerDateTime: {
 			type: DateTimeScalar,
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
@@ -77,7 +77,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerTime: {
 			type: TimeScalar,
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
@@ -86,7 +86,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerString: {
 			type: GraphQLString,
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
@@ -95,7 +95,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerUri: {
 			type: UriScalar,
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
@@ -104,22 +104,22 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerAttachment: {
 			type: require('./attachment.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerCoding: {
 			type: require('./coding.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerQuantity: {
 			type: require('./quantity.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerReference: {
 			type: require('./reference.input'),
 			description: 'An answer that the referenced question must match in order for the item to be enabled.'

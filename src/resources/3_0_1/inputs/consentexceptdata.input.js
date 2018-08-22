@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ConsentExceptData_Input',
 	description: 'The resources controlled by this exception, if specific resources are referenced.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/consent-data-meaning
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/consent-data-meaning
 		meaning: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'How the resource reference is interpreted when testing consent restrictions.'

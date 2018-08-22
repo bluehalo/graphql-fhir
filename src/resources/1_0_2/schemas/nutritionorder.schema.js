@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let NutritionOrderResourceType = new GraphQLEnumType({
 	name: 'NutritionOrderResourceType',
 	values: {
@@ -48,7 +47,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The date and time that this nutrition order was requested.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/nutrition-order-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/nutrition-order-status
 		status: {
 			type: CodeScalar,
 			description: 'The workflow status of the nutrition order/request.'
@@ -61,12 +60,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'A link to a record of allergies or intolerances  which should be included in the nutrition order.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-diet
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-diet
 		foodPreferenceModifier: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'This modifier is used to convey order-specific modifiers about the type of food that should be given. These can be derived from patient allergies, intolerances, or preferences such as Halal, Vegan or Kosher. This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/food-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/food-type
 		excludeFoodModifier: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'This modifier is used to convey order-specific modifiers about the type of food that should NOT be given. These can be derived from patient allergies, intolerances, or preferences such as No Red Meat, No Soy or No Wheat or  Gluten-Free.  While it should not be necessary to repeat allergy or intolerance information captured in the referenced allergyIntolerance resource in the excludeFoodModifier, this element may be used to convey additional specificity related to foods that should be eliminated from the patient’s diet for any reason.  This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.'

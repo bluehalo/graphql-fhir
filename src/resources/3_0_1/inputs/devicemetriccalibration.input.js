@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'DeviceMetricCalibration_Input',
 	description: 'Describes the calibrations that have been performed or that are required to be performed.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/metric-calibration-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/metric-calibration-type
 		type: {
 			type: CodeScalar,
 			description: 'Describes the type of the calibration method.'
@@ -23,7 +23,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Describes the type of the calibration method.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/metric-calibration-state
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/metric-calibration-state
 		state: {
 			type: CodeScalar,
 			description: 'Describes the state of the calibration.'

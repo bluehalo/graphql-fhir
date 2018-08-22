@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'PatientContact_Input',
 	description: 'A contact party (e.g. guardian, partner, friend) for the patient.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/patient-contact-relationship
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/patient-contact-relationship
 		relationship: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The nature of the relationship between the patient and the contact person.'
@@ -30,7 +30,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./address.input'),
 			description: 'Address for the contact person.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
 		gender: {
 			type: CodeScalar,
 			description: 'Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.'

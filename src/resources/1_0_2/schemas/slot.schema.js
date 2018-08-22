@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SlotResourceType = new GraphQLEnumType({
 	name: 'SlotResourceType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'External Ids for this item.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the availability resource.'
@@ -37,7 +36,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'The schedule resource that this slot defines an interval of status information.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/slotstatus
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/slotstatus
 		freeBusyType: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'busy | free | busy-unavailable | busy-tentative.'

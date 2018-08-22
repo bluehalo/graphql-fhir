@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const GoalArgs = require('../../parameters/goal.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	goalResolver,
 	goalListResolver,
 	goalInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Goal',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.GoalQuery
@@ -19,7 +31,7 @@ const {
 module.exports.GoalQuery = {
 	args: Object.assign({}, CommonArgs, GoalArgs),
 	description: 'Query for a single Goal',
-	resolve: goalResolver,
+	resolve: scopeInvariant(scopeOptions, goalResolver),
 	type: GoalSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.GoalQuery = {
 module.exports.GoalListQuery = {
 	args: Object.assign({}, CommonArgs, GoalArgs),
 	description: 'Query for multiple Goals',
-	resolve: goalListResolver,
+	resolve: scopeInvariant(scopeOptions, goalListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.GoalListQuery = {
  */
 module.exports.GoalInstanceQuery = {
 	description: 'Get information about a single Goal',
-	resolve: goalInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, goalInstanceResolver),
 	type: GoalSchema
 };

@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SupplyDeliveryResourceInputType = new GraphQLEnumType({
 	name: 'SupplyDeliveryResourceInputType',
 	values: {
@@ -36,7 +35,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'A larger event of which this particular event is a component or step.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplydelivery-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplydelivery-status
 		status: {
 			type: CodeScalar,
 			description: 'A code specifying the state of the dispense event.'
@@ -49,7 +48,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'A link to a resource representing the person whom the delivered item is for.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplydelivery-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplydelivery-type
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.'

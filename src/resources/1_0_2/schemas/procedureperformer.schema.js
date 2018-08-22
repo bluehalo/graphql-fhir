@@ -16,7 +16,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The practitioner who was involved in the procedure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/performer-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/performer-role
 		role: {
 			type: require('./codeableconcept.schema'),
 			description: 'For example: surgeon, anaethetist, endoscopist.'

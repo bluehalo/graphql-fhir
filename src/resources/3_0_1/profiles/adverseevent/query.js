@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const AdverseEventArgs = require('../../parameters/adverseevent.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	adverseeventResolver,
 	adverseeventListResolver,
 	adverseeventInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'AdverseEvent',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.AdverseEventQuery
@@ -19,7 +31,7 @@ const {
 module.exports.AdverseEventQuery = {
 	args: Object.assign({}, CommonArgs, AdverseEventArgs),
 	description: 'Query for a single AdverseEvent',
-	resolve: adverseeventResolver,
+	resolve: scopeInvariant(scopeOptions, adverseeventResolver),
 	type: AdverseEventSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.AdverseEventQuery = {
 module.exports.AdverseEventListQuery = {
 	args: Object.assign({}, CommonArgs, AdverseEventArgs),
 	description: 'Query for multiple AdverseEvents',
-	resolve: adverseeventListResolver,
+	resolve: scopeInvariant(scopeOptions, adverseeventListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.AdverseEventListQuery = {
  */
 module.exports.AdverseEventInstanceQuery = {
 	description: 'Get information about a single AdverseEvent',
-	resolve: adverseeventInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, adverseeventInstanceResolver),
 	type: AdverseEventSchema
 };

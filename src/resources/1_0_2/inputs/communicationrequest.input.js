@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CommunicationRequestResourceInputType = new GraphQLEnumType({
 	name: 'CommunicationRequestResourceInputType',
 	values: {
@@ -44,7 +43,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./communicationrequestpayload.input')),
 			description: 'Text, attachment(s), or resource(s) to be communicated to the recipient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ParticipationMode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-ParticipationMode
 		medium: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'A channel that was used for this communication (e.g. email, fax).'
@@ -53,7 +52,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The responsible person who authorizes this order, e.g. physician. This may be different than the author of the order statement, e.g. clerk, who may have entered the statement into the order entry application.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/communication-request-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/communication-request-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the proposal or order.'
@@ -94,7 +93,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The patient who is the focus of this communication request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diagnostic-order-priority
 		priority: {
 			type: require('./codeableconcept.input'),
 			description: 'Characterizes how quickly the proposed act must be initiated. Includes concepts such as stat, urgent, routine.'

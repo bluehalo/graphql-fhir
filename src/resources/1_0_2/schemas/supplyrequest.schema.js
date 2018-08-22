@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SupplyRequestResourceType = new GraphQLEnumType({
 	name: 'SupplyRequestResourceType',
 	values: {
@@ -44,7 +43,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'Unique identifier for this supply request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-status
 		status: {
 			type: CodeScalar,
 			description: 'Status of the supply request.'
@@ -53,7 +52,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Status of the supply request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-kind
 		kind: {
 			type: require('./codeableconcept.schema'),
 			description: 'Category of supply, e.g.  central, non-stock, etc. This is used to support work flows associated with the supply process.'
@@ -66,12 +65,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'Who is intended to fulfill the request.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-reason
 		reasonCodeableConcept: {
 			type: require('./codeableconcept.schema'),
 			description: 'Why the supply item was requested.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-reason
 		reasonReference: {
 			type: require('./reference.schema'),
 			description: 'Why the supply item was requested.'

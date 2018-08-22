@@ -7,7 +7,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ImagingStudyResourceInputType = new GraphQLEnumType({
 	name: 'ImagingStudyResourceInputType',
 	values: {
@@ -59,7 +58,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'A list of the diagnostic orders that resulted in this imaging study being performed.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/dicom-cid29
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/dicom-cid29
 		modalityList: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19).'
@@ -68,7 +67,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The requesting/referring physician.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/instance-availability
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/instance-availability
 		availability: {
 			type: CodeScalar,
 			description: 'Availability of study (online, offline or nearline).'

@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ContactPoint_Input',
 	description: 'Base StructureDefinition for ContactPoint Type.',
 	fields: () => extendSchema(require('./element.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contact-point-system
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contact-point-system
 		system: {
 			type: CodeScalar,
 			description: 'Telecommunications form for contact point - what communications system is required to make use of the contact.'
@@ -31,7 +31,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contact-point-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contact-point-use
 		use: {
 			type: CodeScalar,
 			description: 'Identifies the purpose for the contact point.'

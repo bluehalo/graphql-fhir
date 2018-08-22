@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'PaymentReconciliationNote_Input',
 	description: 'Suite of notes.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
 		type: {
 			type: require('./coding.input'),
 			description: 'The note purpose: Print/Display.'

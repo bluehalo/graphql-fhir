@@ -21,7 +21,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An integer associated with each note which may be referred to from each service line item.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
 		type: {
 			type: require('./coding.input'),
 			description: 'The note purpose: Print/Display.'

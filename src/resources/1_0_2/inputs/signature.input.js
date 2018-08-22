@@ -16,7 +16,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'Signature_Input',
 	description: 'Base StructureDefinition for Signature Type.',
 	fields: () => extendSchema(require('./element.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/signature-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/signature-type
 		type: {
 			type: new GraphQLList(new GraphQLNonNull(require('./coding.input'))),
 			description: 'An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.'

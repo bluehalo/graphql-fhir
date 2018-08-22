@@ -7,12 +7,26 @@ const MedicationStatementSchema = require('../../schemas/medicationstatement.sch
 // Inputs
 const MedicationStatementInput = require('../../inputs/medicationstatement.input');
 
-
+// Resolvers
 const {
 	medicationstatementCreateResolver,
 	medicationstatementUpdateResolver,
 	medicationstatementDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'MedicationStatement',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a MedicationStatement record.'
 	},
 	resource: {
-		type: MedicationStatementInput,
+		type: new GraphQLNonNull(MedicationStatementInput),
 		description: 'MedicationStatement Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a MedicationStatement record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.MedicationStatementCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MedicationStatement',
-	resolve: medicationstatementCreateResolver,
+	resolve: scopeInvariant(scopeOptions, medicationstatementCreateResolver),
 	type: MedicationStatementSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.MedicationStatementCreateMutation = {
 module.exports.MedicationStatementUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MedicationStatements',
-	resolve: medicationstatementUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, medicationstatementUpdateResolver),
 	type: MedicationStatementSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.MedicationStatementUpdateMutation = {
 module.exports.MedicationStatementDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MedicationStatement',
-	resolve: medicationstatementDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, medicationstatementDeleteResolver),
 	type: MedicationStatementSchema
 };

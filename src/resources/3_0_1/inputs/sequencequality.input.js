@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'SequenceQuality_Input',
 	description: 'An experimental feature attribute that defines the quality of the feature in a quantitative way, such as a phred quality score ([SO:0001686](http://www.sequenceontology.org/browser/current_svn/term/SO:0001686)).',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/quality-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/quality-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'INDEL / SNP / Undefined variant.'
@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'INDEL / SNP / Undefined variant.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/sequence-quality-standardSequence
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/sequence-quality-standardSequence
 		standardSequence: {
 			type: require('./codeableconcept.input'),
 			description: 'Gold standard sequence used for comparing against.'
@@ -47,7 +47,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./quantity.input'),
 			description: 'The score of an experimentally derived feature such as a p-value ([SO:0001685](http://www.sequenceontology.org/browser/current_svn/term/SO:0001685)).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/sequence-quality-method
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/sequence-quality-method
 		method: {
 			type: require('./codeableconcept.input'),
 			description: 'Which method is used to get sequence quality.'

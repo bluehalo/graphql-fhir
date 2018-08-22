@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SearchParameterResourceInputType = new GraphQLEnumType({
 	name: 'SearchParameterResourceInputType',
 	values: {
@@ -41,7 +40,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A free text natural language name identifying the search parameter.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of this search parameter definition.'
@@ -94,7 +93,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The code used in the URL or the parameter name in a parameters resource for this search parameter.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		base: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The base resource type that this search parameter refers to.'
@@ -103,7 +102,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The base resource type that this search parameter refers to.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/search-param-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/search-param-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of value a search parameter refers to, and how the content is interpreted.'
@@ -128,7 +127,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An XPath expression that returns a set of elements for the search parameter.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/search-xpath-usage
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/search-xpath-usage
 		xpathUsage: {
 			type: CodeScalar,
 			description: 'How the search parameter relates to the set of elements returned by evaluating the xpath query.'
@@ -137,7 +136,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'How the search parameter relates to the set of elements returned by evaluating the xpath query.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		target: {
 			type: new GraphQLList(CodeScalar),
 			description: 'Types of resource (if a resource is referenced).'

@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const VisionPrescriptionArgs = require('../../parameters/visionprescription.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	visionprescriptionResolver,
 	visionprescriptionListResolver,
 	visionprescriptionInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'VisionPrescription',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.VisionPrescriptionQuery
@@ -19,7 +31,7 @@ const {
 module.exports.VisionPrescriptionQuery = {
 	args: Object.assign({}, CommonArgs, VisionPrescriptionArgs),
 	description: 'Query for a single VisionPrescription',
-	resolve: visionprescriptionResolver,
+	resolve: scopeInvariant(scopeOptions, visionprescriptionResolver),
 	type: VisionPrescriptionSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.VisionPrescriptionQuery = {
 module.exports.VisionPrescriptionListQuery = {
 	args: Object.assign({}, CommonArgs, VisionPrescriptionArgs),
 	description: 'Query for multiple VisionPrescriptions',
-	resolve: visionprescriptionListResolver,
+	resolve: scopeInvariant(scopeOptions, visionprescriptionListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.VisionPrescriptionListQuery = {
  */
 module.exports.VisionPrescriptionInstanceQuery = {
 	description: 'Get information about a single VisionPrescription',
-	resolve: visionprescriptionInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, visionprescriptionInstanceResolver),
 	type: VisionPrescriptionSchema
 };

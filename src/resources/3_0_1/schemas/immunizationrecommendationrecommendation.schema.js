@@ -22,12 +22,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The date the immunization recommendation was created.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/vaccine-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/vaccine-code
 		vaccineCode: {
 			type: require('./codeableconcept.schema'),
 			description: 'Vaccine that pertains to the recommendation.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-recommendation-target-disease
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-recommendation-target-disease
 		targetDisease: {
 			type: require('./codeableconcept.schema'),
 			description: 'The targeted disease for the recommendation.'
@@ -40,7 +40,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The next recommended dose number (e.g. dose 2 is the next recommended dose).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-recommendation-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-recommendation-status
 		forecastStatus: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Vaccine administration status.'

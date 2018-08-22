@@ -29,7 +29,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Date of the initial placement.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/oral-prosthodontic-material
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/oral-prosthodontic-material
 		priorMaterial: {
 			type: require('./coding.schema'),
 			description: 'Material of the prior denture or bridge prosthesis. (Oral).'

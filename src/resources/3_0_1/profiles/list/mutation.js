@@ -7,12 +7,26 @@ const ListSchema = require('../../schemas/list.schema');
 // Inputs
 const ListInput = require('../../inputs/list.input');
 
-
+// Resolvers
 const {
 	listCreateResolver,
 	listUpdateResolver,
 	listDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'List',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a List record.'
 	},
 	resource: {
-		type: ListInput,
+		type: new GraphQLNonNull(ListInput),
 		description: 'List Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a List record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ListCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a List',
-	resolve: listCreateResolver,
+	resolve: scopeInvariant(scopeOptions, listCreateResolver),
 	type: ListSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ListCreateMutation = {
 module.exports.ListUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Lists',
-	resolve: listUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, listUpdateResolver),
 	type: ListSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ListUpdateMutation = {
 module.exports.ListDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single List',
-	resolve: listDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, listDeleteResolver),
 	type: ListSchema
 };

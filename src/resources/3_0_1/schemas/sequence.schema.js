@@ -3,7 +3,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let SequenceResourceType = new GraphQLEnumType({
 	name: 'SequenceResourceType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'A unique identifier for this particular sequence instance. This is a FHIR-defined id.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/sequence-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/sequence-type
 		type: {
 			type: CodeScalar,
 			description: 'Amino Acid Sequence/ DNA Sequence / RNA Sequence.'

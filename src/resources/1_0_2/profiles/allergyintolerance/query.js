@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const AllergyIntoleranceArgs = require('../../parameters/allergyintolerance.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	allergyintoleranceResolver,
 	allergyintoleranceListResolver,
 	allergyintoleranceInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'AllergyIntolerance',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.AllergyIntoleranceQuery
@@ -19,7 +31,7 @@ const {
 module.exports.AllergyIntoleranceQuery = {
 	args: Object.assign({}, CommonArgs, AllergyIntoleranceArgs),
 	description: 'Query for a single AllergyIntolerance',
-	resolve: allergyintoleranceResolver,
+	resolve: scopeInvariant(scopeOptions, allergyintoleranceResolver),
 	type: AllergyIntoleranceSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.AllergyIntoleranceQuery = {
 module.exports.AllergyIntoleranceListQuery = {
 	args: Object.assign({}, CommonArgs, AllergyIntoleranceArgs),
 	description: 'Query for multiple AllergyIntolerances',
-	resolve: allergyintoleranceListResolver,
+	resolve: scopeInvariant(scopeOptions, allergyintoleranceListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.AllergyIntoleranceListQuery = {
  */
 module.exports.AllergyIntoleranceInstanceQuery = {
 	description: 'Get information about a single AllergyIntolerance',
-	resolve: allergyintoleranceInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, allergyintoleranceInstanceResolver),
 	type: AllergyIntoleranceSchema
 };

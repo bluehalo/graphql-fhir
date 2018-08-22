@@ -3,7 +3,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let CarePlanResourceType = new GraphQLEnumType({
 	name: 'CarePlanResourceType',
 	values: {
@@ -43,7 +42,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'A larger care plan of which this particular care plan is a component or step.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.'
@@ -52,7 +51,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-intent
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-intent
 		intent: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates the level of authority/intentionality associated with the care plan and where the care plan fits into the workflow chain.'
@@ -61,7 +60,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Indicates the level of authority/intentionality associated with the care plan and where the care plan fits into the workflow chain.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-category
 		category: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Identifies what \'kind\' of plan this is to support differentiation between multiple co-existing plans; e.g. \'Home health\', \'psychiatric\', \'asthma\', \'disease management\', \'wellness plan\', etc.'

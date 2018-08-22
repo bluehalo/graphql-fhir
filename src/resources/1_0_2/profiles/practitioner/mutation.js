@@ -7,12 +7,26 @@ const PractitionerSchema = require('../../schemas/practitioner.schema');
 // Inputs
 const PractitionerInput = require('../../inputs/practitioner.input');
 
-
+// Resolvers
 const {
 	practitionerCreateResolver,
 	practitionerUpdateResolver,
 	practitionerDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Practitioner',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Practitioner record.'
 	},
 	resource: {
-		type: PractitionerInput,
+		type: new GraphQLNonNull(PractitionerInput),
 		description: 'Practitioner Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Practitioner record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.PractitionerCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Practitioner',
-	resolve: practitionerCreateResolver,
+	resolve: scopeInvariant(scopeOptions, practitionerCreateResolver),
 	type: PractitionerSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.PractitionerCreateMutation = {
 module.exports.PractitionerUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Practitioners',
-	resolve: practitionerUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, practitionerUpdateResolver),
 	type: PractitionerSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.PractitionerUpdateMutation = {
 module.exports.PractitionerDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Practitioner',
-	resolve: practitionerDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, practitionerDeleteResolver),
 	type: PractitionerSchema
 };

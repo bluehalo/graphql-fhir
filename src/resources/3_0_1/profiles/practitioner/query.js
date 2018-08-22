@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const PractitionerArgs = require('../../parameters/practitioner.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	practitionerResolver,
 	practitionerListResolver,
 	practitionerInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Practitioner',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.PractitionerQuery
@@ -19,7 +31,7 @@ const {
 module.exports.PractitionerQuery = {
 	args: Object.assign({}, CommonArgs, PractitionerArgs),
 	description: 'Query for a single Practitioner',
-	resolve: practitionerResolver,
+	resolve: scopeInvariant(scopeOptions, practitionerResolver),
 	type: PractitionerSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.PractitionerQuery = {
 module.exports.PractitionerListQuery = {
 	args: Object.assign({}, CommonArgs, PractitionerArgs),
 	description: 'Query for multiple Practitioners',
-	resolve: practitionerListResolver,
+	resolve: scopeInvariant(scopeOptions, practitionerListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.PractitionerListQuery = {
  */
 module.exports.PractitionerInstanceQuery = {
 	description: 'Get information about a single Practitioner',
-	resolve: practitionerInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, practitionerInstanceResolver),
 	type: PractitionerSchema
 };

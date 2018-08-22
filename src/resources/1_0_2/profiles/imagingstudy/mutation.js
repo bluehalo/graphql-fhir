@@ -7,12 +7,26 @@ const ImagingStudySchema = require('../../schemas/imagingstudy.schema');
 // Inputs
 const ImagingStudyInput = require('../../inputs/imagingstudy.input');
 
-
+// Resolvers
 const {
 	imagingstudyCreateResolver,
 	imagingstudyUpdateResolver,
 	imagingstudyDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ImagingStudy',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ImagingStudy record.'
 	},
 	resource: {
-		type: ImagingStudyInput,
+		type: new GraphQLNonNull(ImagingStudyInput),
 		description: 'ImagingStudy Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ImagingStudy record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ImagingStudyCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ImagingStudy',
-	resolve: imagingstudyCreateResolver,
+	resolve: scopeInvariant(scopeOptions, imagingstudyCreateResolver),
 	type: ImagingStudySchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ImagingStudyCreateMutation = {
 module.exports.ImagingStudyUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ImagingStudys',
-	resolve: imagingstudyUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, imagingstudyUpdateResolver),
 	type: ImagingStudySchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ImagingStudyUpdateMutation = {
 module.exports.ImagingStudyDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ImagingStudy',
-	resolve: imagingstudyDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, imagingstudyDeleteResolver),
 	type: ImagingStudySchema
 };

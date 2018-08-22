@@ -6,7 +6,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let AppointmentResourceInputType = new GraphQLEnumType({
 	name: 'AppointmentResourceInputType',
 	values: {
@@ -30,7 +29,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'This records identifiers associated with this appointment concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/appointmentstatus
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/appointmentstatus
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status.'
@@ -39,12 +38,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'The type of appointment that is being booked (This may also be associated with participants for location, and/or a HealthcareService).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-reason
 		reason: {
 			type: require('./codeableconcept.input'),
 			description: 'The reason that this appointment is being scheduled. This is more clinical than administrative.'

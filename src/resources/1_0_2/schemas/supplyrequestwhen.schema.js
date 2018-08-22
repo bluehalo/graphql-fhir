@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'SupplyRequestWhen',
 	description: 'When the request should be fulfilled.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-when
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/supplyrequest-when
 		code: {
 			type: require('./codeableconcept.schema'),
 			description: 'Code indicating when the request should be fulfilled.'

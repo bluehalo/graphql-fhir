@@ -13,12 +13,12 @@ module.exports = new GraphQLObjectType({
 	name: 'ConformanceMessagingEvent',
 	description: 'A description of the solution\'s support for an event at this end-point.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/message-events
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/message-events
 		code: {
 			type: new GraphQLNonNull(require('./coding.schema')),
 			description: 'A coded identifier of a supported messaging event.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/message-significance-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/message-significance-category
 		category: {
 			type: CodeScalar,
 			description: 'The impact of the content of the message.'
@@ -27,7 +27,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The impact of the content of the message.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/message-conformance-event-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/message-conformance-event-mode
 		mode: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The mode of this event declaration - whether application is sender or receiver.'
@@ -36,7 +36,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The mode of this event declaration - whether application is sender or receiver.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		focus: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'A resource associated with the event.  This is the resource that defines the event.'

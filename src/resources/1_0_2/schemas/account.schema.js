@@ -3,7 +3,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let AccountResourceType = new GraphQLEnumType({
 	name: 'AccountResourceType',
 	values: {
@@ -39,7 +38,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./codeableconcept.schema'),
 			description: 'Categorizes the account for reporting and searching purposes.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/account-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/account-status
 		status: {
 			type: CodeScalar,
 			description: 'Indicates whether the account is presently used/useable or not.'

@@ -33,12 +33,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The practitioner who is billing and responsible for the claimed services rendered to the patient.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-careteamrole
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-careteamrole
 		role: {
 			type: require('./codeableconcept.input'),
 			description: 'The lead, assisting or supervising practitioner and their discipline if a multidisiplinary team.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/provider-qualification
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/provider-qualification
 		qualification: {
 			type: require('./codeableconcept.input'),
 			description: 'The qualification which is applicable for this service.'

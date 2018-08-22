@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ConformanceRestResourceInteraction',
 	description: 'Identifies a restful operation supported by the solution.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/type-restful-interaction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/type-restful-interaction
 		code: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Coded identifier of the operation, supported by the system resource.'

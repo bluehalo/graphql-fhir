@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const CodeSystemArgs = require('../../parameters/codesystem.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	codesystemResolver,
 	codesystemListResolver,
 	codesystemInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'CodeSystem',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.CodeSystemQuery
@@ -19,7 +31,7 @@ const {
 module.exports.CodeSystemQuery = {
 	args: Object.assign({}, CommonArgs, CodeSystemArgs),
 	description: 'Query for a single CodeSystem',
-	resolve: codesystemResolver,
+	resolve: scopeInvariant(scopeOptions, codesystemResolver),
 	type: CodeSystemSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.CodeSystemQuery = {
 module.exports.CodeSystemListQuery = {
 	args: Object.assign({}, CommonArgs, CodeSystemArgs),
 	description: 'Query for multiple CodeSystems',
-	resolve: codesystemListResolver,
+	resolve: scopeInvariant(scopeOptions, codesystemListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.CodeSystemListQuery = {
  */
 module.exports.CodeSystemInstanceQuery = {
 	description: 'Get information about a single CodeSystem',
-	resolve: codesystemInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, codesystemInstanceResolver),
 	type: CodeSystemSchema
 };

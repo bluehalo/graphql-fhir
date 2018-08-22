@@ -2,7 +2,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let OperationOutcomeResourceInputType = new GraphQLEnumType({
 	name: 'OperationOutcomeResourceInputType',
 	values: {

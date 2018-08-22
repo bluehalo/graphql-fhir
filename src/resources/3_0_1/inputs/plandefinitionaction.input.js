@@ -115,12 +115,12 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./plandefinitionactionparticipant.input')),
 			description: 'Indicates who should participate in performing the action described.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/action-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-type
 		type: {
 			type: require('./coding.input'),
 			description: 'The type of action to perform (create, update, remove).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/action-grouping-behavior
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-grouping-behavior
 		groupingBehavior: {
 			type: CodeScalar,
 			description: 'Defines the grouping behavior for the action and its children.'
@@ -129,7 +129,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Defines the grouping behavior for the action and its children.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/action-selection-behavior
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-selection-behavior
 		selectionBehavior: {
 			type: CodeScalar,
 			description: 'Defines the selection behavior for the action and its children.'
@@ -138,7 +138,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Defines the selection behavior for the action and its children.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/action-required-behavior
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-required-behavior
 		requiredBehavior: {
 			type: CodeScalar,
 			description: 'Defines the requiredness behavior for the action.'
@@ -147,7 +147,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Defines the requiredness behavior for the action.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/action-precheck-behavior
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-precheck-behavior
 		precheckBehavior: {
 			type: CodeScalar,
 			description: 'Defines whether the action should usually be preselected.'
@@ -156,7 +156,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Defines whether the action should usually be preselected.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/action-cardinality-behavior
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-cardinality-behavior
 		cardinalityBehavior: {
 			type: CodeScalar,
 			description: 'Defines whether the action can be selected multiple times.'

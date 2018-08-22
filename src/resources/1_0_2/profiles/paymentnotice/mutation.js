@@ -7,12 +7,26 @@ const PaymentNoticeSchema = require('../../schemas/paymentnotice.schema');
 // Inputs
 const PaymentNoticeInput = require('../../inputs/paymentnotice.input');
 
-
+// Resolvers
 const {
 	paymentnoticeCreateResolver,
 	paymentnoticeUpdateResolver,
 	paymentnoticeDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'PaymentNotice',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a PaymentNotice record.'
 	},
 	resource: {
-		type: PaymentNoticeInput,
+		type: new GraphQLNonNull(PaymentNoticeInput),
 		description: 'PaymentNotice Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a PaymentNotice record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.PaymentNoticeCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a PaymentNotice',
-	resolve: paymentnoticeCreateResolver,
+	resolve: scopeInvariant(scopeOptions, paymentnoticeCreateResolver),
 	type: PaymentNoticeSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.PaymentNoticeCreateMutation = {
 module.exports.PaymentNoticeUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple PaymentNotices',
-	resolve: paymentnoticeUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, paymentnoticeUpdateResolver),
 	type: PaymentNoticeSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.PaymentNoticeUpdateMutation = {
 module.exports.PaymentNoticeDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single PaymentNotice',
-	resolve: paymentnoticeDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, paymentnoticeDeleteResolver),
 	type: PaymentNoticeSchema
 };

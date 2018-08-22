@@ -17,7 +17,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLNonNull(require('./reference.input')),
 			description: 'A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/diagnosis-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/diagnosis-role
 		role: {
 			type: require('./codeableconcept.input'),
 			description: 'Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge …).'

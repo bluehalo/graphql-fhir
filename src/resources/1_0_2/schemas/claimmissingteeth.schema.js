@@ -13,12 +13,12 @@ module.exports = new GraphQLObjectType({
 	name: 'ClaimMissingTeeth',
 	description: 'A list of teeth which would be expected but are not found due to having been previously  extracted or for other reasons.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/teeth
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/teeth
 		tooth: {
 			type: new GraphQLNonNull(require('./coding.schema')),
 			description: 'The code identifying which tooth is missing.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/missing-tooth-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/missing-tooth-reason
 		reason: {
 			type: require('./coding.schema'),
 			description: 'Missing reason may be: E-extraction, O-other.'

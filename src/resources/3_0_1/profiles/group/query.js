@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const GroupArgs = require('../../parameters/group.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	groupResolver,
 	groupListResolver,
 	groupInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Group',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.GroupQuery
@@ -19,7 +31,7 @@ const {
 module.exports.GroupQuery = {
 	args: Object.assign({}, CommonArgs, GroupArgs),
 	description: 'Query for a single Group',
-	resolve: groupResolver,
+	resolve: scopeInvariant(scopeOptions, groupResolver),
 	type: GroupSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.GroupQuery = {
 module.exports.GroupListQuery = {
 	args: Object.assign({}, CommonArgs, GroupArgs),
 	description: 'Query for multiple Groups',
-	resolve: groupListResolver,
+	resolve: scopeInvariant(scopeOptions, groupListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.GroupListQuery = {
  */
 module.exports.GroupInstanceQuery = {
 	description: 'Get information about a single Group',
-	resolve: groupInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, groupInstanceResolver),
 	type: GroupSchema
 };

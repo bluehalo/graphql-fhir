@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ConsentResourceInputType = new GraphQLEnumType({
 	name: 'ConsentResourceInputType',
 	values: {
@@ -29,7 +28,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./identifier.input'),
 			description: 'Unique identifier for this copy of the Consent Statement.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/consent-state-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/consent-state-codes
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates the current state of this consent.'
@@ -38,7 +37,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Indicates the current state of this consent.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/consent-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/consent-category
 		category: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'A classification of the type of consents found in the statement. This element supports indexing and retrieval of consent statements.'
@@ -67,7 +66,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./consentactor.input')),
 			description: 'Who or what is controlled by this consent. Use group to identify a set of actors by some property they share (e.g. \'admitting officers\').'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/consent-action
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/consent-action
 		action: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Actions controlled by this consent.'
@@ -100,12 +99,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A referece to the specific computable policy.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
 		securityLabel: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'A set of security labels that define which resources are controlled by this consent. If more than one label is specified, all resources must have all the specified labels.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse
 		purpose: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'The context of the activities a user is taking - why the user is accessing the data - that are controlled by this consent.'

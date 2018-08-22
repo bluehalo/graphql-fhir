@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Condition',
-		path: '/3_0_1/Condition/:id',
+		path: '/1_0_2/Condition/:id',
 		query: ConditionInstanceQuery
 	}
 };

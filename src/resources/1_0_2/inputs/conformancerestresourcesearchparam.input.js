@@ -30,7 +30,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'An absolute URI that is a formal reference to where this parameter was first defined, so that a client can be confident of the meaning of the search parameter (a reference to [[[SearchParameter.url]]]).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/search-param-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/search-param-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of value a search parameter refers to, and how the content is interpreted.'
@@ -47,7 +47,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'This allows documentation of any distinct behaviors about how the search parameter is used.  For example, text matching algorithms.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
 		target: {
 			type: new GraphQLList(CodeScalar),
 			description: 'Types of resource (if a resource is referenced).'
@@ -56,7 +56,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Types of resource (if a resource is referenced).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/search-modifier-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/search-modifier-code
 		modifier: {
 			type: new GraphQLList(CodeScalar),
 			description: 'A modifier supported for the search parameter.'

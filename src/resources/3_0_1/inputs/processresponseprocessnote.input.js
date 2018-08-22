@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ProcessResponseProcessNote_Input',
 	description: 'Suite of processing notes or additional requirements if the processing has been held.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'The note purpose: Print/Display.'

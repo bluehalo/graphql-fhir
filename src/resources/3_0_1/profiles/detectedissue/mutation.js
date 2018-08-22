@@ -7,12 +7,26 @@ const DetectedIssueSchema = require('../../schemas/detectedissue.schema');
 // Inputs
 const DetectedIssueInput = require('../../inputs/detectedissue.input');
 
-
+// Resolvers
 const {
 	detectedissueCreateResolver,
 	detectedissueUpdateResolver,
 	detectedissueDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'DetectedIssue',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a DetectedIssue record.'
 	},
 	resource: {
-		type: DetectedIssueInput,
+		type: new GraphQLNonNull(DetectedIssueInput),
 		description: 'DetectedIssue Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a DetectedIssue record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.DetectedIssueCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DetectedIssue',
-	resolve: detectedissueCreateResolver,
+	resolve: scopeInvariant(scopeOptions, detectedissueCreateResolver),
 	type: DetectedIssueSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.DetectedIssueCreateMutation = {
 module.exports.DetectedIssueUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DetectedIssues',
-	resolve: detectedissueUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, detectedissueUpdateResolver),
 	type: DetectedIssueSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.DetectedIssueUpdateMutation = {
 module.exports.DetectedIssueDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DetectedIssue',
-	resolve: detectedissueDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, detectedissueDeleteResolver),
 	type: DetectedIssueSchema
 };

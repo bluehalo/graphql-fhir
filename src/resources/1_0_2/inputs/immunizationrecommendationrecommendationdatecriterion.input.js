@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ImmunizationRecommendationRecommendationDateCriterion_Input',
 	description: 'Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-recommendation-date-criterion
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-recommendation-date-criterion
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'Date classification of recommendation.  For example, earliest date to give, latest date to give, etc.'

@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DeviceResourceInputType = new GraphQLEnumType({
 	name: 'DeviceResourceInputType',
 	values: {
@@ -37,7 +36,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./annotation.input')),
 			description: 'Descriptive information, usage information or implantation information that is not captured in an existing element.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/devicestatus
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/devicestatus
 		status: {
 			type: CodeScalar,
 			description: 'Status of the Device availability.'

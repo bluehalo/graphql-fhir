@@ -2,7 +2,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DomainResourceResourceType = new GraphQLEnumType({
 	name: 'DomainResourceResourceType',
 	values: {

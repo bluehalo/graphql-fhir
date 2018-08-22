@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const StructureMapArgs = require('../../parameters/structuremap.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	structuremapResolver,
 	structuremapListResolver,
 	structuremapInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'StructureMap',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.StructureMapQuery
@@ -19,7 +31,7 @@ const {
 module.exports.StructureMapQuery = {
 	args: Object.assign({}, CommonArgs, StructureMapArgs),
 	description: 'Query for a single StructureMap',
-	resolve: structuremapResolver,
+	resolve: scopeInvariant(scopeOptions, structuremapResolver),
 	type: StructureMapSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.StructureMapQuery = {
 module.exports.StructureMapListQuery = {
 	args: Object.assign({}, CommonArgs, StructureMapArgs),
 	description: 'Query for multiple StructureMaps',
-	resolve: structuremapListResolver,
+	resolve: scopeInvariant(scopeOptions, structuremapListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.StructureMapListQuery = {
  */
 module.exports.StructureMapInstanceQuery = {
 	description: 'Get information about a single StructureMap',
-	resolve: structuremapInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, structuremapInstanceResolver),
 	type: StructureMapSchema
 };

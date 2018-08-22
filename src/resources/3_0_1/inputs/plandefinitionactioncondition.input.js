@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'PlanDefinitionActionCondition_Input',
 	description: 'An expression that describes applicability criteria, or start/stop conditions for the action.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/action-condition-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-condition-kind
 		kind: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The kind of condition.'

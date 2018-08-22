@@ -2,7 +2,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let BodySiteResourceType = new GraphQLEnumType({
 	name: 'BodySiteResourceType',
 	values: {
@@ -30,12 +29,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'Identifier for this instance of the anatomical location.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		code: {
 			type: require('./codeableconcept.schema'),
 			description: 'Named anatomical location - ideally coded where possible.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/bodysite-relative-location
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/bodysite-relative-location
 		modifier: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Modifier to refine the anatomical location.  These include modifiers for laterality, relative location, directionality, number, and plane.'

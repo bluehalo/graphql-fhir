@@ -3,7 +3,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let EpisodeOfCareResourceType = new GraphQLEnumType({
 	name: 'EpisodeOfCareResourceType',
 	values: {
@@ -27,7 +26,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'The EpisodeOfCare may be known by different identifiers for different contexts of use, such as when an external agency is tracking the Episode for funding purposes.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/episode-of-care-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/episode-of-care-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'planned | waitlist | active | onhold | finished | cancelled.'
@@ -40,7 +39,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./episodeofcarestatushistory.schema')),
 			description: 'The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/episodeofcare-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/episodeofcare-type
 		type: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A classification of the type of episode of care; e.g. specialist referral, disease management, type of funded care.'

@@ -7,12 +7,26 @@ const EligibilityResponseSchema = require('../../schemas/eligibilityresponse.sch
 // Inputs
 const EligibilityResponseInput = require('../../inputs/eligibilityresponse.input');
 
-
+// Resolvers
 const {
 	eligibilityresponseCreateResolver,
 	eligibilityresponseUpdateResolver,
 	eligibilityresponseDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'EligibilityResponse',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a EligibilityResponse record.'
 	},
 	resource: {
-		type: EligibilityResponseInput,
+		type: new GraphQLNonNull(EligibilityResponseInput),
 		description: 'EligibilityResponse Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a EligibilityResponse record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.EligibilityResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a EligibilityResponse',
-	resolve: eligibilityresponseCreateResolver,
+	resolve: scopeInvariant(scopeOptions, eligibilityresponseCreateResolver),
 	type: EligibilityResponseSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.EligibilityResponseCreateMutation = {
 module.exports.EligibilityResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple EligibilityResponses',
-	resolve: eligibilityresponseUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, eligibilityresponseUpdateResolver),
 	type: EligibilityResponseSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.EligibilityResponseUpdateMutation = {
 module.exports.EligibilityResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single EligibilityResponse',
-	resolve: eligibilityresponseDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, eligibilityresponseDeleteResolver),
 	type: EligibilityResponseSchema
 };

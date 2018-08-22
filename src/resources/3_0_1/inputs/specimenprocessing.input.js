@@ -21,7 +21,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Textual description of procedure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-processing-procedure
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-processing-procedure
 		procedure: {
 			type: require('./codeableconcept.input'),
 			description: 'A coded value specifying the procedure used to process the specimen.'

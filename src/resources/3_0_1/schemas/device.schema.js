@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DeviceResourceType = new GraphQLEnumType({
 	name: 'DeviceResourceType',
 	values: {
@@ -33,7 +32,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./deviceudi.schema'),
 			description: '[Unique device identifier (UDI)](device.html#5.11.3.2.2) assigned to device label or package.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/device-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/device-status
 		status: {
 			type: CodeScalar,
 			description: 'Status of the Device availability.'
@@ -42,7 +41,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Status of the Device availability.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/device-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/device-kind
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'Code or identifier to identify a kind of device.'
@@ -123,7 +122,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./annotation.schema')),
 			description: 'Descriptive information, usage information or implantation information that is not captured in an existing element.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/device-safety
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/device-safety
 		safety: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Provides additional safety characteristics about a medical device.  For example devices containing latex.'

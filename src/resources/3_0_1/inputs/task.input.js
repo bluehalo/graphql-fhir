@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let TaskResourceInputType = new GraphQLEnumType({
 	name: 'TaskResourceInputType',
 	values: {
@@ -53,7 +52,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'Task that this particular task is part of.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/task-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/task-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The current status of the task.'
@@ -70,7 +69,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./codeableconcept.input'),
 			description: 'Contains business-specific nuances of the business state.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-intent
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-intent
 		intent: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates the \'level\' of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc.'
@@ -79,7 +78,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Indicates the \'level\' of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
 		priority: {
 			type: CodeScalar,
 			description: 'Indicates how quickly the Task should be addressed with respect to other requests.'
@@ -136,7 +135,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./taskrequester.input'),
 			description: 'The creator of the task.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/task-performer-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/task-performer-type
 		performerType: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The type of participant that can execute the task.'

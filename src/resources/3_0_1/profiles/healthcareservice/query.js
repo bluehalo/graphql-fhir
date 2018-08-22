@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const HealthcareServiceArgs = require('../../parameters/healthcareservice.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	healthcareserviceResolver,
 	healthcareserviceListResolver,
 	healthcareserviceInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'HealthcareService',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.HealthcareServiceQuery
@@ -19,7 +31,7 @@ const {
 module.exports.HealthcareServiceQuery = {
 	args: Object.assign({}, CommonArgs, HealthcareServiceArgs),
 	description: 'Query for a single HealthcareService',
-	resolve: healthcareserviceResolver,
+	resolve: scopeInvariant(scopeOptions, healthcareserviceResolver),
 	type: HealthcareServiceSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.HealthcareServiceQuery = {
 module.exports.HealthcareServiceListQuery = {
 	args: Object.assign({}, CommonArgs, HealthcareServiceArgs),
 	description: 'Query for multiple HealthcareServices',
-	resolve: healthcareserviceListResolver,
+	resolve: scopeInvariant(scopeOptions, healthcareserviceListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.HealthcareServiceListQuery = {
  */
 module.exports.HealthcareServiceInstanceQuery = {
 	description: 'Get information about a single HealthcareService',
-	resolve: healthcareserviceInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, healthcareserviceInstanceResolver),
 	type: HealthcareServiceSchema
 };

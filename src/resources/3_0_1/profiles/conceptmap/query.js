@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ConceptMapArgs = require('../../parameters/conceptmap.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	conceptmapResolver,
 	conceptmapListResolver,
 	conceptmapInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ConceptMap',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.ConceptMapQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ConceptMapQuery = {
 	args: Object.assign({}, CommonArgs, ConceptMapArgs),
 	description: 'Query for a single ConceptMap',
-	resolve: conceptmapResolver,
+	resolve: scopeInvariant(scopeOptions, conceptmapResolver),
 	type: ConceptMapSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ConceptMapQuery = {
 module.exports.ConceptMapListQuery = {
 	args: Object.assign({}, CommonArgs, ConceptMapArgs),
 	description: 'Query for multiple ConceptMaps',
-	resolve: conceptmapListResolver,
+	resolve: scopeInvariant(scopeOptions, conceptmapListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ConceptMapListQuery = {
  */
 module.exports.ConceptMapInstanceQuery = {
 	description: 'Get information about a single ConceptMap',
-	resolve: conceptmapInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, conceptmapInstanceResolver),
 	type: ConceptMapSchema
 };

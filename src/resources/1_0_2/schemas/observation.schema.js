@@ -6,7 +6,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ObservationResourceType = new GraphQLEnumType({
 	name: 'ObservationResourceType',
 	values: {
@@ -30,7 +29,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'A unique identifier for the simple observation instance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/observation-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the result value.'
@@ -39,12 +38,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The status of the result value.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/observation-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-category
 		category: {
 			type: require('./codeableconcept.schema'),
 			description: 'A code that classifies the general type of observation being made.  This is used  for searching, sorting and display purposes.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/observation-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-codes
 		code: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Describes what was observed. Sometimes this is called the observation \'name\'.'
@@ -133,12 +132,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./period.schema'),
 			description: 'The information determined as a result of making the observation, if the information has a simple value.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/observation-valueabsentreason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-valueabsentreason
 		dataAbsentReason: {
 			type: require('./codeableconcept.schema'),
 			description: 'Provides a reason why the expected value in the element Observation.value[x] is missing.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/observation-interpretation
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-interpretation
 		interpretation: {
 			type: require('./codeableconcept.schema'),
 			description: 'The assessment made based on the result of the observation.  Intended as a simple compact code often placed adjacent to the result value in reports and flow sheets to signal the meaning/normalcy status of the result. Otherwise known as abnormal flag.'
@@ -151,12 +150,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'May include statements about significant, unexpected or unreliable values, or information about the source of the value where this may be relevant to the interpretation of the result.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		bodySite: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates the site on the subject\'s body where the observation was made (i.e. the target site).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/observation-methods
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-methods
 		method: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates the mechanism used to perform the observation.'

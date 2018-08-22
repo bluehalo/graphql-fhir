@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let GuidanceResponseResourceInputType = new GraphQLEnumType({
 	name: 'GuidanceResponseResourceInputType',
 	values: {
@@ -41,7 +40,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLNonNull(require('./reference.input')),
 			description: 'A reference to the knowledge module that was invoked.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/guidance-response-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/guidance-response-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the response. If the evaluation is completed successfully, the status will indicate success. However, in order to complete the evaluation, the engine may require more information. In this case, the status will be data-required, and the response will contain a description of the additional required information. If the evaluation completed successfully, but the engine determines that a potentially more accurate response could be provided if more data was available, the status will be data-requested, and the response will contain a description of the additional requested information.'

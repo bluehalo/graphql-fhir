@@ -6,7 +6,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ImagingStudyResourceType = new GraphQLEnumType({
 	name: 'ImagingStudyResourceType',
 	values: {
@@ -42,7 +41,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'Other identifiers for the study.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/instance-availability
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/instance-availability
 		availability: {
 			type: CodeScalar,
 			description: 'Availability of study (online, offline, or nearline).'
@@ -51,7 +50,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Availability of study (online, offline, or nearline).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/dicom-cid29
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/dicom-cid29
 		modalityList: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19).'
@@ -108,12 +107,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'A reference to the performed Procedure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-code
 		procedureCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The code for the performed procedure type.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/procedure-reason
 		reason: {
 			type: require('./codeableconcept.schema'),
 			description: 'Description of clinical condition indicating why the ImagingStudy was requested.'

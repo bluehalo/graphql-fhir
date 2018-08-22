@@ -25,7 +25,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./timingrepeat.input'),
 			description: 'A set of rules that describe when the event should occur.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/timing-abbreviation
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/timing-abbreviation
 		code: {
 			type: require('./codeableconcept.input'),
 			description: 'A code for the timing pattern. Some codes such as BID are ubiquitous, but many institutions define their own additional codes.'

@@ -24,7 +24,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Textual description of the container.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-container-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-container-type
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'The type of container associated with the specimen (e.g. slide, aliquot, etc.).'
@@ -37,12 +37,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./quantity.input'),
 			description: 'The quantity of specimen in the container; may be volume, dimensions, or other appropriate measurements, depending on the specimen type.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0371
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0371
 		additiveCodeableConcept: {
 			type: require('./codeableconcept.input'),
 			description: 'Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0371
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v2-0371
 		additiveReference: {
 			type: require('./reference.input'),
 			description: 'Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.'

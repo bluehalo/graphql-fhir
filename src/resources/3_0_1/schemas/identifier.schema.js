@@ -14,7 +14,7 @@ module.exports = new GraphQLObjectType({
 	name: 'Identifier',
 	description: 'Base StructureDefinition for Identifier Type.',
 	fields: () => extendSchema(require('./element.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-use
 		use: {
 			type: CodeScalar,
 			description: 'The purpose of this identifier.'
@@ -23,7 +23,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The purpose of this identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-type
 		type: {
 			type: require('./codeableconcept.schema'),
 			description: 'A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.'

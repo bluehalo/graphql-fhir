@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let EligibilityRequestResourceType = new GraphQLEnumType({
 	name: 'EligibilityRequestResourceType',
 	values: {
@@ -29,7 +28,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./identifier.schema')),
 			description: 'The Response business identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/fm-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the resource instance.'
@@ -38,7 +37,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The status of the resource instance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/process-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/process-priority
 		priority: {
 			type: require('./codeableconcept.schema'),
 			description: 'Immediate (STAT), best effort (NORMAL), deferred (DEFER).'
@@ -99,12 +98,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The contract number of a business agreement which describes the terms and conditions.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-category
 		benefitCategory: {
 			type: require('./codeableconcept.schema'),
 			description: 'Dental, Vision, Medical, Pharmacy, Rehab etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-subcategory
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-subcategory
 		benefitSubCategory: {
 			type: require('./codeableconcept.schema'),
 			description: 'Dental: basic, major, ortho; Vision exam, glasses, contacts; etc.'

@@ -7,12 +7,26 @@ const MedicationOrderSchema = require('../../schemas/medicationorder.schema');
 // Inputs
 const MedicationOrderInput = require('../../inputs/medicationorder.input');
 
-
+// Resolvers
 const {
 	medicationorderCreateResolver,
 	medicationorderUpdateResolver,
 	medicationorderDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'MedicationOrder',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a MedicationOrder record.'
 	},
 	resource: {
-		type: MedicationOrderInput,
+		type: new GraphQLNonNull(MedicationOrderInput),
 		description: 'MedicationOrder Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a MedicationOrder record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.MedicationOrderCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MedicationOrder',
-	resolve: medicationorderCreateResolver,
+	resolve: scopeInvariant(scopeOptions, medicationorderCreateResolver),
 	type: MedicationOrderSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.MedicationOrderCreateMutation = {
 module.exports.MedicationOrderUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MedicationOrders',
-	resolve: medicationorderUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, medicationorderUpdateResolver),
 	type: MedicationOrderSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.MedicationOrderUpdateMutation = {
 module.exports.MedicationOrderDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MedicationOrder',
-	resolve: medicationorderDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, medicationorderDeleteResolver),
 	type: MedicationOrderSchema
 };

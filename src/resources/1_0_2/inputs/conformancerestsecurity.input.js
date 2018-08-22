@@ -20,7 +20,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Server adds CORS headers when responding to requests - this enables javascript applications to use the server.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/restful-security-service
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/restful-security-service
 		service: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Types of security services are supported/required by the system.'

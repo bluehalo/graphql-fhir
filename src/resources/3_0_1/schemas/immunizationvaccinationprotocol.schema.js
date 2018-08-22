@@ -49,17 +49,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The recommended number of doses to achieve immunity.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/vaccination-protocol-dose-target
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/vaccination-protocol-dose-target
 		targetDisease: {
 			type: new GraphQLList(new GraphQLNonNull(require('./codeableconcept.schema'))),
 			description: 'The targeted disease.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/vaccination-protocol-dose-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/vaccination-protocol-dose-status
 		doseStatus: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Indicates if the immunization event should \'count\' against  the protocol.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/vaccination-protocol-dose-status-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/vaccination-protocol-dose-status-reason
 		doseStatusReason: {
 			type: require('./codeableconcept.schema'),
 			description: 'Provides an explanation as to why an immunization event should or should not count against the protocol.'

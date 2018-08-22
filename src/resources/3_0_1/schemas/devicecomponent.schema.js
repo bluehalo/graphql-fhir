@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DeviceComponentResourceType = new GraphQLEnumType({
 	name: 'DeviceComponentResourceType',
 	values: {
@@ -48,17 +47,17 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The link to the parent resource. For example: Channel is linked to its VMD parent.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/operational-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/operational-status
 		operationalStatus: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The current operational status of the device. For example: On, Off, Standby, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/parameter-group
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/parameter-group
 		parameterGroup: {
 			type: require('./codeableconcept.schema'),
 			description: 'The parameter group supported by the current device component that is based on some nomenclature, e.g. cardiovascular.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/measurement-principle
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/measurement-principle
 		measurementPrinciple: {
 			type: CodeScalar,
 			description: 'The physical principle of the measurement. For example: thermal, chemical, acoustical, etc.'
@@ -71,7 +70,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./devicecomponentproductionspecification.schema')),
 			description: 'The production specification such as component revision, serial number, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/languages
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
 		languageCode: {
 			type: require('./codeableconcept.schema'),
 			description: 'The language code for the human-readable text string produced by the device. This language code will follow the IETF language tag. Example: en-US.'

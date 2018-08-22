@@ -7,12 +7,26 @@ const ResearchStudySchema = require('../../schemas/researchstudy.schema');
 // Inputs
 const ResearchStudyInput = require('../../inputs/researchstudy.input');
 
-
+// Resolvers
 const {
 	researchstudyCreateResolver,
 	researchstudyUpdateResolver,
 	researchstudyDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ResearchStudy',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ResearchStudy record.'
 	},
 	resource: {
-		type: ResearchStudyInput,
+		type: new GraphQLNonNull(ResearchStudyInput),
 		description: 'ResearchStudy Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ResearchStudy record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ResearchStudyCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ResearchStudy',
-	resolve: researchstudyCreateResolver,
+	resolve: scopeInvariant(scopeOptions, researchstudyCreateResolver),
 	type: ResearchStudySchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ResearchStudyCreateMutation = {
 module.exports.ResearchStudyUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ResearchStudys',
-	resolve: researchstudyUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, researchstudyUpdateResolver),
 	type: ResearchStudySchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ResearchStudyUpdateMutation = {
 module.exports.ResearchStudyDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ResearchStudy',
-	resolve: researchstudyDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, researchstudyDeleteResolver),
 	type: ResearchStudySchema
 };

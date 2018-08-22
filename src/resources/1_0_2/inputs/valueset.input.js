@@ -6,7 +6,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ValueSetResourceInputType = new GraphQLEnumType({
 	name: 'ValueSetResourceInputType',
 	values: {
@@ -54,7 +53,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A free text natural language name describing the value set.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the value set.'
@@ -107,7 +106,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A free text natural language description of the use of the value set - reason for definition, \'the semantic space\' to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
 		useContext: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of value set definitions.'

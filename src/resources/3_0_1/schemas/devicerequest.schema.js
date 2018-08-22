@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DeviceRequestResourceType = new GraphQLEnumType({
 	name: 'DeviceRequestResourceType',
 	values: {
@@ -44,7 +43,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./identifier.schema'),
 			description: 'Composite request this is part of.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the request.'
@@ -53,12 +52,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The status of the request.'
 		},
-		// TODO: ValueSetReference: http://build.fhir.org/valueset-request-intent.html
+		// ValueSetReference: http://build.fhir.org/valueset-request-intent.html
 		intent: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'Whether the request is a proposal, plan, an original order or a reflex order.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/request-priority
 		priority: {
 			type: CodeScalar,
 			description: 'Indicates how quickly the {{title}} should be addressed with respect to other requests.'
@@ -67,12 +66,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'Indicates how quickly the {{title}} should be addressed with respect to other requests.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/device-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/device-kind
 		codeReference: {
 			type: new GraphQLNonNull(require('./reference.schema')),
 			description: 'The details of the device to be used.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/device-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/device-kind
 		codeCodeableConcept: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'The details of the device to be used.'
@@ -113,7 +112,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./devicerequestrequester.schema'),
 			description: 'The individual who initiated the request and has responsibility for its activation.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/participant-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/participant-role
 		performerType: {
 			type: require('./codeableconcept.schema'),
 			description: 'Desired type of performer for doing the diagnostic testing.'
@@ -122,7 +121,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'The desired perfomer for doing the diagnostic testing.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Reason or justification for the use of this device.'

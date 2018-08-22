@@ -7,12 +7,26 @@ const LocationSchema = require('../../schemas/location.schema');
 // Inputs
 const LocationInput = require('../../inputs/location.input');
 
-
+// Resolvers
 const {
 	locationCreateResolver,
 	locationUpdateResolver,
 	locationDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Location',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Location record.'
 	},
 	resource: {
-		type: LocationInput,
+		type: new GraphQLNonNull(LocationInput),
 		description: 'Location Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Location record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.LocationCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Location',
-	resolve: locationCreateResolver,
+	resolve: scopeInvariant(scopeOptions, locationCreateResolver),
 	type: LocationSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.LocationCreateMutation = {
 module.exports.LocationUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Locations',
-	resolve: locationUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, locationUpdateResolver),
 	type: LocationSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.LocationUpdateMutation = {
 module.exports.LocationDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Location',
-	resolve: locationDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, locationDeleteResolver),
 	type: LocationSchema
 };

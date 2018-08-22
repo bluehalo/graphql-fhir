@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let PaymentNoticeResourceInputType = new GraphQLEnumType({
 	name: 'PaymentNoticeResourceInputType',
 	values: {
@@ -27,12 +26,12 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'The Response business identifier.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		ruleset: {
 			type: require('./coding.input'),
 			description: 'The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ruleset
 		originalRuleset: {
 			type: require('./coding.input'),
 			description: 'The style (standard) and version of the original material which was converted into this resource.'
@@ -65,7 +64,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Reference of response to resource to reverse.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/payment-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/payment-status
 		paymentStatus: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'The payment status, typically paid: payment sent, cleared: payment received.'

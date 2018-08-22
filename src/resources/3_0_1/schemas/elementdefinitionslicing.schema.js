@@ -33,7 +33,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'If the matching elements have to occur in the same order as defined in the profile.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/resource-slicing-rules
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-slicing-rules
 		rules: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.'

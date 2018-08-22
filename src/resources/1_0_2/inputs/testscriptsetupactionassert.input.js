@@ -30,7 +30,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The description would be used by test engines for tracking and reporting purposes.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/assert-direction-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/assert-direction-codes
 		direction: {
 			type: CodeScalar,
 			description: 'The direction to use for the assertion.'
@@ -55,7 +55,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'XPath or JSONPath expression against fixture used to compare the \'sourceId/path\' evaluations to.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/content-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/content-type
 		contentType: {
 			type: CodeScalar,
 			description: 'The content-type or mime-type to use for RESTful operation in the \'Content-Type\' header.'
@@ -88,7 +88,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Whether or not the test execution performs validation on the bundle navigation links.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/assert-operator-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/assert-operator-codes
 		operator: {
 			type: CodeScalar,
 			description: 'The operator type.'
@@ -105,7 +105,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The XPath or JSONPath expression to be evaluated against the fixture representing the response received from server.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/defined-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/defined-types
 		resource: {
 			type: CodeScalar,
 			description: 'The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.'
@@ -114,7 +114,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/assert-response-code-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/assert-response-code-types
 		response: {
 			type: CodeScalar,
 			description: 'okay | created | noContent | notModified | bad | forbidden | notFound | methodNotAllowed | conflict | gone | preconditionFailed | unprocessable.'

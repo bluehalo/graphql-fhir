@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ListResourceInputType = new GraphQLEnumType({
 	name: 'ListResourceInputType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./identifier.input')),
 			description: 'Identifier for the List assigned for business purposes outside the context of FHIR.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/list-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/list-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates the current state of this list.'
@@ -37,7 +36,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Indicates the current state of this list.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/list-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/list-mode
 		mode: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.'
@@ -54,7 +53,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A label for the list assigned by the author.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/list-example-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/list-example-codes
 		code: {
 			type: require('./codeableconcept.input'),
 			description: 'This code defines the purpose of the list - why it was created.'
@@ -79,7 +78,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/list-order
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/list-order
 		orderedBy: {
 			type: require('./codeableconcept.input'),
 			description: 'What order applies to the items in the list.'
@@ -92,7 +91,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./listentry.input')),
 			description: 'Entries in this list.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/list-empty-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/list-empty-reason
 		emptyReason: {
 			type: require('./codeableconcept.input'),
 			description: 'If the list is empty, why the list is empty.'

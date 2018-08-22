@@ -21,7 +21,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'An identifier for the network access point of the user device for the audit event.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/network-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/network-type
 		type: {
 			type: CodeScalar,
 			description: 'An identifier for the type of network access point that originated the audit event.'

@@ -7,12 +7,26 @@ const OrganizationSchema = require('../../schemas/organization.schema');
 // Inputs
 const OrganizationInput = require('../../inputs/organization.input');
 
-
+// Resolvers
 const {
 	organizationCreateResolver,
 	organizationUpdateResolver,
 	organizationDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Organization',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Organization record.'
 	},
 	resource: {
-		type: OrganizationInput,
+		type: new GraphQLNonNull(OrganizationInput),
 		description: 'Organization Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Organization record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.OrganizationCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Organization',
-	resolve: organizationCreateResolver,
+	resolve: scopeInvariant(scopeOptions, organizationCreateResolver),
 	type: OrganizationSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.OrganizationCreateMutation = {
 module.exports.OrganizationUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Organizations',
-	resolve: organizationUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, organizationUpdateResolver),
 	type: OrganizationSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.OrganizationUpdateMutation = {
 module.exports.OrganizationDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Organization',
-	resolve: organizationDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, organizationDeleteResolver),
 	type: OrganizationSchema
 };

@@ -14,7 +14,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'ProvenanceEntity_Input',
 	description: 'An entity used in this activity.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/provenance-entity-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/provenance-entity-role
 		role: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'How the entity was used during the activity.'

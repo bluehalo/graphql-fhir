@@ -7,12 +7,26 @@ const EncounterSchema = require('../../schemas/encounter.schema');
 // Inputs
 const EncounterInput = require('../../inputs/encounter.input');
 
-
+// Resolvers
 const {
 	encounterCreateResolver,
 	encounterUpdateResolver,
 	encounterDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Encounter',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a Encounter record.'
 	},
 	resource: {
-		type: EncounterInput,
+		type: new GraphQLNonNull(EncounterInput),
 		description: 'Encounter Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a Encounter record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.EncounterCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Encounter',
-	resolve: encounterCreateResolver,
+	resolve: scopeInvariant(scopeOptions, encounterCreateResolver),
 	type: EncounterSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.EncounterCreateMutation = {
 module.exports.EncounterUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Encounters',
-	resolve: encounterUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, encounterUpdateResolver),
 	type: EncounterSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.EncounterUpdateMutation = {
 module.exports.EncounterDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Encounter',
-	resolve: encounterDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, encounterDeleteResolver),
 	type: EncounterSchema
 };

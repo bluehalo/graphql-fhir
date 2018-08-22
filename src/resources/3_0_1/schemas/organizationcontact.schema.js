@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'OrganizationContact',
 	description: 'Contact for the organization for a certain purpose.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/contactentity-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/contactentity-type
 		purpose: {
 			type: require('./codeableconcept.schema'),
 			description: 'Indicates a purpose for which the contact can be reached.'

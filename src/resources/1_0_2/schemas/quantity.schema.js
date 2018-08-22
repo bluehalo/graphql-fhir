@@ -22,7 +22,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The value of the measured amount. The value includes an implicit precision in the presentation of the value.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/quantity-comparator
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/quantity-comparator
 		comparator: {
 			type: CodeScalar,
 			description: 'How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \'<\' , then the real value is < stated value.'

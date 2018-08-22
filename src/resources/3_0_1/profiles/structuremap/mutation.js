@@ -7,12 +7,26 @@ const StructureMapSchema = require('../../schemas/structuremap.schema');
 // Inputs
 const StructureMapInput = require('../../inputs/structuremap.input');
 
-
+// Resolvers
 const {
 	structuremapCreateResolver,
 	structuremapUpdateResolver,
 	structuremapDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'StructureMap',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a StructureMap record.'
 	},
 	resource: {
-		type: StructureMapInput,
+		type: new GraphQLNonNull(StructureMapInput),
 		description: 'StructureMap Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a StructureMap record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.StructureMapCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a StructureMap',
-	resolve: structuremapCreateResolver,
+	resolve: scopeInvariant(scopeOptions, structuremapCreateResolver),
 	type: StructureMapSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.StructureMapCreateMutation = {
 module.exports.StructureMapUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple StructureMaps',
-	resolve: structuremapUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, structuremapUpdateResolver),
 	type: StructureMapSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.StructureMapUpdateMutation = {
 module.exports.StructureMapDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single StructureMap',
-	resolve: structuremapDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, structuremapDeleteResolver),
 	type: StructureMapSchema
 };

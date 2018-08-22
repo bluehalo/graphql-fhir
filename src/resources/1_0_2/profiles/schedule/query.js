@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ScheduleArgs = require('../../parameters/schedule.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	scheduleResolver,
 	scheduleListResolver,
 	scheduleInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Schedule',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.ScheduleQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ScheduleQuery = {
 	args: Object.assign({}, CommonArgs, ScheduleArgs),
 	description: 'Query for a single Schedule',
-	resolve: scheduleResolver,
+	resolve: scopeInvariant(scopeOptions, scheduleResolver),
 	type: ScheduleSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ScheduleQuery = {
 module.exports.ScheduleListQuery = {
 	args: Object.assign({}, CommonArgs, ScheduleArgs),
 	description: 'Query for multiple Schedules',
-	resolve: scheduleListResolver,
+	resolve: scopeInvariant(scopeOptions, scheduleListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ScheduleListQuery = {
  */
 module.exports.ScheduleInstanceQuery = {
 	description: 'Get information about a single Schedule',
-	resolve: scheduleInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, scheduleInstanceResolver),
 	type: ScheduleSchema
 };

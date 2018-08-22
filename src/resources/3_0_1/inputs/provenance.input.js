@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ProvenanceResourceInputType = new GraphQLEnumType({
 	name: 'ProvenanceResourceInputType',
 	values: {
@@ -52,12 +51,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'Where the activity occurred, if relevant.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse
 		reason: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'The reason that the activity was taking place.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/provenance-activity-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/provenance-activity-type
 		activity: {
 			type: require('./coding.input'),
 			description: 'An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.'

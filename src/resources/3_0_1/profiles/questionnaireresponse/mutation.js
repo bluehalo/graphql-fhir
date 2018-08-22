@@ -7,12 +7,26 @@ const QuestionnaireResponseSchema = require('../../schemas/questionnaireresponse
 // Inputs
 const QuestionnaireResponseInput = require('../../inputs/questionnaireresponse.input');
 
-
+// Resolvers
 const {
 	questionnaireresponseCreateResolver,
 	questionnaireresponseUpdateResolver,
 	questionnaireresponseDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'QuestionnaireResponse',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a QuestionnaireResponse record.'
 	},
 	resource: {
-		type: QuestionnaireResponseInput,
+		type: new GraphQLNonNull(QuestionnaireResponseInput),
 		description: 'QuestionnaireResponse Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a QuestionnaireResponse record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.QuestionnaireResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a QuestionnaireResponse',
-	resolve: questionnaireresponseCreateResolver,
+	resolve: scopeInvariant(scopeOptions, questionnaireresponseCreateResolver),
 	type: QuestionnaireResponseSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.QuestionnaireResponseCreateMutation = {
 module.exports.QuestionnaireResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple QuestionnaireResponses',
-	resolve: questionnaireresponseUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, questionnaireresponseUpdateResolver),
 	type: QuestionnaireResponseSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.QuestionnaireResponseUpdateMutation = {
 module.exports.QuestionnaireResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single QuestionnaireResponse',
-	resolve: questionnaireresponseDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, questionnaireresponseDeleteResolver),
 	type: QuestionnaireResponseSchema
 };

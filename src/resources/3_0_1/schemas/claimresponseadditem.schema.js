@@ -21,22 +21,22 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'List of input service items which this service line is intended to replace.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ex-revenue-center
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ex-revenue-center
 		revenue: {
 			type: require('./codeableconcept.schema'),
 			description: 'The type of reveneu or cost center providing the product and/or service.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-subcategory
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-subcategory
 		category: {
 			type: require('./codeableconcept.schema'),
 			description: 'Health Care Service Type Codes  to identify the classification of service or benefits.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
 		service: {
 			type: require('./codeableconcept.schema'),
 			description: 'A code to indicate the Professional Service or Product supplied.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-modifiers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-modifiers
 		modifier: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or for medical whether the treatment was outside the clinic or out of office hours.'

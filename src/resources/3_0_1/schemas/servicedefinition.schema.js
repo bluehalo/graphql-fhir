@@ -6,7 +6,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ServiceDefinitionResourceType = new GraphQLEnumType({
 	name: 'ServiceDefinitionResourceType',
 	values: {
@@ -62,7 +61,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A short, descriptive, user-friendly title for the service definition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this service definition. Enables tracking the life-cycle of the content.'
@@ -143,12 +142,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./usagecontext.schema')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate service definition instances.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'A legal or geographic region in which the service definition is intended to be used.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/definition-topic
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/definition-topic
 		topic: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching.'

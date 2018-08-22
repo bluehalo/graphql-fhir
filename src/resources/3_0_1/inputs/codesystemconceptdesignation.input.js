@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'CodeSystemConceptDesignation_Input',
 	description: 'Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/languages
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
 		language: {
 			type: CodeScalar,
 			description: 'The language this designation is defined for.'
@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The language this designation is defined for.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/designation-use
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/designation-use
 		use: {
 			type: require('./coding.input'),
 			description: 'A code that details how this designation would be used.'

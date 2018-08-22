@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'HealthcareServiceServiceType',
 	description: 'A specific type of service that may be delivered or performed.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/c80-practice-codes
 		type: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),
 			description: 'The specific type of service being delivered or performed.'

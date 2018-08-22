@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DataElementResourceInputType = new GraphQLEnumType({
 	name: 'DataElementResourceInputType',
 	values: {
@@ -45,7 +44,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The identifier that is used to identify this version of the data element when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the data element author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this data element. Enables tracking the life-cycle of the content.'
@@ -102,7 +101,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./usagecontext.input')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate data element instances.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'A legal or geographic region in which the data element is intended to be used.'
@@ -115,7 +114,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A copyright statement relating to the data element and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the data element.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/dataelement-stringency
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/dataelement-stringency
 		stringency: {
 			type: CodeScalar,
 			description: 'Identifies how precise the data element is in its definition.'

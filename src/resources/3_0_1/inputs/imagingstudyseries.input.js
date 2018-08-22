@@ -32,7 +32,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The numeric identifier of this series in the study.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/dicom-cid29
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/dicom-cid29
 		modality: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'The modality of this series sequence.'
@@ -53,7 +53,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Number of SOP Instances in the Study. The value given may be larger than the number of instance elements this resource contains due to resource availability, security, or other factors. This element should be present if any instance elements are present.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/instance-availability
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/instance-availability
 		availability: {
 			type: CodeScalar,
 			description: 'Availability of series (online, offline or nearline).'
@@ -66,12 +66,12 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'The network service providing access (e.g., query, view, or retrieval) for this series. See implementation notes for information about using DICOM endpoints. A series-level endpoint, if present, has precedence over a study-level endpoint with the same Endpoint.type.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
 		bodySite: {
 			type: require('./coding.input'),
 			description: 'The anatomic structures examined. See DICOM Part 16 Annex L (http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html) for DICOM to SNOMED-CT mappings. The bodySite may indicate the laterality of body part imaged; if so, it shall be consistent with any content of ImagingStudy.series.laterality.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/bodysite-laterality
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/bodysite-laterality
 		laterality: {
 			type: require('./coding.input'),
 			description: 'The laterality of the (possibly paired) anatomic structures examined. E.g., the left knee, both lungs, or unpaired abdomen. If present, shall be consistent with any laterality information indicated in ImagingStudy.series.bodySite.'

@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'DocumentReference',
-		path: '/3_0_1/DocumentReference/:id',
+		path: '/1_0_2/DocumentReference/:id',
 		query: DocumentReferenceInstanceQuery
 	}
 };

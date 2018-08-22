@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MeasureReportResourceInputType = new GraphQLEnumType({
 	name: 'MeasureReportResourceInputType',
 	values: {
@@ -28,7 +27,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./identifier.input'),
 			description: 'A formal identifier that is used to identify this report when it is represented in other formats, or referenced in a specification, model, design or an instance.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/measure-report-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/measure-report-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The report status. No data will be available until the report status is complete.'
@@ -37,7 +36,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The report status. No data will be available until the report status is complete.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/measure-report-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/measure-report-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The type of measure report. This may be an individual report, which provides a single patient\'s score for the measure; a patient listing, which returns the list of patients that meet the various criteria in the measure; or a summary report, which returns a population count for each of the criteria in the measure.'

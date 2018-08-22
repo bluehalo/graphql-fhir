@@ -39,7 +39,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'A list of profiles [[[StructureDefinition]]]s that this resource claims to conform to. The URL is a reference to [[[StructureDefinition.url]]].'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/security-labels
 		security: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.'

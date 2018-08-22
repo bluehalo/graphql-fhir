@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const MeasureReportArgs = require('../../parameters/measurereport.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	measurereportResolver,
 	measurereportListResolver,
 	measurereportInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'MeasureReport',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.MeasureReportQuery
@@ -19,7 +31,7 @@ const {
 module.exports.MeasureReportQuery = {
 	args: Object.assign({}, CommonArgs, MeasureReportArgs),
 	description: 'Query for a single MeasureReport',
-	resolve: measurereportResolver,
+	resolve: scopeInvariant(scopeOptions, measurereportResolver),
 	type: MeasureReportSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.MeasureReportQuery = {
 module.exports.MeasureReportListQuery = {
 	args: Object.assign({}, CommonArgs, MeasureReportArgs),
 	description: 'Query for multiple MeasureReports',
-	resolve: measurereportListResolver,
+	resolve: scopeInvariant(scopeOptions, measurereportListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.MeasureReportListQuery = {
  */
 module.exports.MeasureReportInstanceQuery = {
 	description: 'Get information about a single MeasureReport',
-	resolve: measurereportInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, measurereportInstanceResolver),
 	type: MeasureReportSchema
 };

@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ClaimArgs = require('../../parameters/claim.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	claimResolver,
 	claimListResolver,
 	claimInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Claim',
+	action: 'read',
+	version: '3_0_1'
+};
 
 /**
  * @name exports.ClaimQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ClaimQuery = {
 	args: Object.assign({}, CommonArgs, ClaimArgs),
 	description: 'Query for a single Claim',
-	resolve: claimResolver,
+	resolve: scopeInvariant(scopeOptions, claimResolver),
 	type: ClaimSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ClaimQuery = {
 module.exports.ClaimListQuery = {
 	args: Object.assign({}, CommonArgs, ClaimArgs),
 	description: 'Query for multiple Claims',
-	resolve: claimListResolver,
+	resolve: scopeInvariant(scopeOptions, claimListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ClaimListQuery = {
  */
 module.exports.ClaimInstanceQuery = {
 	description: 'Get information about a single Claim',
-	resolve: claimInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, claimInstanceResolver),
 	type: ClaimSchema
 };

@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let PractitionerResourceType = new GraphQLEnumType({
 	name: 'PractitionerResourceType',
 	values: {
@@ -48,7 +47,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./address.schema')),
 			description: 'The postal address where the practitioner can be found or visited or to which mail can be delivered.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
 		gender: {
 			type: CodeScalar,
 			description: 'Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.'

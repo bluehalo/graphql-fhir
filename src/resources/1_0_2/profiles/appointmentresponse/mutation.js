@@ -7,12 +7,26 @@ const AppointmentResponseSchema = require('../../schemas/appointmentresponse.sch
 // Inputs
 const AppointmentResponseInput = require('../../inputs/appointmentresponse.input');
 
-
+// Resolvers
 const {
 	appointmentresponseCreateResolver,
 	appointmentresponseUpdateResolver,
 	appointmentresponseDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'AppointmentResponse',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a AppointmentResponse record.'
 	},
 	resource: {
-		type: AppointmentResponseInput,
+		type: new GraphQLNonNull(AppointmentResponseInput),
 		description: 'AppointmentResponse Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a AppointmentResponse record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.AppointmentResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a AppointmentResponse',
-	resolve: appointmentresponseCreateResolver,
+	resolve: scopeInvariant(scopeOptions, appointmentresponseCreateResolver),
 	type: AppointmentResponseSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.AppointmentResponseCreateMutation = {
 module.exports.AppointmentResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple AppointmentResponses',
-	resolve: appointmentresponseUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, appointmentresponseUpdateResolver),
 	type: AppointmentResponseSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.AppointmentResponseUpdateMutation = {
 module.exports.AppointmentResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single AppointmentResponse',
-	resolve: appointmentresponseDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, appointmentresponseDeleteResolver),
 	type: AppointmentResponseSchema
 };

@@ -6,11 +6,23 @@ const BundleSchema = require('../../schemas/bundle.schema');
 const ImmunizationArgs = require('../../parameters/immunization.parameters');
 const CommonArgs = require('../../parameters/common.parameters');
 
+// Resolvers
 const {
 	immunizationResolver,
 	immunizationListResolver,
 	immunizationInstanceResolver
 } = require('./resolver');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'Immunization',
+	action: 'read',
+	version: '1_0_2'
+};
 
 /**
  * @name exports.ImmunizationQuery
@@ -19,7 +31,7 @@ const {
 module.exports.ImmunizationQuery = {
 	args: Object.assign({}, CommonArgs, ImmunizationArgs),
 	description: 'Query for a single Immunization',
-	resolve: immunizationResolver,
+	resolve: scopeInvariant(scopeOptions, immunizationResolver),
 	type: ImmunizationSchema
 };
 
@@ -30,7 +42,7 @@ module.exports.ImmunizationQuery = {
 module.exports.ImmunizationListQuery = {
 	args: Object.assign({}, CommonArgs, ImmunizationArgs),
 	description: 'Query for multiple Immunizations',
-	resolve: immunizationListResolver,
+	resolve: scopeInvariant(scopeOptions, immunizationListResolver),
 	type: BundleSchema
 };
 
@@ -40,6 +52,6 @@ module.exports.ImmunizationListQuery = {
  */
 module.exports.ImmunizationInstanceQuery = {
 	description: 'Get information about a single Immunization',
-	resolve: immunizationInstanceResolver,
+	resolve: scopeInvariant(scopeOptions, immunizationInstanceResolver),
 	type: ImmunizationSchema
 };

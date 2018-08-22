@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'ValueSet',
-		path: '/3_0_1/ValueSet/:id',
+		path: '/1_0_2/ValueSet/:id',
 		query: ValueSetInstanceQuery
 	}
 };

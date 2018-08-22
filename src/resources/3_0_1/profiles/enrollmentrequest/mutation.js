@@ -7,12 +7,26 @@ const EnrollmentRequestSchema = require('../../schemas/enrollmentrequest.schema'
 // Inputs
 const EnrollmentRequestInput = require('../../inputs/enrollmentrequest.input');
 
-
+// Resolvers
 const {
 	enrollmentrequestCreateResolver,
 	enrollmentrequestUpdateResolver,
 	enrollmentrequestDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'EnrollmentRequest',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a EnrollmentRequest record.'
 	},
 	resource: {
-		type: EnrollmentRequestInput,
+		type: new GraphQLNonNull(EnrollmentRequestInput),
 		description: 'EnrollmentRequest Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a EnrollmentRequest record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.EnrollmentRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a EnrollmentRequest',
-	resolve: enrollmentrequestCreateResolver,
+	resolve: scopeInvariant(scopeOptions, enrollmentrequestCreateResolver),
 	type: EnrollmentRequestSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.EnrollmentRequestCreateMutation = {
 module.exports.EnrollmentRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple EnrollmentRequests',
-	resolve: enrollmentrequestUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, enrollmentrequestUpdateResolver),
 	type: EnrollmentRequestSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.EnrollmentRequestUpdateMutation = {
 module.exports.EnrollmentRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single EnrollmentRequest',
-	resolve: enrollmentrequestDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, enrollmentrequestDeleteResolver),
 	type: EnrollmentRequestSchema
 };

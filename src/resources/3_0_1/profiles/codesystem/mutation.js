@@ -7,12 +7,26 @@ const CodeSystemSchema = require('../../schemas/codesystem.schema');
 // Inputs
 const CodeSystemInput = require('../../inputs/codesystem.input');
 
-
+// Resolvers
 const {
 	codesystemCreateResolver,
 	codesystemUpdateResolver,
 	codesystemDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'CodeSystem',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a CodeSystem record.'
 	},
 	resource: {
-		type: CodeSystemInput,
+		type: new GraphQLNonNull(CodeSystemInput),
 		description: 'CodeSystem Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a CodeSystem record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.CodeSystemCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a CodeSystem',
-	resolve: codesystemCreateResolver,
+	resolve: scopeInvariant(scopeOptions, codesystemCreateResolver),
 	type: CodeSystemSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.CodeSystemCreateMutation = {
 module.exports.CodeSystemUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple CodeSystems',
-	resolve: codesystemUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, codesystemUpdateResolver),
 	type: CodeSystemSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.CodeSystemUpdateMutation = {
 module.exports.CodeSystemDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single CodeSystem',
-	resolve: codesystemDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, codesystemDeleteResolver),
 	type: CodeSystemSchema
 };

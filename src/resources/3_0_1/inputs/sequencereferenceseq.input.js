@@ -12,7 +12,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'SequenceReferenceSeq_Input',
 	description: 'A sequence that is used as a reference to describe variants that are present in a sequence analyzed.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/chromosome-human
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/chromosome-human
 		chromosome: {
 			type: require('./codeableconcept.input'),
 			description: 'Structural unit composed of a nucleic acid molecule which controls its own replication through the interaction of specific proteins at one or more origins of replication ([SO:0000340](http://www.sequenceontology.org/browser/current_svn/term/SO:0000340)).'
@@ -25,7 +25,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The Genome Build used for reference, following GRCh build versions e.g. \'GRCh 37\'.  Version number must be included if a versioned release of a primary build was used.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/sequence-referenceSeq
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/sequence-referenceSeq
 		referenceSeqId: {
 			type: require('./codeableconcept.input'),
 			description: 'Reference identifier of reference sequence submitted to NCBI. It must match the type in the Sequence.type field. For example, the prefix, “NG_” identifies reference sequence for genes, “NM_” for messenger RNA transcripts, and “NP_” for amino acid sequences.'

@@ -16,7 +16,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./reference.input'),
 			description: 'The practitioner who was involved in the procedure.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/performer-role
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/performer-role
 		role: {
 			type: require('./codeableconcept.input'),
 			description: 'For example: surgeon, anaethetist, endoscopist.'

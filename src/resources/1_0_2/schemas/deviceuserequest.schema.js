@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let DeviceUseRequestResourceType = new GraphQLEnumType({
 	name: 'DeviceUseRequestResourceType',
 	values: {
@@ -32,7 +31,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Indicates the site on the subject\'s body where the device should be used ( i.e. the target site).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/device-use-request-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/device-use-request-status
 		status: {
 			type: CodeScalar,
 			description: 'The status of the request.'
@@ -105,7 +104,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The timing schedule for the use of the device The Schedule data type allows many different expressions, for example. \'Every 8 hours\'; \'Three times a day\'; \'1/2 an hour before breakfast for 10 days from 23-Dec 2011:\'; \'15 Oct 2013, 17 Oct 2013 and 1 Nov 2013\'.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/device-use-request-priority
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/device-use-request-priority
 		priority: {
 			type: CodeScalar,
 			description: 'Characterizes how quickly the  use of device must be initiated. Includes concepts such as stat, urgent, routine.'

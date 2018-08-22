@@ -7,12 +7,26 @@ const ImagingManifestSchema = require('../../schemas/imagingmanifest.schema');
 // Inputs
 const ImagingManifestInput = require('../../inputs/imagingmanifest.input');
 
-
+// Resolvers
 const {
 	imagingmanifestCreateResolver,
 	imagingmanifestUpdateResolver,
 	imagingmanifestDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'ImagingManifest',
+	action: 'write',
+	version: '3_0_1'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a ImagingManifest record.'
 	},
 	resource: {
-		type: ImagingManifestInput,
+		type: new GraphQLNonNull(ImagingManifestInput),
 		description: 'ImagingManifest Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a ImagingManifest record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.ImagingManifestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ImagingManifest',
-	resolve: imagingmanifestCreateResolver,
+	resolve: scopeInvariant(scopeOptions, imagingmanifestCreateResolver),
 	type: ImagingManifestSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.ImagingManifestCreateMutation = {
 module.exports.ImagingManifestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ImagingManifests',
-	resolve: imagingmanifestUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, imagingmanifestUpdateResolver),
 	type: ImagingManifestSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.ImagingManifestUpdateMutation = {
 module.exports.ImagingManifestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ImagingManifest',
-	resolve: imagingmanifestDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, imagingmanifestDeleteResolver),
 	type: ImagingManifestSchema
 };

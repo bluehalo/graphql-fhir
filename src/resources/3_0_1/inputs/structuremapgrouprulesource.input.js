@@ -279,7 +279,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Optional field for this source.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/map-source-list-mode
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/map-source-list-mode
 		listMode: {
 			type: CodeScalar,
 			description: 'How to handle the list mode for this element.'

@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'AuditEventParticipant',
 	description: 'A person, a hardware device or software process.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/dicm-402-roleid
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/dicm-402-roleid
 		role: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Specification of the role(s) the user plays when performing the event. Usually the codes used in this element are local codes defined by the role-based access control security system used in the local context.'
@@ -62,7 +62,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./element.schema'),
 			description: 'The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/dicm-405-mediatype
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/dicm-405-mediatype
 		media: {
 			type: require('./coding.schema'),
 			description: 'Type of media involved. Used when the event is about exporting/importing onto media.'
@@ -71,7 +71,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./auditeventparticipantnetwork.schema'),
 			description: 'Logical network location for application activity, if the activity has a network location.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/v3-PurposeOfUse
 		purposeOfUse: {
 			type: new GraphQLList(require('./coding.schema')),
 			description: 'The reason (purpose of use), specific to this participant, that was used during the event being recorded.'

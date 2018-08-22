@@ -21,22 +21,22 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'List of input service items which this service line is intended to replace.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/ex-revenue-center
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/ex-revenue-center
 		revenue: {
 			type: require('./codeableconcept.input'),
 			description: 'The type of reveneu or cost center providing the product and/or service.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-subcategory
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/benefit-subcategory
 		category: {
 			type: require('./codeableconcept.input'),
 			description: 'Health Care Service Type Codes  to identify the classification of service or benefits.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-uscls
 		service: {
 			type: require('./codeableconcept.input'),
 			description: 'If this is an actual service or product line, ie. not a Group, then use code to indicate the Professional Service or Product supplied (eg. CTP, HCPCS,USCLS,ICD10, NCPDP,DIN,ACHI,CCI). If a grouping item then use a group code to indicate the type of thing being grouped eg. \'glasses\' or \'compound\'.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/claim-modifiers
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-modifiers
 		modifier: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or for medical whether the treatment was outside the clinic or out of office hours.'

@@ -13,7 +13,7 @@ module.exports = new GraphQLInputObjectType({
 	name: 'LinkageItem_Input',
 	description: 'Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items hould be evaluated within the collection of linked items.',
 	fields: () => extendSchema(require('./backboneelement.input'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/linkage-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/linkage-type
 		type: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Distinguishes which item is \'source of truth\' (if any) and which items are no longer considered to be current representations.'

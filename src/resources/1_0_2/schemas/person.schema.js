@@ -4,7 +4,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let PersonResourceType = new GraphQLEnumType({
 	name: 'PersonResourceType',
 	values: {
@@ -36,7 +35,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./contactpoint.schema')),
 			description: 'A contact detail for the person, e.g. a telephone number or an email address.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
 		gender: {
 			type: CodeScalar,
 			description: 'Administrative Gender.'

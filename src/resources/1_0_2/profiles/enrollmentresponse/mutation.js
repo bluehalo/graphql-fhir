@@ -7,12 +7,26 @@ const EnrollmentResponseSchema = require('../../schemas/enrollmentresponse.schem
 // Inputs
 const EnrollmentResponseInput = require('../../inputs/enrollmentresponse.input');
 
-
+// Resolvers
 const {
 	enrollmentresponseCreateResolver,
 	enrollmentresponseUpdateResolver,
 	enrollmentresponseDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'EnrollmentResponse',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a EnrollmentResponse record.'
 	},
 	resource: {
-		type: EnrollmentResponseInput,
+		type: new GraphQLNonNull(EnrollmentResponseInput),
 		description: 'EnrollmentResponse Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a EnrollmentResponse record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.EnrollmentResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a EnrollmentResponse',
-	resolve: enrollmentresponseCreateResolver,
+	resolve: scopeInvariant(scopeOptions, enrollmentresponseCreateResolver),
 	type: EnrollmentResponseSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.EnrollmentResponseCreateMutation = {
 module.exports.EnrollmentResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple EnrollmentResponses',
-	resolve: enrollmentresponseUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, enrollmentresponseUpdateResolver),
 	type: EnrollmentResponseSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.EnrollmentResponseUpdateMutation = {
 module.exports.EnrollmentResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single EnrollmentResponse',
-	resolve: enrollmentresponseDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, enrollmentresponseDeleteResolver),
 	type: EnrollmentResponseSchema
 };

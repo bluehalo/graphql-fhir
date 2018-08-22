@@ -13,7 +13,7 @@ module.exports = new GraphQLObjectType({
 	name: 'CarePlanActivityDetail',
 	description: 'A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn\'t know about specific resources such as procedure etc.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity-category
 		category: {
 			type: require('./codeableconcept.schema'),
 			description: 'High-level categorization of the type of activity in a care plan.'
@@ -22,12 +22,12 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Identifies the protocol, questionnaire, guideline or other specification the planned activity should be conducted in accordance with.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity
 		code: {
 			type: require('./codeableconcept.schema'),
 			description: 'Detailed description of the type of planned activity; e.g. What lab test, what procedure, what kind of encounter.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/activity-reason
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/activity-reason
 		reasonCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Provides the rationale that drove the inclusion of this particular activity as part of the plan or the reason why the activity was prohibited.'
@@ -40,7 +40,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'Internal reference that identifies the goals that this activity is intended to contribute towards meeting.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/care-plan-activity-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Identifies what progress is being made for the specific activity.'
@@ -89,12 +89,12 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'Identifies who\'s expected to be involved in the activity.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		productCodeableConcept: {
 			type: require('./codeableconcept.schema'),
 			description: 'Identifies the food, drug or other product to be consumed or supplied in the activity.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		productReference: {
 			type: require('./reference.schema'),
 			description: 'Identifies the food, drug or other product to be consumed or supplied in the activity.'

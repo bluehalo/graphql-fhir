@@ -2,7 +2,6 @@ const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, Graph
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let HealthcareServiceResourceType = new GraphQLEnumType({
 	name: 'HealthcareServiceResourceType',
 	values: {
@@ -78,7 +77,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./reference.schema')),
 			description: 'The location(s) that this service is available to (not where the service is provided).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-provision-conditions
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-provision-conditions
 		serviceProvisionCode: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'The code(s) that detail the conditions under which the healthcare service is available/offered.'
@@ -107,7 +106,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Collection of characteristics (attributes).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/service-referral-method
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/service-referral-method
 		referralMethod: {
 			type: new GraphQLList(require('./codeableconcept.schema')),
 			description: 'Ways that the service accepts referrals, if this is not provided then it is implied that no referral is required.'

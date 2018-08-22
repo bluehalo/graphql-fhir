@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'DocumentManifest',
-		path: '/3_0_1/DocumentManifest/:id',
+		path: '/1_0_2/DocumentManifest/:id',
 		query: DocumentManifestInstanceQuery
 	}
 };

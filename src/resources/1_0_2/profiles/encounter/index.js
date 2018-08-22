@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Encounter',
-		path: '/3_0_1/Encounter/:id',
+		path: '/1_0_2/Encounter/:id',
 		query: EncounterInstanceQuery
 	}
 };

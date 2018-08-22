@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'Observation',
-		path: '/3_0_1/Observation/:id',
+		path: '/1_0_2/Observation/:id',
 		query: ObservationInstanceQuery
 	}
 };

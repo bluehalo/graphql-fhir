@@ -3,7 +3,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let ResearchStudyResourceInputType = new GraphQLEnumType({
 	name: 'ResearchStudyResourceInputType',
 	values: {
@@ -43,7 +42,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'A larger research study of which this particular study is a component or step.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/research-study-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/research-study-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The current state of the study.'
@@ -72,7 +71,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Key terms to aid in searching for or filtering the study.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'Indicates a country, state or other region where the study is taking place.'

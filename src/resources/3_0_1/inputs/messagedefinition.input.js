@@ -5,7 +5,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let MessageDefinitionResourceInputType = new GraphQLEnumType({
 	name: 'MessageDefinitionResourceInputType',
 	values: {
@@ -61,7 +60,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A short, descriptive, user-friendly title for the message definition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/publication-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of this message definition. Enables tracking the life-cycle of the content.'
@@ -110,7 +109,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./usagecontext.input')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate message definition instances.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/jurisdiction
 		jurisdiction: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'A legal or geographic region in which the message definition is intended to be used.'
@@ -143,12 +142,12 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./reference.input')),
 			description: 'A MessageDefinition that is superseded by this definition.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/message-events
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/message-events
 		event: {
 			type: new GraphQLNonNull(require('./coding.input')),
 			description: 'A coded identifier of a supported messaging event.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/message-significance-category
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/message-significance-category
 		category: {
 			type: CodeScalar,
 			description: 'The impact of the content of the message.'

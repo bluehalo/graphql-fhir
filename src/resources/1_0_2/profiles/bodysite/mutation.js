@@ -7,12 +7,26 @@ const BodySiteSchema = require('../../schemas/bodysite.schema');
 // Inputs
 const BodySiteInput = require('../../inputs/bodysite.input');
 
-
+// Resolvers
 const {
 	bodysiteCreateResolver,
 	bodysiteUpdateResolver,
 	bodysiteDeleteResolver
 } = require('./resolver');
+
+// GraphQL
+const { GraphQLNonNull } = require('graphql');
+
+// Scope Utilities
+const {
+	scopeInvariant
+} = require('../../../../utils/scope.utils');
+
+let scopeOptions = {
+	name: 'BodySite',
+	action: 'write',
+	version: '1_0_2'
+};
 
 let WriteArgs = {
 	id: {
@@ -20,14 +34,14 @@ let WriteArgs = {
 		description: 'Unique identifier for creating/updating a BodySite record.'
 	},
 	resource: {
-		type: BodySiteInput,
+		type: new GraphQLNonNull(BodySiteInput),
 		description: 'BodySite Information for the record.'
 	}
 };
 
 let DeleteArgs = {
 	id: {
-		type: IdScalar,
+		type: new GraphQLNonNull(IdScalar),
 		description: 'Unique identifier for selecting a BodySite record for deletion.'
 	}
 };
@@ -39,7 +53,7 @@ let DeleteArgs = {
 module.exports.BodySiteCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a BodySite',
-	resolve: bodysiteCreateResolver,
+	resolve: scopeInvariant(scopeOptions, bodysiteCreateResolver),
 	type: BodySiteSchema
 };
 
@@ -50,7 +64,7 @@ module.exports.BodySiteCreateMutation = {
 module.exports.BodySiteUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple BodySites',
-	resolve: bodysiteUpdateResolver,
+	resolve: scopeInvariant(scopeOptions, bodysiteUpdateResolver),
 	type: BodySiteSchema
 };
 
@@ -61,6 +75,6 @@ module.exports.BodySiteUpdateMutation = {
 module.exports.BodySiteDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single BodySite',
-	resolve: bodysiteDeleteResolver,
+	resolve: scopeInvariant(scopeOptions, bodysiteDeleteResolver),
 	type: BodySiteSchema
 };

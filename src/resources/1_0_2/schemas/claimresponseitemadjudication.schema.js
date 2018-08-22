@@ -12,7 +12,7 @@ module.exports = new GraphQLObjectType({
 	name: 'ClaimResponseItemAdjudication',
 	description: 'The adjudications results.',
 	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/adjudication
 		code: {
 			type: new GraphQLNonNull(require('./coding.schema')),
 			description: 'Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.'

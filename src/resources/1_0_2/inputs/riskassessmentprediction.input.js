@@ -16,7 +16,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLNonNull(require('./codeableconcept.input')),
 			description: 'One of the potential outcomes for the patient (e.g. remission, death,  a particular condition).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/risk-probability
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/risk-probability
 		probabilityDecimal: {
 			type: GraphQLFloat,
 			description: 'How likely is the outcome (in the specified timeframe).'
@@ -25,12 +25,12 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'How likely is the outcome (in the specified timeframe).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/risk-probability
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/risk-probability
 		probabilityRange: {
 			type: require('./range.input'),
 			description: 'How likely is the outcome (in the specified timeframe).'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/risk-probability
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/risk-probability
 		probabilityCodeableConcept: {
 			type: require('./codeableconcept.input'),
 			description: 'How likely is the outcome (in the specified timeframe).'

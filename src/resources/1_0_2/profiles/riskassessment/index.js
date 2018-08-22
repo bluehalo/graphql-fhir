@@ -42,7 +42,7 @@ module.exports = {
 	*/
 	instance_query: {
 		name: 'RiskAssessment',
-		path: '/3_0_1/RiskAssessment/:id',
+		path: '/1_0_2/RiskAssessment/:id',
 		query: RiskAssessmentInstanceQuery
 	}
 };

@@ -4,7 +4,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let NamingSystemResourceInputType = new GraphQLEnumType({
 	name: 'NamingSystemResourceInputType',
 	values: {
@@ -32,7 +31,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The descriptive name of this particular identifier type or code system.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates whether the naming system is \'ready for use\' or not.'
@@ -41,7 +40,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Indicates whether the naming system is \'ready for use\' or not.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/namingsystem-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/namingsystem-type
 		kind: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Indicates the purpose for the naming system - what kinds of things does it make unique?.'
@@ -78,7 +77,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'The date  (and optionally time) when the system was registered or published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the registration changes.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-type
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/identifier-type
 		type: {
 			type: require('./codeableconcept.input'),
 			description: 'Categorizes a naming system for easier search by grouping related naming systems.'
@@ -91,7 +90,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Details about what the namespace identifies including scope, granularity, version labeling, etc.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
 		useContext: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of naming systems.'

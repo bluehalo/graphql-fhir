@@ -6,7 +6,6 @@ const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, 
 
 const { extendSchema } = require('../../../utils/schema.utils');
 
-// TODO: Verify this is the correct resourceType
 let StructureDefinitionResourceInputType = new GraphQLEnumType({
 	name: 'StructureDefinitionResourceInputType',
 	values: {
@@ -62,7 +61,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Defined so that applications can use this name when displaying the value of the extension to the user.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
 		status: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'The status of the StructureDefinition.'
@@ -107,7 +106,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A free text natural language description of the StructureDefinition and its use.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
 		useContext: {
 			type: new GraphQLList(require('./codeableconcept.input')),
 			description: 'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of structure definitions.'
@@ -128,7 +127,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'A copyright statement relating to the structure definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/profile-code
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/profile-code
 		code: {
 			type: new GraphQLList(require('./coding.input')),
 			description: 'A set of terms from external terminologies that may be used to assist with indexing and searching of templates.'
@@ -145,7 +144,7 @@ module.exports = new GraphQLInputObjectType({
 			type: new GraphQLList(require('./structuredefinitionmapping.input')),
 			description: 'An external specification that the content is mapped to.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/structure-definition-kind
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/structure-definition-kind
 		kind: {
 			type: new GraphQLNonNull(CodeScalar),
 			description: 'Defines the kind of structure that this definition is describing.'
@@ -154,7 +153,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Defines the kind of structure that this definition is describing.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/defined-types
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/defined-types
 		constrainedType: {
 			type: CodeScalar,
 			description: 'The type of type that is being constrained - a data type, an extension, a resource, including abstract ones. If this field is present, it indicates that the structure definition is a constraint. If it is not present, then the structure definition is the definition of a base structure.'
@@ -171,7 +170,7 @@ module.exports = new GraphQLInputObjectType({
 			type: require('./element.input'),
 			description: 'Whether structure this definition describes is abstract or not  - that is, whether an actual exchanged item can ever be of this type.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/extension-context
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/extension-context
 		contextType: {
 			type: CodeScalar,
 			description: 'If this is an extension, Identifies the context within FHIR resources where the extension can be used.'

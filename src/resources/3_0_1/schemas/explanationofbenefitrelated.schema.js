@@ -16,7 +16,7 @@ module.exports = new GraphQLObjectType({
 			type: require('./reference.schema'),
 			description: 'Other claims which are related to this claim such as prior claim versions or for related services.'
 		},
-		// TODO: ValueSetReference: http://hl7.org/fhir/ValueSet/related-claim-relationship
+		// ValueSetReference: http://hl7.org/fhir/ValueSet/related-claim-relationship
 		relationship: {
 			type: require('./codeableconcept.schema'),
 			description: 'For example prior or umbrella.'
