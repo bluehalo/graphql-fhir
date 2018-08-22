@@ -3,13 +3,7 @@ const { formatErrorForGraphQL } = require('./error.utils');
 const { GraphQLError } = require('graphql');
 const { VERSION } = require('../config');
 
-let server;
-
-// Mock the express-graphql module
-jest.mock('express-graphql', () => jest.fn());
-
-// Create a mock logger for our error handler
-let logger = { error: jest.fn() };
+let server, logger;
 
 describe('Router Utils Test', () => {
 
@@ -19,6 +13,8 @@ describe('Router Utils Test', () => {
 			env: { IS_PRODUCTION: true },
 			app: { use: jest.fn() }
 		};
+		// Create a mock logger
+		logger = { error: jest.fn() };
 	});
 
 	describe('configureRoutes', () => {
