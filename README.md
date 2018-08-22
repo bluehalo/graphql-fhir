@@ -18,13 +18,6 @@ yarn install
 ```shell
 # For development
 yarn nodemon
-# For testing, this will watch all files
-# and rerun the tests on change
-yarn test
-# Run the tests once and generate coverage
-yarn test --coverage
-# Run the linter
-yarn lint
 ```
 3. View `http://localhost:3000/3_0_1/$graphiql` to explore the available queries and mutations in the graphiql interface. The standard graphql endpoint is available at `http://localhost:3000/3_0_1/$graphql`.
 
@@ -243,11 +236,17 @@ module.exports.patientResolver = function patientResolver (root, args, context, 
 
 ```
 
+## Frequently Asked Questions
+- [What yarn(or npm) commands are available?](./FAQ.md#commands)
+- [What server configurations are available and how do I use them?](./FAQ.md#server-configuration)
+- [Do you support authentication?](./FAQ.md#authentication)
+- [How and where do I write GraphQL resolvers?](./FAQ.md#resolvers)
+- [What database's do you support and how do I connect to a database](./FAQ.md#connecting-to-a-database)
+- [How do I configure which resources I support and with what capabilities?](./FAQ.md#resource-configuration)
+- [How are errors supposed to be handled?](./FAQ.md#error-handling)
+
 ## Roadmap for the future
-
-### Short term goals:
-
-- [ ] Authentication Initializers and passport support
+- [x] Authentication Initializers and passport support
 - [x] Better documentation on setup and configurations
 - [x] Change return format for ResourceList queries to a FHIR Bundle instead of a GraphQLList
 - [ ] Implementation guides and demos
@@ -257,8 +256,9 @@ module.exports.patientResolver = function patientResolver (root, args, context, 
 	- [x] DSTU2 (1.0.2).
 	- [x] STU3 (3.0.1).
 	- [ ] R4
-	
-### Long term goals:
 
-- Open source our resource generator. This will potentially allow for you to support any resource with a valid structure definition and only generate the resources/versions you want.
-- You can currently introspect the server with a GraphQL introspection query. There is no documentation yet on how Capability Statements should be supported in the spec, so once the proper mechanism for this is determined, we will make sure to support it.
+## Contributing
+Please see [CONTRIBUTING.md](./.github/CONTRIBUTING.md) for more details regarding contributing issues or code.
+
+## License
+`graphql-fhir` is [MIT licensed](./LICENSE).
