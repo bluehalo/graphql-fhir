@@ -32,5 +32,6 @@ module.exports = new Strategy(function bearer (token, done) {
 			} else {
 				return done(new Error('Unable to retrieve valid token'));
 			}
-		});
+		})
+		.catch(err => done(err));
 });

@@ -13,21 +13,15 @@ let noScopesContext = {
 let scopesContext = {
 	req: {
 		user: {
-			token: {
-				scopes: [
-					'user/Patient.read'
-				]
-			}
+			scope: 'user/Patient.read'
 		}
 	}
 };
 
 let authDisabledContext = {
 	server: {
-		config: {
-			auth: {
-				enabled: false
-			}
+		env: {
+			AUTHENTICATION: false
 		}
 	}
 };

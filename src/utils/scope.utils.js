@@ -82,16 +82,17 @@ function scopeInvariant (options = {}, resolver) {
 	return function scopeInvariantResolver (root, args, ctx, info) {
 		let req = ctx && ctx.req;
 		let server = ctx && ctx.server;
-		let serverConfig = server && server.config;
+		let serverEnv = server && server.env;
+
 		// If authorization is disabled, just bail now
-		if (serverConfig && serverConfig.auth && !serverConfig.auth.enabled) {
+		if (serverEnv && !serverEnv.AUTHENTICATION) {
 			return resolver(root, args, ctx, info);
 		}
 
 		// NOTE: If you do not want graphiql to work when auth is enabled
 		// just delete this section below. If we are hitting a graphiql endpoint,
-		// we can also bail, check the env as well to make sure we are not in prod
-		if (!server.env.IS_PRODUCTION && /\$graphiql$/.test(req.baseUrl)) {
+		// this will bail, check the env as well to make sure we are not in prod
+		if (serverEnv && !serverEnv.IS_PRODUCTION && /\$graphiql$/.test(req.baseUrl)) {
 			return resolver(root, args, ctx, info);
 		}
 

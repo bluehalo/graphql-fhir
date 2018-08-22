@@ -25,7 +25,8 @@ class Server {
 		// Store some environment settings
 		this.env = {
 			IS_PRODUCTION: process.env.NODE_ENV === 'production',
-			USE_HTTPS: config.ssl && config.ssl.key && config.ssl.cert
+			USE_HTTPS: config.ssl && config.ssl.key && config.ssl.cert,
+			AUTHENTICATION: false
 		};
 		// return self for chaining
 		return this;
@@ -88,9 +89,9 @@ class Server {
 		let { auth } = this.config;
 		// Only add passport if we have valid configurations
 		if (auth.strategy && auth.name) {
-			// Coerce the boolean for auth to true if we have a strategy
-			// to guard against misconfiguration of the server
-			auth.enabled = true;
+			// Set this boolean for auth to true if we have a strategy
+			// to make it easy to determine if the server is using authentication
+			this.env.AUTHENTICATION = true;
 			// Add the strategy to passport
 			passport.use(require(auth.strategy));
 		}

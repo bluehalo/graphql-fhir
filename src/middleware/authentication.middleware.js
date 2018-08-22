@@ -5,10 +5,11 @@ const passport = require('passport');
  * @name exports
  * @summary Middleware function for authentication
  */
-module.exports = function authenticationMiddleware (serverConfig) {
-	let auth = serverConfig && serverConfig.auth || {};
+module.exports = function authenticationMiddleware (server) {
+	let auth = server && server.config && server.config.auth || {};
+	let env = server && server.env;
 
-	return auth.enabled
+	return env.AUTHENTICATION
 		? passport.authenticate(auth.name, auth.passportOptions)
 		: noopMiddleware;
 };

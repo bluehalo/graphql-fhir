@@ -48,8 +48,6 @@ function generateInstanceSchema (version, name, query) {
 
 // Helper function for generating graphql server
 function setupGraphqlServer (server, version, options) {
-	// let { auth } = server.config;
-
 	return expressGraphql((req, res) => {
 		let context = { server, req, res, version };
 		return Object.assign({ context }, options);
@@ -115,7 +113,7 @@ function configureRoutes (server) {
 					// Path for this graphql endpoint
 					path.join(instance_path, '([\$])graphql'),
 					// Add our validation middlware
-					authenticationMiddleware(server.config),
+					authenticationMiddleware(server),
 					// middleware wrapper for Graphql Express
 					setupGraphqlServer(server, version, {
 						formatError: graphqlErrorFormatter(server.logger, version),
@@ -133,7 +131,7 @@ function configureRoutes (server) {
 			// Path for this graphql endpoint
 			`/${version}/([\$])graphql`,
 			// Add our validation middlware
-			authenticationMiddleware(server.config),
+			authenticationMiddleware(server),
 			// middleware wrapper for Graphql Express
 			setupGraphqlServer(server, version, {
 				formatError: graphqlErrorFormatter(server.logger, version),
