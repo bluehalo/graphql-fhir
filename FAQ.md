@@ -17,11 +17,9 @@ This runs `node src/scripts/test --env=jsdom`. We are using [jest](https://jestj
 This runs eslint once on all files matching `src/**/*.js`.
 
 ## Server configuration
-We expose a couple of different options for configuring the server. You can change what features are enabled by altering how the server is built in `src/index.js`, or you can modify the default server configurations in `src/config.js`.
+We expose a couple of different options for configuring the server. You can change what features are enabled by altering how the server is built in `src/index.js`, or you can modify the default server configurations in `src/config.js` which are outlined below.
 
-### `src/index.js`
-
-### `src/config.js`
+### In `src/config.js`
 
 #### `VERSION`
 You can configure which version you want to support here. The values should never be too generic, like DSTU2 for example, rather they should be very specific, like 1_0_2. We used underscores instead of dots since we use this value for url's, directories, and JSON properties. Default supports DSTU2 (1_0_2) and STU3 (3_0_1).
@@ -31,24 +29,35 @@ You can configure which version you want to support here. The values should neve
 - **port** - Port the server will listen on for incoming connections. Default is 3000.
 - **logging** - Place to put logging configurations. Currently only level is allowed, but we intend to add more in the future. You can also customize the logger in `src/lib/logger` to add support for whatever you need.
 - **auth** - Various configurations for authentication.
-	- **name**
-	- **clientId**
-	- **clientSecret**
-	- **introspectionUrl**
-	- **strategy**
-	- **passportOptions**
+	- **name** - Name of the strategy to use for passport
+	- **clientId** - Client Id needed for an introspection query. This will be populated by a CLIENT_ID environment variable.
+	- **clientSecret** - Client Secret needed for an introspection query. This will be populated by a CLIENT_SECRET environment variable.
+	- **introspectionUrl** - Introspection url
+	- **strategy** - Path to your strategy
+	- **passportOptions** - Options object passed directly into passport.
 
 #### `DATE_CONFIG`
 Be careful when modifying any of these, this is for formatting dates coming in and out of the server via GraphQL. Whatever format you change this to needs to be compatible with the structure definitions hosted on FHIR's website.
 
-- **dateFormat**
-- **timeFormat**
-- **dateTimeFormat**
+- **dateFormat** - Used in custom scalars for formatting date strings.
+- **timeFormat** - Used in custom scalars for formatting time strings.
+- **dateTimeFormat** - Used in custom scalars for formatting date time strings.
 
 #### `RESOURCE_CONFIG`
 This should not be modified, it is used by the server to discover profiles and their capabilities.
 
 ## Authentication
+Authentication is implemented based on the [SMART App Authorization Guide](http://docs.smarthealthit.org/authorization/). Our server will parse the bearer token from headers and then send the token back to the introspection url along with the client id and client secret to validate the token. If the token is valid, the scopes will be used to validate access to all resources.
+
+For example, let's say Joe logs in to some app that uses this server as a backend. He authenticates with the application and then tries to load up a dashboard full of data. When the request comes to this server, we will take the token provided by the app, validate it, then check the scopes associated with it before returning any data. If Joe has enough scope to view the resources requested, they will be returned, otherwise, an insufficient scope error will be returned.
+
+To set all this up in this server, you will need a few things. We already wrote our own bearer strategy (`src/strategies/bearer.strategy`). You can use it, customize it, or add your own passport strategies (writing your own requires more customization).
+
+First you will need a valid auth server with an introspection endpoint available. This must be used to prevent from someone resigning a token after modifying it or other man in the middle type attacks.
+
+Next you will need to configure the server to use this introspection endpoint. You can do that by defining three environment variables, CLIENT_ID, CLIENT_SECRET, and INTROSPECTION_URL.
+
+That's it. Authentication is enabled by default and will throw an error if you attempt to query the graphql endpoint without setting those environment variables. For your convenience, the graphiql endpoint does not use auth and is only enabled during development mode. If you want to disable auth, just remove the name or strategy from `src/config.js` under the `SERVER_CONFIG.auth` property or remove the `configurePassport` call in `src/index.js`.
 
 ## Resolvers
 You can read a little bit about GraphQL resolvers on  [graphql.org](https://graphql.org/learn/execution/#root-fields-resolvers). Resolvers are where you return data back for the API and it needs to be in the correct format. GraphQL will attempt to coerce data types being resolved when possible, but if you return an invalid property, it will throw an error. You can return an object, array of objects, promise, or an array or promises and GraphQL will just handle it. All of the resolvers are located in `src/resources/{version}/profiles/{profile_name}/resolver.js`.
