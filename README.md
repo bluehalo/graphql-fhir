@@ -20,12 +20,19 @@ yarn nodemon
 ```
 3. View `http://localhost:3000/3_0_1/$graphiql` to explore the available queries and mutations in the graphiql interface. The standard graphql endpoint is available at `http://localhost:3000/3_0_1/$graphql`.
 
+## What's next
+See our [Frequently Asked Questions](#frequently-asked-questions) for explanations on how to configure the server, connect to an actual database, setup authentication, and more. You can also read up on the project structure under the [Architecture](#architecture) section if you are curious about that kind of thing. If you are want to know about our future plans, see our [Roadmap](#roadmap). If you have any other questions, please don't hesitate to [create an issue](https://github.com/Asymmetrik/graphql-fhir/issues) with the question label and ask.
 
-## Next Steps
-See the [Architecture](#architecture) section below to get an understanding of how this project is laid out and where things are. We will be adding support to more versions/profiles in the future, but we currently support DSTU2 base (1.0.2) and STU3 base (3.0.1). We enable all resources by default, but give you a way to disable capabilities per resource so you can customize your server's capabilities or slowly add more features over time.
+## Frequently Asked Questions
+- [What yarn(or npm) commands are available?](./FAQ.md#commands)
+- [What server configurations are available and how do I use them?](./FAQ.md#server-configuration)
+- [Do you support authentication?](./FAQ.md#authentication)
+- [How and where do I write GraphQL resolvers?](./FAQ.md#resolvers)
+- [What database's do you support and how do I connect to a database](./FAQ.md#connecting-to-a-database)
+- [How are errors supposed to be handled?](./FAQ.md#error-handling)
+- [How do I configure which resources I support and with what capabilities?](./FAQ.md#resource-configuration)
 
-
-### Architecture
+## Architecture
 
 The current folder structure can be seen below. It's designed this way so we can support multiple versions simultaneously and because we plan to generate a lot of this code from [Structure Definitions](https://www.hl7.org/fhir/structuredefinition.html). Specifically everything in `src/resources` will be generated from structure definitions, which will make it very easy to control what your server can and can't do. The code generation tool we used for this will be open sourced soon.
 
@@ -95,70 +102,7 @@ src
 |  |  |  |  |  # from your data source and pass the results or errors back to the client.
 ```
 
-### Config
-
-In `src/config` there are a couple of different things you can configure at the moment. We will be adding more features to this in the future so please be aware that this section is subject to change.
-
-#### Versions
-
-There is a `VERSION` constant in `src/config`. This defines the versions your application can use. It is highly encouraged not to use versions like 'STU3', rather you should use something like '3_0_1' or '3.0.1'. STU3 can be misleading because there are many minor versions and profiles under that umbrella. The versions here also correspond to a resource folder. So for example, if you see 3_0_1 in the VERSION constant, there is also a `src/resources/3_0_1` directory which contains all the code to support that version.
-
-Every key that is present in the VERSION constant will activate that version of FHIR resources for your server. So if your version const looks like this:
-
-```javascript
-const VERSION = {
-	'1_0_2': '1_0_2',
-	'3_0_1': '3_0_1'
-};
-```
-
-Then your GraphQL server will support both versions at `/1_0_2/$graphql` and `/3_0_1/$graphql`. If you only want to support DSTU2 (1.0.2), then remove the STU3 (3.0.1) key.
-
-### Configuring capabilities
-
-Under `src/resources`, there are version specific directories. In each one, there is a `profiles` directory which contains an `index.js` file that declares that profiles capability. So for example, if you wanted to customize the Patient profile in STU3 (3.0.1), you would edit `src/resources/3_0_1/profiles/patient/index.js`. You can decide whether you want to support a query, list query, create, update, delete, and instance read, or nothing at all.
-
-Supporting nothing is the easiest, just delete the directory or comment out everything in the index.js file. If you want to disable specific capabilities, comment out those in the index.js file. For example, here is a sample patient profile with comments explaining what features you can disable.
-
-```javascript
-module.exports = {
-	// Comment out to disable all basic queries
-	query: {
-		// Comment out to disable individual patient read
-		Patient: PatientQuery,
-		// Comment out to disable querying a bundle of patients
-		PatientList: PatientListQuery
-	},
-	// Comment out to disable all mutations
-	mutation: {
-		// Comment out to disable creating patients
-		PatientCreate: PatientCreateMutation,
-		// Comment out to disable updating patients
-		PatientUpdate: PatientUpdateMutation,
-		// Comment out to disable deleting patients
-		PatientDelete: PatientDeleteMutation
-	},
-	// Comment out to disable instance read, this endpoint would take no arguments
-	// and just outfields the user wants back. So /3_0_1/Patient/2/$graphql would
-	// be enabled and can return data for patient with unique id 2
-	instance_query: {
-		name: 'Patient',
-		path: '/3_0_1/Patient/:id',
-		query: PatientInstanceQuery
-	}
-}
-```
-
-## Frequently Asked Questions
-- [What yarn(or npm) commands are available?](./FAQ.md#commands)
-- [What server configurations are available and how do I use them?](./FAQ.md#server-configuration)
-- [Do you support authentication?](./FAQ.md#authentication)
-- [How and where do I write GraphQL resolvers?](./FAQ.md#resolvers)
-- [What database's do you support and how do I connect to a database](./FAQ.md#connecting-to-a-database)
-- [How do I configure which resources I support and with what capabilities?](./FAQ.md#resource-configuration)
-- [How are errors supposed to be handled?](./FAQ.md#error-handling)
-
-## Roadmap for the future
+## Roadmap
 - [x] Authentication Initializers and passport support
 - [x] Better documentation on setup and configurations
 - [x] Change return format for ResourceList queries to a FHIR Bundle instead of a GraphQLList
@@ -169,6 +113,7 @@ module.exports = {
 	- [x] DSTU2 (1.0.2).
 	- [x] STU3 (3.0.1).
 	- [ ] R4
+- [ ] Work with community to continue to establish best practices for FHIR with GraphQL and implement them here.
 
 ## Contributing
 Please see [CONTRIBUTING.md](./.github/CONTRIBUTING.md) for more details regarding contributing issues or code.
