@@ -39,9 +39,12 @@ const SERVER_CONFIG = {
 	// Auth configurations
 	auth: {
 		name: 'bearer',
-		clientId: process.env.CLIENT_ID,
-		clientSecret: process.env.CLIENT_SECRET,
-		introspectionUrl: process.env.INTROSPECTION_URL,
+		clientId: 'client',
+		clientSecret: 'secret',
+		introspectionUrl: 'https://afternoon-springs-39948.herokuapp.com/introspect',
+		// clientId: process.env.CLIENT_ID,
+		// clientSecret: process.env.CLIENT_SECRET,
+		// introspectionUrl: process.env.INTROSPECTION_URL,
 		strategy: path.posix.resolve('src/strategies/bearer.strategy.js'),
 		passportOptions: {
 			session: false

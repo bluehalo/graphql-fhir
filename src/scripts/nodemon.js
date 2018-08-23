@@ -1,5 +1,4 @@
 const nodemon = require('nodemon');
-// const jest = require('jest');
 const logger = require('../lib/winston')({ level: 'debug' });
 
 nodemon({
@@ -13,7 +12,6 @@ nodemon({
 
 nodemon.on('restart', files => {
 	logger.verbose(`Nodemon restarting because ${files.join(',')} changed.`);
-	// jest.run([ '--detectOpenHandles' ]);
 })
 .on('crash', () => {
   logger.error('Nodemon crashed. Waiting for changes to restart.');

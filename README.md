@@ -1,5 +1,4 @@
-GraphQL-FHIR
-============
+# GraphQL-FHIR [![Build Status](https://travis-ci.org/Asymmetrik/graphql-fhir.svg?branch=develop)](https://travis-ci.org/Asymmetrik/graphql-fhir) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 > A secure GraphQL implementation for the [HL7 FHIR specification](https://www.hl7.org/fhir/) based on the current implementation guide for [GraphQL with FHIR](https://build.fhir.org/graphql.html) and developed with Node.js and Express.
 
 ## Prerequisites
@@ -14,7 +13,7 @@ git clone https://github.com/Asymmetrik/graphql-fhir.git
 cd graphql-fhir
 yarn install
 ```
-2. Usage
+2. Start a local dev server
 ```shell
 # For development
 yarn nodemon
@@ -148,92 +147,6 @@ module.exports = {
 		query: PatientInstanceQuery
 	}
 }
-```
-
-### Connecting to a data source
-
-There is a function stubbed out in `src/lib/server` called `initializeDatabaseConnection`. You can add connection code here. Keep in mind that if your connection code is asynchronous, you will need to modify the code in `src/index` to account for that. Just to give you an idea of what I mean, here is an untested example that demonstrates connecting to mongo (note that some code is specific to mongo's implementation):
-
-```javascript
-// In src/lib/server.js
-
-// These methods typically return self for chaining, but we need to return a promise
-// or use async/await, for this example, I will use promises
-initializeDatabaseConnection (options = {}) {
-	// Make sure to use an arrow function so we can access this
-	return new Promise((resolve, reject) => {
-		let { url, db_name, mongo_options } = options;
-		MongoClient.connect(url, mongo_options, (err, client) => {
-			if (err) { return reject(err); }
-			// store this db instance on the server, this
-			// is critical for accessing the connection later
-			this.client = client;
-			this.db = client.db(db_name);
-			return resolve();
-		});
-	});
-}
-
-// In src/index.js, modify the code to look something like this
-
-// Start buliding our server
-let server = new FHIRServer(SERVER_CONFIG)
-	.configureMiddleware()
-	.configureHelmet()
-	.setProfileRoutes()
-	.setErrorRoutes();
-
-server.initializeDatabaseConnection({
-	// Add your mongo hostname below
-	url: 'mongodb://' + mongo_hostname,
-	db_name: 'my_mongo_database_name',
-	mongo_options: { auto_reconnect: true }
-})
-.then(() => {
-	server.listen(SERVER_CONFIG.port);
-	server.logger.info('FHIR Server listening on localhost:' + SERVER_CONFIG.port);
-})
-.catch(err => {
-	server.logger.error('Fatal Error connecting to Mongo.');
-});
-
-
-// Now, because we pass the server through to your resolvers via context, 
-// you can access your database connection in all of your resolvers
-
-// This will be available to all resolvers in the same manner, but here is an
-// example of getting this db in a patient resolver
-
-// In src/resources/3_0_1/profiles/patient/resolver.js
-module.exports.patientResolver = function patientResolver (root, args, context, info) {
-	let { server, req, res, version } = context;
-	let { db, client, logger } = server;
-	// In graphql, you can return data, a promise, or an array of promises.
-	// Let's do a fake id query, a real resolver needs much more capability than this
-	return new Promise((resolve, reject) => {
-		db.find({ id: args._id }, (err, patient) => {
-			// Use our special error handlers to make your error a operation outcome
-			// and place it in a GraphQL error, note this particular detail is subject
-			// to change while we entertain ideas for more flexible and easy to use errors
-			if (err) {
-				// This is where knowledge of FHIR comes in, you need to know which kind of
-				// error to throw based on the err, let's assume a simple internal server
-				// error for this example
-				let error = errorUtils.internal(version, err.message);
-				// Log the error
-				logger.error(error);
-				// reject it so GraphQL can return a proper GraphQL Error
-				// This is really important as we need to return errors in a format
-				// compatible with both specifications, FHIR and GraphQL
-				reject(errorUtils.formatErrorForGraphQL(error));
-			}
-			else {
-				resolve(patient);
-			}
-		});
-	});
-};
-
 ```
 
 ## Frequently Asked Questions

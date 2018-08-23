@@ -1,6 +1,8 @@
 ### Do you want to submit a request for change, improve documentation, or ask a question?
 
-### Are you reporting a bug?
+#### If asking a question, please attach the 'Question' label
+
+#### If reporting a bug, please answer the following at minimum and add any additional information you think may be helpful
 
 **What is the current behavior?**
 
