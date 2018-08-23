@@ -17,6 +17,36 @@ This runs `node src/scripts/test --env=jsdom`. We are using [jest](https://jestj
 This runs eslint once on all files matching `src/**/*.js`.
 
 ## Server configuration
+We expose a couple of different options for configuring the server. You can change what features are enabled by altering how the server is built in `src/index.js`, or you can modify the default server configurations in `src/config.js`.
+
+### `src/index.js`
+
+### `src/config.js`
+
+#### `VERSION`
+You can configure which version you want to support here. The values should never be too generic, like DSTU2 for example, rather they should be very specific, like 1_0_2. We used underscores instead of dots since we use this value for url's, directories, and JSON properties. Default supports DSTU2 (1_0_2) and STU3 (3_0_1).
+
+#### `SERVER_CONFIG`
+- **defaultVersion** - This is the default version of a resource to fall back on. This is mostly used for the case of an internal server error or a 404 error. Since we cannot reliably determine which version the request was intended for (without inspecting headers), we use this to know which version of an OperationOutcome to respond with.
+- **port** - Port the server will listen on for incoming connections. Default is 3000.
+- **logging** - Place to put logging configurations. Currently only level is allowed, but we intend to add more in the future. You can also customize the logger in `src/lib/logger` to add support for whatever you need.
+- **auth** - Various configurations for authentication.
+	- **name**
+	- **clientId**
+	- **clientSecret**
+	- **introspectionUrl**
+	- **strategy**
+	- **passportOptions**
+
+#### `DATE_CONFIG`
+Be careful when modifying any of these, this is for formatting dates coming in and out of the server via GraphQL. Whatever format you change this to needs to be compatible with the structure definitions hosted on FHIR's website.
+
+- **dateFormat**
+- **timeFormat**
+- **dateTimeFormat**
+
+#### `RESOURCE_CONFIG`
+This should not be modified, it is used by the server to discover profiles and their capabilities.
 
 ## Authentication
 

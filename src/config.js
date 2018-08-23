@@ -10,19 +10,6 @@ const VERSION = {
 };
 
 /**
- * @name DATE_CONFIG
- * @summary Date configurations.
- */
-const DATE_CONFIG = {
-	timezone: 'America/New_York',
-	// The following should not be edited unless you are using defaults that
-	// are different from what's defined in 3.0.1 structure defintions
-	dateFormat: 'YYYY-MM-DD',
-	timeFormat: 'HH:mm:ss',
-	dateTimeFormat: 'YYYY-MM-DDTHH:mm:ss.SSSSZ'
-};
-
-/**
  * @name SERVER_CONFIG
  * @summary Server configurations.
  */
@@ -39,17 +26,26 @@ const SERVER_CONFIG = {
 	// Auth configurations
 	auth: {
 		name: 'bearer',
-		clientId: 'client',
-		clientSecret: 'secret',
-		introspectionUrl: 'https://afternoon-springs-39948.herokuapp.com/introspect',
-		// clientId: process.env.CLIENT_ID,
-		// clientSecret: process.env.CLIENT_SECRET,
-		// introspectionUrl: process.env.INTROSPECTION_URL,
+		clientId: process.env.CLIENT_ID,
+		clientSecret: process.env.CLIENT_SECRET,
+		introspectionUrl: process.env.INTROSPECTION_URL,
 		strategy: path.posix.resolve('src/strategies/bearer.strategy.js'),
 		passportOptions: {
 			session: false
 		}
 	}
+};
+
+/**
+ * @name DATE_CONFIG
+ * @summary Date configurations.
+ */
+const DATE_CONFIG = {
+	// The following should not be edited unless you are using defaults that
+	// are different from what's defined in 3.0.1 structure defintions
+	dateFormat: 'YYYY-MM-DD',
+	timeFormat: 'HH:mm:ss',
+	dateTimeFormat: 'YYYY-MM-DDTHH:mm:ss.SSSSZ'
 };
 
 /**
