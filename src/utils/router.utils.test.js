@@ -1,7 +1,7 @@
 const { configureRoutes, parseVersionFromUrl, graphqlErrorFormatter } = require('./router.utils');
 const { formatErrorForGraphQL } = require('./error.utils');
+const { VERSION, RESOURCE_CONFIG } = require('../config');
 const { GraphQLError } = require('graphql');
-const { VERSION } = require('../config');
 
 let server, logger;
 
@@ -19,11 +19,29 @@ describe('Router Utils Test', () => {
 
 	describe('configureRoutes', () => {
 
-		test('should invoke the expressGraphql module with options and context', () => {
+		beforeEach(() => {
+			// Reset our mock
+			let mock = require('express-graphql');
+			mock.mockReset();
+		});
+
+		test('should not invoke the expressGraphql module when no options are provided', () => {
 			// Grab a mock
 			let { mock } = require('express-graphql');
 			// configure routes
 			configureRoutes(server);
+			// This should have length of 0
+			expect(mock.calls.length).toBe(0);
+		});
+
+		test('should invoke the expressGraphql module with options and context', () => {
+			// Grab a mock
+			let { mock } = require('express-graphql');
+			// configure routes
+			configureRoutes(server, {
+				resourceConfig: RESOURCE_CONFIG,
+				versions: Object.keys(VERSION)
+			});
 			// check the mock
 			mock.calls.forEach(call => {
 				// each argument should be called with a function that takes a req and res
@@ -51,7 +69,10 @@ describe('Router Utils Test', () => {
 			// Override this property for this test
 			server.env.IS_PRODUCTION = false;
 			// configure routes
-			configureRoutes(server);
+			configureRoutes(server, {
+				resourceConfig: RESOURCE_CONFIG,
+				versions: Object.keys(VERSION)
+			});
 			// check the calls to server.app.use
 			let mock = server.app.use.mock;
 			// We should have one per profile per version and one per version
@@ -61,6 +82,28 @@ describe('Router Utils Test', () => {
 			// the path ending with /([\$])graphiql
 			let args = mock.calls[mock.calls.length - 1];
 			expect(args[0]).toEqual(expect.stringContaining('/([\$])graphiql'));
+		});
+
+		test('should skip over empty exported profiles', () => {
+			// Grab a mock
+			let { mock } = require('express-graphql');
+			// Create a mock resource config
+			let mockResourceConfig = { profilesRelativePath: 'profiles/__mocks__/*.js' };
+			// configure routes
+			configureRoutes(server, {
+				resourceConfig: mockResourceConfig,
+				versions: Object.keys(VERSION)
+			});
+			// To verify the schema was not called with anything, we need to invoke
+			// the function passed into our mock
+			let expressGraphqlArgs = mock.calls[0][0]();
+			let rootSchema = expressGraphqlArgs.schema;
+			// Queries and Mutations ought to be undefined, GraphQL would error
+			// on startup if it never received any, which we want, but we want to
+			// allow users to comment out some of the profiles they don't intend
+			// to support
+			expect(rootSchema.getQueryType()).toBeUndefined();
+			expect(rootSchema.getMutationType()).toBeUndefined();
 		});
 
 	});
