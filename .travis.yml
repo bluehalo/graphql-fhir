@@ -3,4 +3,5 @@ cache: yarn
 node_js:
   - "lts/*"
   - "8"
-script: yarn test --coverage
+script: yarn test
+after_success: yarn test --coverage
