@@ -1,8 +1,8 @@
 const authenticationMiddleware = require('../middleware/authentication.middleware');
-const { RESOURCE_CONFIG, VERSION } = require('../config');
 const { resolveFromVersion } = require('./resolve.utils');
 const expressGraphql = require('express-graphql');
 const errorUtils = require('./error.utils');
+const { VERSION } = require('../config');
 const glob = require('glob');
 const path = require('path');
 
@@ -84,13 +84,13 @@ function graphqlErrorFormatter (logger, version) {
  * @description Find all the profile configurations and register
  * any queries, mutations, or subscriptions found
  */
-function configureRoutes (server) {
+function configureRoutes (server, options = {}) {
 	// We need to setup a server for each route configured in VERSION
-	let versions = Object.values(VERSION);
+	let { versions = [], resourceConfig = {}} = options;
 
 	versions.forEach(version => {
 		// Locate all the profile configurations for setting up routes
-		let config_paths = glob.sync(resolveFromVersion(version, RESOURCE_CONFIG.profilesRelativePath));
+		let config_paths = glob.sync(resolveFromVersion(version, resourceConfig.profilesRelativePath));
 		let configs = config_paths.map(require);
 		// Grab all the necessary properties from each config
 		// Ignore instance_queries for now, we will add them in later

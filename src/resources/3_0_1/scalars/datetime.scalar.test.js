@@ -5,8 +5,8 @@ describe('Date Time Scalar Test', () => {
 
 	describe('parseLiteral', () => {
 		test("should return valid date time", () => {
-			expect(DatetimeScalar.parseLiteral({value: "2018-12-31"})).toEqual("2018-12-31T00:00:00.0000-05:00");
-			expect(DatetimeScalar.parseLiteral({value: "2018-12"})).toEqual("2018-12-01T00:00:00.0000-05:00");
+			expect(DatetimeScalar.parseLiteral({value: "2018-12-31"})).toEqual("2018-12-31T00:00:00.0000+00:00");
+			expect(DatetimeScalar.parseLiteral({value: "2018-12"})).toEqual("2018-12-01T00:00:00.0000+00:00");
 			expect(DatetimeScalar.parseLiteral({value: "2018-12-01T01:01:02.0000-05:00"})).toEqual("2018-12-01T01:01:02.0000-05:00");
 			expect(DatetimeScalar.parseLiteral({value: "2018-12-01T00:00:00.0000-05:00"})).toEqual("2018-12-01T00:00:00.0000-05:00");
 		});
@@ -24,8 +24,8 @@ describe('Date Time Scalar Test', () => {
 
 	describe('parseValue', () => {
 		test("should return valid date time", () => {
-			expect(DatetimeScalar.parseValue("2018-12-31", {})).toEqual("2018-12-31T00:00:00.0000-05:00");
-			expect(DatetimeScalar.parseValue("2018-12", {})).toEqual("2018-12-01T00:00:00.0000-05:00");
+			expect(DatetimeScalar.parseValue("2018-12-31", {})).toEqual("2018-12-31T00:00:00.0000+00:00");
+			expect(DatetimeScalar.parseValue("2018-12", {})).toEqual("2018-12-01T00:00:00.0000+00:00");
 			expect(DatetimeScalar.parseValue("2018-12-01T01:01:02.0000-05:00", {})).toEqual("2018-12-01T01:01:02.0000-05:00");
 			expect(DatetimeScalar.parseValue("2018-12-01T00:00:00.0000-05:00", {})).toEqual("2018-12-01T00:00:00.0000-05:00");
 		});

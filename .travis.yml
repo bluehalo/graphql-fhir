@@ -4,3 +4,4 @@ node_js:
   - "lts/*"
   - "8"
 script: yarn test --coverage
+after_success: node ./node_modules/.bin/coveralls < ./coverage/lcov.info

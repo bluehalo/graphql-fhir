@@ -15,7 +15,7 @@ const parse = (value, ast) => {
 	let sanitized_value = xss(sanitize(value)).trim();
 	let is_date = date_pattern.test(sanitized_value);
 	return is_date
-		? moment(sanitized_value).tz(DATE_CONFIG.timezone).format(DATE_CONFIG.dateFormat)
+		? moment(sanitized_value).format(DATE_CONFIG.dateFormat)
 		: new GraphQLError(`Invalid date provided to DateScalar. Format should be ${DATE_CONFIG.dateFormat}`);
 }
 

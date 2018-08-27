@@ -32,6 +32,7 @@
     "xss": "^1.0.3"
   },
   "devDependencies": {
+    "coveralls": "^3.0.2",
     "eslint": "^5.1.0",
     "jest": "^23.2.0"
   },

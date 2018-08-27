@@ -10,19 +10,6 @@ const VERSION = {
 };
 
 /**
- * @name DATE_CONFIG
- * @summary Date configurations.
- */
-const DATE_CONFIG = {
-	timezone: 'America/New_York',
-	// The following should not be edited unless you are using defaults that
-	// are different from what's defined in 3.0.1 structure defintions
-	dateFormat: 'YYYY-MM-DD',
-	timeFormat: 'HH:mm:ss',
-	dateTimeFormat: 'YYYY-MM-DDTHH:mm:ss.SSSSZ'
-};
-
-/**
  * @name SERVER_CONFIG
  * @summary Server configurations.
  */
@@ -47,6 +34,18 @@ const SERVER_CONFIG = {
 			session: false
 		}
 	}
+};
+
+/**
+ * @name DATE_CONFIG
+ * @summary Date configurations.
+ */
+const DATE_CONFIG = {
+	// The following should not be edited unless you are using defaults that
+	// are different from what's defined in 3.0.1 structure defintions
+	dateFormat: 'YYYY-MM-DD',
+	timeFormat: 'HH:mm:ss',
+	dateTimeFormat: 'YYYY-MM-DDTHH:mm:ss.SSSSZ'
 };
 
 /**

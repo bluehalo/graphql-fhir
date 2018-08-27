@@ -1,4 +1,5 @@
 const { configureRoutes, parseVersionFromUrl } = require('../utils/router.utils');
+const { VERSION, RESOURCE_CONFIG } = require('../config');
 const errorUtils = require('../utils/error.utils');
 const compression = require('compression');
 const bodyParser = require('body-parser');
@@ -116,7 +117,10 @@ class Server {
 		this.logger.info('Loading GraphQL schemas and setting routes');
 		// Pass this instance so I can grab the express app and any config
 		// that may or may not be necessary for the router utils
-		configureRoutes(this);
+		configureRoutes(this, {
+			resourceConfig: RESOURCE_CONFIG,
+			versions: Object.keys(VERSION)
+		});
 		// return self for chaining
 		return this;
 	}

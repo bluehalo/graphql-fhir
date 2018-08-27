@@ -2,26 +2,28 @@ const { scopeInvariant } = require('./scope.utils');
 
 let noScopesContext = {
 	req: {
-		user: {
-			token: {
-				scopes: []
-			}
-		}
+		user: { scope: '' }
 	}
 };
 
 let scopesContext = {
 	req: {
-		user: {
-			scope: 'user/Patient.read'
-		}
+		user: { scope: 'user/Patient.read' }
 	}
 };
 
 let authDisabledContext = {
 	server: {
+		env: { AUTHENTICATION: false }
+	}
+};
+
+let developmentContext = {
+	req: { baseUrl: '/3_0_1/$graphiql' },
+	server: {
 		env: {
-			AUTHENTICATION: false
+			IS_PRODUCTION: false,
+			AUTHENTICATION: true
 		}
 	}
 };
@@ -153,6 +155,20 @@ describe('Scope Utils Test', () => {
 			// In this case, the middleware should pass as auth is explicitly disabled
 			// even though they do not have any valid scopes
 			let results = resolver(null, null, authDisabledContext);
+			expect(results).toEqual(mockResult);
+		});
+
+		test('should invoke the resolver if we are in a development environment', () => {
+			let mockResult = 'DATAAAAAAAAA';
+			let resolver = scopeInvariant({
+				name: 'Patient',
+				version: '3_0_1',
+				action: 'read'
+			}, () => mockResult);
+
+			// In this case, the middleware should pass as auth is explicitly disabled
+			// even though they do not have any valid scopes
+			let results = resolver(null, null, developmentContext);
 			expect(results).toEqual(mockResult);
 		});
 
