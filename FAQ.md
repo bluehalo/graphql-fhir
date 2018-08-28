@@ -260,3 +260,142 @@ module.exports = {
 ```
 
 All profiles are the same and can be customized in the same manner.
+
+## Metadata Query
+You can't perform metadata queries and get back capability statements like you would in a standard REST FHIR server. What you can do is use introspection queries to ask the server to describe all or some of it's schemas, queries, and/or mutations. In fact, this is what the graphiql endpoint does for you and how it generates the interactive documentation ([http://localhost:3000/3_0_1/$graphiql](http://localhost:3000/3_0_1/$graphiql)). While Graphiql is a nice tool for the developer to explore the API he is building, it is not often exposed in production and other developers will need to introspect your api through other means. This typically requires a GET or POST request to the graphql server with a `__type` or `__schema` query. Below you will find some examples of a couple of different queries and even a snippet for generating a graphql schema file for the relay compiler (If you are using relay modern on the front end).
+
+**NOTE**: All these examples are providing the query string to use, not the full request. Your request should include this as a query argument, e.g. `query=<query string here>`.
+
+List all queries:
+```graphql
+{
+	__type(name:"Query"){
+    name
+    kind
+    fields{
+      name
+    }
+  }  
+}
+```
+
+List all mutations:
+```graphql
+{
+	__type(name:"Mutation"){
+    name
+    kind
+    fields{
+      name
+    }
+  }  
+}
+```
+
+For a more complete list which include's all their arguments and return fields, try this (for our example server, this returns almost 50,000 lines of JSON):
+```graphql
+query TypeIntrospectionQuery{
+	# Can also use __type(name:"Mutation"){ 
+  __type(name:"Query"){
+    kind
+    name
+    description
+    fields(includeDeprecated:true){
+      name
+      description
+      args{
+        ...InputValue
+      }
+      type{
+        ...TypeRef
+      }
+      isDeprecated
+      deprecationReason
+    }
+    enumValues{
+      name
+      description
+      isDeprecated
+      deprecationReason
+    }
+    inputFields{
+      ...InputValue
+    }
+    interfaces{
+      ...TypeRef
+    }
+    possibleTypes{
+      ...TypeRef
+    }
+  }
+}
+
+fragment InputValue on __InputValue {
+  name
+  description
+  type { ...TypeRef }
+  defaultValue
+}
+
+fragment TypeRef on __Type {
+  kind
+  name
+  ofType {
+    kind
+    name
+    ofType {
+      kind
+      name
+      ofType {
+        kind
+        name
+        ofType {
+          kind
+          name
+          ofType {
+            kind
+            name
+            ofType {
+              kind
+              name
+              ofType {
+                kind
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Finally, here is a little snippet for how to query and generate a graphql schema file for relay, written in javascript. You can use this to generate types or introspect the entire endpoint in one go. Note, for a fully implemented FHIR server, the generated file will be close to 100,000 lines.
+
+```javascript
+// requires graphql to be installed via yarn add graphql
+const {
+	introspectionQuery,
+	buildClientSchema,
+	printSchema
+} = require('graphql/utilities');
+// requires node-fetch to be installed via yarn add node-fetch
+const fetch = require('node-fetch');
+const fs = require('fs');
+// Change the url to the GraphQL url
+fetch('http://localhost:3000/3_0_1/$graphiql', {
+	headers: {
+		'content-type': 'application/json',
+		'accept': 'application/json'
+	},
+	body: JSON.stringify({ query: introspectionQuery }),
+	method: 'POST'
+})
+.then(response => response.json())
+.then(response => {
+	let schema = printSchema(buildClientSchema(response.data));
+	fs.writeFileSync('fhir-3_0_1.graphql', schema);
+})
+.catch(err => console.error('Unable to generate schema'))
+```
