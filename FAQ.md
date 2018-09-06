@@ -63,23 +63,23 @@ All of the resolver's contain stubs that just need to be filled in, so all you n
 ```javascript
 // In src/resources/3_0_1/profiles/patient/resolver.js
 module.exports.patientResolver = function patientResolver (root, args, ctx, info) {
-	// This is not very realistic, but just giving you a simple idea of how
-	// this works
-	let id = args._id;
-	let path = `patients/${id}.json`;
-	// If we did this synchronously
-	return require(path);
-	// If we wanted to do this asynchronously
-	return new Promise((resolve, reject) {
-		let patient;
-		try {
-			patient = require(path);
-		} catch (err) {
-			let error = errorUtils.internal(ctx.version, 'Patient not found');
-			return reject(errorUtils.formatErrorForGraphQL(error));
-		}
-		return resolve(patient);
-	});
+  // This is not very realistic, but just giving you a simple idea of how
+  // this works
+  let id = args._id;
+  let path = `patients/${id}.json`;
+  // If we did this synchronously
+  return require(path);
+  // If we wanted to do this asynchronously
+  return new Promise((resolve, reject) {
+    let patient;
+    try {
+      patient = require(path);
+    } catch (err) {
+      let error = errorUtils.internal(ctx.version, 'Patient not found');
+      return reject(errorUtils.formatErrorForGraphQL(error));
+    }
+    return resolve(patient);
+  });
 }
 ```
 
@@ -92,27 +92,27 @@ First, you will need to implement the `initializeDatabaseConnection` method in `
 const { MongoClient } = require('mongodb');
 
 class Server {
-	initializeDatabaseConnection(options ={}) {
-		// Connecting to Mongo is async
-		// Let's handle this with a promise
-		return new Promise((resolve, reject) => {
-			let {
-				url,
-				db_name,
-				mongo_options
-			} = options;
+  initializeDatabaseConnection(options ={}) {
+    // Connecting to Mongo is async
+    // Let's handle this with a promise
+    return new Promise((resolve, reject) => {
+      let {
+        url,
+        db_name,
+        mongo_options
+      } = options;
 			
-			MongoClient.connect(url, mongo_options, (err, client) => {
-				if (err) return reject(err);
-				// Store the client and db on the server instance,
-				// the server instance is passed into the resolvers
-				// so it will make accessing this later a breeze
-				this.client = client;
-				this.db = client.db(db_name);
-				return resolve();
-			});
-		});
-	}
+      MongoClient.connect(url, mongo_options, (err, client) => {
+        if (err) return reject(err);
+        // Store the client and db on the server instance,
+        // the server instance is passed into the resolvers
+        // so it will make accessing this later a breeze
+        this.client = client;
+        this.db = client.db(db_name);
+        return resolve();
+      });
+    });
+  }
 }
 ```
 
@@ -124,21 +124,21 @@ const FHIRServer = require('./lib/server');
 
 // Start buliding our server
 let server = new FHIRServer(SERVER_CONFIG)
-	.configureMiddleware()
-	.configurePassport()
-	.configureHelmet()
-	.setProfileRoutes()
-	.setErrorRoutes();
+  .configureMiddleware()
+  .configurePassport()
+  .configureHelmet()
+  .setProfileRoutes()
+  .setErrorRoutes();
 	
 server.initializeDatabaseConnection({
-	url: 'mongodb://' + mongo_hostname,
-	db_name: 'my_mongo_database_name',
-	mongo_options: { auto_reconnect: true }
+  url: 'mongodb://' + mongo_hostname,
+  db_name: 'my_mongo_database_name',
+  mongo_options: { auto_reconnect: true }
 }).then(() => {
-	server.listen(SERVER_CONFIG.port);
-	server.logger.info('FHIR Server listening on localhost:' + SERVER_CONFIG.port);
+  server.listen(SERVER_CONFIG.port);
+  server.logger.info('FHIR Server listening on localhost:' + SERVER_CONFIG.port);
 }).catch(err => {
-	server.logger.error('Fatal Error connecting to Mongo.');
+  server.logger.error('Fatal Error connecting to Mongo.');
 });
 ```
 
@@ -149,24 +149,24 @@ Finally, grab the connnection or client in your resolvers so you can start worki
 const errorUtils = require('../../../../utils/error.utils'); 
 
 module.exports.patientResolver = function patientResolver (root, args, ctx, info) {
-	let db = ctx.server.db;
-	let version = ctx.version;
-	let logger = ctx.server.logger;
+  let db = ctx.server.db;
+  let version = ctx.version;
+  let logger = ctx.server.logger;
 
-	return new Promise((resolve, reject) => {
-		// Query MongoDB
-		db.findOne({ _id: args._id }, (err, patient) => {
-			// Errors need to be formatted in a specific way, you can see more
-			// of en explanation on this in the Error handling section below
-			if (err) {
-				let error = errorUtils.internal(version, err.message);
-				logger.error(error);
-				reject(errorUtils.formatErrorForGraphQL(error));
-			} else {
-				resolve(patient);
-			}
-		});
-	});
+  return new Promise((resolve, reject) => {
+    // Query MongoDB
+    db.findOne({ _id: args._id }, (err, patient) => {
+      // Errors need to be formatted in a specific way, you can see more
+      // of en explanation on this in the Error handling section below
+      if (err) {
+        let error = errorUtils.internal(version, err.message);
+        logger.error(error);
+        reject(errorUtils.formatErrorForGraphQL(error));
+      } else {
+        resolve(patient);
+      }
+    });
+  });
 }
 ```
 
@@ -196,30 +196,30 @@ We also allow for partial error handling, so you can reject things in one resolv
 
 ```javascript
 {
-	"errors": [{
-		"path": [ "Observation" ],
-		"message": "You do not have sufficient scope for read access on this Observation resource.",
-		"locations": [{
-			"line": 1,
-			"column": 32
-		}],
-		"extensions": {
-			"resource": {
-				"resourceType": "OperationOutcome",
-				"issue": [{
-					"severity": "error",
-					"code": "forbidden",
-					"diagnostics": "You do not have sufficient scope for read access on this Observation resource."
-				}]
-			}
-		}
-	}],
+  "errors": [{
+    "path": [ "Observation" ],
+    "message": "You do not have sufficient scope for read access on this Observation resource.",
+    "locations": [{
+      "line": 1,
+      "column": 32
+    }],
+    "extensions": {
+      "resource": {
+        "resourceType": "OperationOutcome",
+        "issue": [{
+          "severity": "error",
+          "code": "forbidden",
+          "diagnostics": "You do not have sufficient scope for read access on this Observation resource."
+        }]
+      }
+    }
+  }],
   "data": {
-		"Patient": {
-			"id": "123456789"
-		},
-		"Observation": null
-	}
+    "Patient": {
+      "id": "123456789"
+    },
+    "Observation": null
+  }
 }
 ```
 
@@ -236,26 +236,26 @@ Now let's customize the patient profile. Go to `src/resources/1_0_2/profiles/pat
 
 ```javascript
 module.exports = {
-	query: {
-		// Allow individual patient query
-		Patient: PatientQuery,
-		// Don't allow multiple patient query
-		// PatientList: PatientListQuery
-	},
-	mutation: {
-		// Allow create and update
-		PatientCreate: PatientCreateMutation,
-		PatientUpdate: PatientUpdateMutation,
-		// Don't allow delete
-		// PatientDelete: PatientDeleteMutation
-	},
-	// We don't want to support this at all, so we'll comment
-	// out the whole thing, this is for /1_0_2/Patient/:id/$graphql
-	// instance_query: {
-	// 	name: 'Patient',
-	// 	path: '/1_0_2/Patient/:id',
-	// 	query: PatientInstanceQuery
-	// }
+  query: {
+    // Allow individual patient query
+    Patient: PatientQuery,
+    // Don't allow multiple patient query
+    // PatientList: PatientListQuery
+  },
+  mutation: {
+    // Allow create and update
+    PatientCreate: PatientCreateMutation,
+    PatientUpdate: PatientUpdateMutation,
+    // Don't allow delete
+    // PatientDelete: PatientDeleteMutation
+  },
+  // We don't want to support this at all, so we'll comment
+  // out the whole thing, this is for /1_0_2/Patient/:id/$graphql
+  // instance_query: {
+  // 	name: 'Patient',
+  // 	path: '/1_0_2/Patient/:id',
+  // 	query: PatientInstanceQuery
+  // }
 };
 ```
 
@@ -269,20 +269,20 @@ You can't perform metadata queries and get back capability statements like you w
 List all queries:
 ```graphql
 {
-	__type(name:"Query"){
+  __type(name:"Query"){
     name
     kind
     fields{
       name
     }
-  }  
+  }
 }
 ```
 
 List all mutations:
 ```graphql
 {
-	__type(name:"Mutation"){
+  __type(name:"Mutation"){
     name
     kind
     fields{
@@ -295,7 +295,7 @@ List all mutations:
 For a more complete list which include's all their arguments and return fields, try this (for our example server, this returns almost 50,000 lines of JSON):
 ```graphql
 query TypeIntrospectionQuery{
-	# Can also use __type(name:"Mutation"){ 
+  # Can also use __type(name:"Mutation"){ 
   __type(name:"Query"){
     kind
     name
@@ -376,26 +376,26 @@ Finally, here is a little snippet for how to query and generate a graphql schema
 ```javascript
 // requires graphql to be installed via yarn add graphql
 const {
-	introspectionQuery,
-	buildClientSchema,
-	printSchema
+  introspectionQuery,
+  buildClientSchema,
+  printSchema
 } = require('graphql/utilities');
 // requires node-fetch to be installed via yarn add node-fetch
 const fetch = require('node-fetch');
 const fs = require('fs');
 // Change the url to the GraphQL url
 fetch('http://localhost:3000/3_0_1/$graphiql', {
-	headers: {
-		'content-type': 'application/json',
-		'accept': 'application/json'
-	},
-	body: JSON.stringify({ query: introspectionQuery }),
-	method: 'POST'
+  headers: {
+    'content-type': 'application/json',
+    'accept': 'application/json'
+  },
+  body: JSON.stringify({ query: introspectionQuery }),
+  method: 'POST'
 })
 .then(response => response.json())
 .then(response => {
-	let schema = printSchema(buildClientSchema(response.data));
-	fs.writeFileSync('fhir-3_0_1.graphql', schema);
+  let schema = printSchema(buildClientSchema(response.data));
+  fs.writeFileSync('fhir-3_0_1.graphql', schema);
 })
 .catch(err => console.error('Unable to generate schema'))
 ```
