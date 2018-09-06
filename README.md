@@ -74,7 +74,7 @@ src
 |  |  |  |  | - mutation.js
 |  |  |  |  | # Mutations configuration. Auto-Generated and should not modify
 |  |  |  |  | - query.js
-|  |  |  |  | # # Query configuration. Auto-Generated and should not modify 
+|  |  |  |  | # Query configuration. Auto-Generated and should not modify 
 |  |  |  |  | - resolver.js
 |  |  |  |  | # Contains placeholders, your logic to query your backend goes here.
 ```
