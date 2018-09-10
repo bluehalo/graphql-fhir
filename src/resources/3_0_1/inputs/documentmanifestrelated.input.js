@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary DocumentManifestRelated Input Schema
+ * @summary DocumentManifest.related Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'DocumentManifestRelated_Input',

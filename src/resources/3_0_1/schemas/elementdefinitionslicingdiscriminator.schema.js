@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ElementDefinitionSlicingDiscriminator Schema
+ * @summary ElementDefinition.slicing.discriminator Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ElementDefinitionSlicingDiscriminator',

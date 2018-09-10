@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CompartmentDefinitionResource Schema
+ * @summary CompartmentDefinition.resource Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'CompartmentDefinitionResource',

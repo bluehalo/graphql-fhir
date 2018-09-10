@@ -19,7 +19,7 @@ module.exports = new GraphQLInputObjectType({
 	fields: () => extendSchema(require('./resource.input'), {
 		resourceType: {
 			type: new GraphQLNonNull(ParametersResourceInputType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		parameter: {
 			type: new GraphQLList(require('./parametersparameter.input')),

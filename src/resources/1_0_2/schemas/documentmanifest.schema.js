@@ -22,7 +22,7 @@ module.exports = new GraphQLObjectType({
 	fields: () => extendSchema(require('./domainresource.schema'), {
 		resourceType: {
 			type: new GraphQLNonNull(DocumentManifestResourceType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		masterIdentifier: {
 			type: require('./identifier.schema'),

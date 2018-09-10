@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ProcedurePerformer Schema
+ * @summary Procedure.performer Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ProcedurePerformer',

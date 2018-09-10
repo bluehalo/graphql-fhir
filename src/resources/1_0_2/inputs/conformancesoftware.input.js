@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ConformanceSoftware Input Schema
+ * @summary Conformance.software Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ConformanceSoftware_Input',

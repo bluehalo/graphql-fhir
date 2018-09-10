@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ContractAgent Input Schema
+ * @summary Contract.agent Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ContractAgent_Input',

@@ -8,14 +8,14 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	patient: {
 		type: GraphQLString,
-		description: 'Search by subject - a patient. See http://hl7.org/fhir/SearchParameter/deviceusestatement-patient.'
+		description: 'Search by subject - a patient (See http://hl7.org/fhir/SearchParameter/deviceusestatement-patient).'
 	},
 	subject: {
 		type: GraphQLString,
-		description: 'Search by subject. See http://hl7.org/fhir/SearchParameter/deviceusestatement-subject.'
+		description: 'Search by subject (See http://hl7.org/fhir/SearchParameter/deviceusestatement-subject).'
 	},
 	device: {
 		type: GraphQLString,
-		description: 'Search by device. See http://hl7.org/fhir/SearchParameter/deviceusestatement-device.'
+		description: 'Search by device (See http://hl7.org/fhir/SearchParameter/deviceusestatement-device).'
 	}
 };

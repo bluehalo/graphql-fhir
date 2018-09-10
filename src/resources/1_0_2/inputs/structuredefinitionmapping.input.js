@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary StructureDefinitionMapping Input Schema
+ * @summary StructureDefinition.mapping Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'StructureDefinitionMapping_Input',

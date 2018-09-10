@@ -10,26 +10,26 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	date: {
 		type: DateScalar,
-		description: 'When identified. See http://hl7.org/fhir/SearchParameter/clinical-date.'
+		description: 'When identified (See http://hl7.org/fhir/SearchParameter/clinical-date).'
 	},
 	identifier: {
 		type: TokenScalar,
-		description: 'Unique id for the detected issue. See http://hl7.org/fhir/SearchParameter/clinical-identifier.'
+		description: 'Unique id for the detected issue (See http://hl7.org/fhir/SearchParameter/clinical-identifier).'
 	},
 	patient: {
 		type: GraphQLString,
-		description: 'Associated patient. See http://hl7.org/fhir/SearchParameter/clinical-patient.'
+		description: 'Associated patient (See http://hl7.org/fhir/SearchParameter/clinical-patient).'
 	},
 	author: {
 		type: GraphQLString,
-		description: 'The provider or device that identified the issue. See http://hl7.org/fhir/SearchParameter/DetectedIssue-author.'
+		description: 'The provider or device that identified the issue (See http://hl7.org/fhir/SearchParameter/DetectedIssue-author).'
 	},
 	implicated: {
 		type: GraphQLString,
-		description: 'Problem resource. See http://hl7.org/fhir/SearchParameter/DetectedIssue-implicated.'
+		description: 'Problem resource (See http://hl7.org/fhir/SearchParameter/DetectedIssue-implicated).'
 	},
 	category: {
 		type: TokenScalar,
-		description: 'Issue Category, e.g. drug-drug, duplicate therapy, etc. See http://hl7.org/fhir/SearchParameter/DetectedIssue-category.'
+		description: 'Issue Category, e.g. drug-drug, duplicate therapy, etc. (See http://hl7.org/fhir/SearchParameter/DetectedIssue-category).'
 	}
 };

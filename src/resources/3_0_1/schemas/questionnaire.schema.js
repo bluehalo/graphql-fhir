@@ -23,7 +23,7 @@ module.exports = new GraphQLObjectType({
 	fields: () => extendSchema(require('./domainresource.schema'), {
 		resourceType: {
 			type: new GraphQLNonNull(QuestionnaireResourceType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		url: {
 			type: UriScalar,

@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary TaskRestriction Input Schema
+ * @summary Task.restriction Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'TaskRestriction_Input',

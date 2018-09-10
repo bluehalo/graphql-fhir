@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ConceptMapGroup Schema
+ * @summary ConceptMap.group Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ConceptMapGroup',

@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary DeviceMetricCalibration Input Schema
+ * @summary DeviceMetric.calibration Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'DeviceMetricCalibration_Input',

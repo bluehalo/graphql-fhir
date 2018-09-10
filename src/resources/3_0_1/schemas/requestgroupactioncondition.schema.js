@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary RequestGroupActionCondition Schema
+ * @summary RequestGroup.action.condition Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'RequestGroupActionCondition',

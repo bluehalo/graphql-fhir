@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ConceptMapGroupUnmapped Input Schema
+ * @summary ConceptMap.group.unmapped Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ConceptMapGroupUnmapped_Input',

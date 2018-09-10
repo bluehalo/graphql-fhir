@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ValueSetCodeSystem Schema
+ * @summary ValueSet.codeSystem Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ValueSetCodeSystem',

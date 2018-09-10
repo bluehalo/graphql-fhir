@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary MessageDefinitionFocus Input Schema
+ * @summary MessageDefinition.focus Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'MessageDefinitionFocus_Input',

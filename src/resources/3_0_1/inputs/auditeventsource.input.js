@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary AuditEventSource Input Schema
+ * @summary AuditEvent.source Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'AuditEventSource_Input',

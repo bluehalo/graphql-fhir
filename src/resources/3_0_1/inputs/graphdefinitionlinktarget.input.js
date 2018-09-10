@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary GraphDefinitionLinkTarget Input Schema
+ * @summary GraphDefinition.link.target Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'GraphDefinitionLinkTarget_Input',

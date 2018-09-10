@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary PlanDefinitionActionRelatedAction Input Schema
+ * @summary PlanDefinition.action.relatedAction Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'PlanDefinitionActionRelatedAction_Input',

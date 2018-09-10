@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ImagingManifestStudySeriesInstance Schema
+ * @summary ImagingManifest.study.series.instance Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ImagingManifestStudySeriesInstance',

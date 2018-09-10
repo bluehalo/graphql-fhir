@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary MeasureSupplementalData Input Schema
+ * @summary Measure.supplementalData Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'MeasureSupplementalData_Input',

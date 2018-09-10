@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ImagingObjectSelectionStudySeriesInstanceFrames Input Schema
+ * @summary ImagingObjectSelection.study.series.instance.frames Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ImagingObjectSelectionStudySeriesInstanceFrames_Input',

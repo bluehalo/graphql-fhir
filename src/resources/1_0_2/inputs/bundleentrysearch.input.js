@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary BundleEntrySearch Input Schema
+ * @summary Bundle.entry.search Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'BundleEntrySearch_Input',

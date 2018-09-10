@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ObservationReferenceRange Input Schema
+ * @summary Observation.referenceRange Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ObservationReferenceRange_Input',

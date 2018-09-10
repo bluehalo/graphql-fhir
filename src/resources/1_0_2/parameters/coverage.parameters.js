@@ -9,34 +9,34 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	plan: {
 		type: TokenScalar,
-		description: 'A plan or policy identifier. See http://hl7.org/fhir/SearchParameter/coverage-plan.'
+		description: 'A plan or policy identifier (See http://hl7.org/fhir/SearchParameter/coverage-plan).'
 	},
 	issuer: {
 		type: GraphQLString,
-		description: 'The identity of the insurer. See http://hl7.org/fhir/SearchParameter/coverage-issuer.'
+		description: 'The identity of the insurer (See http://hl7.org/fhir/SearchParameter/coverage-issuer).'
 	},
 	sequence: {
 		type: TokenScalar,
-		description: 'Sequence number. See http://hl7.org/fhir/SearchParameter/coverage-sequence.'
+		description: 'Sequence number (See http://hl7.org/fhir/SearchParameter/coverage-sequence).'
 	},
 	dependent: {
 		type: TokenScalar,
-		description: 'Dependent number. See http://hl7.org/fhir/SearchParameter/coverage-dependent.'
+		description: 'Dependent number (See http://hl7.org/fhir/SearchParameter/coverage-dependent).'
 	},
 	group: {
 		type: TokenScalar,
-		description: 'Group identifier. See http://hl7.org/fhir/SearchParameter/coverage-group.'
+		description: 'Group identifier (See http://hl7.org/fhir/SearchParameter/coverage-group).'
 	},
 	type: {
 		type: TokenScalar,
-		description: 'The kind of coverage. See http://hl7.org/fhir/SearchParameter/coverage-type.'
+		description: 'The kind of coverage (See http://hl7.org/fhir/SearchParameter/coverage-type).'
 	},
 	identifier: {
 		type: TokenScalar,
-		description: 'The primary identifier of the insured. See http://hl7.org/fhir/SearchParameter/coverage-identifier.'
+		description: 'The primary identifier of the insured (See http://hl7.org/fhir/SearchParameter/coverage-identifier).'
 	},
 	subplan: {
 		type: TokenScalar,
-		description: 'Sub-plan identifier. See http://hl7.org/fhir/SearchParameter/coverage-subplan.'
+		description: 'Sub-plan identifier (See http://hl7.org/fhir/SearchParameter/coverage-subplan).'
 	}
 };

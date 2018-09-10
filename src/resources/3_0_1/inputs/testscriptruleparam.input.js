@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary TestScriptRuleParam Input Schema
+ * @summary TestScript.rule.param Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'TestScriptRuleParam_Input',

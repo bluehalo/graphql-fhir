@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CompositionAttester Schema
+ * @summary Composition.attester Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'CompositionAttester',

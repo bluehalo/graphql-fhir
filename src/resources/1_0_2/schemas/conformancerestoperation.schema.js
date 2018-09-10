@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ConformanceRestOperation Schema
+ * @summary Conformance.rest.operation Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ConformanceRestOperation',

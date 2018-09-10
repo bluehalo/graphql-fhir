@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CapabilityStatementImplementation Input Schema
+ * @summary CapabilityStatement.implementation Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'CapabilityStatementImplementation_Input',

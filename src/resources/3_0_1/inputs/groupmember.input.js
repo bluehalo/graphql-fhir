@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary GroupMember Input Schema
+ * @summary Group.member Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'GroupMember_Input',

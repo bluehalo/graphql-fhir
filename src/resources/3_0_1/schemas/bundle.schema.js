@@ -21,7 +21,7 @@ module.exports = new GraphQLObjectType({
 	fields: () => extendSchema(require('./resource.schema'), {
 		resourceType: {
 			type: new GraphQLNonNull(BundleResourceType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		identifier: {
 			type: require('./identifier.schema'),

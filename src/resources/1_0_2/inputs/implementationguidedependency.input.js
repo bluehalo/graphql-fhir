@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ImplementationGuideDependency Input Schema
+ * @summary ImplementationGuide.dependency Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ImplementationGuideDependency_Input',

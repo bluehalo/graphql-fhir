@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary SupplyRequestWhen Schema
+ * @summary SupplyRequest.when Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'SupplyRequestWhen',

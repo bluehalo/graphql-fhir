@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary MeasureGroupStratifier Schema
+ * @summary Measure.group.stratifier Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'MeasureGroupStratifier',

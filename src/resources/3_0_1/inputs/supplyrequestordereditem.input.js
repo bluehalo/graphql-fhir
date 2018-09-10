@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary SupplyRequestOrderedItem Input Schema
+ * @summary SupplyRequest.orderedItem Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'SupplyRequestOrderedItem_Input',

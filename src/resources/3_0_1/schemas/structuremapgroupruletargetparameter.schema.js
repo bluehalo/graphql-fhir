@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary StructureMapGroupRuleTargetParameter Schema
+ * @summary StructureMap.group.rule.target.parameter Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'StructureMapGroupRuleTargetParameter',

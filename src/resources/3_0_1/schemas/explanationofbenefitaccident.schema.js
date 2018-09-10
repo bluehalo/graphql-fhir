@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ExplanationOfBenefitAccident Schema
+ * @summary ExplanationOfBenefit.accident Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ExplanationOfBenefitAccident',

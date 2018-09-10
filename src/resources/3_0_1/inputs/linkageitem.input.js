@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary LinkageItem Input Schema
+ * @summary Linkage.item Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'LinkageItem_Input',

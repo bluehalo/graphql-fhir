@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary PaymentReconciliationProcessNote Input Schema
+ * @summary PaymentReconciliation.processNote Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'PaymentReconciliationProcessNote_Input',

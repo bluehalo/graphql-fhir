@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary DetectedIssueMitigation Schema
+ * @summary DetectedIssue.mitigation Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'DetectedIssueMitigation',

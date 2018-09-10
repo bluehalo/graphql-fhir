@@ -11,26 +11,26 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	selected_study: {
 		type: UriScalar,
-		description: 'Study selected in key DICOM object selection. See http://hl7.org/fhir/SearchParameter/imagingobjectselection-selected-study.'
+		description: 'Study selected in key DICOM object selection (See http://hl7.org/fhir/SearchParameter/imagingobjectselection-selected-study).'
 	},
 	author: {
 		type: GraphQLString,
-		description: 'Author of key DICOM object selection. See http://hl7.org/fhir/SearchParameter/imagingobjectselection-author.'
+		description: 'Author of key DICOM object selection (See http://hl7.org/fhir/SearchParameter/imagingobjectselection-author).'
 	},
 	title: {
 		type: TokenScalar,
-		description: 'Title of key DICOM object selection. See http://hl7.org/fhir/SearchParameter/imagingobjectselection-title.'
+		description: 'Title of key DICOM object selection (See http://hl7.org/fhir/SearchParameter/imagingobjectselection-title).'
 	},
 	patient: {
 		type: GraphQLString,
-		description: 'Subject of key DICOM object selection. See http://hl7.org/fhir/SearchParameter/imagingobjectselection-patient.'
+		description: 'Subject of key DICOM object selection (See http://hl7.org/fhir/SearchParameter/imagingobjectselection-patient).'
 	},
 	authoring_time: {
 		type: DateScalar,
-		description: 'Time of key DICOM object selection authoring. See http://hl7.org/fhir/SearchParameter/imagingobjectselection-authoring-time.'
+		description: 'Time of key DICOM object selection authoring (See http://hl7.org/fhir/SearchParameter/imagingobjectselection-authoring-time).'
 	},
 	identifier: {
 		type: UriScalar,
-		description: 'UID of key DICOM object selection. See http://hl7.org/fhir/SearchParameter/imagingobjectselection-identifier.'
+		description: 'UID of key DICOM object selection (See http://hl7.org/fhir/SearchParameter/imagingobjectselection-identifier).'
 	}
 };

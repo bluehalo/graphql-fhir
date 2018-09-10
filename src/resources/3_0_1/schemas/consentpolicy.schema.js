@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ConsentPolicy Schema
+ * @summary Consent.policy Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ConsentPolicy',

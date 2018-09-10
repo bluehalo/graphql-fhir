@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ReferralRequestRequester Input Schema
+ * @summary ReferralRequest.requester Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ReferralRequestRequester_Input',

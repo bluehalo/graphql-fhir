@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary RequestGroupActionRelatedAction Schema
+ * @summary RequestGroup.action.relatedAction Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'RequestGroupActionRelatedAction',

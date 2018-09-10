@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 	fields: () => extendSchema(require('./domainresource.input'), {
 		resourceType: {
 			type: new GraphQLNonNull(ClaimResourceInputType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		// ValueSetReference: http://hl7.org/fhir/ValueSet/claim-type-link
 		type: {

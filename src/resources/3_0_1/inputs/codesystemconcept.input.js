@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CodeSystemConcept Input Schema
+ * @summary CodeSystem.concept Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'CodeSystemConcept_Input',

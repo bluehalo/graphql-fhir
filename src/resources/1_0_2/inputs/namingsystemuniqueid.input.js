@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary NamingSystemUniqueId Input Schema
+ * @summary NamingSystem.uniqueId Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'NamingSystemUniqueId_Input',

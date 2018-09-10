@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 	fields: () => extendSchema(require('./domainresource.input'), {
 		resourceType: {
 			type: new GraphQLNonNull(EligibilityRequestResourceInputType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		identifier: {
 			type: new GraphQLList(require('./identifier.input')),

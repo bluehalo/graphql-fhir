@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CapabilityStatementRestSecurityCertificate Input Schema
+ * @summary CapabilityStatement.rest.security.certificate Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'CapabilityStatementRestSecurityCertificate_Input',

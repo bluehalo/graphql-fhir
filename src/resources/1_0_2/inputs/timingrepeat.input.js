@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary TimingRepeat Input Schema
+ * @summary Timing.repeat Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'TimingRepeat_Input',

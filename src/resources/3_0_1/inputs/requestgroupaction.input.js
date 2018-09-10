@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary RequestGroupAction Input Schema
+ * @summary RequestGroup.action Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'RequestGroupAction_Input',

@@ -20,7 +20,7 @@ module.exports = new GraphQLObjectType({
 	fields: () => extendSchema(require('./domainresource.schema'), {
 		resourceType: {
 			type: new GraphQLNonNull(DeviceMetricResourceType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		type: {
 			type: new GraphQLNonNull(require('./codeableconcept.schema')),

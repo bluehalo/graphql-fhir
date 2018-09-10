@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ObservationComponent Input Schema
+ * @summary Observation.component Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ObservationComponent_Input',

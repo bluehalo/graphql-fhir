@@ -8,6 +8,6 @@ const TokenScalar = require('../scalars/token.scalar');
 module.exports = {
 	identifier: {
 		type: TokenScalar,
-		description: 'The business identifier of the Eligibility. See http://hl7.org/fhir/SearchParameter/paymentnotice-identifier.'
+		description: 'The business identifier of the Eligibility (See http://hl7.org/fhir/SearchParameter/paymentnotice-identifier).'
 	}
 };

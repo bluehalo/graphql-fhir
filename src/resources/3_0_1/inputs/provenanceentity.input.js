@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ProvenanceEntity Input Schema
+ * @summary Provenance.entity Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ProvenanceEntity_Input',

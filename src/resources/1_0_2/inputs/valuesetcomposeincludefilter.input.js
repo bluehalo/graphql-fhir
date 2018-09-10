@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ValueSetComposeIncludeFilter Input Schema
+ * @summary ValueSet.compose.include.filter Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ValueSetComposeIncludeFilter_Input',

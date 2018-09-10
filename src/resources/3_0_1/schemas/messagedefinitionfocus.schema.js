@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary MessageDefinitionFocus Schema
+ * @summary MessageDefinition.focus Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'MessageDefinitionFocus',

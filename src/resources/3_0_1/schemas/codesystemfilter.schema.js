@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CodeSystemFilter Schema
+ * @summary CodeSystem.filter Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'CodeSystemFilter',

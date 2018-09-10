@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary AccountCoverage Input Schema
+ * @summary Account.coverage Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'AccountCoverage_Input',

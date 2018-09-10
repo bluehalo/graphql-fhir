@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CapabilityStatementRestResourceSearchParam Input Schema
+ * @summary CapabilityStatement.rest.resource.searchParam Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'CapabilityStatementRestResourceSearchParam_Input',

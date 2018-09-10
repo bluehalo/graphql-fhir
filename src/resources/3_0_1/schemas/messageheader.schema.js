@@ -20,7 +20,7 @@ module.exports = new GraphQLObjectType({
 	fields: () => extendSchema(require('./domainresource.schema'), {
 		resourceType: {
 			type: new GraphQLNonNull(MessageHeaderResourceType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		// ValueSetReference: http://hl7.org/fhir/ValueSet/message-events
 		event: {

@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary AuditEventAgent Input Schema
+ * @summary AuditEvent.agent Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'AuditEventAgent_Input',

@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CompositionEvent Schema
+ * @summary Composition.event Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'CompositionEvent',

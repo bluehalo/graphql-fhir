@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ValueSetComposeIncludeConcept Schema
+ * @summary ValueSet.compose.include.concept Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ValueSetComposeIncludeConcept',

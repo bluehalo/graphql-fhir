@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary OperationDefinitionOverload Input Schema
+ * @summary OperationDefinition.overload Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'OperationDefinitionOverload_Input',

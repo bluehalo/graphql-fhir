@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary SubstanceInstance Schema
+ * @summary Substance.instance Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'SubstanceInstance',

@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 	fields: () => extendSchema({
 		resourceType: {
 			type: new GraphQLNonNull(ResourceResourceInputType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		id: {
 			type: IdScalar,

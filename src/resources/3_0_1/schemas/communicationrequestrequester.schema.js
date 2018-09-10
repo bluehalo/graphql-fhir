@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CommunicationRequestRequester Schema
+ * @summary CommunicationRequest.requester Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'CommunicationRequestRequester',

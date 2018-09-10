@@ -21,7 +21,7 @@ module.exports = new GraphQLObjectType({
 	fields: () => extendSchema(require('./resource.schema'), {
 		resourceType: {
 			type: new GraphQLNonNull(BinaryResourceType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		contentType: {
 			type: new GraphQLNonNull(CodeScalar),
