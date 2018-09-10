@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary TestScriptFixture Input Schema
+ * @summary TestScript.fixture Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'TestScriptFixture_Input',

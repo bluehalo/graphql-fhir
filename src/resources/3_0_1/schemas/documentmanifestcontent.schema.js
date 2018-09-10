@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary DocumentManifestContent Schema
+ * @summary DocumentManifest.content Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'DocumentManifestContent',

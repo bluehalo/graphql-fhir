@@ -20,7 +20,7 @@ module.exports = new GraphQLInputObjectType({
 	fields: () => extendSchema(require('./domainresource.input'), {
 		resourceType: {
 			type: new GraphQLNonNull(DeviceMetricResourceInputType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		identifier: {
 			type: new GraphQLNonNull(require('./identifier.input')),

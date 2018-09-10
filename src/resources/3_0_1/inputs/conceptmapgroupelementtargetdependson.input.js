@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ConceptMapGroupElementTargetDependsOn Input Schema
+ * @summary ConceptMap.group.element.target.dependsOn Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ConceptMapGroupElementTargetDependsOn_Input',

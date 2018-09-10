@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 	fields: () => extendSchema(require('./domainresource.input'), {
 		resourceType: {
 			type: new GraphQLNonNull(TestScriptResourceInputType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		url: {
 			type: new GraphQLNonNull(UriScalar),

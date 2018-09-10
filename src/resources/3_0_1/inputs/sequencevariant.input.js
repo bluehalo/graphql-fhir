@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary SequenceVariant Input Schema
+ * @summary Sequence.variant Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'SequenceVariant_Input',

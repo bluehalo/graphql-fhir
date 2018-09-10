@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CoverageGrouping Input Schema
+ * @summary Coverage.grouping Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'CoverageGrouping_Input',

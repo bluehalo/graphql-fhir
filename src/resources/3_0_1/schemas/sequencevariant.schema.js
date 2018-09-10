@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary SequenceVariant Schema
+ * @summary Sequence.variant Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'SequenceVariant',

@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary StructureDefinitionDifferential Input Schema
+ * @summary StructureDefinition.differential Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'StructureDefinitionDifferential_Input',

@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ConformanceRestResourceSearchParam Input Schema
+ * @summary Conformance.rest.resource.searchParam Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ConformanceRestResourceSearchParam_Input',

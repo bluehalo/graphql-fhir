@@ -123,7 +123,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
  */
 module.exports = new GraphQLUnionType({
 	name: 'ResourceList',
-	description: 'Union of all available resources',
+	description: 'Union of all available resources.',
 	types: [
 		AccountType,
 		ActivityDefinitionType,

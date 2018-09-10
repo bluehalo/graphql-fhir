@@ -21,7 +21,7 @@ module.exports = new GraphQLInputObjectType({
 	fields: () => extendSchema(require('./resource.input'), {
 		resourceType: {
 			type: new GraphQLNonNull(BinaryResourceInputType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		contentType: {
 			type: new GraphQLNonNull(CodeScalar),

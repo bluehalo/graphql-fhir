@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CompositionSection Input Schema
+ * @summary Composition.section Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'CompositionSection_Input',

@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary BundleEntryRequest Schema
+ * @summary Bundle.entry.request Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'BundleEntryRequest',

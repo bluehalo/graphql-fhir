@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary DataRequirementDateFilter Input Schema
+ * @summary DataRequirement.dateFilter Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'DataRequirementDateFilter_Input',

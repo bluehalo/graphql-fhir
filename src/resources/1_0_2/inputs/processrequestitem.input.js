@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ProcessRequestItem Input Schema
+ * @summary ProcessRequest.item Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ProcessRequestItem_Input',

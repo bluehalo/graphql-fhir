@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary RequestGroupActionCondition Input Schema
+ * @summary RequestGroup.action.condition Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'RequestGroupActionCondition_Input',

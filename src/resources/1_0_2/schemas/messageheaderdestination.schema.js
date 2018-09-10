@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary MessageHeaderDestination Schema
+ * @summary MessageHeader.destination Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'MessageHeaderDestination',

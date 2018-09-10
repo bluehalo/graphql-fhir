@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ElementDefinitionSlicing Input Schema
+ * @summary ElementDefinition.slicing Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ElementDefinitionSlicing_Input',

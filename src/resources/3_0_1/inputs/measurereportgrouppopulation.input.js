@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary MeasureReportGroupPopulation Input Schema
+ * @summary MeasureReport.group.population Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'MeasureReportGroupPopulation_Input',

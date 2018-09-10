@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary PersonLink Input Schema
+ * @summary Person.link Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'PersonLink_Input',

@@ -17,7 +17,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary TaskOutput Schema
+ * @summary Task.output Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'TaskOutput',

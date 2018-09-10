@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary OrderWhen Input Schema
+ * @summary Order.when Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'OrderWhen_Input',

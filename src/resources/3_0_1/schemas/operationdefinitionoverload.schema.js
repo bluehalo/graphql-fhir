@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary OperationDefinitionOverload Schema
+ * @summary OperationDefinition.overload Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'OperationDefinitionOverload',

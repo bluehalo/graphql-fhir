@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ConditionStage Input Schema
+ * @summary Condition.stage Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ConditionStage_Input',

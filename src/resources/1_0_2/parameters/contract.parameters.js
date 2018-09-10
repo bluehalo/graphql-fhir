@@ -9,22 +9,22 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	signer: {
 		type: GraphQLString,
-		description: 'Contract Signatory Party. See http://hl7.org/fhir/SearchParameter/contract-signer.'
+		description: 'Contract Signatory Party (See http://hl7.org/fhir/SearchParameter/contract-signer).'
 	},
 	patient: {
 		type: GraphQLString,
-		description: 'The identity of the target of the contract (if a patient). See http://hl7.org/fhir/SearchParameter/contract-patient.'
+		description: 'The identity of the target of the contract (if a patient) (See http://hl7.org/fhir/SearchParameter/contract-patient).'
 	},
 	subject: {
 		type: GraphQLString,
-		description: 'The identity of the target of the contract. See http://hl7.org/fhir/SearchParameter/contract-subject.'
+		description: 'The identity of the target of the contract (See http://hl7.org/fhir/SearchParameter/contract-subject).'
 	},
 	actor: {
 		type: GraphQLString,
-		description: 'Contract Actor Type. See http://hl7.org/fhir/SearchParameter/contract-actor.'
+		description: 'Contract Actor Type (See http://hl7.org/fhir/SearchParameter/contract-actor).'
 	},
 	identifier: {
 		type: TokenScalar,
-		description: 'The identity of the contract. See http://hl7.org/fhir/SearchParameter/contract-identifier.'
+		description: 'The identity of the contract (See http://hl7.org/fhir/SearchParameter/contract-identifier).'
 	}
 };

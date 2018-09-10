@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CompositionAttester Input Schema
+ * @summary Composition.attester Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'CompositionAttester_Input',

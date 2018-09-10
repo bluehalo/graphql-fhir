@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary OperationDefinitionParameterBinding Input Schema
+ * @summary OperationDefinition.parameter.binding Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'OperationDefinitionParameterBinding_Input',

@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary MessageDefinitionAllowedResponse Input Schema
+ * @summary MessageDefinition.allowedResponse Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'MessageDefinitionAllowedResponse_Input',

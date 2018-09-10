@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary DataElementMapping Input Schema
+ * @summary DataElement.mapping Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'DataElementMapping_Input',

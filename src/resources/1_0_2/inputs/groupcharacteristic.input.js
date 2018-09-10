@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary GroupCharacteristic Input Schema
+ * @summary Group.characteristic Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'GroupCharacteristic_Input',

@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary AuditEventAgentNetwork Schema
+ * @summary AuditEvent.agent.network Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'AuditEventAgentNetwork',

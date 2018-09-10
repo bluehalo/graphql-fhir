@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary FamilyMemberHistoryCondition Schema
+ * @summary FamilyMemberHistory.condition Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'FamilyMemberHistoryCondition',

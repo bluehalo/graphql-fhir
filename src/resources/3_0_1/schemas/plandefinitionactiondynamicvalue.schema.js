@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary PlanDefinitionActionDynamicValue Schema
+ * @summary PlanDefinition.action.dynamicValue Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'PlanDefinitionActionDynamicValue',

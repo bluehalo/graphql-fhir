@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary VisionPrescriptionDispense Input Schema
+ * @summary VisionPrescription.dispense Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'VisionPrescriptionDispense_Input',

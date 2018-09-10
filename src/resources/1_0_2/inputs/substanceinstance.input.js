@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary SubstanceInstance Input Schema
+ * @summary Substance.instance Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'SubstanceInstance_Input',

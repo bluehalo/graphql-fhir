@@ -19,7 +19,7 @@ module.exports = new GraphQLObjectType({
 	fields: () => extendSchema(require('./domainresource.schema'), {
 		resourceType: {
 			type: new GraphQLNonNull(AuditEventResourceType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		event: {
 			type: new GraphQLNonNull(require('./auditeventevent.schema')),

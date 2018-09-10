@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary TestReportTeardown Input Schema
+ * @summary TestReport.teardown Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'TestReportTeardown_Input',

@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary FamilyMemberHistoryCondition Input Schema
+ * @summary FamilyMemberHistory.condition Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'FamilyMemberHistoryCondition_Input',

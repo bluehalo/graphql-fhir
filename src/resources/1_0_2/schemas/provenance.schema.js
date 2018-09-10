@@ -21,7 +21,7 @@ module.exports = new GraphQLObjectType({
 	fields: () => extendSchema(require('./domainresource.schema'), {
 		resourceType: {
 			type: new GraphQLNonNull(ProvenanceResourceType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		target: {
 			type: new GraphQLList(new GraphQLNonNull(require('./reference.schema'))),

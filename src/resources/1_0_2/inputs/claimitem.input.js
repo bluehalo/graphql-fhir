@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ClaimItem Input Schema
+ * @summary Claim.item Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ClaimItem_Input',

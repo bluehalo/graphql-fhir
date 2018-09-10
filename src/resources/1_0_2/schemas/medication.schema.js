@@ -19,7 +19,7 @@ module.exports = new GraphQLObjectType({
 	fields: () => extendSchema(require('./domainresource.schema'), {
 		resourceType: {
 			type: new GraphQLNonNull(MedicationResourceType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-codes
 		code: {

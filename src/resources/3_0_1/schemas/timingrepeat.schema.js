@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary TimingRepeat Schema
+ * @summary Timing.repeat Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'TimingRepeat',

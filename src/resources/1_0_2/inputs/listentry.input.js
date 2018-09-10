@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ListEntry Input Schema
+ * @summary List.entry Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ListEntry_Input',

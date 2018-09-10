@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ConformanceMessagingEndpoint Input Schema
+ * @summary Conformance.messaging.endpoint Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ConformanceMessagingEndpoint_Input',

@@ -20,7 +20,7 @@ module.exports = new GraphQLInputObjectType({
 	fields: () => extendSchema(require('./domainresource.input'), {
 		resourceType: {
 			type: new GraphQLNonNull(CoverageResourceInputType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		issuer: {
 			type: require('./reference.input'),

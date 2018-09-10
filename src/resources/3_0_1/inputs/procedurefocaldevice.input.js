@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ProcedureFocalDevice Input Schema
+ * @summary Procedure.focalDevice Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ProcedureFocalDevice_Input',

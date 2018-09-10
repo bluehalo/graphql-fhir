@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ElementDefinitionConstraint Schema
+ * @summary ElementDefinition.constraint Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ElementDefinitionConstraint',

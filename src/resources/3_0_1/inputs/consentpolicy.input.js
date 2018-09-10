@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ConsentPolicy Input Schema
+ * @summary Consent.policy Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ConsentPolicy_Input',

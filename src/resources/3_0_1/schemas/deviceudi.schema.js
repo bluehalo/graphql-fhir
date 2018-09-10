@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary DeviceUdi Schema
+ * @summary Device.udi Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'DeviceUdi',

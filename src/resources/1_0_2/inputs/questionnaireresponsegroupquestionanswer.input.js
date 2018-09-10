@@ -11,7 +11,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary QuestionnaireResponseGroupQuestionAnswer Input Schema
+ * @summary QuestionnaireResponse.group.question.answer Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'QuestionnaireResponseGroupQuestionAnswer_Input',

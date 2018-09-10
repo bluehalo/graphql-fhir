@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary DataRequirementCodeFilter Input Schema
+ * @summary DataRequirement.codeFilter Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'DataRequirementCodeFilter_Input',

@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary OrderWhen Schema
+ * @summary Order.when Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'OrderWhen',

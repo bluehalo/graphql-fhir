@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary MeasureSupplementalData Schema
+ * @summary Measure.supplementalData Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'MeasureSupplementalData',

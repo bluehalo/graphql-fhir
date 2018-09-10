@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ValueSetExpansionContains Input Schema
+ * @summary ValueSet.expansion.contains Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ValueSetExpansionContains_Input',

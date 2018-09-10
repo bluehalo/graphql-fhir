@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ProcessResponseProcessNote Schema
+ * @summary ProcessResponse.processNote Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ProcessResponseProcessNote',

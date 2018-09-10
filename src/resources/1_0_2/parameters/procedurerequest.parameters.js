@@ -9,26 +9,26 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	orderer: {
 		type: GraphQLString,
-		description: 'Who made request. See http://hl7.org/fhir/SearchParameter/procedurerequest-orderer.'
+		description: 'Who made request (See http://hl7.org/fhir/SearchParameter/procedurerequest-orderer).'
 	},
 	patient: {
 		type: GraphQLString,
-		description: 'Search by subject - a patient. See http://hl7.org/fhir/SearchParameter/procedurerequest-patient.'
+		description: 'Search by subject - a patient (See http://hl7.org/fhir/SearchParameter/procedurerequest-patient).'
 	},
 	subject: {
 		type: GraphQLString,
-		description: 'Search by subject. See http://hl7.org/fhir/SearchParameter/procedurerequest-subject.'
+		description: 'Search by subject (See http://hl7.org/fhir/SearchParameter/procedurerequest-subject).'
 	},
 	performer: {
 		type: GraphQLString,
-		description: 'Who should perform the procedure. See http://hl7.org/fhir/SearchParameter/procedurerequest-performer.'
+		description: 'Who should perform the procedure (See http://hl7.org/fhir/SearchParameter/procedurerequest-performer).'
 	},
 	encounter: {
 		type: GraphQLString,
-		description: 'Encounter request created during. See http://hl7.org/fhir/SearchParameter/procedurerequest-encounter.'
+		description: 'Encounter request created during (See http://hl7.org/fhir/SearchParameter/procedurerequest-encounter).'
 	},
 	identifier: {
 		type: TokenScalar,
-		description: 'A unique identifier of the Procedure Request. See http://hl7.org/fhir/SearchParameter/procedurerequest-identifier.'
+		description: 'A unique identifier of the Procedure Request (See http://hl7.org/fhir/SearchParameter/procedurerequest-identifier).'
 	}
 };

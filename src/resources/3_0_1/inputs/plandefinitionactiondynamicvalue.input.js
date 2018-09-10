@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary PlanDefinitionActionDynamicValue Input Schema
+ * @summary PlanDefinition.action.dynamicValue Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'PlanDefinitionActionDynamicValue_Input',

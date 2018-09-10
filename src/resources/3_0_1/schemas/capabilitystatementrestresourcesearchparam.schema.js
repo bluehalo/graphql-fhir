@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary CapabilityStatementRestResourceSearchParam Schema
+ * @summary CapabilityStatement.rest.resource.searchParam Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'CapabilityStatementRestResourceSearchParam',

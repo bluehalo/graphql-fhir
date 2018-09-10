@@ -10,62 +10,62 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	identifier: {
 		type: TokenScalar,
-		description: 'Unique identifier. See http://hl7.org/fhir/SearchParameter/Communication-identifier.'
+		description: 'Unique identifier (See http://hl7.org/fhir/SearchParameter/Communication-identifier).'
 	},
 	subject: {
 		type: GraphQLString,
-		description: 'Focus of message. See http://hl7.org/fhir/SearchParameter/Communication-subject.'
+		description: 'Focus of message (See http://hl7.org/fhir/SearchParameter/Communication-subject).'
 	},
 	received: {
 		type: DateScalar,
-		description: 'When received. See http://hl7.org/fhir/SearchParameter/Communication-received.'
+		description: 'When received (See http://hl7.org/fhir/SearchParameter/Communication-received).'
 	},
 	part_of: {
 		type: GraphQLString,
-		description: 'Part of this action. See http://hl7.org/fhir/SearchParameter/Communication-part-of.'
+		description: 'Part of this action (See http://hl7.org/fhir/SearchParameter/Communication-part-of).'
 	},
 	medium: {
 		type: TokenScalar,
-		description: 'A channel of communication. See http://hl7.org/fhir/SearchParameter/Communication-medium.'
+		description: 'A channel of communication (See http://hl7.org/fhir/SearchParameter/Communication-medium).'
 	},
 	encounter: {
 		type: GraphQLString,
-		description: 'Encounter leading to message. See http://hl7.org/fhir/SearchParameter/Communication-encounter.'
+		description: 'Encounter leading to message (See http://hl7.org/fhir/SearchParameter/Communication-encounter).'
 	},
 	sent: {
 		type: DateScalar,
-		description: 'When sent. See http://hl7.org/fhir/SearchParameter/Communication-sent.'
+		description: 'When sent (See http://hl7.org/fhir/SearchParameter/Communication-sent).'
 	},
 	based_on: {
 		type: GraphQLString,
-		description: 'Request fulfilled by this communication. See http://hl7.org/fhir/SearchParameter/Communication-based-on.'
+		description: 'Request fulfilled by this communication (See http://hl7.org/fhir/SearchParameter/Communication-based-on).'
 	},
 	sender: {
 		type: GraphQLString,
-		description: 'Message sender. See http://hl7.org/fhir/SearchParameter/Communication-sender.'
+		description: 'Message sender (See http://hl7.org/fhir/SearchParameter/Communication-sender).'
 	},
 	patient: {
 		type: GraphQLString,
-		description: 'Focus of message. See http://hl7.org/fhir/SearchParameter/Communication-patient.'
+		description: 'Focus of message (See http://hl7.org/fhir/SearchParameter/Communication-patient).'
 	},
 	recipient: {
 		type: GraphQLString,
-		description: 'Message recipient. See http://hl7.org/fhir/SearchParameter/Communication-recipient.'
+		description: 'Message recipient (See http://hl7.org/fhir/SearchParameter/Communication-recipient).'
 	},
 	context: {
 		type: GraphQLString,
-		description: 'Encounter or episode leading to message. See http://hl7.org/fhir/SearchParameter/Communication-context.'
+		description: 'Encounter or episode leading to message (See http://hl7.org/fhir/SearchParameter/Communication-context).'
 	},
 	definition: {
 		type: GraphQLString,
-		description: 'Instantiates protocol or definition. See http://hl7.org/fhir/SearchParameter/Communication-definition.'
+		description: 'Instantiates protocol or definition (See http://hl7.org/fhir/SearchParameter/Communication-definition).'
 	},
 	category: {
 		type: TokenScalar,
-		description: 'Message category. See http://hl7.org/fhir/SearchParameter/Communication-category.'
+		description: 'Message category (See http://hl7.org/fhir/SearchParameter/Communication-category).'
 	},
 	status: {
 		type: TokenScalar,
-		description: 'preparation | in-progress | suspended | aborted | completed | entered-in-error. See http://hl7.org/fhir/SearchParameter/Communication-status.'
+		description: 'preparation | in-progress | suspended | aborted | completed | entered-in-error (See http://hl7.org/fhir/SearchParameter/Communication-status).'
 	}
 };

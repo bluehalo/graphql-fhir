@@ -17,7 +17,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ParametersParameter Input Schema
+ * @summary Parameters.parameter Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ParametersParameter_Input',
@@ -226,7 +226,7 @@ module.exports = new GraphQLInputObjectType({
 		valueMeta: {
 			type: require('./meta.input'),
 			description: 'If the parameter is a data type.'
-		},
+		}
 		// TODO: Figure out how to handle this
 		// resource: {
 		// 	type: require('./resourcelist.input'),

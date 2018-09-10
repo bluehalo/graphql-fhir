@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ObservationReferenceRange Schema
+ * @summary Observation.referenceRange Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ObservationReferenceRange',

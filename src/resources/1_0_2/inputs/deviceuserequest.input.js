@@ -21,7 +21,7 @@ module.exports = new GraphQLInputObjectType({
 	fields: () => extendSchema(require('./domainresource.input'), {
 		resourceType: {
 			type: new GraphQLNonNull(DeviceUseRequestResourceInputType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		bodySiteCodeableConcept: {
 			type: require('./codeableconcept.input'),

@@ -17,7 +17,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary TaskInput Input Schema
+ * @summary Task.input Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'TaskInput_Input',

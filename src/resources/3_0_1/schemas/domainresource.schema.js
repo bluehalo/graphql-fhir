@@ -19,7 +19,7 @@ module.exports = new GraphQLObjectType({
 	fields: () => extendSchema(require('./resource.schema'), {
 		resourceType: {
 			type: new GraphQLNonNull(DomainResourceResourceType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		text: {
 			type: require('./narrative.schema'),

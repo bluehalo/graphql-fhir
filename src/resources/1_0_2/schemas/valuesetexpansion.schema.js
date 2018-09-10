@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ValueSetExpansion Schema
+ * @summary ValueSet.expansion Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ValueSetExpansion',

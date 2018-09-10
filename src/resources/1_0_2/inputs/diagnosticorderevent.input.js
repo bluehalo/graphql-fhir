@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary DiagnosticOrderEvent Input Schema
+ * @summary DiagnosticOrder.event Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'DiagnosticOrderEvent_Input',

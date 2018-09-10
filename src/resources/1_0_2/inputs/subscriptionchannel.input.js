@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary SubscriptionChannel Input Schema
+ * @summary Subscription.channel Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'SubscriptionChannel_Input',

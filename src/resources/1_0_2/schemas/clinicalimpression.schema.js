@@ -22,7 +22,7 @@ module.exports = new GraphQLObjectType({
 	fields: () => extendSchema(require('./domainresource.schema'), {
 		resourceType: {
 			type: new GraphQLNonNull(ClinicalImpressionResourceType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		patient: {
 			type: new GraphQLNonNull(require('./reference.schema')),

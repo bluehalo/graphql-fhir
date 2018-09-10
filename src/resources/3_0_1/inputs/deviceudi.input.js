@@ -9,7 +9,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary DeviceUdi Input Schema
+ * @summary Device.udi Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'DeviceUdi_Input',

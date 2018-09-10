@@ -17,7 +17,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ParametersParameter Schema
+ * @summary Parameters.parameter Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'ParametersParameter',

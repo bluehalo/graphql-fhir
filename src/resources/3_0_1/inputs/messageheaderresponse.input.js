@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary MessageHeaderResponse Input Schema
+ * @summary MessageHeader.response Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'MessageHeaderResponse_Input',

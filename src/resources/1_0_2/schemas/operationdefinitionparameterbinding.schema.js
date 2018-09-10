@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary OperationDefinitionParameterBinding Schema
+ * @summary OperationDefinition.parameter.binding Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'OperationDefinitionParameterBinding',

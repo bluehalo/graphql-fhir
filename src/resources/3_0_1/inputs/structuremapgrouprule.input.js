@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary StructureMapGroupRule Input Schema
+ * @summary StructureMap.group.rule Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'StructureMapGroupRule_Input',

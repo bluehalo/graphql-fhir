@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary SequenceRepository Input Schema
+ * @summary Sequence.repository Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'SequenceRepository_Input',

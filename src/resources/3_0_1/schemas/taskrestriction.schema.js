@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary TaskRestriction Schema
+ * @summary Task.restriction Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'TaskRestriction',

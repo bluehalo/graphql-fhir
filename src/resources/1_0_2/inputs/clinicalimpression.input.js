@@ -22,7 +22,7 @@ module.exports = new GraphQLInputObjectType({
 	fields: () => extendSchema(require('./domainresource.input'), {
 		resourceType: {
 			type: new GraphQLNonNull(ClinicalImpressionResourceInputType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		patient: {
 			type: new GraphQLNonNull(require('./reference.input')),

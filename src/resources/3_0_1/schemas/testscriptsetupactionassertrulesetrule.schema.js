@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary TestScriptSetupActionAssertRulesetRule Schema
+ * @summary TestScript.setup.action.assert.ruleset.rule Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'TestScriptSetupActionAssertRulesetRule',

@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary EncounterParticipant Input Schema
+ * @summary Encounter.participant Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'EncounterParticipant_Input',

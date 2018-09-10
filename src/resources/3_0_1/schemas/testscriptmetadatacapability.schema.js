@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary TestScriptMetadataCapability Schema
+ * @summary TestScript.metadata.capability Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'TestScriptMetadataCapability',

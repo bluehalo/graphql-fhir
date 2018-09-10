@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary ElementDefinitionConstraint Input Schema
+ * @summary ElementDefinition.constraint Input Schema
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ElementDefinitionConstraint_Input',

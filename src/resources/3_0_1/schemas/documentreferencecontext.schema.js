@@ -6,7 +6,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary DocumentReferenceContext Schema
+ * @summary DocumentReference.context Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'DocumentReferenceContext',

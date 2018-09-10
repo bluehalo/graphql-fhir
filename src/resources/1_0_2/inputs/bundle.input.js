@@ -21,7 +21,7 @@ module.exports = new GraphQLInputObjectType({
 	fields: () => extendSchema(require('./resource.input'), {
 		resourceType: {
 			type: new GraphQLNonNull(BundleResourceInputType),
-			description: 'Type of this resource'
+			description: 'Type of this resource.'
 		},
 		// ValueSetReference: http://hl7.org/fhir/ValueSet/bundle-type
 		type: {

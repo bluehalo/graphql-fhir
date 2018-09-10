@@ -7,7 +7,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary OperationDefinitionParameter Schema
+ * @summary OperationDefinition.parameter Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'OperationDefinitionParameter',

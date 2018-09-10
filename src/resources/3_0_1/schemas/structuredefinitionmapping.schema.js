@@ -8,7 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
 
 /**
  * @name exports
- * @summary StructureDefinitionMapping Schema
+ * @summary StructureDefinition.mapping Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'StructureDefinitionMapping',
