@@ -159,8 +159,8 @@ module.exports.patientResolver = function patientResolver (root, args, ctx, info
       // Errors need to be formatted in a specific way, you can see more
       // of en explanation on this in the Error handling section below
       if (err) {
+        logger.error(err);
         let error = errorUtils.internal(version, err.message);
-        logger.error(error);
         reject(errorUtils.formatErrorForGraphQL(error));
       } else {
         resolve(patient);
@@ -267,6 +267,7 @@ You can't perform metadata queries and get back capability statements like you w
 **NOTE**: All these examples are providing the query string to use, not the full request. Your request should include this as a query argument, e.g. `query=<query string here>`.
 
 List all queries:
+
 ```graphql
 {
   __type(name:"Query"){
@@ -280,6 +281,7 @@ List all queries:
 ```
 
 List all mutations:
+
 ```graphql
 {
   __type(name:"Mutation"){
@@ -293,6 +295,7 @@ List all mutations:
 ```
 
 For a more complete list which include's all their arguments and return fields, try this (for our example server, this returns almost 50,000 lines of JSON):
+
 ```graphql
 query TypeIntrospectionQuery{
   # Can also use __type(name:"Mutation"){ 
@@ -399,3 +402,25 @@ fetch('http://localhost:3000/3_0_1/$graphiql', {
 })
 .catch(err => console.error('Unable to generate schema'))
 ```
+
+## Querying a Union
+When you query any of the list resources, the return format is a bundle-like resource, which can contain one of many types of resources. In GraphQL, these are called unions and GraphQL has a unique way to query against unions using fragments (currently only a ResourceList type will be a union in this repo). When you ask for a `Bundle.entry[n].resource`, you have to tell GraphQL which type of resource the fields you want belong to. Here is an example GraphQL query on a PatientList:
+
+```graphql
+{
+  PatientList(gender:"male",name:"Joe"){
+    entry {
+      resource {
+        ... on Patient {
+          resourceType
+          id
+          gender
+          name { given }
+        }
+      }
+    }
+  }
+}
+```
+
+Since PatientList returns a bundle, we ask for the `entry` property in the bundle which is an array of objects that contains a `resource` property. This resource property is a `ResourceList` type so when querying it you need to use fragments, otherwise, you cannot get properties from the resource. See [https://graphql.org/learn/schema/#union-types](https://graphql.org/learn/schema/#union-types) for more information on Union types.

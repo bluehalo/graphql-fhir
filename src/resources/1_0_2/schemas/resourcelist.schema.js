@@ -1,95 +1,95 @@
-const AccountType = require('../schemas/account.schema');
-const AllergyIntoleranceType = require('../schemas/allergyintolerance.schema');
-const AppointmentType = require('../schemas/appointment.schema');
-const AppointmentResponseType = require('../schemas/appointmentresponse.schema');
-const AuditEventType = require('../schemas/auditevent.schema');
-const BasicType = require('../schemas/basic.schema');
-const BinaryType = require('../schemas/binary.schema');
-const BodySiteType = require('../schemas/bodysite.schema');
-const BundleType = require('../schemas/bundle.schema');
-const CarePlanType = require('../schemas/careplan.schema');
-const ClaimType = require('../schemas/claim.schema');
-const ClaimResponseType = require('../schemas/claimresponse.schema');
-const ClinicalImpressionType = require('../schemas/clinicalimpression.schema');
-const CommunicationType = require('../schemas/communication.schema');
-const CommunicationRequestType = require('../schemas/communicationrequest.schema');
-const CompositionType = require('../schemas/composition.schema');
-const ConceptMapType = require('../schemas/conceptmap.schema');
-const ConditionType = require('../schemas/condition.schema');
-const ConformanceType = require('../schemas/conformance.schema');
-const ContractType = require('../schemas/contract.schema');
-const CoverageType = require('../schemas/coverage.schema');
-const DataElementType = require('../schemas/dataelement.schema');
-const DetectedIssueType = require('../schemas/detectedissue.schema');
-const DeviceType = require('../schemas/device.schema');
-const DeviceComponentType = require('../schemas/devicecomponent.schema');
-const DeviceMetricType = require('../schemas/devicemetric.schema');
-const DeviceUseRequestType = require('../schemas/deviceuserequest.schema');
-const DeviceUseStatementType = require('../schemas/deviceusestatement.schema');
-const DiagnosticOrderType = require('../schemas/diagnosticorder.schema');
-const DiagnosticReportType = require('../schemas/diagnosticreport.schema');
-const DocumentManifestType = require('../schemas/documentmanifest.schema');
-const DocumentReferenceType = require('../schemas/documentreference.schema');
-const EligibilityRequestType = require('../schemas/eligibilityrequest.schema');
-const EligibilityResponseType = require('../schemas/eligibilityresponse.schema');
-const EncounterType = require('../schemas/encounter.schema');
-const EnrollmentRequestType = require('../schemas/enrollmentrequest.schema');
-const EnrollmentResponseType = require('../schemas/enrollmentresponse.schema');
-const EpisodeOfCareType = require('../schemas/episodeofcare.schema');
-const ExplanationOfBenefitType = require('../schemas/explanationofbenefit.schema');
-const FamilyMemberHistoryType = require('../schemas/familymemberhistory.schema');
-const FlagType = require('../schemas/flag.schema');
-const GoalType = require('../schemas/goal.schema');
-const GroupType = require('../schemas/group.schema');
-const HealthcareServiceType = require('../schemas/healthcareservice.schema');
-const ImagingObjectSelectionType = require('../schemas/imagingobjectselection.schema');
-const ImagingStudyType = require('../schemas/imagingstudy.schema');
-const ImmunizationType = require('../schemas/immunization.schema');
-const ImmunizationRecommendationType = require('../schemas/immunizationrecommendation.schema');
-const ImplementationGuideType = require('../schemas/implementationguide.schema');
-const ListType = require('../schemas/list.schema');
-const LocationType = require('../schemas/location.schema');
-const MediaType = require('../schemas/media.schema');
-const MedicationType = require('../schemas/medication.schema');
-const MedicationAdministrationType = require('../schemas/medicationadministration.schema');
-const MedicationDispenseType = require('../schemas/medicationdispense.schema');
-const MedicationOrderType = require('../schemas/medicationorder.schema');
-const MedicationStatementType = require('../schemas/medicationstatement.schema');
-const MessageHeaderType = require('../schemas/messageheader.schema');
-const NamingSystemType = require('../schemas/namingsystem.schema');
-const NutritionOrderType = require('../schemas/nutritionorder.schema');
-const ObservationType = require('../schemas/observation.schema');
-const OperationDefinitionType = require('../schemas/operationdefinition.schema');
-const OrderType = require('../schemas/order.schema');
-const OrderResponseType = require('../schemas/orderresponse.schema');
-const OrganizationType = require('../schemas/organization.schema');
-const PatientType = require('../schemas/patient.schema');
-const PaymentNoticeType = require('../schemas/paymentnotice.schema');
-const PaymentReconciliationType = require('../schemas/paymentreconciliation.schema');
-const PersonType = require('../schemas/person.schema');
-const PractitionerType = require('../schemas/practitioner.schema');
-const ProcedureType = require('../schemas/procedure.schema');
-const ProcedureRequestType = require('../schemas/procedurerequest.schema');
-const ProcessRequestType = require('../schemas/processrequest.schema');
-const ProcessResponseType = require('../schemas/processresponse.schema');
-const ProvenanceType = require('../schemas/provenance.schema');
-const QuestionnaireType = require('../schemas/questionnaire.schema');
-const QuestionnaireResponseType = require('../schemas/questionnaireresponse.schema');
-const ReferralRequestType = require('../schemas/referralrequest.schema');
-const RelatedPersonType = require('../schemas/relatedperson.schema');
-const RiskAssessmentType = require('../schemas/riskassessment.schema');
-const ScheduleType = require('../schemas/schedule.schema');
-const SearchParameterType = require('../schemas/searchparameter.schema');
-const SlotType = require('../schemas/slot.schema');
-const SpecimenType = require('../schemas/specimen.schema');
-const StructureDefinitionType = require('../schemas/structuredefinition.schema');
-const SubscriptionType = require('../schemas/subscription.schema');
-const SubstanceType = require('../schemas/substance.schema');
-const SupplyDeliveryType = require('../schemas/supplydelivery.schema');
-const SupplyRequestType = require('../schemas/supplyrequest.schema');
-const TestScriptType = require('../schemas/testscript.schema');
-const ValueSetType = require('../schemas/valueset.schema');
-const VisionPrescriptionType = require('../schemas/visionprescription.schema');
+const Account = require('../schemas/account.schema');
+const AllergyIntolerance = require('../schemas/allergyintolerance.schema');
+const Appointment = require('../schemas/appointment.schema');
+const AppointmentResponse = require('../schemas/appointmentresponse.schema');
+const AuditEvent = require('../schemas/auditevent.schema');
+const Basic = require('../schemas/basic.schema');
+const Binary = require('../schemas/binary.schema');
+const BodySite = require('../schemas/bodysite.schema');
+const Bundle = require('../schemas/bundle.schema');
+const CarePlan = require('../schemas/careplan.schema');
+const Claim = require('../schemas/claim.schema');
+const ClaimResponse = require('../schemas/claimresponse.schema');
+const ClinicalImpression = require('../schemas/clinicalimpression.schema');
+const Communication = require('../schemas/communication.schema');
+const CommunicationRequest = require('../schemas/communicationrequest.schema');
+const Composition = require('../schemas/composition.schema');
+const ConceptMap = require('../schemas/conceptmap.schema');
+const Condition = require('../schemas/condition.schema');
+const Conformance = require('../schemas/conformance.schema');
+const Contract = require('../schemas/contract.schema');
+const Coverage = require('../schemas/coverage.schema');
+const DataElement = require('../schemas/dataelement.schema');
+const DetectedIssue = require('../schemas/detectedissue.schema');
+const Device = require('../schemas/device.schema');
+const DeviceComponent = require('../schemas/devicecomponent.schema');
+const DeviceMetric = require('../schemas/devicemetric.schema');
+const DeviceUseRequest = require('../schemas/deviceuserequest.schema');
+const DeviceUseStatement = require('../schemas/deviceusestatement.schema');
+const DiagnosticOrder = require('../schemas/diagnosticorder.schema');
+const DiagnosticReport = require('../schemas/diagnosticreport.schema');
+const DocumentManifest = require('../schemas/documentmanifest.schema');
+const DocumentReference = require('../schemas/documentreference.schema');
+const EligibilityRequest = require('../schemas/eligibilityrequest.schema');
+const EligibilityResponse = require('../schemas/eligibilityresponse.schema');
+const Encounter = require('../schemas/encounter.schema');
+const EnrollmentRequest = require('../schemas/enrollmentrequest.schema');
+const EnrollmentResponse = require('../schemas/enrollmentresponse.schema');
+const EpisodeOfCare = require('../schemas/episodeofcare.schema');
+const ExplanationOfBenefit = require('../schemas/explanationofbenefit.schema');
+const FamilyMemberHistory = require('../schemas/familymemberhistory.schema');
+const Flag = require('../schemas/flag.schema');
+const Goal = require('../schemas/goal.schema');
+const Group = require('../schemas/group.schema');
+const HealthcareService = require('../schemas/healthcareservice.schema');
+const ImagingObjectSelection = require('../schemas/imagingobjectselection.schema');
+const ImagingStudy = require('../schemas/imagingstudy.schema');
+const Immunization = require('../schemas/immunization.schema');
+const ImmunizationRecommendation = require('../schemas/immunizationrecommendation.schema');
+const ImplementationGuide = require('../schemas/implementationguide.schema');
+const List = require('../schemas/list.schema');
+const Location = require('../schemas/location.schema');
+const Media = require('../schemas/media.schema');
+const Medication = require('../schemas/medication.schema');
+const MedicationAdministration = require('../schemas/medicationadministration.schema');
+const MedicationDispense = require('../schemas/medicationdispense.schema');
+const MedicationOrder = require('../schemas/medicationorder.schema');
+const MedicationStatement = require('../schemas/medicationstatement.schema');
+const MessageHeader = require('../schemas/messageheader.schema');
+const NamingSystem = require('../schemas/namingsystem.schema');
+const NutritionOrder = require('../schemas/nutritionorder.schema');
+const Observation = require('../schemas/observation.schema');
+const OperationDefinition = require('../schemas/operationdefinition.schema');
+const Order = require('../schemas/order.schema');
+const OrderResponse = require('../schemas/orderresponse.schema');
+const Organization = require('../schemas/organization.schema');
+const Patient = require('../schemas/patient.schema');
+const PaymentNotice = require('../schemas/paymentnotice.schema');
+const PaymentReconciliation = require('../schemas/paymentreconciliation.schema');
+const Person = require('../schemas/person.schema');
+const Practitioner = require('../schemas/practitioner.schema');
+const Procedure = require('../schemas/procedure.schema');
+const ProcedureRequest = require('../schemas/procedurerequest.schema');
+const ProcessRequest = require('../schemas/processrequest.schema');
+const ProcessResponse = require('../schemas/processresponse.schema');
+const Provenance = require('../schemas/provenance.schema');
+const Questionnaire = require('../schemas/questionnaire.schema');
+const QuestionnaireResponse = require('../schemas/questionnaireresponse.schema');
+const ReferralRequest = require('../schemas/referralrequest.schema');
+const RelatedPerson = require('../schemas/relatedperson.schema');
+const RiskAssessment = require('../schemas/riskassessment.schema');
+const Schedule = require('../schemas/schedule.schema');
+const SearchParameter = require('../schemas/searchparameter.schema');
+const Slot = require('../schemas/slot.schema');
+const Specimen = require('../schemas/specimen.schema');
+const StructureDefinition = require('../schemas/structuredefinition.schema');
+const Subscription = require('../schemas/subscription.schema');
+const Substance = require('../schemas/substance.schema');
+const SupplyDelivery = require('../schemas/supplydelivery.schema');
+const SupplyRequest = require('../schemas/supplyrequest.schema');
+const TestScript = require('../schemas/testscript.schema');
+const ValueSet = require('../schemas/valueset.schema');
+const VisionPrescription = require('../schemas/visionprescription.schema');
 const { GraphQLUnionType } = require('graphql');
 
 const { extendSchema } = require('../../../utils/schema.utils');
@@ -102,375 +102,375 @@ module.exports = new GraphQLUnionType({
 	name: 'ResourceList',
 	description: 'Union of all available resources.',
 	types: [
-		AccountType,
-		AllergyIntoleranceType,
-		AppointmentType,
-		AppointmentResponseType,
-		AuditEventType,
-		BasicType,
-		BinaryType,
-		BodySiteType,
-		BundleType,
-		CarePlanType,
-		ClaimType,
-		ClaimResponseType,
-		ClinicalImpressionType,
-		CommunicationType,
-		CommunicationRequestType,
-		CompositionType,
-		ConceptMapType,
-		ConditionType,
-		ConformanceType,
-		ContractType,
-		CoverageType,
-		DataElementType,
-		DetectedIssueType,
-		DeviceType,
-		DeviceComponentType,
-		DeviceMetricType,
-		DeviceUseRequestType,
-		DeviceUseStatementType,
-		DiagnosticOrderType,
-		DiagnosticReportType,
-		DocumentManifestType,
-		DocumentReferenceType,
-		EligibilityRequestType,
-		EligibilityResponseType,
-		EncounterType,
-		EnrollmentRequestType,
-		EnrollmentResponseType,
-		EpisodeOfCareType,
-		ExplanationOfBenefitType,
-		FamilyMemberHistoryType,
-		FlagType,
-		GoalType,
-		GroupType,
-		HealthcareServiceType,
-		ImagingObjectSelectionType,
-		ImagingStudyType,
-		ImmunizationType,
-		ImmunizationRecommendationType,
-		ImplementationGuideType,
-		ListType,
-		LocationType,
-		MediaType,
-		MedicationType,
-		MedicationAdministrationType,
-		MedicationDispenseType,
-		MedicationOrderType,
-		MedicationStatementType,
-		MessageHeaderType,
-		NamingSystemType,
-		NutritionOrderType,
-		ObservationType,
-		OperationDefinitionType,
-		OrderType,
-		OrderResponseType,
-		OrganizationType,
-		PatientType,
-		PaymentNoticeType,
-		PaymentReconciliationType,
-		PersonType,
-		PractitionerType,
-		ProcedureType,
-		ProcedureRequestType,
-		ProcessRequestType,
-		ProcessResponseType,
-		ProvenanceType,
-		QuestionnaireType,
-		QuestionnaireResponseType,
-		ReferralRequestType,
-		RelatedPersonType,
-		RiskAssessmentType,
-		ScheduleType,
-		SearchParameterType,
-		SlotType,
-		SpecimenType,
-		StructureDefinitionType,
-		SubscriptionType,
-		SubstanceType,
-		SupplyDeliveryType,
-		SupplyRequestType,
-		TestScriptType,
-		ValueSetType,
-		VisionPrescriptionType
+		Account,
+		AllergyIntolerance,
+		Appointment,
+		AppointmentResponse,
+		AuditEvent,
+		Basic,
+		Binary,
+		BodySite,
+		Bundle,
+		CarePlan,
+		Claim,
+		ClaimResponse,
+		ClinicalImpression,
+		Communication,
+		CommunicationRequest,
+		Composition,
+		ConceptMap,
+		Condition,
+		Conformance,
+		Contract,
+		Coverage,
+		DataElement,
+		DetectedIssue,
+		Device,
+		DeviceComponent,
+		DeviceMetric,
+		DeviceUseRequest,
+		DeviceUseStatement,
+		DiagnosticOrder,
+		DiagnosticReport,
+		DocumentManifest,
+		DocumentReference,
+		EligibilityRequest,
+		EligibilityResponse,
+		Encounter,
+		EnrollmentRequest,
+		EnrollmentResponse,
+		EpisodeOfCare,
+		ExplanationOfBenefit,
+		FamilyMemberHistory,
+		Flag,
+		Goal,
+		Group,
+		HealthcareService,
+		ImagingObjectSelection,
+		ImagingStudy,
+		Immunization,
+		ImmunizationRecommendation,
+		ImplementationGuide,
+		List,
+		Location,
+		Media,
+		Medication,
+		MedicationAdministration,
+		MedicationDispense,
+		MedicationOrder,
+		MedicationStatement,
+		MessageHeader,
+		NamingSystem,
+		NutritionOrder,
+		Observation,
+		OperationDefinition,
+		Order,
+		OrderResponse,
+		Organization,
+		Patient,
+		PaymentNotice,
+		PaymentReconciliation,
+		Person,
+		Practitioner,
+		Procedure,
+		ProcedureRequest,
+		ProcessRequest,
+		ProcessResponse,
+		Provenance,
+		Questionnaire,
+		QuestionnaireResponse,
+		ReferralRequest,
+		RelatedPerson,
+		RiskAssessment,
+		Schedule,
+		SearchParameter,
+		Slot,
+		Specimen,
+		StructureDefinition,
+		Subscription,
+		Substance,
+		SupplyDelivery,
+		SupplyRequest,
+		TestScript,
+		ValueSet,
+		VisionPrescription
 	],
-	resovleType ( value ) {
-		if (value && value.resourceType === 'AccountType') {
-			return AccountType;
+	resolveType ( value ) {
+		if (value && value.resourceType === 'Account') {
+			return Account;
 		}
-		if (value && value.resourceType === 'AllergyIntoleranceType') {
-			return AllergyIntoleranceType;
+		if (value && value.resourceType === 'AllergyIntolerance') {
+			return AllergyIntolerance;
 		}
-		if (value && value.resourceType === 'AppointmentType') {
-			return AppointmentType;
+		if (value && value.resourceType === 'Appointment') {
+			return Appointment;
 		}
-		if (value && value.resourceType === 'AppointmentResponseType') {
-			return AppointmentResponseType;
+		if (value && value.resourceType === 'AppointmentResponse') {
+			return AppointmentResponse;
 		}
-		if (value && value.resourceType === 'AuditEventType') {
-			return AuditEventType;
+		if (value && value.resourceType === 'AuditEvent') {
+			return AuditEvent;
 		}
-		if (value && value.resourceType === 'BasicType') {
-			return BasicType;
+		if (value && value.resourceType === 'Basic') {
+			return Basic;
 		}
-		if (value && value.resourceType === 'BinaryType') {
-			return BinaryType;
+		if (value && value.resourceType === 'Binary') {
+			return Binary;
 		}
-		if (value && value.resourceType === 'BodySiteType') {
-			return BodySiteType;
+		if (value && value.resourceType === 'BodySite') {
+			return BodySite;
 		}
-		if (value && value.resourceType === 'BundleType') {
-			return BundleType;
+		if (value && value.resourceType === 'Bundle') {
+			return Bundle;
 		}
-		if (value && value.resourceType === 'CarePlanType') {
-			return CarePlanType;
+		if (value && value.resourceType === 'CarePlan') {
+			return CarePlan;
 		}
-		if (value && value.resourceType === 'ClaimType') {
-			return ClaimType;
+		if (value && value.resourceType === 'Claim') {
+			return Claim;
 		}
-		if (value && value.resourceType === 'ClaimResponseType') {
-			return ClaimResponseType;
+		if (value && value.resourceType === 'ClaimResponse') {
+			return ClaimResponse;
 		}
-		if (value && value.resourceType === 'ClinicalImpressionType') {
-			return ClinicalImpressionType;
+		if (value && value.resourceType === 'ClinicalImpression') {
+			return ClinicalImpression;
 		}
-		if (value && value.resourceType === 'CommunicationType') {
-			return CommunicationType;
+		if (value && value.resourceType === 'Communication') {
+			return Communication;
 		}
-		if (value && value.resourceType === 'CommunicationRequestType') {
-			return CommunicationRequestType;
+		if (value && value.resourceType === 'CommunicationRequest') {
+			return CommunicationRequest;
 		}
-		if (value && value.resourceType === 'CompositionType') {
-			return CompositionType;
+		if (value && value.resourceType === 'Composition') {
+			return Composition;
 		}
-		if (value && value.resourceType === 'ConceptMapType') {
-			return ConceptMapType;
+		if (value && value.resourceType === 'ConceptMap') {
+			return ConceptMap;
 		}
-		if (value && value.resourceType === 'ConditionType') {
-			return ConditionType;
+		if (value && value.resourceType === 'Condition') {
+			return Condition;
 		}
-		if (value && value.resourceType === 'ConformanceType') {
-			return ConformanceType;
+		if (value && value.resourceType === 'Conformance') {
+			return Conformance;
 		}
-		if (value && value.resourceType === 'ContractType') {
-			return ContractType;
+		if (value && value.resourceType === 'Contract') {
+			return Contract;
 		}
-		if (value && value.resourceType === 'CoverageType') {
-			return CoverageType;
+		if (value && value.resourceType === 'Coverage') {
+			return Coverage;
 		}
-		if (value && value.resourceType === 'DataElementType') {
-			return DataElementType;
+		if (value && value.resourceType === 'DataElement') {
+			return DataElement;
 		}
-		if (value && value.resourceType === 'DetectedIssueType') {
-			return DetectedIssueType;
+		if (value && value.resourceType === 'DetectedIssue') {
+			return DetectedIssue;
 		}
-		if (value && value.resourceType === 'DeviceType') {
-			return DeviceType;
+		if (value && value.resourceType === 'Device') {
+			return Device;
 		}
-		if (value && value.resourceType === 'DeviceComponentType') {
-			return DeviceComponentType;
+		if (value && value.resourceType === 'DeviceComponent') {
+			return DeviceComponent;
 		}
-		if (value && value.resourceType === 'DeviceMetricType') {
-			return DeviceMetricType;
+		if (value && value.resourceType === 'DeviceMetric') {
+			return DeviceMetric;
 		}
-		if (value && value.resourceType === 'DeviceUseRequestType') {
-			return DeviceUseRequestType;
+		if (value && value.resourceType === 'DeviceUseRequest') {
+			return DeviceUseRequest;
 		}
-		if (value && value.resourceType === 'DeviceUseStatementType') {
-			return DeviceUseStatementType;
+		if (value && value.resourceType === 'DeviceUseStatement') {
+			return DeviceUseStatement;
 		}
-		if (value && value.resourceType === 'DiagnosticOrderType') {
-			return DiagnosticOrderType;
+		if (value && value.resourceType === 'DiagnosticOrder') {
+			return DiagnosticOrder;
 		}
-		if (value && value.resourceType === 'DiagnosticReportType') {
-			return DiagnosticReportType;
+		if (value && value.resourceType === 'DiagnosticReport') {
+			return DiagnosticReport;
 		}
-		if (value && value.resourceType === 'DocumentManifestType') {
-			return DocumentManifestType;
+		if (value && value.resourceType === 'DocumentManifest') {
+			return DocumentManifest;
 		}
-		if (value && value.resourceType === 'DocumentReferenceType') {
-			return DocumentReferenceType;
+		if (value && value.resourceType === 'DocumentReference') {
+			return DocumentReference;
 		}
-		if (value && value.resourceType === 'EligibilityRequestType') {
-			return EligibilityRequestType;
+		if (value && value.resourceType === 'EligibilityRequest') {
+			return EligibilityRequest;
 		}
-		if (value && value.resourceType === 'EligibilityResponseType') {
-			return EligibilityResponseType;
+		if (value && value.resourceType === 'EligibilityResponse') {
+			return EligibilityResponse;
 		}
-		if (value && value.resourceType === 'EncounterType') {
-			return EncounterType;
+		if (value && value.resourceType === 'Encounter') {
+			return Encounter;
 		}
-		if (value && value.resourceType === 'EnrollmentRequestType') {
-			return EnrollmentRequestType;
+		if (value && value.resourceType === 'EnrollmentRequest') {
+			return EnrollmentRequest;
 		}
-		if (value && value.resourceType === 'EnrollmentResponseType') {
-			return EnrollmentResponseType;
+		if (value && value.resourceType === 'EnrollmentResponse') {
+			return EnrollmentResponse;
 		}
-		if (value && value.resourceType === 'EpisodeOfCareType') {
-			return EpisodeOfCareType;
+		if (value && value.resourceType === 'EpisodeOfCare') {
+			return EpisodeOfCare;
 		}
-		if (value && value.resourceType === 'ExplanationOfBenefitType') {
-			return ExplanationOfBenefitType;
+		if (value && value.resourceType === 'ExplanationOfBenefit') {
+			return ExplanationOfBenefit;
 		}
-		if (value && value.resourceType === 'FamilyMemberHistoryType') {
-			return FamilyMemberHistoryType;
+		if (value && value.resourceType === 'FamilyMemberHistory') {
+			return FamilyMemberHistory;
 		}
-		if (value && value.resourceType === 'FlagType') {
-			return FlagType;
+		if (value && value.resourceType === 'Flag') {
+			return Flag;
 		}
-		if (value && value.resourceType === 'GoalType') {
-			return GoalType;
+		if (value && value.resourceType === 'Goal') {
+			return Goal;
 		}
-		if (value && value.resourceType === 'GroupType') {
-			return GroupType;
+		if (value && value.resourceType === 'Group') {
+			return Group;
 		}
-		if (value && value.resourceType === 'HealthcareServiceType') {
-			return HealthcareServiceType;
+		if (value && value.resourceType === 'HealthcareService') {
+			return HealthcareService;
 		}
-		if (value && value.resourceType === 'ImagingObjectSelectionType') {
-			return ImagingObjectSelectionType;
+		if (value && value.resourceType === 'ImagingObjectSelection') {
+			return ImagingObjectSelection;
 		}
-		if (value && value.resourceType === 'ImagingStudyType') {
-			return ImagingStudyType;
+		if (value && value.resourceType === 'ImagingStudy') {
+			return ImagingStudy;
 		}
-		if (value && value.resourceType === 'ImmunizationType') {
-			return ImmunizationType;
+		if (value && value.resourceType === 'Immunization') {
+			return Immunization;
 		}
-		if (value && value.resourceType === 'ImmunizationRecommendationType') {
-			return ImmunizationRecommendationType;
+		if (value && value.resourceType === 'ImmunizationRecommendation') {
+			return ImmunizationRecommendation;
 		}
-		if (value && value.resourceType === 'ImplementationGuideType') {
-			return ImplementationGuideType;
+		if (value && value.resourceType === 'ImplementationGuide') {
+			return ImplementationGuide;
 		}
-		if (value && value.resourceType === 'ListType') {
-			return ListType;
+		if (value && value.resourceType === 'List') {
+			return List;
 		}
-		if (value && value.resourceType === 'LocationType') {
-			return LocationType;
+		if (value && value.resourceType === 'Location') {
+			return Location;
 		}
-		if (value && value.resourceType === 'MediaType') {
-			return MediaType;
+		if (value && value.resourceType === 'Media') {
+			return Media;
 		}
-		if (value && value.resourceType === 'MedicationType') {
-			return MedicationType;
+		if (value && value.resourceType === 'Medication') {
+			return Medication;
 		}
-		if (value && value.resourceType === 'MedicationAdministrationType') {
-			return MedicationAdministrationType;
+		if (value && value.resourceType === 'MedicationAdministration') {
+			return MedicationAdministration;
 		}
-		if (value && value.resourceType === 'MedicationDispenseType') {
-			return MedicationDispenseType;
+		if (value && value.resourceType === 'MedicationDispense') {
+			return MedicationDispense;
 		}
-		if (value && value.resourceType === 'MedicationOrderType') {
-			return MedicationOrderType;
+		if (value && value.resourceType === 'MedicationOrder') {
+			return MedicationOrder;
 		}
-		if (value && value.resourceType === 'MedicationStatementType') {
-			return MedicationStatementType;
+		if (value && value.resourceType === 'MedicationStatement') {
+			return MedicationStatement;
 		}
-		if (value && value.resourceType === 'MessageHeaderType') {
-			return MessageHeaderType;
+		if (value && value.resourceType === 'MessageHeader') {
+			return MessageHeader;
 		}
-		if (value && value.resourceType === 'NamingSystemType') {
-			return NamingSystemType;
+		if (value && value.resourceType === 'NamingSystem') {
+			return NamingSystem;
 		}
-		if (value && value.resourceType === 'NutritionOrderType') {
-			return NutritionOrderType;
+		if (value && value.resourceType === 'NutritionOrder') {
+			return NutritionOrder;
 		}
-		if (value && value.resourceType === 'ObservationType') {
-			return ObservationType;
+		if (value && value.resourceType === 'Observation') {
+			return Observation;
 		}
-		if (value && value.resourceType === 'OperationDefinitionType') {
-			return OperationDefinitionType;
+		if (value && value.resourceType === 'OperationDefinition') {
+			return OperationDefinition;
 		}
-		if (value && value.resourceType === 'OrderType') {
-			return OrderType;
+		if (value && value.resourceType === 'Order') {
+			return Order;
 		}
-		if (value && value.resourceType === 'OrderResponseType') {
-			return OrderResponseType;
+		if (value && value.resourceType === 'OrderResponse') {
+			return OrderResponse;
 		}
-		if (value && value.resourceType === 'OrganizationType') {
-			return OrganizationType;
+		if (value && value.resourceType === 'Organization') {
+			return Organization;
 		}
-		if (value && value.resourceType === 'PatientType') {
-			return PatientType;
+		if (value && value.resourceType === 'Patient') {
+			return Patient;
 		}
-		if (value && value.resourceType === 'PaymentNoticeType') {
-			return PaymentNoticeType;
+		if (value && value.resourceType === 'PaymentNotice') {
+			return PaymentNotice;
 		}
-		if (value && value.resourceType === 'PaymentReconciliationType') {
-			return PaymentReconciliationType;
+		if (value && value.resourceType === 'PaymentReconciliation') {
+			return PaymentReconciliation;
 		}
-		if (value && value.resourceType === 'PersonType') {
-			return PersonType;
+		if (value && value.resourceType === 'Person') {
+			return Person;
 		}
-		if (value && value.resourceType === 'PractitionerType') {
-			return PractitionerType;
+		if (value && value.resourceType === 'Practitioner') {
+			return Practitioner;
 		}
-		if (value && value.resourceType === 'ProcedureType') {
-			return ProcedureType;
+		if (value && value.resourceType === 'Procedure') {
+			return Procedure;
 		}
-		if (value && value.resourceType === 'ProcedureRequestType') {
-			return ProcedureRequestType;
+		if (value && value.resourceType === 'ProcedureRequest') {
+			return ProcedureRequest;
 		}
-		if (value && value.resourceType === 'ProcessRequestType') {
-			return ProcessRequestType;
+		if (value && value.resourceType === 'ProcessRequest') {
+			return ProcessRequest;
 		}
-		if (value && value.resourceType === 'ProcessResponseType') {
-			return ProcessResponseType;
+		if (value && value.resourceType === 'ProcessResponse') {
+			return ProcessResponse;
 		}
-		if (value && value.resourceType === 'ProvenanceType') {
-			return ProvenanceType;
+		if (value && value.resourceType === 'Provenance') {
+			return Provenance;
 		}
-		if (value && value.resourceType === 'QuestionnaireType') {
-			return QuestionnaireType;
+		if (value && value.resourceType === 'Questionnaire') {
+			return Questionnaire;
 		}
-		if (value && value.resourceType === 'QuestionnaireResponseType') {
-			return QuestionnaireResponseType;
+		if (value && value.resourceType === 'QuestionnaireResponse') {
+			return QuestionnaireResponse;
 		}
-		if (value && value.resourceType === 'ReferralRequestType') {
-			return ReferralRequestType;
+		if (value && value.resourceType === 'ReferralRequest') {
+			return ReferralRequest;
 		}
-		if (value && value.resourceType === 'RelatedPersonType') {
-			return RelatedPersonType;
+		if (value && value.resourceType === 'RelatedPerson') {
+			return RelatedPerson;
 		}
-		if (value && value.resourceType === 'RiskAssessmentType') {
-			return RiskAssessmentType;
+		if (value && value.resourceType === 'RiskAssessment') {
+			return RiskAssessment;
 		}
-		if (value && value.resourceType === 'ScheduleType') {
-			return ScheduleType;
+		if (value && value.resourceType === 'Schedule') {
+			return Schedule;
 		}
-		if (value && value.resourceType === 'SearchParameterType') {
-			return SearchParameterType;
+		if (value && value.resourceType === 'SearchParameter') {
+			return SearchParameter;
 		}
-		if (value && value.resourceType === 'SlotType') {
-			return SlotType;
+		if (value && value.resourceType === 'Slot') {
+			return Slot;
 		}
-		if (value && value.resourceType === 'SpecimenType') {
-			return SpecimenType;
+		if (value && value.resourceType === 'Specimen') {
+			return Specimen;
 		}
-		if (value && value.resourceType === 'StructureDefinitionType') {
-			return StructureDefinitionType;
+		if (value && value.resourceType === 'StructureDefinition') {
+			return StructureDefinition;
 		}
-		if (value && value.resourceType === 'SubscriptionType') {
-			return SubscriptionType;
+		if (value && value.resourceType === 'Subscription') {
+			return Subscription;
 		}
-		if (value && value.resourceType === 'SubstanceType') {
-			return SubstanceType;
+		if (value && value.resourceType === 'Substance') {
+			return Substance;
 		}
-		if (value && value.resourceType === 'SupplyDeliveryType') {
-			return SupplyDeliveryType;
+		if (value && value.resourceType === 'SupplyDelivery') {
+			return SupplyDelivery;
 		}
-		if (value && value.resourceType === 'SupplyRequestType') {
-			return SupplyRequestType;
+		if (value && value.resourceType === 'SupplyRequest') {
+			return SupplyRequest;
 		}
-		if (value && value.resourceType === 'TestScriptType') {
-			return TestScriptType;
+		if (value && value.resourceType === 'TestScript') {
+			return TestScript;
 		}
-		if (value && value.resourceType === 'ValueSetType') {
-			return ValueSetType;
+		if (value && value.resourceType === 'ValueSet') {
+			return ValueSet;
 		}
-		if (value && value.resourceType === 'VisionPrescriptionType') {
-			return VisionPrescriptionType;
+		if (value && value.resourceType === 'VisionPrescription') {
+			return VisionPrescription;
 		}
 	}
 });
