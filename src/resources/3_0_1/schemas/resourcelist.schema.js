@@ -241,350 +241,350 @@ module.exports = new GraphQLUnionType({
 		ValueSetType,
 		VisionPrescriptionType
 	],
-	resovleType ( value ) {
-		if (value && value.resourceType === 'AccountType') {
+	resolveType ( value ) {
+		if (value && value.resourceType === AccountType.name) {
 			return AccountType;
 		}
-		if (value && value.resourceType === 'ActivityDefinitionType') {
+		if (value && value.resourceType === ActivityDefinitionType.name) {
 			return ActivityDefinitionType;
 		}
-		if (value && value.resourceType === 'AdverseEventType') {
+		if (value && value.resourceType === AdverseEventType.name) {
 			return AdverseEventType;
 		}
-		if (value && value.resourceType === 'AllergyIntoleranceType') {
+		if (value && value.resourceType === AllergyIntoleranceType.name) {
 			return AllergyIntoleranceType;
 		}
-		if (value && value.resourceType === 'AppointmentType') {
+		if (value && value.resourceType === AppointmentType.name) {
 			return AppointmentType;
 		}
-		if (value && value.resourceType === 'AppointmentResponseType') {
+		if (value && value.resourceType === AppointmentResponseType.name) {
 			return AppointmentResponseType;
 		}
-		if (value && value.resourceType === 'AuditEventType') {
+		if (value && value.resourceType === AuditEventType.name) {
 			return AuditEventType;
 		}
-		if (value && value.resourceType === 'BasicType') {
+		if (value && value.resourceType === BasicType.name) {
 			return BasicType;
 		}
-		if (value && value.resourceType === 'BinaryType') {
+		if (value && value.resourceType === BinaryType.name) {
 			return BinaryType;
 		}
-		if (value && value.resourceType === 'BodySiteType') {
+		if (value && value.resourceType === BodySiteType.name) {
 			return BodySiteType;
 		}
-		if (value && value.resourceType === 'BundleType') {
+		if (value && value.resourceType === BundleType.name) {
 			return BundleType;
 		}
-		if (value && value.resourceType === 'CapabilityStatementType') {
+		if (value && value.resourceType === CapabilityStatementType.name) {
 			return CapabilityStatementType;
 		}
-		if (value && value.resourceType === 'CarePlanType') {
+		if (value && value.resourceType === CarePlanType.name) {
 			return CarePlanType;
 		}
-		if (value && value.resourceType === 'CareTeamType') {
+		if (value && value.resourceType === CareTeamType.name) {
 			return CareTeamType;
 		}
-		if (value && value.resourceType === 'ChargeItemType') {
+		if (value && value.resourceType === ChargeItemType.name) {
 			return ChargeItemType;
 		}
-		if (value && value.resourceType === 'ClaimType') {
+		if (value && value.resourceType === ClaimType.name) {
 			return ClaimType;
 		}
-		if (value && value.resourceType === 'ClaimResponseType') {
+		if (value && value.resourceType === ClaimResponseType.name) {
 			return ClaimResponseType;
 		}
-		if (value && value.resourceType === 'ClinicalImpressionType') {
+		if (value && value.resourceType === ClinicalImpressionType.name) {
 			return ClinicalImpressionType;
 		}
-		if (value && value.resourceType === 'CodeSystemType') {
+		if (value && value.resourceType === CodeSystemType.name) {
 			return CodeSystemType;
 		}
-		if (value && value.resourceType === 'CommunicationType') {
+		if (value && value.resourceType === CommunicationType.name) {
 			return CommunicationType;
 		}
-		if (value && value.resourceType === 'CommunicationRequestType') {
+		if (value && value.resourceType === CommunicationRequestType.name) {
 			return CommunicationRequestType;
 		}
-		if (value && value.resourceType === 'CompartmentDefinitionType') {
+		if (value && value.resourceType === CompartmentDefinitionType.name) {
 			return CompartmentDefinitionType;
 		}
-		if (value && value.resourceType === 'CompositionType') {
+		if (value && value.resourceType === CompositionType.name) {
 			return CompositionType;
 		}
-		if (value && value.resourceType === 'ConceptMapType') {
+		if (value && value.resourceType === ConceptMapType.name) {
 			return ConceptMapType;
 		}
-		if (value && value.resourceType === 'ConditionType') {
+		if (value && value.resourceType === ConditionType.name) {
 			return ConditionType;
 		}
-		if (value && value.resourceType === 'ConsentType') {
+		if (value && value.resourceType === ConsentType.name) {
 			return ConsentType;
 		}
-		if (value && value.resourceType === 'ContractType') {
+		if (value && value.resourceType === ContractType.name) {
 			return ContractType;
 		}
-		if (value && value.resourceType === 'CoverageType') {
+		if (value && value.resourceType === CoverageType.name) {
 			return CoverageType;
 		}
-		if (value && value.resourceType === 'DataElementType') {
+		if (value && value.resourceType === DataElementType.name) {
 			return DataElementType;
 		}
-		if (value && value.resourceType === 'DetectedIssueType') {
+		if (value && value.resourceType === DetectedIssueType.name) {
 			return DetectedIssueType;
 		}
-		if (value && value.resourceType === 'DeviceType') {
+		if (value && value.resourceType === DeviceType.name) {
 			return DeviceType;
 		}
-		if (value && value.resourceType === 'DeviceComponentType') {
+		if (value && value.resourceType === DeviceComponentType.name) {
 			return DeviceComponentType;
 		}
-		if (value && value.resourceType === 'DeviceMetricType') {
+		if (value && value.resourceType === DeviceMetricType.name) {
 			return DeviceMetricType;
 		}
-		if (value && value.resourceType === 'DeviceRequestType') {
+		if (value && value.resourceType === DeviceRequestType.name) {
 			return DeviceRequestType;
 		}
-		if (value && value.resourceType === 'DeviceUseStatementType') {
+		if (value && value.resourceType === DeviceUseStatementType.name) {
 			return DeviceUseStatementType;
 		}
-		if (value && value.resourceType === 'DiagnosticReportType') {
+		if (value && value.resourceType === DiagnosticReportType.name) {
 			return DiagnosticReportType;
 		}
-		if (value && value.resourceType === 'DocumentManifestType') {
+		if (value && value.resourceType === DocumentManifestType.name) {
 			return DocumentManifestType;
 		}
-		if (value && value.resourceType === 'DocumentReferenceType') {
+		if (value && value.resourceType === DocumentReferenceType.name) {
 			return DocumentReferenceType;
 		}
-		if (value && value.resourceType === 'EligibilityRequestType') {
+		if (value && value.resourceType === EligibilityRequestType.name) {
 			return EligibilityRequestType;
 		}
-		if (value && value.resourceType === 'EligibilityResponseType') {
+		if (value && value.resourceType === EligibilityResponseType.name) {
 			return EligibilityResponseType;
 		}
-		if (value && value.resourceType === 'EncounterType') {
+		if (value && value.resourceType === EncounterType.name) {
 			return EncounterType;
 		}
-		if (value && value.resourceType === 'EndpointType') {
+		if (value && value.resourceType === EndpointType.name) {
 			return EndpointType;
 		}
-		if (value && value.resourceType === 'EnrollmentRequestType') {
+		if (value && value.resourceType === EnrollmentRequestType.name) {
 			return EnrollmentRequestType;
 		}
-		if (value && value.resourceType === 'EnrollmentResponseType') {
+		if (value && value.resourceType === EnrollmentResponseType.name) {
 			return EnrollmentResponseType;
 		}
-		if (value && value.resourceType === 'EpisodeOfCareType') {
+		if (value && value.resourceType === EpisodeOfCareType.name) {
 			return EpisodeOfCareType;
 		}
-		if (value && value.resourceType === 'ExpansionProfileType') {
+		if (value && value.resourceType === ExpansionProfileType.name) {
 			return ExpansionProfileType;
 		}
-		if (value && value.resourceType === 'ExplanationOfBenefitType') {
+		if (value && value.resourceType === ExplanationOfBenefitType.name) {
 			return ExplanationOfBenefitType;
 		}
-		if (value && value.resourceType === 'FamilyMemberHistoryType') {
+		if (value && value.resourceType === FamilyMemberHistoryType.name) {
 			return FamilyMemberHistoryType;
 		}
-		if (value && value.resourceType === 'FlagType') {
+		if (value && value.resourceType === FlagType.name) {
 			return FlagType;
 		}
-		if (value && value.resourceType === 'GoalType') {
+		if (value && value.resourceType === GoalType.name) {
 			return GoalType;
 		}
-		if (value && value.resourceType === 'GraphDefinitionType') {
+		if (value && value.resourceType === GraphDefinitionType.name) {
 			return GraphDefinitionType;
 		}
-		if (value && value.resourceType === 'GroupType') {
+		if (value && value.resourceType === GroupType.name) {
 			return GroupType;
 		}
-		if (value && value.resourceType === 'GuidanceResponseType') {
+		if (value && value.resourceType === GuidanceResponseType.name) {
 			return GuidanceResponseType;
 		}
-		if (value && value.resourceType === 'HealthcareServiceType') {
+		if (value && value.resourceType === HealthcareServiceType.name) {
 			return HealthcareServiceType;
 		}
-		if (value && value.resourceType === 'ImagingManifestType') {
+		if (value && value.resourceType === ImagingManifestType.name) {
 			return ImagingManifestType;
 		}
-		if (value && value.resourceType === 'ImagingStudyType') {
+		if (value && value.resourceType === ImagingStudyType.name) {
 			return ImagingStudyType;
 		}
-		if (value && value.resourceType === 'ImmunizationType') {
+		if (value && value.resourceType === ImmunizationType.name) {
 			return ImmunizationType;
 		}
-		if (value && value.resourceType === 'ImmunizationRecommendationType') {
+		if (value && value.resourceType === ImmunizationRecommendationType.name) {
 			return ImmunizationRecommendationType;
 		}
-		if (value && value.resourceType === 'ImplementationGuideType') {
+		if (value && value.resourceType === ImplementationGuideType.name) {
 			return ImplementationGuideType;
 		}
-		if (value && value.resourceType === 'LibraryType') {
+		if (value && value.resourceType === LibraryType.name) {
 			return LibraryType;
 		}
-		if (value && value.resourceType === 'LinkageType') {
+		if (value && value.resourceType === LinkageType.name) {
 			return LinkageType;
 		}
-		if (value && value.resourceType === 'ListType') {
+		if (value && value.resourceType === ListType.name) {
 			return ListType;
 		}
-		if (value && value.resourceType === 'LocationType') {
+		if (value && value.resourceType === LocationType.name) {
 			return LocationType;
 		}
-		if (value && value.resourceType === 'MeasureType') {
+		if (value && value.resourceType === MeasureType.name) {
 			return MeasureType;
 		}
-		if (value && value.resourceType === 'MeasureReportType') {
+		if (value && value.resourceType === MeasureReportType.name) {
 			return MeasureReportType;
 		}
-		if (value && value.resourceType === 'MediaType') {
+		if (value && value.resourceType === MediaType.name) {
 			return MediaType;
 		}
-		if (value && value.resourceType === 'MedicationType') {
+		if (value && value.resourceType === MedicationType.name) {
 			return MedicationType;
 		}
-		if (value && value.resourceType === 'MedicationAdministrationType') {
+		if (value && value.resourceType === MedicationAdministrationType.name) {
 			return MedicationAdministrationType;
 		}
-		if (value && value.resourceType === 'MedicationDispenseType') {
+		if (value && value.resourceType === MedicationDispenseType.name) {
 			return MedicationDispenseType;
 		}
-		if (value && value.resourceType === 'MedicationRequestType') {
+		if (value && value.resourceType === MedicationRequestType.name) {
 			return MedicationRequestType;
 		}
-		if (value && value.resourceType === 'MedicationStatementType') {
+		if (value && value.resourceType === MedicationStatementType.name) {
 			return MedicationStatementType;
 		}
-		if (value && value.resourceType === 'MessageDefinitionType') {
+		if (value && value.resourceType === MessageDefinitionType.name) {
 			return MessageDefinitionType;
 		}
-		if (value && value.resourceType === 'MessageHeaderType') {
+		if (value && value.resourceType === MessageHeaderType.name) {
 			return MessageHeaderType;
 		}
-		if (value && value.resourceType === 'NamingSystemType') {
+		if (value && value.resourceType === NamingSystemType.name) {
 			return NamingSystemType;
 		}
-		if (value && value.resourceType === 'NutritionOrderType') {
+		if (value && value.resourceType === NutritionOrderType.name) {
 			return NutritionOrderType;
 		}
-		if (value && value.resourceType === 'ObservationType') {
+		if (value && value.resourceType === ObservationType.name) {
 			return ObservationType;
 		}
-		if (value && value.resourceType === 'OperationDefinitionType') {
+		if (value && value.resourceType === OperationDefinitionType.name) {
 			return OperationDefinitionType;
 		}
-		if (value && value.resourceType === 'OrganizationType') {
+		if (value && value.resourceType === OrganizationType.name) {
 			return OrganizationType;
 		}
-		if (value && value.resourceType === 'PatientType') {
+		if (value && value.resourceType === PatientType.name) {
 			return PatientType;
 		}
-		if (value && value.resourceType === 'PaymentNoticeType') {
+		if (value && value.resourceType === PaymentNoticeType.name) {
 			return PaymentNoticeType;
 		}
-		if (value && value.resourceType === 'PaymentReconciliationType') {
+		if (value && value.resourceType === PaymentReconciliationType.name) {
 			return PaymentReconciliationType;
 		}
-		if (value && value.resourceType === 'PersonType') {
+		if (value && value.resourceType === PersonType.name) {
 			return PersonType;
 		}
-		if (value && value.resourceType === 'PlanDefinitionType') {
+		if (value && value.resourceType === PlanDefinitionType.name) {
 			return PlanDefinitionType;
 		}
-		if (value && value.resourceType === 'PractitionerType') {
+		if (value && value.resourceType === PractitionerType.name) {
 			return PractitionerType;
 		}
-		if (value && value.resourceType === 'PractitionerRoleType') {
+		if (value && value.resourceType === PractitionerRoleType.name) {
 			return PractitionerRoleType;
 		}
-		if (value && value.resourceType === 'ProcedureType') {
+		if (value && value.resourceType === ProcedureType.name) {
 			return ProcedureType;
 		}
-		if (value && value.resourceType === 'ProcedureRequestType') {
+		if (value && value.resourceType === ProcedureRequestType.name) {
 			return ProcedureRequestType;
 		}
-		if (value && value.resourceType === 'ProcessRequestType') {
+		if (value && value.resourceType === ProcessRequestType.name) {
 			return ProcessRequestType;
 		}
-		if (value && value.resourceType === 'ProcessResponseType') {
+		if (value && value.resourceType === ProcessResponseType.name) {
 			return ProcessResponseType;
 		}
-		if (value && value.resourceType === 'ProvenanceType') {
+		if (value && value.resourceType === ProvenanceType.name) {
 			return ProvenanceType;
 		}
-		if (value && value.resourceType === 'QuestionnaireType') {
+		if (value && value.resourceType === QuestionnaireType.name) {
 			return QuestionnaireType;
 		}
-		if (value && value.resourceType === 'QuestionnaireResponseType') {
+		if (value && value.resourceType === QuestionnaireResponseType.name) {
 			return QuestionnaireResponseType;
 		}
-		if (value && value.resourceType === 'ReferralRequestType') {
+		if (value && value.resourceType === ReferralRequestType.name) {
 			return ReferralRequestType;
 		}
-		if (value && value.resourceType === 'RelatedPersonType') {
+		if (value && value.resourceType === RelatedPersonType.name) {
 			return RelatedPersonType;
 		}
-		if (value && value.resourceType === 'RequestGroupType') {
+		if (value && value.resourceType === RequestGroupType.name) {
 			return RequestGroupType;
 		}
-		if (value && value.resourceType === 'ResearchStudyType') {
+		if (value && value.resourceType === ResearchStudyType.name) {
 			return ResearchStudyType;
 		}
-		if (value && value.resourceType === 'ResearchSubjectType') {
+		if (value && value.resourceType === ResearchSubjectType.name) {
 			return ResearchSubjectType;
 		}
-		if (value && value.resourceType === 'RiskAssessmentType') {
+		if (value && value.resourceType === RiskAssessmentType.name) {
 			return RiskAssessmentType;
 		}
-		if (value && value.resourceType === 'ScheduleType') {
+		if (value && value.resourceType === ScheduleType.name) {
 			return ScheduleType;
 		}
-		if (value && value.resourceType === 'SearchParameterType') {
+		if (value && value.resourceType === SearchParameterType.name) {
 			return SearchParameterType;
 		}
-		if (value && value.resourceType === 'SequenceType') {
+		if (value && value.resourceType === SequenceType.name) {
 			return SequenceType;
 		}
-		if (value && value.resourceType === 'ServiceDefinitionType') {
+		if (value && value.resourceType === ServiceDefinitionType.name) {
 			return ServiceDefinitionType;
 		}
-		if (value && value.resourceType === 'SlotType') {
+		if (value && value.resourceType === SlotType.name) {
 			return SlotType;
 		}
-		if (value && value.resourceType === 'SpecimenType') {
+		if (value && value.resourceType === SpecimenType.name) {
 			return SpecimenType;
 		}
-		if (value && value.resourceType === 'StructureDefinitionType') {
+		if (value && value.resourceType === StructureDefinitionType.name) {
 			return StructureDefinitionType;
 		}
-		if (value && value.resourceType === 'StructureMapType') {
+		if (value && value.resourceType === StructureMapType.name) {
 			return StructureMapType;
 		}
-		if (value && value.resourceType === 'SubscriptionType') {
+		if (value && value.resourceType === SubscriptionType.name) {
 			return SubscriptionType;
 		}
-		if (value && value.resourceType === 'SubstanceType') {
+		if (value && value.resourceType === SubstanceType.name) {
 			return SubstanceType;
 		}
-		if (value && value.resourceType === 'SupplyDeliveryType') {
+		if (value && value.resourceType === SupplyDeliveryType.name) {
 			return SupplyDeliveryType;
 		}
-		if (value && value.resourceType === 'SupplyRequestType') {
+		if (value && value.resourceType === SupplyRequestType.name) {
 			return SupplyRequestType;
 		}
-		if (value && value.resourceType === 'TaskType') {
+		if (value && value.resourceType === TaskType.name) {
 			return TaskType;
 		}
-		if (value && value.resourceType === 'TestReportType') {
+		if (value && value.resourceType === TestReportType.name) {
 			return TestReportType;
 		}
-		if (value && value.resourceType === 'TestScriptType') {
+		if (value && value.resourceType === TestScriptType.name) {
 			return TestScriptType;
 		}
-		if (value && value.resourceType === 'ValueSetType') {
+		if (value && value.resourceType === ValueSetType.name) {
 			return ValueSetType;
 		}
-		if (value && value.resourceType === 'VisionPrescriptionType') {
+		if (value && value.resourceType === VisionPrescriptionType.name) {
 			return VisionPrescriptionType;
 		}
 	}
