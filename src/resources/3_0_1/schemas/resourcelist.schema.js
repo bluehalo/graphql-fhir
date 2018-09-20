@@ -241,7 +241,7 @@ module.exports = new GraphQLUnionType({
 		ValueSetType,
 		VisionPrescriptionType
 	],
-	resovleType ( value ) {
+	resolveType ( value ) {
 		if (value && value.resourceType === AccountType.name) {
 			return AccountType;
 		}
