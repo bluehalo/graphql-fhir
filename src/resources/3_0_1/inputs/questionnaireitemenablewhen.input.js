@@ -4,6 +4,7 @@ const TimeScalar = require('../scalars/time.scalar');
 const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLBoolean, GraphQLFloat, GraphQLInt } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 

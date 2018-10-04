@@ -2,6 +2,7 @@ const CodeScalar = require('../scalars/code.scalar');
 const InstantScalar = require('../scalars/instant.scalar');
 const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLBoolean } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 let SlotResourceInputType = new GraphQLEnumType({

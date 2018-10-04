@@ -2,6 +2,7 @@ const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
 const OidScalar = require('../scalars/oid.scalar');
 const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 

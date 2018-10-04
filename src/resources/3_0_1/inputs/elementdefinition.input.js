@@ -11,6 +11,7 @@ const PositiveIntScalar = require('../scalars/positiveint.scalar');
 const TimeScalar = require('../scalars/time.scalar');
 const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLBoolean, GraphQLFloat, GraphQLInt } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 
