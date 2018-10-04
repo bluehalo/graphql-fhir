@@ -3,6 +3,7 @@ const CodeScalar = require('../scalars/code.scalar');
 const DateTimeScalar = require('../scalars/datetime.scalar');
 const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLBoolean, GraphQLList } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 let GraphDefinitionResourceInputType = new GraphQLEnumType({

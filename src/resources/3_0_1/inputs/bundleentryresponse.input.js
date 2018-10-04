@@ -1,7 +1,8 @@
 const UriScalar = require('../scalars/uri.scalar');
 const InstantScalar = require('../scalars/instant.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString } = require('graphql');
+const { GraphQLInputObjectType, GraphQLString, GraphQLNonNull } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 
@@ -45,11 +46,10 @@ module.exports = new GraphQLInputObjectType({
 		_lastModified: {
 			type: require('./element.input'),
 			description: 'The date/time that the resource was modified on the server.'
+		},
+		outcome: {
+			type: GraphQLString,
+			description: 'An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction.'
 		}
-		// TODO: Figure out how to handle this
-		// outcome: {
-		// 	type: require('./resourcelist.input'),
-		// 	description: 'An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction.'
-		// }
 	})
 });

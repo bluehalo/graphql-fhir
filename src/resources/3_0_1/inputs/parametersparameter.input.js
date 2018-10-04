@@ -9,8 +9,9 @@ const PositiveIntScalar = require('../scalars/positiveint.scalar');
 const TimeScalar = require('../scalars/time.scalar');
 const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
 const UriScalar = require('../scalars/uri.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLBoolean, GraphQLFloat, GraphQLInt } = require('graphql');
+const { GraphQLInputObjectType, GraphQLString, GraphQLNonNull, GraphQLBoolean, GraphQLFloat, GraphQLInt } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 
@@ -246,11 +247,10 @@ module.exports = new GraphQLInputObjectType({
 		valueMeta: {
 			type: require('./meta.input'),
 			description: 'If the parameter is a data type.'
+		},
+		resource: {
+			type: GraphQLString,
+			description: 'If the parameter is a whole resource.'
 		}
-		// TODO: Figure out how to handle this
-		// resource: {
-		// 	type: require('./resourcelist.input'),
-		// 	description: 'If the parameter is a whole resource.'
-		// }
 	})
 });

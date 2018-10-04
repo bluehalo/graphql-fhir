@@ -1,5 +1,6 @@
 const { GraphQLInputObjectType, GraphQLInt, GraphQLString } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 

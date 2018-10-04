@@ -1,6 +1,7 @@
 const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLInputObjectType, GraphQLList, GraphQLNonNull } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 
