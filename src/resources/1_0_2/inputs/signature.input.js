@@ -4,6 +4,7 @@ const CodeScalar = require('../scalars/code.scalar');
 const Base64BinaryScalar = require('../scalars/base64binary.scalar');
 const { GraphQLInputObjectType, GraphQLNonNull, GraphQLList } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 

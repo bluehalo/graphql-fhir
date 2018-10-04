@@ -1,6 +1,7 @@
 const IdScalar = require('../scalars/id.scalar');
 const { GraphQLInputObjectType, GraphQLList } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 

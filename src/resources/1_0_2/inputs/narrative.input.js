@@ -2,6 +2,7 @@ const CodeScalar = require('../scalars/code.scalar');
 const XhtmlScalar = require('../scalars/xhtml.scalar');
 const { GraphQLInputObjectType, GraphQLNonNull } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 

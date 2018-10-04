@@ -2,6 +2,7 @@ const CodeScalar = require('../scalars/code.scalar');
 const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
 const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString } = require('graphql');
 
+// Util for extending gql objects
 const { extendSchema } = require('../../../utils/schema.utils');
 
 
