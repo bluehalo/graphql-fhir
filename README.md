@@ -1,4 +1,4 @@
-# GraphQL-FHIR [![Build Status](https://travis-ci.org/Asymmetrik/graphql-fhir.svg?branch=master)](https://travis-ci.org/Asymmetrik/graphql-fhir) [![Coverage Status](https://coveralls.io/repos/github/Asymmetrik/graphql-fhir/badge.svg?branch=master)](https://coveralls.io/github/Asymmetrik/graphql-fhir?branch=master) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+# GraphQL-FHIR [![Build Status](https://travis-ci.org/Asymmetrik/graphql-fhir.svg?branch=develop)](https://travis-ci.org/Asymmetrik/graphql-fhir) [![Coverage Status](https://coveralls.io/repos/github/Asymmetrik/graphql-fhir/badge.svg?branch=develop)](https://coveralls.io/github/Asymmetrik/graphql-fhir?branch=develop) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 > A secure GraphQL implementation for the [HL7 FHIR specification](https://www.hl7.org/fhir/) based on the current implementation guide for [GraphQL with FHIR](https://build.fhir.org/graphql.html) and developed with Node.js and Express.
 
 ## Prerequisites
