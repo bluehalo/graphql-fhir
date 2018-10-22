@@ -111,7 +111,7 @@ function configureRoutes (server, options = {}) {
 
 				server.app.use(
 					// Path for this graphql endpoint
-					path.join(instance_path, '([\$])graphql'),
+					path.posix.join(instance_path, '([\$])graphql'),
 					// Add our validation middlware
 					authenticationMiddleware(server),
 					// middleware wrapper for Graphql Express

@@ -7,13 +7,13 @@ describe('Resolve Utils Test', () => {
 	describe('resolve', () => {
 
 		test('should resolve to `src` as the base when no relative path is provided', () => {
-			let base = path.basename(resolve());
+			let base = path.posix.basename(resolve());
 			expect(base).toEqual('src');
 		});
 
 		test('should resolve to a path relative to the base', () => {
 			let relative_path = 'scooby/doo';
-			let diff = path.relative(resolve(''), resolve(relative_path));
+			let diff = path.posix.relative(resolve(''), resolve(relative_path));
 			expect(diff).toEqual(relative_path);
 		});
 
