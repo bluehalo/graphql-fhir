@@ -7,8 +7,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node src/index;",
-    "nodemon": "node src/scripts/nodemon;",
+    "start": "node src/index",
+    "nodemon": "node src/scripts/nodemon",
     "test": "node src/scripts/test --env=jsdom",
     "lint": "eslint \"src/**/*.js\""
   },
