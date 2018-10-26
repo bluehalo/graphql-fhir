@@ -19,6 +19,8 @@ module.exports = new GraphQLScalarType({
 	// TODO: Implement proper parsing and sanitization here
 	parseLiteral: ast => {
 		let { value } = ast;
-		return parseValue(value, ast);
+		return kind === Kind.STRING
+			? value
+			: undefined;
 	}
 });
