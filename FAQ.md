@@ -155,7 +155,7 @@ module.exports.patientResolver = function patientResolver (root, args, ctx, info
 
   return new Promise((resolve, reject) => {
     // Query MongoDB
-    db.findOne({ _id: args._id }, (err, patient) => {
+    db.patients.findOne({ _id: args._id }, (err, patient) => {
       // Errors need to be formatted in a specific way, you can see more
       // of en explanation on this in the Error handling section below
       if (err) {
