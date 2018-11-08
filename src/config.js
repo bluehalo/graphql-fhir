@@ -18,7 +18,7 @@ const SERVER_CONFIG = {
 	// use for 404 errors if a valid version is not present
 	defaultVersion: '3_0_1',
 	// defaut port for the app
-	port: 3000,
+	port: process.env.PORT || 3000,
 	// Logger configurations
 	logging: {
 		level: 'debug'
