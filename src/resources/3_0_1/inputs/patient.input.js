@@ -4,7 +4,7 @@ const DateTimeScalar = require('../scalars/datetime.scalar');
 const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLBoolean, GraphQLInt } = require('graphql');
 
 // Util for extending gql objects
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let PatientResourceInputType = new GraphQLEnumType({
 	name: 'PatientResourceInputType',

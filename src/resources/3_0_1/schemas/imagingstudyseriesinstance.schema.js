@@ -2,7 +2,7 @@ const OidScalar = require('../scalars/oid.scalar');
 const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
 const { GraphQLObjectType, GraphQLNonNull, GraphQLString } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 
 

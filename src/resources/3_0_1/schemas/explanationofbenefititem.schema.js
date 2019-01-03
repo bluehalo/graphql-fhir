@@ -2,7 +2,7 @@ const PositiveIntScalar = require('../scalars/positiveint.scalar');
 const DateScalar = require('../scalars/date.scalar');
 const { GraphQLObjectType, GraphQLNonNull, GraphQLList, GraphQLFloat } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 
 

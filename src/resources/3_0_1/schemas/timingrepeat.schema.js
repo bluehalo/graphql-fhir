@@ -3,7 +3,7 @@ const TimeScalar = require('../scalars/time.scalar');
 const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
 const { GraphQLObjectType, GraphQLInt, GraphQLFloat, GraphQLList } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 
 

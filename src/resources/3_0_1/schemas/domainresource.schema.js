@@ -1,6 +1,6 @@
 const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let DomainResourceResourceType = new GraphQLEnumType({
 	name: 'DomainResourceResourceType',

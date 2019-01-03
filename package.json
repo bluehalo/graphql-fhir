@@ -13,6 +13,7 @@
     "lint": "eslint \"src/**/*.js\""
   },
   "dependencies": {
+    "@asymmetrik/fhir-gql-schema-utils": "^1.0.1",
     "body-parser": "^1.18.3",
     "compression": "^1.7.2",
     "express": "^4.16.3",

@@ -4,7 +4,7 @@ const DateTimeScalar = require('../scalars/datetime.scalar');
 const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
 const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLBoolean, GraphQLList } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let CodeSystemResourceType = new GraphQLEnumType({
 	name: 'CodeSystemResourceType',

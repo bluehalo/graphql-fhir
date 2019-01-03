@@ -3,7 +3,7 @@ const DateTimeScalar = require('../scalars/datetime.scalar');
 const DateScalar = require('../scalars/date.scalar');
 const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let ClaimResourceType = new GraphQLEnumType({
 	name: 'ClaimResourceType',

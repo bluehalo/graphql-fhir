@@ -115,7 +115,7 @@ const ValueSet = require('../schemas/valueset.schema');
 const VisionPrescription = require('../schemas/visionprescription.schema');
 const { GraphQLUnionType } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 /**
  * @name exports

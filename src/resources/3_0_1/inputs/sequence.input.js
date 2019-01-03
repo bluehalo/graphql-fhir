@@ -2,7 +2,7 @@ const CodeScalar = require('../scalars/code.scalar');
 const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLInt } = require('graphql');
 
 // Util for extending gql objects
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let SequenceResourceInputType = new GraphQLEnumType({
 	name: 'SequenceResourceInputType',

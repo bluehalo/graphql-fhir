@@ -1,6 +1,6 @@
 const { GraphQLObjectType, GraphQLString, GraphQLList, GraphQLBoolean } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 
 

@@ -2,7 +2,7 @@ const PositiveIntScalar = require('../scalars/positiveint.scalar');
 const { GraphQLInputObjectType, GraphQLString } = require('graphql');
 
 // Util for extending gql objects
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 
 

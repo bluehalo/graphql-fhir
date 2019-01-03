@@ -2,7 +2,7 @@ const CodeScalar = require('../scalars/code.scalar');
 const Base64BinaryScalar = require('../scalars/base64binary.scalar');
 const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let BinaryResourceType = new GraphQLEnumType({
 	name: 'BinaryResourceType',

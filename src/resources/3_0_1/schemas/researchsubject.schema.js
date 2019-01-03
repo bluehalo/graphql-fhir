@@ -1,7 +1,7 @@
 const CodeScalar = require('../scalars/code.scalar');
 const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let ResearchSubjectResourceType = new GraphQLEnumType({
 	name: 'ResearchSubjectResourceType',

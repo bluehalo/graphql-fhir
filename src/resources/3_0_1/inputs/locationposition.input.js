@@ -1,7 +1,7 @@
 const { GraphQLInputObjectType, GraphQLNonNull, GraphQLFloat } = require('graphql');
 
 // Util for extending gql objects
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 
 

@@ -3,7 +3,7 @@ const DateScalar = require('../scalars/date.scalar');
 const DateTimeScalar = require('../scalars/datetime.scalar');
 const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLBoolean, GraphQLInt } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let PatientResourceType = new GraphQLEnumType({
 	name: 'PatientResourceType',

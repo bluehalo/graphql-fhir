@@ -3,7 +3,7 @@ const InstantScalar = require('../scalars/instant.scalar');
 const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLBoolean } = require('graphql');
 
 // Util for extending gql objects
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let SlotResourceInputType = new GraphQLEnumType({
 	name: 'SlotResourceInputType',

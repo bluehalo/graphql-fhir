@@ -1,7 +1,7 @@
 const DateTimeScalar = require('../scalars/datetime.scalar');
 const { GraphQLObjectType, GraphQLBoolean, GraphQLNonNull } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 
 

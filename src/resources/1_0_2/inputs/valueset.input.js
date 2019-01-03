@@ -5,7 +5,7 @@ const DateScalar = require('../scalars/date.scalar');
 const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLBoolean, GraphQLList } = require('graphql');
 
 // Util for extending gql objects
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let ValueSetResourceInputType = new GraphQLEnumType({
 	name: 'ValueSetResourceInputType',

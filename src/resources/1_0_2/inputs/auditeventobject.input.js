@@ -2,7 +2,7 @@ const Base64BinaryScalar = require('../scalars/base64binary.scalar');
 const { GraphQLInputObjectType, GraphQLList, GraphQLString } = require('graphql');
 
 // Util for extending gql objects
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 
 

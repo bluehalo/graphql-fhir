@@ -2,7 +2,7 @@ const CodeScalar = require('../scalars/code.scalar');
 const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let EndpointResourceType = new GraphQLEnumType({
 	name: 'EndpointResourceType',

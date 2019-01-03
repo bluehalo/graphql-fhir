@@ -6,7 +6,7 @@ const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
 const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
 
 // Util for extending gql objects
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let ImagingStudyResourceInputType = new GraphQLEnumType({
 	name: 'ImagingStudyResourceInputType',
