@@ -1,13 +1,13 @@
 const {
 	OrganizationQuery,
 	OrganizationListQuery,
-	OrganizationInstanceQuery
+	OrganizationInstanceQuery,
 } = require('./query');
 
 const {
 	OrganizationCreateMutation,
 	OrganizationUpdateMutation,
-	OrganizationDeleteMutation
+	OrganizationDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Organization: OrganizationQuery,
-		OrganizationList: OrganizationListQuery
+		OrganizationList: OrganizationListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		OrganizationCreate: OrganizationCreateMutation,
 		OrganizationUpdate: OrganizationUpdateMutation,
-		OrganizationDelete: OrganizationDeleteMutation
+		OrganizationDelete: OrganizationDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Organization',
 		path: '/3_0_1/Organization/:id',
-		query: OrganizationInstanceQuery
-	}
+		query: OrganizationInstanceQuery,
+	},
 };

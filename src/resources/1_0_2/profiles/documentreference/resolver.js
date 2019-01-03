@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary DocumentReference Resolver.
  */
-module.exports.documentreferenceResolver = function documentreferenceResolver (root, args, context, info) {
+module.exports.documentreferenceResolver = function documentreferenceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.documentreferenceResolver = function documentreferenceResolver (r
  * @static
  * @summary DocumentReference List Resolver.
  */
-module.exports.documentreferenceListResolver = function documentreferenceListResolver (root, args, context, info) {
+module.exports.documentreferenceListResolver = function documentreferenceListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.documentreferenceListResolver = function documentreferenceListRes
  * @static
  * @summary DocumentReference Instance Resolver.
  */
-module.exports.documentreferenceInstanceResolver = function documentreferenceInstanceResolver (root, args, context, info) {
+module.exports.documentreferenceInstanceResolver = function documentreferenceInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.documentreferenceInstanceResolver = function documentreferenceIns
  * @static
  * @summary DocumentReference Create Resolver.
  */
-module.exports.documentreferenceCreateResolver = function documentreferenceCreateResolver (root, args, context, info) {
+module.exports.documentreferenceCreateResolver = function documentreferenceCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.documentreferenceCreateResolver = function documentreferenceCreat
  * @static
  * @summary DocumentReference Update Resolver.
  */
-module.exports.documentreferenceUpdateResolver = function documentreferenceUpdateResolver (root, args, context, info) {
+module.exports.documentreferenceUpdateResolver = function documentreferenceUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.documentreferenceUpdateResolver = function documentreferenceUpdat
  * @static
  * @summary DocumentReference Delete Resolver.
  */
-module.exports.documentreferenceDeleteResolver = function documentreferenceDeleteResolver (root, args, context, info) {
+module.exports.documentreferenceDeleteResolver = function documentreferenceDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

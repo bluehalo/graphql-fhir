@@ -5,7 +5,7 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Flag Resolver.
  */
-module.exports.flagResolver = function flagResolver (root, args, context, info) {
+module.exports.flagResolver = function flagResolver(root, args, context, info) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +15,12 @@ module.exports.flagResolver = function flagResolver (root, args, context, info) 
  * @static
  * @summary Flag List Resolver.
  */
-module.exports.flagListResolver = function flagListResolver (root, args, context, info) {
+module.exports.flagListResolver = function flagListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +30,12 @@ module.exports.flagListResolver = function flagListResolver (root, args, context
  * @static
  * @summary Flag Instance Resolver.
  */
-module.exports.flagInstanceResolver = function flagInstanceResolver (root, args, context, info) {
+module.exports.flagInstanceResolver = function flagInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +45,12 @@ module.exports.flagInstanceResolver = function flagInstanceResolver (root, args,
  * @static
  * @summary Flag Create Resolver.
  */
-module.exports.flagCreateResolver = function flagCreateResolver (root, args, context, info) {
+module.exports.flagCreateResolver = function flagCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +60,12 @@ module.exports.flagCreateResolver = function flagCreateResolver (root, args, con
  * @static
  * @summary Flag Update Resolver.
  */
-module.exports.flagUpdateResolver = function flagUpdateResolver (root, args, context, info) {
+module.exports.flagUpdateResolver = function flagUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +75,12 @@ module.exports.flagUpdateResolver = function flagUpdateResolver (root, args, con
  * @static
  * @summary Flag Delete Resolver.
  */
-module.exports.flagDeleteResolver = function flagDeleteResolver (root, args, context, info) {
+module.exports.flagDeleteResolver = function flagDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

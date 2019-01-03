@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	operationdefinitionResolver,
 	operationdefinitionListResolver,
-	operationdefinitionInstanceResolver
+	operationdefinitionInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'OperationDefinition',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.OperationDefinitionQuery = {
 	args: Object.assign({}, CommonArgs, OperationDefinitionArgs),
 	description: 'Query for a single OperationDefinition',
 	resolve: scopeInvariant(scopeOptions, operationdefinitionResolver),
-	type: OperationDefinitionSchema
+	type: OperationDefinitionSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.OperationDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, OperationDefinitionArgs),
 	description: 'Query for multiple OperationDefinitions',
 	resolve: scopeInvariant(scopeOptions, operationdefinitionListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.OperationDefinitionListQuery = {
 module.exports.OperationDefinitionInstanceQuery = {
 	description: 'Get information about a single OperationDefinition',
 	resolve: scopeInvariant(scopeOptions, operationdefinitionInstanceResolver),
-	type: OperationDefinitionSchema
+	type: OperationDefinitionSchema,
 };

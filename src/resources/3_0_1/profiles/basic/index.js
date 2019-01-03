@@ -1,13 +1,9 @@
-const {
-	BasicQuery,
-	BasicListQuery,
-	BasicInstanceQuery
-} = require('./query');
+const { BasicQuery, BasicListQuery, BasicInstanceQuery } = require('./query');
 
 const {
 	BasicCreateMutation,
 	BasicUpdateMutation,
-	BasicDeleteMutation
+	BasicDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +14,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Basic: BasicQuery,
-		BasicList: BasicListQuery
+		BasicList: BasicListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		BasicCreate: BasicCreateMutation,
 		BasicUpdate: BasicUpdateMutation,
-		BasicDelete: BasicDeleteMutation
+		BasicDelete: BasicDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Basic',
 		path: '/3_0_1/Basic/:id',
-		query: BasicInstanceQuery
-	}
+		query: BasicInstanceQuery,
+	},
 };

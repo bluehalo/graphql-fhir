@@ -8,25 +8,23 @@ let authServer = {
 		auth: {
 			name: 'test',
 			passportOptions: {
-				session: false
-			}
-		}
+				session: false,
+			},
+		},
 	},
 	env: {
-		AUTHENTICATION: true
-	}
+		AUTHENTICATION: true,
+	},
 };
 
 // Mock config for no authentication
 let noAuthServer = {
 	env: {
-		AUTHENTICATION: false
-	}
+		AUTHENTICATION: false,
+	},
 };
 
-
 describe('Authentication Middleware Test', () => {
-
 	test('should return noop middleware when no server configuration is provided ', () => {
 		let middleware = authenticationMiddleware();
 		expect(middleware).toBe(noopMiddleware);
@@ -46,5 +44,4 @@ describe('Authentication Middleware Test', () => {
 		expect(mock.calls[0][0]).toBe(authServer.config.auth.name);
 		expect(mock.calls[0][1]).toBe(authServer.config.auth.passportOptions);
 	});
-
 });

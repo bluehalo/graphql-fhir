@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ClinicalImpression Resolver.
  */
-module.exports.clinicalimpressionResolver = function clinicalimpressionResolver (root, args, context, info) {
+module.exports.clinicalimpressionResolver = function clinicalimpressionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.clinicalimpressionResolver = function clinicalimpressionResolver 
  * @static
  * @summary ClinicalImpression List Resolver.
  */
-module.exports.clinicalimpressionListResolver = function clinicalimpressionListResolver (root, args, context, info) {
+module.exports.clinicalimpressionListResolver = function clinicalimpressionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.clinicalimpressionListResolver = function clinicalimpressionListR
  * @static
  * @summary ClinicalImpression Instance Resolver.
  */
-module.exports.clinicalimpressionInstanceResolver = function clinicalimpressionInstanceResolver (root, args, context, info) {
+module.exports.clinicalimpressionInstanceResolver = function clinicalimpressionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.clinicalimpressionInstanceResolver = function clinicalimpressionI
  * @static
  * @summary ClinicalImpression Create Resolver.
  */
-module.exports.clinicalimpressionCreateResolver = function clinicalimpressionCreateResolver (root, args, context, info) {
+module.exports.clinicalimpressionCreateResolver = function clinicalimpressionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.clinicalimpressionCreateResolver = function clinicalimpressionCre
  * @static
  * @summary ClinicalImpression Update Resolver.
  */
-module.exports.clinicalimpressionUpdateResolver = function clinicalimpressionUpdateResolver (root, args, context, info) {
+module.exports.clinicalimpressionUpdateResolver = function clinicalimpressionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.clinicalimpressionUpdateResolver = function clinicalimpressionUpd
  * @static
  * @summary ClinicalImpression Delete Resolver.
  */
-module.exports.clinicalimpressionDeleteResolver = function clinicalimpressionDeleteResolver (root, args, context, info) {
+module.exports.clinicalimpressionDeleteResolver = function clinicalimpressionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

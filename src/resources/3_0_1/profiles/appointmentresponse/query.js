@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	appointmentresponseResolver,
 	appointmentresponseListResolver,
-	appointmentresponseInstanceResolver
+	appointmentresponseInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'AppointmentResponse',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.AppointmentResponseQuery = {
 	args: Object.assign({}, CommonArgs, AppointmentResponseArgs),
 	description: 'Query for a single AppointmentResponse',
 	resolve: scopeInvariant(scopeOptions, appointmentresponseResolver),
-	type: AppointmentResponseSchema
+	type: AppointmentResponseSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.AppointmentResponseListQuery = {
 	args: Object.assign({}, CommonArgs, AppointmentResponseArgs),
 	description: 'Query for multiple AppointmentResponses',
 	resolve: scopeInvariant(scopeOptions, appointmentresponseListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.AppointmentResponseListQuery = {
 module.exports.AppointmentResponseInstanceQuery = {
 	description: 'Get information about a single AppointmentResponse',
 	resolve: scopeInvariant(scopeOptions, appointmentresponseInstanceResolver),
-	type: AppointmentResponseSchema
+	type: AppointmentResponseSchema,
 };

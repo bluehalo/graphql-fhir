@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	servicedefinitionResolver,
 	servicedefinitionListResolver,
-	servicedefinitionInstanceResolver
+	servicedefinitionInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ServiceDefinition',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ServiceDefinitionQuery = {
 	args: Object.assign({}, CommonArgs, ServiceDefinitionArgs),
 	description: 'Query for a single ServiceDefinition',
 	resolve: scopeInvariant(scopeOptions, servicedefinitionResolver),
-	type: ServiceDefinitionSchema
+	type: ServiceDefinitionSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ServiceDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, ServiceDefinitionArgs),
 	description: 'Query for multiple ServiceDefinitions',
 	resolve: scopeInvariant(scopeOptions, servicedefinitionListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ServiceDefinitionListQuery = {
 module.exports.ServiceDefinitionInstanceQuery = {
 	description: 'Get information about a single ServiceDefinition',
 	resolve: scopeInvariant(scopeOptions, servicedefinitionInstanceResolver),
-	type: ServiceDefinitionSchema
+	type: ServiceDefinitionSchema,
 };

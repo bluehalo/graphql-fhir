@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	goalResolver,
 	goalListResolver,
-	goalInstanceResolver
+	goalInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Goal',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.GoalQuery = {
 	args: Object.assign({}, CommonArgs, GoalArgs),
 	description: 'Query for a single Goal',
 	resolve: scopeInvariant(scopeOptions, goalResolver),
-	type: GoalSchema
+	type: GoalSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.GoalListQuery = {
 	args: Object.assign({}, CommonArgs, GoalArgs),
 	description: 'Query for multiple Goals',
 	resolve: scopeInvariant(scopeOptions, goalListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.GoalListQuery = {
 module.exports.GoalInstanceQuery = {
 	description: 'Get information about a single Goal',
 	resolve: scopeInvariant(scopeOptions, goalInstanceResolver),
-	type: GoalSchema
+	type: GoalSchema,
 };

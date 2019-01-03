@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Coverage Resolver.
  */
-module.exports.coverageResolver = function coverageResolver (root, args, context, info) {
+module.exports.coverageResolver = function coverageResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.coverageResolver = function coverageResolver (root, args, context
  * @static
  * @summary Coverage List Resolver.
  */
-module.exports.coverageListResolver = function coverageListResolver (root, args, context, info) {
+module.exports.coverageListResolver = function coverageListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.coverageListResolver = function coverageListResolver (root, args,
  * @static
  * @summary Coverage Instance Resolver.
  */
-module.exports.coverageInstanceResolver = function coverageInstanceResolver (root, args, context, info) {
+module.exports.coverageInstanceResolver = function coverageInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.coverageInstanceResolver = function coverageInstanceResolver (roo
  * @static
  * @summary Coverage Create Resolver.
  */
-module.exports.coverageCreateResolver = function coverageCreateResolver (root, args, context, info) {
+module.exports.coverageCreateResolver = function coverageCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.coverageCreateResolver = function coverageCreateResolver (root, a
  * @static
  * @summary Coverage Update Resolver.
  */
-module.exports.coverageUpdateResolver = function coverageUpdateResolver (root, args, context, info) {
+module.exports.coverageUpdateResolver = function coverageUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.coverageUpdateResolver = function coverageUpdateResolver (root, a
  * @static
  * @summary Coverage Delete Resolver.
  */
-module.exports.coverageDeleteResolver = function coverageDeleteResolver (root, args, context, info) {
+module.exports.coverageDeleteResolver = function coverageDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

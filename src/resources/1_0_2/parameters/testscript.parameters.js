@@ -10,30 +10,37 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	testscript_test_capability: {
 		type: GraphQLString,
-		description: 'TestScript test required and validated capability (See http://hl7.org/fhir/SearchParameter/testscript-testscript-test-capability).'
+		description:
+			'TestScript test required and validated capability (See http://hl7.org/fhir/SearchParameter/testscript-testscript-test-capability).',
 	},
 	testscript_setup_capability: {
 		type: GraphQLString,
-		description: 'TestScript setup required and validated capability (See http://hl7.org/fhir/SearchParameter/testscript-testscript-setup-capability).'
+		description:
+			'TestScript setup required and validated capability (See http://hl7.org/fhir/SearchParameter/testscript-testscript-setup-capability).',
 	},
 	description: {
 		type: GraphQLString,
-		description: 'Natural language description of the TestScript (See http://hl7.org/fhir/SearchParameter/testscript-description).'
+		description:
+			'Natural language description of the TestScript (See http://hl7.org/fhir/SearchParameter/testscript-description).',
 	},
 	name: {
 		type: GraphQLString,
-		description: 'Informal name for this TestScript (See http://hl7.org/fhir/SearchParameter/testscript-name).'
+		description:
+			'Informal name for this TestScript (See http://hl7.org/fhir/SearchParameter/testscript-name).',
 	},
 	testscript_capability: {
 		type: GraphQLString,
-		description: 'TestScript required and validated capability (See http://hl7.org/fhir/SearchParameter/testscript-testscript-capability).'
+		description:
+			'TestScript required and validated capability (See http://hl7.org/fhir/SearchParameter/testscript-testscript-capability).',
 	},
 	identifier: {
 		type: TokenScalar,
-		description: 'External identifier (See http://hl7.org/fhir/SearchParameter/testscript-identifier).'
+		description:
+			'External identifier (See http://hl7.org/fhir/SearchParameter/testscript-identifier).',
 	},
 	url: {
 		type: UriScalar,
-		description: 'Absolute URL used to reference this TestScript (See http://hl7.org/fhir/SearchParameter/testscript-url).'
-	}
+		description:
+			'Absolute URL used to reference this TestScript (See http://hl7.org/fhir/SearchParameter/testscript-url).',
+	},
 };

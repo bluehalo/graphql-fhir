@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	dataelementResolver,
 	dataelementListResolver,
-	dataelementInstanceResolver
+	dataelementInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DataElement',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.DataElementQuery = {
 	args: Object.assign({}, CommonArgs, DataElementArgs),
 	description: 'Query for a single DataElement',
 	resolve: scopeInvariant(scopeOptions, dataelementResolver),
-	type: DataElementSchema
+	type: DataElementSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.DataElementListQuery = {
 	args: Object.assign({}, CommonArgs, DataElementArgs),
 	description: 'Query for multiple DataElements',
 	resolve: scopeInvariant(scopeOptions, dataelementListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.DataElementListQuery = {
 module.exports.DataElementInstanceQuery = {
 	description: 'Get information about a single DataElement',
 	resolve: scopeInvariant(scopeOptions, dataelementInstanceResolver),
-	type: DataElementSchema
+	type: DataElementSchema,
 };

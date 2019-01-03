@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary DataElement Resolver.
  */
-module.exports.dataelementResolver = function dataelementResolver (root, args, context, info) {
+module.exports.dataelementResolver = function dataelementResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.dataelementResolver = function dataelementResolver (root, args, c
  * @static
  * @summary DataElement List Resolver.
  */
-module.exports.dataelementListResolver = function dataelementListResolver (root, args, context, info) {
+module.exports.dataelementListResolver = function dataelementListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.dataelementListResolver = function dataelementListResolver (root,
  * @static
  * @summary DataElement Instance Resolver.
  */
-module.exports.dataelementInstanceResolver = function dataelementInstanceResolver (root, args, context, info) {
+module.exports.dataelementInstanceResolver = function dataelementInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.dataelementInstanceResolver = function dataelementInstanceResolve
  * @static
  * @summary DataElement Create Resolver.
  */
-module.exports.dataelementCreateResolver = function dataelementCreateResolver (root, args, context, info) {
+module.exports.dataelementCreateResolver = function dataelementCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.dataelementCreateResolver = function dataelementCreateResolver (r
  * @static
  * @summary DataElement Update Resolver.
  */
-module.exports.dataelementUpdateResolver = function dataelementUpdateResolver (root, args, context, info) {
+module.exports.dataelementUpdateResolver = function dataelementUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.dataelementUpdateResolver = function dataelementUpdateResolver (r
  * @static
  * @summary DataElement Delete Resolver.
  */
-module.exports.dataelementDeleteResolver = function dataelementDeleteResolver (root, args, context, info) {
+module.exports.dataelementDeleteResolver = function dataelementDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

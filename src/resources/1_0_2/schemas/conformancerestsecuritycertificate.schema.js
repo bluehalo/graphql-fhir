@@ -4,8 +4,6 @@ const { GraphQLObjectType } = require('graphql');
 
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
-
-
 /**
  * @name exports
  * @summary Conformance.rest.security.certificate Schema
@@ -13,22 +11,23 @@ const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 module.exports = new GraphQLObjectType({
 	name: 'ConformanceRestSecurityCertificate',
 	description: 'Certificates associated with security profiles.',
-	fields: () => extendSchema(require('./backboneelement.schema'), {
-		type: {
-			type: CodeScalar,
-			description: 'Mime type for certificate.'
-		},
-		_type: {
-			type: require('./element.schema'),
-			description: 'Mime type for certificate.'
-		},
-		blob: {
-			type: Base64BinaryScalar,
-			description: 'Actual certificate.'
-		},
-		_blob: {
-			type: require('./element.schema'),
-			description: 'Actual certificate.'
-		}
-	})
+	fields: () =>
+		extendSchema(require('./backboneelement.schema'), {
+			type: {
+				type: CodeScalar,
+				description: 'Mime type for certificate.',
+			},
+			_type: {
+				type: require('./element.schema'),
+				description: 'Mime type for certificate.',
+			},
+			blob: {
+				type: Base64BinaryScalar,
+				description: 'Actual certificate.',
+			},
+			_blob: {
+				type: require('./element.schema'),
+				description: 'Actual certificate.',
+			},
+		}),
 });

@@ -1,12 +1,18 @@
-const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList } = require('graphql');
+const {
+	GraphQLObjectType,
+	GraphQLEnumType,
+	GraphQLNonNull,
+	GraphQLString,
+	GraphQLList,
+} = require('graphql');
 
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let ParametersResourceType = new GraphQLEnumType({
 	name: 'ParametersResourceType',
 	values: {
-		Parameters: { value: 'Parameters' }
-	}
+		Parameters: { value: 'Parameters' },
+	},
 });
 
 /**
@@ -16,14 +22,15 @@ let ParametersResourceType = new GraphQLEnumType({
 module.exports = new GraphQLObjectType({
 	name: 'Parameters',
 	description: 'Base StructureDefinition for Parameters Resource.',
-	fields: () => extendSchema(require('./resource.schema'), {
-		resourceType: {
-			type: new GraphQLNonNull(ParametersResourceType),
-			description: 'Type of this resource.'
-		},
-		parameter: {
-			type: new GraphQLList(require('./parametersparameter.schema')),
-			description: 'A parameter passed to or received from the operation.'
-		}
-	})
+	fields: () =>
+		extendSchema(require('./resource.schema'), {
+			resourceType: {
+				type: new GraphQLNonNull(ParametersResourceType),
+				description: 'Type of this resource.',
+			},
+			parameter: {
+				type: new GraphQLList(require('./parametersparameter.schema')),
+				description: 'A parameter passed to or received from the operation.',
+			},
+		}),
 });

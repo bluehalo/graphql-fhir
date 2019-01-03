@@ -1,10 +1,12 @@
 const PositiveIntScalar = require('../scalars/positiveint.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLList } = require('graphql');
+const {
+	GraphQLInputObjectType,
+	GraphQLNonNull,
+	GraphQLList,
+} = require('graphql');
 
 // Util for extending gql objects
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
-
-
 
 /**
  * @name exports
@@ -13,18 +15,21 @@ const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'ClaimResponseItemDetailSubDetail_Input',
 	description: 'The third tier service adjudications for submitted services.',
-	fields: () => extendSchema(require('./backboneelement.input'), {
-		sequenceLinkId: {
-			type: new GraphQLNonNull(PositiveIntScalar),
-			description: 'A service line number.'
-		},
-		_sequenceLinkId: {
-			type: require('./element.input'),
-			description: 'A service line number.'
-		},
-		adjudication: {
-			type: new GraphQLList(require('./claimresponseitemdetailsubdetailadjudication.input')),
-			description: 'The adjudications results.'
-		}
-	})
+	fields: () =>
+		extendSchema(require('./backboneelement.input'), {
+			sequenceLinkId: {
+				type: new GraphQLNonNull(PositiveIntScalar),
+				description: 'A service line number.',
+			},
+			_sequenceLinkId: {
+				type: require('./element.input'),
+				description: 'A service line number.',
+			},
+			adjudication: {
+				type: new GraphQLList(
+					require('./claimresponseitemdetailsubdetailadjudication.input'),
+				),
+				description: 'The adjudications results.',
+			},
+		}),
 });

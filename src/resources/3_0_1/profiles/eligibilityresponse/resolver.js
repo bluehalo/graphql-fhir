@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary EligibilityResponse Resolver.
  */
-module.exports.eligibilityresponseResolver = function eligibilityresponseResolver (root, args, context, info) {
+module.exports.eligibilityresponseResolver = function eligibilityresponseResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.eligibilityresponseResolver = function eligibilityresponseResolve
  * @static
  * @summary EligibilityResponse List Resolver.
  */
-module.exports.eligibilityresponseListResolver = function eligibilityresponseListResolver (root, args, context, info) {
+module.exports.eligibilityresponseListResolver = function eligibilityresponseListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.eligibilityresponseListResolver = function eligibilityresponseLis
  * @static
  * @summary EligibilityResponse Instance Resolver.
  */
-module.exports.eligibilityresponseInstanceResolver = function eligibilityresponseInstanceResolver (root, args, context, info) {
+module.exports.eligibilityresponseInstanceResolver = function eligibilityresponseInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.eligibilityresponseInstanceResolver = function eligibilityrespons
  * @static
  * @summary EligibilityResponse Create Resolver.
  */
-module.exports.eligibilityresponseCreateResolver = function eligibilityresponseCreateResolver (root, args, context, info) {
+module.exports.eligibilityresponseCreateResolver = function eligibilityresponseCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.eligibilityresponseCreateResolver = function eligibilityresponseC
  * @static
  * @summary EligibilityResponse Update Resolver.
  */
-module.exports.eligibilityresponseUpdateResolver = function eligibilityresponseUpdateResolver (root, args, context, info) {
+module.exports.eligibilityresponseUpdateResolver = function eligibilityresponseUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.eligibilityresponseUpdateResolver = function eligibilityresponseU
  * @static
  * @summary EligibilityResponse Delete Resolver.
  */
-module.exports.eligibilityresponseDeleteResolver = function eligibilityresponseDeleteResolver (root, args, context, info) {
+module.exports.eligibilityresponseDeleteResolver = function eligibilityresponseDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

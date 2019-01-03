@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	episodeofcareResolver,
 	episodeofcareListResolver,
-	episodeofcareInstanceResolver
+	episodeofcareInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'EpisodeOfCare',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.EpisodeOfCareQuery = {
 	args: Object.assign({}, CommonArgs, EpisodeOfCareArgs),
 	description: 'Query for a single EpisodeOfCare',
 	resolve: scopeInvariant(scopeOptions, episodeofcareResolver),
-	type: EpisodeOfCareSchema
+	type: EpisodeOfCareSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.EpisodeOfCareListQuery = {
 	args: Object.assign({}, CommonArgs, EpisodeOfCareArgs),
 	description: 'Query for multiple EpisodeOfCares',
 	resolve: scopeInvariant(scopeOptions, episodeofcareListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.EpisodeOfCareListQuery = {
 module.exports.EpisodeOfCareInstanceQuery = {
 	description: 'Get information about a single EpisodeOfCare',
 	resolve: scopeInvariant(scopeOptions, episodeofcareInstanceResolver),
-	type: EpisodeOfCareSchema
+	type: EpisodeOfCareSchema,
 };

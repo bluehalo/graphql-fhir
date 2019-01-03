@@ -11,39 +11,39 @@ const AppointmentResponseInput = require('../../inputs/appointmentresponse.input
 const {
 	appointmentresponseCreateResolver,
 	appointmentresponseUpdateResolver,
-	appointmentresponseDeleteResolver
+	appointmentresponseDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'AppointmentResponse',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a AppointmentResponse record.'
+		description:
+			'Unique identifier for creating/updating a AppointmentResponse record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(AppointmentResponseInput),
-		description: 'AppointmentResponse Information for the record.'
-	}
+		description: 'AppointmentResponse Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a AppointmentResponse record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a AppointmentResponse record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.AppointmentResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a AppointmentResponse',
 	resolve: scopeInvariant(scopeOptions, appointmentresponseCreateResolver),
-	type: AppointmentResponseSchema
+	type: AppointmentResponseSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.AppointmentResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple AppointmentResponses',
 	resolve: scopeInvariant(scopeOptions, appointmentresponseUpdateResolver),
-	type: AppointmentResponseSchema
+	type: AppointmentResponseSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.AppointmentResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single AppointmentResponse',
 	resolve: scopeInvariant(scopeOptions, appointmentresponseDeleteResolver),
-	type: AppointmentResponseSchema
+	type: AppointmentResponseSchema,
 };

@@ -11,39 +11,39 @@ const DiagnosticReportInput = require('../../inputs/diagnosticreport.input');
 const {
 	diagnosticreportCreateResolver,
 	diagnosticreportUpdateResolver,
-	diagnosticreportDeleteResolver
+	diagnosticreportDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DiagnosticReport',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a DiagnosticReport record.'
+		description:
+			'Unique identifier for creating/updating a DiagnosticReport record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(DiagnosticReportInput),
-		description: 'DiagnosticReport Information for the record.'
-	}
+		description: 'DiagnosticReport Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a DiagnosticReport record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a DiagnosticReport record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.DiagnosticReportCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DiagnosticReport',
 	resolve: scopeInvariant(scopeOptions, diagnosticreportCreateResolver),
-	type: DiagnosticReportSchema
+	type: DiagnosticReportSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.DiagnosticReportUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DiagnosticReports',
 	resolve: scopeInvariant(scopeOptions, diagnosticreportUpdateResolver),
-	type: DiagnosticReportSchema
+	type: DiagnosticReportSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.DiagnosticReportDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DiagnosticReport',
 	resolve: scopeInvariant(scopeOptions, diagnosticreportDeleteResolver),
-	type: DiagnosticReportSchema
+	type: DiagnosticReportSchema,
 };

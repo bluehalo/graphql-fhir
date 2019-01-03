@@ -11,42 +11,52 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	sigtype: {
 		type: TokenScalar,
-		description: 'Indication of the reason the entity signed the object(s) (See http://hl7.org/fhir/SearchParameter/provenance-sigtype).'
+		description:
+			'Indication of the reason the entity signed the object(s) (See http://hl7.org/fhir/SearchParameter/provenance-sigtype).',
 	},
 	patient: {
 		type: GraphQLString,
-		description: 'Target Reference(s) (usually version specific) (See http://hl7.org/fhir/SearchParameter/provenance-patient).'
+		description:
+			'Target Reference(s) (usually version specific) (See http://hl7.org/fhir/SearchParameter/provenance-patient).',
 	},
 	location: {
 		type: GraphQLString,
-		description: 'Where the activity occurred, if relevant (See http://hl7.org/fhir/SearchParameter/provenance-location).'
+		description:
+			'Where the activity occurred, if relevant (See http://hl7.org/fhir/SearchParameter/provenance-location).',
 	},
 	start: {
 		type: DateScalar,
-		description: 'Starting time with inclusive boundary (See http://hl7.org/fhir/SearchParameter/provenance-start).'
+		description:
+			'Starting time with inclusive boundary (See http://hl7.org/fhir/SearchParameter/provenance-start).',
 	},
 	entity: {
 		type: UriScalar,
-		description: 'Identity of entity (See http://hl7.org/fhir/SearchParameter/provenance-entity).'
+		description:
+			'Identity of entity (See http://hl7.org/fhir/SearchParameter/provenance-entity).',
 	},
 	userid: {
 		type: TokenScalar,
-		description: 'Authorization-system identifier for the agent (See http://hl7.org/fhir/SearchParameter/provenance-userid).'
+		description:
+			'Authorization-system identifier for the agent (See http://hl7.org/fhir/SearchParameter/provenance-userid).',
 	},
 	target: {
 		type: GraphQLString,
-		description: 'Target Reference(s) (usually version specific) (See http://hl7.org/fhir/SearchParameter/provenance-target).'
+		description:
+			'Target Reference(s) (usually version specific) (See http://hl7.org/fhir/SearchParameter/provenance-target).',
 	},
 	agent: {
 		type: GraphQLString,
-		description: 'Individual, device or organization playing role (See http://hl7.org/fhir/SearchParameter/provenance-agent).'
+		description:
+			'Individual, device or organization playing role (See http://hl7.org/fhir/SearchParameter/provenance-agent).',
 	},
 	entitytype: {
 		type: TokenScalar,
-		description: 'The type of resource in this entity (See http://hl7.org/fhir/SearchParameter/provenance-entitytype).'
+		description:
+			'The type of resource in this entity (See http://hl7.org/fhir/SearchParameter/provenance-entitytype).',
 	},
 	end: {
 		type: DateScalar,
-		description: 'End time with inclusive boundary, if not ongoing (See http://hl7.org/fhir/SearchParameter/provenance-end).'
-	}
+		description:
+			'End time with inclusive boundary, if not ongoing (See http://hl7.org/fhir/SearchParameter/provenance-end).',
+	},
 };

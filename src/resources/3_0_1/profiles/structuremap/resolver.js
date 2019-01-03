@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary StructureMap Resolver.
  */
-module.exports.structuremapResolver = function structuremapResolver (root, args, context, info) {
+module.exports.structuremapResolver = function structuremapResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.structuremapResolver = function structuremapResolver (root, args,
  * @static
  * @summary StructureMap List Resolver.
  */
-module.exports.structuremapListResolver = function structuremapListResolver (root, args, context, info) {
+module.exports.structuremapListResolver = function structuremapListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.structuremapListResolver = function structuremapListResolver (roo
  * @static
  * @summary StructureMap Instance Resolver.
  */
-module.exports.structuremapInstanceResolver = function structuremapInstanceResolver (root, args, context, info) {
+module.exports.structuremapInstanceResolver = function structuremapInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.structuremapInstanceResolver = function structuremapInstanceResol
  * @static
  * @summary StructureMap Create Resolver.
  */
-module.exports.structuremapCreateResolver = function structuremapCreateResolver (root, args, context, info) {
+module.exports.structuremapCreateResolver = function structuremapCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.structuremapCreateResolver = function structuremapCreateResolver 
  * @static
  * @summary StructureMap Update Resolver.
  */
-module.exports.structuremapUpdateResolver = function structuremapUpdateResolver (root, args, context, info) {
+module.exports.structuremapUpdateResolver = function structuremapUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.structuremapUpdateResolver = function structuremapUpdateResolver 
  * @static
  * @summary StructureMap Delete Resolver.
  */
-module.exports.structuremapDeleteResolver = function structuremapDeleteResolver (root, args, context, info) {
+module.exports.structuremapDeleteResolver = function structuremapDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

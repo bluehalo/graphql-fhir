@@ -1,4 +1,7 @@
-const { configureRoutes, parseVersionFromUrl } = require('../utils/router.utils');
+const {
+	configureRoutes,
+	parseVersionFromUrl,
+} = require('../utils/router.utils');
 const { VERSION, RESOURCE_CONFIG } = require('../config');
 const errorUtils = require('../utils/error.utils');
 const compression = require('compression');
@@ -12,8 +15,7 @@ const http = require('http');
 const fs = require('fs');
 
 class Server {
-
-	constructor (config = {}) {
+	constructor(config = {}) {
 		// Store the config
 		this.config = config;
 
@@ -27,14 +29,15 @@ class Server {
 		this.env = {
 			IS_PRODUCTION: process.env.NODE_ENV === 'production',
 			USE_HTTPS: config.ssl && config.ssl.key && config.ssl.cert,
-			AUTHENTICATION: false
+			AUTHENTICATION: false,
 		};
 		// return self for chaining
 		return this;
 	}
 
 	// Initialize a database connection
-	initializeDatabaseConnection (options = {}) {
+	// eslint-disable-next-line no-unused-vars
+	initializeDatabaseConnection(options = {}) {
 		// Store the db on this somehow
 
 		// return self for chaining
@@ -42,7 +45,7 @@ class Server {
 	}
 
 	// Configure session
-	configureSession (session) {
+	configureSession(session) {
 		// Session config can come from the core config as well, let's handle both cases
 		let { sessionStore } = this.config;
 		// If a session was passed in the config, let's use it
@@ -54,7 +57,7 @@ class Server {
 	}
 
 	// Configure middleware
-	configureMiddleware () {
+	configureMiddleware() {
 		// Enable stack traces
 		this.app.set('showStackError', !this.env.IS_PRODUCTION);
 		// Add compression
@@ -67,7 +70,7 @@ class Server {
 	}
 
 	// Configure helmet
-	configureHelmet (helmetConfig) {
+	configureHelmet(helmetConfig) {
 		/**
 		 * The following headers are turned on by default:
 		 * - dnsPrefetchControl (Controle browser DNS prefetching). https://helmetjs.github.io/docs/dns-prefetch-control
@@ -78,15 +81,19 @@ class Server {
 		 * - noSniff (prevent clients from sniffing MIME type). https://helmetjs.github.io/docs/dont-sniff-mimetype
 		 * - xssFilter (adds small XSS protections). https://helmetjs.github.io/docs/xss-filter/
 		 */
-		this.app.use(helmet(helmetConfig || {
-			// Needs https running first
-			hsts: this.env.USE_HTTPS
-		}));
+		this.app.use(
+			helmet(
+				helmetConfig || {
+					// Needs https running first
+					hsts: this.env.USE_HTTPS,
+				},
+			),
+		);
 		// return self for chaining
 		return this;
 	}
 
-	configurePassport () {
+	configurePassport() {
 		let { auth } = this.config;
 		// Only add passport if we have valid configurations
 		if (auth.strategy && auth.name) {
@@ -101,7 +108,7 @@ class Server {
 	}
 
 	// Setup a public directory for static assets
-	setPublicDirectory (publicDir = '') {
+	setPublicDirectory(publicDir = '') {
 		// Public config can come from the core config as well, let's handle both cases
 		let { publicDirectory } = this.config;
 
@@ -113,20 +120,20 @@ class Server {
 	}
 
 	// Setup profile routes
-	setProfileRoutes () {
+	setProfileRoutes() {
 		this.logger.info('Loading GraphQL schemas and setting routes');
 		// Pass this instance so I can grab the express app and any config
 		// that may or may not be necessary for the router utils
 		configureRoutes(this, {
 			resourceConfig: RESOURCE_CONFIG,
-			versions: Object.keys(VERSION)
+			versions: Object.keys(VERSION),
 		});
 		// return self for chaining
 		return this;
 	}
 
 	// Setup error routes
-	setErrorRoutes () {
+	setErrorRoutes() {
 		// Generic catch all error handler
 		// Errors should be passed through with next
 		this.app.use((err, req, res, next) => {
@@ -161,23 +168,25 @@ class Server {
 	}
 
 	// Start the server
-	listen (port = process.env.PORT, callback) {
+	listen(port = process.env.PORT, callback) {
 		let { ssl } = this.config;
 
 		// Create our server
 		this.app = !this.env.USE_HTTPS
 			? http.createServer(this.app)
-			: https.createServer({
-					key: fs.readFileSync(ssl.key),
-					cert: fs.readFileSync(ssl.cert)
-				}, this.app);
+			: https.createServer(
+					{
+						key: fs.readFileSync(ssl.key),
+						cert: fs.readFileSync(ssl.cert),
+					},
+					this.app,
+			  );
 
 		// Listen
 		this.app.listen(port, callback);
 
 		return this;
 	}
-
 }
 
 module.exports = Server;

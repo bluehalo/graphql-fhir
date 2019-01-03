@@ -10,8 +10,10 @@ const parse = (value, ast) => {
 	let is_oid = pattern.test(sanitized_value);
 	return is_oid
 		? sanitized_value
-		: new GraphQLError('Invalid value provided to OID Scalar. An OID must begin with \'urn:oid:\' and is a uri not an id. See http://hl7.org/fhir/datatypes.html for a description on oid under uri.');
-}
+		: new GraphQLError(
+				"Invalid value provided to OID Scalar. An OID must begin with 'urn:oid:' and is a uri not an id. See http://hl7.org/fhir/datatypes.html for a description on oid under uri.",
+		  );
+};
 
 /**
  * @name exports
@@ -19,7 +21,8 @@ const parse = (value, ast) => {
  */
 module.exports = new GraphQLScalarType({
 	name: 'oid',
-	description: 'Base StructureDefinition for oid type: An OID represented as a URI.',
+	description:
+		'Base StructureDefinition for oid type: An OID represented as a URI.',
 	// TODO: Implement proper serialization here
 	serialize: value => value,
 	// TODO: Implement proper parsing and sanitization here
@@ -29,5 +32,5 @@ module.exports = new GraphQLScalarType({
 	parseLiteral: ast => {
 		let { value } = ast;
 		return parse(value, ast);
-	}
+	},
 });

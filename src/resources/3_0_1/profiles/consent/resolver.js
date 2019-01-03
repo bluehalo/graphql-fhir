@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Consent Resolver.
  */
-module.exports.consentResolver = function consentResolver (root, args, context, info) {
+module.exports.consentResolver = function consentResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.consentResolver = function consentResolver (root, args, context, 
  * @static
  * @summary Consent List Resolver.
  */
-module.exports.consentListResolver = function consentListResolver (root, args, context, info) {
+module.exports.consentListResolver = function consentListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.consentListResolver = function consentListResolver (root, args, c
  * @static
  * @summary Consent Instance Resolver.
  */
-module.exports.consentInstanceResolver = function consentInstanceResolver (root, args, context, info) {
+module.exports.consentInstanceResolver = function consentInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.consentInstanceResolver = function consentInstanceResolver (root,
  * @static
  * @summary Consent Create Resolver.
  */
-module.exports.consentCreateResolver = function consentCreateResolver (root, args, context, info) {
+module.exports.consentCreateResolver = function consentCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.consentCreateResolver = function consentCreateResolver (root, arg
  * @static
  * @summary Consent Update Resolver.
  */
-module.exports.consentUpdateResolver = function consentUpdateResolver (root, args, context, info) {
+module.exports.consentUpdateResolver = function consentUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.consentUpdateResolver = function consentUpdateResolver (root, arg
  * @static
  * @summary Consent Delete Resolver.
  */
-module.exports.consentDeleteResolver = function consentDeleteResolver (root, args, context, info) {
+module.exports.consentDeleteResolver = function consentDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

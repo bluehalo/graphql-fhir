@@ -1,13 +1,13 @@
 const {
 	MedicationAdministrationQuery,
 	MedicationAdministrationListQuery,
-	MedicationAdministrationInstanceQuery
+	MedicationAdministrationInstanceQuery,
 } = require('./query');
 
 const {
 	MedicationAdministrationCreateMutation,
 	MedicationAdministrationUpdateMutation,
-	MedicationAdministrationDeleteMutation
+	MedicationAdministrationDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		MedicationAdministration: MedicationAdministrationQuery,
-		MedicationAdministrationList: MedicationAdministrationListQuery
+		MedicationAdministrationList: MedicationAdministrationListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		MedicationAdministrationCreate: MedicationAdministrationCreateMutation,
 		MedicationAdministrationUpdate: MedicationAdministrationUpdateMutation,
-		MedicationAdministrationDelete: MedicationAdministrationDeleteMutation
+		MedicationAdministrationDelete: MedicationAdministrationDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'MedicationAdministration',
 		path: '/1_0_2/MedicationAdministration/:id',
-		query: MedicationAdministrationInstanceQuery
-	}
+		query: MedicationAdministrationInstanceQuery,
+	},
 };

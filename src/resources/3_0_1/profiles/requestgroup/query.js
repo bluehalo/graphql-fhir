@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	requestgroupResolver,
 	requestgroupListResolver,
-	requestgroupInstanceResolver
+	requestgroupInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'RequestGroup',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.RequestGroupQuery = {
 	args: Object.assign({}, CommonArgs, RequestGroupArgs),
 	description: 'Query for a single RequestGroup',
 	resolve: scopeInvariant(scopeOptions, requestgroupResolver),
-	type: RequestGroupSchema
+	type: RequestGroupSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.RequestGroupListQuery = {
 	args: Object.assign({}, CommonArgs, RequestGroupArgs),
 	description: 'Query for multiple RequestGroups',
 	resolve: scopeInvariant(scopeOptions, requestgroupListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.RequestGroupListQuery = {
 module.exports.RequestGroupInstanceQuery = {
 	description: 'Get information about a single RequestGroup',
 	resolve: scopeInvariant(scopeOptions, requestgroupInstanceResolver),
-	type: RequestGroupSchema
+	type: RequestGroupSchema,
 };

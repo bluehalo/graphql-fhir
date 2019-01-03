@@ -4,40 +4,42 @@ const { GraphQLObjectType, GraphQLNonNull } = require('graphql');
 
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
-
-
 /**
  * @name exports
  * @summary PlanDefinition.action.relatedAction Schema
  */
 module.exports = new GraphQLObjectType({
 	name: 'PlanDefinitionActionRelatedAction',
-	description: 'A relationship to another action such as \'before\' or \'30-60 minutes after start of\'.',
-	fields: () => extendSchema(require('./backboneelement.schema'), {
-		actionId: {
-			type: new GraphQLNonNull(IdScalar),
-			description: 'The element id of the related action.'
-		},
-		_actionId: {
-			type: require('./element.schema'),
-			description: 'The element id of the related action.'
-		},
-		// ValueSetReference: http://hl7.org/fhir/ValueSet/action-relationship-type
-		relationship: {
-			type: new GraphQLNonNull(CodeScalar),
-			description: 'The relationship of this action to the related action.'
-		},
-		_relationship: {
-			type: require('./element.schema'),
-			description: 'The relationship of this action to the related action.'
-		},
-		offsetDuration: {
-			type: require('./duration.schema'),
-			description: 'A duration or range of durations to apply to the relationship. For example, 30-60 minutes before.'
-		},
-		offsetRange: {
-			type: require('./range.schema'),
-			description: 'A duration or range of durations to apply to the relationship. For example, 30-60 minutes before.'
-		}
-	})
+	description:
+		"A relationship to another action such as 'before' or '30-60 minutes after start of'.",
+	fields: () =>
+		extendSchema(require('./backboneelement.schema'), {
+			actionId: {
+				type: new GraphQLNonNull(IdScalar),
+				description: 'The element id of the related action.',
+			},
+			_actionId: {
+				type: require('./element.schema'),
+				description: 'The element id of the related action.',
+			},
+			// ValueSetReference: http://hl7.org/fhir/ValueSet/action-relationship-type
+			relationship: {
+				type: new GraphQLNonNull(CodeScalar),
+				description: 'The relationship of this action to the related action.',
+			},
+			_relationship: {
+				type: require('./element.schema'),
+				description: 'The relationship of this action to the related action.',
+			},
+			offsetDuration: {
+				type: require('./duration.schema'),
+				description:
+					'A duration or range of durations to apply to the relationship. For example, 30-60 minutes before.',
+			},
+			offsetRange: {
+				type: require('./range.schema'),
+				description:
+					'A duration or range of durations to apply to the relationship. For example, 30-60 minutes before.',
+			},
+		}),
 });

@@ -1,13 +1,13 @@
 const {
 	ScheduleQuery,
 	ScheduleListQuery,
-	ScheduleInstanceQuery
+	ScheduleInstanceQuery,
 } = require('./query');
 
 const {
 	ScheduleCreateMutation,
 	ScheduleUpdateMutation,
-	ScheduleDeleteMutation
+	ScheduleDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Schedule: ScheduleQuery,
-		ScheduleList: ScheduleListQuery
+		ScheduleList: ScheduleListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		ScheduleCreate: ScheduleCreateMutation,
 		ScheduleUpdate: ScheduleUpdateMutation,
-		ScheduleDelete: ScheduleDeleteMutation
+		ScheduleDelete: ScheduleDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Schedule',
 		path: '/3_0_1/Schedule/:id',
-		query: ScheduleInstanceQuery
-	}
+		query: ScheduleInstanceQuery,
+	},
 };

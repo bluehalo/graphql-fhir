@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Linkage Resolver.
  */
-module.exports.linkageResolver = function linkageResolver (root, args, context, info) {
+module.exports.linkageResolver = function linkageResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.linkageResolver = function linkageResolver (root, args, context, 
  * @static
  * @summary Linkage List Resolver.
  */
-module.exports.linkageListResolver = function linkageListResolver (root, args, context, info) {
+module.exports.linkageListResolver = function linkageListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.linkageListResolver = function linkageListResolver (root, args, c
  * @static
  * @summary Linkage Instance Resolver.
  */
-module.exports.linkageInstanceResolver = function linkageInstanceResolver (root, args, context, info) {
+module.exports.linkageInstanceResolver = function linkageInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.linkageInstanceResolver = function linkageInstanceResolver (root,
  * @static
  * @summary Linkage Create Resolver.
  */
-module.exports.linkageCreateResolver = function linkageCreateResolver (root, args, context, info) {
+module.exports.linkageCreateResolver = function linkageCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.linkageCreateResolver = function linkageCreateResolver (root, arg
  * @static
  * @summary Linkage Update Resolver.
  */
-module.exports.linkageUpdateResolver = function linkageUpdateResolver (root, args, context, info) {
+module.exports.linkageUpdateResolver = function linkageUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.linkageUpdateResolver = function linkageUpdateResolver (root, arg
  * @static
  * @summary Linkage Delete Resolver.
  */
-module.exports.linkageDeleteResolver = function linkageDeleteResolver (root, args, context, info) {
+module.exports.linkageDeleteResolver = function linkageDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

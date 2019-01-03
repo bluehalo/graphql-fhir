@@ -9,22 +9,27 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	patient: {
 		type: GraphQLString,
-		description: 'Patient (See http://hl7.org/fhir/SearchParameter/claim-patient).'
+		description:
+			'Patient (See http://hl7.org/fhir/SearchParameter/claim-patient).',
 	},
 	priority: {
 		type: TokenScalar,
-		description: 'Processing priority requested (See http://hl7.org/fhir/SearchParameter/claim-priority).'
+		description:
+			'Processing priority requested (See http://hl7.org/fhir/SearchParameter/claim-priority).',
 	},
 	use: {
 		type: TokenScalar,
-		description: 'The kind of financial resource (See http://hl7.org/fhir/SearchParameter/claim-use).'
+		description:
+			'The kind of financial resource (See http://hl7.org/fhir/SearchParameter/claim-use).',
 	},
 	provider: {
 		type: GraphQLString,
-		description: 'Provider responsible for the claim (See http://hl7.org/fhir/SearchParameter/claim-provider).'
+		description:
+			'Provider responsible for the claim (See http://hl7.org/fhir/SearchParameter/claim-provider).',
 	},
 	identifier: {
 		type: TokenScalar,
-		description: 'The primary identifier of the financial resource (See http://hl7.org/fhir/SearchParameter/claim-identifier).'
-	}
+		description:
+			'The primary identifier of the financial resource (See http://hl7.org/fhir/SearchParameter/claim-identifier).',
+	},
 };

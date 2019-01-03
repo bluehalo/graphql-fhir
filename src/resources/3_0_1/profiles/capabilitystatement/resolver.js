@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary CapabilityStatement Resolver.
  */
-module.exports.capabilitystatementResolver = function capabilitystatementResolver (root, args, context, info) {
+module.exports.capabilitystatementResolver = function capabilitystatementResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.capabilitystatementResolver = function capabilitystatementResolve
  * @static
  * @summary CapabilityStatement List Resolver.
  */
-module.exports.capabilitystatementListResolver = function capabilitystatementListResolver (root, args, context, info) {
+module.exports.capabilitystatementListResolver = function capabilitystatementListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.capabilitystatementListResolver = function capabilitystatementLis
  * @static
  * @summary CapabilityStatement Instance Resolver.
  */
-module.exports.capabilitystatementInstanceResolver = function capabilitystatementInstanceResolver (root, args, context, info) {
+module.exports.capabilitystatementInstanceResolver = function capabilitystatementInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.capabilitystatementInstanceResolver = function capabilitystatemen
  * @static
  * @summary CapabilityStatement Create Resolver.
  */
-module.exports.capabilitystatementCreateResolver = function capabilitystatementCreateResolver (root, args, context, info) {
+module.exports.capabilitystatementCreateResolver = function capabilitystatementCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.capabilitystatementCreateResolver = function capabilitystatementC
  * @static
  * @summary CapabilityStatement Update Resolver.
  */
-module.exports.capabilitystatementUpdateResolver = function capabilitystatementUpdateResolver (root, args, context, info) {
+module.exports.capabilitystatementUpdateResolver = function capabilitystatementUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.capabilitystatementUpdateResolver = function capabilitystatementU
  * @static
  * @summary CapabilityStatement Delete Resolver.
  */
-module.exports.capabilitystatementDeleteResolver = function capabilitystatementDeleteResolver (root, args, context, info) {
+module.exports.capabilitystatementDeleteResolver = function capabilitystatementDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

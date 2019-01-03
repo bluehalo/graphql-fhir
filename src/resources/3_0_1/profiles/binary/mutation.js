@@ -11,39 +11,38 @@ const BinaryInput = require('../../inputs/binary.input');
 const {
 	binaryCreateResolver,
 	binaryUpdateResolver,
-	binaryDeleteResolver
+	binaryDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Binary',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Binary record.'
+		description: 'Unique identifier for creating/updating a Binary record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(BinaryInput),
-		description: 'Binary Information for the record.'
-	}
+		description: 'Binary Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Binary record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Binary record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.BinaryCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Binary',
 	resolve: scopeInvariant(scopeOptions, binaryCreateResolver),
-	type: BinarySchema
+	type: BinarySchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.BinaryUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Binarys',
 	resolve: scopeInvariant(scopeOptions, binaryUpdateResolver),
-	type: BinarySchema
+	type: BinarySchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.BinaryDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Binary',
 	resolve: scopeInvariant(scopeOptions, binaryDeleteResolver),
-	type: BinarySchema
+	type: BinarySchema,
 };

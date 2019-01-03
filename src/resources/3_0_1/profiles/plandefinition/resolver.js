@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary PlanDefinition Resolver.
  */
-module.exports.plandefinitionResolver = function plandefinitionResolver (root, args, context, info) {
+module.exports.plandefinitionResolver = function plandefinitionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.plandefinitionResolver = function plandefinitionResolver (root, a
  * @static
  * @summary PlanDefinition List Resolver.
  */
-module.exports.plandefinitionListResolver = function plandefinitionListResolver (root, args, context, info) {
+module.exports.plandefinitionListResolver = function plandefinitionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.plandefinitionListResolver = function plandefinitionListResolver 
  * @static
  * @summary PlanDefinition Instance Resolver.
  */
-module.exports.plandefinitionInstanceResolver = function plandefinitionInstanceResolver (root, args, context, info) {
+module.exports.plandefinitionInstanceResolver = function plandefinitionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.plandefinitionInstanceResolver = function plandefinitionInstanceR
  * @static
  * @summary PlanDefinition Create Resolver.
  */
-module.exports.plandefinitionCreateResolver = function plandefinitionCreateResolver (root, args, context, info) {
+module.exports.plandefinitionCreateResolver = function plandefinitionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.plandefinitionCreateResolver = function plandefinitionCreateResol
  * @static
  * @summary PlanDefinition Update Resolver.
  */
-module.exports.plandefinitionUpdateResolver = function plandefinitionUpdateResolver (root, args, context, info) {
+module.exports.plandefinitionUpdateResolver = function plandefinitionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.plandefinitionUpdateResolver = function plandefinitionUpdateResol
  * @static
  * @summary PlanDefinition Delete Resolver.
  */
-module.exports.plandefinitionDeleteResolver = function plandefinitionDeleteResolver (root, args, context, info) {
+module.exports.plandefinitionDeleteResolver = function plandefinitionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

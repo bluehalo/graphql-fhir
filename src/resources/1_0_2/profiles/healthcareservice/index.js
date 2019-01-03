@@ -1,13 +1,13 @@
 const {
 	HealthcareServiceQuery,
 	HealthcareServiceListQuery,
-	HealthcareServiceInstanceQuery
+	HealthcareServiceInstanceQuery,
 } = require('./query');
 
 const {
 	HealthcareServiceCreateMutation,
 	HealthcareServiceUpdateMutation,
-	HealthcareServiceDeleteMutation
+	HealthcareServiceDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		HealthcareService: HealthcareServiceQuery,
-		HealthcareServiceList: HealthcareServiceListQuery
+		HealthcareServiceList: HealthcareServiceListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		HealthcareServiceCreate: HealthcareServiceCreateMutation,
 		HealthcareServiceUpdate: HealthcareServiceUpdateMutation,
-		HealthcareServiceDelete: HealthcareServiceDeleteMutation
+		HealthcareServiceDelete: HealthcareServiceDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'HealthcareService',
 		path: '/1_0_2/HealthcareService/:id',
-		query: HealthcareServiceInstanceQuery
-	}
+		query: HealthcareServiceInstanceQuery,
+	},
 };

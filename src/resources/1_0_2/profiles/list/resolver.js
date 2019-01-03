@@ -5,7 +5,7 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary List Resolver.
  */
-module.exports.listResolver = function listResolver (root, args, context, info) {
+module.exports.listResolver = function listResolver(root, args, context, info) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +15,12 @@ module.exports.listResolver = function listResolver (root, args, context, info) 
  * @static
  * @summary List List Resolver.
  */
-module.exports.listListResolver = function listListResolver (root, args, context, info) {
+module.exports.listListResolver = function listListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +30,12 @@ module.exports.listListResolver = function listListResolver (root, args, context
  * @static
  * @summary List Instance Resolver.
  */
-module.exports.listInstanceResolver = function listInstanceResolver (root, args, context, info) {
+module.exports.listInstanceResolver = function listInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +45,12 @@ module.exports.listInstanceResolver = function listInstanceResolver (root, args,
  * @static
  * @summary List Create Resolver.
  */
-module.exports.listCreateResolver = function listCreateResolver (root, args, context, info) {
+module.exports.listCreateResolver = function listCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +60,12 @@ module.exports.listCreateResolver = function listCreateResolver (root, args, con
  * @static
  * @summary List Update Resolver.
  */
-module.exports.listUpdateResolver = function listUpdateResolver (root, args, context, info) {
+module.exports.listUpdateResolver = function listUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +75,12 @@ module.exports.listUpdateResolver = function listUpdateResolver (root, args, con
  * @static
  * @summary List Delete Resolver.
  */
-module.exports.listDeleteResolver = function listDeleteResolver (root, args, context, info) {
+module.exports.listDeleteResolver = function listDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -1,13 +1,13 @@
 const {
 	BundleQuery,
 	BundleListQuery,
-	BundleInstanceQuery
+	BundleInstanceQuery,
 } = require('./query');
 
 const {
 	BundleCreateMutation,
 	BundleUpdateMutation,
-	BundleDeleteMutation
+	BundleDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Bundle: BundleQuery,
-		BundleList: BundleListQuery
+		BundleList: BundleListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		BundleCreate: BundleCreateMutation,
 		BundleUpdate: BundleUpdateMutation,
-		BundleDelete: BundleDeleteMutation
+		BundleDelete: BundleDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Bundle',
 		path: '/3_0_1/Bundle/:id',
-		query: BundleInstanceQuery
-	}
+		query: BundleInstanceQuery,
+	},
 };

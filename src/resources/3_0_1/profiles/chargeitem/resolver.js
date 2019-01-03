@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ChargeItem Resolver.
  */
-module.exports.chargeitemResolver = function chargeitemResolver (root, args, context, info) {
+module.exports.chargeitemResolver = function chargeitemResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.chargeitemResolver = function chargeitemResolver (root, args, con
  * @static
  * @summary ChargeItem List Resolver.
  */
-module.exports.chargeitemListResolver = function chargeitemListResolver (root, args, context, info) {
+module.exports.chargeitemListResolver = function chargeitemListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.chargeitemListResolver = function chargeitemListResolver (root, a
  * @static
  * @summary ChargeItem Instance Resolver.
  */
-module.exports.chargeitemInstanceResolver = function chargeitemInstanceResolver (root, args, context, info) {
+module.exports.chargeitemInstanceResolver = function chargeitemInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.chargeitemInstanceResolver = function chargeitemInstanceResolver 
  * @static
  * @summary ChargeItem Create Resolver.
  */
-module.exports.chargeitemCreateResolver = function chargeitemCreateResolver (root, args, context, info) {
+module.exports.chargeitemCreateResolver = function chargeitemCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.chargeitemCreateResolver = function chargeitemCreateResolver (roo
  * @static
  * @summary ChargeItem Update Resolver.
  */
-module.exports.chargeitemUpdateResolver = function chargeitemUpdateResolver (root, args, context, info) {
+module.exports.chargeitemUpdateResolver = function chargeitemUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.chargeitemUpdateResolver = function chargeitemUpdateResolver (roo
  * @static
  * @summary ChargeItem Delete Resolver.
  */
-module.exports.chargeitemDeleteResolver = function chargeitemDeleteResolver (root, args, context, info) {
+module.exports.chargeitemDeleteResolver = function chargeitemDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

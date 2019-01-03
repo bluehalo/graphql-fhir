@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary CarePlan Resolver.
  */
-module.exports.careplanResolver = function careplanResolver (root, args, context, info) {
+module.exports.careplanResolver = function careplanResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.careplanResolver = function careplanResolver (root, args, context
  * @static
  * @summary CarePlan List Resolver.
  */
-module.exports.careplanListResolver = function careplanListResolver (root, args, context, info) {
+module.exports.careplanListResolver = function careplanListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.careplanListResolver = function careplanListResolver (root, args,
  * @static
  * @summary CarePlan Instance Resolver.
  */
-module.exports.careplanInstanceResolver = function careplanInstanceResolver (root, args, context, info) {
+module.exports.careplanInstanceResolver = function careplanInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.careplanInstanceResolver = function careplanInstanceResolver (roo
  * @static
  * @summary CarePlan Create Resolver.
  */
-module.exports.careplanCreateResolver = function careplanCreateResolver (root, args, context, info) {
+module.exports.careplanCreateResolver = function careplanCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.careplanCreateResolver = function careplanCreateResolver (root, a
  * @static
  * @summary CarePlan Update Resolver.
  */
-module.exports.careplanUpdateResolver = function careplanUpdateResolver (root, args, context, info) {
+module.exports.careplanUpdateResolver = function careplanUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.careplanUpdateResolver = function careplanUpdateResolver (root, a
  * @static
  * @summary CarePlan Delete Resolver.
  */
-module.exports.careplanDeleteResolver = function careplanDeleteResolver (root, args, context, info) {
+module.exports.careplanDeleteResolver = function careplanDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

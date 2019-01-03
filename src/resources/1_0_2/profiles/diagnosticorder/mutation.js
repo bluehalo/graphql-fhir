@@ -11,39 +11,39 @@ const DiagnosticOrderInput = require('../../inputs/diagnosticorder.input');
 const {
 	diagnosticorderCreateResolver,
 	diagnosticorderUpdateResolver,
-	diagnosticorderDeleteResolver
+	diagnosticorderDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DiagnosticOrder',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a DiagnosticOrder record.'
+		description:
+			'Unique identifier for creating/updating a DiagnosticOrder record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(DiagnosticOrderInput),
-		description: 'DiagnosticOrder Information for the record.'
-	}
+		description: 'DiagnosticOrder Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a DiagnosticOrder record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a DiagnosticOrder record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.DiagnosticOrderCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DiagnosticOrder',
 	resolve: scopeInvariant(scopeOptions, diagnosticorderCreateResolver),
-	type: DiagnosticOrderSchema
+	type: DiagnosticOrderSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.DiagnosticOrderUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DiagnosticOrders',
 	resolve: scopeInvariant(scopeOptions, diagnosticorderUpdateResolver),
-	type: DiagnosticOrderSchema
+	type: DiagnosticOrderSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.DiagnosticOrderDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DiagnosticOrder',
 	resolve: scopeInvariant(scopeOptions, diagnosticorderDeleteResolver),
-	type: DiagnosticOrderSchema
+	type: DiagnosticOrderSchema,
 };

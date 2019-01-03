@@ -11,39 +11,39 @@ const DocumentManifestInput = require('../../inputs/documentmanifest.input');
 const {
 	documentmanifestCreateResolver,
 	documentmanifestUpdateResolver,
-	documentmanifestDeleteResolver
+	documentmanifestDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DocumentManifest',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a DocumentManifest record.'
+		description:
+			'Unique identifier for creating/updating a DocumentManifest record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(DocumentManifestInput),
-		description: 'DocumentManifest Information for the record.'
-	}
+		description: 'DocumentManifest Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a DocumentManifest record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a DocumentManifest record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.DocumentManifestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DocumentManifest',
 	resolve: scopeInvariant(scopeOptions, documentmanifestCreateResolver),
-	type: DocumentManifestSchema
+	type: DocumentManifestSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.DocumentManifestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DocumentManifests',
 	resolve: scopeInvariant(scopeOptions, documentmanifestUpdateResolver),
-	type: DocumentManifestSchema
+	type: DocumentManifestSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.DocumentManifestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DocumentManifest',
 	resolve: scopeInvariant(scopeOptions, documentmanifestDeleteResolver),
-	type: DocumentManifestSchema
+	type: DocumentManifestSchema,
 };

@@ -11,39 +11,37 @@ const GroupInput = require('../../inputs/group.input');
 const {
 	groupCreateResolver,
 	groupUpdateResolver,
-	groupDeleteResolver
+	groupDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Group',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Group record.'
+		description: 'Unique identifier for creating/updating a Group record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(GroupInput),
-		description: 'Group Information for the record.'
-	}
+		description: 'Group Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Group record for deletion.'
-	}
+		description: 'Unique identifier for selecting a Group record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +52,7 @@ module.exports.GroupCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Group',
 	resolve: scopeInvariant(scopeOptions, groupCreateResolver),
-	type: GroupSchema
+	type: GroupSchema,
 };
 
 /**
@@ -65,7 +63,7 @@ module.exports.GroupUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Groups',
 	resolve: scopeInvariant(scopeOptions, groupUpdateResolver),
-	type: GroupSchema
+	type: GroupSchema,
 };
 
 /**
@@ -76,5 +74,5 @@ module.exports.GroupDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Group',
 	resolve: scopeInvariant(scopeOptions, groupDeleteResolver),
-	type: GroupSchema
+	type: GroupSchema,
 };

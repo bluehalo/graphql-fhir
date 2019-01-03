@@ -11,39 +11,38 @@ const ValueSetInput = require('../../inputs/valueset.input');
 const {
 	valuesetCreateResolver,
 	valuesetUpdateResolver,
-	valuesetDeleteResolver
+	valuesetDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ValueSet',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a ValueSet record.'
+		description: 'Unique identifier for creating/updating a ValueSet record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ValueSetInput),
-		description: 'ValueSet Information for the record.'
-	}
+		description: 'ValueSet Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a ValueSet record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a ValueSet record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.ValueSetCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ValueSet',
 	resolve: scopeInvariant(scopeOptions, valuesetCreateResolver),
-	type: ValueSetSchema
+	type: ValueSetSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.ValueSetUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ValueSets',
 	resolve: scopeInvariant(scopeOptions, valuesetUpdateResolver),
-	type: ValueSetSchema
+	type: ValueSetSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.ValueSetDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ValueSet',
 	resolve: scopeInvariant(scopeOptions, valuesetDeleteResolver),
-	type: ValueSetSchema
+	type: ValueSetSchema,
 };

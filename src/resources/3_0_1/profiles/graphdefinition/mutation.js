@@ -11,39 +11,39 @@ const GraphDefinitionInput = require('../../inputs/graphdefinition.input');
 const {
 	graphdefinitionCreateResolver,
 	graphdefinitionUpdateResolver,
-	graphdefinitionDeleteResolver
+	graphdefinitionDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'GraphDefinition',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a GraphDefinition record.'
+		description:
+			'Unique identifier for creating/updating a GraphDefinition record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(GraphDefinitionInput),
-		description: 'GraphDefinition Information for the record.'
-	}
+		description: 'GraphDefinition Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a GraphDefinition record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a GraphDefinition record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.GraphDefinitionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a GraphDefinition',
 	resolve: scopeInvariant(scopeOptions, graphdefinitionCreateResolver),
-	type: GraphDefinitionSchema
+	type: GraphDefinitionSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.GraphDefinitionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple GraphDefinitions',
 	resolve: scopeInvariant(scopeOptions, graphdefinitionUpdateResolver),
-	type: GraphDefinitionSchema
+	type: GraphDefinitionSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.GraphDefinitionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single GraphDefinition',
 	resolve: scopeInvariant(scopeOptions, graphdefinitionDeleteResolver),
-	type: GraphDefinitionSchema
+	type: GraphDefinitionSchema,
 };

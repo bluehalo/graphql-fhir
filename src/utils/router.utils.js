@@ -6,21 +6,17 @@ const { VERSION } = require('../config');
 const glob = require('glob');
 const path = require('path');
 
-const {
-	GraphQLSchema,
-	GraphQLObjectType
-} = require('graphql');
-
+const { GraphQLSchema, GraphQLObjectType } = require('graphql');
 
 // Helper function for generating GraphQL schemas
-function generateRootSchema (version, query_fields, mutation_fields) {
+function generateRootSchema(version, query_fields, mutation_fields) {
 	let schema = {};
 	// If we have query fields, add a query schema
 	if (Object.getOwnPropertyNames(query_fields).length) {
 		schema.query = new GraphQLObjectType({
 			name: 'Query',
 			description: `Root query for ${version} resources`,
-			fields: query_fields
+			fields: query_fields,
 		});
 	}
 	// If we have mutation fields, add a mutation schema
@@ -28,7 +24,7 @@ function generateRootSchema (version, query_fields, mutation_fields) {
 		schema.mutation = new GraphQLObjectType({
 			name: 'Mutation',
 			description: `Root mutation for ${version} resources`,
-			fields: mutation_fields
+			fields: mutation_fields,
 		});
 	}
 
@@ -36,18 +32,18 @@ function generateRootSchema (version, query_fields, mutation_fields) {
 }
 
 // Helper for generating instance schemas
-function generateInstanceSchema (version, name, query) {
+function generateInstanceSchema(version, name, query) {
 	return new GraphQLSchema({
 		query: new GraphQLObjectType({
 			name: `${name}_Query`,
 			description: `${name} query for a specific ${name}.`,
-			fields: { [name]: query }
-		})
+			fields: { [name]: query },
+		}),
 	});
 }
 
 // Helper function for generating graphql server
-function setupGraphqlServer (server, version, options) {
+function setupGraphqlServer(server, version, options) {
 	return expressGraphql((req, res) => {
 		let context = { server, req, res, version };
 		return Object.assign({ context }, options);
@@ -55,14 +51,16 @@ function setupGraphqlServer (server, version, options) {
 }
 
 // Helper for formatting graphql errors
-function graphqlErrorFormatter (logger, version) {
-	return (err) => {
+function graphqlErrorFormatter(logger, version) {
+	return err => {
 		// If we already have a graphql formatted error than this error is probably
 		// intentionally thrown. If it is not, the FHIR spec says for GraphQL errors
 		// to be placed in extensions under a resource property.
-		let extensions = err.extensions ? err.extensions : {
-			resource: errorUtils.internal(version, err.message)
-		};
+		let extensions = err.extensions
+			? err.extensions
+			: {
+					resource: errorUtils.internal(version, err.message),
+			  };
 
 		// Log the resource portions of the error
 		logger.error('Unexpected GraphQL Error', extensions.resource);
@@ -73,7 +71,7 @@ function graphqlErrorFormatter (logger, version) {
 			path: err.path,
 			message: err.message,
 			locations: err.locations,
-			extensions: extensions
+			extensions: extensions,
 		};
 	};
 }
@@ -84,17 +82,20 @@ function graphqlErrorFormatter (logger, version) {
  * @description Find all the profile configurations and register
  * any queries, mutations, or subscriptions found
  */
-function configureRoutes (server, options = {}) {
+function configureRoutes(server, options = {}) {
 	// We need to setup a server for each route configured in VERSION
-	let { versions = [], resourceConfig = {}} = options;
+	let { versions = [], resourceConfig = {} } = options;
 
 	versions.forEach(version => {
 		// Locate all the profile configurations for setting up routes
-		let config_paths = glob.sync(resolveFromVersion(version, resourceConfig.profilesRelativePath));
+		let config_paths = glob.sync(
+			resolveFromVersion(version, resourceConfig.profilesRelativePath),
+		);
 		let configs = config_paths.map(require);
 		// Grab all the necessary properties from each config
 		// Ignore instance_queries for now, we will add them in later
-		let query_fields = {}, mutation_fields = {};
+		let query_fields = {},
+			mutation_fields = {};
 
 		for (let i = 0; i < configs.length; i++) {
 			let config = configs[i] || {};
@@ -111,14 +112,14 @@ function configureRoutes (server, options = {}) {
 
 				server.app.use(
 					// Path for this graphql endpoint
-					path.posix.join(instance_path, '([\$])graphql'),
+					path.posix.join(instance_path, '([$])graphql'),
 					// Add our validation middlware
 					authenticationMiddleware(server),
 					// middleware wrapper for Graphql Express
 					setupGraphqlServer(server, version, {
 						formatError: graphqlErrorFormatter(server.logger, version),
-						schema: generateInstanceSchema(version, name, query)
-					})
+						schema: generateInstanceSchema(version, name, query),
+					}),
 				);
 			}
 		}
@@ -135,8 +136,8 @@ function configureRoutes (server, options = {}) {
 			// middleware wrapper for Graphql Express
 			setupGraphqlServer(server, version, {
 				formatError: graphqlErrorFormatter(server.logger, version),
-				schema: rootSchema
-			})
+				schema: rootSchema,
+			}),
 		);
 
 		// Add a graphiql endpoint for exploring only if we're not in production
@@ -148,20 +149,18 @@ function configureRoutes (server, options = {}) {
 				setupGraphqlServer(server, version, {
 					formatError: graphqlErrorFormatter(server.logger, version),
 					schema: rootSchema,
-					graphiql: true
-				})
+					graphiql: true,
+				}),
 			);
 		}
-
 	});
-
 }
 
 /**
  * @name parseVersionFromUrl
  * @summary Attempt to parse the version from the url
  */
-function parseVersionFromUrl (url, server_config) {
+function parseVersionFromUrl(url, server_config) {
 	let possible_version = url.split('/')[1];
 	return VERSION[possible_version]
 		? VERSION[possible_version]
@@ -171,5 +170,5 @@ function parseVersionFromUrl (url, server_config) {
 module.exports = {
 	graphqlErrorFormatter,
 	parseVersionFromUrl,
-	configureRoutes
+	configureRoutes,
 };

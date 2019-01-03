@@ -11,39 +11,39 @@ const OperationDefinitionInput = require('../../inputs/operationdefinition.input
 const {
 	operationdefinitionCreateResolver,
 	operationdefinitionUpdateResolver,
-	operationdefinitionDeleteResolver
+	operationdefinitionDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'OperationDefinition',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a OperationDefinition record.'
+		description:
+			'Unique identifier for creating/updating a OperationDefinition record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(OperationDefinitionInput),
-		description: 'OperationDefinition Information for the record.'
-	}
+		description: 'OperationDefinition Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a OperationDefinition record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a OperationDefinition record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.OperationDefinitionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a OperationDefinition',
 	resolve: scopeInvariant(scopeOptions, operationdefinitionCreateResolver),
-	type: OperationDefinitionSchema
+	type: OperationDefinitionSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.OperationDefinitionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple OperationDefinitions',
 	resolve: scopeInvariant(scopeOptions, operationdefinitionUpdateResolver),
-	type: OperationDefinitionSchema
+	type: OperationDefinitionSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.OperationDefinitionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single OperationDefinition',
 	resolve: scopeInvariant(scopeOptions, operationdefinitionDeleteResolver),
-	type: OperationDefinitionSchema
+	type: OperationDefinitionSchema,
 };

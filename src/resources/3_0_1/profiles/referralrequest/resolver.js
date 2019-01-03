@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ReferralRequest Resolver.
  */
-module.exports.referralrequestResolver = function referralrequestResolver (root, args, context, info) {
+module.exports.referralrequestResolver = function referralrequestResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.referralrequestResolver = function referralrequestResolver (root,
  * @static
  * @summary ReferralRequest List Resolver.
  */
-module.exports.referralrequestListResolver = function referralrequestListResolver (root, args, context, info) {
+module.exports.referralrequestListResolver = function referralrequestListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.referralrequestListResolver = function referralrequestListResolve
  * @static
  * @summary ReferralRequest Instance Resolver.
  */
-module.exports.referralrequestInstanceResolver = function referralrequestInstanceResolver (root, args, context, info) {
+module.exports.referralrequestInstanceResolver = function referralrequestInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.referralrequestInstanceResolver = function referralrequestInstanc
  * @static
  * @summary ReferralRequest Create Resolver.
  */
-module.exports.referralrequestCreateResolver = function referralrequestCreateResolver (root, args, context, info) {
+module.exports.referralrequestCreateResolver = function referralrequestCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.referralrequestCreateResolver = function referralrequestCreateRes
  * @static
  * @summary ReferralRequest Update Resolver.
  */
-module.exports.referralrequestUpdateResolver = function referralrequestUpdateResolver (root, args, context, info) {
+module.exports.referralrequestUpdateResolver = function referralrequestUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.referralrequestUpdateResolver = function referralrequestUpdateRes
  * @static
  * @summary ReferralRequest Delete Resolver.
  */
-module.exports.referralrequestDeleteResolver = function referralrequestDeleteResolver (root, args, context, info) {
+module.exports.referralrequestDeleteResolver = function referralrequestDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	groupResolver,
 	groupListResolver,
-	groupInstanceResolver
+	groupInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Group',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.GroupQuery = {
 	args: Object.assign({}, CommonArgs, GroupArgs),
 	description: 'Query for a single Group',
 	resolve: scopeInvariant(scopeOptions, groupResolver),
-	type: GroupSchema
+	type: GroupSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.GroupListQuery = {
 	args: Object.assign({}, CommonArgs, GroupArgs),
 	description: 'Query for multiple Groups',
 	resolve: scopeInvariant(scopeOptions, groupListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.GroupListQuery = {
 module.exports.GroupInstanceQuery = {
 	description: 'Get information about a single Group',
 	resolve: scopeInvariant(scopeOptions, groupInstanceResolver),
-	type: GroupSchema
+	type: GroupSchema,
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Immunization Resolver.
  */
-module.exports.immunizationResolver = function immunizationResolver (root, args, context, info) {
+module.exports.immunizationResolver = function immunizationResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.immunizationResolver = function immunizationResolver (root, args,
  * @static
  * @summary Immunization List Resolver.
  */
-module.exports.immunizationListResolver = function immunizationListResolver (root, args, context, info) {
+module.exports.immunizationListResolver = function immunizationListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.immunizationListResolver = function immunizationListResolver (roo
  * @static
  * @summary Immunization Instance Resolver.
  */
-module.exports.immunizationInstanceResolver = function immunizationInstanceResolver (root, args, context, info) {
+module.exports.immunizationInstanceResolver = function immunizationInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.immunizationInstanceResolver = function immunizationInstanceResol
  * @static
  * @summary Immunization Create Resolver.
  */
-module.exports.immunizationCreateResolver = function immunizationCreateResolver (root, args, context, info) {
+module.exports.immunizationCreateResolver = function immunizationCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.immunizationCreateResolver = function immunizationCreateResolver 
  * @static
  * @summary Immunization Update Resolver.
  */
-module.exports.immunizationUpdateResolver = function immunizationUpdateResolver (root, args, context, info) {
+module.exports.immunizationUpdateResolver = function immunizationUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.immunizationUpdateResolver = function immunizationUpdateResolver 
  * @static
  * @summary Immunization Delete Resolver.
  */
-module.exports.immunizationDeleteResolver = function immunizationDeleteResolver (root, args, context, info) {
+module.exports.immunizationDeleteResolver = function immunizationDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

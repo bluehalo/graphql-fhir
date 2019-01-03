@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	careplanResolver,
 	careplanListResolver,
-	careplanInstanceResolver
+	careplanInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'CarePlan',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.CarePlanQuery = {
 	args: Object.assign({}, CommonArgs, CarePlanArgs),
 	description: 'Query for a single CarePlan',
 	resolve: scopeInvariant(scopeOptions, careplanResolver),
-	type: CarePlanSchema
+	type: CarePlanSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.CarePlanListQuery = {
 	args: Object.assign({}, CommonArgs, CarePlanArgs),
 	description: 'Query for multiple CarePlans',
 	resolve: scopeInvariant(scopeOptions, careplanListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.CarePlanListQuery = {
 module.exports.CarePlanInstanceQuery = {
 	description: 'Get information about a single CarePlan',
 	resolve: scopeInvariant(scopeOptions, careplanInstanceResolver),
-	type: CarePlanSchema
+	type: CarePlanSchema,
 };

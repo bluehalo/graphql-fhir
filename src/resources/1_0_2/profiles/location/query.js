@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	locationResolver,
 	locationListResolver,
-	locationInstanceResolver
+	locationInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Location',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.LocationQuery = {
 	args: Object.assign({}, CommonArgs, LocationArgs),
 	description: 'Query for a single Location',
 	resolve: scopeInvariant(scopeOptions, locationResolver),
-	type: LocationSchema
+	type: LocationSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.LocationListQuery = {
 	args: Object.assign({}, CommonArgs, LocationArgs),
 	description: 'Query for multiple Locations',
 	resolve: scopeInvariant(scopeOptions, locationListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.LocationListQuery = {
 module.exports.LocationInstanceQuery = {
 	description: 'Get information about a single Location',
 	resolve: scopeInvariant(scopeOptions, locationInstanceResolver),
-	type: LocationSchema
+	type: LocationSchema,
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ProcessRequest Resolver.
  */
-module.exports.processrequestResolver = function processrequestResolver (root, args, context, info) {
+module.exports.processrequestResolver = function processrequestResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.processrequestResolver = function processrequestResolver (root, a
  * @static
  * @summary ProcessRequest List Resolver.
  */
-module.exports.processrequestListResolver = function processrequestListResolver (root, args, context, info) {
+module.exports.processrequestListResolver = function processrequestListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.processrequestListResolver = function processrequestListResolver 
  * @static
  * @summary ProcessRequest Instance Resolver.
  */
-module.exports.processrequestInstanceResolver = function processrequestInstanceResolver (root, args, context, info) {
+module.exports.processrequestInstanceResolver = function processrequestInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.processrequestInstanceResolver = function processrequestInstanceR
  * @static
  * @summary ProcessRequest Create Resolver.
  */
-module.exports.processrequestCreateResolver = function processrequestCreateResolver (root, args, context, info) {
+module.exports.processrequestCreateResolver = function processrequestCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.processrequestCreateResolver = function processrequestCreateResol
  * @static
  * @summary ProcessRequest Update Resolver.
  */
-module.exports.processrequestUpdateResolver = function processrequestUpdateResolver (root, args, context, info) {
+module.exports.processrequestUpdateResolver = function processrequestUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.processrequestUpdateResolver = function processrequestUpdateResol
  * @static
  * @summary ProcessRequest Delete Resolver.
  */
-module.exports.processrequestDeleteResolver = function processrequestDeleteResolver (root, args, context, info) {
+module.exports.processrequestDeleteResolver = function processrequestDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -6,7 +6,8 @@ const { GraphQLScalarType } = require('graphql');
  */
 module.exports = new GraphQLScalarType({
 	name: 'token',
-	description: 'Base StructureDefinition for token Type: String of characters used to identify a name or a resource.',
+	description:
+		'Base StructureDefinition for token Type: String of characters used to identify a name or a resource.',
 	// TODO: Implement proper serialization here
 	serialize: value => value,
 	// TODO: Implement proper parsing and sanitization here
@@ -18,5 +19,5 @@ module.exports = new GraphQLScalarType({
 	parseLiteral: ast => {
 		let { value } = ast;
 		return value;
-	}
+	},
 });

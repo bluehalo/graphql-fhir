@@ -11,39 +11,39 @@ const NamingSystemInput = require('../../inputs/namingsystem.input');
 const {
 	namingsystemCreateResolver,
 	namingsystemUpdateResolver,
-	namingsystemDeleteResolver
+	namingsystemDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'NamingSystem',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a NamingSystem record.'
+		description:
+			'Unique identifier for creating/updating a NamingSystem record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(NamingSystemInput),
-		description: 'NamingSystem Information for the record.'
-	}
+		description: 'NamingSystem Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a NamingSystem record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a NamingSystem record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.NamingSystemCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a NamingSystem',
 	resolve: scopeInvariant(scopeOptions, namingsystemCreateResolver),
-	type: NamingSystemSchema
+	type: NamingSystemSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.NamingSystemUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple NamingSystems',
 	resolve: scopeInvariant(scopeOptions, namingsystemUpdateResolver),
-	type: NamingSystemSchema
+	type: NamingSystemSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.NamingSystemDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single NamingSystem',
 	resolve: scopeInvariant(scopeOptions, namingsystemDeleteResolver),
-	type: NamingSystemSchema
+	type: NamingSystemSchema,
 };

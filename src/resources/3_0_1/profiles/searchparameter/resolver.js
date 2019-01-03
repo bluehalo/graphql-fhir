@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary SearchParameter Resolver.
  */
-module.exports.searchparameterResolver = function searchparameterResolver (root, args, context, info) {
+module.exports.searchparameterResolver = function searchparameterResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.searchparameterResolver = function searchparameterResolver (root,
  * @static
  * @summary SearchParameter List Resolver.
  */
-module.exports.searchparameterListResolver = function searchparameterListResolver (root, args, context, info) {
+module.exports.searchparameterListResolver = function searchparameterListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.searchparameterListResolver = function searchparameterListResolve
  * @static
  * @summary SearchParameter Instance Resolver.
  */
-module.exports.searchparameterInstanceResolver = function searchparameterInstanceResolver (root, args, context, info) {
+module.exports.searchparameterInstanceResolver = function searchparameterInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.searchparameterInstanceResolver = function searchparameterInstanc
  * @static
  * @summary SearchParameter Create Resolver.
  */
-module.exports.searchparameterCreateResolver = function searchparameterCreateResolver (root, args, context, info) {
+module.exports.searchparameterCreateResolver = function searchparameterCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.searchparameterCreateResolver = function searchparameterCreateRes
  * @static
  * @summary SearchParameter Update Resolver.
  */
-module.exports.searchparameterUpdateResolver = function searchparameterUpdateResolver (root, args, context, info) {
+module.exports.searchparameterUpdateResolver = function searchparameterUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.searchparameterUpdateResolver = function searchparameterUpdateRes
  * @static
  * @summary SearchParameter Delete Resolver.
  */
-module.exports.searchparameterDeleteResolver = function searchparameterDeleteResolver (root, args, context, info) {
+module.exports.searchparameterDeleteResolver = function searchparameterDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

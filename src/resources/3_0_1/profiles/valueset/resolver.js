@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ValueSet Resolver.
  */
-module.exports.valuesetResolver = function valuesetResolver (root, args, context, info) {
+module.exports.valuesetResolver = function valuesetResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.valuesetResolver = function valuesetResolver (root, args, context
  * @static
  * @summary ValueSet List Resolver.
  */
-module.exports.valuesetListResolver = function valuesetListResolver (root, args, context, info) {
+module.exports.valuesetListResolver = function valuesetListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.valuesetListResolver = function valuesetListResolver (root, args,
  * @static
  * @summary ValueSet Instance Resolver.
  */
-module.exports.valuesetInstanceResolver = function valuesetInstanceResolver (root, args, context, info) {
+module.exports.valuesetInstanceResolver = function valuesetInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.valuesetInstanceResolver = function valuesetInstanceResolver (roo
  * @static
  * @summary ValueSet Create Resolver.
  */
-module.exports.valuesetCreateResolver = function valuesetCreateResolver (root, args, context, info) {
+module.exports.valuesetCreateResolver = function valuesetCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.valuesetCreateResolver = function valuesetCreateResolver (root, a
  * @static
  * @summary ValueSet Update Resolver.
  */
-module.exports.valuesetUpdateResolver = function valuesetUpdateResolver (root, args, context, info) {
+module.exports.valuesetUpdateResolver = function valuesetUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.valuesetUpdateResolver = function valuesetUpdateResolver (root, a
  * @static
  * @summary ValueSet Delete Resolver.
  */
-module.exports.valuesetDeleteResolver = function valuesetDeleteResolver (root, args, context, info) {
+module.exports.valuesetDeleteResolver = function valuesetDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

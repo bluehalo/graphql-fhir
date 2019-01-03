@@ -11,39 +11,39 @@ const NutritionOrderInput = require('../../inputs/nutritionorder.input');
 const {
 	nutritionorderCreateResolver,
 	nutritionorderUpdateResolver,
-	nutritionorderDeleteResolver
+	nutritionorderDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'NutritionOrder',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a NutritionOrder record.'
+		description:
+			'Unique identifier for creating/updating a NutritionOrder record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(NutritionOrderInput),
-		description: 'NutritionOrder Information for the record.'
-	}
+		description: 'NutritionOrder Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a NutritionOrder record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a NutritionOrder record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.NutritionOrderCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a NutritionOrder',
 	resolve: scopeInvariant(scopeOptions, nutritionorderCreateResolver),
-	type: NutritionOrderSchema
+	type: NutritionOrderSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.NutritionOrderUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple NutritionOrders',
 	resolve: scopeInvariant(scopeOptions, nutritionorderUpdateResolver),
-	type: NutritionOrderSchema
+	type: NutritionOrderSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.NutritionOrderDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single NutritionOrder',
 	resolve: scopeInvariant(scopeOptions, nutritionorderDeleteResolver),
-	type: NutritionOrderSchema
+	type: NutritionOrderSchema,
 };

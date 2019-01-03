@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary NamingSystem Resolver.
  */
-module.exports.namingsystemResolver = function namingsystemResolver (root, args, context, info) {
+module.exports.namingsystemResolver = function namingsystemResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.namingsystemResolver = function namingsystemResolver (root, args,
  * @static
  * @summary NamingSystem List Resolver.
  */
-module.exports.namingsystemListResolver = function namingsystemListResolver (root, args, context, info) {
+module.exports.namingsystemListResolver = function namingsystemListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.namingsystemListResolver = function namingsystemListResolver (roo
  * @static
  * @summary NamingSystem Instance Resolver.
  */
-module.exports.namingsystemInstanceResolver = function namingsystemInstanceResolver (root, args, context, info) {
+module.exports.namingsystemInstanceResolver = function namingsystemInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.namingsystemInstanceResolver = function namingsystemInstanceResol
  * @static
  * @summary NamingSystem Create Resolver.
  */
-module.exports.namingsystemCreateResolver = function namingsystemCreateResolver (root, args, context, info) {
+module.exports.namingsystemCreateResolver = function namingsystemCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.namingsystemCreateResolver = function namingsystemCreateResolver 
  * @static
  * @summary NamingSystem Update Resolver.
  */
-module.exports.namingsystemUpdateResolver = function namingsystemUpdateResolver (root, args, context, info) {
+module.exports.namingsystemUpdateResolver = function namingsystemUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.namingsystemUpdateResolver = function namingsystemUpdateResolver 
  * @static
  * @summary NamingSystem Delete Resolver.
  */
-module.exports.namingsystemDeleteResolver = function namingsystemDeleteResolver (root, args, context, info) {
+module.exports.namingsystemDeleteResolver = function namingsystemDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -11,39 +11,39 @@ const CompartmentDefinitionInput = require('../../inputs/compartmentdefinition.i
 const {
 	compartmentdefinitionCreateResolver,
 	compartmentdefinitionUpdateResolver,
-	compartmentdefinitionDeleteResolver
+	compartmentdefinitionDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'CompartmentDefinition',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a CompartmentDefinition record.'
+		description:
+			'Unique identifier for creating/updating a CompartmentDefinition record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(CompartmentDefinitionInput),
-		description: 'CompartmentDefinition Information for the record.'
-	}
+		description: 'CompartmentDefinition Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a CompartmentDefinition record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a CompartmentDefinition record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.CompartmentDefinitionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a CompartmentDefinition',
 	resolve: scopeInvariant(scopeOptions, compartmentdefinitionCreateResolver),
-	type: CompartmentDefinitionSchema
+	type: CompartmentDefinitionSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.CompartmentDefinitionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple CompartmentDefinitions',
 	resolve: scopeInvariant(scopeOptions, compartmentdefinitionUpdateResolver),
-	type: CompartmentDefinitionSchema
+	type: CompartmentDefinitionSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.CompartmentDefinitionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single CompartmentDefinition',
 	resolve: scopeInvariant(scopeOptions, compartmentdefinitionDeleteResolver),
-	type: CompartmentDefinitionSchema
+	type: CompartmentDefinitionSchema,
 };

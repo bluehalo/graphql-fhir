@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary DeviceComponent Resolver.
  */
-module.exports.devicecomponentResolver = function devicecomponentResolver (root, args, context, info) {
+module.exports.devicecomponentResolver = function devicecomponentResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.devicecomponentResolver = function devicecomponentResolver (root,
  * @static
  * @summary DeviceComponent List Resolver.
  */
-module.exports.devicecomponentListResolver = function devicecomponentListResolver (root, args, context, info) {
+module.exports.devicecomponentListResolver = function devicecomponentListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.devicecomponentListResolver = function devicecomponentListResolve
  * @static
  * @summary DeviceComponent Instance Resolver.
  */
-module.exports.devicecomponentInstanceResolver = function devicecomponentInstanceResolver (root, args, context, info) {
+module.exports.devicecomponentInstanceResolver = function devicecomponentInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.devicecomponentInstanceResolver = function devicecomponentInstanc
  * @static
  * @summary DeviceComponent Create Resolver.
  */
-module.exports.devicecomponentCreateResolver = function devicecomponentCreateResolver (root, args, context, info) {
+module.exports.devicecomponentCreateResolver = function devicecomponentCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.devicecomponentCreateResolver = function devicecomponentCreateRes
  * @static
  * @summary DeviceComponent Update Resolver.
  */
-module.exports.devicecomponentUpdateResolver = function devicecomponentUpdateResolver (root, args, context, info) {
+module.exports.devicecomponentUpdateResolver = function devicecomponentUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.devicecomponentUpdateResolver = function devicecomponentUpdateRes
  * @static
  * @summary DeviceComponent Delete Resolver.
  */
-module.exports.devicecomponentDeleteResolver = function devicecomponentDeleteResolver (root, args, context, info) {
+module.exports.devicecomponentDeleteResolver = function devicecomponentDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

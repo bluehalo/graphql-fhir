@@ -1,13 +1,13 @@
 const {
 	ClinicalImpressionQuery,
 	ClinicalImpressionListQuery,
-	ClinicalImpressionInstanceQuery
+	ClinicalImpressionInstanceQuery,
 } = require('./query');
 
 const {
 	ClinicalImpressionCreateMutation,
 	ClinicalImpressionUpdateMutation,
-	ClinicalImpressionDeleteMutation
+	ClinicalImpressionDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		ClinicalImpression: ClinicalImpressionQuery,
-		ClinicalImpressionList: ClinicalImpressionListQuery
+		ClinicalImpressionList: ClinicalImpressionListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		ClinicalImpressionCreate: ClinicalImpressionCreateMutation,
 		ClinicalImpressionUpdate: ClinicalImpressionUpdateMutation,
-		ClinicalImpressionDelete: ClinicalImpressionDeleteMutation
+		ClinicalImpressionDelete: ClinicalImpressionDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'ClinicalImpression',
 		path: '/1_0_2/ClinicalImpression/:id',
-		query: ClinicalImpressionInstanceQuery
-	}
+		query: ClinicalImpressionInstanceQuery,
+	},
 };

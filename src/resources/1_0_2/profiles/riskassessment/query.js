@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	riskassessmentResolver,
 	riskassessmentListResolver,
-	riskassessmentInstanceResolver
+	riskassessmentInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'RiskAssessment',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.RiskAssessmentQuery = {
 	args: Object.assign({}, CommonArgs, RiskAssessmentArgs),
 	description: 'Query for a single RiskAssessment',
 	resolve: scopeInvariant(scopeOptions, riskassessmentResolver),
-	type: RiskAssessmentSchema
+	type: RiskAssessmentSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.RiskAssessmentListQuery = {
 	args: Object.assign({}, CommonArgs, RiskAssessmentArgs),
 	description: 'Query for multiple RiskAssessments',
 	resolve: scopeInvariant(scopeOptions, riskassessmentListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.RiskAssessmentListQuery = {
 module.exports.RiskAssessmentInstanceQuery = {
 	description: 'Get information about a single RiskAssessment',
 	resolve: scopeInvariant(scopeOptions, riskassessmentInstanceResolver),
-	type: RiskAssessmentSchema
+	type: RiskAssessmentSchema,
 };

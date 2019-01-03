@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary CareTeam Resolver.
  */
-module.exports.careteamResolver = function careteamResolver (root, args, context, info) {
+module.exports.careteamResolver = function careteamResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.careteamResolver = function careteamResolver (root, args, context
  * @static
  * @summary CareTeam List Resolver.
  */
-module.exports.careteamListResolver = function careteamListResolver (root, args, context, info) {
+module.exports.careteamListResolver = function careteamListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.careteamListResolver = function careteamListResolver (root, args,
  * @static
  * @summary CareTeam Instance Resolver.
  */
-module.exports.careteamInstanceResolver = function careteamInstanceResolver (root, args, context, info) {
+module.exports.careteamInstanceResolver = function careteamInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.careteamInstanceResolver = function careteamInstanceResolver (roo
  * @static
  * @summary CareTeam Create Resolver.
  */
-module.exports.careteamCreateResolver = function careteamCreateResolver (root, args, context, info) {
+module.exports.careteamCreateResolver = function careteamCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.careteamCreateResolver = function careteamCreateResolver (root, a
  * @static
  * @summary CareTeam Update Resolver.
  */
-module.exports.careteamUpdateResolver = function careteamUpdateResolver (root, args, context, info) {
+module.exports.careteamUpdateResolver = function careteamUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.careteamUpdateResolver = function careteamUpdateResolver (root, a
  * @static
  * @summary CareTeam Delete Resolver.
  */
-module.exports.careteamDeleteResolver = function careteamDeleteResolver (root, args, context, info) {
+module.exports.careteamDeleteResolver = function careteamDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

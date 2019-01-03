@@ -11,39 +11,39 @@ const AllergyIntoleranceInput = require('../../inputs/allergyintolerance.input')
 const {
 	allergyintoleranceCreateResolver,
 	allergyintoleranceUpdateResolver,
-	allergyintoleranceDeleteResolver
+	allergyintoleranceDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'AllergyIntolerance',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a AllergyIntolerance record.'
+		description:
+			'Unique identifier for creating/updating a AllergyIntolerance record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(AllergyIntoleranceInput),
-		description: 'AllergyIntolerance Information for the record.'
-	}
+		description: 'AllergyIntolerance Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a AllergyIntolerance record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a AllergyIntolerance record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.AllergyIntoleranceCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a AllergyIntolerance',
 	resolve: scopeInvariant(scopeOptions, allergyintoleranceCreateResolver),
-	type: AllergyIntoleranceSchema
+	type: AllergyIntoleranceSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.AllergyIntoleranceUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple AllergyIntolerances',
 	resolve: scopeInvariant(scopeOptions, allergyintoleranceUpdateResolver),
-	type: AllergyIntoleranceSchema
+	type: AllergyIntoleranceSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.AllergyIntoleranceDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single AllergyIntolerance',
 	resolve: scopeInvariant(scopeOptions, allergyintoleranceDeleteResolver),
-	type: AllergyIntoleranceSchema
+	type: AllergyIntoleranceSchema,
 };

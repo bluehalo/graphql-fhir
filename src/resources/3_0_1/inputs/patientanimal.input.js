@@ -3,8 +3,6 @@ const { GraphQLInputObjectType, GraphQLNonNull } = require('graphql');
 // Util for extending gql objects
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
-
-
 /**
  * @name exports
  * @summary Patient.animal Input Schema
@@ -12,21 +10,25 @@ const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'PatientAnimal_Input',
 	description: 'This patient is known to be an animal.',
-	fields: () => extendSchema(require('./backboneelement.input'), {
-		// ValueSetReference: http://hl7.org/fhir/ValueSet/animal-species
-		species: {
-			type: new GraphQLNonNull(require('./codeableconcept.input')),
-			description: 'Identifies the high level taxonomic categorization of the kind of animal.'
-		},
-		// ValueSetReference: http://hl7.org/fhir/ValueSet/animal-breeds
-		breed: {
-			type: require('./codeableconcept.input'),
-			description: 'Identifies the detailed categorization of the kind of animal.'
-		},
-		// ValueSetReference: http://hl7.org/fhir/ValueSet/animal-genderstatus
-		genderStatus: {
-			type: require('./codeableconcept.input'),
-			description: 'Indicates the current state of the animal\'s reproductive organs.'
-		}
-	})
+	fields: () =>
+		extendSchema(require('./backboneelement.input'), {
+			// ValueSetReference: http://hl7.org/fhir/ValueSet/animal-species
+			species: {
+				type: new GraphQLNonNull(require('./codeableconcept.input')),
+				description:
+					'Identifies the high level taxonomic categorization of the kind of animal.',
+			},
+			// ValueSetReference: http://hl7.org/fhir/ValueSet/animal-breeds
+			breed: {
+				type: require('./codeableconcept.input'),
+				description:
+					'Identifies the detailed categorization of the kind of animal.',
+			},
+			// ValueSetReference: http://hl7.org/fhir/ValueSet/animal-genderstatus
+			genderStatus: {
+				type: require('./codeableconcept.input'),
+				description:
+					"Indicates the current state of the animal's reproductive organs.",
+			},
+		}),
 });

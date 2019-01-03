@@ -11,39 +11,39 @@ const SearchParameterInput = require('../../inputs/searchparameter.input');
 const {
 	searchparameterCreateResolver,
 	searchparameterUpdateResolver,
-	searchparameterDeleteResolver
+	searchparameterDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'SearchParameter',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a SearchParameter record.'
+		description:
+			'Unique identifier for creating/updating a SearchParameter record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(SearchParameterInput),
-		description: 'SearchParameter Information for the record.'
-	}
+		description: 'SearchParameter Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a SearchParameter record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a SearchParameter record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.SearchParameterCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a SearchParameter',
 	resolve: scopeInvariant(scopeOptions, searchparameterCreateResolver),
-	type: SearchParameterSchema
+	type: SearchParameterSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.SearchParameterUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple SearchParameters',
 	resolve: scopeInvariant(scopeOptions, searchparameterUpdateResolver),
-	type: SearchParameterSchema
+	type: SearchParameterSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.SearchParameterDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single SearchParameter',
 	resolve: scopeInvariant(scopeOptions, searchparameterDeleteResolver),
-	type: SearchParameterSchema
+	type: SearchParameterSchema,
 };

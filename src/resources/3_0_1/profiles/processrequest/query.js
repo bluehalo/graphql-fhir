@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	processrequestResolver,
 	processrequestListResolver,
-	processrequestInstanceResolver
+	processrequestInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ProcessRequest',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ProcessRequestQuery = {
 	args: Object.assign({}, CommonArgs, ProcessRequestArgs),
 	description: 'Query for a single ProcessRequest',
 	resolve: scopeInvariant(scopeOptions, processrequestResolver),
-	type: ProcessRequestSchema
+	type: ProcessRequestSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ProcessRequestListQuery = {
 	args: Object.assign({}, CommonArgs, ProcessRequestArgs),
 	description: 'Query for multiple ProcessRequests',
 	resolve: scopeInvariant(scopeOptions, processrequestListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ProcessRequestListQuery = {
 module.exports.ProcessRequestInstanceQuery = {
 	description: 'Get information about a single ProcessRequest',
 	resolve: scopeInvariant(scopeOptions, processrequestInstanceResolver),
-	type: ProcessRequestSchema
+	type: ProcessRequestSchema,
 };

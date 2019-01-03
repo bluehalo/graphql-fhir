@@ -11,39 +11,37 @@ const TaskInput = require('../../inputs/task.input');
 const {
 	taskCreateResolver,
 	taskUpdateResolver,
-	taskDeleteResolver
+	taskDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Task',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Task record.'
+		description: 'Unique identifier for creating/updating a Task record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(TaskInput),
-		description: 'Task Information for the record.'
-	}
+		description: 'Task Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Task record for deletion.'
-	}
+		description: 'Unique identifier for selecting a Task record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +52,7 @@ module.exports.TaskCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Task',
 	resolve: scopeInvariant(scopeOptions, taskCreateResolver),
-	type: TaskSchema
+	type: TaskSchema,
 };
 
 /**
@@ -65,7 +63,7 @@ module.exports.TaskUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Tasks',
 	resolve: scopeInvariant(scopeOptions, taskUpdateResolver),
-	type: TaskSchema
+	type: TaskSchema,
 };
 
 /**
@@ -76,5 +74,5 @@ module.exports.TaskDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Task',
 	resolve: scopeInvariant(scopeOptions, taskDeleteResolver),
-	type: TaskSchema
+	type: TaskSchema,
 };

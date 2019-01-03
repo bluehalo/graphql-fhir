@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Procedure Resolver.
  */
-module.exports.procedureResolver = function procedureResolver (root, args, context, info) {
+module.exports.procedureResolver = function procedureResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.procedureResolver = function procedureResolver (root, args, conte
  * @static
  * @summary Procedure List Resolver.
  */
-module.exports.procedureListResolver = function procedureListResolver (root, args, context, info) {
+module.exports.procedureListResolver = function procedureListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.procedureListResolver = function procedureListResolver (root, arg
  * @static
  * @summary Procedure Instance Resolver.
  */
-module.exports.procedureInstanceResolver = function procedureInstanceResolver (root, args, context, info) {
+module.exports.procedureInstanceResolver = function procedureInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.procedureInstanceResolver = function procedureInstanceResolver (r
  * @static
  * @summary Procedure Create Resolver.
  */
-module.exports.procedureCreateResolver = function procedureCreateResolver (root, args, context, info) {
+module.exports.procedureCreateResolver = function procedureCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.procedureCreateResolver = function procedureCreateResolver (root,
  * @static
  * @summary Procedure Update Resolver.
  */
-module.exports.procedureUpdateResolver = function procedureUpdateResolver (root, args, context, info) {
+module.exports.procedureUpdateResolver = function procedureUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.procedureUpdateResolver = function procedureUpdateResolver (root,
  * @static
  * @summary Procedure Delete Resolver.
  */
-module.exports.procedureDeleteResolver = function procedureDeleteResolver (root, args, context, info) {
+module.exports.procedureDeleteResolver = function procedureDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

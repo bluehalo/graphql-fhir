@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary MessageDefinition Resolver.
  */
-module.exports.messagedefinitionResolver = function messagedefinitionResolver (root, args, context, info) {
+module.exports.messagedefinitionResolver = function messagedefinitionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.messagedefinitionResolver = function messagedefinitionResolver (r
  * @static
  * @summary MessageDefinition List Resolver.
  */
-module.exports.messagedefinitionListResolver = function messagedefinitionListResolver (root, args, context, info) {
+module.exports.messagedefinitionListResolver = function messagedefinitionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.messagedefinitionListResolver = function messagedefinitionListRes
  * @static
  * @summary MessageDefinition Instance Resolver.
  */
-module.exports.messagedefinitionInstanceResolver = function messagedefinitionInstanceResolver (root, args, context, info) {
+module.exports.messagedefinitionInstanceResolver = function messagedefinitionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.messagedefinitionInstanceResolver = function messagedefinitionIns
  * @static
  * @summary MessageDefinition Create Resolver.
  */
-module.exports.messagedefinitionCreateResolver = function messagedefinitionCreateResolver (root, args, context, info) {
+module.exports.messagedefinitionCreateResolver = function messagedefinitionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.messagedefinitionCreateResolver = function messagedefinitionCreat
  * @static
  * @summary MessageDefinition Update Resolver.
  */
-module.exports.messagedefinitionUpdateResolver = function messagedefinitionUpdateResolver (root, args, context, info) {
+module.exports.messagedefinitionUpdateResolver = function messagedefinitionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.messagedefinitionUpdateResolver = function messagedefinitionUpdat
  * @static
  * @summary MessageDefinition Delete Resolver.
  */
-module.exports.messagedefinitionDeleteResolver = function messagedefinitionDeleteResolver (root, args, context, info) {
+module.exports.messagedefinitionDeleteResolver = function messagedefinitionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

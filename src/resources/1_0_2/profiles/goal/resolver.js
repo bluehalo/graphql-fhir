@@ -5,7 +5,7 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Goal Resolver.
  */
-module.exports.goalResolver = function goalResolver (root, args, context, info) {
+module.exports.goalResolver = function goalResolver(root, args, context, info) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +15,12 @@ module.exports.goalResolver = function goalResolver (root, args, context, info) 
  * @static
  * @summary Goal List Resolver.
  */
-module.exports.goalListResolver = function goalListResolver (root, args, context, info) {
+module.exports.goalListResolver = function goalListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +30,12 @@ module.exports.goalListResolver = function goalListResolver (root, args, context
  * @static
  * @summary Goal Instance Resolver.
  */
-module.exports.goalInstanceResolver = function goalInstanceResolver (root, args, context, info) {
+module.exports.goalInstanceResolver = function goalInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +45,12 @@ module.exports.goalInstanceResolver = function goalInstanceResolver (root, args,
  * @static
  * @summary Goal Create Resolver.
  */
-module.exports.goalCreateResolver = function goalCreateResolver (root, args, context, info) {
+module.exports.goalCreateResolver = function goalCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +60,12 @@ module.exports.goalCreateResolver = function goalCreateResolver (root, args, con
  * @static
  * @summary Goal Update Resolver.
  */
-module.exports.goalUpdateResolver = function goalUpdateResolver (root, args, context, info) {
+module.exports.goalUpdateResolver = function goalUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +75,12 @@ module.exports.goalUpdateResolver = function goalUpdateResolver (root, args, con
  * @static
  * @summary Goal Delete Resolver.
  */
-module.exports.goalDeleteResolver = function goalDeleteResolver (root, args, context, info) {
+module.exports.goalDeleteResolver = function goalDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -1,13 +1,9 @@
-const {
-	GoalQuery,
-	GoalListQuery,
-	GoalInstanceQuery
-} = require('./query');
+const { GoalQuery, GoalListQuery, GoalInstanceQuery } = require('./query');
 
 const {
 	GoalCreateMutation,
 	GoalUpdateMutation,
-	GoalDeleteMutation
+	GoalDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +14,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Goal: GoalQuery,
-		GoalList: GoalListQuery
+		GoalList: GoalListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		GoalCreate: GoalCreateMutation,
 		GoalUpdate: GoalUpdateMutation,
-		GoalDelete: GoalDeleteMutation
+		GoalDelete: GoalDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Goal',
 		path: '/3_0_1/Goal/:id',
-		query: GoalInstanceQuery
-	}
+		query: GoalInstanceQuery,
+	},
 };

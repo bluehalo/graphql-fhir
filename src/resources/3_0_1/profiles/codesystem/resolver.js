@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary CodeSystem Resolver.
  */
-module.exports.codesystemResolver = function codesystemResolver (root, args, context, info) {
+module.exports.codesystemResolver = function codesystemResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.codesystemResolver = function codesystemResolver (root, args, con
  * @static
  * @summary CodeSystem List Resolver.
  */
-module.exports.codesystemListResolver = function codesystemListResolver (root, args, context, info) {
+module.exports.codesystemListResolver = function codesystemListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.codesystemListResolver = function codesystemListResolver (root, a
  * @static
  * @summary CodeSystem Instance Resolver.
  */
-module.exports.codesystemInstanceResolver = function codesystemInstanceResolver (root, args, context, info) {
+module.exports.codesystemInstanceResolver = function codesystemInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.codesystemInstanceResolver = function codesystemInstanceResolver 
  * @static
  * @summary CodeSystem Create Resolver.
  */
-module.exports.codesystemCreateResolver = function codesystemCreateResolver (root, args, context, info) {
+module.exports.codesystemCreateResolver = function codesystemCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.codesystemCreateResolver = function codesystemCreateResolver (roo
  * @static
  * @summary CodeSystem Update Resolver.
  */
-module.exports.codesystemUpdateResolver = function codesystemUpdateResolver (root, args, context, info) {
+module.exports.codesystemUpdateResolver = function codesystemUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.codesystemUpdateResolver = function codesystemUpdateResolver (roo
  * @static
  * @summary CodeSystem Delete Resolver.
  */
-module.exports.codesystemDeleteResolver = function codesystemDeleteResolver (root, args, context, info) {
+module.exports.codesystemDeleteResolver = function codesystemDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

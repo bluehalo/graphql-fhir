@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	codesystemResolver,
 	codesystemListResolver,
-	codesystemInstanceResolver
+	codesystemInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'CodeSystem',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.CodeSystemQuery = {
 	args: Object.assign({}, CommonArgs, CodeSystemArgs),
 	description: 'Query for a single CodeSystem',
 	resolve: scopeInvariant(scopeOptions, codesystemResolver),
-	type: CodeSystemSchema
+	type: CodeSystemSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.CodeSystemListQuery = {
 	args: Object.assign({}, CommonArgs, CodeSystemArgs),
 	description: 'Query for multiple CodeSystems',
 	resolve: scopeInvariant(scopeOptions, codesystemListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.CodeSystemListQuery = {
 module.exports.CodeSystemInstanceQuery = {
 	description: 'Get information about a single CodeSystem',
 	resolve: scopeInvariant(scopeOptions, codesystemInstanceResolver),
-	type: CodeSystemSchema
+	type: CodeSystemSchema,
 };

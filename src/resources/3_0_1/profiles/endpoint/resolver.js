@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Endpoint Resolver.
  */
-module.exports.endpointResolver = function endpointResolver (root, args, context, info) {
+module.exports.endpointResolver = function endpointResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.endpointResolver = function endpointResolver (root, args, context
  * @static
  * @summary Endpoint List Resolver.
  */
-module.exports.endpointListResolver = function endpointListResolver (root, args, context, info) {
+module.exports.endpointListResolver = function endpointListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.endpointListResolver = function endpointListResolver (root, args,
  * @static
  * @summary Endpoint Instance Resolver.
  */
-module.exports.endpointInstanceResolver = function endpointInstanceResolver (root, args, context, info) {
+module.exports.endpointInstanceResolver = function endpointInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.endpointInstanceResolver = function endpointInstanceResolver (roo
  * @static
  * @summary Endpoint Create Resolver.
  */
-module.exports.endpointCreateResolver = function endpointCreateResolver (root, args, context, info) {
+module.exports.endpointCreateResolver = function endpointCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.endpointCreateResolver = function endpointCreateResolver (root, a
  * @static
  * @summary Endpoint Update Resolver.
  */
-module.exports.endpointUpdateResolver = function endpointUpdateResolver (root, args, context, info) {
+module.exports.endpointUpdateResolver = function endpointUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.endpointUpdateResolver = function endpointUpdateResolver (root, a
  * @static
  * @summary Endpoint Delete Resolver.
  */
-module.exports.endpointDeleteResolver = function endpointDeleteResolver (root, args, context, info) {
+module.exports.endpointDeleteResolver = function endpointDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

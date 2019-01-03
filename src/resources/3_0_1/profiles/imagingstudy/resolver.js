@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ImagingStudy Resolver.
  */
-module.exports.imagingstudyResolver = function imagingstudyResolver (root, args, context, info) {
+module.exports.imagingstudyResolver = function imagingstudyResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.imagingstudyResolver = function imagingstudyResolver (root, args,
  * @static
  * @summary ImagingStudy List Resolver.
  */
-module.exports.imagingstudyListResolver = function imagingstudyListResolver (root, args, context, info) {
+module.exports.imagingstudyListResolver = function imagingstudyListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.imagingstudyListResolver = function imagingstudyListResolver (roo
  * @static
  * @summary ImagingStudy Instance Resolver.
  */
-module.exports.imagingstudyInstanceResolver = function imagingstudyInstanceResolver (root, args, context, info) {
+module.exports.imagingstudyInstanceResolver = function imagingstudyInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.imagingstudyInstanceResolver = function imagingstudyInstanceResol
  * @static
  * @summary ImagingStudy Create Resolver.
  */
-module.exports.imagingstudyCreateResolver = function imagingstudyCreateResolver (root, args, context, info) {
+module.exports.imagingstudyCreateResolver = function imagingstudyCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.imagingstudyCreateResolver = function imagingstudyCreateResolver 
  * @static
  * @summary ImagingStudy Update Resolver.
  */
-module.exports.imagingstudyUpdateResolver = function imagingstudyUpdateResolver (root, args, context, info) {
+module.exports.imagingstudyUpdateResolver = function imagingstudyUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.imagingstudyUpdateResolver = function imagingstudyUpdateResolver 
  * @static
  * @summary ImagingStudy Delete Resolver.
  */
-module.exports.imagingstudyDeleteResolver = function imagingstudyDeleteResolver (root, args, context, info) {
+module.exports.imagingstudyDeleteResolver = function imagingstudyDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

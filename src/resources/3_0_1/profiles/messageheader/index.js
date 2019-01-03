@@ -1,13 +1,13 @@
 const {
 	MessageHeaderQuery,
 	MessageHeaderListQuery,
-	MessageHeaderInstanceQuery
+	MessageHeaderInstanceQuery,
 } = require('./query');
 
 const {
 	MessageHeaderCreateMutation,
 	MessageHeaderUpdateMutation,
-	MessageHeaderDeleteMutation
+	MessageHeaderDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		MessageHeader: MessageHeaderQuery,
-		MessageHeaderList: MessageHeaderListQuery
+		MessageHeaderList: MessageHeaderListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		MessageHeaderCreate: MessageHeaderCreateMutation,
 		MessageHeaderUpdate: MessageHeaderUpdateMutation,
-		MessageHeaderDelete: MessageHeaderDeleteMutation
+		MessageHeaderDelete: MessageHeaderDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'MessageHeader',
 		path: '/3_0_1/MessageHeader/:id',
-		query: MessageHeaderInstanceQuery
-	}
+		query: MessageHeaderInstanceQuery,
+	},
 };

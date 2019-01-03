@@ -11,39 +11,39 @@ const ClaimResponseInput = require('../../inputs/claimresponse.input');
 const {
 	claimresponseCreateResolver,
 	claimresponseUpdateResolver,
-	claimresponseDeleteResolver
+	claimresponseDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ClaimResponse',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a ClaimResponse record.'
+		description:
+			'Unique identifier for creating/updating a ClaimResponse record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ClaimResponseInput),
-		description: 'ClaimResponse Information for the record.'
-	}
+		description: 'ClaimResponse Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a ClaimResponse record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a ClaimResponse record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.ClaimResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ClaimResponse',
 	resolve: scopeInvariant(scopeOptions, claimresponseCreateResolver),
-	type: ClaimResponseSchema
+	type: ClaimResponseSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.ClaimResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ClaimResponses',
 	resolve: scopeInvariant(scopeOptions, claimresponseUpdateResolver),
-	type: ClaimResponseSchema
+	type: ClaimResponseSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.ClaimResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ClaimResponse',
 	resolve: scopeInvariant(scopeOptions, claimresponseDeleteResolver),
-	type: ClaimResponseSchema
+	type: ClaimResponseSchema,
 };

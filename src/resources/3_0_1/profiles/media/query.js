@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	mediaResolver,
 	mediaListResolver,
-	mediaInstanceResolver
+	mediaInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Media',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.MediaQuery = {
 	args: Object.assign({}, CommonArgs, MediaArgs),
 	description: 'Query for a single Media',
 	resolve: scopeInvariant(scopeOptions, mediaResolver),
-	type: MediaSchema
+	type: MediaSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.MediaListQuery = {
 	args: Object.assign({}, CommonArgs, MediaArgs),
 	description: 'Query for multiple Medias',
 	resolve: scopeInvariant(scopeOptions, mediaListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.MediaListQuery = {
 module.exports.MediaInstanceQuery = {
 	description: 'Get information about a single Media',
 	resolve: scopeInvariant(scopeOptions, mediaInstanceResolver),
-	type: MediaSchema
+	type: MediaSchema,
 };

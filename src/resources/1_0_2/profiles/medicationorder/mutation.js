@@ -11,39 +11,39 @@ const MedicationOrderInput = require('../../inputs/medicationorder.input');
 const {
 	medicationorderCreateResolver,
 	medicationorderUpdateResolver,
-	medicationorderDeleteResolver
+	medicationorderDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'MedicationOrder',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a MedicationOrder record.'
+		description:
+			'Unique identifier for creating/updating a MedicationOrder record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(MedicationOrderInput),
-		description: 'MedicationOrder Information for the record.'
-	}
+		description: 'MedicationOrder Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a MedicationOrder record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a MedicationOrder record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.MedicationOrderCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MedicationOrder',
 	resolve: scopeInvariant(scopeOptions, medicationorderCreateResolver),
-	type: MedicationOrderSchema
+	type: MedicationOrderSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.MedicationOrderUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MedicationOrders',
 	resolve: scopeInvariant(scopeOptions, medicationorderUpdateResolver),
-	type: MedicationOrderSchema
+	type: MedicationOrderSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.MedicationOrderDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MedicationOrder',
 	resolve: scopeInvariant(scopeOptions, medicationorderDeleteResolver),
-	type: MedicationOrderSchema
+	type: MedicationOrderSchema,
 };

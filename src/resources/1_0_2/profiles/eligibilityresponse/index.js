@@ -1,13 +1,13 @@
 const {
 	EligibilityResponseQuery,
 	EligibilityResponseListQuery,
-	EligibilityResponseInstanceQuery
+	EligibilityResponseInstanceQuery,
 } = require('./query');
 
 const {
 	EligibilityResponseCreateMutation,
 	EligibilityResponseUpdateMutation,
-	EligibilityResponseDeleteMutation
+	EligibilityResponseDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		EligibilityResponse: EligibilityResponseQuery,
-		EligibilityResponseList: EligibilityResponseListQuery
+		EligibilityResponseList: EligibilityResponseListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		EligibilityResponseCreate: EligibilityResponseCreateMutation,
 		EligibilityResponseUpdate: EligibilityResponseUpdateMutation,
-		EligibilityResponseDelete: EligibilityResponseDeleteMutation
+		EligibilityResponseDelete: EligibilityResponseDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'EligibilityResponse',
 		path: '/1_0_2/EligibilityResponse/:id',
-		query: EligibilityResponseInstanceQuery
-	}
+		query: EligibilityResponseInstanceQuery,
+	},
 };

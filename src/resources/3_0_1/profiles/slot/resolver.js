@@ -5,7 +5,7 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Slot Resolver.
  */
-module.exports.slotResolver = function slotResolver (root, args, context, info) {
+module.exports.slotResolver = function slotResolver(root, args, context, info) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +15,12 @@ module.exports.slotResolver = function slotResolver (root, args, context, info) 
  * @static
  * @summary Slot List Resolver.
  */
-module.exports.slotListResolver = function slotListResolver (root, args, context, info) {
+module.exports.slotListResolver = function slotListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +30,12 @@ module.exports.slotListResolver = function slotListResolver (root, args, context
  * @static
  * @summary Slot Instance Resolver.
  */
-module.exports.slotInstanceResolver = function slotInstanceResolver (root, args, context, info) {
+module.exports.slotInstanceResolver = function slotInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +45,12 @@ module.exports.slotInstanceResolver = function slotInstanceResolver (root, args,
  * @static
  * @summary Slot Create Resolver.
  */
-module.exports.slotCreateResolver = function slotCreateResolver (root, args, context, info) {
+module.exports.slotCreateResolver = function slotCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +60,12 @@ module.exports.slotCreateResolver = function slotCreateResolver (root, args, con
  * @static
  * @summary Slot Update Resolver.
  */
-module.exports.slotUpdateResolver = function slotUpdateResolver (root, args, context, info) {
+module.exports.slotUpdateResolver = function slotUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +75,12 @@ module.exports.slotUpdateResolver = function slotUpdateResolver (root, args, con
  * @static
  * @summary Slot Delete Resolver.
  */
-module.exports.slotDeleteResolver = function slotDeleteResolver (root, args, context, info) {
+module.exports.slotDeleteResolver = function slotDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

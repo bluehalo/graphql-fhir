@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	conditionResolver,
 	conditionListResolver,
-	conditionInstanceResolver
+	conditionInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Condition',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ConditionQuery = {
 	args: Object.assign({}, CommonArgs, ConditionArgs),
 	description: 'Query for a single Condition',
 	resolve: scopeInvariant(scopeOptions, conditionResolver),
-	type: ConditionSchema
+	type: ConditionSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ConditionListQuery = {
 	args: Object.assign({}, CommonArgs, ConditionArgs),
 	description: 'Query for multiple Conditions',
 	resolve: scopeInvariant(scopeOptions, conditionListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ConditionListQuery = {
 module.exports.ConditionInstanceQuery = {
 	description: 'Get information about a single Condition',
 	resolve: scopeInvariant(scopeOptions, conditionInstanceResolver),
-	type: ConditionSchema
+	type: ConditionSchema,
 };

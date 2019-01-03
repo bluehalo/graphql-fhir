@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	eligibilityrequestResolver,
 	eligibilityrequestListResolver,
-	eligibilityrequestInstanceResolver
+	eligibilityrequestInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'EligibilityRequest',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.EligibilityRequestQuery = {
 	args: Object.assign({}, CommonArgs, EligibilityRequestArgs),
 	description: 'Query for a single EligibilityRequest',
 	resolve: scopeInvariant(scopeOptions, eligibilityrequestResolver),
-	type: EligibilityRequestSchema
+	type: EligibilityRequestSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.EligibilityRequestListQuery = {
 	args: Object.assign({}, CommonArgs, EligibilityRequestArgs),
 	description: 'Query for multiple EligibilityRequests',
 	resolve: scopeInvariant(scopeOptions, eligibilityrequestListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.EligibilityRequestListQuery = {
 module.exports.EligibilityRequestInstanceQuery = {
 	description: 'Get information about a single EligibilityRequest',
 	resolve: scopeInvariant(scopeOptions, eligibilityrequestInstanceResolver),
-	type: EligibilityRequestSchema
+	type: EligibilityRequestSchema,
 };

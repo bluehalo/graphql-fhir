@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary GuidanceResponse Resolver.
  */
-module.exports.guidanceresponseResolver = function guidanceresponseResolver (root, args, context, info) {
+module.exports.guidanceresponseResolver = function guidanceresponseResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.guidanceresponseResolver = function guidanceresponseResolver (roo
  * @static
  * @summary GuidanceResponse List Resolver.
  */
-module.exports.guidanceresponseListResolver = function guidanceresponseListResolver (root, args, context, info) {
+module.exports.guidanceresponseListResolver = function guidanceresponseListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.guidanceresponseListResolver = function guidanceresponseListResol
  * @static
  * @summary GuidanceResponse Instance Resolver.
  */
-module.exports.guidanceresponseInstanceResolver = function guidanceresponseInstanceResolver (root, args, context, info) {
+module.exports.guidanceresponseInstanceResolver = function guidanceresponseInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.guidanceresponseInstanceResolver = function guidanceresponseInsta
  * @static
  * @summary GuidanceResponse Create Resolver.
  */
-module.exports.guidanceresponseCreateResolver = function guidanceresponseCreateResolver (root, args, context, info) {
+module.exports.guidanceresponseCreateResolver = function guidanceresponseCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.guidanceresponseCreateResolver = function guidanceresponseCreateR
  * @static
  * @summary GuidanceResponse Update Resolver.
  */
-module.exports.guidanceresponseUpdateResolver = function guidanceresponseUpdateResolver (root, args, context, info) {
+module.exports.guidanceresponseUpdateResolver = function guidanceresponseUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.guidanceresponseUpdateResolver = function guidanceresponseUpdateR
  * @static
  * @summary GuidanceResponse Delete Resolver.
  */
-module.exports.guidanceresponseDeleteResolver = function guidanceresponseDeleteResolver (root, args, context, info) {
+module.exports.guidanceresponseDeleteResolver = function guidanceresponseDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

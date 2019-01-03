@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	relatedpersonResolver,
 	relatedpersonListResolver,
-	relatedpersonInstanceResolver
+	relatedpersonInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'RelatedPerson',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.RelatedPersonQuery = {
 	args: Object.assign({}, CommonArgs, RelatedPersonArgs),
 	description: 'Query for a single RelatedPerson',
 	resolve: scopeInvariant(scopeOptions, relatedpersonResolver),
-	type: RelatedPersonSchema
+	type: RelatedPersonSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.RelatedPersonListQuery = {
 	args: Object.assign({}, CommonArgs, RelatedPersonArgs),
 	description: 'Query for multiple RelatedPersons',
 	resolve: scopeInvariant(scopeOptions, relatedpersonListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.RelatedPersonListQuery = {
 module.exports.RelatedPersonInstanceQuery = {
 	description: 'Get information about a single RelatedPerson',
 	resolve: scopeInvariant(scopeOptions, relatedpersonInstanceResolver),
-	type: RelatedPersonSchema
+	type: RelatedPersonSchema,
 };

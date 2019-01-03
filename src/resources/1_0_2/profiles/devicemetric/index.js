@@ -1,13 +1,13 @@
 const {
 	DeviceMetricQuery,
 	DeviceMetricListQuery,
-	DeviceMetricInstanceQuery
+	DeviceMetricInstanceQuery,
 } = require('./query');
 
 const {
 	DeviceMetricCreateMutation,
 	DeviceMetricUpdateMutation,
-	DeviceMetricDeleteMutation
+	DeviceMetricDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		DeviceMetric: DeviceMetricQuery,
-		DeviceMetricList: DeviceMetricListQuery
+		DeviceMetricList: DeviceMetricListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		DeviceMetricCreate: DeviceMetricCreateMutation,
 		DeviceMetricUpdate: DeviceMetricUpdateMutation,
-		DeviceMetricDelete: DeviceMetricDeleteMutation
+		DeviceMetricDelete: DeviceMetricDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'DeviceMetric',
 		path: '/1_0_2/DeviceMetric/:id',
-		query: DeviceMetricInstanceQuery
-	}
+		query: DeviceMetricInstanceQuery,
+	},
 };

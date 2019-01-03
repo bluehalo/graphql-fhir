@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	coverageResolver,
 	coverageListResolver,
-	coverageInstanceResolver
+	coverageInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Coverage',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.CoverageQuery = {
 	args: Object.assign({}, CommonArgs, CoverageArgs),
 	description: 'Query for a single Coverage',
 	resolve: scopeInvariant(scopeOptions, coverageResolver),
-	type: CoverageSchema
+	type: CoverageSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.CoverageListQuery = {
 	args: Object.assign({}, CommonArgs, CoverageArgs),
 	description: 'Query for multiple Coverages',
 	resolve: scopeInvariant(scopeOptions, coverageListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.CoverageListQuery = {
 module.exports.CoverageInstanceQuery = {
 	description: 'Get information about a single Coverage',
 	resolve: scopeInvariant(scopeOptions, coverageInstanceResolver),
-	type: CoverageSchema
+	type: CoverageSchema,
 };

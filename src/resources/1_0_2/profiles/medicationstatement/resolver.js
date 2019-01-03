@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary MedicationStatement Resolver.
  */
-module.exports.medicationstatementResolver = function medicationstatementResolver (root, args, context, info) {
+module.exports.medicationstatementResolver = function medicationstatementResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.medicationstatementResolver = function medicationstatementResolve
  * @static
  * @summary MedicationStatement List Resolver.
  */
-module.exports.medicationstatementListResolver = function medicationstatementListResolver (root, args, context, info) {
+module.exports.medicationstatementListResolver = function medicationstatementListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.medicationstatementListResolver = function medicationstatementLis
  * @static
  * @summary MedicationStatement Instance Resolver.
  */
-module.exports.medicationstatementInstanceResolver = function medicationstatementInstanceResolver (root, args, context, info) {
+module.exports.medicationstatementInstanceResolver = function medicationstatementInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.medicationstatementInstanceResolver = function medicationstatemen
  * @static
  * @summary MedicationStatement Create Resolver.
  */
-module.exports.medicationstatementCreateResolver = function medicationstatementCreateResolver (root, args, context, info) {
+module.exports.medicationstatementCreateResolver = function medicationstatementCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.medicationstatementCreateResolver = function medicationstatementC
  * @static
  * @summary MedicationStatement Update Resolver.
  */
-module.exports.medicationstatementUpdateResolver = function medicationstatementUpdateResolver (root, args, context, info) {
+module.exports.medicationstatementUpdateResolver = function medicationstatementUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.medicationstatementUpdateResolver = function medicationstatementU
  * @static
  * @summary MedicationStatement Delete Resolver.
  */
-module.exports.medicationstatementDeleteResolver = function medicationstatementDeleteResolver (root, args, context, info) {
+module.exports.medicationstatementDeleteResolver = function medicationstatementDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

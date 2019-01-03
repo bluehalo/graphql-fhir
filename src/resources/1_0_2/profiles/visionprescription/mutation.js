@@ -11,39 +11,39 @@ const VisionPrescriptionInput = require('../../inputs/visionprescription.input')
 const {
 	visionprescriptionCreateResolver,
 	visionprescriptionUpdateResolver,
-	visionprescriptionDeleteResolver
+	visionprescriptionDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'VisionPrescription',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a VisionPrescription record.'
+		description:
+			'Unique identifier for creating/updating a VisionPrescription record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(VisionPrescriptionInput),
-		description: 'VisionPrescription Information for the record.'
-	}
+		description: 'VisionPrescription Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a VisionPrescription record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a VisionPrescription record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.VisionPrescriptionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a VisionPrescription',
 	resolve: scopeInvariant(scopeOptions, visionprescriptionCreateResolver),
-	type: VisionPrescriptionSchema
+	type: VisionPrescriptionSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.VisionPrescriptionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple VisionPrescriptions',
 	resolve: scopeInvariant(scopeOptions, visionprescriptionUpdateResolver),
-	type: VisionPrescriptionSchema
+	type: VisionPrescriptionSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.VisionPrescriptionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single VisionPrescription',
 	resolve: scopeInvariant(scopeOptions, visionprescriptionDeleteResolver),
-	type: VisionPrescriptionSchema
+	type: VisionPrescriptionSchema,
 };

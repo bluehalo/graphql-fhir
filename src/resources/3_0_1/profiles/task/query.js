@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	taskResolver,
 	taskListResolver,
-	taskInstanceResolver
+	taskInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Task',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.TaskQuery = {
 	args: Object.assign({}, CommonArgs, TaskArgs),
 	description: 'Query for a single Task',
 	resolve: scopeInvariant(scopeOptions, taskResolver),
-	type: TaskSchema
+	type: TaskSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.TaskListQuery = {
 	args: Object.assign({}, CommonArgs, TaskArgs),
 	description: 'Query for multiple Tasks',
 	resolve: scopeInvariant(scopeOptions, taskListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.TaskListQuery = {
 module.exports.TaskInstanceQuery = {
 	description: 'Get information about a single Task',
 	resolve: scopeInvariant(scopeOptions, taskInstanceResolver),
-	type: TaskSchema
+	type: TaskSchema,
 };

@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	valuesetResolver,
 	valuesetListResolver,
-	valuesetInstanceResolver
+	valuesetInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ValueSet',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ValueSetQuery = {
 	args: Object.assign({}, CommonArgs, ValueSetArgs),
 	description: 'Query for a single ValueSet',
 	resolve: scopeInvariant(scopeOptions, valuesetResolver),
-	type: ValueSetSchema
+	type: ValueSetSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ValueSetListQuery = {
 	args: Object.assign({}, CommonArgs, ValueSetArgs),
 	description: 'Query for multiple ValueSets',
 	resolve: scopeInvariant(scopeOptions, valuesetListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ValueSetListQuery = {
 module.exports.ValueSetInstanceQuery = {
 	description: 'Get information about a single ValueSet',
 	resolve: scopeInvariant(scopeOptions, valuesetInstanceResolver),
-	type: ValueSetSchema
+	type: ValueSetSchema,
 };

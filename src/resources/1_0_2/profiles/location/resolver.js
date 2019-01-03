@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Location Resolver.
  */
-module.exports.locationResolver = function locationResolver (root, args, context, info) {
+module.exports.locationResolver = function locationResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.locationResolver = function locationResolver (root, args, context
  * @static
  * @summary Location List Resolver.
  */
-module.exports.locationListResolver = function locationListResolver (root, args, context, info) {
+module.exports.locationListResolver = function locationListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.locationListResolver = function locationListResolver (root, args,
  * @static
  * @summary Location Instance Resolver.
  */
-module.exports.locationInstanceResolver = function locationInstanceResolver (root, args, context, info) {
+module.exports.locationInstanceResolver = function locationInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.locationInstanceResolver = function locationInstanceResolver (roo
  * @static
  * @summary Location Create Resolver.
  */
-module.exports.locationCreateResolver = function locationCreateResolver (root, args, context, info) {
+module.exports.locationCreateResolver = function locationCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.locationCreateResolver = function locationCreateResolver (root, a
  * @static
  * @summary Location Update Resolver.
  */
-module.exports.locationUpdateResolver = function locationUpdateResolver (root, args, context, info) {
+module.exports.locationUpdateResolver = function locationUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.locationUpdateResolver = function locationUpdateResolver (root, a
  * @static
  * @summary Location Delete Resolver.
  */
-module.exports.locationDeleteResolver = function locationDeleteResolver (root, args, context, info) {
+module.exports.locationDeleteResolver = function locationDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

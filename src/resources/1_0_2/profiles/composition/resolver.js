@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Composition Resolver.
  */
-module.exports.compositionResolver = function compositionResolver (root, args, context, info) {
+module.exports.compositionResolver = function compositionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.compositionResolver = function compositionResolver (root, args, c
  * @static
  * @summary Composition List Resolver.
  */
-module.exports.compositionListResolver = function compositionListResolver (root, args, context, info) {
+module.exports.compositionListResolver = function compositionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.compositionListResolver = function compositionListResolver (root,
  * @static
  * @summary Composition Instance Resolver.
  */
-module.exports.compositionInstanceResolver = function compositionInstanceResolver (root, args, context, info) {
+module.exports.compositionInstanceResolver = function compositionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.compositionInstanceResolver = function compositionInstanceResolve
  * @static
  * @summary Composition Create Resolver.
  */
-module.exports.compositionCreateResolver = function compositionCreateResolver (root, args, context, info) {
+module.exports.compositionCreateResolver = function compositionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.compositionCreateResolver = function compositionCreateResolver (r
  * @static
  * @summary Composition Update Resolver.
  */
-module.exports.compositionUpdateResolver = function compositionUpdateResolver (root, args, context, info) {
+module.exports.compositionUpdateResolver = function compositionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.compositionUpdateResolver = function compositionUpdateResolver (r
  * @static
  * @summary Composition Delete Resolver.
  */
-module.exports.compositionDeleteResolver = function compositionDeleteResolver (root, args, context, info) {
+module.exports.compositionDeleteResolver = function compositionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

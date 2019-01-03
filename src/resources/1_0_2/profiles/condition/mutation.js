@@ -11,39 +11,38 @@ const ConditionInput = require('../../inputs/condition.input');
 const {
 	conditionCreateResolver,
 	conditionUpdateResolver,
-	conditionDeleteResolver
+	conditionDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Condition',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Condition record.'
+		description: 'Unique identifier for creating/updating a Condition record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ConditionInput),
-		description: 'Condition Information for the record.'
-	}
+		description: 'Condition Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Condition record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Condition record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.ConditionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Condition',
 	resolve: scopeInvariant(scopeOptions, conditionCreateResolver),
-	type: ConditionSchema
+	type: ConditionSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.ConditionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Conditions',
 	resolve: scopeInvariant(scopeOptions, conditionUpdateResolver),
-	type: ConditionSchema
+	type: ConditionSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.ConditionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Condition',
 	resolve: scopeInvariant(scopeOptions, conditionDeleteResolver),
-	type: ConditionSchema
+	type: ConditionSchema,
 };

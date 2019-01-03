@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary GraphDefinition Resolver.
  */
-module.exports.graphdefinitionResolver = function graphdefinitionResolver (root, args, context, info) {
+module.exports.graphdefinitionResolver = function graphdefinitionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.graphdefinitionResolver = function graphdefinitionResolver (root,
  * @static
  * @summary GraphDefinition List Resolver.
  */
-module.exports.graphdefinitionListResolver = function graphdefinitionListResolver (root, args, context, info) {
+module.exports.graphdefinitionListResolver = function graphdefinitionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.graphdefinitionListResolver = function graphdefinitionListResolve
  * @static
  * @summary GraphDefinition Instance Resolver.
  */
-module.exports.graphdefinitionInstanceResolver = function graphdefinitionInstanceResolver (root, args, context, info) {
+module.exports.graphdefinitionInstanceResolver = function graphdefinitionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.graphdefinitionInstanceResolver = function graphdefinitionInstanc
  * @static
  * @summary GraphDefinition Create Resolver.
  */
-module.exports.graphdefinitionCreateResolver = function graphdefinitionCreateResolver (root, args, context, info) {
+module.exports.graphdefinitionCreateResolver = function graphdefinitionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.graphdefinitionCreateResolver = function graphdefinitionCreateRes
  * @static
  * @summary GraphDefinition Update Resolver.
  */
-module.exports.graphdefinitionUpdateResolver = function graphdefinitionUpdateResolver (root, args, context, info) {
+module.exports.graphdefinitionUpdateResolver = function graphdefinitionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.graphdefinitionUpdateResolver = function graphdefinitionUpdateRes
  * @static
  * @summary GraphDefinition Delete Resolver.
  */
-module.exports.graphdefinitionDeleteResolver = function graphdefinitionDeleteResolver (root, args, context, info) {
+module.exports.graphdefinitionDeleteResolver = function graphdefinitionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

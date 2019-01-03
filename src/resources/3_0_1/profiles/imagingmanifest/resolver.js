@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ImagingManifest Resolver.
  */
-module.exports.imagingmanifestResolver = function imagingmanifestResolver (root, args, context, info) {
+module.exports.imagingmanifestResolver = function imagingmanifestResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.imagingmanifestResolver = function imagingmanifestResolver (root,
  * @static
  * @summary ImagingManifest List Resolver.
  */
-module.exports.imagingmanifestListResolver = function imagingmanifestListResolver (root, args, context, info) {
+module.exports.imagingmanifestListResolver = function imagingmanifestListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.imagingmanifestListResolver = function imagingmanifestListResolve
  * @static
  * @summary ImagingManifest Instance Resolver.
  */
-module.exports.imagingmanifestInstanceResolver = function imagingmanifestInstanceResolver (root, args, context, info) {
+module.exports.imagingmanifestInstanceResolver = function imagingmanifestInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.imagingmanifestInstanceResolver = function imagingmanifestInstanc
  * @static
  * @summary ImagingManifest Create Resolver.
  */
-module.exports.imagingmanifestCreateResolver = function imagingmanifestCreateResolver (root, args, context, info) {
+module.exports.imagingmanifestCreateResolver = function imagingmanifestCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.imagingmanifestCreateResolver = function imagingmanifestCreateRes
  * @static
  * @summary ImagingManifest Update Resolver.
  */
-module.exports.imagingmanifestUpdateResolver = function imagingmanifestUpdateResolver (root, args, context, info) {
+module.exports.imagingmanifestUpdateResolver = function imagingmanifestUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.imagingmanifestUpdateResolver = function imagingmanifestUpdateRes
  * @static
  * @summary ImagingManifest Delete Resolver.
  */
-module.exports.imagingmanifestDeleteResolver = function imagingmanifestDeleteResolver (root, args, context, info) {
+module.exports.imagingmanifestDeleteResolver = function imagingmanifestDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

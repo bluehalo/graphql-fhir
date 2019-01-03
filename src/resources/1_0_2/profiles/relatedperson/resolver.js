@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary RelatedPerson Resolver.
  */
-module.exports.relatedpersonResolver = function relatedpersonResolver (root, args, context, info) {
+module.exports.relatedpersonResolver = function relatedpersonResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.relatedpersonResolver = function relatedpersonResolver (root, arg
  * @static
  * @summary RelatedPerson List Resolver.
  */
-module.exports.relatedpersonListResolver = function relatedpersonListResolver (root, args, context, info) {
+module.exports.relatedpersonListResolver = function relatedpersonListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.relatedpersonListResolver = function relatedpersonListResolver (r
  * @static
  * @summary RelatedPerson Instance Resolver.
  */
-module.exports.relatedpersonInstanceResolver = function relatedpersonInstanceResolver (root, args, context, info) {
+module.exports.relatedpersonInstanceResolver = function relatedpersonInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.relatedpersonInstanceResolver = function relatedpersonInstanceRes
  * @static
  * @summary RelatedPerson Create Resolver.
  */
-module.exports.relatedpersonCreateResolver = function relatedpersonCreateResolver (root, args, context, info) {
+module.exports.relatedpersonCreateResolver = function relatedpersonCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.relatedpersonCreateResolver = function relatedpersonCreateResolve
  * @static
  * @summary RelatedPerson Update Resolver.
  */
-module.exports.relatedpersonUpdateResolver = function relatedpersonUpdateResolver (root, args, context, info) {
+module.exports.relatedpersonUpdateResolver = function relatedpersonUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.relatedpersonUpdateResolver = function relatedpersonUpdateResolve
  * @static
  * @summary RelatedPerson Delete Resolver.
  */
-module.exports.relatedpersonDeleteResolver = function relatedpersonDeleteResolver (root, args, context, info) {
+module.exports.relatedpersonDeleteResolver = function relatedpersonDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

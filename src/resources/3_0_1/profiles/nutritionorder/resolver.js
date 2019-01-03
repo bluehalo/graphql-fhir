@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary NutritionOrder Resolver.
  */
-module.exports.nutritionorderResolver = function nutritionorderResolver (root, args, context, info) {
+module.exports.nutritionorderResolver = function nutritionorderResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.nutritionorderResolver = function nutritionorderResolver (root, a
  * @static
  * @summary NutritionOrder List Resolver.
  */
-module.exports.nutritionorderListResolver = function nutritionorderListResolver (root, args, context, info) {
+module.exports.nutritionorderListResolver = function nutritionorderListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.nutritionorderListResolver = function nutritionorderListResolver 
  * @static
  * @summary NutritionOrder Instance Resolver.
  */
-module.exports.nutritionorderInstanceResolver = function nutritionorderInstanceResolver (root, args, context, info) {
+module.exports.nutritionorderInstanceResolver = function nutritionorderInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.nutritionorderInstanceResolver = function nutritionorderInstanceR
  * @static
  * @summary NutritionOrder Create Resolver.
  */
-module.exports.nutritionorderCreateResolver = function nutritionorderCreateResolver (root, args, context, info) {
+module.exports.nutritionorderCreateResolver = function nutritionorderCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.nutritionorderCreateResolver = function nutritionorderCreateResol
  * @static
  * @summary NutritionOrder Update Resolver.
  */
-module.exports.nutritionorderUpdateResolver = function nutritionorderUpdateResolver (root, args, context, info) {
+module.exports.nutritionorderUpdateResolver = function nutritionorderUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.nutritionorderUpdateResolver = function nutritionorderUpdateResol
  * @static
  * @summary NutritionOrder Delete Resolver.
  */
-module.exports.nutritionorderDeleteResolver = function nutritionorderDeleteResolver (root, args, context, info) {
+module.exports.nutritionorderDeleteResolver = function nutritionorderDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

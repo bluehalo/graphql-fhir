@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary AdverseEvent Resolver.
  */
-module.exports.adverseeventResolver = function adverseeventResolver (root, args, context, info) {
+module.exports.adverseeventResolver = function adverseeventResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.adverseeventResolver = function adverseeventResolver (root, args,
  * @static
  * @summary AdverseEvent List Resolver.
  */
-module.exports.adverseeventListResolver = function adverseeventListResolver (root, args, context, info) {
+module.exports.adverseeventListResolver = function adverseeventListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.adverseeventListResolver = function adverseeventListResolver (roo
  * @static
  * @summary AdverseEvent Instance Resolver.
  */
-module.exports.adverseeventInstanceResolver = function adverseeventInstanceResolver (root, args, context, info) {
+module.exports.adverseeventInstanceResolver = function adverseeventInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.adverseeventInstanceResolver = function adverseeventInstanceResol
  * @static
  * @summary AdverseEvent Create Resolver.
  */
-module.exports.adverseeventCreateResolver = function adverseeventCreateResolver (root, args, context, info) {
+module.exports.adverseeventCreateResolver = function adverseeventCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.adverseeventCreateResolver = function adverseeventCreateResolver 
  * @static
  * @summary AdverseEvent Update Resolver.
  */
-module.exports.adverseeventUpdateResolver = function adverseeventUpdateResolver (root, args, context, info) {
+module.exports.adverseeventUpdateResolver = function adverseeventUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.adverseeventUpdateResolver = function adverseeventUpdateResolver 
  * @static
  * @summary AdverseEvent Delete Resolver.
  */
-module.exports.adverseeventDeleteResolver = function adverseeventDeleteResolver (root, args, context, info) {
+module.exports.adverseeventDeleteResolver = function adverseeventDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

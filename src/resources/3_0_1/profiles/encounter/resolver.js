@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Encounter Resolver.
  */
-module.exports.encounterResolver = function encounterResolver (root, args, context, info) {
+module.exports.encounterResolver = function encounterResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.encounterResolver = function encounterResolver (root, args, conte
  * @static
  * @summary Encounter List Resolver.
  */
-module.exports.encounterListResolver = function encounterListResolver (root, args, context, info) {
+module.exports.encounterListResolver = function encounterListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.encounterListResolver = function encounterListResolver (root, arg
  * @static
  * @summary Encounter Instance Resolver.
  */
-module.exports.encounterInstanceResolver = function encounterInstanceResolver (root, args, context, info) {
+module.exports.encounterInstanceResolver = function encounterInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.encounterInstanceResolver = function encounterInstanceResolver (r
  * @static
  * @summary Encounter Create Resolver.
  */
-module.exports.encounterCreateResolver = function encounterCreateResolver (root, args, context, info) {
+module.exports.encounterCreateResolver = function encounterCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.encounterCreateResolver = function encounterCreateResolver (root,
  * @static
  * @summary Encounter Update Resolver.
  */
-module.exports.encounterUpdateResolver = function encounterUpdateResolver (root, args, context, info) {
+module.exports.encounterUpdateResolver = function encounterUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.encounterUpdateResolver = function encounterUpdateResolver (root,
  * @static
  * @summary Encounter Delete Resolver.
  */
-module.exports.encounterDeleteResolver = function encounterDeleteResolver (root, args, context, info) {
+module.exports.encounterDeleteResolver = function encounterDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

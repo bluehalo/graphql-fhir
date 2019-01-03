@@ -11,39 +11,39 @@ const MeasureReportInput = require('../../inputs/measurereport.input');
 const {
 	measurereportCreateResolver,
 	measurereportUpdateResolver,
-	measurereportDeleteResolver
+	measurereportDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'MeasureReport',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a MeasureReport record.'
+		description:
+			'Unique identifier for creating/updating a MeasureReport record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(MeasureReportInput),
-		description: 'MeasureReport Information for the record.'
-	}
+		description: 'MeasureReport Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a MeasureReport record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a MeasureReport record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.MeasureReportCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MeasureReport',
 	resolve: scopeInvariant(scopeOptions, measurereportCreateResolver),
-	type: MeasureReportSchema
+	type: MeasureReportSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.MeasureReportUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MeasureReports',
 	resolve: scopeInvariant(scopeOptions, measurereportUpdateResolver),
-	type: MeasureReportSchema
+	type: MeasureReportSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.MeasureReportDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MeasureReport',
 	resolve: scopeInvariant(scopeOptions, measurereportDeleteResolver),
-	type: MeasureReportSchema
+	type: MeasureReportSchema,
 };

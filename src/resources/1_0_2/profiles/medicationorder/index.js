@@ -1,13 +1,13 @@
 const {
 	MedicationOrderQuery,
 	MedicationOrderListQuery,
-	MedicationOrderInstanceQuery
+	MedicationOrderInstanceQuery,
 } = require('./query');
 
 const {
 	MedicationOrderCreateMutation,
 	MedicationOrderUpdateMutation,
-	MedicationOrderDeleteMutation
+	MedicationOrderDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		MedicationOrder: MedicationOrderQuery,
-		MedicationOrderList: MedicationOrderListQuery
+		MedicationOrderList: MedicationOrderListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		MedicationOrderCreate: MedicationOrderCreateMutation,
 		MedicationOrderUpdate: MedicationOrderUpdateMutation,
-		MedicationOrderDelete: MedicationOrderDeleteMutation
+		MedicationOrderDelete: MedicationOrderDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'MedicationOrder',
 		path: '/1_0_2/MedicationOrder/:id',
-		query: MedicationOrderInstanceQuery
-	}
+		query: MedicationOrderInstanceQuery,
+	},
 };

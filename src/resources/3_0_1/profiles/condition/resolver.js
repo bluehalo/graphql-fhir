@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Condition Resolver.
  */
-module.exports.conditionResolver = function conditionResolver (root, args, context, info) {
+module.exports.conditionResolver = function conditionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.conditionResolver = function conditionResolver (root, args, conte
  * @static
  * @summary Condition List Resolver.
  */
-module.exports.conditionListResolver = function conditionListResolver (root, args, context, info) {
+module.exports.conditionListResolver = function conditionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.conditionListResolver = function conditionListResolver (root, arg
  * @static
  * @summary Condition Instance Resolver.
  */
-module.exports.conditionInstanceResolver = function conditionInstanceResolver (root, args, context, info) {
+module.exports.conditionInstanceResolver = function conditionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.conditionInstanceResolver = function conditionInstanceResolver (r
  * @static
  * @summary Condition Create Resolver.
  */
-module.exports.conditionCreateResolver = function conditionCreateResolver (root, args, context, info) {
+module.exports.conditionCreateResolver = function conditionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.conditionCreateResolver = function conditionCreateResolver (root,
  * @static
  * @summary Condition Update Resolver.
  */
-module.exports.conditionUpdateResolver = function conditionUpdateResolver (root, args, context, info) {
+module.exports.conditionUpdateResolver = function conditionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.conditionUpdateResolver = function conditionUpdateResolver (root,
  * @static
  * @summary Condition Delete Resolver.
  */
-module.exports.conditionDeleteResolver = function conditionDeleteResolver (root, args, context, info) {
+module.exports.conditionDeleteResolver = function conditionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	imagingobjectselectionResolver,
 	imagingobjectselectionListResolver,
-	imagingobjectselectionInstanceResolver
+	imagingobjectselectionInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ImagingObjectSelection',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ImagingObjectSelectionQuery = {
 	args: Object.assign({}, CommonArgs, ImagingObjectSelectionArgs),
 	description: 'Query for a single ImagingObjectSelection',
 	resolve: scopeInvariant(scopeOptions, imagingobjectselectionResolver),
-	type: ImagingObjectSelectionSchema
+	type: ImagingObjectSelectionSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ImagingObjectSelectionListQuery = {
 	args: Object.assign({}, CommonArgs, ImagingObjectSelectionArgs),
 	description: 'Query for multiple ImagingObjectSelections',
 	resolve: scopeInvariant(scopeOptions, imagingobjectselectionListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ImagingObjectSelectionListQuery = {
 module.exports.ImagingObjectSelectionInstanceQuery = {
 	description: 'Get information about a single ImagingObjectSelection',
 	resolve: scopeInvariant(scopeOptions, imagingobjectselectionInstanceResolver),
-	type: ImagingObjectSelectionSchema
+	type: ImagingObjectSelectionSchema,
 };

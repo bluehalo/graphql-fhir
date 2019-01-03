@@ -11,39 +11,39 @@ const OrderResponseInput = require('../../inputs/orderresponse.input');
 const {
 	orderresponseCreateResolver,
 	orderresponseUpdateResolver,
-	orderresponseDeleteResolver
+	orderresponseDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'OrderResponse',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a OrderResponse record.'
+		description:
+			'Unique identifier for creating/updating a OrderResponse record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(OrderResponseInput),
-		description: 'OrderResponse Information for the record.'
-	}
+		description: 'OrderResponse Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a OrderResponse record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a OrderResponse record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.OrderResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a OrderResponse',
 	resolve: scopeInvariant(scopeOptions, orderresponseCreateResolver),
-	type: OrderResponseSchema
+	type: OrderResponseSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.OrderResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple OrderResponses',
 	resolve: scopeInvariant(scopeOptions, orderresponseUpdateResolver),
-	type: OrderResponseSchema
+	type: OrderResponseSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.OrderResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single OrderResponse',
 	resolve: scopeInvariant(scopeOptions, orderresponseDeleteResolver),
-	type: OrderResponseSchema
+	type: OrderResponseSchema,
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ServiceDefinition Resolver.
  */
-module.exports.servicedefinitionResolver = function servicedefinitionResolver (root, args, context, info) {
+module.exports.servicedefinitionResolver = function servicedefinitionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.servicedefinitionResolver = function servicedefinitionResolver (r
  * @static
  * @summary ServiceDefinition List Resolver.
  */
-module.exports.servicedefinitionListResolver = function servicedefinitionListResolver (root, args, context, info) {
+module.exports.servicedefinitionListResolver = function servicedefinitionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.servicedefinitionListResolver = function servicedefinitionListRes
  * @static
  * @summary ServiceDefinition Instance Resolver.
  */
-module.exports.servicedefinitionInstanceResolver = function servicedefinitionInstanceResolver (root, args, context, info) {
+module.exports.servicedefinitionInstanceResolver = function servicedefinitionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.servicedefinitionInstanceResolver = function servicedefinitionIns
  * @static
  * @summary ServiceDefinition Create Resolver.
  */
-module.exports.servicedefinitionCreateResolver = function servicedefinitionCreateResolver (root, args, context, info) {
+module.exports.servicedefinitionCreateResolver = function servicedefinitionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.servicedefinitionCreateResolver = function servicedefinitionCreat
  * @static
  * @summary ServiceDefinition Update Resolver.
  */
-module.exports.servicedefinitionUpdateResolver = function servicedefinitionUpdateResolver (root, args, context, info) {
+module.exports.servicedefinitionUpdateResolver = function servicedefinitionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.servicedefinitionUpdateResolver = function servicedefinitionUpdat
  * @static
  * @summary ServiceDefinition Delete Resolver.
  */
-module.exports.servicedefinitionDeleteResolver = function servicedefinitionDeleteResolver (root, args, context, info) {
+module.exports.servicedefinitionDeleteResolver = function servicedefinitionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

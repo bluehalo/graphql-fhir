@@ -1,13 +1,13 @@
 const {
 	CoverageQuery,
 	CoverageListQuery,
-	CoverageInstanceQuery
+	CoverageInstanceQuery,
 } = require('./query');
 
 const {
 	CoverageCreateMutation,
 	CoverageUpdateMutation,
-	CoverageDeleteMutation
+	CoverageDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Coverage: CoverageQuery,
-		CoverageList: CoverageListQuery
+		CoverageList: CoverageListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		CoverageCreate: CoverageCreateMutation,
 		CoverageUpdate: CoverageUpdateMutation,
-		CoverageDelete: CoverageDeleteMutation
+		CoverageDelete: CoverageDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Coverage',
 		path: '/1_0_2/Coverage/:id',
-		query: CoverageInstanceQuery
-	}
+		query: CoverageInstanceQuery,
+	},
 };

@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	auditeventResolver,
 	auditeventListResolver,
-	auditeventInstanceResolver
+	auditeventInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'AuditEvent',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.AuditEventQuery = {
 	args: Object.assign({}, CommonArgs, AuditEventArgs),
 	description: 'Query for a single AuditEvent',
 	resolve: scopeInvariant(scopeOptions, auditeventResolver),
-	type: AuditEventSchema
+	type: AuditEventSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.AuditEventListQuery = {
 	args: Object.assign({}, CommonArgs, AuditEventArgs),
 	description: 'Query for multiple AuditEvents',
 	resolve: scopeInvariant(scopeOptions, auditeventListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.AuditEventListQuery = {
 module.exports.AuditEventInstanceQuery = {
 	description: 'Get information about a single AuditEvent',
 	resolve: scopeInvariant(scopeOptions, auditeventInstanceResolver),
-	type: AuditEventSchema
+	type: AuditEventSchema,
 };

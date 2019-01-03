@@ -1,13 +1,13 @@
 const {
 	PatientQuery,
 	PatientListQuery,
-	PatientInstanceQuery
+	PatientInstanceQuery,
 } = require('./query');
 
 const {
 	PatientCreateMutation,
 	PatientUpdateMutation,
-	PatientDeleteMutation
+	PatientDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Patient: PatientQuery,
-		PatientList: PatientListQuery
+		PatientList: PatientListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		PatientCreate: PatientCreateMutation,
 		PatientUpdate: PatientUpdateMutation,
-		PatientDelete: PatientDeleteMutation
+		PatientDelete: PatientDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Patient',
 		path: '/3_0_1/Patient/:id',
-		query: PatientInstanceQuery
-	}
+		query: PatientInstanceQuery,
+	},
 };

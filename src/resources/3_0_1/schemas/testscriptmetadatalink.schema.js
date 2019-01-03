@@ -3,8 +3,6 @@ const { GraphQLObjectType, GraphQLNonNull, GraphQLString } = require('graphql');
 
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
-
-
 /**
  * @name exports
  * @summary TestScript.metadata.link Schema
@@ -12,22 +10,25 @@ const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 module.exports = new GraphQLObjectType({
 	name: 'TestScriptMetadataLink',
 	description: 'A link to the FHIR specification that this test is covering.',
-	fields: () => extendSchema(require('./backboneelement.schema'), {
-		url: {
-			type: new GraphQLNonNull(UriScalar),
-			description: 'URL to a particular requirement or feature within the FHIR specification.'
-		},
-		_url: {
-			type: require('./element.schema'),
-			description: 'URL to a particular requirement or feature within the FHIR specification.'
-		},
-		description: {
-			type: GraphQLString,
-			description: 'Short description of the link.'
-		},
-		_description: {
-			type: require('./element.schema'),
-			description: 'Short description of the link.'
-		}
-	})
+	fields: () =>
+		extendSchema(require('./backboneelement.schema'), {
+			url: {
+				type: new GraphQLNonNull(UriScalar),
+				description:
+					'URL to a particular requirement or feature within the FHIR specification.',
+			},
+			_url: {
+				type: require('./element.schema'),
+				description:
+					'URL to a particular requirement or feature within the FHIR specification.',
+			},
+			description: {
+				type: GraphQLString,
+				description: 'Short description of the link.',
+			},
+			_description: {
+				type: require('./element.schema'),
+				description: 'Short description of the link.',
+			},
+		}),
 });

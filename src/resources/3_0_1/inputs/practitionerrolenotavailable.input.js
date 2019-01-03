@@ -1,9 +1,11 @@
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString } = require('graphql');
+const {
+	GraphQLInputObjectType,
+	GraphQLNonNull,
+	GraphQLString,
+} = require('graphql');
 
 // Util for extending gql objects
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
-
-
 
 /**
  * @name exports
@@ -11,19 +13,24 @@ const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'PractitionerRoleNotAvailable_Input',
-	description: 'The HealthcareService is not available during this period of time due to the provided reason.',
-	fields: () => extendSchema(require('./backboneelement.input'), {
-		description: {
-			type: new GraphQLNonNull(GraphQLString),
-			description: 'The reason that can be presented to the user as to why this time is not available.'
-		},
-		_description: {
-			type: require('./element.input'),
-			description: 'The reason that can be presented to the user as to why this time is not available.'
-		},
-		during: {
-			type: require('./period.input'),
-			description: 'Service is not available (seasonally or for a public holiday) from this date.'
-		}
-	})
+	description:
+		'The HealthcareService is not available during this period of time due to the provided reason.',
+	fields: () =>
+		extendSchema(require('./backboneelement.input'), {
+			description: {
+				type: new GraphQLNonNull(GraphQLString),
+				description:
+					'The reason that can be presented to the user as to why this time is not available.',
+			},
+			_description: {
+				type: require('./element.input'),
+				description:
+					'The reason that can be presented to the user as to why this time is not available.',
+			},
+			during: {
+				type: require('./period.input'),
+				description:
+					'Service is not available (seasonally or for a public holiday) from this date.',
+			},
+		}),
 });

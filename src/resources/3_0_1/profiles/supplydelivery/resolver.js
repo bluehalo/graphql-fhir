@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary SupplyDelivery Resolver.
  */
-module.exports.supplydeliveryResolver = function supplydeliveryResolver (root, args, context, info) {
+module.exports.supplydeliveryResolver = function supplydeliveryResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.supplydeliveryResolver = function supplydeliveryResolver (root, a
  * @static
  * @summary SupplyDelivery List Resolver.
  */
-module.exports.supplydeliveryListResolver = function supplydeliveryListResolver (root, args, context, info) {
+module.exports.supplydeliveryListResolver = function supplydeliveryListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.supplydeliveryListResolver = function supplydeliveryListResolver 
  * @static
  * @summary SupplyDelivery Instance Resolver.
  */
-module.exports.supplydeliveryInstanceResolver = function supplydeliveryInstanceResolver (root, args, context, info) {
+module.exports.supplydeliveryInstanceResolver = function supplydeliveryInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.supplydeliveryInstanceResolver = function supplydeliveryInstanceR
  * @static
  * @summary SupplyDelivery Create Resolver.
  */
-module.exports.supplydeliveryCreateResolver = function supplydeliveryCreateResolver (root, args, context, info) {
+module.exports.supplydeliveryCreateResolver = function supplydeliveryCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.supplydeliveryCreateResolver = function supplydeliveryCreateResol
  * @static
  * @summary SupplyDelivery Update Resolver.
  */
-module.exports.supplydeliveryUpdateResolver = function supplydeliveryUpdateResolver (root, args, context, info) {
+module.exports.supplydeliveryUpdateResolver = function supplydeliveryUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.supplydeliveryUpdateResolver = function supplydeliveryUpdateResol
  * @static
  * @summary SupplyDelivery Delete Resolver.
  */
-module.exports.supplydeliveryDeleteResolver = function supplydeliveryDeleteResolver (root, args, context, info) {
+module.exports.supplydeliveryDeleteResolver = function supplydeliveryDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

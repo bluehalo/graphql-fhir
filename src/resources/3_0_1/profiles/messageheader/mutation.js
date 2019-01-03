@@ -11,39 +11,39 @@ const MessageHeaderInput = require('../../inputs/messageheader.input');
 const {
 	messageheaderCreateResolver,
 	messageheaderUpdateResolver,
-	messageheaderDeleteResolver
+	messageheaderDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'MessageHeader',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a MessageHeader record.'
+		description:
+			'Unique identifier for creating/updating a MessageHeader record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(MessageHeaderInput),
-		description: 'MessageHeader Information for the record.'
-	}
+		description: 'MessageHeader Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a MessageHeader record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a MessageHeader record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.MessageHeaderCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MessageHeader',
 	resolve: scopeInvariant(scopeOptions, messageheaderCreateResolver),
-	type: MessageHeaderSchema
+	type: MessageHeaderSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.MessageHeaderUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MessageHeaders',
 	resolve: scopeInvariant(scopeOptions, messageheaderUpdateResolver),
-	type: MessageHeaderSchema
+	type: MessageHeaderSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.MessageHeaderDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MessageHeader',
 	resolve: scopeInvariant(scopeOptions, messageheaderDeleteResolver),
-	type: MessageHeaderSchema
+	type: MessageHeaderSchema,
 };

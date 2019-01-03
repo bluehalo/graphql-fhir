@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Communication Resolver.
  */
-module.exports.communicationResolver = function communicationResolver (root, args, context, info) {
+module.exports.communicationResolver = function communicationResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.communicationResolver = function communicationResolver (root, arg
  * @static
  * @summary Communication List Resolver.
  */
-module.exports.communicationListResolver = function communicationListResolver (root, args, context, info) {
+module.exports.communicationListResolver = function communicationListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.communicationListResolver = function communicationListResolver (r
  * @static
  * @summary Communication Instance Resolver.
  */
-module.exports.communicationInstanceResolver = function communicationInstanceResolver (root, args, context, info) {
+module.exports.communicationInstanceResolver = function communicationInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.communicationInstanceResolver = function communicationInstanceRes
  * @static
  * @summary Communication Create Resolver.
  */
-module.exports.communicationCreateResolver = function communicationCreateResolver (root, args, context, info) {
+module.exports.communicationCreateResolver = function communicationCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.communicationCreateResolver = function communicationCreateResolve
  * @static
  * @summary Communication Update Resolver.
  */
-module.exports.communicationUpdateResolver = function communicationUpdateResolver (root, args, context, info) {
+module.exports.communicationUpdateResolver = function communicationUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.communicationUpdateResolver = function communicationUpdateResolve
  * @static
  * @summary Communication Delete Resolver.
  */
-module.exports.communicationDeleteResolver = function communicationDeleteResolver (root, args, context, info) {
+module.exports.communicationDeleteResolver = function communicationDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

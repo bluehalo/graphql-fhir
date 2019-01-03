@@ -3,8 +3,6 @@ const { GraphQLInputObjectType } = require('graphql');
 // Util for extending gql objects
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
-
-
 /**
  * @name exports
  * @summary Duration Input Schema
@@ -12,5 +10,5 @@ const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'Duration_Input',
 	description: 'A length of time.',
-	fields: () => extendSchema(require('./quantity.input'))
+	fields: () => extendSchema(require('./quantity.input')),
 });

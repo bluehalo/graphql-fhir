@@ -6,7 +6,7 @@ const path = require('path');
  */
 const VERSION = {
 	'1_0_2': '1_0_2',
-	'3_0_1': '3_0_1'
+	'3_0_1': '3_0_1',
 };
 
 /**
@@ -21,7 +21,7 @@ const SERVER_CONFIG = {
 	port: process.env.PORT || 3000,
 	// Logger configurations
 	logging: {
-		level: 'debug'
+		level: 'debug',
 	},
 	// Auth configurations
 	auth: {
@@ -31,9 +31,9 @@ const SERVER_CONFIG = {
 		introspectionUrl: process.env.INTROSPECTION_URL,
 		strategy: path.posix.resolve('src/strategies/bearer.strategy.js'),
 		passportOptions: {
-			session: false
-		}
-	}
+			session: false,
+		},
+	},
 };
 
 /**
@@ -45,7 +45,7 @@ const DATE_CONFIG = {
 	// are different from what's defined in 3.0.1 structure defintions
 	dateFormat: 'YYYY-MM-DD',
 	timeFormat: 'HH:mm:ss',
-	dateTimeFormat: 'YYYY-MM-DDTHH:mm:ss.SSSSZ'
+	dateTimeFormat: 'YYYY-MM-DDTHH:mm:ss.SSSSZ',
 };
 
 /**
@@ -57,12 +57,12 @@ const RESOURCE_CONFIG = {
 	// base folder for all the resources relative to src
 	resourceBase: 'resources',
 	// Path is relative to version folder under resources
-	profilesRelativePath: 'profiles/**/index.js'
+	profilesRelativePath: 'profiles/**/index.js',
 };
 
 module.exports = {
 	RESOURCE_CONFIG,
 	SERVER_CONFIG,
 	DATE_CONFIG,
-	VERSION
+	VERSION,
 };

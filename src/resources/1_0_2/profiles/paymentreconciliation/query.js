@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	paymentreconciliationResolver,
 	paymentreconciliationListResolver,
-	paymentreconciliationInstanceResolver
+	paymentreconciliationInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'PaymentReconciliation',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.PaymentReconciliationQuery = {
 	args: Object.assign({}, CommonArgs, PaymentReconciliationArgs),
 	description: 'Query for a single PaymentReconciliation',
 	resolve: scopeInvariant(scopeOptions, paymentreconciliationResolver),
-	type: PaymentReconciliationSchema
+	type: PaymentReconciliationSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.PaymentReconciliationListQuery = {
 	args: Object.assign({}, CommonArgs, PaymentReconciliationArgs),
 	description: 'Query for multiple PaymentReconciliations',
 	resolve: scopeInvariant(scopeOptions, paymentreconciliationListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.PaymentReconciliationListQuery = {
 module.exports.PaymentReconciliationInstanceQuery = {
 	description: 'Get information about a single PaymentReconciliation',
 	resolve: scopeInvariant(scopeOptions, paymentreconciliationInstanceResolver),
-	type: PaymentReconciliationSchema
+	type: PaymentReconciliationSchema,
 };

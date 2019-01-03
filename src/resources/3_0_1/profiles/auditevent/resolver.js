@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary AuditEvent Resolver.
  */
-module.exports.auditeventResolver = function auditeventResolver (root, args, context, info) {
+module.exports.auditeventResolver = function auditeventResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.auditeventResolver = function auditeventResolver (root, args, con
  * @static
  * @summary AuditEvent List Resolver.
  */
-module.exports.auditeventListResolver = function auditeventListResolver (root, args, context, info) {
+module.exports.auditeventListResolver = function auditeventListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.auditeventListResolver = function auditeventListResolver (root, a
  * @static
  * @summary AuditEvent Instance Resolver.
  */
-module.exports.auditeventInstanceResolver = function auditeventInstanceResolver (root, args, context, info) {
+module.exports.auditeventInstanceResolver = function auditeventInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.auditeventInstanceResolver = function auditeventInstanceResolver 
  * @static
  * @summary AuditEvent Create Resolver.
  */
-module.exports.auditeventCreateResolver = function auditeventCreateResolver (root, args, context, info) {
+module.exports.auditeventCreateResolver = function auditeventCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.auditeventCreateResolver = function auditeventCreateResolver (roo
  * @static
  * @summary AuditEvent Update Resolver.
  */
-module.exports.auditeventUpdateResolver = function auditeventUpdateResolver (root, args, context, info) {
+module.exports.auditeventUpdateResolver = function auditeventUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.auditeventUpdateResolver = function auditeventUpdateResolver (roo
  * @static
  * @summary AuditEvent Delete Resolver.
  */
-module.exports.auditeventDeleteResolver = function auditeventDeleteResolver (root, args, context, info) {
+module.exports.auditeventDeleteResolver = function auditeventDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

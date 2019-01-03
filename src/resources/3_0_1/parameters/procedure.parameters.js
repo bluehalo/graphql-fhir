@@ -10,58 +10,72 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	date: {
 		type: DateScalar,
-		description: 'Date/Period the procedure was performed (See http://hl7.org/fhir/SearchParameter/clinical-date).'
+		description:
+			'Date/Period the procedure was performed (See http://hl7.org/fhir/SearchParameter/clinical-date).',
 	},
 	identifier: {
 		type: TokenScalar,
-		description: 'A unique identifier for a procedure (See http://hl7.org/fhir/SearchParameter/clinical-identifier).'
+		description:
+			'A unique identifier for a procedure (See http://hl7.org/fhir/SearchParameter/clinical-identifier).',
 	},
 	code: {
 		type: TokenScalar,
-		description: 'A code to identify a  procedure (See http://hl7.org/fhir/SearchParameter/clinical-code).'
+		description:
+			'A code to identify a  procedure (See http://hl7.org/fhir/SearchParameter/clinical-code).',
 	},
 	performer: {
 		type: GraphQLString,
-		description: 'The reference to the practitioner (See http://hl7.org/fhir/SearchParameter/Procedure-performer).'
+		description:
+			'The reference to the practitioner (See http://hl7.org/fhir/SearchParameter/Procedure-performer).',
 	},
 	subject: {
 		type: GraphQLString,
-		description: 'Search by subject (See http://hl7.org/fhir/SearchParameter/Procedure-subject).'
+		description:
+			'Search by subject (See http://hl7.org/fhir/SearchParameter/Procedure-subject).',
 	},
 	part_of: {
 		type: GraphQLString,
-		description: 'Part of referenced event (See http://hl7.org/fhir/SearchParameter/Procedure-part-of).'
+		description:
+			'Part of referenced event (See http://hl7.org/fhir/SearchParameter/Procedure-part-of).',
 	},
 	encounter: {
 		type: GraphQLString,
-		description: 'Search by encounter (See http://hl7.org/fhir/SearchParameter/clinical-encounter).'
+		description:
+			'Search by encounter (See http://hl7.org/fhir/SearchParameter/clinical-encounter).',
 	},
 	based_on: {
 		type: GraphQLString,
-		description: 'A request for this procedure (See http://hl7.org/fhir/SearchParameter/Procedure-based-on).'
+		description:
+			'A request for this procedure (See http://hl7.org/fhir/SearchParameter/Procedure-based-on).',
 	},
 	patient: {
 		type: GraphQLString,
-		description: 'Search by subject - a patient (See http://hl7.org/fhir/SearchParameter/clinical-patient).'
+		description:
+			'Search by subject - a patient (See http://hl7.org/fhir/SearchParameter/clinical-patient).',
 	},
 	context: {
 		type: GraphQLString,
-		description: 'Encounter or episode associated with the procedure (See http://hl7.org/fhir/SearchParameter/Procedure-context).'
+		description:
+			'Encounter or episode associated with the procedure (See http://hl7.org/fhir/SearchParameter/Procedure-context).',
 	},
 	location: {
 		type: GraphQLString,
-		description: 'Where the procedure happened (See http://hl7.org/fhir/SearchParameter/Procedure-location).'
+		description:
+			'Where the procedure happened (See http://hl7.org/fhir/SearchParameter/Procedure-location).',
 	},
 	definition: {
 		type: GraphQLString,
-		description: 'Instantiates protocol or definition (See http://hl7.org/fhir/SearchParameter/Procedure-definition).'
+		description:
+			'Instantiates protocol or definition (See http://hl7.org/fhir/SearchParameter/Procedure-definition).',
 	},
 	category: {
 		type: TokenScalar,
-		description: 'Classification of the procedure (See http://hl7.org/fhir/SearchParameter/Procedure-category).'
+		description:
+			'Classification of the procedure (See http://hl7.org/fhir/SearchParameter/Procedure-category).',
 	},
 	status: {
 		type: TokenScalar,
-		description: 'preparation | in-progress | suspended | aborted | completed | entered-in-error | unknown (See http://hl7.org/fhir/SearchParameter/Procedure-status).'
-	}
+		description:
+			'preparation | in-progress | suspended | aborted | completed | entered-in-error | unknown (See http://hl7.org/fhir/SearchParameter/Procedure-status).',
+	},
 };

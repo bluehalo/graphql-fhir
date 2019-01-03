@@ -3,9 +3,7 @@ const { VERSION } = require('../config');
 const path = require('path');
 
 describe('Resolve Utils Test', () => {
-
 	describe('resolve', () => {
-
 		test('should resolve to `src` as the base when no relative path is provided', () => {
 			let base = path.basename(resolve());
 			expect(base).toEqual('src');
@@ -16,11 +14,9 @@ describe('Resolve Utils Test', () => {
 			let diff = path.relative(resolve(''), resolve(relative_path));
 			expect(diff).toEqual(relative_path);
 		});
-
 	});
 
 	describe('resolveFromVersion', () => {
-
 		test('should resolve to `src/resources/stu3` when no arguments are provided', () => {
 			let base = resolveFromVersion();
 			let project_base = base.substr(base.indexOf('src'));
@@ -38,7 +34,5 @@ describe('Resolve Utils Test', () => {
 			let project_base = base.substr(base.indexOf('src'));
 			expect(project_base).toEqual('src/resources/3_0_1/scooby/doo');
 		});
-
 	});
-
 });

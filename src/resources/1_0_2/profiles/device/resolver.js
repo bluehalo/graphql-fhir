@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Device Resolver.
  */
-module.exports.deviceResolver = function deviceResolver (root, args, context, info) {
+module.exports.deviceResolver = function deviceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.deviceResolver = function deviceResolver (root, args, context, in
  * @static
  * @summary Device List Resolver.
  */
-module.exports.deviceListResolver = function deviceListResolver (root, args, context, info) {
+module.exports.deviceListResolver = function deviceListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.deviceListResolver = function deviceListResolver (root, args, con
  * @static
  * @summary Device Instance Resolver.
  */
-module.exports.deviceInstanceResolver = function deviceInstanceResolver (root, args, context, info) {
+module.exports.deviceInstanceResolver = function deviceInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.deviceInstanceResolver = function deviceInstanceResolver (root, a
  * @static
  * @summary Device Create Resolver.
  */
-module.exports.deviceCreateResolver = function deviceCreateResolver (root, args, context, info) {
+module.exports.deviceCreateResolver = function deviceCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.deviceCreateResolver = function deviceCreateResolver (root, args,
  * @static
  * @summary Device Update Resolver.
  */
-module.exports.deviceUpdateResolver = function deviceUpdateResolver (root, args, context, info) {
+module.exports.deviceUpdateResolver = function deviceUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.deviceUpdateResolver = function deviceUpdateResolver (root, args,
  * @static
  * @summary Device Delete Resolver.
  */
-module.exports.deviceDeleteResolver = function deviceDeleteResolver (root, args, context, info) {
+module.exports.deviceDeleteResolver = function deviceDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

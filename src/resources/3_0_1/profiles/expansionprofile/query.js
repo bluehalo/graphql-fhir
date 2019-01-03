@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	expansionprofileResolver,
 	expansionprofileListResolver,
-	expansionprofileInstanceResolver
+	expansionprofileInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ExpansionProfile',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ExpansionProfileQuery = {
 	args: Object.assign({}, CommonArgs, ExpansionProfileArgs),
 	description: 'Query for a single ExpansionProfile',
 	resolve: scopeInvariant(scopeOptions, expansionprofileResolver),
-	type: ExpansionProfileSchema
+	type: ExpansionProfileSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ExpansionProfileListQuery = {
 	args: Object.assign({}, CommonArgs, ExpansionProfileArgs),
 	description: 'Query for multiple ExpansionProfiles',
 	resolve: scopeInvariant(scopeOptions, expansionprofileListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ExpansionProfileListQuery = {
 module.exports.ExpansionProfileInstanceQuery = {
 	description: 'Get information about a single ExpansionProfile',
 	resolve: scopeInvariant(scopeOptions, expansionprofileInstanceResolver),
-	type: ExpansionProfileSchema
+	type: ExpansionProfileSchema,
 };

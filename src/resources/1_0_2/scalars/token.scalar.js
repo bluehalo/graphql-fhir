@@ -18,5 +18,5 @@ module.exports = new GraphQLScalarType({
 	parseLiteral: ast => {
 		let { value } = ast;
 		return value;
-	}
+	},
 });

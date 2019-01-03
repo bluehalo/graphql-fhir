@@ -11,39 +11,39 @@ const DeviceUseRequestInput = require('../../inputs/deviceuserequest.input');
 const {
 	deviceuserequestCreateResolver,
 	deviceuserequestUpdateResolver,
-	deviceuserequestDeleteResolver
+	deviceuserequestDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DeviceUseRequest',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a DeviceUseRequest record.'
+		description:
+			'Unique identifier for creating/updating a DeviceUseRequest record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(DeviceUseRequestInput),
-		description: 'DeviceUseRequest Information for the record.'
-	}
+		description: 'DeviceUseRequest Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a DeviceUseRequest record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a DeviceUseRequest record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.DeviceUseRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DeviceUseRequest',
 	resolve: scopeInvariant(scopeOptions, deviceuserequestCreateResolver),
-	type: DeviceUseRequestSchema
+	type: DeviceUseRequestSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.DeviceUseRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DeviceUseRequests',
 	resolve: scopeInvariant(scopeOptions, deviceuserequestUpdateResolver),
-	type: DeviceUseRequestSchema
+	type: DeviceUseRequestSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.DeviceUseRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DeviceUseRequest',
 	resolve: scopeInvariant(scopeOptions, deviceuserequestDeleteResolver),
-	type: DeviceUseRequestSchema
+	type: DeviceUseRequestSchema,
 };

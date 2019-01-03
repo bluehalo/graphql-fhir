@@ -11,39 +11,39 @@ const ActivityDefinitionInput = require('../../inputs/activitydefinition.input')
 const {
 	activitydefinitionCreateResolver,
 	activitydefinitionUpdateResolver,
-	activitydefinitionDeleteResolver
+	activitydefinitionDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ActivityDefinition',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a ActivityDefinition record.'
+		description:
+			'Unique identifier for creating/updating a ActivityDefinition record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ActivityDefinitionInput),
-		description: 'ActivityDefinition Information for the record.'
-	}
+		description: 'ActivityDefinition Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a ActivityDefinition record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a ActivityDefinition record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.ActivityDefinitionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ActivityDefinition',
 	resolve: scopeInvariant(scopeOptions, activitydefinitionCreateResolver),
-	type: ActivityDefinitionSchema
+	type: ActivityDefinitionSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.ActivityDefinitionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ActivityDefinitions',
 	resolve: scopeInvariant(scopeOptions, activitydefinitionUpdateResolver),
-	type: ActivityDefinitionSchema
+	type: ActivityDefinitionSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.ActivityDefinitionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ActivityDefinition',
 	resolve: scopeInvariant(scopeOptions, activitydefinitionDeleteResolver),
-	type: ActivityDefinitionSchema
+	type: ActivityDefinitionSchema,
 };

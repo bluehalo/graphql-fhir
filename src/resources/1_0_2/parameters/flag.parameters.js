@@ -9,22 +9,27 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	author: {
 		type: GraphQLString,
-		description: 'Flag creator (See http://hl7.org/fhir/SearchParameter/flag-author).'
+		description:
+			'Flag creator (See http://hl7.org/fhir/SearchParameter/flag-author).',
 	},
 	patient: {
 		type: GraphQLString,
-		description: 'The identity of a subject to list flags for (See http://hl7.org/fhir/SearchParameter/flag-patient).'
+		description:
+			'The identity of a subject to list flags for (See http://hl7.org/fhir/SearchParameter/flag-patient).',
 	},
 	subject: {
 		type: GraphQLString,
-		description: 'The identity of a subject to list flags for (See http://hl7.org/fhir/SearchParameter/flag-subject).'
+		description:
+			'The identity of a subject to list flags for (See http://hl7.org/fhir/SearchParameter/flag-subject).',
 	},
 	encounter: {
 		type: GraphQLString,
-		description: 'Alert relevant during encounter (See http://hl7.org/fhir/SearchParameter/flag-encounter).'
+		description:
+			'Alert relevant during encounter (See http://hl7.org/fhir/SearchParameter/flag-encounter).',
 	},
 	date: {
 		type: DateScalar,
-		description: 'Time period when flag is active (See http://hl7.org/fhir/SearchParameter/flag-date).'
-	}
+		description:
+			'Time period when flag is active (See http://hl7.org/fhir/SearchParameter/flag-date).',
+	},
 };

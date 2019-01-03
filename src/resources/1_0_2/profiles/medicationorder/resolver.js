@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary MedicationOrder Resolver.
  */
-module.exports.medicationorderResolver = function medicationorderResolver (root, args, context, info) {
+module.exports.medicationorderResolver = function medicationorderResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.medicationorderResolver = function medicationorderResolver (root,
  * @static
  * @summary MedicationOrder List Resolver.
  */
-module.exports.medicationorderListResolver = function medicationorderListResolver (root, args, context, info) {
+module.exports.medicationorderListResolver = function medicationorderListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.medicationorderListResolver = function medicationorderListResolve
  * @static
  * @summary MedicationOrder Instance Resolver.
  */
-module.exports.medicationorderInstanceResolver = function medicationorderInstanceResolver (root, args, context, info) {
+module.exports.medicationorderInstanceResolver = function medicationorderInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.medicationorderInstanceResolver = function medicationorderInstanc
  * @static
  * @summary MedicationOrder Create Resolver.
  */
-module.exports.medicationorderCreateResolver = function medicationorderCreateResolver (root, args, context, info) {
+module.exports.medicationorderCreateResolver = function medicationorderCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.medicationorderCreateResolver = function medicationorderCreateRes
  * @static
  * @summary MedicationOrder Update Resolver.
  */
-module.exports.medicationorderUpdateResolver = function medicationorderUpdateResolver (root, args, context, info) {
+module.exports.medicationorderUpdateResolver = function medicationorderUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.medicationorderUpdateResolver = function medicationorderUpdateRes
  * @static
  * @summary MedicationOrder Delete Resolver.
  */
-module.exports.medicationorderDeleteResolver = function medicationorderDeleteResolver (root, args, context, info) {
+module.exports.medicationorderDeleteResolver = function medicationorderDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

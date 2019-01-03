@@ -11,39 +11,39 @@ const GuidanceResponseInput = require('../../inputs/guidanceresponse.input');
 const {
 	guidanceresponseCreateResolver,
 	guidanceresponseUpdateResolver,
-	guidanceresponseDeleteResolver
+	guidanceresponseDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'GuidanceResponse',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a GuidanceResponse record.'
+		description:
+			'Unique identifier for creating/updating a GuidanceResponse record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(GuidanceResponseInput),
-		description: 'GuidanceResponse Information for the record.'
-	}
+		description: 'GuidanceResponse Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a GuidanceResponse record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a GuidanceResponse record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.GuidanceResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a GuidanceResponse',
 	resolve: scopeInvariant(scopeOptions, guidanceresponseCreateResolver),
-	type: GuidanceResponseSchema
+	type: GuidanceResponseSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.GuidanceResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple GuidanceResponses',
 	resolve: scopeInvariant(scopeOptions, guidanceresponseUpdateResolver),
-	type: GuidanceResponseSchema
+	type: GuidanceResponseSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.GuidanceResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single GuidanceResponse',
 	resolve: scopeInvariant(scopeOptions, guidanceresponseDeleteResolver),
-	type: GuidanceResponseSchema
+	type: GuidanceResponseSchema,
 };

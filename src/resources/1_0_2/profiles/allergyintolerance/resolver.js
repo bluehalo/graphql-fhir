@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary AllergyIntolerance Resolver.
  */
-module.exports.allergyintoleranceResolver = function allergyintoleranceResolver (root, args, context, info) {
+module.exports.allergyintoleranceResolver = function allergyintoleranceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.allergyintoleranceResolver = function allergyintoleranceResolver 
  * @static
  * @summary AllergyIntolerance List Resolver.
  */
-module.exports.allergyintoleranceListResolver = function allergyintoleranceListResolver (root, args, context, info) {
+module.exports.allergyintoleranceListResolver = function allergyintoleranceListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.allergyintoleranceListResolver = function allergyintoleranceListR
  * @static
  * @summary AllergyIntolerance Instance Resolver.
  */
-module.exports.allergyintoleranceInstanceResolver = function allergyintoleranceInstanceResolver (root, args, context, info) {
+module.exports.allergyintoleranceInstanceResolver = function allergyintoleranceInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.allergyintoleranceInstanceResolver = function allergyintoleranceI
  * @static
  * @summary AllergyIntolerance Create Resolver.
  */
-module.exports.allergyintoleranceCreateResolver = function allergyintoleranceCreateResolver (root, args, context, info) {
+module.exports.allergyintoleranceCreateResolver = function allergyintoleranceCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.allergyintoleranceCreateResolver = function allergyintoleranceCre
  * @static
  * @summary AllergyIntolerance Update Resolver.
  */
-module.exports.allergyintoleranceUpdateResolver = function allergyintoleranceUpdateResolver (root, args, context, info) {
+module.exports.allergyintoleranceUpdateResolver = function allergyintoleranceUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.allergyintoleranceUpdateResolver = function allergyintoleranceUpd
  * @static
  * @summary AllergyIntolerance Delete Resolver.
  */
-module.exports.allergyintoleranceDeleteResolver = function allergyintoleranceDeleteResolver (root, args, context, info) {
+module.exports.allergyintoleranceDeleteResolver = function allergyintoleranceDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

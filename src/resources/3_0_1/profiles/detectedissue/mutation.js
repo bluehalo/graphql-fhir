@@ -11,39 +11,39 @@ const DetectedIssueInput = require('../../inputs/detectedissue.input');
 const {
 	detectedissueCreateResolver,
 	detectedissueUpdateResolver,
-	detectedissueDeleteResolver
+	detectedissueDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DetectedIssue',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a DetectedIssue record.'
+		description:
+			'Unique identifier for creating/updating a DetectedIssue record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(DetectedIssueInput),
-		description: 'DetectedIssue Information for the record.'
-	}
+		description: 'DetectedIssue Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a DetectedIssue record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a DetectedIssue record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.DetectedIssueCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DetectedIssue',
 	resolve: scopeInvariant(scopeOptions, detectedissueCreateResolver),
-	type: DetectedIssueSchema
+	type: DetectedIssueSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.DetectedIssueUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DetectedIssues',
 	resolve: scopeInvariant(scopeOptions, detectedissueUpdateResolver),
-	type: DetectedIssueSchema
+	type: DetectedIssueSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.DetectedIssueDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DetectedIssue',
 	resolve: scopeInvariant(scopeOptions, detectedissueDeleteResolver),
-	type: DetectedIssueSchema
+	type: DetectedIssueSchema,
 };

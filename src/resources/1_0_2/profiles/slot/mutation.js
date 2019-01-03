@@ -11,39 +11,37 @@ const SlotInput = require('../../inputs/slot.input');
 const {
 	slotCreateResolver,
 	slotUpdateResolver,
-	slotDeleteResolver
+	slotDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Slot',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Slot record.'
+		description: 'Unique identifier for creating/updating a Slot record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(SlotInput),
-		description: 'Slot Information for the record.'
-	}
+		description: 'Slot Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Slot record for deletion.'
-	}
+		description: 'Unique identifier for selecting a Slot record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +52,7 @@ module.exports.SlotCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Slot',
 	resolve: scopeInvariant(scopeOptions, slotCreateResolver),
-	type: SlotSchema
+	type: SlotSchema,
 };
 
 /**
@@ -65,7 +63,7 @@ module.exports.SlotUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Slots',
 	resolve: scopeInvariant(scopeOptions, slotUpdateResolver),
-	type: SlotSchema
+	type: SlotSchema,
 };
 
 /**
@@ -76,5 +74,5 @@ module.exports.SlotDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Slot',
 	resolve: scopeInvariant(scopeOptions, slotDeleteResolver),
-	type: SlotSchema
+	type: SlotSchema,
 };

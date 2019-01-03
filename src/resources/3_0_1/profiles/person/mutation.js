@@ -11,39 +11,38 @@ const PersonInput = require('../../inputs/person.input');
 const {
 	personCreateResolver,
 	personUpdateResolver,
-	personDeleteResolver
+	personDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Person',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Person record.'
+		description: 'Unique identifier for creating/updating a Person record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(PersonInput),
-		description: 'Person Information for the record.'
-	}
+		description: 'Person Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Person record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Person record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.PersonCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Person',
 	resolve: scopeInvariant(scopeOptions, personCreateResolver),
-	type: PersonSchema
+	type: PersonSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.PersonUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Persons',
 	resolve: scopeInvariant(scopeOptions, personUpdateResolver),
-	type: PersonSchema
+	type: PersonSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.PersonDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Person',
 	resolve: scopeInvariant(scopeOptions, personDeleteResolver),
-	type: PersonSchema
+	type: PersonSchema,
 };

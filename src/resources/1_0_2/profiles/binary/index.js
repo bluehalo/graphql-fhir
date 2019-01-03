@@ -1,13 +1,13 @@
 const {
 	BinaryQuery,
 	BinaryListQuery,
-	BinaryInstanceQuery
+	BinaryInstanceQuery,
 } = require('./query');
 
 const {
 	BinaryCreateMutation,
 	BinaryUpdateMutation,
-	BinaryDeleteMutation
+	BinaryDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Binary: BinaryQuery,
-		BinaryList: BinaryListQuery
+		BinaryList: BinaryListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		BinaryCreate: BinaryCreateMutation,
 		BinaryUpdate: BinaryUpdateMutation,
-		BinaryDelete: BinaryDeleteMutation
+		BinaryDelete: BinaryDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Binary',
 		path: '/1_0_2/Binary/:id',
-		query: BinaryInstanceQuery
-	}
+		query: BinaryInstanceQuery,
+	},
 };

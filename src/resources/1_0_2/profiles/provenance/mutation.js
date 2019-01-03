@@ -11,39 +11,38 @@ const ProvenanceInput = require('../../inputs/provenance.input');
 const {
 	provenanceCreateResolver,
 	provenanceUpdateResolver,
-	provenanceDeleteResolver
+	provenanceDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Provenance',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Provenance record.'
+		description: 'Unique identifier for creating/updating a Provenance record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ProvenanceInput),
-		description: 'Provenance Information for the record.'
-	}
+		description: 'Provenance Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Provenance record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Provenance record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.ProvenanceCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Provenance',
 	resolve: scopeInvariant(scopeOptions, provenanceCreateResolver),
-	type: ProvenanceSchema
+	type: ProvenanceSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.ProvenanceUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Provenances',
 	resolve: scopeInvariant(scopeOptions, provenanceUpdateResolver),
-	type: ProvenanceSchema
+	type: ProvenanceSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.ProvenanceDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Provenance',
 	resolve: scopeInvariant(scopeOptions, provenanceDeleteResolver),
-	type: ProvenanceSchema
+	type: ProvenanceSchema,
 };

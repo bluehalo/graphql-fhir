@@ -11,39 +11,39 @@ const QuestionnaireInput = require('../../inputs/questionnaire.input');
 const {
 	questionnaireCreateResolver,
 	questionnaireUpdateResolver,
-	questionnaireDeleteResolver
+	questionnaireDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Questionnaire',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Questionnaire record.'
+		description:
+			'Unique identifier for creating/updating a Questionnaire record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(QuestionnaireInput),
-		description: 'Questionnaire Information for the record.'
-	}
+		description: 'Questionnaire Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Questionnaire record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Questionnaire record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.QuestionnaireCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Questionnaire',
 	resolve: scopeInvariant(scopeOptions, questionnaireCreateResolver),
-	type: QuestionnaireSchema
+	type: QuestionnaireSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.QuestionnaireUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Questionnaires',
 	resolve: scopeInvariant(scopeOptions, questionnaireUpdateResolver),
-	type: QuestionnaireSchema
+	type: QuestionnaireSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.QuestionnaireDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Questionnaire',
 	resolve: scopeInvariant(scopeOptions, questionnaireDeleteResolver),
-	type: QuestionnaireSchema
+	type: QuestionnaireSchema,
 };

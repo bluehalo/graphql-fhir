@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary EpisodeOfCare Resolver.
  */
-module.exports.episodeofcareResolver = function episodeofcareResolver (root, args, context, info) {
+module.exports.episodeofcareResolver = function episodeofcareResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.episodeofcareResolver = function episodeofcareResolver (root, arg
  * @static
  * @summary EpisodeOfCare List Resolver.
  */
-module.exports.episodeofcareListResolver = function episodeofcareListResolver (root, args, context, info) {
+module.exports.episodeofcareListResolver = function episodeofcareListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.episodeofcareListResolver = function episodeofcareListResolver (r
  * @static
  * @summary EpisodeOfCare Instance Resolver.
  */
-module.exports.episodeofcareInstanceResolver = function episodeofcareInstanceResolver (root, args, context, info) {
+module.exports.episodeofcareInstanceResolver = function episodeofcareInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.episodeofcareInstanceResolver = function episodeofcareInstanceRes
  * @static
  * @summary EpisodeOfCare Create Resolver.
  */
-module.exports.episodeofcareCreateResolver = function episodeofcareCreateResolver (root, args, context, info) {
+module.exports.episodeofcareCreateResolver = function episodeofcareCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.episodeofcareCreateResolver = function episodeofcareCreateResolve
  * @static
  * @summary EpisodeOfCare Update Resolver.
  */
-module.exports.episodeofcareUpdateResolver = function episodeofcareUpdateResolver (root, args, context, info) {
+module.exports.episodeofcareUpdateResolver = function episodeofcareUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.episodeofcareUpdateResolver = function episodeofcareUpdateResolve
  * @static
  * @summary EpisodeOfCare Delete Resolver.
  */
-module.exports.episodeofcareDeleteResolver = function episodeofcareDeleteResolver (root, args, context, info) {
+module.exports.episodeofcareDeleteResolver = function episodeofcareDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

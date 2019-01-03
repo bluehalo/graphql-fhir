@@ -17,5 +17,5 @@ let resolve = (relative_path = '') => {
  */
 module.exports = {
 	resolveFromVersion,
-	resolve
+	resolve,
 };

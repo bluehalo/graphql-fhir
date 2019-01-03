@@ -1,13 +1,13 @@
 const {
 	ProcedureRequestQuery,
 	ProcedureRequestListQuery,
-	ProcedureRequestInstanceQuery
+	ProcedureRequestInstanceQuery,
 } = require('./query');
 
 const {
 	ProcedureRequestCreateMutation,
 	ProcedureRequestUpdateMutation,
-	ProcedureRequestDeleteMutation
+	ProcedureRequestDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		ProcedureRequest: ProcedureRequestQuery,
-		ProcedureRequestList: ProcedureRequestListQuery
+		ProcedureRequestList: ProcedureRequestListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		ProcedureRequestCreate: ProcedureRequestCreateMutation,
 		ProcedureRequestUpdate: ProcedureRequestUpdateMutation,
-		ProcedureRequestDelete: ProcedureRequestDeleteMutation
+		ProcedureRequestDelete: ProcedureRequestDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'ProcedureRequest',
 		path: '/3_0_1/ProcedureRequest/:id',
-		query: ProcedureRequestInstanceQuery
-	}
+		query: ProcedureRequestInstanceQuery,
+	},
 };

@@ -1,9 +1,11 @@
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLString } = require('graphql');
+const {
+	GraphQLInputObjectType,
+	GraphQLNonNull,
+	GraphQLString,
+} = require('graphql');
 
 // Util for extending gql objects
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
-
-
 
 /**
  * @name exports
@@ -12,19 +14,20 @@ const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'ClinicalImpressionRuledOut_Input',
 	description: 'Diagnosis considered not possible.',
-	fields: () => extendSchema(require('./backboneelement.input'), {
-		// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
-		item: {
-			type: new GraphQLNonNull(require('./codeableconcept.input')),
-			description: 'Specific text of code for diagnosis.'
-		},
-		reason: {
-			type: GraphQLString,
-			description: 'Grounds for elimination.'
-		},
-		_reason: {
-			type: require('./element.input'),
-			description: 'Grounds for elimination.'
-		}
-	})
+	fields: () =>
+		extendSchema(require('./backboneelement.input'), {
+			// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+			item: {
+				type: new GraphQLNonNull(require('./codeableconcept.input')),
+				description: 'Specific text of code for diagnosis.',
+			},
+			reason: {
+				type: GraphQLString,
+				description: 'Grounds for elimination.',
+			},
+			_reason: {
+				type: require('./element.input'),
+				description: 'Grounds for elimination.',
+			},
+		}),
 });

@@ -11,39 +11,39 @@ const MedicationDispenseInput = require('../../inputs/medicationdispense.input')
 const {
 	medicationdispenseCreateResolver,
 	medicationdispenseUpdateResolver,
-	medicationdispenseDeleteResolver
+	medicationdispenseDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'MedicationDispense',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a MedicationDispense record.'
+		description:
+			'Unique identifier for creating/updating a MedicationDispense record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(MedicationDispenseInput),
-		description: 'MedicationDispense Information for the record.'
-	}
+		description: 'MedicationDispense Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a MedicationDispense record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a MedicationDispense record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.MedicationDispenseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MedicationDispense',
 	resolve: scopeInvariant(scopeOptions, medicationdispenseCreateResolver),
-	type: MedicationDispenseSchema
+	type: MedicationDispenseSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.MedicationDispenseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MedicationDispenses',
 	resolve: scopeInvariant(scopeOptions, medicationdispenseUpdateResolver),
-	type: MedicationDispenseSchema
+	type: MedicationDispenseSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.MedicationDispenseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MedicationDispense',
 	resolve: scopeInvariant(scopeOptions, medicationdispenseDeleteResolver),
-	type: MedicationDispenseSchema
+	type: MedicationDispenseSchema,
 };

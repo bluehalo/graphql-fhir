@@ -3,8 +3,6 @@ const { GraphQLInputObjectType } = require('graphql');
 // Util for extending gql objects
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
-
-
 /**
  * @name exports
  * @summary TestReport.teardown.action Input Schema
@@ -12,5 +10,5 @@ const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 module.exports = new GraphQLInputObjectType({
 	name: 'TestReportTeardownAction_Input',
 	description: 'The teardown action will only contain an operation.',
-	fields: () => extendSchema(require('./backboneelement.input'))
+	fields: () => extendSchema(require('./backboneelement.input')),
 });

@@ -2,8 +2,6 @@ const { GraphQLObjectType } = require('graphql');
 
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
-
-
 /**
  * @name exports
  * @summary Distance Schema
@@ -11,5 +9,5 @@ const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 module.exports = new GraphQLObjectType({
 	name: 'Distance',
 	description: 'Base StructureDefinition for Distance Type.',
-	fields: () => extendSchema(require('./quantity.schema'))
+	fields: () => extendSchema(require('./quantity.schema')),
 });

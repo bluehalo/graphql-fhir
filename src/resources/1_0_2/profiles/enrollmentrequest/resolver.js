@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary EnrollmentRequest Resolver.
  */
-module.exports.enrollmentrequestResolver = function enrollmentrequestResolver (root, args, context, info) {
+module.exports.enrollmentrequestResolver = function enrollmentrequestResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.enrollmentrequestResolver = function enrollmentrequestResolver (r
  * @static
  * @summary EnrollmentRequest List Resolver.
  */
-module.exports.enrollmentrequestListResolver = function enrollmentrequestListResolver (root, args, context, info) {
+module.exports.enrollmentrequestListResolver = function enrollmentrequestListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.enrollmentrequestListResolver = function enrollmentrequestListRes
  * @static
  * @summary EnrollmentRequest Instance Resolver.
  */
-module.exports.enrollmentrequestInstanceResolver = function enrollmentrequestInstanceResolver (root, args, context, info) {
+module.exports.enrollmentrequestInstanceResolver = function enrollmentrequestInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.enrollmentrequestInstanceResolver = function enrollmentrequestIns
  * @static
  * @summary EnrollmentRequest Create Resolver.
  */
-module.exports.enrollmentrequestCreateResolver = function enrollmentrequestCreateResolver (root, args, context, info) {
+module.exports.enrollmentrequestCreateResolver = function enrollmentrequestCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.enrollmentrequestCreateResolver = function enrollmentrequestCreat
  * @static
  * @summary EnrollmentRequest Update Resolver.
  */
-module.exports.enrollmentrequestUpdateResolver = function enrollmentrequestUpdateResolver (root, args, context, info) {
+module.exports.enrollmentrequestUpdateResolver = function enrollmentrequestUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.enrollmentrequestUpdateResolver = function enrollmentrequestUpdat
  * @static
  * @summary EnrollmentRequest Delete Resolver.
  */
-module.exports.enrollmentrequestDeleteResolver = function enrollmentrequestDeleteResolver (root, args, context, info) {
+module.exports.enrollmentrequestDeleteResolver = function enrollmentrequestDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ImplementationGuide Resolver.
  */
-module.exports.implementationguideResolver = function implementationguideResolver (root, args, context, info) {
+module.exports.implementationguideResolver = function implementationguideResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.implementationguideResolver = function implementationguideResolve
  * @static
  * @summary ImplementationGuide List Resolver.
  */
-module.exports.implementationguideListResolver = function implementationguideListResolver (root, args, context, info) {
+module.exports.implementationguideListResolver = function implementationguideListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.implementationguideListResolver = function implementationguideLis
  * @static
  * @summary ImplementationGuide Instance Resolver.
  */
-module.exports.implementationguideInstanceResolver = function implementationguideInstanceResolver (root, args, context, info) {
+module.exports.implementationguideInstanceResolver = function implementationguideInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.implementationguideInstanceResolver = function implementationguid
  * @static
  * @summary ImplementationGuide Create Resolver.
  */
-module.exports.implementationguideCreateResolver = function implementationguideCreateResolver (root, args, context, info) {
+module.exports.implementationguideCreateResolver = function implementationguideCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.implementationguideCreateResolver = function implementationguideC
  * @static
  * @summary ImplementationGuide Update Resolver.
  */
-module.exports.implementationguideUpdateResolver = function implementationguideUpdateResolver (root, args, context, info) {
+module.exports.implementationguideUpdateResolver = function implementationguideUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.implementationguideUpdateResolver = function implementationguideU
  * @static
  * @summary ImplementationGuide Delete Resolver.
  */
-module.exports.implementationguideDeleteResolver = function implementationguideDeleteResolver (root, args, context, info) {
+module.exports.implementationguideDeleteResolver = function implementationguideDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

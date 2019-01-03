@@ -11,39 +11,39 @@ const StructureMapInput = require('../../inputs/structuremap.input');
 const {
 	structuremapCreateResolver,
 	structuremapUpdateResolver,
-	structuremapDeleteResolver
+	structuremapDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'StructureMap',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a StructureMap record.'
+		description:
+			'Unique identifier for creating/updating a StructureMap record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(StructureMapInput),
-		description: 'StructureMap Information for the record.'
-	}
+		description: 'StructureMap Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a StructureMap record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a StructureMap record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.StructureMapCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a StructureMap',
 	resolve: scopeInvariant(scopeOptions, structuremapCreateResolver),
-	type: StructureMapSchema
+	type: StructureMapSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.StructureMapUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple StructureMaps',
 	resolve: scopeInvariant(scopeOptions, structuremapUpdateResolver),
-	type: StructureMapSchema
+	type: StructureMapSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.StructureMapDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single StructureMap',
 	resolve: scopeInvariant(scopeOptions, structuremapDeleteResolver),
-	type: StructureMapSchema
+	type: StructureMapSchema,
 };

@@ -11,39 +11,39 @@ const CapabilityStatementInput = require('../../inputs/capabilitystatement.input
 const {
 	capabilitystatementCreateResolver,
 	capabilitystatementUpdateResolver,
-	capabilitystatementDeleteResolver
+	capabilitystatementDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'CapabilityStatement',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a CapabilityStatement record.'
+		description:
+			'Unique identifier for creating/updating a CapabilityStatement record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(CapabilityStatementInput),
-		description: 'CapabilityStatement Information for the record.'
-	}
+		description: 'CapabilityStatement Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a CapabilityStatement record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a CapabilityStatement record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.CapabilityStatementCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a CapabilityStatement',
 	resolve: scopeInvariant(scopeOptions, capabilitystatementCreateResolver),
-	type: CapabilityStatementSchema
+	type: CapabilityStatementSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.CapabilityStatementUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple CapabilityStatements',
 	resolve: scopeInvariant(scopeOptions, capabilitystatementUpdateResolver),
-	type: CapabilityStatementSchema
+	type: CapabilityStatementSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.CapabilityStatementDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single CapabilityStatement',
 	resolve: scopeInvariant(scopeOptions, capabilitystatementDeleteResolver),
-	type: CapabilityStatementSchema
+	type: CapabilityStatementSchema,
 };

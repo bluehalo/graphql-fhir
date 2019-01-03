@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Measure Resolver.
  */
-module.exports.measureResolver = function measureResolver (root, args, context, info) {
+module.exports.measureResolver = function measureResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.measureResolver = function measureResolver (root, args, context, 
  * @static
  * @summary Measure List Resolver.
  */
-module.exports.measureListResolver = function measureListResolver (root, args, context, info) {
+module.exports.measureListResolver = function measureListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.measureListResolver = function measureListResolver (root, args, c
  * @static
  * @summary Measure Instance Resolver.
  */
-module.exports.measureInstanceResolver = function measureInstanceResolver (root, args, context, info) {
+module.exports.measureInstanceResolver = function measureInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.measureInstanceResolver = function measureInstanceResolver (root,
  * @static
  * @summary Measure Create Resolver.
  */
-module.exports.measureCreateResolver = function measureCreateResolver (root, args, context, info) {
+module.exports.measureCreateResolver = function measureCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.measureCreateResolver = function measureCreateResolver (root, arg
  * @static
  * @summary Measure Update Resolver.
  */
-module.exports.measureUpdateResolver = function measureUpdateResolver (root, args, context, info) {
+module.exports.measureUpdateResolver = function measureUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.measureUpdateResolver = function measureUpdateResolver (root, arg
  * @static
  * @summary Measure Delete Resolver.
  */
-module.exports.measureDeleteResolver = function measureDeleteResolver (root, args, context, info) {
+module.exports.measureDeleteResolver = function measureDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

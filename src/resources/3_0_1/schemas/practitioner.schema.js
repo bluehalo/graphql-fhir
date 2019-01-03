@@ -1,14 +1,21 @@
 const CodeScalar = require('../scalars/code.scalar');
 const DateScalar = require('../scalars/date.scalar');
-const { GraphQLObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLBoolean } = require('graphql');
+const {
+	GraphQLObjectType,
+	GraphQLEnumType,
+	GraphQLNonNull,
+	GraphQLString,
+	GraphQLList,
+	GraphQLBoolean,
+} = require('graphql');
 
 const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let PractitionerResourceType = new GraphQLEnumType({
 	name: 'PractitionerResourceType',
 	values: {
-		Practitioner: { value: 'Practitioner' }
-	}
+		Practitioner: { value: 'Practitioner' },
+	},
 });
 
 /**
@@ -18,64 +25,70 @@ let PractitionerResourceType = new GraphQLEnumType({
 module.exports = new GraphQLObjectType({
 	name: 'Practitioner',
 	description: 'Base StructureDefinition for Practitioner Resource.',
-	fields: () => extendSchema(require('./domainresource.schema'), {
-		resourceType: {
-			type: new GraphQLNonNull(PractitionerResourceType),
-			description: 'Type of this resource.'
-		},
-		identifier: {
-			type: new GraphQLList(require('./identifier.schema')),
-			description: 'An identifier that applies to this person in this role.'
-		},
-		active: {
-			type: GraphQLBoolean,
-			description: 'Whether this practitioner\'s record is in active use.'
-		},
-		_active: {
-			type: require('./element.schema'),
-			description: 'Whether this practitioner\'s record is in active use.'
-		},
-		name: {
-			type: new GraphQLList(require('./humanname.schema')),
-			description: 'The name(s) associated with the practitioner.'
-		},
-		telecom: {
-			type: new GraphQLList(require('./contactpoint.schema')),
-			description: 'A contact detail for the practitioner, e.g. a telephone number or an email address.'
-		},
-		address: {
-			type: new GraphQLList(require('./address.schema')),
-			description: 'Address(es) of the practitioner that are not role specific (typically home address).  Work addresses are not typically entered in this property as they are usually role dependent.'
-		},
-		// ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
-		gender: {
-			type: CodeScalar,
-			description: 'Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.'
-		},
-		_gender: {
-			type: require('./element.schema'),
-			description: 'Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.'
-		},
-		birthDate: {
-			type: DateScalar,
-			description: 'The date of birth for the practitioner.'
-		},
-		_birthDate: {
-			type: require('./element.schema'),
-			description: 'The date of birth for the practitioner.'
-		},
-		photo: {
-			type: new GraphQLList(require('./attachment.schema')),
-			description: 'Image of the person.'
-		},
-		qualification: {
-			type: new GraphQLList(require('./practitionerqualification.schema')),
-			description: 'Qualifications obtained by training and certification.'
-		},
-		// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
-		communication: {
-			type: new GraphQLList(require('./codeableconcept.schema')),
-			description: 'A language the practitioner is able to use in patient communication.'
-		}
-	})
+	fields: () =>
+		extendSchema(require('./domainresource.schema'), {
+			resourceType: {
+				type: new GraphQLNonNull(PractitionerResourceType),
+				description: 'Type of this resource.',
+			},
+			identifier: {
+				type: new GraphQLList(require('./identifier.schema')),
+				description: 'An identifier that applies to this person in this role.',
+			},
+			active: {
+				type: GraphQLBoolean,
+				description: "Whether this practitioner's record is in active use.",
+			},
+			_active: {
+				type: require('./element.schema'),
+				description: "Whether this practitioner's record is in active use.",
+			},
+			name: {
+				type: new GraphQLList(require('./humanname.schema')),
+				description: 'The name(s) associated with the practitioner.',
+			},
+			telecom: {
+				type: new GraphQLList(require('./contactpoint.schema')),
+				description:
+					'A contact detail for the practitioner, e.g. a telephone number or an email address.',
+			},
+			address: {
+				type: new GraphQLList(require('./address.schema')),
+				description:
+					'Address(es) of the practitioner that are not role specific (typically home address).  Work addresses are not typically entered in this property as they are usually role dependent.',
+			},
+			// ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
+			gender: {
+				type: CodeScalar,
+				description:
+					'Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.',
+			},
+			_gender: {
+				type: require('./element.schema'),
+				description:
+					'Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.',
+			},
+			birthDate: {
+				type: DateScalar,
+				description: 'The date of birth for the practitioner.',
+			},
+			_birthDate: {
+				type: require('./element.schema'),
+				description: 'The date of birth for the practitioner.',
+			},
+			photo: {
+				type: new GraphQLList(require('./attachment.schema')),
+				description: 'Image of the person.',
+			},
+			qualification: {
+				type: new GraphQLList(require('./practitionerqualification.schema')),
+				description: 'Qualifications obtained by training and certification.',
+			},
+			// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
+			communication: {
+				type: new GraphQLList(require('./codeableconcept.schema')),
+				description:
+					'A language the practitioner is able to use in patient communication.',
+			},
+		}),
 });
