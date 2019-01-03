@@ -1,13 +1,13 @@
 const {
 	GraphDefinitionQuery,
 	GraphDefinitionListQuery,
-	GraphDefinitionInstanceQuery
+	GraphDefinitionInstanceQuery,
 } = require('./query');
 
 const {
 	GraphDefinitionCreateMutation,
 	GraphDefinitionUpdateMutation,
-	GraphDefinitionDeleteMutation
+	GraphDefinitionDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		GraphDefinition: GraphDefinitionQuery,
-		GraphDefinitionList: GraphDefinitionListQuery
+		GraphDefinitionList: GraphDefinitionListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		GraphDefinitionCreate: GraphDefinitionCreateMutation,
 		GraphDefinitionUpdate: GraphDefinitionUpdateMutation,
-		GraphDefinitionDelete: GraphDefinitionDeleteMutation
+		GraphDefinitionDelete: GraphDefinitionDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'GraphDefinition',
 		path: '/3_0_1/GraphDefinition/:id',
-		query: GraphDefinitionInstanceQuery
-	}
+		query: GraphDefinitionInstanceQuery,
+	},
 };

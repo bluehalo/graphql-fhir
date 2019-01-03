@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Conformance Resolver.
  */
-module.exports.conformanceResolver = function conformanceResolver (root, args, context, info) {
+module.exports.conformanceResolver = function conformanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.conformanceResolver = function conformanceResolver (root, args, c
  * @static
  * @summary Conformance List Resolver.
  */
-module.exports.conformanceListResolver = function conformanceListResolver (root, args, context, info) {
+module.exports.conformanceListResolver = function conformanceListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.conformanceListResolver = function conformanceListResolver (root,
  * @static
  * @summary Conformance Instance Resolver.
  */
-module.exports.conformanceInstanceResolver = function conformanceInstanceResolver (root, args, context, info) {
+module.exports.conformanceInstanceResolver = function conformanceInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.conformanceInstanceResolver = function conformanceInstanceResolve
  * @static
  * @summary Conformance Create Resolver.
  */
-module.exports.conformanceCreateResolver = function conformanceCreateResolver (root, args, context, info) {
+module.exports.conformanceCreateResolver = function conformanceCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.conformanceCreateResolver = function conformanceCreateResolver (r
  * @static
  * @summary Conformance Update Resolver.
  */
-module.exports.conformanceUpdateResolver = function conformanceUpdateResolver (root, args, context, info) {
+module.exports.conformanceUpdateResolver = function conformanceUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.conformanceUpdateResolver = function conformanceUpdateResolver (r
  * @static
  * @summary Conformance Delete Resolver.
  */
-module.exports.conformanceDeleteResolver = function conformanceDeleteResolver (root, args, context, info) {
+module.exports.conformanceDeleteResolver = function conformanceDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

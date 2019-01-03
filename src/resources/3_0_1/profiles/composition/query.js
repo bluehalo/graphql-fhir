@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	compositionResolver,
 	compositionListResolver,
-	compositionInstanceResolver
+	compositionInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Composition',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.CompositionQuery = {
 	args: Object.assign({}, CommonArgs, CompositionArgs),
 	description: 'Query for a single Composition',
 	resolve: scopeInvariant(scopeOptions, compositionResolver),
-	type: CompositionSchema
+	type: CompositionSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.CompositionListQuery = {
 	args: Object.assign({}, CommonArgs, CompositionArgs),
 	description: 'Query for multiple Compositions',
 	resolve: scopeInvariant(scopeOptions, compositionListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.CompositionListQuery = {
 module.exports.CompositionInstanceQuery = {
 	description: 'Get information about a single Composition',
 	resolve: scopeInvariant(scopeOptions, compositionInstanceResolver),
-	type: CompositionSchema
+	type: CompositionSchema,
 };

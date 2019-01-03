@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary DiagnosticReport Resolver.
  */
-module.exports.diagnosticreportResolver = function diagnosticreportResolver (root, args, context, info) {
+module.exports.diagnosticreportResolver = function diagnosticreportResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.diagnosticreportResolver = function diagnosticreportResolver (roo
  * @static
  * @summary DiagnosticReport List Resolver.
  */
-module.exports.diagnosticreportListResolver = function diagnosticreportListResolver (root, args, context, info) {
+module.exports.diagnosticreportListResolver = function diagnosticreportListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.diagnosticreportListResolver = function diagnosticreportListResol
  * @static
  * @summary DiagnosticReport Instance Resolver.
  */
-module.exports.diagnosticreportInstanceResolver = function diagnosticreportInstanceResolver (root, args, context, info) {
+module.exports.diagnosticreportInstanceResolver = function diagnosticreportInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.diagnosticreportInstanceResolver = function diagnosticreportInsta
  * @static
  * @summary DiagnosticReport Create Resolver.
  */
-module.exports.diagnosticreportCreateResolver = function diagnosticreportCreateResolver (root, args, context, info) {
+module.exports.diagnosticreportCreateResolver = function diagnosticreportCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.diagnosticreportCreateResolver = function diagnosticreportCreateR
  * @static
  * @summary DiagnosticReport Update Resolver.
  */
-module.exports.diagnosticreportUpdateResolver = function diagnosticreportUpdateResolver (root, args, context, info) {
+module.exports.diagnosticreportUpdateResolver = function diagnosticreportUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.diagnosticreportUpdateResolver = function diagnosticreportUpdateR
  * @static
  * @summary DiagnosticReport Delete Resolver.
  */
-module.exports.diagnosticreportDeleteResolver = function diagnosticreportDeleteResolver (root, args, context, info) {
+module.exports.diagnosticreportDeleteResolver = function diagnosticreportDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

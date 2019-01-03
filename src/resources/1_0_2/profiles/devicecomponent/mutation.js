@@ -11,39 +11,39 @@ const DeviceComponentInput = require('../../inputs/devicecomponent.input');
 const {
 	devicecomponentCreateResolver,
 	devicecomponentUpdateResolver,
-	devicecomponentDeleteResolver
+	devicecomponentDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DeviceComponent',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a DeviceComponent record.'
+		description:
+			'Unique identifier for creating/updating a DeviceComponent record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(DeviceComponentInput),
-		description: 'DeviceComponent Information for the record.'
-	}
+		description: 'DeviceComponent Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a DeviceComponent record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a DeviceComponent record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.DeviceComponentCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DeviceComponent',
 	resolve: scopeInvariant(scopeOptions, devicecomponentCreateResolver),
-	type: DeviceComponentSchema
+	type: DeviceComponentSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.DeviceComponentUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DeviceComponents',
 	resolve: scopeInvariant(scopeOptions, devicecomponentUpdateResolver),
-	type: DeviceComponentSchema
+	type: DeviceComponentSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.DeviceComponentDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DeviceComponent',
 	resolve: scopeInvariant(scopeOptions, devicecomponentDeleteResolver),
-	type: DeviceComponentSchema
+	type: DeviceComponentSchema,
 };

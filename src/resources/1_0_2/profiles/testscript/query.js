@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	testscriptResolver,
 	testscriptListResolver,
-	testscriptInstanceResolver
+	testscriptInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'TestScript',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.TestScriptQuery = {
 	args: Object.assign({}, CommonArgs, TestScriptArgs),
 	description: 'Query for a single TestScript',
 	resolve: scopeInvariant(scopeOptions, testscriptResolver),
-	type: TestScriptSchema
+	type: TestScriptSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.TestScriptListQuery = {
 	args: Object.assign({}, CommonArgs, TestScriptArgs),
 	description: 'Query for multiple TestScripts',
 	resolve: scopeInvariant(scopeOptions, testscriptListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.TestScriptListQuery = {
 module.exports.TestScriptInstanceQuery = {
 	description: 'Get information about a single TestScript',
 	resolve: scopeInvariant(scopeOptions, testscriptInstanceResolver),
-	type: TestScriptSchema
+	type: TestScriptSchema,
 };

@@ -1,9 +1,11 @@
-const { GraphQLInputObjectType, GraphQLNonNull, GraphQLList } = require('graphql');
+const {
+	GraphQLInputObjectType,
+	GraphQLNonNull,
+	GraphQLList,
+} = require('graphql');
 
 // Util for extending gql objects
-const { extendSchema } = require('../../../utils/schema.utils');
-
-
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 /**
  * @name exports
@@ -11,11 +13,16 @@ const { extendSchema } = require('../../../utils/schema.utils');
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'TestScriptSetup_Input',
-	description: 'A series of required setup operations before tests are executed.',
-	fields: () => extendSchema(require('./backboneelement.input'), {
-		action: {
-			type: new GraphQLList(new GraphQLNonNull(require('./testscriptsetupaction.input'))),
-			description: 'Action would contain either an operation or an assertion.'
-		}
-	})
+	description:
+		'A series of required setup operations before tests are executed.',
+	fields: () =>
+		extendSchema(require('./backboneelement.input'), {
+			action: {
+				type: new GraphQLList(
+					new GraphQLNonNull(require('./testscriptsetupaction.input')),
+				),
+				description:
+					'Action would contain either an operation or an assertion.',
+			},
+		}),
 });

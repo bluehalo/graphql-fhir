@@ -16,8 +16,12 @@ const parse = (value, ast) => {
 	let is_date = date_pattern.test(sanitized_value);
 	return is_date
 		? moment(sanitized_value).format(DATE_CONFIG.dateFormat)
-		: new GraphQLError(`Invalid date provided to DateScalar. Format should be ${DATE_CONFIG.dateFormat}`);
-}
+		: new GraphQLError(
+				`Invalid date provided to DateScalar. Format should be ${
+					DATE_CONFIG.dateFormat
+				}`,
+		  );
+};
 
 /**
  * @name exports
@@ -25,7 +29,8 @@ const parse = (value, ast) => {
  */
 module.exports = new GraphQLScalarType({
 	name: 'date',
-	description: 'Base StructureDefinition for date Type: A date or partial date (e.g. just year or year + month). There is no time zone. The format is a union of the schema types gYear, gYearMonth and date.  Dates SHALL be valid dates.',
+	description:
+		'Base StructureDefinition for date Type: A date or partial date (e.g. just year or year + month). There is no time zone. The format is a union of the schema types gYear, gYearMonth and date.  Dates SHALL be valid dates.',
 	// TODO: Implement proper serialization here
 	serialize: value => value,
 	// TODO: Implement proper parsing and sanitization here
@@ -35,5 +40,5 @@ module.exports = new GraphQLScalarType({
 	parseLiteral: ast => {
 		let { value } = ast;
 		return parse(value, ast);
-	}
+	},
 });

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary TestReport Resolver.
  */
-module.exports.testreportResolver = function testreportResolver (root, args, context, info) {
+module.exports.testreportResolver = function testreportResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.testreportResolver = function testreportResolver (root, args, con
  * @static
  * @summary TestReport List Resolver.
  */
-module.exports.testreportListResolver = function testreportListResolver (root, args, context, info) {
+module.exports.testreportListResolver = function testreportListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.testreportListResolver = function testreportListResolver (root, a
  * @static
  * @summary TestReport Instance Resolver.
  */
-module.exports.testreportInstanceResolver = function testreportInstanceResolver (root, args, context, info) {
+module.exports.testreportInstanceResolver = function testreportInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.testreportInstanceResolver = function testreportInstanceResolver 
  * @static
  * @summary TestReport Create Resolver.
  */
-module.exports.testreportCreateResolver = function testreportCreateResolver (root, args, context, info) {
+module.exports.testreportCreateResolver = function testreportCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.testreportCreateResolver = function testreportCreateResolver (roo
  * @static
  * @summary TestReport Update Resolver.
  */
-module.exports.testreportUpdateResolver = function testreportUpdateResolver (root, args, context, info) {
+module.exports.testreportUpdateResolver = function testreportUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.testreportUpdateResolver = function testreportUpdateResolver (roo
  * @static
  * @summary TestReport Delete Resolver.
  */
-module.exports.testreportDeleteResolver = function testreportDeleteResolver (root, args, context, info) {
+module.exports.testreportDeleteResolver = function testreportDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	bodysiteResolver,
 	bodysiteListResolver,
-	bodysiteInstanceResolver
+	bodysiteInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'BodySite',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.BodySiteQuery = {
 	args: Object.assign({}, CommonArgs, BodySiteArgs),
 	description: 'Query for a single BodySite',
 	resolve: scopeInvariant(scopeOptions, bodysiteResolver),
-	type: BodySiteSchema
+	type: BodySiteSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.BodySiteListQuery = {
 	args: Object.assign({}, CommonArgs, BodySiteArgs),
 	description: 'Query for multiple BodySites',
 	resolve: scopeInvariant(scopeOptions, bodysiteListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.BodySiteListQuery = {
 module.exports.BodySiteInstanceQuery = {
 	description: 'Get information about a single BodySite',
 	resolve: scopeInvariant(scopeOptions, bodysiteInstanceResolver),
-	type: BodySiteSchema
+	type: BodySiteSchema,
 };

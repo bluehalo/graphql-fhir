@@ -11,39 +11,39 @@ const ImagingManifestInput = require('../../inputs/imagingmanifest.input');
 const {
 	imagingmanifestCreateResolver,
 	imagingmanifestUpdateResolver,
-	imagingmanifestDeleteResolver
+	imagingmanifestDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ImagingManifest',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a ImagingManifest record.'
+		description:
+			'Unique identifier for creating/updating a ImagingManifest record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ImagingManifestInput),
-		description: 'ImagingManifest Information for the record.'
-	}
+		description: 'ImagingManifest Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a ImagingManifest record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a ImagingManifest record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.ImagingManifestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ImagingManifest',
 	resolve: scopeInvariant(scopeOptions, imagingmanifestCreateResolver),
-	type: ImagingManifestSchema
+	type: ImagingManifestSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.ImagingManifestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ImagingManifests',
 	resolve: scopeInvariant(scopeOptions, imagingmanifestUpdateResolver),
-	type: ImagingManifestSchema
+	type: ImagingManifestSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.ImagingManifestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ImagingManifest',
 	resolve: scopeInvariant(scopeOptions, imagingmanifestDeleteResolver),
-	type: ImagingManifestSchema
+	type: ImagingManifestSchema,
 };

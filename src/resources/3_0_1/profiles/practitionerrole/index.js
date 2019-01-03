@@ -1,13 +1,13 @@
 const {
 	PractitionerRoleQuery,
 	PractitionerRoleListQuery,
-	PractitionerRoleInstanceQuery
+	PractitionerRoleInstanceQuery,
 } = require('./query');
 
 const {
 	PractitionerRoleCreateMutation,
 	PractitionerRoleUpdateMutation,
-	PractitionerRoleDeleteMutation
+	PractitionerRoleDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		PractitionerRole: PractitionerRoleQuery,
-		PractitionerRoleList: PractitionerRoleListQuery
+		PractitionerRoleList: PractitionerRoleListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		PractitionerRoleCreate: PractitionerRoleCreateMutation,
 		PractitionerRoleUpdate: PractitionerRoleUpdateMutation,
-		PractitionerRoleDelete: PractitionerRoleDeleteMutation
+		PractitionerRoleDelete: PractitionerRoleDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'PractitionerRole',
 		path: '/3_0_1/PractitionerRole/:id',
-		query: PractitionerRoleInstanceQuery
-	}
+		query: PractitionerRoleInstanceQuery,
+	},
 };

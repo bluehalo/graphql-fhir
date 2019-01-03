@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Basic Resolver.
  */
-module.exports.basicResolver = function basicResolver (root, args, context, info) {
+module.exports.basicResolver = function basicResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.basicResolver = function basicResolver (root, args, context, info
  * @static
  * @summary Basic List Resolver.
  */
-module.exports.basicListResolver = function basicListResolver (root, args, context, info) {
+module.exports.basicListResolver = function basicListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.basicListResolver = function basicListResolver (root, args, conte
  * @static
  * @summary Basic Instance Resolver.
  */
-module.exports.basicInstanceResolver = function basicInstanceResolver (root, args, context, info) {
+module.exports.basicInstanceResolver = function basicInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.basicInstanceResolver = function basicInstanceResolver (root, arg
  * @static
  * @summary Basic Create Resolver.
  */
-module.exports.basicCreateResolver = function basicCreateResolver (root, args, context, info) {
+module.exports.basicCreateResolver = function basicCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.basicCreateResolver = function basicCreateResolver (root, args, c
  * @static
  * @summary Basic Update Resolver.
  */
-module.exports.basicUpdateResolver = function basicUpdateResolver (root, args, context, info) {
+module.exports.basicUpdateResolver = function basicUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.basicUpdateResolver = function basicUpdateResolver (root, args, c
  * @static
  * @summary Basic Delete Resolver.
  */
-module.exports.basicDeleteResolver = function basicDeleteResolver (root, args, context, info) {
+module.exports.basicDeleteResolver = function basicDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary DocumentManifest Resolver.
  */
-module.exports.documentmanifestResolver = function documentmanifestResolver (root, args, context, info) {
+module.exports.documentmanifestResolver = function documentmanifestResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.documentmanifestResolver = function documentmanifestResolver (roo
  * @static
  * @summary DocumentManifest List Resolver.
  */
-module.exports.documentmanifestListResolver = function documentmanifestListResolver (root, args, context, info) {
+module.exports.documentmanifestListResolver = function documentmanifestListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.documentmanifestListResolver = function documentmanifestListResol
  * @static
  * @summary DocumentManifest Instance Resolver.
  */
-module.exports.documentmanifestInstanceResolver = function documentmanifestInstanceResolver (root, args, context, info) {
+module.exports.documentmanifestInstanceResolver = function documentmanifestInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.documentmanifestInstanceResolver = function documentmanifestInsta
  * @static
  * @summary DocumentManifest Create Resolver.
  */
-module.exports.documentmanifestCreateResolver = function documentmanifestCreateResolver (root, args, context, info) {
+module.exports.documentmanifestCreateResolver = function documentmanifestCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.documentmanifestCreateResolver = function documentmanifestCreateR
  * @static
  * @summary DocumentManifest Update Resolver.
  */
-module.exports.documentmanifestUpdateResolver = function documentmanifestUpdateResolver (root, args, context, info) {
+module.exports.documentmanifestUpdateResolver = function documentmanifestUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.documentmanifestUpdateResolver = function documentmanifestUpdateR
  * @static
  * @summary DocumentManifest Delete Resolver.
  */
-module.exports.documentmanifestDeleteResolver = function documentmanifestDeleteResolver (root, args, context, info) {
+module.exports.documentmanifestDeleteResolver = function documentmanifestDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

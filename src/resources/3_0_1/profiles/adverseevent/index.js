@@ -1,13 +1,13 @@
 const {
 	AdverseEventQuery,
 	AdverseEventListQuery,
-	AdverseEventInstanceQuery
+	AdverseEventInstanceQuery,
 } = require('./query');
 
 const {
 	AdverseEventCreateMutation,
 	AdverseEventUpdateMutation,
-	AdverseEventDeleteMutation
+	AdverseEventDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		AdverseEvent: AdverseEventQuery,
-		AdverseEventList: AdverseEventListQuery
+		AdverseEventList: AdverseEventListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		AdverseEventCreate: AdverseEventCreateMutation,
 		AdverseEventUpdate: AdverseEventUpdateMutation,
-		AdverseEventDelete: AdverseEventDeleteMutation
+		AdverseEventDelete: AdverseEventDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'AdverseEvent',
 		path: '/3_0_1/AdverseEvent/:id',
-		query: AdverseEventInstanceQuery
-	}
+		query: AdverseEventInstanceQuery,
+	},
 };

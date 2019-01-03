@@ -11,39 +11,39 @@ const MedicationStatementInput = require('../../inputs/medicationstatement.input
 const {
 	medicationstatementCreateResolver,
 	medicationstatementUpdateResolver,
-	medicationstatementDeleteResolver
+	medicationstatementDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'MedicationStatement',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a MedicationStatement record.'
+		description:
+			'Unique identifier for creating/updating a MedicationStatement record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(MedicationStatementInput),
-		description: 'MedicationStatement Information for the record.'
-	}
+		description: 'MedicationStatement Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a MedicationStatement record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a MedicationStatement record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.MedicationStatementCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MedicationStatement',
 	resolve: scopeInvariant(scopeOptions, medicationstatementCreateResolver),
-	type: MedicationStatementSchema
+	type: MedicationStatementSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.MedicationStatementUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MedicationStatements',
 	resolve: scopeInvariant(scopeOptions, medicationstatementUpdateResolver),
-	type: MedicationStatementSchema
+	type: MedicationStatementSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.MedicationStatementDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MedicationStatement',
 	resolve: scopeInvariant(scopeOptions, medicationstatementDeleteResolver),
-	type: MedicationStatementSchema
+	type: MedicationStatementSchema,
 };

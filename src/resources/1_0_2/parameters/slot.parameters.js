@@ -10,22 +10,27 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	fb_type: {
 		type: TokenScalar,
-		description: 'The free/busy status of the appointment (See http://hl7.org/fhir/SearchParameter/slot-fb-type).'
+		description:
+			'The free/busy status of the appointment (See http://hl7.org/fhir/SearchParameter/slot-fb-type).',
 	},
 	schedule: {
 		type: GraphQLString,
-		description: 'The Schedule Resource that we are seeking a slot within (See http://hl7.org/fhir/SearchParameter/slot-schedule).'
+		description:
+			'The Schedule Resource that we are seeking a slot within (See http://hl7.org/fhir/SearchParameter/slot-schedule).',
 	},
 	start: {
 		type: DateScalar,
-		description: 'Appointment date/time. (See http://hl7.org/fhir/SearchParameter/slot-start).'
+		description:
+			'Appointment date/time. (See http://hl7.org/fhir/SearchParameter/slot-start).',
 	},
 	slot_type: {
 		type: TokenScalar,
-		description: 'The type of appointments that can be booked into the slot (See http://hl7.org/fhir/SearchParameter/slot-slot-type).'
+		description:
+			'The type of appointments that can be booked into the slot (See http://hl7.org/fhir/SearchParameter/slot-slot-type).',
 	},
 	identifier: {
 		type: TokenScalar,
-		description: 'A Slot Identifier (See http://hl7.org/fhir/SearchParameter/slot-identifier).'
-	}
+		description:
+			'A Slot Identifier (See http://hl7.org/fhir/SearchParameter/slot-identifier).',
+	},
 };

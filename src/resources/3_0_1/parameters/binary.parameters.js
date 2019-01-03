@@ -8,6 +8,7 @@ const TokenScalar = require('../scalars/token.scalar');
 module.exports = {
 	contenttype: {
 		type: TokenScalar,
-		description: 'MimeType of the binary content (See http://hl7.org/fhir/SearchParameter/Binary-contenttype).'
-	}
+		description:
+			'MimeType of the binary content (See http://hl7.org/fhir/SearchParameter/Binary-contenttype).',
+	},
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Specimen Resolver.
  */
-module.exports.specimenResolver = function specimenResolver (root, args, context, info) {
+module.exports.specimenResolver = function specimenResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.specimenResolver = function specimenResolver (root, args, context
  * @static
  * @summary Specimen List Resolver.
  */
-module.exports.specimenListResolver = function specimenListResolver (root, args, context, info) {
+module.exports.specimenListResolver = function specimenListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.specimenListResolver = function specimenListResolver (root, args,
  * @static
  * @summary Specimen Instance Resolver.
  */
-module.exports.specimenInstanceResolver = function specimenInstanceResolver (root, args, context, info) {
+module.exports.specimenInstanceResolver = function specimenInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.specimenInstanceResolver = function specimenInstanceResolver (roo
  * @static
  * @summary Specimen Create Resolver.
  */
-module.exports.specimenCreateResolver = function specimenCreateResolver (root, args, context, info) {
+module.exports.specimenCreateResolver = function specimenCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.specimenCreateResolver = function specimenCreateResolver (root, a
  * @static
  * @summary Specimen Update Resolver.
  */
-module.exports.specimenUpdateResolver = function specimenUpdateResolver (root, args, context, info) {
+module.exports.specimenUpdateResolver = function specimenUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.specimenUpdateResolver = function specimenUpdateResolver (root, a
  * @static
  * @summary Specimen Delete Resolver.
  */
-module.exports.specimenDeleteResolver = function specimenDeleteResolver (root, args, context, info) {
+module.exports.specimenDeleteResolver = function specimenDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

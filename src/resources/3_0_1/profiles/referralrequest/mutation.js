@@ -11,39 +11,39 @@ const ReferralRequestInput = require('../../inputs/referralrequest.input');
 const {
 	referralrequestCreateResolver,
 	referralrequestUpdateResolver,
-	referralrequestDeleteResolver
+	referralrequestDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ReferralRequest',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a ReferralRequest record.'
+		description:
+			'Unique identifier for creating/updating a ReferralRequest record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ReferralRequestInput),
-		description: 'ReferralRequest Information for the record.'
-	}
+		description: 'ReferralRequest Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a ReferralRequest record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a ReferralRequest record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.ReferralRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ReferralRequest',
 	resolve: scopeInvariant(scopeOptions, referralrequestCreateResolver),
-	type: ReferralRequestSchema
+	type: ReferralRequestSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.ReferralRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ReferralRequests',
 	resolve: scopeInvariant(scopeOptions, referralrequestUpdateResolver),
-	type: ReferralRequestSchema
+	type: ReferralRequestSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.ReferralRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ReferralRequest',
 	resolve: scopeInvariant(scopeOptions, referralrequestDeleteResolver),
-	type: ReferralRequestSchema
+	type: ReferralRequestSchema,
 };

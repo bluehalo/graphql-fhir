@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	linkageResolver,
 	linkageListResolver,
-	linkageInstanceResolver
+	linkageInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Linkage',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.LinkageQuery = {
 	args: Object.assign({}, CommonArgs, LinkageArgs),
 	description: 'Query for a single Linkage',
 	resolve: scopeInvariant(scopeOptions, linkageResolver),
-	type: LinkageSchema
+	type: LinkageSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.LinkageListQuery = {
 	args: Object.assign({}, CommonArgs, LinkageArgs),
 	description: 'Query for multiple Linkages',
 	resolve: scopeInvariant(scopeOptions, linkageListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.LinkageListQuery = {
 module.exports.LinkageInstanceQuery = {
 	description: 'Get information about a single Linkage',
 	resolve: scopeInvariant(scopeOptions, linkageInstanceResolver),
-	type: LinkageSchema
+	type: LinkageSchema,
 };

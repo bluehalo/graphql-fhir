@@ -11,39 +11,39 @@ const ClinicalImpressionInput = require('../../inputs/clinicalimpression.input')
 const {
 	clinicalimpressionCreateResolver,
 	clinicalimpressionUpdateResolver,
-	clinicalimpressionDeleteResolver
+	clinicalimpressionDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ClinicalImpression',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a ClinicalImpression record.'
+		description:
+			'Unique identifier for creating/updating a ClinicalImpression record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ClinicalImpressionInput),
-		description: 'ClinicalImpression Information for the record.'
-	}
+		description: 'ClinicalImpression Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a ClinicalImpression record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a ClinicalImpression record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.ClinicalImpressionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ClinicalImpression',
 	resolve: scopeInvariant(scopeOptions, clinicalimpressionCreateResolver),
-	type: ClinicalImpressionSchema
+	type: ClinicalImpressionSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.ClinicalImpressionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ClinicalImpressions',
 	resolve: scopeInvariant(scopeOptions, clinicalimpressionUpdateResolver),
-	type: ClinicalImpressionSchema
+	type: ClinicalImpressionSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.ClinicalImpressionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ClinicalImpression',
 	resolve: scopeInvariant(scopeOptions, clinicalimpressionDeleteResolver),
-	type: ClinicalImpressionSchema
+	type: ClinicalImpressionSchema,
 };

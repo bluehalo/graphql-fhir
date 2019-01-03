@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	immunizationrecommendationResolver,
 	immunizationrecommendationListResolver,
-	immunizationrecommendationInstanceResolver
+	immunizationrecommendationInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ImmunizationRecommendation',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ImmunizationRecommendationQuery = {
 	args: Object.assign({}, CommonArgs, ImmunizationRecommendationArgs),
 	description: 'Query for a single ImmunizationRecommendation',
 	resolve: scopeInvariant(scopeOptions, immunizationrecommendationResolver),
-	type: ImmunizationRecommendationSchema
+	type: ImmunizationRecommendationSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ImmunizationRecommendationListQuery = {
 	args: Object.assign({}, CommonArgs, ImmunizationRecommendationArgs),
 	description: 'Query for multiple ImmunizationRecommendations',
 	resolve: scopeInvariant(scopeOptions, immunizationrecommendationListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -52,6 +50,9 @@ module.exports.ImmunizationRecommendationListQuery = {
  */
 module.exports.ImmunizationRecommendationInstanceQuery = {
 	description: 'Get information about a single ImmunizationRecommendation',
-	resolve: scopeInvariant(scopeOptions, immunizationrecommendationInstanceResolver),
-	type: ImmunizationRecommendationSchema
+	resolve: scopeInvariant(
+		scopeOptions,
+		immunizationrecommendationInstanceResolver,
+	),
+	type: ImmunizationRecommendationSchema,
 };

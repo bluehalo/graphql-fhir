@@ -11,39 +11,38 @@ const ConsentInput = require('../../inputs/consent.input');
 const {
 	consentCreateResolver,
 	consentUpdateResolver,
-	consentDeleteResolver
+	consentDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Consent',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Consent record.'
+		description: 'Unique identifier for creating/updating a Consent record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ConsentInput),
-		description: 'Consent Information for the record.'
-	}
+		description: 'Consent Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Consent record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Consent record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.ConsentCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Consent',
 	resolve: scopeInvariant(scopeOptions, consentCreateResolver),
-	type: ConsentSchema
+	type: ConsentSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.ConsentUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Consents',
 	resolve: scopeInvariant(scopeOptions, consentUpdateResolver),
-	type: ConsentSchema
+	type: ConsentSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.ConsentDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Consent',
 	resolve: scopeInvariant(scopeOptions, consentDeleteResolver),
-	type: ConsentSchema
+	type: ConsentSchema,
 };

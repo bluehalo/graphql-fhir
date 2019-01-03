@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	documentmanifestResolver,
 	documentmanifestListResolver,
-	documentmanifestInstanceResolver
+	documentmanifestInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DocumentManifest',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.DocumentManifestQuery = {
 	args: Object.assign({}, CommonArgs, DocumentManifestArgs),
 	description: 'Query for a single DocumentManifest',
 	resolve: scopeInvariant(scopeOptions, documentmanifestResolver),
-	type: DocumentManifestSchema
+	type: DocumentManifestSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.DocumentManifestListQuery = {
 	args: Object.assign({}, CommonArgs, DocumentManifestArgs),
 	description: 'Query for multiple DocumentManifests',
 	resolve: scopeInvariant(scopeOptions, documentmanifestListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.DocumentManifestListQuery = {
 module.exports.DocumentManifestInstanceQuery = {
 	description: 'Get information about a single DocumentManifest',
 	resolve: scopeInvariant(scopeOptions, documentmanifestInstanceResolver),
-	type: DocumentManifestSchema
+	type: DocumentManifestSchema,
 };

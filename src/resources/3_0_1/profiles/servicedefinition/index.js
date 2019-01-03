@@ -1,13 +1,13 @@
 const {
 	ServiceDefinitionQuery,
 	ServiceDefinitionListQuery,
-	ServiceDefinitionInstanceQuery
+	ServiceDefinitionInstanceQuery,
 } = require('./query');
 
 const {
 	ServiceDefinitionCreateMutation,
 	ServiceDefinitionUpdateMutation,
-	ServiceDefinitionDeleteMutation
+	ServiceDefinitionDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		ServiceDefinition: ServiceDefinitionQuery,
-		ServiceDefinitionList: ServiceDefinitionListQuery
+		ServiceDefinitionList: ServiceDefinitionListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		ServiceDefinitionCreate: ServiceDefinitionCreateMutation,
 		ServiceDefinitionUpdate: ServiceDefinitionUpdateMutation,
-		ServiceDefinitionDelete: ServiceDefinitionDeleteMutation
+		ServiceDefinitionDelete: ServiceDefinitionDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'ServiceDefinition',
 		path: '/3_0_1/ServiceDefinition/:id',
-		query: ServiceDefinitionInstanceQuery
-	}
+		query: ServiceDefinitionInstanceQuery,
+	},
 };

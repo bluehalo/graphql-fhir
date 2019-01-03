@@ -11,39 +11,39 @@ const CommunicationRequestInput = require('../../inputs/communicationrequest.inp
 const {
 	communicationrequestCreateResolver,
 	communicationrequestUpdateResolver,
-	communicationrequestDeleteResolver
+	communicationrequestDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'CommunicationRequest',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a CommunicationRequest record.'
+		description:
+			'Unique identifier for creating/updating a CommunicationRequest record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(CommunicationRequestInput),
-		description: 'CommunicationRequest Information for the record.'
-	}
+		description: 'CommunicationRequest Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a CommunicationRequest record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a CommunicationRequest record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.CommunicationRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a CommunicationRequest',
 	resolve: scopeInvariant(scopeOptions, communicationrequestCreateResolver),
-	type: CommunicationRequestSchema
+	type: CommunicationRequestSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.CommunicationRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple CommunicationRequests',
 	resolve: scopeInvariant(scopeOptions, communicationrequestUpdateResolver),
-	type: CommunicationRequestSchema
+	type: CommunicationRequestSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.CommunicationRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single CommunicationRequest',
 	resolve: scopeInvariant(scopeOptions, communicationrequestDeleteResolver),
-	type: CommunicationRequestSchema
+	type: CommunicationRequestSchema,
 };

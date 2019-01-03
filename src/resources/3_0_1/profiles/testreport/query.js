@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	testreportResolver,
 	testreportListResolver,
-	testreportInstanceResolver
+	testreportInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'TestReport',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.TestReportQuery = {
 	args: Object.assign({}, CommonArgs, TestReportArgs),
 	description: 'Query for a single TestReport',
 	resolve: scopeInvariant(scopeOptions, testreportResolver),
-	type: TestReportSchema
+	type: TestReportSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.TestReportListQuery = {
 	args: Object.assign({}, CommonArgs, TestReportArgs),
 	description: 'Query for multiple TestReports',
 	resolve: scopeInvariant(scopeOptions, testreportListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.TestReportListQuery = {
 module.exports.TestReportInstanceQuery = {
 	description: 'Get information about a single TestReport',
 	resolve: scopeInvariant(scopeOptions, testreportInstanceResolver),
-	type: TestReportSchema
+	type: TestReportSchema,
 };

@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	capabilitystatementResolver,
 	capabilitystatementListResolver,
-	capabilitystatementInstanceResolver
+	capabilitystatementInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'CapabilityStatement',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.CapabilityStatementQuery = {
 	args: Object.assign({}, CommonArgs, CapabilityStatementArgs),
 	description: 'Query for a single CapabilityStatement',
 	resolve: scopeInvariant(scopeOptions, capabilitystatementResolver),
-	type: CapabilityStatementSchema
+	type: CapabilityStatementSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.CapabilityStatementListQuery = {
 	args: Object.assign({}, CommonArgs, CapabilityStatementArgs),
 	description: 'Query for multiple CapabilityStatements',
 	resolve: scopeInvariant(scopeOptions, capabilitystatementListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.CapabilityStatementListQuery = {
 module.exports.CapabilityStatementInstanceQuery = {
 	description: 'Get information about a single CapabilityStatement',
 	resolve: scopeInvariant(scopeOptions, capabilitystatementInstanceResolver),
-	type: CapabilityStatementSchema
+	type: CapabilityStatementSchema,
 };

@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	slotResolver,
 	slotListResolver,
-	slotInstanceResolver
+	slotInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Slot',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.SlotQuery = {
 	args: Object.assign({}, CommonArgs, SlotArgs),
 	description: 'Query for a single Slot',
 	resolve: scopeInvariant(scopeOptions, slotResolver),
-	type: SlotSchema
+	type: SlotSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.SlotListQuery = {
 	args: Object.assign({}, CommonArgs, SlotArgs),
 	description: 'Query for multiple Slots',
 	resolve: scopeInvariant(scopeOptions, slotListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.SlotListQuery = {
 module.exports.SlotInstanceQuery = {
 	description: 'Get information about a single Slot',
 	resolve: scopeInvariant(scopeOptions, slotInstanceResolver),
-	type: SlotSchema
+	type: SlotSchema,
 };

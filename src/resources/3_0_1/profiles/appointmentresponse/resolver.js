@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary AppointmentResponse Resolver.
  */
-module.exports.appointmentresponseResolver = function appointmentresponseResolver (root, args, context, info) {
+module.exports.appointmentresponseResolver = function appointmentresponseResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.appointmentresponseResolver = function appointmentresponseResolve
  * @static
  * @summary AppointmentResponse List Resolver.
  */
-module.exports.appointmentresponseListResolver = function appointmentresponseListResolver (root, args, context, info) {
+module.exports.appointmentresponseListResolver = function appointmentresponseListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.appointmentresponseListResolver = function appointmentresponseLis
  * @static
  * @summary AppointmentResponse Instance Resolver.
  */
-module.exports.appointmentresponseInstanceResolver = function appointmentresponseInstanceResolver (root, args, context, info) {
+module.exports.appointmentresponseInstanceResolver = function appointmentresponseInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.appointmentresponseInstanceResolver = function appointmentrespons
  * @static
  * @summary AppointmentResponse Create Resolver.
  */
-module.exports.appointmentresponseCreateResolver = function appointmentresponseCreateResolver (root, args, context, info) {
+module.exports.appointmentresponseCreateResolver = function appointmentresponseCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.appointmentresponseCreateResolver = function appointmentresponseC
  * @static
  * @summary AppointmentResponse Update Resolver.
  */
-module.exports.appointmentresponseUpdateResolver = function appointmentresponseUpdateResolver (root, args, context, info) {
+module.exports.appointmentresponseUpdateResolver = function appointmentresponseUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.appointmentresponseUpdateResolver = function appointmentresponseU
  * @static
  * @summary AppointmentResponse Delete Resolver.
  */
-module.exports.appointmentresponseDeleteResolver = function appointmentresponseDeleteResolver (root, args, context, info) {
+module.exports.appointmentresponseDeleteResolver = function appointmentresponseDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

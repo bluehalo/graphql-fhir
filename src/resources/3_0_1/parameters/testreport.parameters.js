@@ -11,26 +11,32 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	result: {
 		type: TokenScalar,
-		description: 'The result disposition of the test execution (See http://hl7.org/fhir/SearchParameter/TestReport-result).'
+		description:
+			'The result disposition of the test execution (See http://hl7.org/fhir/SearchParameter/TestReport-result).',
 	},
 	identifier: {
 		type: TokenScalar,
-		description: 'An external identifier for the test report (See http://hl7.org/fhir/SearchParameter/TestReport-identifier).'
+		description:
+			'An external identifier for the test report (See http://hl7.org/fhir/SearchParameter/TestReport-identifier).',
 	},
 	tester: {
 		type: GraphQLString,
-		description: 'The name of the testing organization (See http://hl7.org/fhir/SearchParameter/TestReport-tester).'
+		description:
+			'The name of the testing organization (See http://hl7.org/fhir/SearchParameter/TestReport-tester).',
 	},
 	testscript: {
 		type: GraphQLString,
-		description: 'The test script executed to produce this report (See http://hl7.org/fhir/SearchParameter/TestReport-testscript).'
+		description:
+			'The test script executed to produce this report (See http://hl7.org/fhir/SearchParameter/TestReport-testscript).',
 	},
 	issued: {
 		type: DateScalar,
-		description: 'The test report generation date (See http://hl7.org/fhir/SearchParameter/TestReport-issued).'
+		description:
+			'The test report generation date (See http://hl7.org/fhir/SearchParameter/TestReport-issued).',
 	},
 	participant: {
 		type: UriScalar,
-		description: 'The reference to a participant in the test execution (See http://hl7.org/fhir/SearchParameter/TestReport-participant).'
-	}
+		description:
+			'The reference to a participant in the test execution (See http://hl7.org/fhir/SearchParameter/TestReport-participant).',
+	},
 };

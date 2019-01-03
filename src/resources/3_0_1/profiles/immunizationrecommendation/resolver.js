@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ImmunizationRecommendation Resolver.
  */
-module.exports.immunizationrecommendationResolver = function immunizationrecommendationResolver (root, args, context, info) {
+module.exports.immunizationrecommendationResolver = function immunizationrecommendationResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.immunizationrecommendationResolver = function immunizationrecomme
  * @static
  * @summary ImmunizationRecommendation List Resolver.
  */
-module.exports.immunizationrecommendationListResolver = function immunizationrecommendationListResolver (root, args, context, info) {
+module.exports.immunizationrecommendationListResolver = function immunizationrecommendationListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.immunizationrecommendationListResolver = function immunizationrec
  * @static
  * @summary ImmunizationRecommendation Instance Resolver.
  */
-module.exports.immunizationrecommendationInstanceResolver = function immunizationrecommendationInstanceResolver (root, args, context, info) {
+module.exports.immunizationrecommendationInstanceResolver = function immunizationrecommendationInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.immunizationrecommendationInstanceResolver = function immunizatio
  * @static
  * @summary ImmunizationRecommendation Create Resolver.
  */
-module.exports.immunizationrecommendationCreateResolver = function immunizationrecommendationCreateResolver (root, args, context, info) {
+module.exports.immunizationrecommendationCreateResolver = function immunizationrecommendationCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.immunizationrecommendationCreateResolver = function immunizationr
  * @static
  * @summary ImmunizationRecommendation Update Resolver.
  */
-module.exports.immunizationrecommendationUpdateResolver = function immunizationrecommendationUpdateResolver (root, args, context, info) {
+module.exports.immunizationrecommendationUpdateResolver = function immunizationrecommendationUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.immunizationrecommendationUpdateResolver = function immunizationr
  * @static
  * @summary ImmunizationRecommendation Delete Resolver.
  */
-module.exports.immunizationrecommendationDeleteResolver = function immunizationrecommendationDeleteResolver (root, args, context, info) {
+module.exports.immunizationrecommendationDeleteResolver = function immunizationrecommendationDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

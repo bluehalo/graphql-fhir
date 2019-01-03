@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	explanationofbenefitResolver,
 	explanationofbenefitListResolver,
-	explanationofbenefitInstanceResolver
+	explanationofbenefitInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ExplanationOfBenefit',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ExplanationOfBenefitQuery = {
 	args: Object.assign({}, CommonArgs, ExplanationOfBenefitArgs),
 	description: 'Query for a single ExplanationOfBenefit',
 	resolve: scopeInvariant(scopeOptions, explanationofbenefitResolver),
-	type: ExplanationOfBenefitSchema
+	type: ExplanationOfBenefitSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ExplanationOfBenefitListQuery = {
 	args: Object.assign({}, CommonArgs, ExplanationOfBenefitArgs),
 	description: 'Query for multiple ExplanationOfBenefits',
 	resolve: scopeInvariant(scopeOptions, explanationofbenefitListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ExplanationOfBenefitListQuery = {
 module.exports.ExplanationOfBenefitInstanceQuery = {
 	description: 'Get information about a single ExplanationOfBenefit',
 	resolve: scopeInvariant(scopeOptions, explanationofbenefitInstanceResolver),
-	type: ExplanationOfBenefitSchema
+	type: ExplanationOfBenefitSchema,
 };

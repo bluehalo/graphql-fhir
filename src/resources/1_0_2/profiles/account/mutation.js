@@ -11,39 +11,38 @@ const AccountInput = require('../../inputs/account.input');
 const {
 	accountCreateResolver,
 	accountUpdateResolver,
-	accountDeleteResolver
+	accountDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Account',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Account record.'
+		description: 'Unique identifier for creating/updating a Account record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(AccountInput),
-		description: 'Account Information for the record.'
-	}
+		description: 'Account Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Account record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Account record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.AccountCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Account',
 	resolve: scopeInvariant(scopeOptions, accountCreateResolver),
-	type: AccountSchema
+	type: AccountSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.AccountUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Accounts',
 	resolve: scopeInvariant(scopeOptions, accountUpdateResolver),
-	type: AccountSchema
+	type: AccountSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.AccountDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Account',
 	resolve: scopeInvariant(scopeOptions, accountDeleteResolver),
-	type: AccountSchema
+	type: AccountSchema,
 };

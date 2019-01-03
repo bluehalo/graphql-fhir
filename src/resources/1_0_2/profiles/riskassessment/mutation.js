@@ -11,39 +11,39 @@ const RiskAssessmentInput = require('../../inputs/riskassessment.input');
 const {
 	riskassessmentCreateResolver,
 	riskassessmentUpdateResolver,
-	riskassessmentDeleteResolver
+	riskassessmentDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'RiskAssessment',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a RiskAssessment record.'
+		description:
+			'Unique identifier for creating/updating a RiskAssessment record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(RiskAssessmentInput),
-		description: 'RiskAssessment Information for the record.'
-	}
+		description: 'RiskAssessment Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a RiskAssessment record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a RiskAssessment record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.RiskAssessmentCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a RiskAssessment',
 	resolve: scopeInvariant(scopeOptions, riskassessmentCreateResolver),
-	type: RiskAssessmentSchema
+	type: RiskAssessmentSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.RiskAssessmentUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple RiskAssessments',
 	resolve: scopeInvariant(scopeOptions, riskassessmentUpdateResolver),
-	type: RiskAssessmentSchema
+	type: RiskAssessmentSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.RiskAssessmentDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single RiskAssessment',
 	resolve: scopeInvariant(scopeOptions, riskassessmentDeleteResolver),
-	type: RiskAssessmentSchema
+	type: RiskAssessmentSchema,
 };

@@ -11,39 +11,39 @@ const AdverseEventInput = require('../../inputs/adverseevent.input');
 const {
 	adverseeventCreateResolver,
 	adverseeventUpdateResolver,
-	adverseeventDeleteResolver
+	adverseeventDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'AdverseEvent',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a AdverseEvent record.'
+		description:
+			'Unique identifier for creating/updating a AdverseEvent record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(AdverseEventInput),
-		description: 'AdverseEvent Information for the record.'
-	}
+		description: 'AdverseEvent Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a AdverseEvent record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a AdverseEvent record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.AdverseEventCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a AdverseEvent',
 	resolve: scopeInvariant(scopeOptions, adverseeventCreateResolver),
-	type: AdverseEventSchema
+	type: AdverseEventSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.AdverseEventUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple AdverseEvents',
 	resolve: scopeInvariant(scopeOptions, adverseeventUpdateResolver),
-	type: AdverseEventSchema
+	type: AdverseEventSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.AdverseEventDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single AdverseEvent',
 	resolve: scopeInvariant(scopeOptions, adverseeventDeleteResolver),
-	type: AdverseEventSchema
+	type: AdverseEventSchema,
 };

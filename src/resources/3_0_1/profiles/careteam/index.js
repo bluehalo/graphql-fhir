@@ -1,13 +1,13 @@
 const {
 	CareTeamQuery,
 	CareTeamListQuery,
-	CareTeamInstanceQuery
+	CareTeamInstanceQuery,
 } = require('./query');
 
 const {
 	CareTeamCreateMutation,
 	CareTeamUpdateMutation,
-	CareTeamDeleteMutation
+	CareTeamDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		CareTeam: CareTeamQuery,
-		CareTeamList: CareTeamListQuery
+		CareTeamList: CareTeamListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		CareTeamCreate: CareTeamCreateMutation,
 		CareTeamUpdate: CareTeamUpdateMutation,
-		CareTeamDelete: CareTeamDeleteMutation
+		CareTeamDelete: CareTeamDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'CareTeam',
 		path: '/3_0_1/CareTeam/:id',
-		query: CareTeamInstanceQuery
-	}
+		query: CareTeamInstanceQuery,
+	},
 };

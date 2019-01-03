@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Substance Resolver.
  */
-module.exports.substanceResolver = function substanceResolver (root, args, context, info) {
+module.exports.substanceResolver = function substanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.substanceResolver = function substanceResolver (root, args, conte
  * @static
  * @summary Substance List Resolver.
  */
-module.exports.substanceListResolver = function substanceListResolver (root, args, context, info) {
+module.exports.substanceListResolver = function substanceListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.substanceListResolver = function substanceListResolver (root, arg
  * @static
  * @summary Substance Instance Resolver.
  */
-module.exports.substanceInstanceResolver = function substanceInstanceResolver (root, args, context, info) {
+module.exports.substanceInstanceResolver = function substanceInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.substanceInstanceResolver = function substanceInstanceResolver (r
  * @static
  * @summary Substance Create Resolver.
  */
-module.exports.substanceCreateResolver = function substanceCreateResolver (root, args, context, info) {
+module.exports.substanceCreateResolver = function substanceCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.substanceCreateResolver = function substanceCreateResolver (root,
  * @static
  * @summary Substance Update Resolver.
  */
-module.exports.substanceUpdateResolver = function substanceUpdateResolver (root, args, context, info) {
+module.exports.substanceUpdateResolver = function substanceUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.substanceUpdateResolver = function substanceUpdateResolver (root,
  * @static
  * @summary Substance Delete Resolver.
  */
-module.exports.substanceDeleteResolver = function substanceDeleteResolver (root, args, context, info) {
+module.exports.substanceDeleteResolver = function substanceDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

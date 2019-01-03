@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	structuredefinitionResolver,
 	structuredefinitionListResolver,
-	structuredefinitionInstanceResolver
+	structuredefinitionInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'StructureDefinition',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.StructureDefinitionQuery = {
 	args: Object.assign({}, CommonArgs, StructureDefinitionArgs),
 	description: 'Query for a single StructureDefinition',
 	resolve: scopeInvariant(scopeOptions, structuredefinitionResolver),
-	type: StructureDefinitionSchema
+	type: StructureDefinitionSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.StructureDefinitionListQuery = {
 	args: Object.assign({}, CommonArgs, StructureDefinitionArgs),
 	description: 'Query for multiple StructureDefinitions',
 	resolve: scopeInvariant(scopeOptions, structuredefinitionListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.StructureDefinitionListQuery = {
 module.exports.StructureDefinitionInstanceQuery = {
 	description: 'Get information about a single StructureDefinition',
 	resolve: scopeInvariant(scopeOptions, structuredefinitionInstanceResolver),
-	type: StructureDefinitionSchema
+	type: StructureDefinitionSchema,
 };

@@ -1,13 +1,13 @@
 const {
 	DataElementQuery,
 	DataElementListQuery,
-	DataElementInstanceQuery
+	DataElementInstanceQuery,
 } = require('./query');
 
 const {
 	DataElementCreateMutation,
 	DataElementUpdateMutation,
-	DataElementDeleteMutation
+	DataElementDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		DataElement: DataElementQuery,
-		DataElementList: DataElementListQuery
+		DataElementList: DataElementListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		DataElementCreate: DataElementCreateMutation,
 		DataElementUpdate: DataElementUpdateMutation,
-		DataElementDelete: DataElementDeleteMutation
+		DataElementDelete: DataElementDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'DataElement',
 		path: '/3_0_1/DataElement/:id',
-		query: DataElementInstanceQuery
-	}
+		query: DataElementInstanceQuery,
+	},
 };

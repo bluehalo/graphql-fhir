@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Schedule Resolver.
  */
-module.exports.scheduleResolver = function scheduleResolver (root, args, context, info) {
+module.exports.scheduleResolver = function scheduleResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.scheduleResolver = function scheduleResolver (root, args, context
  * @static
  * @summary Schedule List Resolver.
  */
-module.exports.scheduleListResolver = function scheduleListResolver (root, args, context, info) {
+module.exports.scheduleListResolver = function scheduleListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.scheduleListResolver = function scheduleListResolver (root, args,
  * @static
  * @summary Schedule Instance Resolver.
  */
-module.exports.scheduleInstanceResolver = function scheduleInstanceResolver (root, args, context, info) {
+module.exports.scheduleInstanceResolver = function scheduleInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.scheduleInstanceResolver = function scheduleInstanceResolver (roo
  * @static
  * @summary Schedule Create Resolver.
  */
-module.exports.scheduleCreateResolver = function scheduleCreateResolver (root, args, context, info) {
+module.exports.scheduleCreateResolver = function scheduleCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.scheduleCreateResolver = function scheduleCreateResolver (root, a
  * @static
  * @summary Schedule Update Resolver.
  */
-module.exports.scheduleUpdateResolver = function scheduleUpdateResolver (root, args, context, info) {
+module.exports.scheduleUpdateResolver = function scheduleUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.scheduleUpdateResolver = function scheduleUpdateResolver (root, a
  * @static
  * @summary Schedule Delete Resolver.
  */
-module.exports.scheduleDeleteResolver = function scheduleDeleteResolver (root, args, context, info) {
+module.exports.scheduleDeleteResolver = function scheduleDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

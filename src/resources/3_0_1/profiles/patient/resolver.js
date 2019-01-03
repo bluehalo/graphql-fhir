@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Patient Resolver.
  */
-module.exports.patientResolver = function patientResolver (root, args, context, info) {
+module.exports.patientResolver = function patientResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.patientResolver = function patientResolver (root, args, context, 
  * @static
  * @summary Patient List Resolver.
  */
-module.exports.patientListResolver = function patientListResolver (root, args, context, info) {
+module.exports.patientListResolver = function patientListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.patientListResolver = function patientListResolver (root, args, c
  * @static
  * @summary Patient Instance Resolver.
  */
-module.exports.patientInstanceResolver = function patientInstanceResolver (root, args, context, info) {
+module.exports.patientInstanceResolver = function patientInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.patientInstanceResolver = function patientInstanceResolver (root,
  * @static
  * @summary Patient Create Resolver.
  */
-module.exports.patientCreateResolver = function patientCreateResolver (root, args, context, info) {
+module.exports.patientCreateResolver = function patientCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.patientCreateResolver = function patientCreateResolver (root, arg
  * @static
  * @summary Patient Update Resolver.
  */
-module.exports.patientUpdateResolver = function patientUpdateResolver (root, args, context, info) {
+module.exports.patientUpdateResolver = function patientUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.patientUpdateResolver = function patientUpdateResolver (root, arg
  * @static
  * @summary Patient Delete Resolver.
  */
-module.exports.patientDeleteResolver = function patientDeleteResolver (root, args, context, info) {
+module.exports.patientDeleteResolver = function patientDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

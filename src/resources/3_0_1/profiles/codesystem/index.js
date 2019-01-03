@@ -1,13 +1,13 @@
 const {
 	CodeSystemQuery,
 	CodeSystemListQuery,
-	CodeSystemInstanceQuery
+	CodeSystemInstanceQuery,
 } = require('./query');
 
 const {
 	CodeSystemCreateMutation,
 	CodeSystemUpdateMutation,
-	CodeSystemDeleteMutation
+	CodeSystemDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		CodeSystem: CodeSystemQuery,
-		CodeSystemList: CodeSystemListQuery
+		CodeSystemList: CodeSystemListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		CodeSystemCreate: CodeSystemCreateMutation,
 		CodeSystemUpdate: CodeSystemUpdateMutation,
-		CodeSystemDelete: CodeSystemDeleteMutation
+		CodeSystemDelete: CodeSystemDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'CodeSystem',
 		path: '/3_0_1/CodeSystem/:id',
-		query: CodeSystemInstanceQuery
-	}
+		query: CodeSystemInstanceQuery,
+	},
 };

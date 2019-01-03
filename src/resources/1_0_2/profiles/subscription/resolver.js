@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Subscription Resolver.
  */
-module.exports.subscriptionResolver = function subscriptionResolver (root, args, context, info) {
+module.exports.subscriptionResolver = function subscriptionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.subscriptionResolver = function subscriptionResolver (root, args,
  * @static
  * @summary Subscription List Resolver.
  */
-module.exports.subscriptionListResolver = function subscriptionListResolver (root, args, context, info) {
+module.exports.subscriptionListResolver = function subscriptionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.subscriptionListResolver = function subscriptionListResolver (roo
  * @static
  * @summary Subscription Instance Resolver.
  */
-module.exports.subscriptionInstanceResolver = function subscriptionInstanceResolver (root, args, context, info) {
+module.exports.subscriptionInstanceResolver = function subscriptionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.subscriptionInstanceResolver = function subscriptionInstanceResol
  * @static
  * @summary Subscription Create Resolver.
  */
-module.exports.subscriptionCreateResolver = function subscriptionCreateResolver (root, args, context, info) {
+module.exports.subscriptionCreateResolver = function subscriptionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.subscriptionCreateResolver = function subscriptionCreateResolver 
  * @static
  * @summary Subscription Update Resolver.
  */
-module.exports.subscriptionUpdateResolver = function subscriptionUpdateResolver (root, args, context, info) {
+module.exports.subscriptionUpdateResolver = function subscriptionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.subscriptionUpdateResolver = function subscriptionUpdateResolver 
  * @static
  * @summary Subscription Delete Resolver.
  */
-module.exports.subscriptionDeleteResolver = function subscriptionDeleteResolver (root, args, context, info) {
+module.exports.subscriptionDeleteResolver = function subscriptionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

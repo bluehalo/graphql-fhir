@@ -1,13 +1,13 @@
 const {
 	ConformanceQuery,
 	ConformanceListQuery,
-	ConformanceInstanceQuery
+	ConformanceInstanceQuery,
 } = require('./query');
 
 const {
 	ConformanceCreateMutation,
 	ConformanceUpdateMutation,
-	ConformanceDeleteMutation
+	ConformanceDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Conformance: ConformanceQuery,
-		ConformanceList: ConformanceListQuery
+		ConformanceList: ConformanceListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		ConformanceCreate: ConformanceCreateMutation,
 		ConformanceUpdate: ConformanceUpdateMutation,
-		ConformanceDelete: ConformanceDeleteMutation
+		ConformanceDelete: ConformanceDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Conformance',
 		path: '/1_0_2/Conformance/:id',
-		query: ConformanceInstanceQuery
-	}
+		query: ConformanceInstanceQuery,
+	},
 };

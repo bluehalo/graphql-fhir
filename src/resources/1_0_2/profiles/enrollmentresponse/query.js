@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	enrollmentresponseResolver,
 	enrollmentresponseListResolver,
-	enrollmentresponseInstanceResolver
+	enrollmentresponseInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'EnrollmentResponse',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.EnrollmentResponseQuery = {
 	args: Object.assign({}, CommonArgs, EnrollmentResponseArgs),
 	description: 'Query for a single EnrollmentResponse',
 	resolve: scopeInvariant(scopeOptions, enrollmentresponseResolver),
-	type: EnrollmentResponseSchema
+	type: EnrollmentResponseSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.EnrollmentResponseListQuery = {
 	args: Object.assign({}, CommonArgs, EnrollmentResponseArgs),
 	description: 'Query for multiple EnrollmentResponses',
 	resolve: scopeInvariant(scopeOptions, enrollmentresponseListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.EnrollmentResponseListQuery = {
 module.exports.EnrollmentResponseInstanceQuery = {
 	description: 'Get information about a single EnrollmentResponse',
 	resolve: scopeInvariant(scopeOptions, enrollmentresponseInstanceResolver),
-	type: EnrollmentResponseSchema
+	type: EnrollmentResponseSchema,
 };

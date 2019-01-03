@@ -11,39 +11,37 @@ const ClaimInput = require('../../inputs/claim.input');
 const {
 	claimCreateResolver,
 	claimUpdateResolver,
-	claimDeleteResolver
+	claimDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Claim',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Claim record.'
+		description: 'Unique identifier for creating/updating a Claim record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ClaimInput),
-		description: 'Claim Information for the record.'
-	}
+		description: 'Claim Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Claim record for deletion.'
-	}
+		description: 'Unique identifier for selecting a Claim record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +52,7 @@ module.exports.ClaimCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Claim',
 	resolve: scopeInvariant(scopeOptions, claimCreateResolver),
-	type: ClaimSchema
+	type: ClaimSchema,
 };
 
 /**
@@ -65,7 +63,7 @@ module.exports.ClaimUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Claims',
 	resolve: scopeInvariant(scopeOptions, claimUpdateResolver),
-	type: ClaimSchema
+	type: ClaimSchema,
 };
 
 /**
@@ -76,5 +74,5 @@ module.exports.ClaimDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Claim',
 	resolve: scopeInvariant(scopeOptions, claimDeleteResolver),
-	type: ClaimSchema
+	type: ClaimSchema,
 };

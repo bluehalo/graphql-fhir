@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	claimresponseResolver,
 	claimresponseListResolver,
-	claimresponseInstanceResolver
+	claimresponseInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ClaimResponse',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ClaimResponseQuery = {
 	args: Object.assign({}, CommonArgs, ClaimResponseArgs),
 	description: 'Query for a single ClaimResponse',
 	resolve: scopeInvariant(scopeOptions, claimresponseResolver),
-	type: ClaimResponseSchema
+	type: ClaimResponseSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ClaimResponseListQuery = {
 	args: Object.assign({}, CommonArgs, ClaimResponseArgs),
 	description: 'Query for multiple ClaimResponses',
 	resolve: scopeInvariant(scopeOptions, claimresponseListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ClaimResponseListQuery = {
 module.exports.ClaimResponseInstanceQuery = {
 	description: 'Get information about a single ClaimResponse',
 	resolve: scopeInvariant(scopeOptions, claimresponseInstanceResolver),
-	type: ClaimResponseSchema
+	type: ClaimResponseSchema,
 };

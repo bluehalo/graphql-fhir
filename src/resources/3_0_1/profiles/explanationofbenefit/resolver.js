@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ExplanationOfBenefit Resolver.
  */
-module.exports.explanationofbenefitResolver = function explanationofbenefitResolver (root, args, context, info) {
+module.exports.explanationofbenefitResolver = function explanationofbenefitResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.explanationofbenefitResolver = function explanationofbenefitResol
  * @static
  * @summary ExplanationOfBenefit List Resolver.
  */
-module.exports.explanationofbenefitListResolver = function explanationofbenefitListResolver (root, args, context, info) {
+module.exports.explanationofbenefitListResolver = function explanationofbenefitListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.explanationofbenefitListResolver = function explanationofbenefitL
  * @static
  * @summary ExplanationOfBenefit Instance Resolver.
  */
-module.exports.explanationofbenefitInstanceResolver = function explanationofbenefitInstanceResolver (root, args, context, info) {
+module.exports.explanationofbenefitInstanceResolver = function explanationofbenefitInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.explanationofbenefitInstanceResolver = function explanationofbene
  * @static
  * @summary ExplanationOfBenefit Create Resolver.
  */
-module.exports.explanationofbenefitCreateResolver = function explanationofbenefitCreateResolver (root, args, context, info) {
+module.exports.explanationofbenefitCreateResolver = function explanationofbenefitCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.explanationofbenefitCreateResolver = function explanationofbenefi
  * @static
  * @summary ExplanationOfBenefit Update Resolver.
  */
-module.exports.explanationofbenefitUpdateResolver = function explanationofbenefitUpdateResolver (root, args, context, info) {
+module.exports.explanationofbenefitUpdateResolver = function explanationofbenefitUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.explanationofbenefitUpdateResolver = function explanationofbenefi
  * @static
  * @summary ExplanationOfBenefit Delete Resolver.
  */
-module.exports.explanationofbenefitDeleteResolver = function explanationofbenefitDeleteResolver (root, args, context, info) {
+module.exports.explanationofbenefitDeleteResolver = function explanationofbenefitDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

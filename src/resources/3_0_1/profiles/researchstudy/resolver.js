@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ResearchStudy Resolver.
  */
-module.exports.researchstudyResolver = function researchstudyResolver (root, args, context, info) {
+module.exports.researchstudyResolver = function researchstudyResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.researchstudyResolver = function researchstudyResolver (root, arg
  * @static
  * @summary ResearchStudy List Resolver.
  */
-module.exports.researchstudyListResolver = function researchstudyListResolver (root, args, context, info) {
+module.exports.researchstudyListResolver = function researchstudyListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.researchstudyListResolver = function researchstudyListResolver (r
  * @static
  * @summary ResearchStudy Instance Resolver.
  */
-module.exports.researchstudyInstanceResolver = function researchstudyInstanceResolver (root, args, context, info) {
+module.exports.researchstudyInstanceResolver = function researchstudyInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.researchstudyInstanceResolver = function researchstudyInstanceRes
  * @static
  * @summary ResearchStudy Create Resolver.
  */
-module.exports.researchstudyCreateResolver = function researchstudyCreateResolver (root, args, context, info) {
+module.exports.researchstudyCreateResolver = function researchstudyCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.researchstudyCreateResolver = function researchstudyCreateResolve
  * @static
  * @summary ResearchStudy Update Resolver.
  */
-module.exports.researchstudyUpdateResolver = function researchstudyUpdateResolver (root, args, context, info) {
+module.exports.researchstudyUpdateResolver = function researchstudyUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.researchstudyUpdateResolver = function researchstudyUpdateResolve
  * @static
  * @summary ResearchStudy Delete Resolver.
  */
-module.exports.researchstudyDeleteResolver = function researchstudyDeleteResolver (root, args, context, info) {
+module.exports.researchstudyDeleteResolver = function researchstudyDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

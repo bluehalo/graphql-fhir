@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Practitioner Resolver.
  */
-module.exports.practitionerResolver = function practitionerResolver (root, args, context, info) {
+module.exports.practitionerResolver = function practitionerResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.practitionerResolver = function practitionerResolver (root, args,
  * @static
  * @summary Practitioner List Resolver.
  */
-module.exports.practitionerListResolver = function practitionerListResolver (root, args, context, info) {
+module.exports.practitionerListResolver = function practitionerListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.practitionerListResolver = function practitionerListResolver (roo
  * @static
  * @summary Practitioner Instance Resolver.
  */
-module.exports.practitionerInstanceResolver = function practitionerInstanceResolver (root, args, context, info) {
+module.exports.practitionerInstanceResolver = function practitionerInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.practitionerInstanceResolver = function practitionerInstanceResol
  * @static
  * @summary Practitioner Create Resolver.
  */
-module.exports.practitionerCreateResolver = function practitionerCreateResolver (root, args, context, info) {
+module.exports.practitionerCreateResolver = function practitionerCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.practitionerCreateResolver = function practitionerCreateResolver 
  * @static
  * @summary Practitioner Update Resolver.
  */
-module.exports.practitionerUpdateResolver = function practitionerUpdateResolver (root, args, context, info) {
+module.exports.practitionerUpdateResolver = function practitionerUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.practitionerUpdateResolver = function practitionerUpdateResolver 
  * @static
  * @summary Practitioner Delete Resolver.
  */
-module.exports.practitionerDeleteResolver = function practitionerDeleteResolver (root, args, context, info) {
+module.exports.practitionerDeleteResolver = function practitionerDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

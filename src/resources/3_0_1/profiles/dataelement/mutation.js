@@ -11,39 +11,39 @@ const DataElementInput = require('../../inputs/dataelement.input');
 const {
 	dataelementCreateResolver,
 	dataelementUpdateResolver,
-	dataelementDeleteResolver
+	dataelementDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DataElement',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a DataElement record.'
+		description:
+			'Unique identifier for creating/updating a DataElement record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(DataElementInput),
-		description: 'DataElement Information for the record.'
-	}
+		description: 'DataElement Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a DataElement record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a DataElement record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.DataElementCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DataElement',
 	resolve: scopeInvariant(scopeOptions, dataelementCreateResolver),
-	type: DataElementSchema
+	type: DataElementSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.DataElementUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DataElements',
 	resolve: scopeInvariant(scopeOptions, dataelementUpdateResolver),
-	type: DataElementSchema
+	type: DataElementSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.DataElementDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DataElement',
 	resolve: scopeInvariant(scopeOptions, dataelementDeleteResolver),
-	type: DataElementSchema
+	type: DataElementSchema,
 };

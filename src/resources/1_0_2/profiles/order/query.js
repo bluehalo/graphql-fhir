@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	orderResolver,
 	orderListResolver,
-	orderInstanceResolver
+	orderInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Order',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.OrderQuery = {
 	args: Object.assign({}, CommonArgs, OrderArgs),
 	description: 'Query for a single Order',
 	resolve: scopeInvariant(scopeOptions, orderResolver),
-	type: OrderSchema
+	type: OrderSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.OrderListQuery = {
 	args: Object.assign({}, CommonArgs, OrderArgs),
 	description: 'Query for multiple Orders',
 	resolve: scopeInvariant(scopeOptions, orderListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.OrderListQuery = {
 module.exports.OrderInstanceQuery = {
 	description: 'Get information about a single Order',
 	resolve: scopeInvariant(scopeOptions, orderInstanceResolver),
-	type: OrderSchema
+	type: OrderSchema,
 };

@@ -11,39 +11,39 @@ const EpisodeOfCareInput = require('../../inputs/episodeofcare.input');
 const {
 	episodeofcareCreateResolver,
 	episodeofcareUpdateResolver,
-	episodeofcareDeleteResolver
+	episodeofcareDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'EpisodeOfCare',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a EpisodeOfCare record.'
+		description:
+			'Unique identifier for creating/updating a EpisodeOfCare record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(EpisodeOfCareInput),
-		description: 'EpisodeOfCare Information for the record.'
-	}
+		description: 'EpisodeOfCare Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a EpisodeOfCare record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a EpisodeOfCare record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.EpisodeOfCareCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a EpisodeOfCare',
 	resolve: scopeInvariant(scopeOptions, episodeofcareCreateResolver),
-	type: EpisodeOfCareSchema
+	type: EpisodeOfCareSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.EpisodeOfCareUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple EpisodeOfCares',
 	resolve: scopeInvariant(scopeOptions, episodeofcareUpdateResolver),
-	type: EpisodeOfCareSchema
+	type: EpisodeOfCareSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.EpisodeOfCareDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single EpisodeOfCare',
 	resolve: scopeInvariant(scopeOptions, episodeofcareDeleteResolver),
-	type: EpisodeOfCareSchema
+	type: EpisodeOfCareSchema,
 };

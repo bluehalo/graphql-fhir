@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	substanceResolver,
 	substanceListResolver,
-	substanceInstanceResolver
+	substanceInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Substance',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.SubstanceQuery = {
 	args: Object.assign({}, CommonArgs, SubstanceArgs),
 	description: 'Query for a single Substance',
 	resolve: scopeInvariant(scopeOptions, substanceResolver),
-	type: SubstanceSchema
+	type: SubstanceSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.SubstanceListQuery = {
 	args: Object.assign({}, CommonArgs, SubstanceArgs),
 	description: 'Query for multiple Substances',
 	resolve: scopeInvariant(scopeOptions, substanceListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.SubstanceListQuery = {
 module.exports.SubstanceInstanceQuery = {
 	description: 'Get information about a single Substance',
 	resolve: scopeInvariant(scopeOptions, substanceInstanceResolver),
-	type: SubstanceSchema
+	type: SubstanceSchema,
 };

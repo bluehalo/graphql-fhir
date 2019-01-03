@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary RequestGroup Resolver.
  */
-module.exports.requestgroupResolver = function requestgroupResolver (root, args, context, info) {
+module.exports.requestgroupResolver = function requestgroupResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.requestgroupResolver = function requestgroupResolver (root, args,
  * @static
  * @summary RequestGroup List Resolver.
  */
-module.exports.requestgroupListResolver = function requestgroupListResolver (root, args, context, info) {
+module.exports.requestgroupListResolver = function requestgroupListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.requestgroupListResolver = function requestgroupListResolver (roo
  * @static
  * @summary RequestGroup Instance Resolver.
  */
-module.exports.requestgroupInstanceResolver = function requestgroupInstanceResolver (root, args, context, info) {
+module.exports.requestgroupInstanceResolver = function requestgroupInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.requestgroupInstanceResolver = function requestgroupInstanceResol
  * @static
  * @summary RequestGroup Create Resolver.
  */
-module.exports.requestgroupCreateResolver = function requestgroupCreateResolver (root, args, context, info) {
+module.exports.requestgroupCreateResolver = function requestgroupCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.requestgroupCreateResolver = function requestgroupCreateResolver 
  * @static
  * @summary RequestGroup Update Resolver.
  */
-module.exports.requestgroupUpdateResolver = function requestgroupUpdateResolver (root, args, context, info) {
+module.exports.requestgroupUpdateResolver = function requestgroupUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.requestgroupUpdateResolver = function requestgroupUpdateResolver 
  * @static
  * @summary RequestGroup Delete Resolver.
  */
-module.exports.requestgroupDeleteResolver = function requestgroupDeleteResolver (root, args, context, info) {
+module.exports.requestgroupDeleteResolver = function requestgroupDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

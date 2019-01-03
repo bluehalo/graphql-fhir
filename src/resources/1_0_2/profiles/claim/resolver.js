@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Claim Resolver.
  */
-module.exports.claimResolver = function claimResolver (root, args, context, info) {
+module.exports.claimResolver = function claimResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.claimResolver = function claimResolver (root, args, context, info
  * @static
  * @summary Claim List Resolver.
  */
-module.exports.claimListResolver = function claimListResolver (root, args, context, info) {
+module.exports.claimListResolver = function claimListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.claimListResolver = function claimListResolver (root, args, conte
  * @static
  * @summary Claim Instance Resolver.
  */
-module.exports.claimInstanceResolver = function claimInstanceResolver (root, args, context, info) {
+module.exports.claimInstanceResolver = function claimInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.claimInstanceResolver = function claimInstanceResolver (root, arg
  * @static
  * @summary Claim Create Resolver.
  */
-module.exports.claimCreateResolver = function claimCreateResolver (root, args, context, info) {
+module.exports.claimCreateResolver = function claimCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.claimCreateResolver = function claimCreateResolver (root, args, c
  * @static
  * @summary Claim Update Resolver.
  */
-module.exports.claimUpdateResolver = function claimUpdateResolver (root, args, context, info) {
+module.exports.claimUpdateResolver = function claimUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.claimUpdateResolver = function claimUpdateResolver (root, args, c
  * @static
  * @summary Claim Delete Resolver.
  */
-module.exports.claimDeleteResolver = function claimDeleteResolver (root, args, context, info) {
+module.exports.claimDeleteResolver = function claimDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

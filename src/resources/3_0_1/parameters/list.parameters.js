@@ -10,50 +10,62 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	date: {
 		type: DateScalar,
-		description: 'When the list was prepared (See http://hl7.org/fhir/SearchParameter/clinical-date).'
+		description:
+			'When the list was prepared (See http://hl7.org/fhir/SearchParameter/clinical-date).',
 	},
 	identifier: {
 		type: TokenScalar,
-		description: 'Business identifier (See http://hl7.org/fhir/SearchParameter/clinical-identifier).'
+		description:
+			'Business identifier (See http://hl7.org/fhir/SearchParameter/clinical-identifier).',
 	},
 	item: {
 		type: GraphQLString,
-		description: 'Actual entry (See http://hl7.org/fhir/SearchParameter/List-item).'
+		description:
+			'Actual entry (See http://hl7.org/fhir/SearchParameter/List-item).',
 	},
 	empty_reason: {
 		type: TokenScalar,
-		description: 'Why list is empty (See http://hl7.org/fhir/SearchParameter/List-empty-reason).'
+		description:
+			'Why list is empty (See http://hl7.org/fhir/SearchParameter/List-empty-reason).',
 	},
 	code: {
 		type: TokenScalar,
-		description: 'What the purpose of this list is (See http://hl7.org/fhir/SearchParameter/clinical-code).'
+		description:
+			'What the purpose of this list is (See http://hl7.org/fhir/SearchParameter/clinical-code).',
 	},
 	notes: {
 		type: GraphQLString,
-		description: 'The annotation  - text content (See http://hl7.org/fhir/SearchParameter/List-notes).'
+		description:
+			'The annotation  - text content (See http://hl7.org/fhir/SearchParameter/List-notes).',
 	},
 	subject: {
 		type: GraphQLString,
-		description: 'If all resources have the same subject (See http://hl7.org/fhir/SearchParameter/List-subject).'
+		description:
+			'If all resources have the same subject (See http://hl7.org/fhir/SearchParameter/List-subject).',
 	},
 	patient: {
 		type: GraphQLString,
-		description: 'If all resources have the same subject (See http://hl7.org/fhir/SearchParameter/clinical-patient).'
+		description:
+			'If all resources have the same subject (See http://hl7.org/fhir/SearchParameter/clinical-patient).',
 	},
 	source: {
 		type: GraphQLString,
-		description: 'Who and/or what defined the list contents (aka Author) (See http://hl7.org/fhir/SearchParameter/List-source).'
+		description:
+			'Who and/or what defined the list contents (aka Author) (See http://hl7.org/fhir/SearchParameter/List-source).',
 	},
 	encounter: {
 		type: GraphQLString,
-		description: 'Context in which list created (See http://hl7.org/fhir/SearchParameter/clinical-encounter).'
+		description:
+			'Context in which list created (See http://hl7.org/fhir/SearchParameter/clinical-encounter).',
 	},
 	title: {
 		type: GraphQLString,
-		description: 'Descriptive name for the list (See http://hl7.org/fhir/SearchParameter/List-title).'
+		description:
+			'Descriptive name for the list (See http://hl7.org/fhir/SearchParameter/List-title).',
 	},
 	status: {
 		type: TokenScalar,
-		description: 'current | retired | entered-in-error (See http://hl7.org/fhir/SearchParameter/List-status).'
-	}
+		description:
+			'current | retired | entered-in-error (See http://hl7.org/fhir/SearchParameter/List-status).',
+	},
 };

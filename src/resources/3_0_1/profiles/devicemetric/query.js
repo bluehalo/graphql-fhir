@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	devicemetricResolver,
 	devicemetricListResolver,
-	devicemetricInstanceResolver
+	devicemetricInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DeviceMetric',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.DeviceMetricQuery = {
 	args: Object.assign({}, CommonArgs, DeviceMetricArgs),
 	description: 'Query for a single DeviceMetric',
 	resolve: scopeInvariant(scopeOptions, devicemetricResolver),
-	type: DeviceMetricSchema
+	type: DeviceMetricSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.DeviceMetricListQuery = {
 	args: Object.assign({}, CommonArgs, DeviceMetricArgs),
 	description: 'Query for multiple DeviceMetrics',
 	resolve: scopeInvariant(scopeOptions, devicemetricListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.DeviceMetricListQuery = {
 module.exports.DeviceMetricInstanceQuery = {
 	description: 'Get information about a single DeviceMetric',
 	resolve: scopeInvariant(scopeOptions, devicemetricInstanceResolver),
-	type: DeviceMetricSchema
+	type: DeviceMetricSchema,
 };

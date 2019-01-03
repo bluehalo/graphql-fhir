@@ -1,13 +1,13 @@
 const {
 	RelatedPersonQuery,
 	RelatedPersonListQuery,
-	RelatedPersonInstanceQuery
+	RelatedPersonInstanceQuery,
 } = require('./query');
 
 const {
 	RelatedPersonCreateMutation,
 	RelatedPersonUpdateMutation,
-	RelatedPersonDeleteMutation
+	RelatedPersonDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		RelatedPerson: RelatedPersonQuery,
-		RelatedPersonList: RelatedPersonListQuery
+		RelatedPersonList: RelatedPersonListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		RelatedPersonCreate: RelatedPersonCreateMutation,
 		RelatedPersonUpdate: RelatedPersonUpdateMutation,
-		RelatedPersonDelete: RelatedPersonDeleteMutation
+		RelatedPersonDelete: RelatedPersonDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'RelatedPerson',
 		path: '/1_0_2/RelatedPerson/:id',
-		query: RelatedPersonInstanceQuery
-	}
+		query: RelatedPersonInstanceQuery,
+	},
 };

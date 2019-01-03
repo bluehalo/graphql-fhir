@@ -1,13 +1,13 @@
 const {
 	CompositionQuery,
 	CompositionListQuery,
-	CompositionInstanceQuery
+	CompositionInstanceQuery,
 } = require('./query');
 
 const {
 	CompositionCreateMutation,
 	CompositionUpdateMutation,
-	CompositionDeleteMutation
+	CompositionDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Composition: CompositionQuery,
-		CompositionList: CompositionListQuery
+		CompositionList: CompositionListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		CompositionCreate: CompositionCreateMutation,
 		CompositionUpdate: CompositionUpdateMutation,
-		CompositionDelete: CompositionDeleteMutation
+		CompositionDelete: CompositionDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Composition',
 		path: '/1_0_2/Composition/:id',
-		query: CompositionInstanceQuery
-	}
+		query: CompositionInstanceQuery,
+	},
 };

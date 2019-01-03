@@ -1,8 +1,6 @@
 const { GraphQLObjectType } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
-
-
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 /**
  * @name exports
@@ -11,5 +9,5 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'Duration',
 	description: 'Base StructureDefinition for Duration Type.',
-	fields: () => extendSchema(require('./quantity.schema'))
+	fields: () => extendSchema(require('./quantity.schema')),
 });

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ExpansionProfile Resolver.
  */
-module.exports.expansionprofileResolver = function expansionprofileResolver (root, args, context, info) {
+module.exports.expansionprofileResolver = function expansionprofileResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.expansionprofileResolver = function expansionprofileResolver (roo
  * @static
  * @summary ExpansionProfile List Resolver.
  */
-module.exports.expansionprofileListResolver = function expansionprofileListResolver (root, args, context, info) {
+module.exports.expansionprofileListResolver = function expansionprofileListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.expansionprofileListResolver = function expansionprofileListResol
  * @static
  * @summary ExpansionProfile Instance Resolver.
  */
-module.exports.expansionprofileInstanceResolver = function expansionprofileInstanceResolver (root, args, context, info) {
+module.exports.expansionprofileInstanceResolver = function expansionprofileInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.expansionprofileInstanceResolver = function expansionprofileInsta
  * @static
  * @summary ExpansionProfile Create Resolver.
  */
-module.exports.expansionprofileCreateResolver = function expansionprofileCreateResolver (root, args, context, info) {
+module.exports.expansionprofileCreateResolver = function expansionprofileCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.expansionprofileCreateResolver = function expansionprofileCreateR
  * @static
  * @summary ExpansionProfile Update Resolver.
  */
-module.exports.expansionprofileUpdateResolver = function expansionprofileUpdateResolver (root, args, context, info) {
+module.exports.expansionprofileUpdateResolver = function expansionprofileUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.expansionprofileUpdateResolver = function expansionprofileUpdateR
  * @static
  * @summary ExpansionProfile Delete Resolver.
  */
-module.exports.expansionprofileDeleteResolver = function expansionprofileDeleteResolver (root, args, context, info) {
+module.exports.expansionprofileDeleteResolver = function expansionprofileDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

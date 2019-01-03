@@ -11,39 +11,38 @@ const PatientInput = require('../../inputs/patient.input');
 const {
 	patientCreateResolver,
 	patientUpdateResolver,
-	patientDeleteResolver
+	patientDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Patient',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Patient record.'
+		description: 'Unique identifier for creating/updating a Patient record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(PatientInput),
-		description: 'Patient Information for the record.'
-	}
+		description: 'Patient Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Patient record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Patient record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.PatientCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Patient',
 	resolve: scopeInvariant(scopeOptions, patientCreateResolver),
-	type: PatientSchema
+	type: PatientSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.PatientUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Patients',
 	resolve: scopeInvariant(scopeOptions, patientUpdateResolver),
-	type: PatientSchema
+	type: PatientSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.PatientDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Patient',
 	resolve: scopeInvariant(scopeOptions, patientDeleteResolver),
-	type: PatientSchema
+	type: PatientSchema,
 };

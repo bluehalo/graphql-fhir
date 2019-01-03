@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary DeviceMetric Resolver.
  */
-module.exports.devicemetricResolver = function devicemetricResolver (root, args, context, info) {
+module.exports.devicemetricResolver = function devicemetricResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.devicemetricResolver = function devicemetricResolver (root, args,
  * @static
  * @summary DeviceMetric List Resolver.
  */
-module.exports.devicemetricListResolver = function devicemetricListResolver (root, args, context, info) {
+module.exports.devicemetricListResolver = function devicemetricListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.devicemetricListResolver = function devicemetricListResolver (roo
  * @static
  * @summary DeviceMetric Instance Resolver.
  */
-module.exports.devicemetricInstanceResolver = function devicemetricInstanceResolver (root, args, context, info) {
+module.exports.devicemetricInstanceResolver = function devicemetricInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.devicemetricInstanceResolver = function devicemetricInstanceResol
  * @static
  * @summary DeviceMetric Create Resolver.
  */
-module.exports.devicemetricCreateResolver = function devicemetricCreateResolver (root, args, context, info) {
+module.exports.devicemetricCreateResolver = function devicemetricCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.devicemetricCreateResolver = function devicemetricCreateResolver 
  * @static
  * @summary DeviceMetric Update Resolver.
  */
-module.exports.devicemetricUpdateResolver = function devicemetricUpdateResolver (root, args, context, info) {
+module.exports.devicemetricUpdateResolver = function devicemetricUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.devicemetricUpdateResolver = function devicemetricUpdateResolver 
  * @static
  * @summary DeviceMetric Delete Resolver.
  */
-module.exports.devicemetricDeleteResolver = function devicemetricDeleteResolver (root, args, context, info) {
+module.exports.devicemetricDeleteResolver = function devicemetricDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

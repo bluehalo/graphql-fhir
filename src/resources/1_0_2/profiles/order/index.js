@@ -1,13 +1,9 @@
-const {
-	OrderQuery,
-	OrderListQuery,
-	OrderInstanceQuery
-} = require('./query');
+const { OrderQuery, OrderListQuery, OrderInstanceQuery } = require('./query');
 
 const {
 	OrderCreateMutation,
 	OrderUpdateMutation,
-	OrderDeleteMutation
+	OrderDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +14,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Order: OrderQuery,
-		OrderList: OrderListQuery
+		OrderList: OrderListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		OrderCreate: OrderCreateMutation,
 		OrderUpdate: OrderUpdateMutation,
-		OrderDelete: OrderDeleteMutation
+		OrderDelete: OrderDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Order',
 		path: '/1_0_2/Order/:id',
-		query: OrderInstanceQuery
-	}
+		query: OrderInstanceQuery,
+	},
 };

@@ -13,9 +13,13 @@ const parse = (value, ast) => {
 	let sanitized_value = xss(sanitize(value)).trim();
 	let is_time = time_pattern.test(sanitized_value);
 	return is_time
-		? moment(sanitized_value, DATE_CONFIG.timeFormat).format(DATE_CONFIG.timeFormat)
-		: new GraphQLError(`Invalid time provided to TimeScalar. Format should be ${DATE_CONFIG}`);
-}
+		? moment(sanitized_value, DATE_CONFIG.timeFormat).format(
+				DATE_CONFIG.timeFormat,
+		  )
+		: new GraphQLError(
+				`Invalid time provided to TimeScalar. Format should be ${DATE_CONFIG}`,
+		  );
+};
 
 /**
  * @name exports
@@ -23,7 +27,8 @@ const parse = (value, ast) => {
  */
 module.exports = new GraphQLScalarType({
 	name: 'time',
-	description: 'Base StructureDefinition for time Type: A time during the day, with no date specified.',
+	description:
+		'Base StructureDefinition for time Type: A time during the day, with no date specified.',
 	// TODO: Implement proper serialization here
 	serialize: value => value,
 	// TODO: Implement proper parsing and sanitization here
@@ -33,5 +38,5 @@ module.exports = new GraphQLScalarType({
 	parseLiteral: ast => {
 		let { value } = ast;
 		return parse(value, ast);
-	}
+	},
 });

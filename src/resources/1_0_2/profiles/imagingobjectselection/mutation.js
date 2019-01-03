@@ -11,39 +11,39 @@ const ImagingObjectSelectionInput = require('../../inputs/imagingobjectselection
 const {
 	imagingobjectselectionCreateResolver,
 	imagingobjectselectionUpdateResolver,
-	imagingobjectselectionDeleteResolver
+	imagingobjectselectionDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ImagingObjectSelection',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a ImagingObjectSelection record.'
+		description:
+			'Unique identifier for creating/updating a ImagingObjectSelection record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ImagingObjectSelectionInput),
-		description: 'ImagingObjectSelection Information for the record.'
-	}
+		description: 'ImagingObjectSelection Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a ImagingObjectSelection record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a ImagingObjectSelection record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.ImagingObjectSelectionCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ImagingObjectSelection',
 	resolve: scopeInvariant(scopeOptions, imagingobjectselectionCreateResolver),
-	type: ImagingObjectSelectionSchema
+	type: ImagingObjectSelectionSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.ImagingObjectSelectionUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ImagingObjectSelections',
 	resolve: scopeInvariant(scopeOptions, imagingobjectselectionUpdateResolver),
-	type: ImagingObjectSelectionSchema
+	type: ImagingObjectSelectionSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.ImagingObjectSelectionDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ImagingObjectSelection',
 	resolve: scopeInvariant(scopeOptions, imagingobjectselectionDeleteResolver),
-	type: ImagingObjectSelectionSchema
+	type: ImagingObjectSelectionSchema,
 };

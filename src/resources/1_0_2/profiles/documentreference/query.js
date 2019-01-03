@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	documentreferenceResolver,
 	documentreferenceListResolver,
-	documentreferenceInstanceResolver
+	documentreferenceInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DocumentReference',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.DocumentReferenceQuery = {
 	args: Object.assign({}, CommonArgs, DocumentReferenceArgs),
 	description: 'Query for a single DocumentReference',
 	resolve: scopeInvariant(scopeOptions, documentreferenceResolver),
-	type: DocumentReferenceSchema
+	type: DocumentReferenceSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.DocumentReferenceListQuery = {
 	args: Object.assign({}, CommonArgs, DocumentReferenceArgs),
 	description: 'Query for multiple DocumentReferences',
 	resolve: scopeInvariant(scopeOptions, documentreferenceListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.DocumentReferenceListQuery = {
 module.exports.DocumentReferenceInstanceQuery = {
 	description: 'Get information about a single DocumentReference',
 	resolve: scopeInvariant(scopeOptions, documentreferenceInstanceResolver),
-	type: DocumentReferenceSchema
+	type: DocumentReferenceSchema,
 };

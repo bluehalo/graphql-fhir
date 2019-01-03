@@ -11,39 +11,38 @@ const MedicationInput = require('../../inputs/medication.input');
 const {
 	medicationCreateResolver,
 	medicationUpdateResolver,
-	medicationDeleteResolver
+	medicationDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Medication',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Medication record.'
+		description: 'Unique identifier for creating/updating a Medication record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(MedicationInput),
-		description: 'Medication Information for the record.'
-	}
+		description: 'Medication Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Medication record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Medication record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.MedicationCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Medication',
 	resolve: scopeInvariant(scopeOptions, medicationCreateResolver),
-	type: MedicationSchema
+	type: MedicationSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.MedicationUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Medications',
 	resolve: scopeInvariant(scopeOptions, medicationUpdateResolver),
-	type: MedicationSchema
+	type: MedicationSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.MedicationDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Medication',
 	resolve: scopeInvariant(scopeOptions, medicationDeleteResolver),
-	type: MedicationSchema
+	type: MedicationSchema,
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary BodySite Resolver.
  */
-module.exports.bodysiteResolver = function bodysiteResolver (root, args, context, info) {
+module.exports.bodysiteResolver = function bodysiteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.bodysiteResolver = function bodysiteResolver (root, args, context
  * @static
  * @summary BodySite List Resolver.
  */
-module.exports.bodysiteListResolver = function bodysiteListResolver (root, args, context, info) {
+module.exports.bodysiteListResolver = function bodysiteListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.bodysiteListResolver = function bodysiteListResolver (root, args,
  * @static
  * @summary BodySite Instance Resolver.
  */
-module.exports.bodysiteInstanceResolver = function bodysiteInstanceResolver (root, args, context, info) {
+module.exports.bodysiteInstanceResolver = function bodysiteInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.bodysiteInstanceResolver = function bodysiteInstanceResolver (roo
  * @static
  * @summary BodySite Create Resolver.
  */
-module.exports.bodysiteCreateResolver = function bodysiteCreateResolver (root, args, context, info) {
+module.exports.bodysiteCreateResolver = function bodysiteCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.bodysiteCreateResolver = function bodysiteCreateResolver (root, a
  * @static
  * @summary BodySite Update Resolver.
  */
-module.exports.bodysiteUpdateResolver = function bodysiteUpdateResolver (root, args, context, info) {
+module.exports.bodysiteUpdateResolver = function bodysiteUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.bodysiteUpdateResolver = function bodysiteUpdateResolver (root, a
  * @static
  * @summary BodySite Delete Resolver.
  */
-module.exports.bodysiteDeleteResolver = function bodysiteDeleteResolver (root, args, context, info) {
+module.exports.bodysiteDeleteResolver = function bodysiteDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

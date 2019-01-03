@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary PractitionerRole Resolver.
  */
-module.exports.practitionerroleResolver = function practitionerroleResolver (root, args, context, info) {
+module.exports.practitionerroleResolver = function practitionerroleResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.practitionerroleResolver = function practitionerroleResolver (roo
  * @static
  * @summary PractitionerRole List Resolver.
  */
-module.exports.practitionerroleListResolver = function practitionerroleListResolver (root, args, context, info) {
+module.exports.practitionerroleListResolver = function practitionerroleListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.practitionerroleListResolver = function practitionerroleListResol
  * @static
  * @summary PractitionerRole Instance Resolver.
  */
-module.exports.practitionerroleInstanceResolver = function practitionerroleInstanceResolver (root, args, context, info) {
+module.exports.practitionerroleInstanceResolver = function practitionerroleInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.practitionerroleInstanceResolver = function practitionerroleInsta
  * @static
  * @summary PractitionerRole Create Resolver.
  */
-module.exports.practitionerroleCreateResolver = function practitionerroleCreateResolver (root, args, context, info) {
+module.exports.practitionerroleCreateResolver = function practitionerroleCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.practitionerroleCreateResolver = function practitionerroleCreateR
  * @static
  * @summary PractitionerRole Update Resolver.
  */
-module.exports.practitionerroleUpdateResolver = function practitionerroleUpdateResolver (root, args, context, info) {
+module.exports.practitionerroleUpdateResolver = function practitionerroleUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.practitionerroleUpdateResolver = function practitionerroleUpdateR
  * @static
  * @summary PractitionerRole Delete Resolver.
  */
-module.exports.practitionerroleDeleteResolver = function practitionerroleDeleteResolver (root, args, context, info) {
+module.exports.practitionerroleDeleteResolver = function practitionerroleDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary PaymentReconciliation Resolver.
  */
-module.exports.paymentreconciliationResolver = function paymentreconciliationResolver (root, args, context, info) {
+module.exports.paymentreconciliationResolver = function paymentreconciliationResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.paymentreconciliationResolver = function paymentreconciliationRes
  * @static
  * @summary PaymentReconciliation List Resolver.
  */
-module.exports.paymentreconciliationListResolver = function paymentreconciliationListResolver (root, args, context, info) {
+module.exports.paymentreconciliationListResolver = function paymentreconciliationListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.paymentreconciliationListResolver = function paymentreconciliatio
  * @static
  * @summary PaymentReconciliation Instance Resolver.
  */
-module.exports.paymentreconciliationInstanceResolver = function paymentreconciliationInstanceResolver (root, args, context, info) {
+module.exports.paymentreconciliationInstanceResolver = function paymentreconciliationInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.paymentreconciliationInstanceResolver = function paymentreconcili
  * @static
  * @summary PaymentReconciliation Create Resolver.
  */
-module.exports.paymentreconciliationCreateResolver = function paymentreconciliationCreateResolver (root, args, context, info) {
+module.exports.paymentreconciliationCreateResolver = function paymentreconciliationCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.paymentreconciliationCreateResolver = function paymentreconciliat
  * @static
  * @summary PaymentReconciliation Update Resolver.
  */
-module.exports.paymentreconciliationUpdateResolver = function paymentreconciliationUpdateResolver (root, args, context, info) {
+module.exports.paymentreconciliationUpdateResolver = function paymentreconciliationUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.paymentreconciliationUpdateResolver = function paymentreconciliat
  * @static
  * @summary PaymentReconciliation Delete Resolver.
  */
-module.exports.paymentreconciliationDeleteResolver = function paymentreconciliationDeleteResolver (root, args, context, info) {
+module.exports.paymentreconciliationDeleteResolver = function paymentreconciliationDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

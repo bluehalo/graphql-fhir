@@ -13,13 +13,17 @@ const parse = (value, ast) => {
 		specified, a time zone SHALL be populated. Seconds must be provided
 		due to schema type constraints but may be zero-filled and may be
 		ignored. Dates SHALL be valid dates. The time "24:00" is not allowed */
-	let date_pattern = /^[12]\d{3}-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?$/
+	let date_pattern = /^[12]\d{3}-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?$/;
 	let sanitized_value = xss(sanitize(value));
 	let is_date = date_pattern.test(sanitized_value);
 	return is_date
 		? moment.parseZone(sanitized_value).format(DATE_CONFIG.dateTimeFormat)
-		: new GraphQLError(`Invalid dateTime provided to DateTimeScalar. Format should be ${DATE_CONFIG.dateTimeFormat} and date's missing time will be filled with 0's.`);
-}
+		: new GraphQLError(
+				`Invalid dateTime provided to DateTimeScalar. Format should be ${
+					DATE_CONFIG.dateTimeFormat
+				} and date's missing time will be filled with 0's.`,
+		  );
+};
 
 /**
  * @name exports
@@ -27,7 +31,8 @@ const parse = (value, ast) => {
  */
 module.exports = new GraphQLScalarType({
 	name: 'datetime',
-	description: 'Base StructureDefinition for dateTime Type: A date, date-time or partial date (e.g. just year or year + month).  If hours and minutes are specified, a time zone SHALL be populated. The format is a union of the schema types gYear, gYearMonth, date and dateTime. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored.                 Dates SHALL be valid dates.',
+	description:
+		'Base StructureDefinition for dateTime Type: A date, date-time or partial date (e.g. just year or year + month).  If hours and minutes are specified, a time zone SHALL be populated. The format is a union of the schema types gYear, gYearMonth, date and dateTime. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored.                 Dates SHALL be valid dates.',
 	// TODO: Implement proper serialization here
 	serialize: value => value,
 	// TODO: Implement proper parsing and sanitization here
@@ -37,5 +42,5 @@ module.exports = new GraphQLScalarType({
 	parseLiteral: ast => {
 		let { value } = ast;
 		return parse(value, ast);
-	}
+	},
 });

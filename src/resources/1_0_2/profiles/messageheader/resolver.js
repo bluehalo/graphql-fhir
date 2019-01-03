@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary MessageHeader Resolver.
  */
-module.exports.messageheaderResolver = function messageheaderResolver (root, args, context, info) {
+module.exports.messageheaderResolver = function messageheaderResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.messageheaderResolver = function messageheaderResolver (root, arg
  * @static
  * @summary MessageHeader List Resolver.
  */
-module.exports.messageheaderListResolver = function messageheaderListResolver (root, args, context, info) {
+module.exports.messageheaderListResolver = function messageheaderListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.messageheaderListResolver = function messageheaderListResolver (r
  * @static
  * @summary MessageHeader Instance Resolver.
  */
-module.exports.messageheaderInstanceResolver = function messageheaderInstanceResolver (root, args, context, info) {
+module.exports.messageheaderInstanceResolver = function messageheaderInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.messageheaderInstanceResolver = function messageheaderInstanceRes
  * @static
  * @summary MessageHeader Create Resolver.
  */
-module.exports.messageheaderCreateResolver = function messageheaderCreateResolver (root, args, context, info) {
+module.exports.messageheaderCreateResolver = function messageheaderCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.messageheaderCreateResolver = function messageheaderCreateResolve
  * @static
  * @summary MessageHeader Update Resolver.
  */
-module.exports.messageheaderUpdateResolver = function messageheaderUpdateResolver (root, args, context, info) {
+module.exports.messageheaderUpdateResolver = function messageheaderUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.messageheaderUpdateResolver = function messageheaderUpdateResolve
  * @static
  * @summary MessageHeader Delete Resolver.
  */
-module.exports.messageheaderDeleteResolver = function messageheaderDeleteResolver (root, args, context, info) {
+module.exports.messageheaderDeleteResolver = function messageheaderDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

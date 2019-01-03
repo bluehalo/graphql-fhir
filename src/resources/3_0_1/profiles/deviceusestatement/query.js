@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	deviceusestatementResolver,
 	deviceusestatementListResolver,
-	deviceusestatementInstanceResolver
+	deviceusestatementInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DeviceUseStatement',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.DeviceUseStatementQuery = {
 	args: Object.assign({}, CommonArgs, DeviceUseStatementArgs),
 	description: 'Query for a single DeviceUseStatement',
 	resolve: scopeInvariant(scopeOptions, deviceusestatementResolver),
-	type: DeviceUseStatementSchema
+	type: DeviceUseStatementSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.DeviceUseStatementListQuery = {
 	args: Object.assign({}, CommonArgs, DeviceUseStatementArgs),
 	description: 'Query for multiple DeviceUseStatements',
 	resolve: scopeInvariant(scopeOptions, deviceusestatementListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.DeviceUseStatementListQuery = {
 module.exports.DeviceUseStatementInstanceQuery = {
 	description: 'Get information about a single DeviceUseStatement',
 	resolve: scopeInvariant(scopeOptions, deviceusestatementInstanceResolver),
-	type: DeviceUseStatementSchema
+	type: DeviceUseStatementSchema,
 };

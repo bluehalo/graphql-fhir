@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ConceptMap Resolver.
  */
-module.exports.conceptmapResolver = function conceptmapResolver (root, args, context, info) {
+module.exports.conceptmapResolver = function conceptmapResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.conceptmapResolver = function conceptmapResolver (root, args, con
  * @static
  * @summary ConceptMap List Resolver.
  */
-module.exports.conceptmapListResolver = function conceptmapListResolver (root, args, context, info) {
+module.exports.conceptmapListResolver = function conceptmapListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.conceptmapListResolver = function conceptmapListResolver (root, a
  * @static
  * @summary ConceptMap Instance Resolver.
  */
-module.exports.conceptmapInstanceResolver = function conceptmapInstanceResolver (root, args, context, info) {
+module.exports.conceptmapInstanceResolver = function conceptmapInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.conceptmapInstanceResolver = function conceptmapInstanceResolver 
  * @static
  * @summary ConceptMap Create Resolver.
  */
-module.exports.conceptmapCreateResolver = function conceptmapCreateResolver (root, args, context, info) {
+module.exports.conceptmapCreateResolver = function conceptmapCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.conceptmapCreateResolver = function conceptmapCreateResolver (roo
  * @static
  * @summary ConceptMap Update Resolver.
  */
-module.exports.conceptmapUpdateResolver = function conceptmapUpdateResolver (root, args, context, info) {
+module.exports.conceptmapUpdateResolver = function conceptmapUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.conceptmapUpdateResolver = function conceptmapUpdateResolver (roo
  * @static
  * @summary ConceptMap Delete Resolver.
  */
-module.exports.conceptmapDeleteResolver = function conceptmapDeleteResolver (root, args, context, info) {
+module.exports.conceptmapDeleteResolver = function conceptmapDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

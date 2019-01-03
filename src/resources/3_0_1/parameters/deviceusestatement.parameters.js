@@ -9,18 +9,22 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	identifier: {
 		type: TokenScalar,
-		description: 'Search by identifier (See http://hl7.org/fhir/SearchParameter/DeviceUseStatement-identifier).'
+		description:
+			'Search by identifier (See http://hl7.org/fhir/SearchParameter/DeviceUseStatement-identifier).',
 	},
 	subject: {
 		type: GraphQLString,
-		description: 'Search by subject (See http://hl7.org/fhir/SearchParameter/DeviceUseStatement-subject).'
+		description:
+			'Search by subject (See http://hl7.org/fhir/SearchParameter/DeviceUseStatement-subject).',
 	},
 	patient: {
 		type: GraphQLString,
-		description: 'Search by subject - a patient (See http://hl7.org/fhir/SearchParameter/clinical-patient).'
+		description:
+			'Search by subject - a patient (See http://hl7.org/fhir/SearchParameter/clinical-patient).',
 	},
 	device: {
 		type: GraphQLString,
-		description: 'Search by device (See http://hl7.org/fhir/SearchParameter/DeviceUseStatement-device).'
-	}
+		description:
+			'Search by device (See http://hl7.org/fhir/SearchParameter/DeviceUseStatement-device).',
+	},
 };

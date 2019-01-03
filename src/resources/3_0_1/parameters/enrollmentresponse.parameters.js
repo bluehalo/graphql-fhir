@@ -9,14 +9,17 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	identifier: {
 		type: TokenScalar,
-		description: 'The business identifier of the EnrollmentResponse (See http://hl7.org/fhir/SearchParameter/EnrollmentResponse-identifier).'
+		description:
+			'The business identifier of the EnrollmentResponse (See http://hl7.org/fhir/SearchParameter/EnrollmentResponse-identifier).',
 	},
 	request: {
 		type: GraphQLString,
-		description: 'The reference to the claim (See http://hl7.org/fhir/SearchParameter/EnrollmentResponse-request).'
+		description:
+			'The reference to the claim (See http://hl7.org/fhir/SearchParameter/EnrollmentResponse-request).',
 	},
 	organization: {
 		type: GraphQLString,
-		description: 'The organization who generated this resource (See http://hl7.org/fhir/SearchParameter/EnrollmentResponse-organization).'
-	}
+		description:
+			'The organization who generated this resource (See http://hl7.org/fhir/SearchParameter/EnrollmentResponse-organization).',
+	},
 };

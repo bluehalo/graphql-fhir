@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	familymemberhistoryResolver,
 	familymemberhistoryListResolver,
-	familymemberhistoryInstanceResolver
+	familymemberhistoryInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'FamilyMemberHistory',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.FamilyMemberHistoryQuery = {
 	args: Object.assign({}, CommonArgs, FamilyMemberHistoryArgs),
 	description: 'Query for a single FamilyMemberHistory',
 	resolve: scopeInvariant(scopeOptions, familymemberhistoryResolver),
-	type: FamilyMemberHistorySchema
+	type: FamilyMemberHistorySchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.FamilyMemberHistoryListQuery = {
 	args: Object.assign({}, CommonArgs, FamilyMemberHistoryArgs),
 	description: 'Query for multiple FamilyMemberHistorys',
 	resolve: scopeInvariant(scopeOptions, familymemberhistoryListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.FamilyMemberHistoryListQuery = {
 module.exports.FamilyMemberHistoryInstanceQuery = {
 	description: 'Get information about a single FamilyMemberHistory',
 	resolve: scopeInvariant(scopeOptions, familymemberhistoryInstanceResolver),
-	type: FamilyMemberHistorySchema
+	type: FamilyMemberHistorySchema,
 };

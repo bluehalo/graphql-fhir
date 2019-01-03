@@ -8,7 +8,8 @@ const { Kind } = require('graphql/language');
  */
 module.exports = new GraphQLScalarType({
 	name: 'base64binary',
-	description: 'Base StructureDefinition for base64Binary Type: A stream of bytes.',
+	description:
+		'Base StructureDefinition for base64Binary Type: A stream of bytes.',
 	// TODO: Implement proper serialization here
 	serialize: value => value,
 	// TODO: Implement proper parsing and sanitization here
@@ -19,8 +20,6 @@ module.exports = new GraphQLScalarType({
 	// TODO: Implement proper parsing and sanitization here
 	parseLiteral: ast => {
 		let { kind, value } = ast;
-		return kind === Kind.STRING
-			? value
-			: undefined;
-	}
+		return kind === Kind.STRING ? value : undefined;
+	},
 });

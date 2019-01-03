@@ -11,39 +11,39 @@ const SupplyDeliveryInput = require('../../inputs/supplydelivery.input');
 const {
 	supplydeliveryCreateResolver,
 	supplydeliveryUpdateResolver,
-	supplydeliveryDeleteResolver
+	supplydeliveryDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'SupplyDelivery',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a SupplyDelivery record.'
+		description:
+			'Unique identifier for creating/updating a SupplyDelivery record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(SupplyDeliveryInput),
-		description: 'SupplyDelivery Information for the record.'
-	}
+		description: 'SupplyDelivery Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a SupplyDelivery record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a SupplyDelivery record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.SupplyDeliveryCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a SupplyDelivery',
 	resolve: scopeInvariant(scopeOptions, supplydeliveryCreateResolver),
-	type: SupplyDeliverySchema
+	type: SupplyDeliverySchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.SupplyDeliveryUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple SupplyDeliverys',
 	resolve: scopeInvariant(scopeOptions, supplydeliveryUpdateResolver),
-	type: SupplyDeliverySchema
+	type: SupplyDeliverySchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.SupplyDeliveryDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single SupplyDelivery',
 	resolve: scopeInvariant(scopeOptions, supplydeliveryDeleteResolver),
-	type: SupplyDeliverySchema
+	type: SupplyDeliverySchema,
 };

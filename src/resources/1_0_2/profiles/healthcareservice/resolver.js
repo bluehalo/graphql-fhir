@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary HealthcareService Resolver.
  */
-module.exports.healthcareserviceResolver = function healthcareserviceResolver (root, args, context, info) {
+module.exports.healthcareserviceResolver = function healthcareserviceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.healthcareserviceResolver = function healthcareserviceResolver (r
  * @static
  * @summary HealthcareService List Resolver.
  */
-module.exports.healthcareserviceListResolver = function healthcareserviceListResolver (root, args, context, info) {
+module.exports.healthcareserviceListResolver = function healthcareserviceListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.healthcareserviceListResolver = function healthcareserviceListRes
  * @static
  * @summary HealthcareService Instance Resolver.
  */
-module.exports.healthcareserviceInstanceResolver = function healthcareserviceInstanceResolver (root, args, context, info) {
+module.exports.healthcareserviceInstanceResolver = function healthcareserviceInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.healthcareserviceInstanceResolver = function healthcareserviceIns
  * @static
  * @summary HealthcareService Create Resolver.
  */
-module.exports.healthcareserviceCreateResolver = function healthcareserviceCreateResolver (root, args, context, info) {
+module.exports.healthcareserviceCreateResolver = function healthcareserviceCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.healthcareserviceCreateResolver = function healthcareserviceCreat
  * @static
  * @summary HealthcareService Update Resolver.
  */
-module.exports.healthcareserviceUpdateResolver = function healthcareserviceUpdateResolver (root, args, context, info) {
+module.exports.healthcareserviceUpdateResolver = function healthcareserviceUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.healthcareserviceUpdateResolver = function healthcareserviceUpdat
  * @static
  * @summary HealthcareService Delete Resolver.
  */
-module.exports.healthcareserviceDeleteResolver = function healthcareserviceDeleteResolver (root, args, context, info) {
+module.exports.healthcareserviceDeleteResolver = function healthcareserviceDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

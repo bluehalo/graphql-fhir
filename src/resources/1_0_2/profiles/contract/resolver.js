@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Contract Resolver.
  */
-module.exports.contractResolver = function contractResolver (root, args, context, info) {
+module.exports.contractResolver = function contractResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.contractResolver = function contractResolver (root, args, context
  * @static
  * @summary Contract List Resolver.
  */
-module.exports.contractListResolver = function contractListResolver (root, args, context, info) {
+module.exports.contractListResolver = function contractListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.contractListResolver = function contractListResolver (root, args,
  * @static
  * @summary Contract Instance Resolver.
  */
-module.exports.contractInstanceResolver = function contractInstanceResolver (root, args, context, info) {
+module.exports.contractInstanceResolver = function contractInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.contractInstanceResolver = function contractInstanceResolver (roo
  * @static
  * @summary Contract Create Resolver.
  */
-module.exports.contractCreateResolver = function contractCreateResolver (root, args, context, info) {
+module.exports.contractCreateResolver = function contractCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.contractCreateResolver = function contractCreateResolver (root, a
  * @static
  * @summary Contract Update Resolver.
  */
-module.exports.contractUpdateResolver = function contractUpdateResolver (root, args, context, info) {
+module.exports.contractUpdateResolver = function contractUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.contractUpdateResolver = function contractUpdateResolver (root, a
  * @static
  * @summary Contract Delete Resolver.
  */
-module.exports.contractDeleteResolver = function contractDeleteResolver (root, args, context, info) {
+module.exports.contractDeleteResolver = function contractDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

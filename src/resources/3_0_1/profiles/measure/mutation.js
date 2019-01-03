@@ -11,39 +11,38 @@ const MeasureInput = require('../../inputs/measure.input');
 const {
 	measureCreateResolver,
 	measureUpdateResolver,
-	measureDeleteResolver
+	measureDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Measure',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Measure record.'
+		description: 'Unique identifier for creating/updating a Measure record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(MeasureInput),
-		description: 'Measure Information for the record.'
-	}
+		description: 'Measure Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Measure record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Measure record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.MeasureCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Measure',
 	resolve: scopeInvariant(scopeOptions, measureCreateResolver),
-	type: MeasureSchema
+	type: MeasureSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.MeasureUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Measures',
 	resolve: scopeInvariant(scopeOptions, measureUpdateResolver),
-	type: MeasureSchema
+	type: MeasureSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.MeasureDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Measure',
 	resolve: scopeInvariant(scopeOptions, measureDeleteResolver),
-	type: MeasureSchema
+	type: MeasureSchema,
 };

@@ -11,39 +11,39 @@ const ResearchSubjectInput = require('../../inputs/researchsubject.input');
 const {
 	researchsubjectCreateResolver,
 	researchsubjectUpdateResolver,
-	researchsubjectDeleteResolver
+	researchsubjectDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ResearchSubject',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a ResearchSubject record.'
+		description:
+			'Unique identifier for creating/updating a ResearchSubject record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ResearchSubjectInput),
-		description: 'ResearchSubject Information for the record.'
-	}
+		description: 'ResearchSubject Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a ResearchSubject record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a ResearchSubject record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.ResearchSubjectCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a ResearchSubject',
 	resolve: scopeInvariant(scopeOptions, researchsubjectCreateResolver),
-	type: ResearchSubjectSchema
+	type: ResearchSubjectSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.ResearchSubjectUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple ResearchSubjects',
 	resolve: scopeInvariant(scopeOptions, researchsubjectUpdateResolver),
-	type: ResearchSubjectSchema
+	type: ResearchSubjectSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.ResearchSubjectDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single ResearchSubject',
 	resolve: scopeInvariant(scopeOptions, researchsubjectDeleteResolver),
-	type: ResearchSubjectSchema
+	type: ResearchSubjectSchema,
 };

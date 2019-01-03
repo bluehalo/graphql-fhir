@@ -10,22 +10,27 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	prescriber: {
 		type: GraphQLString,
-		description: 'Who authorizes the vision product (See http://hl7.org/fhir/SearchParameter/VisionPrescription-prescriber).'
+		description:
+			'Who authorizes the vision product (See http://hl7.org/fhir/SearchParameter/VisionPrescription-prescriber).',
 	},
 	identifier: {
 		type: TokenScalar,
-		description: 'Return prescriptions with this external identifier (See http://hl7.org/fhir/SearchParameter/clinical-identifier).'
+		description:
+			'Return prescriptions with this external identifier (See http://hl7.org/fhir/SearchParameter/clinical-identifier).',
 	},
 	patient: {
 		type: GraphQLString,
-		description: 'The identity of a patient to list dispenses for (See http://hl7.org/fhir/SearchParameter/clinical-patient).'
+		description:
+			'The identity of a patient to list dispenses for (See http://hl7.org/fhir/SearchParameter/clinical-patient).',
 	},
 	datewritten: {
 		type: DateScalar,
-		description: 'Return prescriptions written on this date (See http://hl7.org/fhir/SearchParameter/VisionPrescription-datewritten).'
+		description:
+			'Return prescriptions written on this date (See http://hl7.org/fhir/SearchParameter/VisionPrescription-datewritten).',
 	},
 	encounter: {
 		type: GraphQLString,
-		description: 'Return prescriptions with this encounter identifier (See http://hl7.org/fhir/SearchParameter/clinical-encounter).'
-	}
+		description:
+			'Return prescriptions with this encounter identifier (See http://hl7.org/fhir/SearchParameter/clinical-encounter).',
+	},
 };

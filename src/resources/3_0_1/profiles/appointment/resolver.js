@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Appointment Resolver.
  */
-module.exports.appointmentResolver = function appointmentResolver (root, args, context, info) {
+module.exports.appointmentResolver = function appointmentResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.appointmentResolver = function appointmentResolver (root, args, c
  * @static
  * @summary Appointment List Resolver.
  */
-module.exports.appointmentListResolver = function appointmentListResolver (root, args, context, info) {
+module.exports.appointmentListResolver = function appointmentListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.appointmentListResolver = function appointmentListResolver (root,
  * @static
  * @summary Appointment Instance Resolver.
  */
-module.exports.appointmentInstanceResolver = function appointmentInstanceResolver (root, args, context, info) {
+module.exports.appointmentInstanceResolver = function appointmentInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.appointmentInstanceResolver = function appointmentInstanceResolve
  * @static
  * @summary Appointment Create Resolver.
  */
-module.exports.appointmentCreateResolver = function appointmentCreateResolver (root, args, context, info) {
+module.exports.appointmentCreateResolver = function appointmentCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.appointmentCreateResolver = function appointmentCreateResolver (r
  * @static
  * @summary Appointment Update Resolver.
  */
-module.exports.appointmentUpdateResolver = function appointmentUpdateResolver (root, args, context, info) {
+module.exports.appointmentUpdateResolver = function appointmentUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.appointmentUpdateResolver = function appointmentUpdateResolver (r
  * @static
  * @summary Appointment Delete Resolver.
  */
-module.exports.appointmentDeleteResolver = function appointmentDeleteResolver (root, args, context, info) {
+module.exports.appointmentDeleteResolver = function appointmentDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

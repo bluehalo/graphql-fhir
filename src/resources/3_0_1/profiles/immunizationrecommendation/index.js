@@ -1,13 +1,13 @@
 const {
 	ImmunizationRecommendationQuery,
 	ImmunizationRecommendationListQuery,
-	ImmunizationRecommendationInstanceQuery
+	ImmunizationRecommendationInstanceQuery,
 } = require('./query');
 
 const {
 	ImmunizationRecommendationCreateMutation,
 	ImmunizationRecommendationUpdateMutation,
-	ImmunizationRecommendationDeleteMutation
+	ImmunizationRecommendationDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		ImmunizationRecommendation: ImmunizationRecommendationQuery,
-		ImmunizationRecommendationList: ImmunizationRecommendationListQuery
+		ImmunizationRecommendationList: ImmunizationRecommendationListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		ImmunizationRecommendationCreate: ImmunizationRecommendationCreateMutation,
 		ImmunizationRecommendationUpdate: ImmunizationRecommendationUpdateMutation,
-		ImmunizationRecommendationDelete: ImmunizationRecommendationDeleteMutation
+		ImmunizationRecommendationDelete: ImmunizationRecommendationDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'ImmunizationRecommendation',
 		path: '/3_0_1/ImmunizationRecommendation/:id',
-		query: ImmunizationRecommendationInstanceQuery
-	}
+		query: ImmunizationRecommendationInstanceQuery,
+	},
 };

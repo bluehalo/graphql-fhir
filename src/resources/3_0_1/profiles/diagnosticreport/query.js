@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	diagnosticreportResolver,
 	diagnosticreportListResolver,
-	diagnosticreportInstanceResolver
+	diagnosticreportInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DiagnosticReport',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.DiagnosticReportQuery = {
 	args: Object.assign({}, CommonArgs, DiagnosticReportArgs),
 	description: 'Query for a single DiagnosticReport',
 	resolve: scopeInvariant(scopeOptions, diagnosticreportResolver),
-	type: DiagnosticReportSchema
+	type: DiagnosticReportSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.DiagnosticReportListQuery = {
 	args: Object.assign({}, CommonArgs, DiagnosticReportArgs),
 	description: 'Query for multiple DiagnosticReports',
 	resolve: scopeInvariant(scopeOptions, diagnosticreportListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.DiagnosticReportListQuery = {
 module.exports.DiagnosticReportInstanceQuery = {
 	description: 'Get information about a single DiagnosticReport',
 	resolve: scopeInvariant(scopeOptions, diagnosticreportInstanceResolver),
-	type: DiagnosticReportSchema
+	type: DiagnosticReportSchema,
 };

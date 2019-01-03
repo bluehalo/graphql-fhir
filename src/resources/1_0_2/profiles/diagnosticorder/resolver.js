@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary DiagnosticOrder Resolver.
  */
-module.exports.diagnosticorderResolver = function diagnosticorderResolver (root, args, context, info) {
+module.exports.diagnosticorderResolver = function diagnosticorderResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.diagnosticorderResolver = function diagnosticorderResolver (root,
  * @static
  * @summary DiagnosticOrder List Resolver.
  */
-module.exports.diagnosticorderListResolver = function diagnosticorderListResolver (root, args, context, info) {
+module.exports.diagnosticorderListResolver = function diagnosticorderListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.diagnosticorderListResolver = function diagnosticorderListResolve
  * @static
  * @summary DiagnosticOrder Instance Resolver.
  */
-module.exports.diagnosticorderInstanceResolver = function diagnosticorderInstanceResolver (root, args, context, info) {
+module.exports.diagnosticorderInstanceResolver = function diagnosticorderInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.diagnosticorderInstanceResolver = function diagnosticorderInstanc
  * @static
  * @summary DiagnosticOrder Create Resolver.
  */
-module.exports.diagnosticorderCreateResolver = function diagnosticorderCreateResolver (root, args, context, info) {
+module.exports.diagnosticorderCreateResolver = function diagnosticorderCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.diagnosticorderCreateResolver = function diagnosticorderCreateRes
  * @static
  * @summary DiagnosticOrder Update Resolver.
  */
-module.exports.diagnosticorderUpdateResolver = function diagnosticorderUpdateResolver (root, args, context, info) {
+module.exports.diagnosticorderUpdateResolver = function diagnosticorderUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.diagnosticorderUpdateResolver = function diagnosticorderUpdateRes
  * @static
  * @summary DiagnosticOrder Delete Resolver.
  */
-module.exports.diagnosticorderDeleteResolver = function diagnosticorderDeleteResolver (root, args, context, info) {
+module.exports.diagnosticorderDeleteResolver = function diagnosticorderDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

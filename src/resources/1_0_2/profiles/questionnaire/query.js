@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	questionnaireResolver,
 	questionnaireListResolver,
-	questionnaireInstanceResolver
+	questionnaireInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Questionnaire',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.QuestionnaireQuery = {
 	args: Object.assign({}, CommonArgs, QuestionnaireArgs),
 	description: 'Query for a single Questionnaire',
 	resolve: scopeInvariant(scopeOptions, questionnaireResolver),
-	type: QuestionnaireSchema
+	type: QuestionnaireSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.QuestionnaireListQuery = {
 	args: Object.assign({}, CommonArgs, QuestionnaireArgs),
 	description: 'Query for multiple Questionnaires',
 	resolve: scopeInvariant(scopeOptions, questionnaireListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.QuestionnaireListQuery = {
 module.exports.QuestionnaireInstanceQuery = {
 	description: 'Get information about a single Questionnaire',
 	resolve: scopeInvariant(scopeOptions, questionnaireInstanceResolver),
-	type: QuestionnaireSchema
+	type: QuestionnaireSchema,
 };

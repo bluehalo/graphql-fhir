@@ -11,39 +11,39 @@ const OrganizationInput = require('../../inputs/organization.input');
 const {
 	organizationCreateResolver,
 	organizationUpdateResolver,
-	organizationDeleteResolver
+	organizationDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Organization',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Organization record.'
+		description:
+			'Unique identifier for creating/updating a Organization record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(OrganizationInput),
-		description: 'Organization Information for the record.'
-	}
+		description: 'Organization Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Organization record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Organization record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.OrganizationCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Organization',
 	resolve: scopeInvariant(scopeOptions, organizationCreateResolver),
-	type: OrganizationSchema
+	type: OrganizationSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.OrganizationUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Organizations',
 	resolve: scopeInvariant(scopeOptions, organizationUpdateResolver),
-	type: OrganizationSchema
+	type: OrganizationSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.OrganizationDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Organization',
 	resolve: scopeInvariant(scopeOptions, organizationDeleteResolver),
-	type: OrganizationSchema
+	type: OrganizationSchema,
 };

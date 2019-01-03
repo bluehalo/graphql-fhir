@@ -11,39 +11,38 @@ const TestScriptInput = require('../../inputs/testscript.input');
 const {
 	testscriptCreateResolver,
 	testscriptUpdateResolver,
-	testscriptDeleteResolver
+	testscriptDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'TestScript',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a TestScript record.'
+		description: 'Unique identifier for creating/updating a TestScript record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(TestScriptInput),
-		description: 'TestScript Information for the record.'
-	}
+		description: 'TestScript Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a TestScript record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a TestScript record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.TestScriptCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a TestScript',
 	resolve: scopeInvariant(scopeOptions, testscriptCreateResolver),
-	type: TestScriptSchema
+	type: TestScriptSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.TestScriptUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple TestScripts',
 	resolve: scopeInvariant(scopeOptions, testscriptUpdateResolver),
-	type: TestScriptSchema
+	type: TestScriptSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.TestScriptDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single TestScript',
 	resolve: scopeInvariant(scopeOptions, testscriptDeleteResolver),
-	type: TestScriptSchema
+	type: TestScriptSchema,
 };

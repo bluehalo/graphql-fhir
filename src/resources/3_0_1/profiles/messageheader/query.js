@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	messageheaderResolver,
 	messageheaderListResolver,
-	messageheaderInstanceResolver
+	messageheaderInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'MessageHeader',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.MessageHeaderQuery = {
 	args: Object.assign({}, CommonArgs, MessageHeaderArgs),
 	description: 'Query for a single MessageHeader',
 	resolve: scopeInvariant(scopeOptions, messageheaderResolver),
-	type: MessageHeaderSchema
+	type: MessageHeaderSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.MessageHeaderListQuery = {
 	args: Object.assign({}, CommonArgs, MessageHeaderArgs),
 	description: 'Query for multiple MessageHeaders',
 	resolve: scopeInvariant(scopeOptions, messageheaderListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.MessageHeaderListQuery = {
 module.exports.MessageHeaderInstanceQuery = {
 	description: 'Get information about a single MessageHeader',
 	resolve: scopeInvariant(scopeOptions, messageheaderInstanceResolver),
-	type: MessageHeaderSchema
+	type: MessageHeaderSchema,
 };

@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	contractResolver,
 	contractListResolver,
-	contractInstanceResolver
+	contractInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Contract',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ContractQuery = {
 	args: Object.assign({}, CommonArgs, ContractArgs),
 	description: 'Query for a single Contract',
 	resolve: scopeInvariant(scopeOptions, contractResolver),
-	type: ContractSchema
+	type: ContractSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ContractListQuery = {
 	args: Object.assign({}, CommonArgs, ContractArgs),
 	description: 'Query for multiple Contracts',
 	resolve: scopeInvariant(scopeOptions, contractListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ContractListQuery = {
 module.exports.ContractInstanceQuery = {
 	description: 'Get information about a single Contract',
 	resolve: scopeInvariant(scopeOptions, contractInstanceResolver),
-	type: ContractSchema
+	type: ContractSchema,
 };

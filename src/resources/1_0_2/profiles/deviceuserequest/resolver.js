@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary DeviceUseRequest Resolver.
  */
-module.exports.deviceuserequestResolver = function deviceuserequestResolver (root, args, context, info) {
+module.exports.deviceuserequestResolver = function deviceuserequestResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.deviceuserequestResolver = function deviceuserequestResolver (roo
  * @static
  * @summary DeviceUseRequest List Resolver.
  */
-module.exports.deviceuserequestListResolver = function deviceuserequestListResolver (root, args, context, info) {
+module.exports.deviceuserequestListResolver = function deviceuserequestListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.deviceuserequestListResolver = function deviceuserequestListResol
  * @static
  * @summary DeviceUseRequest Instance Resolver.
  */
-module.exports.deviceuserequestInstanceResolver = function deviceuserequestInstanceResolver (root, args, context, info) {
+module.exports.deviceuserequestInstanceResolver = function deviceuserequestInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.deviceuserequestInstanceResolver = function deviceuserequestInsta
  * @static
  * @summary DeviceUseRequest Create Resolver.
  */
-module.exports.deviceuserequestCreateResolver = function deviceuserequestCreateResolver (root, args, context, info) {
+module.exports.deviceuserequestCreateResolver = function deviceuserequestCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.deviceuserequestCreateResolver = function deviceuserequestCreateR
  * @static
  * @summary DeviceUseRequest Update Resolver.
  */
-module.exports.deviceuserequestUpdateResolver = function deviceuserequestUpdateResolver (root, args, context, info) {
+module.exports.deviceuserequestUpdateResolver = function deviceuserequestUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.deviceuserequestUpdateResolver = function deviceuserequestUpdateR
  * @static
  * @summary DeviceUseRequest Delete Resolver.
  */
-module.exports.deviceuserequestDeleteResolver = function deviceuserequestDeleteResolver (root, args, context, info) {
+module.exports.deviceuserequestDeleteResolver = function deviceuserequestDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

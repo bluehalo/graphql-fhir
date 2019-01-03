@@ -8,6 +8,7 @@ const TokenScalar = require('../scalars/token.scalar');
 module.exports = {
 	identifier: {
 		type: TokenScalar,
-		description: 'The identity of the insurer (See http://hl7.org/fhir/SearchParameter/claimresponse-identifier).'
-	}
+		description:
+			'The identity of the insurer (See http://hl7.org/fhir/SearchParameter/claimresponse-identifier).',
+	},
 };

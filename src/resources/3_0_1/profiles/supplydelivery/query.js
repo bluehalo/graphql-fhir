@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	supplydeliveryResolver,
 	supplydeliveryListResolver,
-	supplydeliveryInstanceResolver
+	supplydeliveryInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'SupplyDelivery',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.SupplyDeliveryQuery = {
 	args: Object.assign({}, CommonArgs, SupplyDeliveryArgs),
 	description: 'Query for a single SupplyDelivery',
 	resolve: scopeInvariant(scopeOptions, supplydeliveryResolver),
-	type: SupplyDeliverySchema
+	type: SupplyDeliverySchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.SupplyDeliveryListQuery = {
 	args: Object.assign({}, CommonArgs, SupplyDeliveryArgs),
 	description: 'Query for multiple SupplyDeliverys',
 	resolve: scopeInvariant(scopeOptions, supplydeliveryListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.SupplyDeliveryListQuery = {
 module.exports.SupplyDeliveryInstanceQuery = {
 	description: 'Get information about a single SupplyDelivery',
 	resolve: scopeInvariant(scopeOptions, supplydeliveryInstanceResolver),
-	type: SupplyDeliverySchema
+	type: SupplyDeliverySchema,
 };

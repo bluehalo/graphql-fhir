@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	endpointResolver,
 	endpointListResolver,
-	endpointInstanceResolver
+	endpointInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Endpoint',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.EndpointQuery = {
 	args: Object.assign({}, CommonArgs, EndpointArgs),
 	description: 'Query for a single Endpoint',
 	resolve: scopeInvariant(scopeOptions, endpointResolver),
-	type: EndpointSchema
+	type: EndpointSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.EndpointListQuery = {
 	args: Object.assign({}, CommonArgs, EndpointArgs),
 	description: 'Query for multiple Endpoints',
 	resolve: scopeInvariant(scopeOptions, endpointListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.EndpointListQuery = {
 module.exports.EndpointInstanceQuery = {
 	description: 'Get information about a single Endpoint',
 	resolve: scopeInvariant(scopeOptions, endpointInstanceResolver),
-	type: EndpointSchema
+	type: EndpointSchema,
 };

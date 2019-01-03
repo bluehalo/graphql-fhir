@@ -11,39 +11,38 @@ const LibraryInput = require('../../inputs/library.input');
 const {
 	libraryCreateResolver,
 	libraryUpdateResolver,
-	libraryDeleteResolver
+	libraryDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Library',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Library record.'
+		description: 'Unique identifier for creating/updating a Library record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(LibraryInput),
-		description: 'Library Information for the record.'
-	}
+		description: 'Library Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Library record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Library record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.LibraryCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Library',
 	resolve: scopeInvariant(scopeOptions, libraryCreateResolver),
-	type: LibrarySchema
+	type: LibrarySchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.LibraryUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Librarys',
 	resolve: scopeInvariant(scopeOptions, libraryUpdateResolver),
-	type: LibrarySchema
+	type: LibrarySchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.LibraryDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Library',
 	resolve: scopeInvariant(scopeOptions, libraryDeleteResolver),
-	type: LibrarySchema
+	type: LibrarySchema,
 };

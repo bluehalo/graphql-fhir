@@ -11,39 +11,39 @@ const MedicationRequestInput = require('../../inputs/medicationrequest.input');
 const {
 	medicationrequestCreateResolver,
 	medicationrequestUpdateResolver,
-	medicationrequestDeleteResolver
+	medicationrequestDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'MedicationRequest',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a MedicationRequest record.'
+		description:
+			'Unique identifier for creating/updating a MedicationRequest record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(MedicationRequestInput),
-		description: 'MedicationRequest Information for the record.'
-	}
+		description: 'MedicationRequest Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a MedicationRequest record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a MedicationRequest record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.MedicationRequestCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a MedicationRequest',
 	resolve: scopeInvariant(scopeOptions, medicationrequestCreateResolver),
-	type: MedicationRequestSchema
+	type: MedicationRequestSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.MedicationRequestUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple MedicationRequests',
 	resolve: scopeInvariant(scopeOptions, medicationrequestUpdateResolver),
-	type: MedicationRequestSchema
+	type: MedicationRequestSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.MedicationRequestDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single MedicationRequest',
 	resolve: scopeInvariant(scopeOptions, medicationrequestDeleteResolver),
-	type: MedicationRequestSchema
+	type: MedicationRequestSchema,
 };

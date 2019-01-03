@@ -11,39 +11,39 @@ const DeviceUseStatementInput = require('../../inputs/deviceusestatement.input')
 const {
 	deviceusestatementCreateResolver,
 	deviceusestatementUpdateResolver,
-	deviceusestatementDeleteResolver
+	deviceusestatementDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DeviceUseStatement',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a DeviceUseStatement record.'
+		description:
+			'Unique identifier for creating/updating a DeviceUseStatement record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(DeviceUseStatementInput),
-		description: 'DeviceUseStatement Information for the record.'
-	}
+		description: 'DeviceUseStatement Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a DeviceUseStatement record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a DeviceUseStatement record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.DeviceUseStatementCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DeviceUseStatement',
 	resolve: scopeInvariant(scopeOptions, deviceusestatementCreateResolver),
-	type: DeviceUseStatementSchema
+	type: DeviceUseStatementSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.DeviceUseStatementUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DeviceUseStatements',
 	resolve: scopeInvariant(scopeOptions, deviceusestatementUpdateResolver),
-	type: DeviceUseStatementSchema
+	type: DeviceUseStatementSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.DeviceUseStatementDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DeviceUseStatement',
 	resolve: scopeInvariant(scopeOptions, deviceusestatementDeleteResolver),
-	type: DeviceUseStatementSchema
+	type: DeviceUseStatementSchema,
 };

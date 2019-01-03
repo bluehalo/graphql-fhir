@@ -11,39 +11,39 @@ const RequestGroupInput = require('../../inputs/requestgroup.input');
 const {
 	requestgroupCreateResolver,
 	requestgroupUpdateResolver,
-	requestgroupDeleteResolver
+	requestgroupDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'RequestGroup',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a RequestGroup record.'
+		description:
+			'Unique identifier for creating/updating a RequestGroup record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(RequestGroupInput),
-		description: 'RequestGroup Information for the record.'
-	}
+		description: 'RequestGroup Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a RequestGroup record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a RequestGroup record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.RequestGroupCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a RequestGroup',
 	resolve: scopeInvariant(scopeOptions, requestgroupCreateResolver),
-	type: RequestGroupSchema
+	type: RequestGroupSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.RequestGroupUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple RequestGroups',
 	resolve: scopeInvariant(scopeOptions, requestgroupUpdateResolver),
-	type: RequestGroupSchema
+	type: RequestGroupSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.RequestGroupDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single RequestGroup',
 	resolve: scopeInvariant(scopeOptions, requestgroupDeleteResolver),
-	type: RequestGroupSchema
+	type: RequestGroupSchema,
 };

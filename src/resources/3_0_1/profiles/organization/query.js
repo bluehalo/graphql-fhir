@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	organizationResolver,
 	organizationListResolver,
-	organizationInstanceResolver
+	organizationInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Organization',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.OrganizationQuery = {
 	args: Object.assign({}, CommonArgs, OrganizationArgs),
 	description: 'Query for a single Organization',
 	resolve: scopeInvariant(scopeOptions, organizationResolver),
-	type: OrganizationSchema
+	type: OrganizationSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.OrganizationListQuery = {
 	args: Object.assign({}, CommonArgs, OrganizationArgs),
 	description: 'Query for multiple Organizations',
 	resolve: scopeInvariant(scopeOptions, organizationListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.OrganizationListQuery = {
 module.exports.OrganizationInstanceQuery = {
 	description: 'Get information about a single Organization',
 	resolve: scopeInvariant(scopeOptions, organizationInstanceResolver),
-	type: OrganizationSchema
+	type: OrganizationSchema,
 };

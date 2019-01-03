@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	flagResolver,
 	flagListResolver,
-	flagInstanceResolver
+	flagInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Flag',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.FlagQuery = {
 	args: Object.assign({}, CommonArgs, FlagArgs),
 	description: 'Query for a single Flag',
 	resolve: scopeInvariant(scopeOptions, flagResolver),
-	type: FlagSchema
+	type: FlagSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.FlagListQuery = {
 	args: Object.assign({}, CommonArgs, FlagArgs),
 	description: 'Query for multiple Flags',
 	resolve: scopeInvariant(scopeOptions, flagListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.FlagListQuery = {
 module.exports.FlagInstanceQuery = {
 	description: 'Get information about a single Flag',
 	resolve: scopeInvariant(scopeOptions, flagInstanceResolver),
-	type: FlagSchema
+	type: FlagSchema,
 };

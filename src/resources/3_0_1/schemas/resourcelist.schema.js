@@ -115,7 +115,7 @@ const ValueSet = require('../schemas/valueset.schema');
 const VisionPrescription = require('../schemas/visionprescription.schema');
 const { GraphQLUnionType } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 /**
  * @name exports
@@ -239,9 +239,9 @@ module.exports = new GraphQLUnionType({
 		TestReport,
 		TestScript,
 		ValueSet,
-		VisionPrescription
+		VisionPrescription,
 	],
-	resolveType ( value ) {
+	resolveType(value) {
 		if (value && value.resourceType === 'Account') {
 			return Account;
 		}
@@ -587,5 +587,5 @@ module.exports = new GraphQLUnionType({
 		if (value && value.resourceType === 'VisionPrescription') {
 			return VisionPrescription;
 		}
-	}
+	},
 });

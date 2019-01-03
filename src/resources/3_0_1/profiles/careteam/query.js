@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	careteamResolver,
 	careteamListResolver,
-	careteamInstanceResolver
+	careteamInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'CareTeam',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.CareTeamQuery = {
 	args: Object.assign({}, CommonArgs, CareTeamArgs),
 	description: 'Query for a single CareTeam',
 	resolve: scopeInvariant(scopeOptions, careteamResolver),
-	type: CareTeamSchema
+	type: CareTeamSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.CareTeamListQuery = {
 	args: Object.assign({}, CommonArgs, CareTeamArgs),
 	description: 'Query for multiple CareTeams',
 	resolve: scopeInvariant(scopeOptions, careteamListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.CareTeamListQuery = {
 module.exports.CareTeamInstanceQuery = {
 	description: 'Get information about a single CareTeam',
 	resolve: scopeInvariant(scopeOptions, careteamInstanceResolver),
-	type: CareTeamSchema
+	type: CareTeamSchema,
 };

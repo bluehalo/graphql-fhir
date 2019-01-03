@@ -11,39 +11,39 @@ const ObservationInput = require('../../inputs/observation.input');
 const {
 	observationCreateResolver,
 	observationUpdateResolver,
-	observationDeleteResolver
+	observationDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Observation',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Observation record.'
+		description:
+			'Unique identifier for creating/updating a Observation record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(ObservationInput),
-		description: 'Observation Information for the record.'
-	}
+		description: 'Observation Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Observation record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Observation record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.ObservationCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Observation',
 	resolve: scopeInvariant(scopeOptions, observationCreateResolver),
-	type: ObservationSchema
+	type: ObservationSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.ObservationUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Observations',
 	resolve: scopeInvariant(scopeOptions, observationUpdateResolver),
-	type: ObservationSchema
+	type: ObservationSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.ObservationDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Observation',
 	resolve: scopeInvariant(scopeOptions, observationDeleteResolver),
-	type: ObservationSchema
+	type: ObservationSchema,
 };

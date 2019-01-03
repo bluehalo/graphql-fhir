@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary OperationDefinition Resolver.
  */
-module.exports.operationdefinitionResolver = function operationdefinitionResolver (root, args, context, info) {
+module.exports.operationdefinitionResolver = function operationdefinitionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.operationdefinitionResolver = function operationdefinitionResolve
  * @static
  * @summary OperationDefinition List Resolver.
  */
-module.exports.operationdefinitionListResolver = function operationdefinitionListResolver (root, args, context, info) {
+module.exports.operationdefinitionListResolver = function operationdefinitionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.operationdefinitionListResolver = function operationdefinitionLis
  * @static
  * @summary OperationDefinition Instance Resolver.
  */
-module.exports.operationdefinitionInstanceResolver = function operationdefinitionInstanceResolver (root, args, context, info) {
+module.exports.operationdefinitionInstanceResolver = function operationdefinitionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.operationdefinitionInstanceResolver = function operationdefinitio
  * @static
  * @summary OperationDefinition Create Resolver.
  */
-module.exports.operationdefinitionCreateResolver = function operationdefinitionCreateResolver (root, args, context, info) {
+module.exports.operationdefinitionCreateResolver = function operationdefinitionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.operationdefinitionCreateResolver = function operationdefinitionC
  * @static
  * @summary OperationDefinition Update Resolver.
  */
-module.exports.operationdefinitionUpdateResolver = function operationdefinitionUpdateResolver (root, args, context, info) {
+module.exports.operationdefinitionUpdateResolver = function operationdefinitionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.operationdefinitionUpdateResolver = function operationdefinitionU
  * @static
  * @summary OperationDefinition Delete Resolver.
  */
-module.exports.operationdefinitionDeleteResolver = function operationdefinitionDeleteResolver (root, args, context, info) {
+module.exports.operationdefinitionDeleteResolver = function operationdefinitionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

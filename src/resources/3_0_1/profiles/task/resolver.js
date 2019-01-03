@@ -5,7 +5,7 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Task Resolver.
  */
-module.exports.taskResolver = function taskResolver (root, args, context, info) {
+module.exports.taskResolver = function taskResolver(root, args, context, info) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +15,12 @@ module.exports.taskResolver = function taskResolver (root, args, context, info) 
  * @static
  * @summary Task List Resolver.
  */
-module.exports.taskListResolver = function taskListResolver (root, args, context, info) {
+module.exports.taskListResolver = function taskListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +30,12 @@ module.exports.taskListResolver = function taskListResolver (root, args, context
  * @static
  * @summary Task Instance Resolver.
  */
-module.exports.taskInstanceResolver = function taskInstanceResolver (root, args, context, info) {
+module.exports.taskInstanceResolver = function taskInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +45,12 @@ module.exports.taskInstanceResolver = function taskInstanceResolver (root, args,
  * @static
  * @summary Task Create Resolver.
  */
-module.exports.taskCreateResolver = function taskCreateResolver (root, args, context, info) {
+module.exports.taskCreateResolver = function taskCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +60,12 @@ module.exports.taskCreateResolver = function taskCreateResolver (root, args, con
  * @static
  * @summary Task Update Resolver.
  */
-module.exports.taskUpdateResolver = function taskUpdateResolver (root, args, context, info) {
+module.exports.taskUpdateResolver = function taskUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +75,12 @@ module.exports.taskUpdateResolver = function taskUpdateResolver (root, args, con
  * @static
  * @summary Task Delete Resolver.
  */
-module.exports.taskDeleteResolver = function taskDeleteResolver (root, args, context, info) {
+module.exports.taskDeleteResolver = function taskDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Organization Resolver.
  */
-module.exports.organizationResolver = function organizationResolver (root, args, context, info) {
+module.exports.organizationResolver = function organizationResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.organizationResolver = function organizationResolver (root, args,
  * @static
  * @summary Organization List Resolver.
  */
-module.exports.organizationListResolver = function organizationListResolver (root, args, context, info) {
+module.exports.organizationListResolver = function organizationListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.organizationListResolver = function organizationListResolver (roo
  * @static
  * @summary Organization Instance Resolver.
  */
-module.exports.organizationInstanceResolver = function organizationInstanceResolver (root, args, context, info) {
+module.exports.organizationInstanceResolver = function organizationInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.organizationInstanceResolver = function organizationInstanceResol
  * @static
  * @summary Organization Create Resolver.
  */
-module.exports.organizationCreateResolver = function organizationCreateResolver (root, args, context, info) {
+module.exports.organizationCreateResolver = function organizationCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.organizationCreateResolver = function organizationCreateResolver 
  * @static
  * @summary Organization Update Resolver.
  */
-module.exports.organizationUpdateResolver = function organizationUpdateResolver (root, args, context, info) {
+module.exports.organizationUpdateResolver = function organizationUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.organizationUpdateResolver = function organizationUpdateResolver 
  * @static
  * @summary Organization Delete Resolver.
  */
-module.exports.organizationDeleteResolver = function organizationDeleteResolver (root, args, context, info) {
+module.exports.organizationDeleteResolver = function organizationDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

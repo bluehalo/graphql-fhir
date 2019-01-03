@@ -11,39 +11,39 @@ const EligibilityResponseInput = require('../../inputs/eligibilityresponse.input
 const {
 	eligibilityresponseCreateResolver,
 	eligibilityresponseUpdateResolver,
-	eligibilityresponseDeleteResolver
+	eligibilityresponseDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'EligibilityResponse',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a EligibilityResponse record.'
+		description:
+			'Unique identifier for creating/updating a EligibilityResponse record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(EligibilityResponseInput),
-		description: 'EligibilityResponse Information for the record.'
-	}
+		description: 'EligibilityResponse Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a EligibilityResponse record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a EligibilityResponse record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.EligibilityResponseCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a EligibilityResponse',
 	resolve: scopeInvariant(scopeOptions, eligibilityresponseCreateResolver),
-	type: EligibilityResponseSchema
+	type: EligibilityResponseSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.EligibilityResponseUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple EligibilityResponses',
 	resolve: scopeInvariant(scopeOptions, eligibilityresponseUpdateResolver),
-	type: EligibilityResponseSchema
+	type: EligibilityResponseSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.EligibilityResponseDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single EligibilityResponse',
 	resolve: scopeInvariant(scopeOptions, eligibilityresponseDeleteResolver),
-	type: EligibilityResponseSchema
+	type: EligibilityResponseSchema,
 };

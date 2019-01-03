@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary StructureDefinition Resolver.
  */
-module.exports.structuredefinitionResolver = function structuredefinitionResolver (root, args, context, info) {
+module.exports.structuredefinitionResolver = function structuredefinitionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.structuredefinitionResolver = function structuredefinitionResolve
  * @static
  * @summary StructureDefinition List Resolver.
  */
-module.exports.structuredefinitionListResolver = function structuredefinitionListResolver (root, args, context, info) {
+module.exports.structuredefinitionListResolver = function structuredefinitionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.structuredefinitionListResolver = function structuredefinitionLis
  * @static
  * @summary StructureDefinition Instance Resolver.
  */
-module.exports.structuredefinitionInstanceResolver = function structuredefinitionInstanceResolver (root, args, context, info) {
+module.exports.structuredefinitionInstanceResolver = function structuredefinitionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.structuredefinitionInstanceResolver = function structuredefinitio
  * @static
  * @summary StructureDefinition Create Resolver.
  */
-module.exports.structuredefinitionCreateResolver = function structuredefinitionCreateResolver (root, args, context, info) {
+module.exports.structuredefinitionCreateResolver = function structuredefinitionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.structuredefinitionCreateResolver = function structuredefinitionC
  * @static
  * @summary StructureDefinition Update Resolver.
  */
-module.exports.structuredefinitionUpdateResolver = function structuredefinitionUpdateResolver (root, args, context, info) {
+module.exports.structuredefinitionUpdateResolver = function structuredefinitionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.structuredefinitionUpdateResolver = function structuredefinitionU
  * @static
  * @summary StructureDefinition Delete Resolver.
  */
-module.exports.structuredefinitionDeleteResolver = function structuredefinitionDeleteResolver (root, args, context, info) {
+module.exports.structuredefinitionDeleteResolver = function structuredefinitionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

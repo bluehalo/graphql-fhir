@@ -1,24 +1,22 @@
 const {
 	internal,
 	insufficientScope,
-	formatErrorForGraphQL
+	formatErrorForGraphQL,
 } = require('./error.utils');
 
-const {
-	defaultVersion
-} = require('../config').SERVER_CONFIG;
+const { defaultVersion } = require('../config').SERVER_CONFIG;
 
 /**
-* @name allowedScopes
-* @description Generate an array of expected scopes. If a user is accessing a
-* protected resource, one of these scopes must be present in the user's defined
-* scopes.
-* @param { string } name - Profile name we are checking scopes for
-* @param { string } action - read or write action
-* @return { Array<string> } - Array of scopes, one of which would be required
-* for the request to be successful
-*/
-function allowedScopes (name, action) {
+ * @name allowedScopes
+ * @description Generate an array of expected scopes. If a user is accessing a
+ * protected resource, one of these scopes must be present in the user's defined
+ * scopes.
+ * @param { string } name - Profile name we are checking scopes for
+ * @param { string } action - read or write action
+ * @return { Array<string> } - Array of scopes, one of which would be required
+ * for the request to be successful
+ */
+function allowedScopes(name, action) {
 	return [
 		'user/*.*',
 		`user/*.${action}`,
@@ -27,34 +25,34 @@ function allowedScopes (name, action) {
 		'patient/*.*',
 		`patient/*.${action}`,
 		`patient/${name}.*`,
-		`patient/${name}.${action}`
+		`patient/${name}.${action}`,
 	];
 }
 
 /**
-* @name parseScopes
-* @description Parse scopes from scope string attached to the token
-* In the future, scope may be in different formats, arrays, comma separated,
-* etc., so we can add logic to handle that later
-* @param { object } token - Tokenb containing a scope property
-* @param { string } token.scope - Space separated list of scopes
-* @return { Array<string> } - Array of scopes
-*/
-function parseScopes (token) {
-	let scopes = token && token.scope || '';
+ * @name parseScopes
+ * @description Parse scopes from scope string attached to the token
+ * In the future, scope may be in different formats, arrays, comma separated,
+ * etc., so we can add logic to handle that later
+ * @param { object } token - Tokenb containing a scope property
+ * @param { string } token.scope - Space separated list of scopes
+ * @return { Array<string> } - Array of scopes
+ */
+function parseScopes(token) {
+	let scopes = (token && token.scope) || '';
 	return scopes.split(' ');
 }
 
 /**
-* @name scopeInvariant
-* @description Check the users scope's and context's and make sure they are
-* allowed to access the resource they are attempting to access. If the user
-* is not allowed to access the resource, a forbidden error should be triggered.
-* @return { Function } A valid GraphQL resolver function
-* @example Usage
-* scopeInvariant({ action: 'read', name: 'Account', version: '3_0_1' }, accountResolver);
-*/
-function scopeInvariant (options = {}, resolver) {
+ * @name scopeInvariant
+ * @description Check the users scope's and context's and make sure they are
+ * allowed to access the resource they are attempting to access. If the user
+ * is not allowed to access the resource, a forbidden error should be triggered.
+ * @return { Function } A valid GraphQL resolver function
+ * @example Usage
+ * scopeInvariant({ action: 'read', name: 'Account', version: '3_0_1' }, accountResolver);
+ */
+function scopeInvariant(options = {}, resolver) {
 	let { action, name, version } = options;
 
 	// If any of these arguments are missing, this check will not be able to work
@@ -65,7 +63,7 @@ function scopeInvariant (options = {}, resolver) {
 		errorMessage += `and version. You provided ${JSON.stringify(options)}`;
 
 		return formatErrorForGraphQL(
-			internal(version || defaultVersion, errorMessage)
+			internal(version || defaultVersion, errorMessage),
 		);
 	}
 
@@ -79,7 +77,7 @@ function scopeInvariant (options = {}, resolver) {
 		return formatErrorForGraphQL(internal(version, errorMessage));
 	}
 
-	return function scopeInvariantResolver (root, args, ctx, info) {
+	return function scopeInvariantResolver(root, args, ctx, info) {
 		let req = ctx && ctx.req;
 		let server = ctx && ctx.server;
 		let serverEnv = server && server.env;
@@ -92,7 +90,11 @@ function scopeInvariant (options = {}, resolver) {
 		// NOTE: If you do not want graphiql to work when auth is enabled
 		// just delete this section below. If we are hitting a graphiql endpoint,
 		// this will bail, check the env as well to make sure we are not in prod
-		if (serverEnv && !serverEnv.IS_PRODUCTION && /\$graphiql$/.test(req.baseUrl)) {
+		if (
+			serverEnv &&
+			!serverEnv.IS_PRODUCTION &&
+			/\$graphiql$/.test(req.baseUrl)
+		) {
 			return resolver(root, args, ctx, info);
 		}
 
@@ -100,8 +102,8 @@ function scopeInvariant (options = {}, resolver) {
 		let userScopes = parseScopes(req && req.user);
 
 		// Check if any of the expected scopes are present in the actual scopes
-		let hasSufficientScope = expectedScopes.some(validScope =>
-			userScopes.indexOf(validScope) > -1
+		let hasSufficientScope = expectedScopes.some(
+			validScope => userScopes.indexOf(validScope) > -1,
 		);
 
 		// If not, throw an insufficientScope error
@@ -118,5 +120,5 @@ function scopeInvariant (options = {}, resolver) {
 }
 
 module.exports = {
-	scopeInvariant
+	scopeInvariant,
 };

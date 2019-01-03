@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Person Resolver.
  */
-module.exports.personResolver = function personResolver (root, args, context, info) {
+module.exports.personResolver = function personResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.personResolver = function personResolver (root, args, context, in
  * @static
  * @summary Person List Resolver.
  */
-module.exports.personListResolver = function personListResolver (root, args, context, info) {
+module.exports.personListResolver = function personListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.personListResolver = function personListResolver (root, args, con
  * @static
  * @summary Person Instance Resolver.
  */
-module.exports.personInstanceResolver = function personInstanceResolver (root, args, context, info) {
+module.exports.personInstanceResolver = function personInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.personInstanceResolver = function personInstanceResolver (root, a
  * @static
  * @summary Person Create Resolver.
  */
-module.exports.personCreateResolver = function personCreateResolver (root, args, context, info) {
+module.exports.personCreateResolver = function personCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.personCreateResolver = function personCreateResolver (root, args,
  * @static
  * @summary Person Update Resolver.
  */
-module.exports.personUpdateResolver = function personUpdateResolver (root, args, context, info) {
+module.exports.personUpdateResolver = function personUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.personUpdateResolver = function personUpdateResolver (root, args,
  * @static
  * @summary Person Delete Resolver.
  */
-module.exports.personDeleteResolver = function personDeleteResolver (root, args, context, info) {
+module.exports.personDeleteResolver = function personDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

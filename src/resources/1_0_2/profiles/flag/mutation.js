@@ -11,39 +11,37 @@ const FlagInput = require('../../inputs/flag.input');
 const {
 	flagCreateResolver,
 	flagUpdateResolver,
-	flagDeleteResolver
+	flagDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Flag',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Flag record.'
+		description: 'Unique identifier for creating/updating a Flag record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(FlagInput),
-		description: 'Flag Information for the record.'
-	}
+		description: 'Flag Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Flag record for deletion.'
-	}
+		description: 'Unique identifier for selecting a Flag record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +52,7 @@ module.exports.FlagCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Flag',
 	resolve: scopeInvariant(scopeOptions, flagCreateResolver),
-	type: FlagSchema
+	type: FlagSchema,
 };
 
 /**
@@ -65,7 +63,7 @@ module.exports.FlagUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Flags',
 	resolve: scopeInvariant(scopeOptions, flagUpdateResolver),
-	type: FlagSchema
+	type: FlagSchema,
 };
 
 /**
@@ -76,5 +74,5 @@ module.exports.FlagDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Flag',
 	resolve: scopeInvariant(scopeOptions, flagDeleteResolver),
-	type: FlagSchema
+	type: FlagSchema,
 };

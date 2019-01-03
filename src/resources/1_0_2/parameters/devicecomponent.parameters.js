@@ -9,14 +9,17 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	source: {
 		type: GraphQLString,
-		description: 'The device source (See http://hl7.org/fhir/SearchParameter/devicecomponent-source).'
+		description:
+			'The device source (See http://hl7.org/fhir/SearchParameter/devicecomponent-source).',
 	},
 	parent: {
 		type: GraphQLString,
-		description: 'The parent DeviceComponent resource (See http://hl7.org/fhir/SearchParameter/devicecomponent-parent).'
+		description:
+			'The parent DeviceComponent resource (See http://hl7.org/fhir/SearchParameter/devicecomponent-parent).',
 	},
 	type: {
 		type: TokenScalar,
-		description: 'The device component type (See http://hl7.org/fhir/SearchParameter/devicecomponent-type).'
-	}
+		description:
+			'The device component type (See http://hl7.org/fhir/SearchParameter/devicecomponent-type).',
+	},
 };

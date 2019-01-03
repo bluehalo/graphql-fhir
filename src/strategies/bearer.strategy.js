@@ -2,7 +2,7 @@ const { Strategy } = require('passport-http-bearer');
 const { auth } = require('../config').SERVER_CONFIG;
 const superagent = require('superagent');
 
-module.exports = new Strategy(function bearer (token, done) {
+module.exports = new Strategy(function bearer(token, done) {
 	// If we do not have a valid instrospection url, we cannot use this strategy
 	if (!auth.introspectionUrl) {
 		let errorMessage = 'No introspection endpoint provided. The server cannot';
@@ -24,7 +24,7 @@ module.exports = new Strategy(function bearer (token, done) {
 		.send({
 			token: token,
 			client_id: auth.clientId,
-			client_secret: auth.clientSecret
+			client_secret: auth.clientSecret,
 		})
 		.then(res => {
 			let decoded = res.body;

@@ -2,9 +2,7 @@ const bearerStrategy = require('./bearer.strategy');
 const superagent = require('superagent');
 
 describe('Bearer Strategy Test', () => {
-
 	describe('missing env variables', () => {
-
 		test('should throw an error if the introspectionUrl is missing', () => {
 			const { auth } = require('../config').SERVER_CONFIG;
 			auth.introspectionUrl = undefined;
@@ -33,11 +31,9 @@ describe('Bearer Strategy Test', () => {
 			expect(maybeErr.message).toContain('CLIENT_ID');
 			expect(maybeErr.message).toContain('CLIENT_SECRET');
 		});
-
 	});
 
 	describe('valid env setup', () => {
-
 		beforeEach(() => {
 			const { auth } = require('../config').SERVER_CONFIG;
 			auth.clientId = 'client';
@@ -61,12 +57,16 @@ describe('Bearer Strategy Test', () => {
 			expect(superagent.post.mock.calls.length).toBe(1);
 			expect(superagent.send.mock.calls.length).toBe(1);
 			expect(superagent.set.mock.calls[0][0]).toEqual('content-type');
-			expect(superagent.set.mock.calls[0][1]).toEqual('application/x-www-form-urlencoded');
-			expect(superagent.post.mock.calls[0][0]).toEqual('https://www.foo.com/introspection');
+			expect(superagent.set.mock.calls[0][1]).toEqual(
+				'application/x-www-form-urlencoded',
+			);
+			expect(superagent.post.mock.calls[0][0]).toEqual(
+				'https://www.foo.com/introspection',
+			);
 			expect(superagent.send.mock.calls[0][0]).toEqual({
 				token: token,
 				client_id: 'client',
-				client_secret: 'secret'
+				client_secret: 'secret',
 			});
 		});
 
@@ -97,7 +97,9 @@ describe('Bearer Strategy Test', () => {
 			// Check that done has been called with null and a decoded token
 			expect(done.mock.calls.length).toBe(1);
 			expect(done.mock.calls[0][1]).toBeUndefined();
-			expect(done.mock.calls[0][0].message).toBe('Unable to retrieve valid token');
+			expect(done.mock.calls[0][0].message).toBe(
+				'Unable to retrieve valid token',
+			);
 		});
 
 		test('should pass an unexpected error to the done callback', async () => {
@@ -114,7 +116,5 @@ describe('Bearer Strategy Test', () => {
 			expect(done.mock.calls[0][1]).toBeUndefined();
 			expect(done.mock.calls[0][0].message).toBe(errorMessage);
 		});
-
 	});
-
 });

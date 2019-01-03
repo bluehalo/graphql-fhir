@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	imagingstudyResolver,
 	imagingstudyListResolver,
-	imagingstudyInstanceResolver
+	imagingstudyInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'ImagingStudy',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ImagingStudyQuery = {
 	args: Object.assign({}, CommonArgs, ImagingStudyArgs),
 	description: 'Query for a single ImagingStudy',
 	resolve: scopeInvariant(scopeOptions, imagingstudyResolver),
-	type: ImagingStudySchema
+	type: ImagingStudySchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ImagingStudyListQuery = {
 	args: Object.assign({}, CommonArgs, ImagingStudyArgs),
 	description: 'Query for multiple ImagingStudys',
 	resolve: scopeInvariant(scopeOptions, imagingstudyListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ImagingStudyListQuery = {
 module.exports.ImagingStudyInstanceQuery = {
 	description: 'Get information about a single ImagingStudy',
 	resolve: scopeInvariant(scopeOptions, imagingstudyInstanceResolver),
-	type: ImagingStudySchema
+	type: ImagingStudySchema,
 };

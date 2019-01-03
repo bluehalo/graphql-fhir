@@ -11,39 +11,39 @@ const CommunicationInput = require('../../inputs/communication.input');
 const {
 	communicationCreateResolver,
 	communicationUpdateResolver,
-	communicationDeleteResolver
+	communicationDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Communication',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Communication record.'
+		description:
+			'Unique identifier for creating/updating a Communication record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(CommunicationInput),
-		description: 'Communication Information for the record.'
-	}
+		description: 'Communication Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Communication record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Communication record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.CommunicationCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Communication',
 	resolve: scopeInvariant(scopeOptions, communicationCreateResolver),
-	type: CommunicationSchema
+	type: CommunicationSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.CommunicationUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Communications',
 	resolve: scopeInvariant(scopeOptions, communicationUpdateResolver),
-	type: CommunicationSchema
+	type: CommunicationSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.CommunicationDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Communication',
 	resolve: scopeInvariant(scopeOptions, communicationDeleteResolver),
-	type: CommunicationSchema
+	type: CommunicationSchema,
 };

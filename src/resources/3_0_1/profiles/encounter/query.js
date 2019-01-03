@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	encounterResolver,
 	encounterListResolver,
-	encounterInstanceResolver
+	encounterInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Encounter',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.EncounterQuery = {
 	args: Object.assign({}, CommonArgs, EncounterArgs),
 	description: 'Query for a single Encounter',
 	resolve: scopeInvariant(scopeOptions, encounterResolver),
-	type: EncounterSchema
+	type: EncounterSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.EncounterListQuery = {
 	args: Object.assign({}, CommonArgs, EncounterArgs),
 	description: 'Query for multiple Encounters',
 	resolve: scopeInvariant(scopeOptions, encounterListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.EncounterListQuery = {
 module.exports.EncounterInstanceQuery = {
 	description: 'Get information about a single Encounter',
 	resolve: scopeInvariant(scopeOptions, encounterInstanceResolver),
-	type: EncounterSchema
+	type: EncounterSchema,
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Questionnaire Resolver.
  */
-module.exports.questionnaireResolver = function questionnaireResolver (root, args, context, info) {
+module.exports.questionnaireResolver = function questionnaireResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.questionnaireResolver = function questionnaireResolver (root, arg
  * @static
  * @summary Questionnaire List Resolver.
  */
-module.exports.questionnaireListResolver = function questionnaireListResolver (root, args, context, info) {
+module.exports.questionnaireListResolver = function questionnaireListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.questionnaireListResolver = function questionnaireListResolver (r
  * @static
  * @summary Questionnaire Instance Resolver.
  */
-module.exports.questionnaireInstanceResolver = function questionnaireInstanceResolver (root, args, context, info) {
+module.exports.questionnaireInstanceResolver = function questionnaireInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.questionnaireInstanceResolver = function questionnaireInstanceRes
  * @static
  * @summary Questionnaire Create Resolver.
  */
-module.exports.questionnaireCreateResolver = function questionnaireCreateResolver (root, args, context, info) {
+module.exports.questionnaireCreateResolver = function questionnaireCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.questionnaireCreateResolver = function questionnaireCreateResolve
  * @static
  * @summary Questionnaire Update Resolver.
  */
-module.exports.questionnaireUpdateResolver = function questionnaireUpdateResolver (root, args, context, info) {
+module.exports.questionnaireUpdateResolver = function questionnaireUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.questionnaireUpdateResolver = function questionnaireUpdateResolve
  * @static
  * @summary Questionnaire Delete Resolver.
  */
-module.exports.questionnaireDeleteResolver = function questionnaireDeleteResolver (root, args, context, info) {
+module.exports.questionnaireDeleteResolver = function questionnaireDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -10,34 +10,42 @@ const { GraphQLString } = require('graphql');
 module.exports = {
 	identifier: {
 		type: TokenScalar,
-		description: 'The business identifier (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-identifier).'
+		description:
+			'The business identifier (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-identifier).',
 	},
 	request: {
 		type: GraphQLString,
-		description: 'The EligibilityRequest reference (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-request).'
+		description:
+			'The EligibilityRequest reference (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-request).',
 	},
 	disposition: {
 		type: GraphQLString,
-		description: 'The contents of the disposition message (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-disposition).'
+		description:
+			'The contents of the disposition message (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-disposition).',
 	},
 	insurer: {
 		type: GraphQLString,
-		description: 'The organization which generated this resource (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-insurer).'
+		description:
+			'The organization which generated this resource (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-insurer).',
 	},
 	created: {
 		type: DateScalar,
-		description: 'The creation date (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-created).'
+		description:
+			'The creation date (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-created).',
 	},
 	request_organization: {
 		type: GraphQLString,
-		description: 'The EligibilityRequest organization (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-request-organization).'
+		description:
+			'The EligibilityRequest organization (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-request-organization).',
 	},
 	request_provider: {
 		type: GraphQLString,
-		description: 'The EligibilityRequest provider (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-request-provider).'
+		description:
+			'The EligibilityRequest provider (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-request-provider).',
 	},
 	outcome: {
 		type: TokenScalar,
-		description: 'The processing outcome (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-outcome).'
-	}
+		description:
+			'The processing outcome (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-outcome).',
+	},
 };

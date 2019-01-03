@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ResearchSubject Resolver.
  */
-module.exports.researchsubjectResolver = function researchsubjectResolver (root, args, context, info) {
+module.exports.researchsubjectResolver = function researchsubjectResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.researchsubjectResolver = function researchsubjectResolver (root,
  * @static
  * @summary ResearchSubject List Resolver.
  */
-module.exports.researchsubjectListResolver = function researchsubjectListResolver (root, args, context, info) {
+module.exports.researchsubjectListResolver = function researchsubjectListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.researchsubjectListResolver = function researchsubjectListResolve
  * @static
  * @summary ResearchSubject Instance Resolver.
  */
-module.exports.researchsubjectInstanceResolver = function researchsubjectInstanceResolver (root, args, context, info) {
+module.exports.researchsubjectInstanceResolver = function researchsubjectInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.researchsubjectInstanceResolver = function researchsubjectInstanc
  * @static
  * @summary ResearchSubject Create Resolver.
  */
-module.exports.researchsubjectCreateResolver = function researchsubjectCreateResolver (root, args, context, info) {
+module.exports.researchsubjectCreateResolver = function researchsubjectCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.researchsubjectCreateResolver = function researchsubjectCreateRes
  * @static
  * @summary ResearchSubject Update Resolver.
  */
-module.exports.researchsubjectUpdateResolver = function researchsubjectUpdateResolver (root, args, context, info) {
+module.exports.researchsubjectUpdateResolver = function researchsubjectUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.researchsubjectUpdateResolver = function researchsubjectUpdateRes
  * @static
  * @summary ResearchSubject Delete Resolver.
  */
-module.exports.researchsubjectDeleteResolver = function researchsubjectDeleteResolver (root, args, context, info) {
+module.exports.researchsubjectDeleteResolver = function researchsubjectDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

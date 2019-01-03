@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Bundle Resolver.
  */
-module.exports.bundleResolver = function bundleResolver (root, args, context, info) {
+module.exports.bundleResolver = function bundleResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.bundleResolver = function bundleResolver (root, args, context, in
  * @static
  * @summary Bundle List Resolver.
  */
-module.exports.bundleListResolver = function bundleListResolver (root, args, context, info) {
+module.exports.bundleListResolver = function bundleListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.bundleListResolver = function bundleListResolver (root, args, con
  * @static
  * @summary Bundle Instance Resolver.
  */
-module.exports.bundleInstanceResolver = function bundleInstanceResolver (root, args, context, info) {
+module.exports.bundleInstanceResolver = function bundleInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.bundleInstanceResolver = function bundleInstanceResolver (root, a
  * @static
  * @summary Bundle Create Resolver.
  */
-module.exports.bundleCreateResolver = function bundleCreateResolver (root, args, context, info) {
+module.exports.bundleCreateResolver = function bundleCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.bundleCreateResolver = function bundleCreateResolver (root, args,
  * @static
  * @summary Bundle Update Resolver.
  */
-module.exports.bundleUpdateResolver = function bundleUpdateResolver (root, args, context, info) {
+module.exports.bundleUpdateResolver = function bundleUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.bundleUpdateResolver = function bundleUpdateResolver (root, args,
  * @static
  * @summary Bundle Delete Resolver.
  */
-module.exports.bundleDeleteResolver = function bundleDeleteResolver (root, args, context, info) {
+module.exports.bundleDeleteResolver = function bundleDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

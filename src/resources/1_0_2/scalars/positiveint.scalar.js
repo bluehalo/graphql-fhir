@@ -6,11 +6,15 @@ const parse = (value, ast) => {
 	try {
 		return validator.isInt(value, { min: 1, max: Number.MAX_SAFE_INTEGER })
 			? validator.toInt(value, 10)
-			: new GraphQLError('Invalid value provided to positiveInt. String Int must be > 0.');
+			: new GraphQLError(
+					'Invalid value provided to positiveInt. String Int must be > 0.',
+			  );
 	} catch (e) {
-		return new GraphQLError('Unsupported type value provided to positiveInt. String Int must be > 0.');
+		return new GraphQLError(
+			'Unsupported type value provided to positiveInt. String Int must be > 0.',
+		);
 	}
-}
+};
 
 /**
  * @name exports
@@ -18,7 +22,8 @@ const parse = (value, ast) => {
  */
 module.exports = new GraphQLScalarType({
 	name: 'positiveint',
-	description: 'Base StructureDefinition for positiveInt type: An integer with a value that is positive (e.g. >0).',
+	description:
+		'Base StructureDefinition for positiveInt type: An integer with a value that is positive (e.g. >0).',
 	// TODO: Implement proper serialization here
 	serialize: value => value,
 	// TODO: Implement proper parsing and sanitization here
@@ -28,5 +33,5 @@ module.exports = new GraphQLScalarType({
 	parseLiteral: ast => {
 		let { value } = ast;
 		return parse(value, ast);
-	}
+	},
 });

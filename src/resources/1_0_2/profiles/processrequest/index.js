@@ -1,13 +1,13 @@
 const {
 	ProcessRequestQuery,
 	ProcessRequestListQuery,
-	ProcessRequestInstanceQuery
+	ProcessRequestInstanceQuery,
 } = require('./query');
 
 const {
 	ProcessRequestCreateMutation,
 	ProcessRequestUpdateMutation,
-	ProcessRequestDeleteMutation
+	ProcessRequestDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		ProcessRequest: ProcessRequestQuery,
-		ProcessRequestList: ProcessRequestListQuery
+		ProcessRequestList: ProcessRequestListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		ProcessRequestCreate: ProcessRequestCreateMutation,
 		ProcessRequestUpdate: ProcessRequestUpdateMutation,
-		ProcessRequestDelete: ProcessRequestDeleteMutation
+		ProcessRequestDelete: ProcessRequestDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'ProcessRequest',
 		path: '/1_0_2/ProcessRequest/:id',
-		query: ProcessRequestInstanceQuery
-	}
+		query: ProcessRequestInstanceQuery,
+	},
 };

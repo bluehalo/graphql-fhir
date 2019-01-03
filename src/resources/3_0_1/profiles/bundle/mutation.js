@@ -11,39 +11,38 @@ const BundleInput = require('../../inputs/bundle.input');
 const {
 	bundleCreateResolver,
 	bundleUpdateResolver,
-	bundleDeleteResolver
+	bundleDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Bundle',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Bundle record.'
+		description: 'Unique identifier for creating/updating a Bundle record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(BundleInput),
-		description: 'Bundle Information for the record.'
-	}
+		description: 'Bundle Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Bundle record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Bundle record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.BundleCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Bundle',
 	resolve: scopeInvariant(scopeOptions, bundleCreateResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.BundleUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Bundles',
 	resolve: scopeInvariant(scopeOptions, bundleUpdateResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.BundleDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Bundle',
 	resolve: scopeInvariant(scopeOptions, bundleDeleteResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };

@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	accountResolver,
 	accountListResolver,
-	accountInstanceResolver
+	accountInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Account',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.AccountQuery = {
 	args: Object.assign({}, CommonArgs, AccountArgs),
 	description: 'Query for a single Account',
 	resolve: scopeInvariant(scopeOptions, accountResolver),
-	type: AccountSchema
+	type: AccountSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.AccountListQuery = {
 	args: Object.assign({}, CommonArgs, AccountArgs),
 	description: 'Query for multiple Accounts',
 	resolve: scopeInvariant(scopeOptions, accountListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.AccountListQuery = {
 module.exports.AccountInstanceQuery = {
 	description: 'Get information about a single Account',
 	resolve: scopeInvariant(scopeOptions, accountInstanceResolver),
-	type: AccountSchema
+	type: AccountSchema,
 };

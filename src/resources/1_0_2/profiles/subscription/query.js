@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	subscriptionResolver,
 	subscriptionListResolver,
-	subscriptionInstanceResolver
+	subscriptionInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Subscription',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.SubscriptionQuery = {
 	args: Object.assign({}, CommonArgs, SubscriptionArgs),
 	description: 'Query for a single Subscription',
 	resolve: scopeInvariant(scopeOptions, subscriptionResolver),
-	type: SubscriptionSchema
+	type: SubscriptionSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.SubscriptionListQuery = {
 	args: Object.assign({}, CommonArgs, SubscriptionArgs),
 	description: 'Query for multiple Subscriptions',
 	resolve: scopeInvariant(scopeOptions, subscriptionListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.SubscriptionListQuery = {
 module.exports.SubscriptionInstanceQuery = {
 	description: 'Get information about a single Subscription',
 	resolve: scopeInvariant(scopeOptions, subscriptionInstanceResolver),
-	type: SubscriptionSchema
+	type: SubscriptionSchema,
 };

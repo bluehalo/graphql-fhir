@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Binary Resolver.
  */
-module.exports.binaryResolver = function binaryResolver (root, args, context, info) {
+module.exports.binaryResolver = function binaryResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.binaryResolver = function binaryResolver (root, args, context, in
  * @static
  * @summary Binary List Resolver.
  */
-module.exports.binaryListResolver = function binaryListResolver (root, args, context, info) {
+module.exports.binaryListResolver = function binaryListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.binaryListResolver = function binaryListResolver (root, args, con
  * @static
  * @summary Binary Instance Resolver.
  */
-module.exports.binaryInstanceResolver = function binaryInstanceResolver (root, args, context, info) {
+module.exports.binaryInstanceResolver = function binaryInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.binaryInstanceResolver = function binaryInstanceResolver (root, a
  * @static
  * @summary Binary Create Resolver.
  */
-module.exports.binaryCreateResolver = function binaryCreateResolver (root, args, context, info) {
+module.exports.binaryCreateResolver = function binaryCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.binaryCreateResolver = function binaryCreateResolver (root, args,
  * @static
  * @summary Binary Update Resolver.
  */
-module.exports.binaryUpdateResolver = function binaryUpdateResolver (root, args, context, info) {
+module.exports.binaryUpdateResolver = function binaryUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.binaryUpdateResolver = function binaryUpdateResolver (root, args,
  * @static
  * @summary Binary Delete Resolver.
  */
-module.exports.binaryDeleteResolver = function binaryDeleteResolver (root, args, context, info) {
+module.exports.binaryDeleteResolver = function binaryDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

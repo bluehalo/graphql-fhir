@@ -1,9 +1,11 @@
-const { GraphQLInputObjectType, GraphQLString, GraphQLList } = require('graphql');
+const {
+	GraphQLInputObjectType,
+	GraphQLString,
+	GraphQLList,
+} = require('graphql');
 
 // Util for extending gql objects
-const { extendSchema } = require('../../../utils/schema.utils');
-
-
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 /**
  * @name exports
@@ -11,19 +13,24 @@ const { extendSchema } = require('../../../utils/schema.utils');
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ImplementationGuideContact_Input',
-	description: 'Contacts to assist a user in finding and communicating with the publisher.',
-	fields: () => extendSchema(require('./backboneelement.input'), {
-		name: {
-			type: GraphQLString,
-			description: 'The name of an individual to contact regarding the implementation guide.'
-		},
-		_name: {
-			type: require('./element.input'),
-			description: 'The name of an individual to contact regarding the implementation guide.'
-		},
-		telecom: {
-			type: new GraphQLList(require('./contactpoint.input')),
-			description: 'Contact details for individual (if a name was provided) or the publisher.'
-		}
-	})
+	description:
+		'Contacts to assist a user in finding and communicating with the publisher.',
+	fields: () =>
+		extendSchema(require('./backboneelement.input'), {
+			name: {
+				type: GraphQLString,
+				description:
+					'The name of an individual to contact regarding the implementation guide.',
+			},
+			_name: {
+				type: require('./element.input'),
+				description:
+					'The name of an individual to contact regarding the implementation guide.',
+			},
+			telecom: {
+				type: new GraphQLList(require('./contactpoint.input')),
+				description:
+					'Contact details for individual (if a name was provided) or the publisher.',
+			},
+		}),
 });

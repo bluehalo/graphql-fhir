@@ -1,8 +1,6 @@
 const { GraphQLObjectType } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
-
-
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 /**
  * @name exports
@@ -10,6 +8,7 @@ const { extendSchema } = require('../../../utils/schema.utils');
  */
 module.exports = new GraphQLObjectType({
 	name: 'Money',
-	description: 'An amount of money. With regard to precision, see [Decimal Precision](datatypes.html#precision).',
-	fields: () => extendSchema(require('./quantity.schema'))
+	description:
+		'An amount of money. With regard to precision, see [Decimal Precision](datatypes.html#precision).',
+	fields: () => extendSchema(require('./quantity.schema')),
 });

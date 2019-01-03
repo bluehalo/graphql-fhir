@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	observationResolver,
 	observationListResolver,
-	observationInstanceResolver
+	observationInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Observation',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ObservationQuery = {
 	args: Object.assign({}, CommonArgs, ObservationArgs),
 	description: 'Query for a single Observation',
 	resolve: scopeInvariant(scopeOptions, observationResolver),
-	type: ObservationSchema
+	type: ObservationSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ObservationListQuery = {
 	args: Object.assign({}, CommonArgs, ObservationArgs),
 	description: 'Query for multiple Observations',
 	resolve: scopeInvariant(scopeOptions, observationListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ObservationListQuery = {
 module.exports.ObservationInstanceQuery = {
 	description: 'Get information about a single Observation',
 	resolve: scopeInvariant(scopeOptions, observationInstanceResolver),
-	type: ObservationSchema
+	type: ObservationSchema,
 };

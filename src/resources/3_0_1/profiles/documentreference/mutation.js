@@ -11,39 +11,39 @@ const DocumentReferenceInput = require('../../inputs/documentreference.input');
 const {
 	documentreferenceCreateResolver,
 	documentreferenceUpdateResolver,
-	documentreferenceDeleteResolver
+	documentreferenceDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DocumentReference',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a DocumentReference record.'
+		description:
+			'Unique identifier for creating/updating a DocumentReference record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(DocumentReferenceInput),
-		description: 'DocumentReference Information for the record.'
-	}
+		description: 'DocumentReference Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a DocumentReference record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a DocumentReference record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.DocumentReferenceCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DocumentReference',
 	resolve: scopeInvariant(scopeOptions, documentreferenceCreateResolver),
-	type: DocumentReferenceSchema
+	type: DocumentReferenceSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.DocumentReferenceUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DocumentReferences',
 	resolve: scopeInvariant(scopeOptions, documentreferenceUpdateResolver),
-	type: DocumentReferenceSchema
+	type: DocumentReferenceSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.DocumentReferenceDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DocumentReference',
 	resolve: scopeInvariant(scopeOptions, documentreferenceDeleteResolver),
-	type: DocumentReferenceSchema
+	type: DocumentReferenceSchema,
 };

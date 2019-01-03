@@ -1,8 +1,6 @@
 const { GraphQLObjectType } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
-
-
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 /**
  * @name exports
@@ -11,5 +9,5 @@ const { extendSchema } = require('../../../utils/schema.utils');
 module.exports = new GraphQLObjectType({
 	name: 'TestScriptTestAction',
 	description: 'Action would contain either an operation or an assertion.',
-	fields: () => extendSchema(require('./backboneelement.schema'))
+	fields: () => extendSchema(require('./backboneelement.schema')),
 });

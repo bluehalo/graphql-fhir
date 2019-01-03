@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	sequenceResolver,
 	sequenceListResolver,
-	sequenceInstanceResolver
+	sequenceInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Sequence',
 	action: 'read',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.SequenceQuery = {
 	args: Object.assign({}, CommonArgs, SequenceArgs),
 	description: 'Query for a single Sequence',
 	resolve: scopeInvariant(scopeOptions, sequenceResolver),
-	type: SequenceSchema
+	type: SequenceSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.SequenceListQuery = {
 	args: Object.assign({}, CommonArgs, SequenceArgs),
 	description: 'Query for multiple Sequences',
 	resolve: scopeInvariant(scopeOptions, sequenceListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.SequenceListQuery = {
 module.exports.SequenceInstanceQuery = {
 	description: 'Get information about a single Sequence',
 	resolve: scopeInvariant(scopeOptions, sequenceInstanceResolver),
-	type: SequenceSchema
+	type: SequenceSchema,
 };

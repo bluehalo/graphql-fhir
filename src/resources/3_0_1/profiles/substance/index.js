@@ -1,13 +1,13 @@
 const {
 	SubstanceQuery,
 	SubstanceListQuery,
-	SubstanceInstanceQuery
+	SubstanceInstanceQuery,
 } = require('./query');
 
 const {
 	SubstanceCreateMutation,
 	SubstanceUpdateMutation,
-	SubstanceDeleteMutation
+	SubstanceDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Substance: SubstanceQuery,
-		SubstanceList: SubstanceListQuery
+		SubstanceList: SubstanceListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		SubstanceCreate: SubstanceCreateMutation,
 		SubstanceUpdate: SubstanceUpdateMutation,
-		SubstanceDelete: SubstanceDeleteMutation
+		SubstanceDelete: SubstanceDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Substance',
 		path: '/3_0_1/Substance/:id',
-		query: SubstanceInstanceQuery
-	}
+		query: SubstanceInstanceQuery,
+	},
 };

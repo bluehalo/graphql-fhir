@@ -11,39 +11,38 @@ const SpecimenInput = require('../../inputs/specimen.input');
 const {
 	specimenCreateResolver,
 	specimenUpdateResolver,
-	specimenDeleteResolver
+	specimenDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Specimen',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Specimen record.'
+		description: 'Unique identifier for creating/updating a Specimen record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(SpecimenInput),
-		description: 'Specimen Information for the record.'
-	}
+		description: 'Specimen Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Specimen record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Specimen record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +53,7 @@ module.exports.SpecimenCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Specimen',
 	resolve: scopeInvariant(scopeOptions, specimenCreateResolver),
-	type: SpecimenSchema
+	type: SpecimenSchema,
 };
 
 /**
@@ -65,7 +64,7 @@ module.exports.SpecimenUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Specimens',
 	resolve: scopeInvariant(scopeOptions, specimenUpdateResolver),
-	type: SpecimenSchema
+	type: SpecimenSchema,
 };
 
 /**
@@ -76,5 +75,5 @@ module.exports.SpecimenDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Specimen',
 	resolve: scopeInvariant(scopeOptions, specimenDeleteResolver),
-	type: SpecimenSchema
+	type: SpecimenSchema,
 };

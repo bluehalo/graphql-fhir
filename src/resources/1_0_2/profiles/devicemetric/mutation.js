@@ -11,39 +11,39 @@ const DeviceMetricInput = require('../../inputs/devicemetric.input');
 const {
 	devicemetricCreateResolver,
 	devicemetricUpdateResolver,
-	devicemetricDeleteResolver
+	devicemetricDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'DeviceMetric',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a DeviceMetric record.'
+		description:
+			'Unique identifier for creating/updating a DeviceMetric record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(DeviceMetricInput),
-		description: 'DeviceMetric Information for the record.'
-	}
+		description: 'DeviceMetric Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a DeviceMetric record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a DeviceMetric record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.DeviceMetricCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a DeviceMetric',
 	resolve: scopeInvariant(scopeOptions, devicemetricCreateResolver),
-	type: DeviceMetricSchema
+	type: DeviceMetricSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.DeviceMetricUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple DeviceMetrics',
 	resolve: scopeInvariant(scopeOptions, devicemetricUpdateResolver),
-	type: DeviceMetricSchema
+	type: DeviceMetricSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.DeviceMetricDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single DeviceMetric',
 	resolve: scopeInvariant(scopeOptions, devicemetricDeleteResolver),
-	type: DeviceMetricSchema
+	type: DeviceMetricSchema,
 };

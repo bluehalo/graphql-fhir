@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary ActivityDefinition Resolver.
  */
-module.exports.activitydefinitionResolver = function activitydefinitionResolver (root, args, context, info) {
+module.exports.activitydefinitionResolver = function activitydefinitionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.activitydefinitionResolver = function activitydefinitionResolver 
  * @static
  * @summary ActivityDefinition List Resolver.
  */
-module.exports.activitydefinitionListResolver = function activitydefinitionListResolver (root, args, context, info) {
+module.exports.activitydefinitionListResolver = function activitydefinitionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.activitydefinitionListResolver = function activitydefinitionListR
  * @static
  * @summary ActivityDefinition Instance Resolver.
  */
-module.exports.activitydefinitionInstanceResolver = function activitydefinitionInstanceResolver (root, args, context, info) {
+module.exports.activitydefinitionInstanceResolver = function activitydefinitionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.activitydefinitionInstanceResolver = function activitydefinitionI
  * @static
  * @summary ActivityDefinition Create Resolver.
  */
-module.exports.activitydefinitionCreateResolver = function activitydefinitionCreateResolver (root, args, context, info) {
+module.exports.activitydefinitionCreateResolver = function activitydefinitionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.activitydefinitionCreateResolver = function activitydefinitionCre
  * @static
  * @summary ActivityDefinition Update Resolver.
  */
-module.exports.activitydefinitionUpdateResolver = function activitydefinitionUpdateResolver (root, args, context, info) {
+module.exports.activitydefinitionUpdateResolver = function activitydefinitionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.activitydefinitionUpdateResolver = function activitydefinitionUpd
  * @static
  * @summary ActivityDefinition Delete Resolver.
  */
-module.exports.activitydefinitionDeleteResolver = function activitydefinitionDeleteResolver (root, args, context, info) {
+module.exports.activitydefinitionDeleteResolver = function activitydefinitionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

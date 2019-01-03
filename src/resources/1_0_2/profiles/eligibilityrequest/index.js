@@ -1,13 +1,13 @@
 const {
 	EligibilityRequestQuery,
 	EligibilityRequestListQuery,
-	EligibilityRequestInstanceQuery
+	EligibilityRequestInstanceQuery,
 } = require('./query');
 
 const {
 	EligibilityRequestCreateMutation,
 	EligibilityRequestUpdateMutation,
-	EligibilityRequestDeleteMutation
+	EligibilityRequestDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		EligibilityRequest: EligibilityRequestQuery,
-		EligibilityRequestList: EligibilityRequestListQuery
+		EligibilityRequestList: EligibilityRequestListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		EligibilityRequestCreate: EligibilityRequestCreateMutation,
 		EligibilityRequestUpdate: EligibilityRequestUpdateMutation,
-		EligibilityRequestDelete: EligibilityRequestDeleteMutation
+		EligibilityRequestDelete: EligibilityRequestDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'EligibilityRequest',
 		path: '/1_0_2/EligibilityRequest/:id',
-		query: EligibilityRequestInstanceQuery
-	}
+		query: EligibilityRequestInstanceQuery,
+	},
 };

@@ -11,39 +11,39 @@ const PractitionerInput = require('../../inputs/practitioner.input');
 const {
 	practitionerCreateResolver,
 	practitionerUpdateResolver,
-	practitionerDeleteResolver
+	practitionerDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Practitioner',
 	action: 'write',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a Practitioner record.'
+		description:
+			'Unique identifier for creating/updating a Practitioner record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(PractitionerInput),
-		description: 'Practitioner Information for the record.'
-	}
+		description: 'Practitioner Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a Practitioner record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a Practitioner record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.PractitionerCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a Practitioner',
 	resolve: scopeInvariant(scopeOptions, practitionerCreateResolver),
-	type: PractitionerSchema
+	type: PractitionerSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.PractitionerUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple Practitioners',
 	resolve: scopeInvariant(scopeOptions, practitionerUpdateResolver),
-	type: PractitionerSchema
+	type: PractitionerSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.PractitionerDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single Practitioner',
 	resolve: scopeInvariant(scopeOptions, practitionerDeleteResolver),
-	type: PractitionerSchema
+	type: PractitionerSchema,
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Media Resolver.
  */
-module.exports.mediaResolver = function mediaResolver (root, args, context, info) {
+module.exports.mediaResolver = function mediaResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.mediaResolver = function mediaResolver (root, args, context, info
  * @static
  * @summary Media List Resolver.
  */
-module.exports.mediaListResolver = function mediaListResolver (root, args, context, info) {
+module.exports.mediaListResolver = function mediaListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.mediaListResolver = function mediaListResolver (root, args, conte
  * @static
  * @summary Media Instance Resolver.
  */
-module.exports.mediaInstanceResolver = function mediaInstanceResolver (root, args, context, info) {
+module.exports.mediaInstanceResolver = function mediaInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.mediaInstanceResolver = function mediaInstanceResolver (root, arg
  * @static
  * @summary Media Create Resolver.
  */
-module.exports.mediaCreateResolver = function mediaCreateResolver (root, args, context, info) {
+module.exports.mediaCreateResolver = function mediaCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.mediaCreateResolver = function mediaCreateResolver (root, args, c
  * @static
  * @summary Media Update Resolver.
  */
-module.exports.mediaUpdateResolver = function mediaUpdateResolver (root, args, context, info) {
+module.exports.mediaUpdateResolver = function mediaUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.mediaUpdateResolver = function mediaUpdateResolver (root, args, c
  * @static
  * @summary Media Delete Resolver.
  */
-module.exports.mediaDeleteResolver = function mediaDeleteResolver (root, args, context, info) {
+module.exports.mediaDeleteResolver = function mediaDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

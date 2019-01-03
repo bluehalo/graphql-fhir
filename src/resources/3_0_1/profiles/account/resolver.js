@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Account Resolver.
  */
-module.exports.accountResolver = function accountResolver (root, args, context, info) {
+module.exports.accountResolver = function accountResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.accountResolver = function accountResolver (root, args, context, 
  * @static
  * @summary Account List Resolver.
  */
-module.exports.accountListResolver = function accountListResolver (root, args, context, info) {
+module.exports.accountListResolver = function accountListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.accountListResolver = function accountListResolver (root, args, c
  * @static
  * @summary Account Instance Resolver.
  */
-module.exports.accountInstanceResolver = function accountInstanceResolver (root, args, context, info) {
+module.exports.accountInstanceResolver = function accountInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.accountInstanceResolver = function accountInstanceResolver (root,
  * @static
  * @summary Account Create Resolver.
  */
-module.exports.accountCreateResolver = function accountCreateResolver (root, args, context, info) {
+module.exports.accountCreateResolver = function accountCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.accountCreateResolver = function accountCreateResolver (root, arg
  * @static
  * @summary Account Update Resolver.
  */
-module.exports.accountUpdateResolver = function accountUpdateResolver (root, args, context, info) {
+module.exports.accountUpdateResolver = function accountUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.accountUpdateResolver = function accountUpdateResolver (root, arg
  * @static
  * @summary Account Delete Resolver.
  */
-module.exports.accountDeleteResolver = function accountDeleteResolver (root, args, context, info) {
+module.exports.accountDeleteResolver = function accountDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

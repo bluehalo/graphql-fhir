@@ -1,13 +1,20 @@
-const { GraphQLInputObjectType, GraphQLEnumType, GraphQLNonNull, GraphQLString, GraphQLList, GraphQLBoolean } = require('graphql');
+const {
+	GraphQLInputObjectType,
+	GraphQLEnumType,
+	GraphQLNonNull,
+	GraphQLString,
+	GraphQLList,
+	GraphQLBoolean,
+} = require('graphql');
 
 // Util for extending gql objects
-const { extendSchema } = require('../../../utils/schema.utils');
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 let OrganizationResourceInputType = new GraphQLEnumType({
 	name: 'OrganizationResourceInputType',
 	values: {
-		Organization: { value: 'Organization' }
-	}
+		Organization: { value: 'Organization' },
+	},
 });
 
 /**
@@ -17,63 +24,71 @@ let OrganizationResourceInputType = new GraphQLEnumType({
 module.exports = new GraphQLInputObjectType({
 	name: 'Organization_Input',
 	description: 'Base StructureDefinition for Organization Resource.',
-	fields: () => extendSchema(require('./domainresource.input'), {
-		resourceType: {
-			type: new GraphQLNonNull(OrganizationResourceInputType),
-			description: 'Type of this resource.'
-		},
-		identifier: {
-			type: new GraphQLList(require('./identifier.input')),
-			description: 'Identifier for the organization that is used to identify the organization across multiple disparate systems.'
-		},
-		active: {
-			type: GraphQLBoolean,
-			description: 'Whether the organization\'s record is still in active use.'
-		},
-		_active: {
-			type: require('./element.input'),
-			description: 'Whether the organization\'s record is still in active use.'
-		},
-		// ValueSetReference: http://hl7.org/fhir/ValueSet/organization-type
-		type: {
-			type: new GraphQLList(require('./codeableconcept.input')),
-			description: 'The kind(s) of organization that this is.'
-		},
-		name: {
-			type: GraphQLString,
-			description: 'A name associated with the organization.'
-		},
-		_name: {
-			type: require('./element.input'),
-			description: 'A name associated with the organization.'
-		},
-		alias: {
-			type: new GraphQLList(GraphQLString),
-			description: 'A list of alternate names that the organization is known as, or was known as in the past.'
-		},
-		_alias: {
-			type: require('./element.input'),
-			description: 'A list of alternate names that the organization is known as, or was known as in the past.'
-		},
-		telecom: {
-			type: new GraphQLList(require('./contactpoint.input')),
-			description: 'A contact detail for the organization.'
-		},
-		address: {
-			type: new GraphQLList(require('./address.input')),
-			description: 'An address for the organization.'
-		},
-		partOf: {
-			type: require('./reference.input'),
-			description: 'The organization of which this organization forms a part.'
-		},
-		contact: {
-			type: new GraphQLList(require('./organizationcontact.input')),
-			description: 'Contact for the organization for a certain purpose.'
-		},
-		endpoint: {
-			type: new GraphQLList(require('./reference.input')),
-			description: 'Technical endpoints providing access to services operated for the organization.'
-		}
-	})
+	fields: () =>
+		extendSchema(require('./domainresource.input'), {
+			resourceType: {
+				type: new GraphQLNonNull(OrganizationResourceInputType),
+				description: 'Type of this resource.',
+			},
+			identifier: {
+				type: new GraphQLList(require('./identifier.input')),
+				description:
+					'Identifier for the organization that is used to identify the organization across multiple disparate systems.',
+			},
+			active: {
+				type: GraphQLBoolean,
+				description:
+					"Whether the organization's record is still in active use.",
+			},
+			_active: {
+				type: require('./element.input'),
+				description:
+					"Whether the organization's record is still in active use.",
+			},
+			// ValueSetReference: http://hl7.org/fhir/ValueSet/organization-type
+			type: {
+				type: new GraphQLList(require('./codeableconcept.input')),
+				description: 'The kind(s) of organization that this is.',
+			},
+			name: {
+				type: GraphQLString,
+				description: 'A name associated with the organization.',
+			},
+			_name: {
+				type: require('./element.input'),
+				description: 'A name associated with the organization.',
+			},
+			alias: {
+				type: new GraphQLList(GraphQLString),
+				description:
+					'A list of alternate names that the organization is known as, or was known as in the past.',
+			},
+			_alias: {
+				type: require('./element.input'),
+				description:
+					'A list of alternate names that the organization is known as, or was known as in the past.',
+			},
+			telecom: {
+				type: new GraphQLList(require('./contactpoint.input')),
+				description: 'A contact detail for the organization.',
+			},
+			address: {
+				type: new GraphQLList(require('./address.input')),
+				description: 'An address for the organization.',
+			},
+			partOf: {
+				type: require('./reference.input'),
+				description:
+					'The organization of which this organization forms a part.',
+			},
+			contact: {
+				type: new GraphQLList(require('./organizationcontact.input')),
+				description: 'Contact for the organization for a certain purpose.',
+			},
+			endpoint: {
+				type: new GraphQLList(require('./reference.input')),
+				description:
+					'Technical endpoints providing access to services operated for the organization.',
+			},
+		}),
 });

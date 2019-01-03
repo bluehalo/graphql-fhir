@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary DeviceUseStatement Resolver.
  */
-module.exports.deviceusestatementResolver = function deviceusestatementResolver (root, args, context, info) {
+module.exports.deviceusestatementResolver = function deviceusestatementResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.deviceusestatementResolver = function deviceusestatementResolver 
  * @static
  * @summary DeviceUseStatement List Resolver.
  */
-module.exports.deviceusestatementListResolver = function deviceusestatementListResolver (root, args, context, info) {
+module.exports.deviceusestatementListResolver = function deviceusestatementListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.deviceusestatementListResolver = function deviceusestatementListR
  * @static
  * @summary DeviceUseStatement Instance Resolver.
  */
-module.exports.deviceusestatementInstanceResolver = function deviceusestatementInstanceResolver (root, args, context, info) {
+module.exports.deviceusestatementInstanceResolver = function deviceusestatementInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.deviceusestatementInstanceResolver = function deviceusestatementI
  * @static
  * @summary DeviceUseStatement Create Resolver.
  */
-module.exports.deviceusestatementCreateResolver = function deviceusestatementCreateResolver (root, args, context, info) {
+module.exports.deviceusestatementCreateResolver = function deviceusestatementCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.deviceusestatementCreateResolver = function deviceusestatementCre
  * @static
  * @summary DeviceUseStatement Update Resolver.
  */
-module.exports.deviceusestatementUpdateResolver = function deviceusestatementUpdateResolver (root, args, context, info) {
+module.exports.deviceusestatementUpdateResolver = function deviceusestatementUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.deviceusestatementUpdateResolver = function deviceusestatementUpd
  * @static
  * @summary DeviceUseStatement Delete Resolver.
  */
-module.exports.deviceusestatementDeleteResolver = function deviceusestatementDeleteResolver (root, args, context, info) {
+module.exports.deviceusestatementDeleteResolver = function deviceusestatementDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

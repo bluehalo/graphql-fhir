@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary CompartmentDefinition Resolver.
  */
-module.exports.compartmentdefinitionResolver = function compartmentdefinitionResolver (root, args, context, info) {
+module.exports.compartmentdefinitionResolver = function compartmentdefinitionResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.compartmentdefinitionResolver = function compartmentdefinitionRes
  * @static
  * @summary CompartmentDefinition List Resolver.
  */
-module.exports.compartmentdefinitionListResolver = function compartmentdefinitionListResolver (root, args, context, info) {
+module.exports.compartmentdefinitionListResolver = function compartmentdefinitionListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.compartmentdefinitionListResolver = function compartmentdefinitio
  * @static
  * @summary CompartmentDefinition Instance Resolver.
  */
-module.exports.compartmentdefinitionInstanceResolver = function compartmentdefinitionInstanceResolver (root, args, context, info) {
+module.exports.compartmentdefinitionInstanceResolver = function compartmentdefinitionInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.compartmentdefinitionInstanceResolver = function compartmentdefin
  * @static
  * @summary CompartmentDefinition Create Resolver.
  */
-module.exports.compartmentdefinitionCreateResolver = function compartmentdefinitionCreateResolver (root, args, context, info) {
+module.exports.compartmentdefinitionCreateResolver = function compartmentdefinitionCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.compartmentdefinitionCreateResolver = function compartmentdefinit
  * @static
  * @summary CompartmentDefinition Update Resolver.
  */
-module.exports.compartmentdefinitionUpdateResolver = function compartmentdefinitionUpdateResolver (root, args, context, info) {
+module.exports.compartmentdefinitionUpdateResolver = function compartmentdefinitionUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.compartmentdefinitionUpdateResolver = function compartmentdefinit
  * @static
  * @summary CompartmentDefinition Delete Resolver.
  */
-module.exports.compartmentdefinitionDeleteResolver = function compartmentdefinitionDeleteResolver (root, args, context, info) {
+module.exports.compartmentdefinitionDeleteResolver = function compartmentdefinitionDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

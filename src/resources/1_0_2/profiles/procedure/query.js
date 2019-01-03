@@ -10,18 +10,16 @@ const CommonArgs = require('../../parameters/common.parameters');
 const {
 	procedureResolver,
 	procedureListResolver,
-	procedureInstanceResolver
+	procedureInstanceResolver,
 } = require('./resolver');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'Procedure',
 	action: 'read',
-	version: '1_0_2'
+	version: '1_0_2',
 };
 
 /**
@@ -32,7 +30,7 @@ module.exports.ProcedureQuery = {
 	args: Object.assign({}, CommonArgs, ProcedureArgs),
 	description: 'Query for a single Procedure',
 	resolve: scopeInvariant(scopeOptions, procedureResolver),
-	type: ProcedureSchema
+	type: ProcedureSchema,
 };
 
 /**
@@ -43,7 +41,7 @@ module.exports.ProcedureListQuery = {
 	args: Object.assign({}, CommonArgs, ProcedureArgs),
 	description: 'Query for multiple Procedures',
 	resolve: scopeInvariant(scopeOptions, procedureListResolver),
-	type: BundleSchema
+	type: BundleSchema,
 };
 
 /**
@@ -53,5 +51,5 @@ module.exports.ProcedureListQuery = {
 module.exports.ProcedureInstanceQuery = {
 	description: 'Get information about a single Procedure',
 	resolve: scopeInvariant(scopeOptions, procedureInstanceResolver),
-	type: ProcedureSchema
+	type: ProcedureSchema,
 };

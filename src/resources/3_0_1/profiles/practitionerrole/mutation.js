@@ -11,39 +11,39 @@ const PractitionerRoleInput = require('../../inputs/practitionerrole.input');
 const {
 	practitionerroleCreateResolver,
 	practitionerroleUpdateResolver,
-	practitionerroleDeleteResolver
+	practitionerroleDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'PractitionerRole',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a PractitionerRole record.'
+		description:
+			'Unique identifier for creating/updating a PractitionerRole record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(PractitionerRoleInput),
-		description: 'PractitionerRole Information for the record.'
-	}
+		description: 'PractitionerRole Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a PractitionerRole record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a PractitionerRole record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.PractitionerRoleCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a PractitionerRole',
 	resolve: scopeInvariant(scopeOptions, practitionerroleCreateResolver),
-	type: PractitionerRoleSchema
+	type: PractitionerRoleSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.PractitionerRoleUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple PractitionerRoles',
 	resolve: scopeInvariant(scopeOptions, practitionerroleUpdateResolver),
-	type: PractitionerRoleSchema
+	type: PractitionerRoleSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.PractitionerRoleDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single PractitionerRole',
 	resolve: scopeInvariant(scopeOptions, practitionerroleDeleteResolver),
-	type: PractitionerRoleSchema
+	type: PractitionerRoleSchema,
 };

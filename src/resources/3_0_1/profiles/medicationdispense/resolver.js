@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary MedicationDispense Resolver.
  */
-module.exports.medicationdispenseResolver = function medicationdispenseResolver (root, args, context, info) {
+module.exports.medicationdispenseResolver = function medicationdispenseResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.medicationdispenseResolver = function medicationdispenseResolver 
  * @static
  * @summary MedicationDispense List Resolver.
  */
-module.exports.medicationdispenseListResolver = function medicationdispenseListResolver (root, args, context, info) {
+module.exports.medicationdispenseListResolver = function medicationdispenseListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.medicationdispenseListResolver = function medicationdispenseListR
  * @static
  * @summary MedicationDispense Instance Resolver.
  */
-module.exports.medicationdispenseInstanceResolver = function medicationdispenseInstanceResolver (root, args, context, info) {
+module.exports.medicationdispenseInstanceResolver = function medicationdispenseInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.medicationdispenseInstanceResolver = function medicationdispenseI
  * @static
  * @summary MedicationDispense Create Resolver.
  */
-module.exports.medicationdispenseCreateResolver = function medicationdispenseCreateResolver (root, args, context, info) {
+module.exports.medicationdispenseCreateResolver = function medicationdispenseCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.medicationdispenseCreateResolver = function medicationdispenseCre
  * @static
  * @summary MedicationDispense Update Resolver.
  */
-module.exports.medicationdispenseUpdateResolver = function medicationdispenseUpdateResolver (root, args, context, info) {
+module.exports.medicationdispenseUpdateResolver = function medicationdispenseUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.medicationdispenseUpdateResolver = function medicationdispenseUpd
  * @static
  * @summary MedicationDispense Delete Resolver.
  */
-module.exports.medicationdispenseDeleteResolver = function medicationdispenseDeleteResolver (root, args, context, info) {
+module.exports.medicationdispenseDeleteResolver = function medicationdispenseDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

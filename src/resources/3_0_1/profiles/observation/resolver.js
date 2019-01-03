@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Observation Resolver.
  */
-module.exports.observationResolver = function observationResolver (root, args, context, info) {
+module.exports.observationResolver = function observationResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.observationResolver = function observationResolver (root, args, c
  * @static
  * @summary Observation List Resolver.
  */
-module.exports.observationListResolver = function observationListResolver (root, args, context, info) {
+module.exports.observationListResolver = function observationListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.observationListResolver = function observationListResolver (root,
  * @static
  * @summary Observation Instance Resolver.
  */
-module.exports.observationInstanceResolver = function observationInstanceResolver (root, args, context, info) {
+module.exports.observationInstanceResolver = function observationInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.observationInstanceResolver = function observationInstanceResolve
  * @static
  * @summary Observation Create Resolver.
  */
-module.exports.observationCreateResolver = function observationCreateResolver (root, args, context, info) {
+module.exports.observationCreateResolver = function observationCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.observationCreateResolver = function observationCreateResolver (r
  * @static
  * @summary Observation Update Resolver.
  */
-module.exports.observationUpdateResolver = function observationUpdateResolver (root, args, context, info) {
+module.exports.observationUpdateResolver = function observationUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.observationUpdateResolver = function observationUpdateResolver (r
  * @static
  * @summary Observation Delete Resolver.
  */
-module.exports.observationDeleteResolver = function observationDeleteResolver (root, args, context, info) {
+module.exports.observationDeleteResolver = function observationDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary Order Resolver.
  */
-module.exports.orderResolver = function orderResolver (root, args, context, info) {
+module.exports.orderResolver = function orderResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.orderResolver = function orderResolver (root, args, context, info
  * @static
  * @summary Order List Resolver.
  */
-module.exports.orderListResolver = function orderListResolver (root, args, context, info) {
+module.exports.orderListResolver = function orderListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.orderListResolver = function orderListResolver (root, args, conte
  * @static
  * @summary Order Instance Resolver.
  */
-module.exports.orderInstanceResolver = function orderInstanceResolver (root, args, context, info) {
+module.exports.orderInstanceResolver = function orderInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.orderInstanceResolver = function orderInstanceResolver (root, arg
  * @static
  * @summary Order Create Resolver.
  */
-module.exports.orderCreateResolver = function orderCreateResolver (root, args, context, info) {
+module.exports.orderCreateResolver = function orderCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.orderCreateResolver = function orderCreateResolver (root, args, c
  * @static
  * @summary Order Update Resolver.
  */
-module.exports.orderUpdateResolver = function orderUpdateResolver (root, args, context, info) {
+module.exports.orderUpdateResolver = function orderUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.orderUpdateResolver = function orderUpdateResolver (root, args, c
  * @static
  * @summary Order Delete Resolver.
  */
-module.exports.orderDeleteResolver = function orderDeleteResolver (root, args, context, info) {
+module.exports.orderDeleteResolver = function orderDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

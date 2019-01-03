@@ -11,39 +11,39 @@ const PaymentNoticeInput = require('../../inputs/paymentnotice.input');
 const {
 	paymentnoticeCreateResolver,
 	paymentnoticeUpdateResolver,
-	paymentnoticeDeleteResolver
+	paymentnoticeDeleteResolver,
 } = require('./resolver');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
 // Scope Utilities
-const {
-	scopeInvariant
-} = require('../../../../utils/scope.utils');
+const { scopeInvariant } = require('../../../../utils/scope.utils');
 
 let scopeOptions = {
 	name: 'PaymentNotice',
 	action: 'write',
-	version: '3_0_1'
+	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
 		type: IdScalar,
-		description: 'Unique identifier for creating/updating a PaymentNotice record.'
+		description:
+			'Unique identifier for creating/updating a PaymentNotice record.',
 	},
 	resource: {
 		type: new GraphQLNonNull(PaymentNoticeInput),
-		description: 'PaymentNotice Information for the record.'
-	}
+		description: 'PaymentNotice Information for the record.',
+	},
 };
 
 let DeleteArgs = {
 	id: {
 		type: new GraphQLNonNull(IdScalar),
-		description: 'Unique identifier for selecting a PaymentNotice record for deletion.'
-	}
+		description:
+			'Unique identifier for selecting a PaymentNotice record for deletion.',
+	},
 };
 
 /**
@@ -54,7 +54,7 @@ module.exports.PaymentNoticeCreateMutation = {
 	args: WriteArgs,
 	description: 'Create a PaymentNotice',
 	resolve: scopeInvariant(scopeOptions, paymentnoticeCreateResolver),
-	type: PaymentNoticeSchema
+	type: PaymentNoticeSchema,
 };
 
 /**
@@ -65,7 +65,7 @@ module.exports.PaymentNoticeUpdateMutation = {
 	args: WriteArgs,
 	description: 'Query for multiple PaymentNotices',
 	resolve: scopeInvariant(scopeOptions, paymentnoticeUpdateResolver),
-	type: PaymentNoticeSchema
+	type: PaymentNoticeSchema,
 };
 
 /**
@@ -76,5 +76,5 @@ module.exports.PaymentNoticeDeleteMutation = {
 	args: DeleteArgs,
 	description: 'Get information about a single PaymentNotice',
 	resolve: scopeInvariant(scopeOptions, paymentnoticeDeleteResolver),
-	type: PaymentNoticeSchema
+	type: PaymentNoticeSchema,
 };

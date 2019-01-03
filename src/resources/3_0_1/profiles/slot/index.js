@@ -1,13 +1,9 @@
-const {
-	SlotQuery,
-	SlotListQuery,
-	SlotInstanceQuery
-} = require('./query');
+const { SlotQuery, SlotListQuery, SlotInstanceQuery } = require('./query');
 
 const {
 	SlotCreateMutation,
 	SlotUpdateMutation,
-	SlotDeleteMutation
+	SlotDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +14,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		Slot: SlotQuery,
-		SlotList: SlotListQuery
+		SlotList: SlotListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		SlotCreate: SlotCreateMutation,
 		SlotUpdate: SlotUpdateMutation,
-		SlotDelete: SlotDeleteMutation
+		SlotDelete: SlotDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'Slot',
 		path: '/3_0_1/Slot/:id',
-		query: SlotInstanceQuery
-	}
+		query: SlotInstanceQuery,
+	},
 };

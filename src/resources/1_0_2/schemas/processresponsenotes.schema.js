@@ -1,8 +1,6 @@
 const { GraphQLObjectType, GraphQLString } = require('graphql');
 
-const { extendSchema } = require('../../../utils/schema.utils');
-
-
+const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 /**
  * @name exports
@@ -10,20 +8,22 @@ const { extendSchema } = require('../../../utils/schema.utils');
  */
 module.exports = new GraphQLObjectType({
 	name: 'ProcessResponseNotes',
-	description: 'Suite of processing note or additional requirements is the processing has been held.',
-	fields: () => extendSchema(require('./backboneelement.schema'), {
-		// ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
-		type: {
-			type: require('./coding.schema'),
-			description: 'The note purpose: Print/Display.'
-		},
-		text: {
-			type: GraphQLString,
-			description: 'The note text.'
-		},
-		_text: {
-			type: require('./element.schema'),
-			description: 'The note text.'
-		}
-	})
+	description:
+		'Suite of processing note or additional requirements is the processing has been held.',
+	fields: () =>
+		extendSchema(require('./backboneelement.schema'), {
+			// ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
+			type: {
+				type: require('./coding.schema'),
+				description: 'The note purpose: Print/Display.',
+			},
+			text: {
+				type: GraphQLString,
+				description: 'The note text.',
+			},
+			_text: {
+				type: require('./element.schema'),
+				description: 'The note text.',
+			},
+		}),
 });

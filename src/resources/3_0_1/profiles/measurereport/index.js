@@ -1,13 +1,13 @@
 const {
 	MeasureReportQuery,
 	MeasureReportListQuery,
-	MeasureReportInstanceQuery
+	MeasureReportInstanceQuery,
 } = require('./query');
 
 const {
 	MeasureReportCreateMutation,
 	MeasureReportUpdateMutation,
-	MeasureReportDeleteMutation
+	MeasureReportDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		MeasureReport: MeasureReportQuery,
-		MeasureReportList: MeasureReportListQuery
+		MeasureReportList: MeasureReportListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		MeasureReportCreate: MeasureReportCreateMutation,
 		MeasureReportUpdate: MeasureReportUpdateMutation,
-		MeasureReportDelete: MeasureReportDeleteMutation
+		MeasureReportDelete: MeasureReportDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'MeasureReport',
 		path: '/3_0_1/MeasureReport/:id',
-		query: MeasureReportInstanceQuery
-	}
+		query: MeasureReportInstanceQuery,
+	},
 };

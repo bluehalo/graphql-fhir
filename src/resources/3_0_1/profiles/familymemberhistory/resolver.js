@@ -5,7 +5,12 @@ const errorUtils = require('../../../../utils/error.utils');
  * @static
  * @summary FamilyMemberHistory Resolver.
  */
-module.exports.familymemberhistoryResolver = function familymemberhistoryResolver (root, args, context, info) {
+module.exports.familymemberhistoryResolver = function familymemberhistoryResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -15,7 +20,12 @@ module.exports.familymemberhistoryResolver = function familymemberhistoryResolve
  * @static
  * @summary FamilyMemberHistory List Resolver.
  */
-module.exports.familymemberhistoryListResolver = function familymemberhistoryListResolver (root, args, context, info) {
+module.exports.familymemberhistoryListResolver = function familymemberhistoryListResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -25,7 +35,12 @@ module.exports.familymemberhistoryListResolver = function familymemberhistoryLis
  * @static
  * @summary FamilyMemberHistory Instance Resolver.
  */
-module.exports.familymemberhistoryInstanceResolver = function familymemberhistoryInstanceResolver (root, args, context, info) {
+module.exports.familymemberhistoryInstanceResolver = function familymemberhistoryInstanceResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -35,7 +50,12 @@ module.exports.familymemberhistoryInstanceResolver = function familymemberhistor
  * @static
  * @summary FamilyMemberHistory Create Resolver.
  */
-module.exports.familymemberhistoryCreateResolver = function familymemberhistoryCreateResolver (root, args, context, info) {
+module.exports.familymemberhistoryCreateResolver = function familymemberhistoryCreateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -45,7 +65,12 @@ module.exports.familymemberhistoryCreateResolver = function familymemberhistoryC
  * @static
  * @summary FamilyMemberHistory Update Resolver.
  */
-module.exports.familymemberhistoryUpdateResolver = function familymemberhistoryUpdateResolver (root, args, context, info) {
+module.exports.familymemberhistoryUpdateResolver = function familymemberhistoryUpdateResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };
@@ -55,7 +80,12 @@ module.exports.familymemberhistoryUpdateResolver = function familymemberhistoryU
  * @static
  * @summary FamilyMemberHistory Delete Resolver.
  */
-module.exports.familymemberhistoryDeleteResolver = function familymemberhistoryDeleteResolver (root, args, context, info) {
+module.exports.familymemberhistoryDeleteResolver = function familymemberhistoryDeleteResolver(
+	root,
+	args,
+	context,
+	info,
+) {
 	let { server, req, res, version } = context;
 	return {};
 };

@@ -1,13 +1,13 @@
 const {
 	EnrollmentRequestQuery,
 	EnrollmentRequestListQuery,
-	EnrollmentRequestInstanceQuery
+	EnrollmentRequestInstanceQuery,
 } = require('./query');
 
 const {
 	EnrollmentRequestCreateMutation,
 	EnrollmentRequestUpdateMutation,
-	EnrollmentRequestDeleteMutation
+	EnrollmentRequestDeleteMutation,
 } = require('./mutation');
 
 /**
@@ -18,31 +18,31 @@ const {
  */
 module.exports = {
 	/**
-	* Define Query Schema's here
-	* Each profile will need to define the two queries it supports
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Query Schema's here
+	 * Each profile will need to define the two queries it supports
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	query: {
 		EnrollmentRequest: EnrollmentRequestQuery,
-		EnrollmentRequestList: EnrollmentRequestListQuery
+		EnrollmentRequestList: EnrollmentRequestListQuery,
 	},
 	/**
-	* Define Mutation Schema's here
-	* Each profile will need to define the supported mutations
-	* and these keys must be unique across the entire application, like routes
-	*/
+	 * Define Mutation Schema's here
+	 * Each profile will need to define the supported mutations
+	 * and these keys must be unique across the entire application, like routes
+	 */
 	mutation: {
 		EnrollmentRequestCreate: EnrollmentRequestCreateMutation,
 		EnrollmentRequestUpdate: EnrollmentRequestUpdateMutation,
-		EnrollmentRequestDelete: EnrollmentRequestDeleteMutation
+		EnrollmentRequestDelete: EnrollmentRequestDeleteMutation,
 	},
 	/**
-	* These properties are so the core router can setup the approriate endpoint
-	* for a direct query against a resource
-	*/
+	 * These properties are so the core router can setup the approriate endpoint
+	 * for a direct query against a resource
+	 */
 	instance_query: {
 		name: 'EnrollmentRequest',
 		path: '/3_0_1/EnrollmentRequest/:id',
-		query: EnrollmentRequestInstanceQuery
-	}
+		query: EnrollmentRequestInstanceQuery,
+	},
 };
