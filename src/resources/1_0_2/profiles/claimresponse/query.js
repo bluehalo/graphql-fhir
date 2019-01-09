@@ -1,55 +1,59 @@
 // Schemas
-const ClaimResponseSchema = require('../../schemas/claimresponse.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ClaimResponseSchema = require('../../schemas/claimresponse.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ClaimResponseArgs = require('../../parameters/claimresponse.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ClaimResponseArgs = require('../../parameters/claimresponse.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ClaimResponseArgs);
 
 // Resolvers
 const {
-	claimresponseResolver,
-	claimresponseListResolver,
-	claimresponseInstanceResolver,
+	getClaimResponse,
+	getClaimResponseList,
+	getClaimResponseInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ClaimResponse',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ClaimResponseQuery
- * @summary ClaimResponse Query.
+ * @summary ClaimResponse query.
  */
 module.exports.ClaimResponseQuery = {
-	args: Object.assign({}, CommonArgs, ClaimResponseArgs),
 	description: 'Query for a single ClaimResponse',
-	resolve: scopeInvariant(scopeOptions, claimresponseResolver),
+	resolve: scopeInvariant(scopeOptions, getClaimResponse),
 	type: ClaimResponseSchema,
+	args: args,
 };
 
 /**
  * @name exports.ClaimResponseListQuery
- * @summary ClaimResponseList Query.
+ * @summary ClaimResponse query.
  */
 module.exports.ClaimResponseListQuery = {
-	args: Object.assign({}, CommonArgs, ClaimResponseArgs),
-	description: 'Query for multiple ClaimResponses',
-	resolve: scopeInvariant(scopeOptions, claimresponseListResolver),
+	description: 'Query for a more than or just one ClaimResponse',
+	resolve: scopeInvariant(scopeOptions, getClaimResponseList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ClaimResponseInstanceQuery
- * @summary ClaimResponseInstance Query.
+ * @summary ClaimResponse query.
  */
 module.exports.ClaimResponseInstanceQuery = {
-	description: 'Get information about a single ClaimResponse',
-	resolve: scopeInvariant(scopeOptions, claimresponseInstanceResolver),
+	description: 'Access information about a single ClaimResponse',
+	resolve: scopeInvariant(scopeOptions, getClaimResponseInstance),
 	type: ClaimResponseSchema,
+	args: args,
 };

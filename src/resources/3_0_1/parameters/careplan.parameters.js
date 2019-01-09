@@ -1,6 +1,6 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,104 +8,150 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the careplan query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/clinical-date
 	date: {
 		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'CarePlan.period',
 		description:
-			'Time period plan covers (See http://hl7.org/fhir/SearchParameter/clinical-date).',
+			"Multiple Resources:     * [Consent](consent.html): When this Consent was created or indexed  * [SupplyRequest](supplyrequest.html): When the request was made  * [RiskAssessment](riskassessment.html): When was assessment made?  * [CareTeam](careteam.html): Time period team covers  * [FamilyMemberHistory](familymemberhistory.html): When history was captured/updated  * [Encounter](encounter.html): A date within the period the Encounter lasted  * [AllergyIntolerance](allergyintolerance.html): Date record was believed accurate  * [CarePlan](careplan.html): Time period plan covers  * [EpisodeOfCare](episodeofcare.html): The provided date search value falls within the episode of care's period  * [Procedure](procedure.html): Date/Period the procedure was performed  * [List](list.html): When the list was prepared  * [Immunization](immunization.html): Vaccination  (non)-Administration Date  * [Flag](flag.html): Time period when flag is active  * [Observation](observation.html): Obtained date/time. If the obtained element is a period, a date that falls in the period  * [DiagnosticReport](diagnosticreport.html): The clinically relevant time of the report  * [Composition](composition.html): Composition editing time  * [DetectedIssue](detectedissue.html): When identified  * [ClinicalImpression](clinicalimpression.html): When the assessment was documented  ",
 	},
-	care_team: {
-		type: GraphQLString,
-		description:
-			"Who's involved in plan? (See http://hl7.org/fhir/SearchParameter/CarePlan-care-team).",
-	},
+	// http://hl7.org/fhir/SearchParameter/clinical-identifier
 	identifier: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'CarePlan.identifier',
 		description:
-			'External Ids for this plan (See http://hl7.org/fhir/SearchParameter/clinical-identifier).',
+			'Multiple Resources:     * [DocumentManifest](documentmanifest.html): Unique Identifier for the set of documents  * [Goal](goal.html): External Ids for this goal  * [Consent](consent.html): Identifier for this record (external references)  * [DocumentReference](documentreference.html): Master Version Specific Identifier  * [SupplyRequest](supplyrequest.html): Unique identifier  * [RiskAssessment](riskassessment.html): Unique identifier for the assessment  * [CareTeam](careteam.html): External Ids for this team  * [ImagingStudy](imagingstudy.html): Other identifiers for the Study  * [FamilyMemberHistory](familymemberhistory.html): A search by a record identifier  * [Encounter](encounter.html): Identifier(s) by which this encounter is known  * [DeviceRequest](devicerequest.html): Business identifier for request/order  * [AllergyIntolerance](allergyintolerance.html): External ids for this item  * [CarePlan](careplan.html): External Ids for this plan  * [EpisodeOfCare](episodeofcare.html): Business Identifier(s) relevant for this EpisodeOfCare  * [Procedure](procedure.html): A unique identifier for a procedure  * [List](list.html): Business identifier  * [Immunization](immunization.html): Business identifier  * [VisionPrescription](visionprescription.html): Return prescriptions with this external identifier  * [ProcedureRequest](procedurerequest.html): Identifiers assigned to this order  * [Observation](observation.html): The unique id for a particular observation  * [DiagnosticReport](diagnosticreport.html): An identifier for the report  * [NutritionOrder](nutritionorder.html): Return nutrition orders with this external identifier  * [Condition](condition.html): A unique identifier of the condition record  * [Composition](composition.html): Logical identifier of composition (version-independent)  * [DetectedIssue](detectedissue.html): Unique id for the detected issue  * [SupplyDelivery](supplydelivery.html): External identifier  ',
 	},
-	performer: {
-		type: GraphQLString,
-		description:
-			"Matches if the practitioner is listed as a performer in any of the 'simple' activities.  (For performers of the detailed activities, chain through the activitydetail search parameter.) (See http://hl7.org/fhir/SearchParameter/CarePlan-performer).",
-	},
-	goal: {
-		type: GraphQLString,
-		description:
-			'Desired outcome of plan (See http://hl7.org/fhir/SearchParameter/CarePlan-goal).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'Who care plan is for (See http://hl7.org/fhir/SearchParameter/CarePlan-subject).',
-	},
-	replaces: {
-		type: GraphQLString,
-		description:
-			'CarePlan replaced by this CarePlan (See http://hl7.org/fhir/SearchParameter/CarePlan-replaces).',
-	},
-	part_of: {
-		type: GraphQLString,
-		description:
-			'Part of referenced CarePlan (See http://hl7.org/fhir/SearchParameter/CarePlan-part-of).',
-	},
-	encounter: {
-		type: GraphQLString,
-		description:
-			'Created in context of (See http://hl7.org/fhir/SearchParameter/CarePlan-encounter).',
-	},
-	intent: {
-		type: TokenScalar,
-		description:
-			'proposal | plan | order | option (See http://hl7.org/fhir/SearchParameter/CarePlan-intent).',
-	},
-	activity_reference: {
-		type: GraphQLString,
-		description:
-			'Activity details defined in specific resource (See http://hl7.org/fhir/SearchParameter/CarePlan-activity-reference).',
-	},
-	condition: {
-		type: GraphQLString,
-		description:
-			'Health issues this plan addresses (See http://hl7.org/fhir/SearchParameter/CarePlan-condition).',
-	},
-	based_on: {
-		type: GraphQLString,
-		description:
-			'Fulfills care plan (See http://hl7.org/fhir/SearchParameter/CarePlan-based-on).',
-	},
+	// http://hl7.org/fhir/SearchParameter/clinical-patient
 	patient: {
 		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.subject',
 		description:
-			'Who care plan is for (See http://hl7.org/fhir/SearchParameter/clinical-patient).',
+			'Multiple Resources:     * [ReferralRequest](referralrequest.html): Who the referral is about  * [DocumentManifest](documentmanifest.html): The subject of the set of documents  * [Goal](goal.html): Who this goal is intended for  * [Consent](consent.html): Who the consent applies to  * [DocumentReference](documentreference.html): Who/what is the subject of the document  * [ImagingManifest](imagingmanifest.html): Subject of the ImagingManifest (or a DICOM Key Object Selection which it represents)  * [RiskAssessment](riskassessment.html): Who/what does assessment apply to?  * [CareTeam](careteam.html): Who care team is for  * [ImagingStudy](imagingstudy.html): Who the study is about  * [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for  * [Encounter](encounter.html): The patient ro group present at the encounter  * [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient  * [DeviceRequest](devicerequest.html): Individual the service is ordered for  * [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for  * [CarePlan](careplan.html): Who care plan is for  * [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care  * [Procedure](procedure.html): Search by subject - a patient  * [List](list.html): If all resources have the same subject  * [Immunization](immunization.html): The patient for the vaccination record  * [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for  * [ProcedureRequest](procedurerequest.html): Search by subject - a patient  * [Flag](flag.html): The identity of a subject to list flags for  * [Observation](observation.html): The subject that the observation is about (if patient)  * [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient  * [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement  * [Condition](condition.html): Who has the condition?  * [Composition](composition.html): Who and/or what the composition is about  * [DetectedIssue](detectedissue.html): Associated patient  * [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied  * [ClinicalImpression](clinicalimpression.html): Patient or group assessed  ',
 	},
-	context: {
-		type: GraphQLString,
-		description:
-			'Created in context of (See http://hl7.org/fhir/SearchParameter/CarePlan-context).',
-	},
-	activity_date: {
-		type: DateScalar,
-		description:
-			'Specified date occurs within period specified by CarePlan.activity.timingSchedule (See http://hl7.org/fhir/SearchParameter/CarePlan-activity-date).',
-	},
-	definition: {
-		type: GraphQLString,
-		description:
-			'Protocol or definition (See http://hl7.org/fhir/SearchParameter/CarePlan-definition).',
-	},
-	category: {
-		type: TokenScalar,
-		description:
-			'Type of plan (See http://hl7.org/fhir/SearchParameter/CarePlan-category).',
-	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-activity-code
 	activity_code: {
 		type: TokenScalar,
-		description:
-			'Detail type of activity (See http://hl7.org/fhir/SearchParameter/CarePlan-activity-code).',
+		fhirtype: 'token',
+		xpath: 'CarePlan.activity.detail.code',
+		description: 'Detail type of activity',
 	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-activity-date
+	activity_date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'CarePlan.activity.detail.scheduledTiming',
+		description:
+			'Specified date occurs within period specified by CarePlan.activity.timingSchedule',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-activity-reference
+	activity_reference: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.activity.reference',
+		description: 'Activity details defined in specific resource',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-based-on
+	based_on: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.basedOn',
+		description: 'Fulfills care plan',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-care-team
+	care_team: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.careTeam',
+		description: "Who's involved in plan?",
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-category
+	category: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'CarePlan.category',
+		description: 'Type of plan',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-condition
+	condition: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.addresses',
+		description: 'Health issues this plan addresses',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-context
+	context: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.context',
+		description: 'Created in context of',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-definition
+	definition: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.definition',
+		description: 'Protocol or definition',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-encounter
+	encounter: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.context',
+		description: 'Created in context of',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-goal
+	goal: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.goal',
+		description: 'Desired outcome of plan',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-intent
+	intent: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'CarePlan.intent',
+		description: 'proposal | plan | order | option',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-part-of
+	part_of: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.partOf',
+		description: 'Part of referenced CarePlan',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-performer
+	performer: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.activity.detail.performer',
+		description:
+			"Matches if the practitioner is listed as a performer in any of the 'simple' activities.  (For performers of the detailed activities, chain through the activitydetail search parameter.)",
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-replaces
+	replaces: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.replaces',
+		description: 'CarePlan replaced by this CarePlan',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-status
 	status: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'CarePlan.status',
 		description:
-			'draft | active | suspended | completed | entered-in-error | cancelled | unknown (See http://hl7.org/fhir/SearchParameter/CarePlan-status).',
+			'draft | active | suspended | completed | entered-in-error | cancelled | unknown',
+	},
+	// http://hl7.org/fhir/SearchParameter/CarePlan-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'CarePlan.subject',
+		description: 'Who care plan is for',
 	},
 };

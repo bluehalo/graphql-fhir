@@ -1,38 +1,55 @@
-const CodeScalar = require('../scalars/code.scalar');
-const { GraphQLObjectType, GraphQLString } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const { GraphQLList, GraphQLString, GraphQLObjectType } = require('graphql');
+const IdScalar = require('../scalars/id.scalar.js');
+const CodeScalar = require('../scalars/code.scalar.js');
 
 /**
  * @name exports
- * @summary AuditEvent.participant.network Schema
+ * @summary AuditEventparticipantnetwork Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'AuditEventParticipantNetwork',
-	description:
-		'Logical network location for application activity, if the activity has a network location.',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			address: {
-				type: GraphQLString,
-				description:
-					'An identifier for the network access point of the user device for the audit event.',
-			},
-			_address: {
-				type: require('./element.schema'),
-				description:
-					'An identifier for the network access point of the user device for the audit event.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/network-type
-			type: {
-				type: CodeScalar,
-				description:
-					'An identifier for the type of network access point that originated the audit event.',
-			},
-			_type: {
-				type: require('./element.schema'),
-				description:
-					'An identifier for the type of network access point that originated the audit event.',
-			},
-		}),
+	name: 'AuditEventparticipantnetwork',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_address: {
+			type: require('./element.schema.js'),
+			description:
+				'An identifier for the network access point of the user device for the audit event.',
+		},
+		address: {
+			type: GraphQLString,
+			description:
+				'An identifier for the network access point of the user device for the audit event.',
+		},
+		_type: {
+			type: require('./element.schema.js'),
+			description:
+				'An identifier for the type of network access point that originated the audit event.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/network-type
+		type: {
+			type: CodeScalar,
+			description:
+				'An identifier for the type of network access point that originated the audit event.',
+		},
+	}),
 });

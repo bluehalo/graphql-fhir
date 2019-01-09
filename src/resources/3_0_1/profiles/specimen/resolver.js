@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.specimenResolver
+ * @name exports.getSpecimen
  * @static
- * @summary Specimen Resolver.
+ * @summary Specimen resolver.
  */
-module.exports.specimenResolver = function specimenResolver(
+module.exports.getSpecimen = function getSpecimen(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.specimenListResolver
+ * @name exports.getSpecimenList
  * @static
- * @summary Specimen List Resolver.
+ * @summary Specimen list resolver.
  */
-module.exports.specimenListResolver = function specimenListResolver(
+module.exports.getSpecimenList = function getSpecimenList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.specimenInstanceResolver
+ * @name exports.getSpecimenInstance
  * @static
- * @summary Specimen Instance Resolver.
+ * @summary Specimen instance resolver.
  */
-module.exports.specimenInstanceResolver = function specimenInstanceResolver(
+module.exports.getSpecimenInstance = function getSpecimenInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.specimenCreateResolver
+ * @name exports.createSpecimen
  * @static
- * @summary Specimen Create Resolver.
+ * @summary Create Specimen resolver.
  */
-module.exports.specimenCreateResolver = function specimenCreateResolver(
+module.exports.createSpecimen = function createSpecimen(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.specimenUpdateResolver
+ * @name exports.updateSpecimen
  * @static
- * @summary Specimen Update Resolver.
+ * @summary Update Specimen resolver.
  */
-module.exports.specimenUpdateResolver = function specimenUpdateResolver(
+module.exports.updateSpecimen = function updateSpecimen(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.specimenDeleteResolver
+ * @name exports.removeSpecimen
  * @static
- * @summary Specimen Delete Resolver.
+ * @summary Remove Specimen resolver.
  */
-module.exports.specimenDeleteResolver = function specimenDeleteResolver(
+module.exports.removeSpecimen = function removeSpecimen(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

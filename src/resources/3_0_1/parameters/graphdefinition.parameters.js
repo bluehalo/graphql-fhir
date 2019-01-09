@@ -1,7 +1,7 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,49 +9,67 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the graphdefinition query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/GraphDefinition-date
 	date: {
 		type: DateScalar,
-		description:
-			'The graph definition publication date (See http://hl7.org/fhir/SearchParameter/GraphDefinition-date).',
+		fhirtype: 'date',
+		xpath: 'GraphDefinition.date',
+		description: 'The graph definition publication date',
 	},
-	jurisdiction: {
-		type: TokenScalar,
-		description:
-			'Intended jurisdiction for the graph definition (See http://hl7.org/fhir/SearchParameter/GraphDefinition-jurisdiction).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			'Computationally friendly name of the graph definition (See http://hl7.org/fhir/SearchParameter/GraphDefinition-name).',
-	},
-	start: {
-		type: TokenScalar,
-		description:
-			'Type of resource at which the graph starts (See http://hl7.org/fhir/SearchParameter/GraphDefinition-start).',
-	},
+	// http://hl7.org/fhir/SearchParameter/GraphDefinition-description
 	description: {
 		type: GraphQLString,
-		description:
-			'The description of the graph definition (See http://hl7.org/fhir/SearchParameter/GraphDefinition-description).',
+		fhirtype: 'string',
+		xpath: 'GraphDefinition.description',
+		description: 'The description of the graph definition',
 	},
+	// http://hl7.org/fhir/SearchParameter/GraphDefinition-jurisdiction
+	jurisdiction: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'GraphDefinition.jurisdiction',
+		description: 'Intended jurisdiction for the graph definition',
+	},
+	// http://hl7.org/fhir/SearchParameter/GraphDefinition-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'GraphDefinition.name',
+		description: 'Computationally friendly name of the graph definition',
+	},
+	// http://hl7.org/fhir/SearchParameter/GraphDefinition-publisher
 	publisher: {
 		type: GraphQLString,
-		description:
-			'Name of the publisher of the graph definition (See http://hl7.org/fhir/SearchParameter/GraphDefinition-publisher).',
+		fhirtype: 'string',
+		xpath: 'GraphDefinition.publisher',
+		description: 'Name of the publisher of the graph definition',
 	},
-	version: {
+	// http://hl7.org/fhir/SearchParameter/GraphDefinition-start
+	start: {
 		type: TokenScalar,
-		description:
-			'The business version of the graph definition (See http://hl7.org/fhir/SearchParameter/GraphDefinition-version).',
+		fhirtype: 'token',
+		xpath: 'GraphDefinition.start',
+		description: 'Type of resource at which the graph starts',
 	},
-	url: {
-		type: UriScalar,
-		description:
-			'The uri that identifies the graph definition (See http://hl7.org/fhir/SearchParameter/GraphDefinition-url).',
-	},
+	// http://hl7.org/fhir/SearchParameter/GraphDefinition-status
 	status: {
 		type: TokenScalar,
-		description:
-			'The current status of the graph definition (See http://hl7.org/fhir/SearchParameter/GraphDefinition-status).',
+		fhirtype: 'token',
+		xpath: 'GraphDefinition.status',
+		description: 'The current status of the graph definition',
+	},
+	// http://hl7.org/fhir/SearchParameter/GraphDefinition-url
+	url: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'GraphDefinition.url',
+		description: 'The uri that identifies the graph definition',
+	},
+	// http://hl7.org/fhir/SearchParameter/GraphDefinition-version
+	version: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'GraphDefinition.version',
+		description: 'The business version of the graph definition',
 	},
 };

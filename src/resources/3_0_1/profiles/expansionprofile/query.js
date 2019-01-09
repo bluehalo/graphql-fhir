@@ -1,55 +1,65 @@
 // Schemas
-const ExpansionProfileSchema = require('../../schemas/expansionprofile.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ExpansionProfileSchema = require('../../schemas/expansionprofile.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ExpansionProfileArgs = require('../../parameters/expansionprofile.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ExpansionProfileArgs = require('../../parameters/expansionprofile.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+const DomainResourceArgs = require('../../parameters/domainresource.parameters.js');
+
+let args = Object.assign(
+	{},
+	DomainResourceArgs,
+	ResourceArgs,
+	ExpansionProfileArgs,
+);
 
 // Resolvers
 const {
-	expansionprofileResolver,
-	expansionprofileListResolver,
-	expansionprofileInstanceResolver,
+	getExpansionProfile,
+	getExpansionProfileList,
+	getExpansionProfileInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ExpansionProfile',
 	action: 'read',
-	version: '3_0_1',
 };
 
 /**
  * @name exports.ExpansionProfileQuery
- * @summary ExpansionProfile Query.
+ * @summary ExpansionProfile query.
  */
 module.exports.ExpansionProfileQuery = {
-	args: Object.assign({}, CommonArgs, ExpansionProfileArgs),
 	description: 'Query for a single ExpansionProfile',
-	resolve: scopeInvariant(scopeOptions, expansionprofileResolver),
+	resolve: scopeInvariant(scopeOptions, getExpansionProfile),
 	type: ExpansionProfileSchema,
+	args: args,
 };
 
 /**
  * @name exports.ExpansionProfileListQuery
- * @summary ExpansionProfileList Query.
+ * @summary ExpansionProfile query.
  */
 module.exports.ExpansionProfileListQuery = {
-	args: Object.assign({}, CommonArgs, ExpansionProfileArgs),
-	description: 'Query for multiple ExpansionProfiles',
-	resolve: scopeInvariant(scopeOptions, expansionprofileListResolver),
+	description: 'Query for a more than or just one ExpansionProfile',
+	resolve: scopeInvariant(scopeOptions, getExpansionProfileList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ExpansionProfileInstanceQuery
- * @summary ExpansionProfileInstance Query.
+ * @summary ExpansionProfile query.
  */
 module.exports.ExpansionProfileInstanceQuery = {
-	description: 'Get information about a single ExpansionProfile',
-	resolve: scopeInvariant(scopeOptions, expansionprofileInstanceResolver),
+	description: 'Access information about a single ExpansionProfile',
+	resolve: scopeInvariant(scopeOptions, getExpansionProfileInstance),
 	type: ExpansionProfileSchema,
+	args: args,
 };

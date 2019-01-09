@@ -1,55 +1,59 @@
 // Schemas
-const ValueSetSchema = require('../../schemas/valueset.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ValueSetSchema = require('../../schemas/valueset.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ValueSetArgs = require('../../parameters/valueset.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ValueSetArgs = require('../../parameters/valueset.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ValueSetArgs);
 
 // Resolvers
 const {
-	valuesetResolver,
-	valuesetListResolver,
-	valuesetInstanceResolver,
+	getValueSet,
+	getValueSetList,
+	getValueSetInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ValueSet',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ValueSetQuery
- * @summary ValueSet Query.
+ * @summary ValueSet query.
  */
 module.exports.ValueSetQuery = {
-	args: Object.assign({}, CommonArgs, ValueSetArgs),
 	description: 'Query for a single ValueSet',
-	resolve: scopeInvariant(scopeOptions, valuesetResolver),
+	resolve: scopeInvariant(scopeOptions, getValueSet),
 	type: ValueSetSchema,
+	args: args,
 };
 
 /**
  * @name exports.ValueSetListQuery
- * @summary ValueSetList Query.
+ * @summary ValueSet query.
  */
 module.exports.ValueSetListQuery = {
-	args: Object.assign({}, CommonArgs, ValueSetArgs),
-	description: 'Query for multiple ValueSets',
-	resolve: scopeInvariant(scopeOptions, valuesetListResolver),
+	description: 'Query for a more than or just one ValueSet',
+	resolve: scopeInvariant(scopeOptions, getValueSetList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ValueSetInstanceQuery
- * @summary ValueSetInstance Query.
+ * @summary ValueSet query.
  */
 module.exports.ValueSetInstanceQuery = {
-	description: 'Get information about a single ValueSet',
-	resolve: scopeInvariant(scopeOptions, valuesetInstanceResolver),
+	description: 'Access information about a single ValueSet',
+	resolve: scopeInvariant(scopeOptions, getValueSetInstance),
 	type: ValueSetSchema,
+	args: args,
 };

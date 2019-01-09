@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ServiceDefinitionSchema = require('../../schemas/servicedefinition.schema');
+const ServiceDefinitionSchema = require('../../schemas/servicedefinition.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ServiceDefinitionInput = require('../../inputs/servicedefinition.input');
+const ServiceDefinitionInput = require('../../inputs/servicedefinition.input.js');
 
-// Resolvers
-const {
-	servicedefinitionCreateResolver,
-	servicedefinitionUpdateResolver,
-	servicedefinitionDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createServiceDefinition,
+	updateServiceDefinition,
+	removeServiceDefinition,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ServiceDefinition',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a ServiceDefinition record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a ServiceDefinition record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ServiceDefinitionCreateMutation
- * @summary ServiceDefinitionCreate Mutation.
+ * @summary ServiceDefinitionCreate mutation.
  */
 module.exports.ServiceDefinitionCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a ServiceDefinition',
-	resolve: scopeInvariant(scopeOptions, servicedefinitionCreateResolver),
+	description: 'Create a ServiceDefinition record',
+	resolve: scopeInvariant(scopeOptions, createServiceDefinition),
 	type: ServiceDefinitionSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ServiceDefinitionUpdateMutation
- * @summary ServiceDefinitionUpdate Mutation.
+ * @summary ServiceDefinitionUpdate mutation.
  */
 module.exports.ServiceDefinitionUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple ServiceDefinitions',
-	resolve: scopeInvariant(scopeOptions, servicedefinitionUpdateResolver),
+	description: 'Update a ServiceDefinition record',
+	resolve: scopeInvariant(scopeOptions, updateServiceDefinition),
 	type: ServiceDefinitionSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ServiceDefinitionDeleteMutation
- * @summary ServiceDefinitionDelete Mutation.
+ * @name exports.ServiceDefinitionRemoveMutation
+ * @summary ServiceDefinitionRemove mutation.
  */
-module.exports.ServiceDefinitionDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single ServiceDefinition',
-	resolve: scopeInvariant(scopeOptions, servicedefinitionDeleteResolver),
+module.exports.ServiceDefinitionRemoveMutation = {
+	description: 'Remove a ServiceDefinition record',
+	resolve: scopeInvariant(scopeOptions, removeServiceDefinition),
 	type: ServiceDefinitionSchema,
+	args: DeleteArgs,
 };

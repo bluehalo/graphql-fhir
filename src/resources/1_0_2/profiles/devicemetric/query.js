@@ -1,55 +1,59 @@
 // Schemas
-const DeviceMetricSchema = require('../../schemas/devicemetric.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const DeviceMetricSchema = require('../../schemas/devicemetric.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const DeviceMetricArgs = require('../../parameters/devicemetric.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const DeviceMetricArgs = require('../../parameters/devicemetric.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, DeviceMetricArgs);
 
 // Resolvers
 const {
-	devicemetricResolver,
-	devicemetricListResolver,
-	devicemetricInstanceResolver,
+	getDeviceMetric,
+	getDeviceMetricList,
+	getDeviceMetricInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DeviceMetric',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.DeviceMetricQuery
- * @summary DeviceMetric Query.
+ * @summary DeviceMetric query.
  */
 module.exports.DeviceMetricQuery = {
-	args: Object.assign({}, CommonArgs, DeviceMetricArgs),
 	description: 'Query for a single DeviceMetric',
-	resolve: scopeInvariant(scopeOptions, devicemetricResolver),
+	resolve: scopeInvariant(scopeOptions, getDeviceMetric),
 	type: DeviceMetricSchema,
+	args: args,
 };
 
 /**
  * @name exports.DeviceMetricListQuery
- * @summary DeviceMetricList Query.
+ * @summary DeviceMetric query.
  */
 module.exports.DeviceMetricListQuery = {
-	args: Object.assign({}, CommonArgs, DeviceMetricArgs),
-	description: 'Query for multiple DeviceMetrics',
-	resolve: scopeInvariant(scopeOptions, devicemetricListResolver),
+	description: 'Query for a more than or just one DeviceMetric',
+	resolve: scopeInvariant(scopeOptions, getDeviceMetricList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.DeviceMetricInstanceQuery
- * @summary DeviceMetricInstance Query.
+ * @summary DeviceMetric query.
  */
 module.exports.DeviceMetricInstanceQuery = {
-	description: 'Get information about a single DeviceMetric',
-	resolve: scopeInvariant(scopeOptions, devicemetricInstanceResolver),
+	description: 'Access information about a single DeviceMetric',
+	resolve: scopeInvariant(scopeOptions, getDeviceMetricInstance),
 	type: DeviceMetricSchema,
+	args: args,
 };

@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.immunizationrecommendationResolver
+ * @name exports.getImmunizationRecommendation
  * @static
- * @summary ImmunizationRecommendation Resolver.
+ * @summary ImmunizationRecommendation resolver.
  */
-module.exports.immunizationrecommendationResolver = function immunizationrecommendationResolver(
+module.exports.getImmunizationRecommendation = function getImmunizationRecommendation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.immunizationrecommendationListResolver
+ * @name exports.getImmunizationRecommendationList
  * @static
- * @summary ImmunizationRecommendation List Resolver.
+ * @summary ImmunizationRecommendation list resolver.
  */
-module.exports.immunizationrecommendationListResolver = function immunizationrecommendationListResolver(
+module.exports.getImmunizationRecommendationList = function getImmunizationRecommendationList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.immunizationrecommendationInstanceResolver
+ * @name exports.getImmunizationRecommendationInstance
  * @static
- * @summary ImmunizationRecommendation Instance Resolver.
+ * @summary ImmunizationRecommendation instance resolver.
  */
-module.exports.immunizationrecommendationInstanceResolver = function immunizationrecommendationInstanceResolver(
+module.exports.getImmunizationRecommendationInstance = function getImmunizationRecommendationInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.immunizationrecommendationCreateResolver
+ * @name exports.createImmunizationRecommendation
  * @static
- * @summary ImmunizationRecommendation Create Resolver.
+ * @summary Create ImmunizationRecommendation resolver.
  */
-module.exports.immunizationrecommendationCreateResolver = function immunizationrecommendationCreateResolver(
+module.exports.createImmunizationRecommendation = function createImmunizationRecommendation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.immunizationrecommendationUpdateResolver
+ * @name exports.updateImmunizationRecommendation
  * @static
- * @summary ImmunizationRecommendation Update Resolver.
+ * @summary Update ImmunizationRecommendation resolver.
  */
-module.exports.immunizationrecommendationUpdateResolver = function immunizationrecommendationUpdateResolver(
+module.exports.updateImmunizationRecommendation = function updateImmunizationRecommendation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.immunizationrecommendationDeleteResolver
+ * @name exports.removeImmunizationRecommendation
  * @static
- * @summary ImmunizationRecommendation Delete Resolver.
+ * @summary Remove ImmunizationRecommendation resolver.
  */
-module.exports.immunizationrecommendationDeleteResolver = function immunizationrecommendationDeleteResolver(
+module.exports.removeImmunizationRecommendation = function removeImmunizationRecommendation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

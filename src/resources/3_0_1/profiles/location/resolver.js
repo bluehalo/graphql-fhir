@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.locationResolver
+ * @name exports.getLocation
  * @static
- * @summary Location Resolver.
+ * @summary Location resolver.
  */
-module.exports.locationResolver = function locationResolver(
+module.exports.getLocation = function getLocation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.locationListResolver
+ * @name exports.getLocationList
  * @static
- * @summary Location List Resolver.
+ * @summary Location list resolver.
  */
-module.exports.locationListResolver = function locationListResolver(
+module.exports.getLocationList = function getLocationList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.locationInstanceResolver
+ * @name exports.getLocationInstance
  * @static
- * @summary Location Instance Resolver.
+ * @summary Location instance resolver.
  */
-module.exports.locationInstanceResolver = function locationInstanceResolver(
+module.exports.getLocationInstance = function getLocationInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.locationCreateResolver
+ * @name exports.createLocation
  * @static
- * @summary Location Create Resolver.
+ * @summary Create Location resolver.
  */
-module.exports.locationCreateResolver = function locationCreateResolver(
+module.exports.createLocation = function createLocation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.locationUpdateResolver
+ * @name exports.updateLocation
  * @static
- * @summary Location Update Resolver.
+ * @summary Update Location resolver.
  */
-module.exports.locationUpdateResolver = function locationUpdateResolver(
+module.exports.updateLocation = function updateLocation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.locationDeleteResolver
+ * @name exports.removeLocation
  * @static
- * @summary Location Delete Resolver.
+ * @summary Remove Location resolver.
  */
-module.exports.locationDeleteResolver = function locationDeleteResolver(
+module.exports.removeLocation = function removeLocation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

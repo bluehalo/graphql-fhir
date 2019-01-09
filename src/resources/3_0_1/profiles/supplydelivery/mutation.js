@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const SupplyDeliverySchema = require('../../schemas/supplydelivery.schema');
+const SupplyDeliverySchema = require('../../schemas/supplydelivery.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const SupplyDeliveryInput = require('../../inputs/supplydelivery.input');
+const SupplyDeliveryInput = require('../../inputs/supplydelivery.input.js');
 
-// Resolvers
-const {
-	supplydeliveryCreateResolver,
-	supplydeliveryUpdateResolver,
-	supplydeliveryDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createSupplyDelivery,
+	updateSupplyDelivery,
+	removeSupplyDelivery,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'SupplyDelivery',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a SupplyDelivery record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a SupplyDelivery record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.SupplyDeliveryCreateMutation
- * @summary SupplyDeliveryCreate Mutation.
+ * @summary SupplyDeliveryCreate mutation.
  */
 module.exports.SupplyDeliveryCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a SupplyDelivery',
-	resolve: scopeInvariant(scopeOptions, supplydeliveryCreateResolver),
+	description: 'Create a SupplyDelivery record',
+	resolve: scopeInvariant(scopeOptions, createSupplyDelivery),
 	type: SupplyDeliverySchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.SupplyDeliveryUpdateMutation
- * @summary SupplyDeliveryUpdate Mutation.
+ * @summary SupplyDeliveryUpdate mutation.
  */
 module.exports.SupplyDeliveryUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple SupplyDeliverys',
-	resolve: scopeInvariant(scopeOptions, supplydeliveryUpdateResolver),
+	description: 'Update a SupplyDelivery record',
+	resolve: scopeInvariant(scopeOptions, updateSupplyDelivery),
 	type: SupplyDeliverySchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.SupplyDeliveryDeleteMutation
- * @summary SupplyDeliveryDelete Mutation.
+ * @name exports.SupplyDeliveryRemoveMutation
+ * @summary SupplyDeliveryRemove mutation.
  */
-module.exports.SupplyDeliveryDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single SupplyDelivery',
-	resolve: scopeInvariant(scopeOptions, supplydeliveryDeleteResolver),
+module.exports.SupplyDeliveryRemoveMutation = {
+	description: 'Remove a SupplyDelivery record',
+	resolve: scopeInvariant(scopeOptions, removeSupplyDelivery),
 	type: SupplyDeliverySchema,
+	args: DeleteArgs,
 };

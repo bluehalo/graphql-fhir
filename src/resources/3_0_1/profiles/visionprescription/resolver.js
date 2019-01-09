@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.visionprescriptionResolver
+ * @name exports.getVisionPrescription
  * @static
- * @summary VisionPrescription Resolver.
+ * @summary VisionPrescription resolver.
  */
-module.exports.visionprescriptionResolver = function visionprescriptionResolver(
+module.exports.getVisionPrescription = function getVisionPrescription(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.visionprescriptionListResolver
+ * @name exports.getVisionPrescriptionList
  * @static
- * @summary VisionPrescription List Resolver.
+ * @summary VisionPrescription list resolver.
  */
-module.exports.visionprescriptionListResolver = function visionprescriptionListResolver(
+module.exports.getVisionPrescriptionList = function getVisionPrescriptionList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.visionprescriptionInstanceResolver
+ * @name exports.getVisionPrescriptionInstance
  * @static
- * @summary VisionPrescription Instance Resolver.
+ * @summary VisionPrescription instance resolver.
  */
-module.exports.visionprescriptionInstanceResolver = function visionprescriptionInstanceResolver(
+module.exports.getVisionPrescriptionInstance = function getVisionPrescriptionInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.visionprescriptionCreateResolver
+ * @name exports.createVisionPrescription
  * @static
- * @summary VisionPrescription Create Resolver.
+ * @summary Create VisionPrescription resolver.
  */
-module.exports.visionprescriptionCreateResolver = function visionprescriptionCreateResolver(
+module.exports.createVisionPrescription = function createVisionPrescription(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.visionprescriptionUpdateResolver
+ * @name exports.updateVisionPrescription
  * @static
- * @summary VisionPrescription Update Resolver.
+ * @summary Update VisionPrescription resolver.
  */
-module.exports.visionprescriptionUpdateResolver = function visionprescriptionUpdateResolver(
+module.exports.updateVisionPrescription = function updateVisionPrescription(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.visionprescriptionDeleteResolver
+ * @name exports.removeVisionPrescription
  * @static
- * @summary VisionPrescription Delete Resolver.
+ * @summary Remove VisionPrescription resolver.
  */
-module.exports.visionprescriptionDeleteResolver = function visionprescriptionDeleteResolver(
+module.exports.removeVisionPrescription = function removeVisionPrescription(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

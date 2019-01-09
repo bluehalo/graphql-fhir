@@ -1,30 +1,46 @@
-const { GraphQLObjectType, GraphQLList } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const { GraphQLString, GraphQLList, GraphQLObjectType } = require('graphql');
 
 /**
  * @name exports
- * @summary Medication.package Schema
+ * @summary Medicationpackage Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'MedicationPackage',
-	description: 'Information that only applies to packages (not products).',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/medication-package-form
-			container: {
-				type: require('./codeableconcept.schema'),
-				description: 'The kind of container that this package comes as.',
-			},
-			content: {
-				type: new GraphQLList(require('./medicationpackagecontent.schema')),
-				description:
-					'A set of components that go to make up the described item.',
-			},
-			batch: {
-				type: new GraphQLList(require('./medicationpackagebatch.schema')),
-				description:
-					'Information about a group of medication produced or packaged from one production run.',
-			},
-		}),
+	name: 'Medicationpackage',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/medication-package-form
+		container: {
+			type: require('./codeableconcept.schema.js'),
+			description: 'The kind of container that this package comes as.',
+		},
+		content: {
+			type: new GraphQLList(require('./medicationpackagecontent.schema.js')),
+			description: 'A set of components that go to make up the described item.',
+		},
+		batch: {
+			type: new GraphQLList(require('./medicationpackagebatch.schema.js')),
+			description:
+				'Information about a group of medication produced or packaged from one production run.',
+		},
+	}),
 });

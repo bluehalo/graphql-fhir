@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.relatedpersonResolver
+ * @name exports.getRelatedPerson
  * @static
- * @summary RelatedPerson Resolver.
+ * @summary RelatedPerson resolver.
  */
-module.exports.relatedpersonResolver = function relatedpersonResolver(
+module.exports.getRelatedPerson = function getRelatedPerson(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.relatedpersonListResolver
+ * @name exports.getRelatedPersonList
  * @static
- * @summary RelatedPerson List Resolver.
+ * @summary RelatedPerson list resolver.
  */
-module.exports.relatedpersonListResolver = function relatedpersonListResolver(
+module.exports.getRelatedPersonList = function getRelatedPersonList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.relatedpersonInstanceResolver
+ * @name exports.getRelatedPersonInstance
  * @static
- * @summary RelatedPerson Instance Resolver.
+ * @summary RelatedPerson instance resolver.
  */
-module.exports.relatedpersonInstanceResolver = function relatedpersonInstanceResolver(
+module.exports.getRelatedPersonInstance = function getRelatedPersonInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.relatedpersonCreateResolver
+ * @name exports.createRelatedPerson
  * @static
- * @summary RelatedPerson Create Resolver.
+ * @summary Create RelatedPerson resolver.
  */
-module.exports.relatedpersonCreateResolver = function relatedpersonCreateResolver(
+module.exports.createRelatedPerson = function createRelatedPerson(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.relatedpersonUpdateResolver
+ * @name exports.updateRelatedPerson
  * @static
- * @summary RelatedPerson Update Resolver.
+ * @summary Update RelatedPerson resolver.
  */
-module.exports.relatedpersonUpdateResolver = function relatedpersonUpdateResolver(
+module.exports.updateRelatedPerson = function updateRelatedPerson(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.relatedpersonDeleteResolver
+ * @name exports.removeRelatedPerson
  * @static
- * @summary RelatedPerson Delete Resolver.
+ * @summary Remove RelatedPerson resolver.
  */
-module.exports.relatedpersonDeleteResolver = function relatedpersonDeleteResolver(
+module.exports.removeRelatedPerson = function removeRelatedPerson(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

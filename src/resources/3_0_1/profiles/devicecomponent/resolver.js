@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.devicecomponentResolver
+ * @name exports.getDeviceComponent
  * @static
- * @summary DeviceComponent Resolver.
+ * @summary DeviceComponent resolver.
  */
-module.exports.devicecomponentResolver = function devicecomponentResolver(
+module.exports.getDeviceComponent = function getDeviceComponent(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.devicecomponentListResolver
+ * @name exports.getDeviceComponentList
  * @static
- * @summary DeviceComponent List Resolver.
+ * @summary DeviceComponent list resolver.
  */
-module.exports.devicecomponentListResolver = function devicecomponentListResolver(
+module.exports.getDeviceComponentList = function getDeviceComponentList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.devicecomponentInstanceResolver
+ * @name exports.getDeviceComponentInstance
  * @static
- * @summary DeviceComponent Instance Resolver.
+ * @summary DeviceComponent instance resolver.
  */
-module.exports.devicecomponentInstanceResolver = function devicecomponentInstanceResolver(
+module.exports.getDeviceComponentInstance = function getDeviceComponentInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.devicecomponentCreateResolver
+ * @name exports.createDeviceComponent
  * @static
- * @summary DeviceComponent Create Resolver.
+ * @summary Create DeviceComponent resolver.
  */
-module.exports.devicecomponentCreateResolver = function devicecomponentCreateResolver(
+module.exports.createDeviceComponent = function createDeviceComponent(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.devicecomponentUpdateResolver
+ * @name exports.updateDeviceComponent
  * @static
- * @summary DeviceComponent Update Resolver.
+ * @summary Update DeviceComponent resolver.
  */
-module.exports.devicecomponentUpdateResolver = function devicecomponentUpdateResolver(
+module.exports.updateDeviceComponent = function updateDeviceComponent(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.devicecomponentDeleteResolver
+ * @name exports.removeDeviceComponent
  * @static
- * @summary DeviceComponent Delete Resolver.
+ * @summary Remove DeviceComponent resolver.
  */
-module.exports.devicecomponentDeleteResolver = function devicecomponentDeleteResolver(
+module.exports.removeDeviceComponent = function removeDeviceComponent(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

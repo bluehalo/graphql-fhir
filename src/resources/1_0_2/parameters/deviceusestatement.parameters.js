@@ -6,19 +6,25 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the deviceusestatement query
  */
 module.exports = {
-	patient: {
-		type: GraphQLString,
-		description:
-			'Search by subject - a patient (See http://hl7.org/fhir/SearchParameter/deviceusestatement-patient).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'Search by subject (See http://hl7.org/fhir/SearchParameter/deviceusestatement-subject).',
-	},
+	// http://hl7.org/fhir/SearchParameter/DeviceUseStatement-device
 	device: {
 		type: GraphQLString,
-		description:
-			'Search by device (See http://hl7.org/fhir/SearchParameter/deviceusestatement-device).',
+		fhirtype: 'reference',
+		xpath: 'DeviceUseStatement.device',
+		description: 'Search by device',
+	},
+	// http://hl7.org/fhir/SearchParameter/DeviceUseStatement-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DeviceUseStatement.subject',
+		description: 'Search by subject - a patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/DeviceUseStatement-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DeviceUseStatement.subject',
+		description: 'Search by subject',
 	},
 };

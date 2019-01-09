@@ -1,55 +1,59 @@
 // Schemas
-const NamingSystemSchema = require('../../schemas/namingsystem.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const NamingSystemSchema = require('../../schemas/namingsystem.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const NamingSystemArgs = require('../../parameters/namingsystem.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const NamingSystemArgs = require('../../parameters/namingsystem.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, NamingSystemArgs);
 
 // Resolvers
 const {
-	namingsystemResolver,
-	namingsystemListResolver,
-	namingsystemInstanceResolver,
+	getNamingSystem,
+	getNamingSystemList,
+	getNamingSystemInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'NamingSystem',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.NamingSystemQuery
- * @summary NamingSystem Query.
+ * @summary NamingSystem query.
  */
 module.exports.NamingSystemQuery = {
-	args: Object.assign({}, CommonArgs, NamingSystemArgs),
 	description: 'Query for a single NamingSystem',
-	resolve: scopeInvariant(scopeOptions, namingsystemResolver),
+	resolve: scopeInvariant(scopeOptions, getNamingSystem),
 	type: NamingSystemSchema,
+	args: args,
 };
 
 /**
  * @name exports.NamingSystemListQuery
- * @summary NamingSystemList Query.
+ * @summary NamingSystem query.
  */
 module.exports.NamingSystemListQuery = {
-	args: Object.assign({}, CommonArgs, NamingSystemArgs),
-	description: 'Query for multiple NamingSystems',
-	resolve: scopeInvariant(scopeOptions, namingsystemListResolver),
+	description: 'Query for a more than or just one NamingSystem',
+	resolve: scopeInvariant(scopeOptions, getNamingSystemList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.NamingSystemInstanceQuery
- * @summary NamingSystemInstance Query.
+ * @summary NamingSystem query.
  */
 module.exports.NamingSystemInstanceQuery = {
-	description: 'Get information about a single NamingSystem',
-	resolve: scopeInvariant(scopeOptions, namingsystemInstanceResolver),
+	description: 'Access information about a single NamingSystem',
+	resolve: scopeInvariant(scopeOptions, getNamingSystemInstance),
 	type: NamingSystemSchema,
+	args: args,
 };

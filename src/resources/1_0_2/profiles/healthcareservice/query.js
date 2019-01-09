@@ -1,55 +1,59 @@
 // Schemas
-const HealthcareServiceSchema = require('../../schemas/healthcareservice.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const HealthcareServiceSchema = require('../../schemas/healthcareservice.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const HealthcareServiceArgs = require('../../parameters/healthcareservice.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const HealthcareServiceArgs = require('../../parameters/healthcareservice.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, HealthcareServiceArgs);
 
 // Resolvers
 const {
-	healthcareserviceResolver,
-	healthcareserviceListResolver,
-	healthcareserviceInstanceResolver,
+	getHealthcareService,
+	getHealthcareServiceList,
+	getHealthcareServiceInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'HealthcareService',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.HealthcareServiceQuery
- * @summary HealthcareService Query.
+ * @summary HealthcareService query.
  */
 module.exports.HealthcareServiceQuery = {
-	args: Object.assign({}, CommonArgs, HealthcareServiceArgs),
 	description: 'Query for a single HealthcareService',
-	resolve: scopeInvariant(scopeOptions, healthcareserviceResolver),
+	resolve: scopeInvariant(scopeOptions, getHealthcareService),
 	type: HealthcareServiceSchema,
+	args: args,
 };
 
 /**
  * @name exports.HealthcareServiceListQuery
- * @summary HealthcareServiceList Query.
+ * @summary HealthcareService query.
  */
 module.exports.HealthcareServiceListQuery = {
-	args: Object.assign({}, CommonArgs, HealthcareServiceArgs),
-	description: 'Query for multiple HealthcareServices',
-	resolve: scopeInvariant(scopeOptions, healthcareserviceListResolver),
+	description: 'Query for a more than or just one HealthcareService',
+	resolve: scopeInvariant(scopeOptions, getHealthcareServiceList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.HealthcareServiceInstanceQuery
- * @summary HealthcareServiceInstance Query.
+ * @summary HealthcareService query.
  */
 module.exports.HealthcareServiceInstanceQuery = {
-	description: 'Get information about a single HealthcareService',
-	resolve: scopeInvariant(scopeOptions, healthcareserviceInstanceResolver),
+	description: 'Access information about a single HealthcareService',
+	resolve: scopeInvariant(scopeOptions, getHealthcareServiceInstance),
 	type: HealthcareServiceSchema,
+	args: args,
 };

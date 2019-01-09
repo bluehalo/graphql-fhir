@@ -1,7 +1,7 @@
-const UriScalar = require('../scalars/uri.scalar');
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,69 +9,96 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the valueset query
  */
 module.exports = {
-	system: {
-		type: UriScalar,
-		description:
-			'The system for any codes defined by this value set (See http://hl7.org/fhir/SearchParameter/valueset-system).',
-	},
-	expansion: {
-		type: UriScalar,
-		description:
-			'Uniquely identifies this expansion (See http://hl7.org/fhir/SearchParameter/valueset-expansion).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'The status of the value set (See http://hl7.org/fhir/SearchParameter/valueset-status).',
-	},
-	description: {
-		type: GraphQLString,
-		description:
-			'Text search in the description of the value set (See http://hl7.org/fhir/SearchParameter/valueset-description).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			'The name of the value set (See http://hl7.org/fhir/SearchParameter/valueset-name).',
-	},
-	context: {
-		type: TokenScalar,
-		description:
-			'A use context assigned to the value set (See http://hl7.org/fhir/SearchParameter/valueset-context).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-code
 	code: {
 		type: TokenScalar,
-		description:
-			'A code defined in the value set (See http://hl7.org/fhir/SearchParameter/valueset-code).',
+		fhirtype: 'token',
+		xpath: 'ValueSet.codeSystem.concept.code',
+		description: 'A code defined in the value set',
 	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-context
+	context: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ValueSet.useContext',
+		description: 'A use context assigned to the value set',
+	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-date
 	date: {
 		type: DateScalar,
-		description:
-			'The value set publication date (See http://hl7.org/fhir/SearchParameter/valueset-date).',
+		fhirtype: 'date',
+		xpath: 'ValueSet.date',
+		description: 'The value set publication date',
 	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-description
+	description: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'ValueSet.description',
+		description: 'Text search in the description of the value set',
+	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-expansion
+	expansion: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ValueSet.expansion.identifier',
+		description: 'Uniquely identifies this expansion',
+	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'The identifier for the value set (See http://hl7.org/fhir/SearchParameter/valueset-identifier).',
+		fhirtype: 'token',
+		xpath: 'ValueSet.identifier',
+		description: 'The identifier for the value set',
 	},
-	reference: {
-		type: UriScalar,
-		description:
-			'A code system included or excluded in the value set or an imported value set (See http://hl7.org/fhir/SearchParameter/valueset-reference).',
+	// http://hl7.org/fhir/SearchParameter/ValueSet-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'ValueSet.name',
+		description: 'The name of the value set',
 	},
-	url: {
-		type: UriScalar,
-		description:
-			'The logical URL for the value set (See http://hl7.org/fhir/SearchParameter/valueset-url).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-publisher
 	publisher: {
 		type: GraphQLString,
-		description:
-			'Name of the publisher of the value set (See http://hl7.org/fhir/SearchParameter/valueset-publisher).',
+		fhirtype: 'string',
+		xpath: 'ValueSet.publisher',
+		description: 'Name of the publisher of the value set',
 	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-reference
+	reference: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ValueSet.compose.include.system',
+		description:
+			'A code system included or excluded in the value set or an imported value set',
+	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ValueSet.status',
+		description: 'The status of the value set',
+	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-system
+	system: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ValueSet.codeSystem.system',
+		description: 'The system for any codes defined by this value set',
+	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-url
+	url: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ValueSet.url',
+		description: 'The logical URL for the value set',
+	},
+	// http://hl7.org/fhir/SearchParameter/ValueSet-version
 	version: {
 		type: TokenScalar,
-		description:
-			'The version identifier of the value set (See http://hl7.org/fhir/SearchParameter/valueset-version).',
+		fhirtype: 'token',
+		xpath: 'ValueSet.version',
+		description: 'The version identifier of the value set',
 	},
 };

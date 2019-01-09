@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -8,39 +8,54 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the subscription query
  */
 module.exports = {
-	payload: {
-		type: GraphQLString,
-		description:
-			'The mime-type of the notification payload (See http://hl7.org/fhir/SearchParameter/Subscription-payload).',
-	},
-	criteria: {
-		type: GraphQLString,
-		description:
-			'The search rules used to determine when to send a notification (See http://hl7.org/fhir/SearchParameter/Subscription-criteria).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-add-tag
 	add_tag: {
 		type: TokenScalar,
-		description:
-			'A tag to be added to the resource matching the criteria (See http://hl7.org/fhir/SearchParameter/Subscription-add-tag).',
+		fhirtype: 'token',
+		xpath: 'Subscription.tag',
+		description: 'A tag to be added to the resource matching the criteria',
 	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-contact
 	contact: {
 		type: TokenScalar,
-		description:
-			'Contact details for the subscription (See http://hl7.org/fhir/SearchParameter/Subscription-contact).',
+		fhirtype: 'token',
+		xpath: 'Subscription.contact',
+		description: 'Contact details for the subscription',
 	},
-	type: {
-		type: TokenScalar,
+	// http://hl7.org/fhir/SearchParameter/Subscription-criteria
+	criteria: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Subscription.criteria',
 		description:
-			'The type of channel for the sent notifications (See http://hl7.org/fhir/SearchParameter/Subscription-type).',
+			'The search rules used to determine when to send a notification',
 	},
-	url: {
-		type: UriScalar,
-		description:
-			'The uri that will receive the notifications (See http://hl7.org/fhir/SearchParameter/Subscription-url).',
+	// http://hl7.org/fhir/SearchParameter/Subscription-payload
+	payload: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Subscription.channel.payload',
+		description: 'The mime-type of the notification payload',
 	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-status
 	status: {
 		type: TokenScalar,
-		description:
-			'The current state of the subscription (See http://hl7.org/fhir/SearchParameter/Subscription-status).',
+		fhirtype: 'token',
+		xpath: 'Subscription.status',
+		description: 'The current state of the subscription',
+	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Subscription.channel.type',
+		description: 'The type of channel for the sent notifications',
+	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-url
+	url: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'Subscription.channel.endpoint',
+		description: 'The uri that will receive the notifications',
 	},
 };

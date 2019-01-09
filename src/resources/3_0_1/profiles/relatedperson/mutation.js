@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const RelatedPersonSchema = require('../../schemas/relatedperson.schema');
+const RelatedPersonSchema = require('../../schemas/relatedperson.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const RelatedPersonInput = require('../../inputs/relatedperson.input');
+const RelatedPersonInput = require('../../inputs/relatedperson.input.js');
 
-// Resolvers
-const {
-	relatedpersonCreateResolver,
-	relatedpersonUpdateResolver,
-	relatedpersonDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createRelatedPerson,
+	updateRelatedPerson,
+	removeRelatedPerson,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'RelatedPerson',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a RelatedPerson record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a RelatedPerson record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.RelatedPersonCreateMutation
- * @summary RelatedPersonCreate Mutation.
+ * @summary RelatedPersonCreate mutation.
  */
 module.exports.RelatedPersonCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a RelatedPerson',
-	resolve: scopeInvariant(scopeOptions, relatedpersonCreateResolver),
+	description: 'Create a RelatedPerson record',
+	resolve: scopeInvariant(scopeOptions, createRelatedPerson),
 	type: RelatedPersonSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.RelatedPersonUpdateMutation
- * @summary RelatedPersonUpdate Mutation.
+ * @summary RelatedPersonUpdate mutation.
  */
 module.exports.RelatedPersonUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple RelatedPersons',
-	resolve: scopeInvariant(scopeOptions, relatedpersonUpdateResolver),
+	description: 'Update a RelatedPerson record',
+	resolve: scopeInvariant(scopeOptions, updateRelatedPerson),
 	type: RelatedPersonSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.RelatedPersonDeleteMutation
- * @summary RelatedPersonDelete Mutation.
+ * @name exports.RelatedPersonRemoveMutation
+ * @summary RelatedPersonRemove mutation.
  */
-module.exports.RelatedPersonDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single RelatedPerson',
-	resolve: scopeInvariant(scopeOptions, relatedpersonDeleteResolver),
+module.exports.RelatedPersonRemoveMutation = {
+	description: 'Remove a RelatedPerson record',
+	resolve: scopeInvariant(scopeOptions, removeRelatedPerson),
 	type: RelatedPersonSchema,
+	args: DeleteArgs,
 };

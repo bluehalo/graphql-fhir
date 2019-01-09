@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,39 +8,53 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the medicationstatement query
  */
 module.exports = {
-	medication: {
-		type: GraphQLString,
-		description:
-			'Return administrations of this medication reference (See http://hl7.org/fhir/SearchParameter/medicationstatement-medication).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'The identity of a patient to list statements  for (See http://hl7.org/fhir/SearchParameter/medicationstatement-patient).',
-	},
-	source: {
-		type: GraphQLString,
-		description:
-			'Who the information in the statement came from (See http://hl7.org/fhir/SearchParameter/medicationstatement-source).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'Return statements that match the given status (See http://hl7.org/fhir/SearchParameter/medicationstatement-status).',
-	},
+	// http://hl7.org/fhir/SearchParameter/MedicationStatement-code
 	code: {
 		type: TokenScalar,
-		description:
-			'Return administrations of this medication code (See http://hl7.org/fhir/SearchParameter/medicationstatement-code).',
+		fhirtype: 'token',
+		xpath: 'MedicationStatement.medicationCodeableConcept',
+		description: 'Return administrations of this medication code',
 	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'Return statements with this external identifier (See http://hl7.org/fhir/SearchParameter/medicationstatement-identifier).',
-	},
+	// http://hl7.org/fhir/SearchParameter/MedicationStatement-effectivedate
 	effectivedate: {
 		type: DateScalar,
-		description:
-			'Date when patient was taking (or not taking) the medication (See http://hl7.org/fhir/SearchParameter/medicationstatement-effectivedate).',
+		fhirtype: 'date',
+		xpath: 'MedicationStatement.effectiveDateTime',
+		description: 'Date when patient was taking (or not taking) the medication',
+	},
+	// http://hl7.org/fhir/SearchParameter/MedicationStatement-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'MedicationStatement.identifier',
+		description: 'Return statements with this external identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/MedicationStatement-medication
+	medication: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'MedicationStatement.medicationReference',
+		description: 'Return administrations of this medication reference',
+	},
+	// http://hl7.org/fhir/SearchParameter/MedicationStatement-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'MedicationStatement.patient',
+		description: 'The identity of a patient to list statements  for',
+	},
+	// http://hl7.org/fhir/SearchParameter/MedicationStatement-source
+	source: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'MedicationStatement.informationSource',
+		description: 'Who the information in the statement came from',
+	},
+	// http://hl7.org/fhir/SearchParameter/MedicationStatement-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'MedicationStatement.status',
+		description: 'Return statements that match the given status',
 	},
 };

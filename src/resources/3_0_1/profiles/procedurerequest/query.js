@@ -1,55 +1,65 @@
 // Schemas
-const ProcedureRequestSchema = require('../../schemas/procedurerequest.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ProcedureRequestSchema = require('../../schemas/procedurerequest.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ProcedureRequestArgs = require('../../parameters/procedurerequest.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ProcedureRequestArgs = require('../../parameters/procedurerequest.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+const DomainResourceArgs = require('../../parameters/domainresource.parameters.js');
+
+let args = Object.assign(
+	{},
+	DomainResourceArgs,
+	ResourceArgs,
+	ProcedureRequestArgs,
+);
 
 // Resolvers
 const {
-	procedurerequestResolver,
-	procedurerequestListResolver,
-	procedurerequestInstanceResolver,
+	getProcedureRequest,
+	getProcedureRequestList,
+	getProcedureRequestInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ProcedureRequest',
 	action: 'read',
-	version: '3_0_1',
 };
 
 /**
  * @name exports.ProcedureRequestQuery
- * @summary ProcedureRequest Query.
+ * @summary ProcedureRequest query.
  */
 module.exports.ProcedureRequestQuery = {
-	args: Object.assign({}, CommonArgs, ProcedureRequestArgs),
 	description: 'Query for a single ProcedureRequest',
-	resolve: scopeInvariant(scopeOptions, procedurerequestResolver),
+	resolve: scopeInvariant(scopeOptions, getProcedureRequest),
 	type: ProcedureRequestSchema,
+	args: args,
 };
 
 /**
  * @name exports.ProcedureRequestListQuery
- * @summary ProcedureRequestList Query.
+ * @summary ProcedureRequest query.
  */
 module.exports.ProcedureRequestListQuery = {
-	args: Object.assign({}, CommonArgs, ProcedureRequestArgs),
-	description: 'Query for multiple ProcedureRequests',
-	resolve: scopeInvariant(scopeOptions, procedurerequestListResolver),
+	description: 'Query for a more than or just one ProcedureRequest',
+	resolve: scopeInvariant(scopeOptions, getProcedureRequestList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ProcedureRequestInstanceQuery
- * @summary ProcedureRequestInstance Query.
+ * @summary ProcedureRequest query.
  */
 module.exports.ProcedureRequestInstanceQuery = {
-	description: 'Get information about a single ProcedureRequest',
-	resolve: scopeInvariant(scopeOptions, procedurerequestInstanceResolver),
+	description: 'Access information about a single ProcedureRequest',
+	resolve: scopeInvariant(scopeOptions, getProcedureRequestInstance),
 	type: ProcedureRequestSchema,
+	args: args,
 };

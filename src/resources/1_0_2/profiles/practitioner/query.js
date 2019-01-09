@@ -1,55 +1,59 @@
 // Schemas
-const PractitionerSchema = require('../../schemas/practitioner.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const PractitionerSchema = require('../../schemas/practitioner.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const PractitionerArgs = require('../../parameters/practitioner.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const PractitionerArgs = require('../../parameters/practitioner.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, PractitionerArgs);
 
 // Resolvers
 const {
-	practitionerResolver,
-	practitionerListResolver,
-	practitionerInstanceResolver,
+	getPractitioner,
+	getPractitionerList,
+	getPractitionerInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Practitioner',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.PractitionerQuery
- * @summary Practitioner Query.
+ * @summary Practitioner query.
  */
 module.exports.PractitionerQuery = {
-	args: Object.assign({}, CommonArgs, PractitionerArgs),
 	description: 'Query for a single Practitioner',
-	resolve: scopeInvariant(scopeOptions, practitionerResolver),
+	resolve: scopeInvariant(scopeOptions, getPractitioner),
 	type: PractitionerSchema,
+	args: args,
 };
 
 /**
  * @name exports.PractitionerListQuery
- * @summary PractitionerList Query.
+ * @summary Practitioner query.
  */
 module.exports.PractitionerListQuery = {
-	args: Object.assign({}, CommonArgs, PractitionerArgs),
-	description: 'Query for multiple Practitioners',
-	resolve: scopeInvariant(scopeOptions, practitionerListResolver),
+	description: 'Query for a more than or just one Practitioner',
+	resolve: scopeInvariant(scopeOptions, getPractitionerList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.PractitionerInstanceQuery
- * @summary PractitionerInstance Query.
+ * @summary Practitioner query.
  */
 module.exports.PractitionerInstanceQuery = {
-	description: 'Get information about a single Practitioner',
-	resolve: scopeInvariant(scopeOptions, practitionerInstanceResolver),
+	description: 'Access information about a single Practitioner',
+	resolve: scopeInvariant(scopeOptions, getPractitionerInstance),
 	type: PractitionerSchema,
+	args: args,
 };

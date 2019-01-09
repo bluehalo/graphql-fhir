@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.implementationguideResolver
+ * @name exports.getImplementationGuide
  * @static
- * @summary ImplementationGuide Resolver.
+ * @summary ImplementationGuide resolver.
  */
-module.exports.implementationguideResolver = function implementationguideResolver(
+module.exports.getImplementationGuide = function getImplementationGuide(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.implementationguideListResolver
+ * @name exports.getImplementationGuideList
  * @static
- * @summary ImplementationGuide List Resolver.
+ * @summary ImplementationGuide list resolver.
  */
-module.exports.implementationguideListResolver = function implementationguideListResolver(
+module.exports.getImplementationGuideList = function getImplementationGuideList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.implementationguideInstanceResolver
+ * @name exports.getImplementationGuideInstance
  * @static
- * @summary ImplementationGuide Instance Resolver.
+ * @summary ImplementationGuide instance resolver.
  */
-module.exports.implementationguideInstanceResolver = function implementationguideInstanceResolver(
+module.exports.getImplementationGuideInstance = function getImplementationGuideInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.implementationguideCreateResolver
+ * @name exports.createImplementationGuide
  * @static
- * @summary ImplementationGuide Create Resolver.
+ * @summary Create ImplementationGuide resolver.
  */
-module.exports.implementationguideCreateResolver = function implementationguideCreateResolver(
+module.exports.createImplementationGuide = function createImplementationGuide(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.implementationguideUpdateResolver
+ * @name exports.updateImplementationGuide
  * @static
- * @summary ImplementationGuide Update Resolver.
+ * @summary Update ImplementationGuide resolver.
  */
-module.exports.implementationguideUpdateResolver = function implementationguideUpdateResolver(
+module.exports.updateImplementationGuide = function updateImplementationGuide(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.implementationguideDeleteResolver
+ * @name exports.removeImplementationGuide
  * @static
- * @summary ImplementationGuide Delete Resolver.
+ * @summary Remove ImplementationGuide resolver.
  */
-module.exports.implementationguideDeleteResolver = function implementationguideDeleteResolver(
+module.exports.removeImplementationGuide = function removeImplementationGuide(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,7 +1,7 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,89 +9,123 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the auditevent query
  */
 module.exports = {
-	site: {
-		type: TokenScalar,
-		description:
-			'Logical source location within the enterprise (See http://hl7.org/fhir/SearchParameter/auditevent-site).',
-	},
-	desc: {
-		type: GraphQLString,
-		description:
-			'Instance-specific descriptor for Object (See http://hl7.org/fhir/SearchParameter/auditevent-desc).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'Type/identifier of event (See http://hl7.org/fhir/SearchParameter/auditevent-type).',
-	},
-	date: {
-		type: DateScalar,
-		description:
-			'Time when the event occurred on source (See http://hl7.org/fhir/SearchParameter/auditevent-date).',
-	},
-	reference: {
-		type: GraphQLString,
-		description:
-			'Specific instance of resource (e.g. versioned) (See http://hl7.org/fhir/SearchParameter/auditevent-reference).',
-	},
-	identity: {
-		type: TokenScalar,
-		description:
-			'Specific instance of object (e.g. versioned) (See http://hl7.org/fhir/SearchParameter/auditevent-identity).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Direct reference to resource (See http://hl7.org/fhir/SearchParameter/auditevent-patient).',
-	},
-	altid: {
-		type: TokenScalar,
-		description:
-			'Alternative User id e.g. authentication (See http://hl7.org/fhir/SearchParameter/auditevent-altid).',
-	},
-	source: {
-		type: TokenScalar,
-		description:
-			'The identity of source detecting the event (See http://hl7.org/fhir/SearchParameter/auditevent-source).',
-	},
-	address: {
-		type: TokenScalar,
-		description:
-			'Identifier for the network access point of the user device (See http://hl7.org/fhir/SearchParameter/auditevent-address).',
-	},
-	subtype: {
-		type: TokenScalar,
-		description:
-			'More specific type/id for the event (See http://hl7.org/fhir/SearchParameter/auditevent-subtype).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			'Human-meaningful name for the user (See http://hl7.org/fhir/SearchParameter/auditevent-name).',
-	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-action
 	action: {
 		type: TokenScalar,
-		description:
-			'Type of action performed during the event (See http://hl7.org/fhir/SearchParameter/auditevent-action).',
+		fhirtype: 'token',
+		xpath: 'AuditEvent.event.action',
+		description: 'Type of action performed during the event',
 	},
-	participant: {
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-address
+	address: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.participant.network.address',
+		description: 'Identifier for the network access point of the user device',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-altid
+	altid: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.participant.altId',
+		description: 'Alternative User id e.g. authentication',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-date
+	date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'AuditEvent.event.dateTime',
+		description: 'Time when the event occurred on source',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-desc
+	desc: {
 		type: GraphQLString,
-		description:
-			'Direct reference to resource (See http://hl7.org/fhir/SearchParameter/auditevent-participant).',
+		fhirtype: 'string',
+		xpath: 'AuditEvent.object.name',
+		description: 'Instance-specific descriptor for Object',
 	},
-	policy: {
-		type: UriScalar,
-		description:
-			'Policy that authorized event (See http://hl7.org/fhir/SearchParameter/auditevent-policy).',
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-identity
+	identity: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.object.identifier',
+		description: 'Specific instance of object (e.g. versioned)',
 	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'AuditEvent.participant.name',
+		description: 'Human-meaningful name for the user',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-object-type
 	object_type: {
 		type: TokenScalar,
-		description:
-			'Type of object involved (See http://hl7.org/fhir/SearchParameter/auditevent-object-type).',
+		fhirtype: 'token',
+		xpath: 'AuditEvent.object.type',
+		description: 'Type of object involved',
 	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-participant
+	participant: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'AuditEvent.participant.reference',
+		description: 'Direct reference to resource',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'AuditEvent.participant.reference',
+		description: 'Direct reference to resource',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-policy
+	policy: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'AuditEvent.participant.policy',
+		description: 'Policy that authorized event',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-reference
+	reference: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'AuditEvent.object.reference',
+		description: 'Specific instance of resource (e.g. versioned)',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-site
+	site: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.source.site',
+		description: 'Logical source location within the enterprise',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-source
+	source: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.source.identifier',
+		description: 'The identity of source detecting the event',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-subtype
+	subtype: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.event.subtype',
+		description: 'More specific type/id for the event',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.event.type',
+		description: 'Type/identifier of event',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-user
 	user: {
 		type: TokenScalar,
-		description:
-			'Unique identifier for the user (See http://hl7.org/fhir/SearchParameter/auditevent-user).',
+		fhirtype: 'token',
+		xpath: 'AuditEvent.participant.userId',
+		description: 'Unique identifier for the user',
 	},
 };

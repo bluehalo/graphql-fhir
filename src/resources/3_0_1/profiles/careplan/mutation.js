@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const CarePlanSchema = require('../../schemas/careplan.schema');
+const CarePlanSchema = require('../../schemas/careplan.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const CarePlanInput = require('../../inputs/careplan.input');
+const CarePlanInput = require('../../inputs/careplan.input.js');
 
-// Resolvers
-const {
-	careplanCreateResolver,
-	careplanUpdateResolver,
-	careplanDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createCarePlan,
+	updateCarePlan,
+	removeCarePlan,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'CarePlan',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a CarePlan record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a CarePlan record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.CarePlanCreateMutation
- * @summary CarePlanCreate Mutation.
+ * @summary CarePlanCreate mutation.
  */
 module.exports.CarePlanCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a CarePlan',
-	resolve: scopeInvariant(scopeOptions, careplanCreateResolver),
+	description: 'Create a CarePlan record',
+	resolve: scopeInvariant(scopeOptions, createCarePlan),
 	type: CarePlanSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.CarePlanUpdateMutation
- * @summary CarePlanUpdate Mutation.
+ * @summary CarePlanUpdate mutation.
  */
 module.exports.CarePlanUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple CarePlans',
-	resolve: scopeInvariant(scopeOptions, careplanUpdateResolver),
+	description: 'Update a CarePlan record',
+	resolve: scopeInvariant(scopeOptions, updateCarePlan),
 	type: CarePlanSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.CarePlanDeleteMutation
- * @summary CarePlanDelete Mutation.
+ * @name exports.CarePlanRemoveMutation
+ * @summary CarePlanRemove mutation.
  */
-module.exports.CarePlanDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single CarePlan',
-	resolve: scopeInvariant(scopeOptions, careplanDeleteResolver),
+module.exports.CarePlanRemoveMutation = {
+	description: 'Remove a CarePlan record',
+	resolve: scopeInvariant(scopeOptions, removeCarePlan),
 	type: CarePlanSchema,
+	args: DeleteArgs,
 };

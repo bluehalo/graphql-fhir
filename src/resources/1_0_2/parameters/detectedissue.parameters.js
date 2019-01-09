@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,34 +8,46 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the detectedissue query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/DetectedIssue-author
 	author: {
 		type: GraphQLString,
-		description:
-			'The provider or device that identified the issue (See http://hl7.org/fhir/SearchParameter/detectedissue-author).',
+		fhirtype: 'reference',
+		xpath: 'DetectedIssue.author',
+		description: 'The provider or device that identified the issue',
 	},
+	// http://hl7.org/fhir/SearchParameter/DetectedIssue-category
 	category: {
 		type: TokenScalar,
-		description:
-			'Issue Category, e.g. drug-drug, duplicate therapy, etc. (See http://hl7.org/fhir/SearchParameter/detectedissue-category).',
+		fhirtype: 'token',
+		xpath: 'DetectedIssue.category',
+		description: 'Issue Category, e.g. drug-drug, duplicate therapy, etc.',
 	},
-	implicated: {
-		type: GraphQLString,
-		description:
-			'Problem resource (See http://hl7.org/fhir/SearchParameter/detectedissue-implicated).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Associated patient (See http://hl7.org/fhir/SearchParameter/detectedissue-patient).',
-	},
+	// http://hl7.org/fhir/SearchParameter/DetectedIssue-date
 	date: {
 		type: DateScalar,
-		description:
-			'When identified (See http://hl7.org/fhir/SearchParameter/detectedissue-date).',
+		fhirtype: 'date',
+		xpath: 'DetectedIssue.date',
+		description: 'When identified',
 	},
+	// http://hl7.org/fhir/SearchParameter/DetectedIssue-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Unique id for the detected issue (See http://hl7.org/fhir/SearchParameter/detectedissue-identifier).',
+		fhirtype: 'token',
+		xpath: 'DetectedIssue.identifier',
+		description: 'Unique id for the detected issue',
+	},
+	// http://hl7.org/fhir/SearchParameter/DetectedIssue-implicated
+	implicated: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DetectedIssue.implicated',
+		description: 'Problem resource',
+	},
+	// http://hl7.org/fhir/SearchParameter/DetectedIssue-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DetectedIssue.patient',
+		description: 'Associated patient',
 	},
 };

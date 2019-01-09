@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,29 +7,39 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the supplydelivery query
  */
 module.exports = {
-	patient: {
-		type: GraphQLString,
-		description:
-			'Patient for whom the item is supplied (See http://hl7.org/fhir/SearchParameter/supplydelivery-patient).',
-	},
-	receiver: {
-		type: GraphQLString,
-		description:
-			'Who collected the Supply (See http://hl7.org/fhir/SearchParameter/supplydelivery-receiver).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'in-progress | completed | abandoned (See http://hl7.org/fhir/SearchParameter/supplydelivery-status).',
-	},
+	// http://hl7.org/fhir/SearchParameter/SupplyDelivery-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'External identifier (See http://hl7.org/fhir/SearchParameter/supplydelivery-identifier).',
+		fhirtype: 'token',
+		xpath: 'SupplyDelivery.identifier',
+		description: 'External identifier',
 	},
+	// http://hl7.org/fhir/SearchParameter/SupplyDelivery-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'SupplyDelivery.patient',
+		description: 'Patient for whom the item is supplied',
+	},
+	// http://hl7.org/fhir/SearchParameter/SupplyDelivery-receiver
+	receiver: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'SupplyDelivery.receiver',
+		description: 'Who collected the Supply',
+	},
+	// http://hl7.org/fhir/SearchParameter/SupplyDelivery-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'SupplyDelivery.status',
+		description: 'in-progress | completed | abandoned',
+	},
+	// http://hl7.org/fhir/SearchParameter/SupplyDelivery-supplier
 	supplier: {
 		type: GraphQLString,
-		description:
-			'Dispenser (See http://hl7.org/fhir/SearchParameter/supplydelivery-supplier).',
+		fhirtype: 'reference',
+		xpath: 'SupplyDelivery.supplier',
+		description: 'Dispenser',
 	},
 };

@@ -1,55 +1,59 @@
 // Schemas
-const ImagingObjectSelectionSchema = require('../../schemas/imagingobjectselection.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ImagingObjectSelectionSchema = require('../../schemas/imagingobjectselection.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ImagingObjectSelectionArgs = require('../../parameters/imagingobjectselection.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ImagingObjectSelectionArgs = require('../../parameters/imagingobjectselection.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ImagingObjectSelectionArgs);
 
 // Resolvers
 const {
-	imagingobjectselectionResolver,
-	imagingobjectselectionListResolver,
-	imagingobjectselectionInstanceResolver,
+	getImagingObjectSelection,
+	getImagingObjectSelectionList,
+	getImagingObjectSelectionInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ImagingObjectSelection',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ImagingObjectSelectionQuery
- * @summary ImagingObjectSelection Query.
+ * @summary ImagingObjectSelection query.
  */
 module.exports.ImagingObjectSelectionQuery = {
-	args: Object.assign({}, CommonArgs, ImagingObjectSelectionArgs),
 	description: 'Query for a single ImagingObjectSelection',
-	resolve: scopeInvariant(scopeOptions, imagingobjectselectionResolver),
+	resolve: scopeInvariant(scopeOptions, getImagingObjectSelection),
 	type: ImagingObjectSelectionSchema,
+	args: args,
 };
 
 /**
  * @name exports.ImagingObjectSelectionListQuery
- * @summary ImagingObjectSelectionList Query.
+ * @summary ImagingObjectSelection query.
  */
 module.exports.ImagingObjectSelectionListQuery = {
-	args: Object.assign({}, CommonArgs, ImagingObjectSelectionArgs),
-	description: 'Query for multiple ImagingObjectSelections',
-	resolve: scopeInvariant(scopeOptions, imagingobjectselectionListResolver),
+	description: 'Query for a more than or just one ImagingObjectSelection',
+	resolve: scopeInvariant(scopeOptions, getImagingObjectSelectionList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ImagingObjectSelectionInstanceQuery
- * @summary ImagingObjectSelectionInstance Query.
+ * @summary ImagingObjectSelection query.
  */
 module.exports.ImagingObjectSelectionInstanceQuery = {
-	description: 'Get information about a single ImagingObjectSelection',
-	resolve: scopeInvariant(scopeOptions, imagingobjectselectionInstanceResolver),
+	description: 'Access information about a single ImagingObjectSelection',
+	resolve: scopeInvariant(scopeOptions, getImagingObjectSelectionInstance),
 	type: ImagingObjectSelectionSchema,
+	args: args,
 };

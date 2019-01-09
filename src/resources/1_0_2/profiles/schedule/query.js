@@ -1,55 +1,59 @@
 // Schemas
-const ScheduleSchema = require('../../schemas/schedule.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ScheduleSchema = require('../../schemas/schedule.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ScheduleArgs = require('../../parameters/schedule.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ScheduleArgs = require('../../parameters/schedule.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ScheduleArgs);
 
 // Resolvers
 const {
-	scheduleResolver,
-	scheduleListResolver,
-	scheduleInstanceResolver,
+	getSchedule,
+	getScheduleList,
+	getScheduleInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Schedule',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ScheduleQuery
- * @summary Schedule Query.
+ * @summary Schedule query.
  */
 module.exports.ScheduleQuery = {
-	args: Object.assign({}, CommonArgs, ScheduleArgs),
 	description: 'Query for a single Schedule',
-	resolve: scopeInvariant(scopeOptions, scheduleResolver),
+	resolve: scopeInvariant(scopeOptions, getSchedule),
 	type: ScheduleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ScheduleListQuery
- * @summary ScheduleList Query.
+ * @summary Schedule query.
  */
 module.exports.ScheduleListQuery = {
-	args: Object.assign({}, CommonArgs, ScheduleArgs),
-	description: 'Query for multiple Schedules',
-	resolve: scopeInvariant(scopeOptions, scheduleListResolver),
+	description: 'Query for a more than or just one Schedule',
+	resolve: scopeInvariant(scopeOptions, getScheduleList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ScheduleInstanceQuery
- * @summary ScheduleInstance Query.
+ * @summary Schedule query.
  */
 module.exports.ScheduleInstanceQuery = {
-	description: 'Get information about a single Schedule',
-	resolve: scopeInvariant(scopeOptions, scheduleInstanceResolver),
+	description: 'Access information about a single Schedule',
+	resolve: scopeInvariant(scopeOptions, getScheduleInstance),
 	type: ScheduleSchema,
+	args: args,
 };

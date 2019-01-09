@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.devicemetricResolver
+ * @name exports.getDeviceMetric
  * @static
- * @summary DeviceMetric Resolver.
+ * @summary DeviceMetric resolver.
  */
-module.exports.devicemetricResolver = function devicemetricResolver(
+module.exports.getDeviceMetric = function getDeviceMetric(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.devicemetricListResolver
+ * @name exports.getDeviceMetricList
  * @static
- * @summary DeviceMetric List Resolver.
+ * @summary DeviceMetric list resolver.
  */
-module.exports.devicemetricListResolver = function devicemetricListResolver(
+module.exports.getDeviceMetricList = function getDeviceMetricList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.devicemetricInstanceResolver
+ * @name exports.getDeviceMetricInstance
  * @static
- * @summary DeviceMetric Instance Resolver.
+ * @summary DeviceMetric instance resolver.
  */
-module.exports.devicemetricInstanceResolver = function devicemetricInstanceResolver(
+module.exports.getDeviceMetricInstance = function getDeviceMetricInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.devicemetricCreateResolver
+ * @name exports.createDeviceMetric
  * @static
- * @summary DeviceMetric Create Resolver.
+ * @summary Create DeviceMetric resolver.
  */
-module.exports.devicemetricCreateResolver = function devicemetricCreateResolver(
+module.exports.createDeviceMetric = function createDeviceMetric(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.devicemetricUpdateResolver
+ * @name exports.updateDeviceMetric
  * @static
- * @summary DeviceMetric Update Resolver.
+ * @summary Update DeviceMetric resolver.
  */
-module.exports.devicemetricUpdateResolver = function devicemetricUpdateResolver(
+module.exports.updateDeviceMetric = function updateDeviceMetric(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.devicemetricDeleteResolver
+ * @name exports.removeDeviceMetric
  * @static
- * @summary DeviceMetric Delete Resolver.
+ * @summary Remove DeviceMetric resolver.
  */
-module.exports.devicemetricDeleteResolver = function devicemetricDeleteResolver(
+module.exports.removeDeviceMetric = function removeDeviceMetric(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const MediaSchema = require('../../schemas/media.schema');
+const MediaSchema = require('../../schemas/media.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const MediaInput = require('../../inputs/media.input');
+const MediaInput = require('../../inputs/media.input.js');
 
-// Resolvers
-const {
-	mediaCreateResolver,
-	mediaUpdateResolver,
-	mediaDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createMedia, updateMedia, removeMedia } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Media',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Media record.',
 	},
 	resource: {
@@ -39,40 +36,40 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description: 'Unique identifier for selecting a Media record for deletion.',
 	},
 };
 
 /**
  * @name exports.MediaCreateMutation
- * @summary MediaCreate Mutation.
+ * @summary MediaCreate mutation.
  */
 module.exports.MediaCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Media',
-	resolve: scopeInvariant(scopeOptions, mediaCreateResolver),
+	description: 'Create a Media record',
+	resolve: scopeInvariant(scopeOptions, createMedia),
 	type: MediaSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.MediaUpdateMutation
- * @summary MediaUpdate Mutation.
+ * @summary MediaUpdate mutation.
  */
 module.exports.MediaUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Medias',
-	resolve: scopeInvariant(scopeOptions, mediaUpdateResolver),
+	description: 'Update a Media record',
+	resolve: scopeInvariant(scopeOptions, updateMedia),
 	type: MediaSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.MediaDeleteMutation
- * @summary MediaDelete Mutation.
+ * @name exports.MediaRemoveMutation
+ * @summary MediaRemove mutation.
  */
-module.exports.MediaDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Media',
-	resolve: scopeInvariant(scopeOptions, mediaDeleteResolver),
+module.exports.MediaRemoveMutation = {
+	description: 'Remove a Media record',
+	resolve: scopeInvariant(scopeOptions, removeMedia),
 	type: MediaSchema,
+	args: DeleteArgs,
 };

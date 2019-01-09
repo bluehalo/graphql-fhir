@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.medicationdispenseResolver
+ * @name exports.getMedicationDispense
  * @static
- * @summary MedicationDispense Resolver.
+ * @summary MedicationDispense resolver.
  */
-module.exports.medicationdispenseResolver = function medicationdispenseResolver(
+module.exports.getMedicationDispense = function getMedicationDispense(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationdispenseListResolver
+ * @name exports.getMedicationDispenseList
  * @static
- * @summary MedicationDispense List Resolver.
+ * @summary MedicationDispense list resolver.
  */
-module.exports.medicationdispenseListResolver = function medicationdispenseListResolver(
+module.exports.getMedicationDispenseList = function getMedicationDispenseList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationdispenseInstanceResolver
+ * @name exports.getMedicationDispenseInstance
  * @static
- * @summary MedicationDispense Instance Resolver.
+ * @summary MedicationDispense instance resolver.
  */
-module.exports.medicationdispenseInstanceResolver = function medicationdispenseInstanceResolver(
+module.exports.getMedicationDispenseInstance = function getMedicationDispenseInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationdispenseCreateResolver
+ * @name exports.createMedicationDispense
  * @static
- * @summary MedicationDispense Create Resolver.
+ * @summary Create MedicationDispense resolver.
  */
-module.exports.medicationdispenseCreateResolver = function medicationdispenseCreateResolver(
+module.exports.createMedicationDispense = function createMedicationDispense(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationdispenseUpdateResolver
+ * @name exports.updateMedicationDispense
  * @static
- * @summary MedicationDispense Update Resolver.
+ * @summary Update MedicationDispense resolver.
  */
-module.exports.medicationdispenseUpdateResolver = function medicationdispenseUpdateResolver(
+module.exports.updateMedicationDispense = function updateMedicationDispense(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationdispenseDeleteResolver
+ * @name exports.removeMedicationDispense
  * @static
- * @summary MedicationDispense Delete Resolver.
+ * @summary Remove MedicationDispense resolver.
  */
-module.exports.medicationdispenseDeleteResolver = function medicationdispenseDeleteResolver(
+module.exports.removeMedicationDispense = function removeMedicationDispense(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

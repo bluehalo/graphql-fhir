@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -8,49 +8,67 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the device query
  */
 module.exports = {
-	organization: {
-		type: GraphQLString,
-		description:
-			'The organization responsible for the device (See http://hl7.org/fhir/SearchParameter/device-organization).',
-	},
-	model: {
-		type: GraphQLString,
-		description:
-			'The model of the device (See http://hl7.org/fhir/SearchParameter/device-model).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Patient information, if the resource is affixed to a person (See http://hl7.org/fhir/SearchParameter/device-patient).',
-	},
-	location: {
-		type: GraphQLString,
-		description:
-			'A location, where the resource is found (See http://hl7.org/fhir/SearchParameter/device-location).',
-	},
-	manufacturer: {
-		type: GraphQLString,
-		description:
-			'The manufacturer of the device (See http://hl7.org/fhir/SearchParameter/device-manufacturer).',
-	},
-	udi: {
-		type: GraphQLString,
-		description:
-			'FDA mandated Unique Device Identifier (See http://hl7.org/fhir/SearchParameter/device-udi).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'The type of the device (See http://hl7.org/fhir/SearchParameter/device-type).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Device-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Instance id from manufacturer, owner, and others (See http://hl7.org/fhir/SearchParameter/device-identifier).',
+		fhirtype: 'token',
+		xpath: 'Device.identifier',
+		description: 'Instance id from manufacturer, owner, and others',
 	},
+	// http://hl7.org/fhir/SearchParameter/Device-location
+	location: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Device.location',
+		description: 'A location, where the resource is found',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-manufacturer
+	manufacturer: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Device.manufacturer',
+		description: 'The manufacturer of the device',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-model
+	model: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Device.model',
+		description: 'The model of the device',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-organization
+	organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Device.owner',
+		description: 'The organization responsible for the device',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Device.patient',
+		description: 'Patient information, if the resource is affixed to a person',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Device.type',
+		description: 'The type of the device',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-udi
+	udi: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Device.udi',
+		description: 'FDA mandated Unique Device Identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-url
 	url: {
 		type: UriScalar,
-		description:
-			'Network address to contact device (See http://hl7.org/fhir/SearchParameter/device-url).',
+		fhirtype: 'uri',
+		xpath: 'Device.url',
+		description: 'Network address to contact device',
 	},
 };

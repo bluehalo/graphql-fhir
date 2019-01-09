@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,89 +8,127 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the diagnosticorder query
  */
 module.exports = {
-	orderer: {
-		type: GraphQLString,
-		description:
-			'Who ordered the test (See http://hl7.org/fhir/SearchParameter/diagnosticorder-orderer).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed (See http://hl7.org/fhir/SearchParameter/diagnosticorder-status).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'Who and/or what test is about (See http://hl7.org/fhir/SearchParameter/diagnosticorder-subject).',
-	},
-	item_status: {
-		type: TokenScalar,
-		description:
-			'proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed (See http://hl7.org/fhir/SearchParameter/diagnosticorder-item-status).',
-	},
-	event_status: {
-		type: TokenScalar,
-		description:
-			'proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed (See http://hl7.org/fhir/SearchParameter/diagnosticorder-event-status).',
-	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-actor
 	actor: {
 		type: GraphQLString,
-		description:
-			'Who recorded or did this (See http://hl7.org/fhir/SearchParameter/diagnosticorder-actor).',
+		fhirtype: 'reference',
+		xpath: 'DiagnosticOrder.event.actor',
+		description: 'Who recorded or did this',
 	},
-	code: {
-		type: TokenScalar,
-		description:
-			'Code to indicate the item (test or panel) being ordered (See http://hl7.org/fhir/SearchParameter/diagnosticorder-code).',
-	},
-	encounter: {
-		type: GraphQLString,
-		description:
-			'The encounter that this diagnostic order is associated with (See http://hl7.org/fhir/SearchParameter/diagnosticorder-encounter).',
-	},
-	item_past_status: {
-		type: TokenScalar,
-		description:
-			'proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed (See http://hl7.org/fhir/SearchParameter/diagnosticorder-item-past-status).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Who and/or what test is about (See http://hl7.org/fhir/SearchParameter/diagnosticorder-patient).',
-	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-bodysite
 	bodysite: {
 		type: TokenScalar,
-		description:
-			'Location of requested test (if applicable) (See http://hl7.org/fhir/SearchParameter/diagnosticorder-bodysite).',
+		fhirtype: 'token',
+		xpath: 'DiagnosticOrder.item.bodySite',
+		description: 'Location of requested test (if applicable)',
 	},
-	item_date: {
-		type: DateScalar,
-		description:
-			'The date at which the event happened (See http://hl7.org/fhir/SearchParameter/diagnosticorder-item-date).',
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-code
+	code: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'DiagnosticOrder.item.code',
+		description: 'Code to indicate the item (test or panel) being ordered',
 	},
-	specimen: {
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-encounter
+	encounter: {
 		type: GraphQLString,
-		description:
-			'If the whole order relates to specific specimens (See http://hl7.org/fhir/SearchParameter/diagnosticorder-specimen).',
+		fhirtype: 'reference',
+		xpath: 'DiagnosticOrder.encounter',
+		description: 'The encounter that this diagnostic order is associated with',
 	},
-	event_status_date: {
-		type: GraphQLString,
-		description:
-			'A combination of past-status and date (See http://hl7.org/fhir/SearchParameter/diagnosticorder-event-status-date).',
-	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-event-date
 	event_date: {
 		type: DateScalar,
-		description:
-			'The date at which the event happened (See http://hl7.org/fhir/SearchParameter/diagnosticorder-event-date).',
+		fhirtype: 'date',
+		xpath: 'DiagnosticOrder.event.dateTime',
+		description: 'The date at which the event happened',
 	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-event-status
+	event_status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'DiagnosticOrder.event.status',
+		description:
+			'proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed',
+	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-event-status-date
+	event_status_date: {
+		type: GraphQLString,
+		fhirtype: 'composite',
+		xpath: '',
+		description: 'A combination of past-status and date',
+	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Identifiers assigned to this order (See http://hl7.org/fhir/SearchParameter/diagnosticorder-identifier).',
+		fhirtype: 'token',
+		xpath: 'DiagnosticOrder.identifier',
+		description: 'Identifiers assigned to this order',
 	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-item-date
+	item_date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'DiagnosticOrder.item.event.dateTime',
+		description: 'The date at which the event happened',
+	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-item-past-status
+	item_past_status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'DiagnosticOrder.item.event.status',
+		description:
+			'proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed',
+	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-item-status
+	item_status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'DiagnosticOrder.item.status',
+		description:
+			'proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed',
+	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-item-status-date
 	item_status_date: {
 		type: GraphQLString,
+		fhirtype: 'composite',
+		xpath: '',
+		description: 'A combination of item-past-status and item-date',
+	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-orderer
+	orderer: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DiagnosticOrder.orderer',
+		description: 'Who ordered the test',
+	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DiagnosticOrder.subject',
+		description: 'Who and/or what test is about',
+	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-specimen
+	specimen: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DiagnosticOrder.specimen',
+		description: 'If the whole order relates to specific specimens',
+	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'DiagnosticOrder.status',
 		description:
-			'A combination of item-past-status and item-date (See http://hl7.org/fhir/SearchParameter/diagnosticorder-item-status-date).',
+			'proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed',
+	},
+	// http://hl7.org/fhir/SearchParameter/DiagnosticOrder-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DiagnosticOrder.subject',
+		description: 'Who and/or what test is about',
 	},
 };

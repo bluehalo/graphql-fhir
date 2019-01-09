@@ -1,91 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.basicResolver
+ * @name exports.getBasic
  * @static
- * @summary Basic Resolver.
+ * @summary Basic resolver.
  */
-module.exports.basicResolver = function basicResolver(
-	root,
-	args,
-	context,
-	info,
-) {
-	let { server, req, res, version } = context;
+module.exports.getBasic = function getBasic(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.basicListResolver
+ * @name exports.getBasicList
  * @static
- * @summary Basic List Resolver.
+ * @summary Basic list resolver.
  */
-module.exports.basicListResolver = function basicListResolver(
+module.exports.getBasicList = function getBasicList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.basicInstanceResolver
+ * @name exports.getBasicInstance
  * @static
- * @summary Basic Instance Resolver.
+ * @summary Basic instance resolver.
  */
-module.exports.basicInstanceResolver = function basicInstanceResolver(
+module.exports.getBasicInstance = function getBasicInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.basicCreateResolver
+ * @name exports.createBasic
  * @static
- * @summary Basic Create Resolver.
+ * @summary Create Basic resolver.
  */
-module.exports.basicCreateResolver = function basicCreateResolver(
+module.exports.createBasic = function createBasic(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.basicUpdateResolver
+ * @name exports.updateBasic
  * @static
- * @summary Basic Update Resolver.
+ * @summary Update Basic resolver.
  */
-module.exports.basicUpdateResolver = function basicUpdateResolver(
+module.exports.updateBasic = function updateBasic(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.basicDeleteResolver
+ * @name exports.removeBasic
  * @static
- * @summary Basic Delete Resolver.
+ * @summary Remove Basic resolver.
  */
-module.exports.basicDeleteResolver = function basicDeleteResolver(
+module.exports.removeBasic = function removeBasic(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

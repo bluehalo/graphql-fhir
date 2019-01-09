@@ -1,55 +1,65 @@
 // Schemas
-const DeviceComponentSchema = require('../../schemas/devicecomponent.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const DeviceComponentSchema = require('../../schemas/devicecomponent.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const DeviceComponentArgs = require('../../parameters/devicecomponent.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const DeviceComponentArgs = require('../../parameters/devicecomponent.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+const DomainResourceArgs = require('../../parameters/domainresource.parameters.js');
+
+let args = Object.assign(
+	{},
+	DomainResourceArgs,
+	ResourceArgs,
+	DeviceComponentArgs,
+);
 
 // Resolvers
 const {
-	devicecomponentResolver,
-	devicecomponentListResolver,
-	devicecomponentInstanceResolver,
+	getDeviceComponent,
+	getDeviceComponentList,
+	getDeviceComponentInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DeviceComponent',
 	action: 'read',
-	version: '3_0_1',
 };
 
 /**
  * @name exports.DeviceComponentQuery
- * @summary DeviceComponent Query.
+ * @summary DeviceComponent query.
  */
 module.exports.DeviceComponentQuery = {
-	args: Object.assign({}, CommonArgs, DeviceComponentArgs),
 	description: 'Query for a single DeviceComponent',
-	resolve: scopeInvariant(scopeOptions, devicecomponentResolver),
+	resolve: scopeInvariant(scopeOptions, getDeviceComponent),
 	type: DeviceComponentSchema,
+	args: args,
 };
 
 /**
  * @name exports.DeviceComponentListQuery
- * @summary DeviceComponentList Query.
+ * @summary DeviceComponent query.
  */
 module.exports.DeviceComponentListQuery = {
-	args: Object.assign({}, CommonArgs, DeviceComponentArgs),
-	description: 'Query for multiple DeviceComponents',
-	resolve: scopeInvariant(scopeOptions, devicecomponentListResolver),
+	description: 'Query for a more than or just one DeviceComponent',
+	resolve: scopeInvariant(scopeOptions, getDeviceComponentList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.DeviceComponentInstanceQuery
- * @summary DeviceComponentInstance Query.
+ * @summary DeviceComponent query.
  */
 module.exports.DeviceComponentInstanceQuery = {
-	description: 'Get information about a single DeviceComponent',
-	resolve: scopeInvariant(scopeOptions, devicecomponentInstanceResolver),
+	description: 'Access information about a single DeviceComponent',
+	resolve: scopeInvariant(scopeOptions, getDeviceComponentInstance),
 	type: DeviceComponentSchema,
+	args: args,
 };

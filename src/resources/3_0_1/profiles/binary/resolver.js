@@ -1,91 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.binaryResolver
+ * @name exports.getBinary
  * @static
- * @summary Binary Resolver.
+ * @summary Binary resolver.
  */
-module.exports.binaryResolver = function binaryResolver(
-	root,
-	args,
-	context,
-	info,
-) {
-	let { server, req, res, version } = context;
+module.exports.getBinary = function getBinary(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.binaryListResolver
+ * @name exports.getBinaryList
  * @static
- * @summary Binary List Resolver.
+ * @summary Binary list resolver.
  */
-module.exports.binaryListResolver = function binaryListResolver(
+module.exports.getBinaryList = function getBinaryList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.binaryInstanceResolver
+ * @name exports.getBinaryInstance
  * @static
- * @summary Binary Instance Resolver.
+ * @summary Binary instance resolver.
  */
-module.exports.binaryInstanceResolver = function binaryInstanceResolver(
+module.exports.getBinaryInstance = function getBinaryInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.binaryCreateResolver
+ * @name exports.createBinary
  * @static
- * @summary Binary Create Resolver.
+ * @summary Create Binary resolver.
  */
-module.exports.binaryCreateResolver = function binaryCreateResolver(
+module.exports.createBinary = function createBinary(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.binaryUpdateResolver
+ * @name exports.updateBinary
  * @static
- * @summary Binary Update Resolver.
+ * @summary Update Binary resolver.
  */
-module.exports.binaryUpdateResolver = function binaryUpdateResolver(
+module.exports.updateBinary = function updateBinary(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.binaryDeleteResolver
+ * @name exports.removeBinary
  * @static
- * @summary Binary Delete Resolver.
+ * @summary Remove Binary resolver.
  */
-module.exports.binaryDeleteResolver = function binaryDeleteResolver(
+module.exports.removeBinary = function removeBinary(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

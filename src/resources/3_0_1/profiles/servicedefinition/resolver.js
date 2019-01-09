@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.servicedefinitionResolver
+ * @name exports.getServiceDefinition
  * @static
- * @summary ServiceDefinition Resolver.
+ * @summary ServiceDefinition resolver.
  */
-module.exports.servicedefinitionResolver = function servicedefinitionResolver(
+module.exports.getServiceDefinition = function getServiceDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.servicedefinitionListResolver
+ * @name exports.getServiceDefinitionList
  * @static
- * @summary ServiceDefinition List Resolver.
+ * @summary ServiceDefinition list resolver.
  */
-module.exports.servicedefinitionListResolver = function servicedefinitionListResolver(
+module.exports.getServiceDefinitionList = function getServiceDefinitionList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.servicedefinitionInstanceResolver
+ * @name exports.getServiceDefinitionInstance
  * @static
- * @summary ServiceDefinition Instance Resolver.
+ * @summary ServiceDefinition instance resolver.
  */
-module.exports.servicedefinitionInstanceResolver = function servicedefinitionInstanceResolver(
+module.exports.getServiceDefinitionInstance = function getServiceDefinitionInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.servicedefinitionCreateResolver
+ * @name exports.createServiceDefinition
  * @static
- * @summary ServiceDefinition Create Resolver.
+ * @summary Create ServiceDefinition resolver.
  */
-module.exports.servicedefinitionCreateResolver = function servicedefinitionCreateResolver(
+module.exports.createServiceDefinition = function createServiceDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.servicedefinitionUpdateResolver
+ * @name exports.updateServiceDefinition
  * @static
- * @summary ServiceDefinition Update Resolver.
+ * @summary Update ServiceDefinition resolver.
  */
-module.exports.servicedefinitionUpdateResolver = function servicedefinitionUpdateResolver(
+module.exports.updateServiceDefinition = function updateServiceDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.servicedefinitionDeleteResolver
+ * @name exports.removeServiceDefinition
  * @static
- * @summary ServiceDefinition Delete Resolver.
+ * @summary Remove ServiceDefinition resolver.
  */
-module.exports.servicedefinitionDeleteResolver = function servicedefinitionDeleteResolver(
+module.exports.removeServiceDefinition = function removeServiceDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,9 +1,6 @@
 const { mapJsonToSchema } = require('./schema.utils');
 
-const {
-	GraphQLInputObjectType,
-	GraphQLString,
-} = require('graphql');
+const { GraphQLInputObjectType, GraphQLString } = require('graphql');
 
 // Sample GraphQL Object Type
 let PersonSchema = new GraphQLInputObjectType({

@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const RiskAssessmentSchema = require('../../schemas/riskassessment.schema');
+const RiskAssessmentSchema = require('../../schemas/riskassessment.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const RiskAssessmentInput = require('../../inputs/riskassessment.input');
+const RiskAssessmentInput = require('../../inputs/riskassessment.input.js');
 
-// Resolvers
-const {
-	riskassessmentCreateResolver,
-	riskassessmentUpdateResolver,
-	riskassessmentDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createRiskAssessment,
+	updateRiskAssessment,
+	removeRiskAssessment,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'RiskAssessment',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a RiskAssessment record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a RiskAssessment record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.RiskAssessmentCreateMutation
- * @summary RiskAssessmentCreate Mutation.
+ * @summary RiskAssessmentCreate mutation.
  */
 module.exports.RiskAssessmentCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a RiskAssessment',
-	resolve: scopeInvariant(scopeOptions, riskassessmentCreateResolver),
+	description: 'Create a RiskAssessment record',
+	resolve: scopeInvariant(scopeOptions, createRiskAssessment),
 	type: RiskAssessmentSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.RiskAssessmentUpdateMutation
- * @summary RiskAssessmentUpdate Mutation.
+ * @summary RiskAssessmentUpdate mutation.
  */
 module.exports.RiskAssessmentUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple RiskAssessments',
-	resolve: scopeInvariant(scopeOptions, riskassessmentUpdateResolver),
+	description: 'Update a RiskAssessment record',
+	resolve: scopeInvariant(scopeOptions, updateRiskAssessment),
 	type: RiskAssessmentSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.RiskAssessmentDeleteMutation
- * @summary RiskAssessmentDelete Mutation.
+ * @name exports.RiskAssessmentRemoveMutation
+ * @summary RiskAssessmentRemove mutation.
  */
-module.exports.RiskAssessmentDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single RiskAssessment',
-	resolve: scopeInvariant(scopeOptions, riskassessmentDeleteResolver),
+module.exports.RiskAssessmentRemoveMutation = {
+	description: 'Remove a RiskAssessment record',
+	resolve: scopeInvariant(scopeOptions, removeRiskAssessment),
 	type: RiskAssessmentSchema,
+	args: DeleteArgs,
 };

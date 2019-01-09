@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.paymentnoticeResolver
+ * @name exports.getPaymentNotice
  * @static
- * @summary PaymentNotice Resolver.
+ * @summary PaymentNotice resolver.
  */
-module.exports.paymentnoticeResolver = function paymentnoticeResolver(
+module.exports.getPaymentNotice = function getPaymentNotice(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.paymentnoticeListResolver
+ * @name exports.getPaymentNoticeList
  * @static
- * @summary PaymentNotice List Resolver.
+ * @summary PaymentNotice list resolver.
  */
-module.exports.paymentnoticeListResolver = function paymentnoticeListResolver(
+module.exports.getPaymentNoticeList = function getPaymentNoticeList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.paymentnoticeInstanceResolver
+ * @name exports.getPaymentNoticeInstance
  * @static
- * @summary PaymentNotice Instance Resolver.
+ * @summary PaymentNotice instance resolver.
  */
-module.exports.paymentnoticeInstanceResolver = function paymentnoticeInstanceResolver(
+module.exports.getPaymentNoticeInstance = function getPaymentNoticeInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.paymentnoticeCreateResolver
+ * @name exports.createPaymentNotice
  * @static
- * @summary PaymentNotice Create Resolver.
+ * @summary Create PaymentNotice resolver.
  */
-module.exports.paymentnoticeCreateResolver = function paymentnoticeCreateResolver(
+module.exports.createPaymentNotice = function createPaymentNotice(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.paymentnoticeUpdateResolver
+ * @name exports.updatePaymentNotice
  * @static
- * @summary PaymentNotice Update Resolver.
+ * @summary Update PaymentNotice resolver.
  */
-module.exports.paymentnoticeUpdateResolver = function paymentnoticeUpdateResolver(
+module.exports.updatePaymentNotice = function updatePaymentNotice(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.paymentnoticeDeleteResolver
+ * @name exports.removePaymentNotice
  * @static
- * @summary PaymentNotice Delete Resolver.
+ * @summary Remove PaymentNotice resolver.
  */
-module.exports.paymentnoticeDeleteResolver = function paymentnoticeDeleteResolver(
+module.exports.removePaymentNotice = function removePaymentNotice(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

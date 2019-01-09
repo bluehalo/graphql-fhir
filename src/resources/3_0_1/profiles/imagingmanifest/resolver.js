@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.imagingmanifestResolver
+ * @name exports.getImagingManifest
  * @static
- * @summary ImagingManifest Resolver.
+ * @summary ImagingManifest resolver.
  */
-module.exports.imagingmanifestResolver = function imagingmanifestResolver(
+module.exports.getImagingManifest = function getImagingManifest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingmanifestListResolver
+ * @name exports.getImagingManifestList
  * @static
- * @summary ImagingManifest List Resolver.
+ * @summary ImagingManifest list resolver.
  */
-module.exports.imagingmanifestListResolver = function imagingmanifestListResolver(
+module.exports.getImagingManifestList = function getImagingManifestList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingmanifestInstanceResolver
+ * @name exports.getImagingManifestInstance
  * @static
- * @summary ImagingManifest Instance Resolver.
+ * @summary ImagingManifest instance resolver.
  */
-module.exports.imagingmanifestInstanceResolver = function imagingmanifestInstanceResolver(
+module.exports.getImagingManifestInstance = function getImagingManifestInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingmanifestCreateResolver
+ * @name exports.createImagingManifest
  * @static
- * @summary ImagingManifest Create Resolver.
+ * @summary Create ImagingManifest resolver.
  */
-module.exports.imagingmanifestCreateResolver = function imagingmanifestCreateResolver(
+module.exports.createImagingManifest = function createImagingManifest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingmanifestUpdateResolver
+ * @name exports.updateImagingManifest
  * @static
- * @summary ImagingManifest Update Resolver.
+ * @summary Update ImagingManifest resolver.
  */
-module.exports.imagingmanifestUpdateResolver = function imagingmanifestUpdateResolver(
+module.exports.updateImagingManifest = function updateImagingManifest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingmanifestDeleteResolver
+ * @name exports.removeImagingManifest
  * @static
- * @summary ImagingManifest Delete Resolver.
+ * @summary Remove ImagingManifest resolver.
  */
-module.exports.imagingmanifestDeleteResolver = function imagingmanifestDeleteResolver(
+module.exports.removeImagingManifest = function removeImagingManifest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,7 +1,7 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,54 +9,74 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the compartmentdefinition query
  */
 module.exports = {
-	date: {
-		type: DateScalar,
-		description:
-			'The compartment definition publication date (See http://hl7.org/fhir/SearchParameter/CompartmentDefinition-date).',
-	},
+	// http://hl7.org/fhir/SearchParameter/CompartmentDefinition-code
 	code: {
 		type: TokenScalar,
-		description:
-			'Patient | Encounter | RelatedPerson | Practitioner | Device (See http://hl7.org/fhir/SearchParameter/CompartmentDefinition-code).',
+		fhirtype: 'token',
+		xpath: 'CompartmentDefinition.code',
+		description: 'Patient | Encounter | RelatedPerson | Practitioner | Device',
 	},
-	resource: {
-		type: TokenScalar,
-		description:
-			'Name of resource type (See http://hl7.org/fhir/SearchParameter/CompartmentDefinition-resource).',
+	// http://hl7.org/fhir/SearchParameter/CompartmentDefinition-date
+	date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'CompartmentDefinition.date',
+		description: 'The compartment definition publication date',
 	},
-	jurisdiction: {
-		type: TokenScalar,
-		description:
-			'Intended jurisdiction for the compartment definition (See http://hl7.org/fhir/SearchParameter/CompartmentDefinition-jurisdiction).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			'Computationally friendly name of the compartment definition (See http://hl7.org/fhir/SearchParameter/CompartmentDefinition-name).',
-	},
+	// http://hl7.org/fhir/SearchParameter/CompartmentDefinition-description
 	description: {
 		type: GraphQLString,
-		description:
-			'The description of the compartment definition (See http://hl7.org/fhir/SearchParameter/CompartmentDefinition-description).',
+		fhirtype: 'string',
+		xpath: 'CompartmentDefinition.description',
+		description: 'The description of the compartment definition',
 	},
+	// http://hl7.org/fhir/SearchParameter/CompartmentDefinition-jurisdiction
+	jurisdiction: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'CompartmentDefinition.jurisdiction',
+		description: 'Intended jurisdiction for the compartment definition',
+	},
+	// http://hl7.org/fhir/SearchParameter/CompartmentDefinition-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'CompartmentDefinition.name',
+		description: 'Computationally friendly name of the compartment definition',
+	},
+	// http://hl7.org/fhir/SearchParameter/CompartmentDefinition-publisher
 	publisher: {
 		type: GraphQLString,
-		description:
-			'Name of the publisher of the compartment definition (See http://hl7.org/fhir/SearchParameter/CompartmentDefinition-publisher).',
+		fhirtype: 'string',
+		xpath: 'CompartmentDefinition.publisher',
+		description: 'Name of the publisher of the compartment definition',
 	},
-	title: {
-		type: GraphQLString,
-		description:
-			'The human-friendly name of the compartment definition (See http://hl7.org/fhir/SearchParameter/CompartmentDefinition-title).',
+	// http://hl7.org/fhir/SearchParameter/CompartmentDefinition-resource
+	resource: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'CompartmentDefinition.resource.code',
+		description: 'Name of resource type',
 	},
-	url: {
-		type: UriScalar,
-		description:
-			'The uri that identifies the compartment definition (See http://hl7.org/fhir/SearchParameter/CompartmentDefinition-url).',
-	},
+	// http://hl7.org/fhir/SearchParameter/CompartmentDefinition-status
 	status: {
 		type: TokenScalar,
-		description:
-			'The current status of the compartment definition (See http://hl7.org/fhir/SearchParameter/CompartmentDefinition-status).',
+		fhirtype: 'token',
+		xpath: 'CompartmentDefinition.status',
+		description: 'The current status of the compartment definition',
+	},
+	// http://hl7.org/fhir/SearchParameter/CompartmentDefinition-title
+	title: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'CompartmentDefinition.title',
+		description: 'The human-friendly name of the compartment definition',
+	},
+	// http://hl7.org/fhir/SearchParameter/CompartmentDefinition-url
+	url: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'CompartmentDefinition.url',
+		description: 'The uri that identifies the compartment definition',
 	},
 };

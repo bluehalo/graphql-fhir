@@ -1,6 +1,6 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,29 +8,40 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the researchsubject query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/ResearchSubject-date
 	date: {
 		type: DateScalar,
-		description:
-			'Start and end of participation (See http://hl7.org/fhir/SearchParameter/ResearchSubject-date).',
+		fhirtype: 'date',
+		xpath: 'ResearchSubject.period',
+		description: 'Start and end of participation',
 	},
+	// http://hl7.org/fhir/SearchParameter/ResearchSubject-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Business Identifier for research subject (See http://hl7.org/fhir/SearchParameter/ResearchSubject-identifier).',
+		fhirtype: 'token',
+		xpath: 'ResearchSubject.identifier',
+		description: 'Business Identifier for research subject',
 	},
+	// http://hl7.org/fhir/SearchParameter/ResearchSubject-individual
 	individual: {
 		type: GraphQLString,
-		description:
-			'Who is part of study (See http://hl7.org/fhir/SearchParameter/ResearchSubject-individual).',
+		fhirtype: 'reference',
+		xpath: 'ResearchSubject.individual',
+		description: 'Who is part of study',
 	},
+	// http://hl7.org/fhir/SearchParameter/ResearchSubject-patient
 	patient: {
 		type: GraphQLString,
-		description:
-			'Who is part of study (See http://hl7.org/fhir/SearchParameter/ResearchSubject-patient).',
+		fhirtype: 'reference',
+		xpath: 'ResearchSubject.individual',
+		description: 'Who is part of study',
 	},
+	// http://hl7.org/fhir/SearchParameter/ResearchSubject-status
 	status: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ResearchSubject.status',
 		description:
-			'candidate | enrolled | active | suspended | withdrawn | completed (See http://hl7.org/fhir/SearchParameter/ResearchSubject-status).',
+			'candidate | enrolled | active | suspended | withdrawn | completed',
 	},
 };

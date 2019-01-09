@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,74 +7,103 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the coverage query
  */
 module.exports = {
-	identifier: {
-		type: TokenScalar,
-		description:
-			'The primary identifier of the insured and the coverage (See http://hl7.org/fhir/SearchParameter/Coverage-identifier).',
-	},
-	subgroup: {
-		type: GraphQLString,
-		description:
-			'Sub-group identifier (See http://hl7.org/fhir/SearchParameter/Coverage-subgroup).',
-	},
-	subscriber: {
-		type: GraphQLString,
-		description:
-			'Reference to the subscriber (See http://hl7.org/fhir/SearchParameter/Coverage-subscriber).',
-	},
-	subplan: {
-		type: GraphQLString,
-		description:
-			'Sub-plan identifier (See http://hl7.org/fhir/SearchParameter/Coverage-subplan).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'The kind of coverage (health plan, auto, Workers Compensation) (See http://hl7.org/fhir/SearchParameter/Coverage-type).',
-	},
-	sequence: {
-		type: GraphQLString,
-		description:
-			'Sequence number (See http://hl7.org/fhir/SearchParameter/Coverage-sequence).',
-	},
-	payor: {
-		type: GraphQLString,
-		description:
-			'The identity of the insurer or party paying for services (See http://hl7.org/fhir/SearchParameter/Coverage-payor).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-beneficiary
 	beneficiary: {
 		type: GraphQLString,
-		description:
-			'Covered party (See http://hl7.org/fhir/SearchParameter/Coverage-beneficiary).',
+		fhirtype: 'reference',
+		xpath: 'Coverage.beneficiary',
+		description: 'Covered party',
 	},
-	subclass: {
-		type: GraphQLString,
-		description:
-			'Sub-class identifier (See http://hl7.org/fhir/SearchParameter/Coverage-subclass).',
-	},
-	plan: {
-		type: GraphQLString,
-		description:
-			'A plan or policy identifier (See http://hl7.org/fhir/SearchParameter/Coverage-plan).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-class
 	class: {
 		type: GraphQLString,
-		description:
-			'Class identifier (See http://hl7.org/fhir/SearchParameter/Coverage-class).',
+		fhirtype: 'string',
+		xpath: 'Coverage.grouping.class',
+		description: 'Class identifier',
 	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-dependent
 	dependent: {
 		type: GraphQLString,
-		description:
-			'Dependent number (See http://hl7.org/fhir/SearchParameter/Coverage-dependent).',
+		fhirtype: 'string',
+		xpath: 'Coverage.dependent',
+		description: 'Dependent number',
 	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-group
 	group: {
 		type: GraphQLString,
-		description:
-			'Group identifier (See http://hl7.org/fhir/SearchParameter/Coverage-group).',
+		fhirtype: 'string',
+		xpath: 'Coverage.grouping.group',
+		description: 'Group identifier',
 	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Coverage.identifier',
+		description: 'The primary identifier of the insured and the coverage',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-payor
+	payor: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Coverage.payor',
+		description: 'The identity of the insurer or party paying for services',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-plan
+	plan: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Coverage.grouping.plan',
+		description: 'A plan or policy identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-policy-holder
 	policy_holder: {
 		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Coverage.policyHolder',
+		description: 'Reference to the policyholder',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-sequence
+	sequence: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Coverage.sequence',
+		description: 'Sequence number',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-subclass
+	subclass: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Coverage.grouping.subClass',
+		description: 'Sub-class identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-subgroup
+	subgroup: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Coverage.grouping.subGroup',
+		description: 'Sub-group identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-subplan
+	subplan: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Coverage.grouping.subPlan',
+		description: 'Sub-plan identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-subscriber
+	subscriber: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Coverage.subscriber',
+		description: 'Reference to the subscriber',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Coverage.type',
 		description:
-			'Reference to the policyholder (See http://hl7.org/fhir/SearchParameter/Coverage-policy-holder).',
+			'The kind of coverage (health plan, auto, Workers Compensation)',
 	},
 };

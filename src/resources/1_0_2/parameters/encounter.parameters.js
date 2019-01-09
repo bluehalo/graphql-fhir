@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,104 +8,147 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the encounter query
  */
 module.exports = {
-	participant_type: {
-		type: TokenScalar,
-		description:
-			'Role of participant in encounter (See http://hl7.org/fhir/SearchParameter/encounter-participant-type).',
-	},
-	episodeofcare: {
-		type: GraphQLString,
-		description:
-			'Episode(s) of care that this encounter should be recorded against (See http://hl7.org/fhir/SearchParameter/encounter-episodeofcare).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'planned | arrived | in-progress | onleave | finished | cancelled (See http://hl7.org/fhir/SearchParameter/encounter-status).',
-	},
-	reason: {
-		type: TokenScalar,
-		description:
-			'Reason the encounter takes place (code) (See http://hl7.org/fhir/SearchParameter/encounter-reason).',
-	},
-	condition: {
-		type: GraphQLString,
-		description:
-			'Reason the encounter takes place (resource) (See http://hl7.org/fhir/SearchParameter/encounter-condition).',
-	},
-	location: {
-		type: GraphQLString,
-		description:
-			'Location the encounter takes place (See http://hl7.org/fhir/SearchParameter/encounter-location).',
-	},
-	indication: {
-		type: GraphQLString,
-		description:
-			'Reason the encounter takes place (resource) (See http://hl7.org/fhir/SearchParameter/encounter-indication).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'Specific type of encounter (See http://hl7.org/fhir/SearchParameter/encounter-type).',
-	},
-	date: {
-		type: DateScalar,
-		description:
-			'A date within the period the Encounter lasted (See http://hl7.org/fhir/SearchParameter/encounter-date).',
-	},
-	special_arrangement: {
-		type: TokenScalar,
-		description:
-			'Wheelchair, translator, stretcher, etc. (See http://hl7.org/fhir/SearchParameter/encounter-special-arrangement).',
-	},
-	part_of: {
-		type: GraphQLString,
-		description:
-			'Another Encounter this encounter is part of (See http://hl7.org/fhir/SearchParameter/encounter-part-of).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-appointment
 	appointment: {
 		type: GraphQLString,
-		description:
-			'The appointment that scheduled this encounter (See http://hl7.org/fhir/SearchParameter/encounter-appointment).',
+		fhirtype: 'reference',
+		xpath: 'Encounter.appointment',
+		description: 'The appointment that scheduled this encounter',
 	},
-	patient: {
+	// http://hl7.org/fhir/SearchParameter/Encounter-condition
+	condition: {
 		type: GraphQLString,
-		description:
-			'The patient present at the encounter (See http://hl7.org/fhir/SearchParameter/encounter-patient).',
+		fhirtype: 'reference',
+		xpath: 'Encounter.indication',
+		description: 'Reason the encounter takes place (resource)',
 	},
-	practitioner: {
+	// http://hl7.org/fhir/SearchParameter/Encounter-date
+	date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Encounter.period',
+		description: 'A date within the period the Encounter lasted',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-episodeofcare
+	episodeofcare: {
 		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Encounter.episodeOfCare',
 		description:
-			'Persons involved in the encounter other than the patient (See http://hl7.org/fhir/SearchParameter/encounter-practitioner).',
+			'Episode(s) of care that this encounter should be recorded against',
 	},
-	length: {
-		type: GraphQLString,
-		description:
-			'Length of encounter in days (See http://hl7.org/fhir/SearchParameter/encounter-length).',
-	},
-	participant: {
-		type: GraphQLString,
-		description:
-			'Persons involved in the encounter other than the patient (See http://hl7.org/fhir/SearchParameter/encounter-participant).',
-	},
-	incomingreferral: {
-		type: GraphQLString,
-		description:
-			'The ReferralRequest that initiated this encounter (See http://hl7.org/fhir/SearchParameter/encounter-incomingreferral).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Identifier(s) by which this encounter is known (See http://hl7.org/fhir/SearchParameter/encounter-identifier).',
+		fhirtype: 'token',
+		xpath: 'Encounter.identifier',
+		description: 'Identifier(s) by which this encounter is known',
 	},
-	procedure: {
+	// http://hl7.org/fhir/SearchParameter/Encounter-incomingreferral
+	incomingreferral: {
 		type: GraphQLString,
-		description:
-			'Reason the encounter takes place (resource) (See http://hl7.org/fhir/SearchParameter/encounter-procedure).',
+		fhirtype: 'reference',
+		xpath: 'Encounter.incomingReferral',
+		description: 'The ReferralRequest that initiated this encounter',
 	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-indication
+	indication: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Encounter.indication',
+		description: 'Reason the encounter takes place (resource)',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-length
+	length: {
+		type: GraphQLString,
+		fhirtype: 'number',
+		xpath: 'Encounter.length',
+		description: 'Length of encounter in days',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-location
+	location: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Encounter.location.location',
+		description: 'Location the encounter takes place',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-location-period
 	location_period: {
 		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Encounter.location.period',
 		description:
-			'Time period during which the patient was present at the location (See http://hl7.org/fhir/SearchParameter/encounter-location-period).',
+			'Time period during which the patient was present at the location',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-part-of
+	part_of: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Encounter.partOf',
+		description: 'Another Encounter this encounter is part of',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-participant
+	participant: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Encounter.participant.individual',
+		description: 'Persons involved in the encounter other than the patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-participant-type
+	participant_type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Encounter.participant.type',
+		description: 'Role of participant in encounter',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Encounter.patient',
+		description: 'The patient present at the encounter',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-practitioner
+	practitioner: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Encounter.participant.individual',
+		description: 'Persons involved in the encounter other than the patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-procedure
+	procedure: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Encounter.indication',
+		description: 'Reason the encounter takes place (resource)',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-reason
+	reason: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Encounter.reason',
+		description: 'Reason the encounter takes place (code)',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-special-arrangement
+	special_arrangement: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Encounter.hospitalization.specialArrangement',
+		description: 'Wheelchair, translator, stretcher, etc.',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Encounter.status',
+		description:
+			'planned | arrived | in-progress | onleave | finished | cancelled',
+	},
+	// http://hl7.org/fhir/SearchParameter/Encounter-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Encounter.type',
+		description: 'Specific type of encounter',
 	},
 };

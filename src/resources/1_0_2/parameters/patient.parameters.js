@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,129 +8,201 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the patient query
  */
 module.exports = {
-	animal_breed: {
-		type: TokenScalar,
-		description:
-			'The breed for animal patients (See http://hl7.org/fhir/SearchParameter/patient-animal-breed).',
-	},
-	phone: {
-		type: TokenScalar,
-		description:
-			'A value in a phone contact (See http://hl7.org/fhir/SearchParameter/patient-phone).',
-	},
-	phonetic: {
-		type: GraphQLString,
-		description:
-			'A portion of either family or given name using some kind of phonetic matching algorithm (See http://hl7.org/fhir/SearchParameter/patient-phonetic).',
-	},
-	link: {
-		type: GraphQLString,
-		description:
-			'All patients linked to the given patient (See http://hl7.org/fhir/SearchParameter/patient-link).',
-	},
-	address_country: {
-		type: GraphQLString,
-		description:
-			'A country specified in an address (See http://hl7.org/fhir/SearchParameter/patient-address-country).',
-	},
-	animal_species: {
-		type: TokenScalar,
-		description:
-			'The species for animal patients (See http://hl7.org/fhir/SearchParameter/patient-animal-species).',
-	},
-	deathdate: {
-		type: DateScalar,
-		description:
-			'The date of death has been provided and satisfies this search value (See http://hl7.org/fhir/SearchParameter/patient-deathdate).',
-	},
-	organization: {
-		type: GraphQLString,
-		description:
-			'The organization at which this person is a patient (See http://hl7.org/fhir/SearchParameter/patient-organization).',
-	},
-	address_city: {
-		type: GraphQLString,
-		description:
-			'A city specified in an address (See http://hl7.org/fhir/SearchParameter/patient-address-city).',
-	},
-	address_state: {
-		type: GraphQLString,
-		description:
-			'A state specified in an address (See http://hl7.org/fhir/SearchParameter/patient-address-state).',
-	},
-	careprovider: {
-		type: GraphQLString,
-		description:
-			"Patient's nominated care provider, could be a care manager, not the organization that manages the record (See http://hl7.org/fhir/SearchParameter/patient-careprovider).",
-	},
-	given: {
-		type: GraphQLString,
-		description:
-			'A portion of the given name of the patient (See http://hl7.org/fhir/SearchParameter/patient-given).',
-	},
-	email: {
-		type: TokenScalar,
-		description:
-			'A value in an email contact (See http://hl7.org/fhir/SearchParameter/patient-email).',
-	},
-	address: {
-		type: GraphQLString,
-		description:
-			'An address in any kind of address/part of the patient (See http://hl7.org/fhir/SearchParameter/patient-address).',
-	},
-	address_use: {
-		type: TokenScalar,
-		description:
-			'A use code specified in an address (See http://hl7.org/fhir/SearchParameter/patient-address-use).',
-	},
-	family: {
-		type: GraphQLString,
-		description:
-			'A portion of the family name of the patient (See http://hl7.org/fhir/SearchParameter/patient-family).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			'A portion of either family or given name of the patient (See http://hl7.org/fhir/SearchParameter/patient-name).',
-	},
-	birthdate: {
-		type: DateScalar,
-		description:
-			"The patient's date of birth (See http://hl7.org/fhir/SearchParameter/patient-birthdate).",
-	},
-	telecom: {
-		type: TokenScalar,
-		description:
-			'The value in any kind of telecom details of the patient (See http://hl7.org/fhir/SearchParameter/patient-telecom).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Patient-active
 	active: {
 		type: TokenScalar,
-		description:
-			'Whether the patient record is active (See http://hl7.org/fhir/SearchParameter/patient-active).',
+		fhirtype: 'token',
+		xpath: 'Patient.active',
+		description: 'Whether the patient record is active',
 	},
-	gender: {
-		type: TokenScalar,
-		description:
-			'Gender of the patient (See http://hl7.org/fhir/SearchParameter/patient-gender).',
+	// http://hl7.org/fhir/SearchParameter/Patient-address
+	address: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Patient.address',
+		description: 'An address in any kind of address/part of the patient',
 	},
-	deceased: {
-		type: TokenScalar,
-		description:
-			'This patient has been marked as deceased, or as a death date entered (See http://hl7.org/fhir/SearchParameter/patient-deceased).',
+	// http://hl7.org/fhir/SearchParameter/Patient-address-city
+	address_city: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Patient.address.city',
+		description: 'A city specified in an address',
 	},
-	language: {
-		type: TokenScalar,
-		description:
-			'Language code (irrespective of use value) (See http://hl7.org/fhir/SearchParameter/patient-language).',
+	// http://hl7.org/fhir/SearchParameter/Patient-address-country
+	address_country: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Patient.address.country',
+		description: 'A country specified in an address',
 	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'A patient identifier (See http://hl7.org/fhir/SearchParameter/patient-identifier).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Patient-address-postalcode
 	address_postalcode: {
 		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Patient.address.postalCode',
+		description: 'A postalCode specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-address-state
+	address_state: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Patient.address.state',
+		description: 'A state specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-address-use
+	address_use: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Patient.address.use',
+		description: 'A use code specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-animal-breed
+	animal_breed: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Patient.animal.breed',
+		description: 'The breed for animal patients',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-animal-species
+	animal_species: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Patient.animal.species',
+		description: 'The species for animal patients',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-birthdate
+	birthdate: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Patient.birthDate',
+		description: "The patient's date of birth",
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-careprovider
+	careprovider: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Patient.careProvider',
 		description:
-			'A postalCode specified in an address (See http://hl7.org/fhir/SearchParameter/patient-address-postalcode).',
+			"Patient's nominated care provider, could be a care manager, not the organization that manages the record",
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-deathdate
+	deathdate: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Patient.deceasedDateTime',
+		description:
+			'The date of death has been provided and satisfies this search value',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-deceased
+	deceased: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Patient.deceasedBoolean',
+		description:
+			'This patient has been marked as deceased, or as a death date entered',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-email
+	email: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: "Patient.telecom[system/@value='email']",
+		description: 'A value in an email contact',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-family
+	family: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Patient.name.family',
+		description: 'A portion of the family name of the patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-gender
+	gender: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Patient.gender',
+		description: 'Gender of the patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-given
+	given: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Patient.name.given',
+		description: 'A portion of the given name of the patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Patient.identifier',
+		description: 'A patient identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-language
+	language: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Patient.communication.language',
+		description: 'Language code (irrespective of use value)',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-link
+	link: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Patient.link.other',
+		description: 'All patients linked to the given patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Patient.name',
+		description: 'A portion of either family or given name of the patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-organization
+	organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Patient.managingOrganization',
+		description: 'The organization at which this person is a patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-phone
+	phone: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: "Patient.telecom[system/@value='phone']",
+		description: 'A value in a phone contact',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-phonetic
+	phonetic: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Patient.name',
+		description:
+			'A portion of either family or given name using some kind of phonetic matching algorithm',
+	},
+	// http://hl7.org/fhir/SearchParameter/Patient-telecom
+	telecom: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Patient.telecom',
+		description: 'The value in any kind of telecom details of the patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/us-core-Patient-race
+	race: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath:
+			"Patient.extension[@url='http://hl7.org/fhir/StructureDefinition/us-core-race']",
+		description:
+			'Returns patients with a race extension matching the specified code.',
+	},
+	// http://hl7.org/fhir/SearchParameter/us-core-Patient-ethnicity
+	ethnicity: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath:
+			"Patient.extension[@url='http://hl7.org/fhir/StructureDefinition/us-core-ethnicity']",
+		description:
+			'Returns patients with an ethnicity extension matching the specified code.',
 	},
 };

@@ -1,7 +1,7 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,89 +9,123 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the library query
  */
 module.exports = {
-	date: {
-		type: DateScalar,
-		description:
-			'The library publication date (See http://hl7.org/fhir/SearchParameter/Library-date).',
-	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'External identifier for the library (See http://hl7.org/fhir/SearchParameter/Library-identifier).',
-	},
-	successor: {
-		type: GraphQLString,
-		description:
-			'What resource is being referenced (See http://hl7.org/fhir/SearchParameter/Library-successor).',
-	},
-	jurisdiction: {
-		type: TokenScalar,
-		description:
-			'Intended jurisdiction for the library (See http://hl7.org/fhir/SearchParameter/Library-jurisdiction).',
-	},
-	description: {
-		type: GraphQLString,
-		description:
-			'The description of the library (See http://hl7.org/fhir/SearchParameter/Library-description).',
-	},
-	derived_from: {
-		type: GraphQLString,
-		description:
-			'What resource is being referenced (See http://hl7.org/fhir/SearchParameter/Library-derived-from).',
-	},
-	predecessor: {
-		type: GraphQLString,
-		description:
-			'What resource is being referenced (See http://hl7.org/fhir/SearchParameter/Library-predecessor).',
-	},
-	title: {
-		type: GraphQLString,
-		description:
-			'The human-friendly name of the library (See http://hl7.org/fhir/SearchParameter/Library-title).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Library-composed-of
 	composed_of: {
 		type: GraphQLString,
-		description:
-			'What resource is being referenced (See http://hl7.org/fhir/SearchParameter/Library-composed-of).',
+		fhirtype: 'reference',
+		xpath: "Library.relatedArtifact[type/@value='composed-of'].resource",
+		description: 'What resource is being referenced',
 	},
-	version: {
-		type: TokenScalar,
-		description:
-			'The business version of the library (See http://hl7.org/fhir/SearchParameter/Library-version).',
-	},
-	url: {
-		type: UriScalar,
-		description:
-			'The uri that identifies the library (See http://hl7.org/fhir/SearchParameter/Library-url).',
-	},
-	effective: {
+	// http://hl7.org/fhir/SearchParameter/Library-date
+	date: {
 		type: DateScalar,
-		description:
-			'The time during which the library is intended to be in use (See http://hl7.org/fhir/SearchParameter/Library-effective).',
+		fhirtype: 'date',
+		xpath: 'Library.date',
+		description: 'The library publication date',
 	},
+	// http://hl7.org/fhir/SearchParameter/Library-depends-on
 	depends_on: {
 		type: GraphQLString,
-		description:
-			'What resource is being referenced (See http://hl7.org/fhir/SearchParameter/Library-depends-on).',
+		fhirtype: 'reference',
+		xpath: "Library.relatedArtifact[type/@value='depends-on'].resource",
+		description: 'What resource is being referenced',
 	},
+	// http://hl7.org/fhir/SearchParameter/Library-derived-from
+	derived_from: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: "Library.relatedArtifact[type/@value='derived-from'].resource",
+		description: 'What resource is being referenced',
+	},
+	// http://hl7.org/fhir/SearchParameter/Library-description
+	description: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Library.description',
+		description: 'The description of the library',
+	},
+	// http://hl7.org/fhir/SearchParameter/Library-effective
+	effective: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Library.effectivePeriod',
+		description: 'The time during which the library is intended to be in use',
+	},
+	// http://hl7.org/fhir/SearchParameter/Library-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Library.identifier',
+		description: 'External identifier for the library',
+	},
+	// http://hl7.org/fhir/SearchParameter/Library-jurisdiction
+	jurisdiction: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Library.jurisdiction',
+		description: 'Intended jurisdiction for the library',
+	},
+	// http://hl7.org/fhir/SearchParameter/Library-name
 	name: {
 		type: GraphQLString,
-		description:
-			'Computationally friendly name of the library (See http://hl7.org/fhir/SearchParameter/Library-name).',
+		fhirtype: 'string',
+		xpath: 'Library.name',
+		description: 'Computationally friendly name of the library',
 	},
+	// http://hl7.org/fhir/SearchParameter/Library-predecessor
+	predecessor: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: "Library.relatedArtifact[type/@value='predecessor'].resource",
+		description: 'What resource is being referenced',
+	},
+	// http://hl7.org/fhir/SearchParameter/Library-publisher
 	publisher: {
 		type: GraphQLString,
-		description:
-			'Name of the publisher of the library (See http://hl7.org/fhir/SearchParameter/Library-publisher).',
+		fhirtype: 'string',
+		xpath: 'Library.publisher',
+		description: 'Name of the publisher of the library',
 	},
-	topic: {
-		type: TokenScalar,
-		description:
-			'Topics associated with the module (See http://hl7.org/fhir/SearchParameter/Library-topic).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Library-status
 	status: {
 		type: TokenScalar,
-		description:
-			'The current status of the library (See http://hl7.org/fhir/SearchParameter/Library-status).',
+		fhirtype: 'token',
+		xpath: 'Library.status',
+		description: 'The current status of the library',
+	},
+	// http://hl7.org/fhir/SearchParameter/Library-successor
+	successor: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: "Library.relatedArtifact[type/@value='successor'].resource",
+		description: 'What resource is being referenced',
+	},
+	// http://hl7.org/fhir/SearchParameter/Library-title
+	title: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Library.title',
+		description: 'The human-friendly name of the library',
+	},
+	// http://hl7.org/fhir/SearchParameter/Library-topic
+	topic: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Library.topic',
+		description: 'Topics associated with the module',
+	},
+	// http://hl7.org/fhir/SearchParameter/Library-url
+	url: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'Library.url',
+		description: 'The uri that identifies the library',
+	},
+	// http://hl7.org/fhir/SearchParameter/Library-version
+	version: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Library.version',
+		description: 'The business version of the library',
 	},
 };

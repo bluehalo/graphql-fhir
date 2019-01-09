@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ConditionSchema = require('../../schemas/condition.schema');
+const ConditionSchema = require('../../schemas/condition.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ConditionInput = require('../../inputs/condition.input');
+const ConditionInput = require('../../inputs/condition.input.js');
 
-// Resolvers
-const {
-	conditionCreateResolver,
-	conditionUpdateResolver,
-	conditionDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createCondition,
+	updateCondition,
+	removeCondition,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Condition',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Condition record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Condition record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ConditionCreateMutation
- * @summary ConditionCreate Mutation.
+ * @summary ConditionCreate mutation.
  */
 module.exports.ConditionCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Condition',
-	resolve: scopeInvariant(scopeOptions, conditionCreateResolver),
+	description: 'Create a Condition record',
+	resolve: scopeInvariant(scopeOptions, createCondition),
 	type: ConditionSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ConditionUpdateMutation
- * @summary ConditionUpdate Mutation.
+ * @summary ConditionUpdate mutation.
  */
 module.exports.ConditionUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Conditions',
-	resolve: scopeInvariant(scopeOptions, conditionUpdateResolver),
+	description: 'Update a Condition record',
+	resolve: scopeInvariant(scopeOptions, updateCondition),
 	type: ConditionSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ConditionDeleteMutation
- * @summary ConditionDelete Mutation.
+ * @name exports.ConditionRemoveMutation
+ * @summary ConditionRemove mutation.
  */
-module.exports.ConditionDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Condition',
-	resolve: scopeInvariant(scopeOptions, conditionDeleteResolver),
+module.exports.ConditionRemoveMutation = {
+	description: 'Remove a Condition record',
+	resolve: scopeInvariant(scopeOptions, removeCondition),
 	type: ConditionSchema,
+	args: DeleteArgs,
 };

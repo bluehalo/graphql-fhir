@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,44 +8,60 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the referralrequest query
  */
 module.exports = {
-	requester: {
-		type: GraphQLString,
-		description:
-			'Requester of referral / transfer of care (See http://hl7.org/fhir/SearchParameter/referralrequest-requester).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Who the referral is about (See http://hl7.org/fhir/SearchParameter/referralrequest-patient).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'The status of the referral (See http://hl7.org/fhir/SearchParameter/referralrequest-status).',
-	},
-	priority: {
-		type: TokenScalar,
-		description:
-			'The priority assigned to the referral (See http://hl7.org/fhir/SearchParameter/referralrequest-priority).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'The type of the referral (See http://hl7.org/fhir/SearchParameter/referralrequest-type).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ReferralRequest-date
 	date: {
 		type: DateScalar,
-		description:
-			'Creation or activation date (See http://hl7.org/fhir/SearchParameter/referralrequest-date).',
+		fhirtype: 'date',
+		xpath: 'ReferralRequest.date',
+		description: 'Creation or activation date',
 	},
-	specialty: {
+	// http://hl7.org/fhir/SearchParameter/ReferralRequest-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ReferralRequest.patient',
+		description: 'Who the referral is about',
+	},
+	// http://hl7.org/fhir/SearchParameter/ReferralRequest-priority
+	priority: {
 		type: TokenScalar,
-		description:
-			'The specialty that the referral is for (See http://hl7.org/fhir/SearchParameter/referralrequest-specialty).',
+		fhirtype: 'token',
+		xpath: 'ReferralRequest.priority',
+		description: 'The priority assigned to the referral',
 	},
+	// http://hl7.org/fhir/SearchParameter/ReferralRequest-recipient
 	recipient: {
 		type: GraphQLString,
-		description:
-			'The person that the referral was sent to (See http://hl7.org/fhir/SearchParameter/referralrequest-recipient).',
+		fhirtype: 'reference',
+		xpath: 'ReferralRequest.recipient',
+		description: 'The person that the referral was sent to',
+	},
+	// http://hl7.org/fhir/SearchParameter/ReferralRequest-requester
+	requester: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ReferralRequest.requester',
+		description: 'Requester of referral / transfer of care',
+	},
+	// http://hl7.org/fhir/SearchParameter/ReferralRequest-specialty
+	specialty: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ReferralRequest.specialty',
+		description: 'The specialty that the referral is for',
+	},
+	// http://hl7.org/fhir/SearchParameter/ReferralRequest-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ReferralRequest.status',
+		description: 'The status of the referral',
+	},
+	// http://hl7.org/fhir/SearchParameter/ReferralRequest-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ReferralRequest.type',
+		description: 'The type of the referral',
 	},
 };

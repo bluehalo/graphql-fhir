@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ImagingManifestSchema = require('../../schemas/imagingmanifest.schema');
+const ImagingManifestSchema = require('../../schemas/imagingmanifest.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ImagingManifestInput = require('../../inputs/imagingmanifest.input');
+const ImagingManifestInput = require('../../inputs/imagingmanifest.input.js');
 
-// Resolvers
-const {
-	imagingmanifestCreateResolver,
-	imagingmanifestUpdateResolver,
-	imagingmanifestDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createImagingManifest,
+	updateImagingManifest,
+	removeImagingManifest,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ImagingManifest',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a ImagingManifest record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a ImagingManifest record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ImagingManifestCreateMutation
- * @summary ImagingManifestCreate Mutation.
+ * @summary ImagingManifestCreate mutation.
  */
 module.exports.ImagingManifestCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a ImagingManifest',
-	resolve: scopeInvariant(scopeOptions, imagingmanifestCreateResolver),
+	description: 'Create a ImagingManifest record',
+	resolve: scopeInvariant(scopeOptions, createImagingManifest),
 	type: ImagingManifestSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ImagingManifestUpdateMutation
- * @summary ImagingManifestUpdate Mutation.
+ * @summary ImagingManifestUpdate mutation.
  */
 module.exports.ImagingManifestUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple ImagingManifests',
-	resolve: scopeInvariant(scopeOptions, imagingmanifestUpdateResolver),
+	description: 'Update a ImagingManifest record',
+	resolve: scopeInvariant(scopeOptions, updateImagingManifest),
 	type: ImagingManifestSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ImagingManifestDeleteMutation
- * @summary ImagingManifestDelete Mutation.
+ * @name exports.ImagingManifestRemoveMutation
+ * @summary ImagingManifestRemove mutation.
  */
-module.exports.ImagingManifestDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single ImagingManifest',
-	resolve: scopeInvariant(scopeOptions, imagingmanifestDeleteResolver),
+module.exports.ImagingManifestRemoveMutation = {
+	description: 'Remove a ImagingManifest record',
+	resolve: scopeInvariant(scopeOptions, removeImagingManifest),
 	type: ImagingManifestSchema,
+	args: DeleteArgs,
 };

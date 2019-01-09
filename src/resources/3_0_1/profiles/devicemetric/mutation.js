@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const DeviceMetricSchema = require('../../schemas/devicemetric.schema');
+const DeviceMetricSchema = require('../../schemas/devicemetric.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const DeviceMetricInput = require('../../inputs/devicemetric.input');
+const DeviceMetricInput = require('../../inputs/devicemetric.input.js');
 
-// Resolvers
-const {
-	devicemetricCreateResolver,
-	devicemetricUpdateResolver,
-	devicemetricDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createDeviceMetric,
+	updateDeviceMetric,
+	removeDeviceMetric,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DeviceMetric',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a DeviceMetric record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a DeviceMetric record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.DeviceMetricCreateMutation
- * @summary DeviceMetricCreate Mutation.
+ * @summary DeviceMetricCreate mutation.
  */
 module.exports.DeviceMetricCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a DeviceMetric',
-	resolve: scopeInvariant(scopeOptions, devicemetricCreateResolver),
+	description: 'Create a DeviceMetric record',
+	resolve: scopeInvariant(scopeOptions, createDeviceMetric),
 	type: DeviceMetricSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.DeviceMetricUpdateMutation
- * @summary DeviceMetricUpdate Mutation.
+ * @summary DeviceMetricUpdate mutation.
  */
 module.exports.DeviceMetricUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple DeviceMetrics',
-	resolve: scopeInvariant(scopeOptions, devicemetricUpdateResolver),
+	description: 'Update a DeviceMetric record',
+	resolve: scopeInvariant(scopeOptions, updateDeviceMetric),
 	type: DeviceMetricSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.DeviceMetricDeleteMutation
- * @summary DeviceMetricDelete Mutation.
+ * @name exports.DeviceMetricRemoveMutation
+ * @summary DeviceMetricRemove mutation.
  */
-module.exports.DeviceMetricDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single DeviceMetric',
-	resolve: scopeInvariant(scopeOptions, devicemetricDeleteResolver),
+module.exports.DeviceMetricRemoveMutation = {
+	description: 'Remove a DeviceMetric record',
+	resolve: scopeInvariant(scopeOptions, removeDeviceMetric),
 	type: DeviceMetricSchema,
+	args: DeleteArgs,
 };

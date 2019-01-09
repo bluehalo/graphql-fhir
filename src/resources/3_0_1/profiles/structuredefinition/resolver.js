@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.structuredefinitionResolver
+ * @name exports.getStructureDefinition
  * @static
- * @summary StructureDefinition Resolver.
+ * @summary StructureDefinition resolver.
  */
-module.exports.structuredefinitionResolver = function structuredefinitionResolver(
+module.exports.getStructureDefinition = function getStructureDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.structuredefinitionListResolver
+ * @name exports.getStructureDefinitionList
  * @static
- * @summary StructureDefinition List Resolver.
+ * @summary StructureDefinition list resolver.
  */
-module.exports.structuredefinitionListResolver = function structuredefinitionListResolver(
+module.exports.getStructureDefinitionList = function getStructureDefinitionList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.structuredefinitionInstanceResolver
+ * @name exports.getStructureDefinitionInstance
  * @static
- * @summary StructureDefinition Instance Resolver.
+ * @summary StructureDefinition instance resolver.
  */
-module.exports.structuredefinitionInstanceResolver = function structuredefinitionInstanceResolver(
+module.exports.getStructureDefinitionInstance = function getStructureDefinitionInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.structuredefinitionCreateResolver
+ * @name exports.createStructureDefinition
  * @static
- * @summary StructureDefinition Create Resolver.
+ * @summary Create StructureDefinition resolver.
  */
-module.exports.structuredefinitionCreateResolver = function structuredefinitionCreateResolver(
+module.exports.createStructureDefinition = function createStructureDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.structuredefinitionUpdateResolver
+ * @name exports.updateStructureDefinition
  * @static
- * @summary StructureDefinition Update Resolver.
+ * @summary Update StructureDefinition resolver.
  */
-module.exports.structuredefinitionUpdateResolver = function structuredefinitionUpdateResolver(
+module.exports.updateStructureDefinition = function updateStructureDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.structuredefinitionDeleteResolver
+ * @name exports.removeStructureDefinition
  * @static
- * @summary StructureDefinition Delete Resolver.
+ * @summary Remove StructureDefinition resolver.
  */
-module.exports.structuredefinitionDeleteResolver = function structuredefinitionDeleteResolver(
+module.exports.removeStructureDefinition = function removeStructureDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

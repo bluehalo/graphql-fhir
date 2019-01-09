@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.organizationResolver
+ * @name exports.getOrganization
  * @static
- * @summary Organization Resolver.
+ * @summary Organization resolver.
  */
-module.exports.organizationResolver = function organizationResolver(
+module.exports.getOrganization = function getOrganization(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.organizationListResolver
+ * @name exports.getOrganizationList
  * @static
- * @summary Organization List Resolver.
+ * @summary Organization list resolver.
  */
-module.exports.organizationListResolver = function organizationListResolver(
+module.exports.getOrganizationList = function getOrganizationList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.organizationInstanceResolver
+ * @name exports.getOrganizationInstance
  * @static
- * @summary Organization Instance Resolver.
+ * @summary Organization instance resolver.
  */
-module.exports.organizationInstanceResolver = function organizationInstanceResolver(
+module.exports.getOrganizationInstance = function getOrganizationInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.organizationCreateResolver
+ * @name exports.createOrganization
  * @static
- * @summary Organization Create Resolver.
+ * @summary Create Organization resolver.
  */
-module.exports.organizationCreateResolver = function organizationCreateResolver(
+module.exports.createOrganization = function createOrganization(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.organizationUpdateResolver
+ * @name exports.updateOrganization
  * @static
- * @summary Organization Update Resolver.
+ * @summary Update Organization resolver.
  */
-module.exports.organizationUpdateResolver = function organizationUpdateResolver(
+module.exports.updateOrganization = function updateOrganization(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.organizationDeleteResolver
+ * @name exports.removeOrganization
  * @static
- * @summary Organization Delete Resolver.
+ * @summary Remove Organization resolver.
  */
-module.exports.organizationDeleteResolver = function organizationDeleteResolver(
+module.exports.removeOrganization = function removeOrganization(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

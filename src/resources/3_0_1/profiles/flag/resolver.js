@@ -1,86 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.flagResolver
+ * @name exports.getFlag
  * @static
- * @summary Flag Resolver.
+ * @summary Flag resolver.
  */
-module.exports.flagResolver = function flagResolver(root, args, context, info) {
-	let { server, req, res, version } = context;
+module.exports.getFlag = function getFlag(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.flagListResolver
+ * @name exports.getFlagList
  * @static
- * @summary Flag List Resolver.
+ * @summary Flag list resolver.
  */
-module.exports.flagListResolver = function flagListResolver(
+module.exports.getFlagList = function getFlagList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.flagInstanceResolver
+ * @name exports.getFlagInstance
  * @static
- * @summary Flag Instance Resolver.
+ * @summary Flag instance resolver.
  */
-module.exports.flagInstanceResolver = function flagInstanceResolver(
+module.exports.getFlagInstance = function getFlagInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.flagCreateResolver
+ * @name exports.createFlag
  * @static
- * @summary Flag Create Resolver.
+ * @summary Create Flag resolver.
  */
-module.exports.flagCreateResolver = function flagCreateResolver(
+module.exports.createFlag = function createFlag(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.flagUpdateResolver
+ * @name exports.updateFlag
  * @static
- * @summary Flag Update Resolver.
+ * @summary Update Flag resolver.
  */
-module.exports.flagUpdateResolver = function flagUpdateResolver(
+module.exports.updateFlag = function updateFlag(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.flagDeleteResolver
+ * @name exports.removeFlag
  * @static
- * @summary Flag Delete Resolver.
+ * @summary Remove Flag resolver.
  */
-module.exports.flagDeleteResolver = function flagDeleteResolver(
+module.exports.removeFlag = function removeFlag(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

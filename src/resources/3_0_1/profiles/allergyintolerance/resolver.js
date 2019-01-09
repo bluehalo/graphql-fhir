@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.allergyintoleranceResolver
+ * @name exports.getAllergyIntolerance
  * @static
- * @summary AllergyIntolerance Resolver.
+ * @summary AllergyIntolerance resolver.
  */
-module.exports.allergyintoleranceResolver = function allergyintoleranceResolver(
+module.exports.getAllergyIntolerance = function getAllergyIntolerance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.allergyintoleranceListResolver
+ * @name exports.getAllergyIntoleranceList
  * @static
- * @summary AllergyIntolerance List Resolver.
+ * @summary AllergyIntolerance list resolver.
  */
-module.exports.allergyintoleranceListResolver = function allergyintoleranceListResolver(
+module.exports.getAllergyIntoleranceList = function getAllergyIntoleranceList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.allergyintoleranceInstanceResolver
+ * @name exports.getAllergyIntoleranceInstance
  * @static
- * @summary AllergyIntolerance Instance Resolver.
+ * @summary AllergyIntolerance instance resolver.
  */
-module.exports.allergyintoleranceInstanceResolver = function allergyintoleranceInstanceResolver(
+module.exports.getAllergyIntoleranceInstance = function getAllergyIntoleranceInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.allergyintoleranceCreateResolver
+ * @name exports.createAllergyIntolerance
  * @static
- * @summary AllergyIntolerance Create Resolver.
+ * @summary Create AllergyIntolerance resolver.
  */
-module.exports.allergyintoleranceCreateResolver = function allergyintoleranceCreateResolver(
+module.exports.createAllergyIntolerance = function createAllergyIntolerance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.allergyintoleranceUpdateResolver
+ * @name exports.updateAllergyIntolerance
  * @static
- * @summary AllergyIntolerance Update Resolver.
+ * @summary Update AllergyIntolerance resolver.
  */
-module.exports.allergyintoleranceUpdateResolver = function allergyintoleranceUpdateResolver(
+module.exports.updateAllergyIntolerance = function updateAllergyIntolerance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.allergyintoleranceDeleteResolver
+ * @name exports.removeAllergyIntolerance
  * @static
- * @summary AllergyIntolerance Delete Resolver.
+ * @summary Remove AllergyIntolerance resolver.
  */
-module.exports.allergyintoleranceDeleteResolver = function allergyintoleranceDeleteResolver(
+module.exports.removeAllergyIntolerance = function removeAllergyIntolerance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

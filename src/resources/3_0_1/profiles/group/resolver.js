@@ -1,91 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.groupResolver
+ * @name exports.getGroup
  * @static
- * @summary Group Resolver.
+ * @summary Group resolver.
  */
-module.exports.groupResolver = function groupResolver(
-	root,
-	args,
-	context,
-	info,
-) {
-	let { server, req, res, version } = context;
+module.exports.getGroup = function getGroup(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.groupListResolver
+ * @name exports.getGroupList
  * @static
- * @summary Group List Resolver.
+ * @summary Group list resolver.
  */
-module.exports.groupListResolver = function groupListResolver(
+module.exports.getGroupList = function getGroupList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.groupInstanceResolver
+ * @name exports.getGroupInstance
  * @static
- * @summary Group Instance Resolver.
+ * @summary Group instance resolver.
  */
-module.exports.groupInstanceResolver = function groupInstanceResolver(
+module.exports.getGroupInstance = function getGroupInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.groupCreateResolver
+ * @name exports.createGroup
  * @static
- * @summary Group Create Resolver.
+ * @summary Create Group resolver.
  */
-module.exports.groupCreateResolver = function groupCreateResolver(
+module.exports.createGroup = function createGroup(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.groupUpdateResolver
+ * @name exports.updateGroup
  * @static
- * @summary Group Update Resolver.
+ * @summary Update Group resolver.
  */
-module.exports.groupUpdateResolver = function groupUpdateResolver(
+module.exports.updateGroup = function updateGroup(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.groupDeleteResolver
+ * @name exports.removeGroup
  * @static
- * @summary Group Delete Resolver.
+ * @summary Remove Group resolver.
  */
-module.exports.groupDeleteResolver = function groupDeleteResolver(
+module.exports.removeGroup = function removeGroup(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

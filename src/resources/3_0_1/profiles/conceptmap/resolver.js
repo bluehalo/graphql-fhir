@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.conceptmapResolver
+ * @name exports.getConceptMap
  * @static
- * @summary ConceptMap Resolver.
+ * @summary ConceptMap resolver.
  */
-module.exports.conceptmapResolver = function conceptmapResolver(
+module.exports.getConceptMap = function getConceptMap(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conceptmapListResolver
+ * @name exports.getConceptMapList
  * @static
- * @summary ConceptMap List Resolver.
+ * @summary ConceptMap list resolver.
  */
-module.exports.conceptmapListResolver = function conceptmapListResolver(
+module.exports.getConceptMapList = function getConceptMapList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conceptmapInstanceResolver
+ * @name exports.getConceptMapInstance
  * @static
- * @summary ConceptMap Instance Resolver.
+ * @summary ConceptMap instance resolver.
  */
-module.exports.conceptmapInstanceResolver = function conceptmapInstanceResolver(
+module.exports.getConceptMapInstance = function getConceptMapInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conceptmapCreateResolver
+ * @name exports.createConceptMap
  * @static
- * @summary ConceptMap Create Resolver.
+ * @summary Create ConceptMap resolver.
  */
-module.exports.conceptmapCreateResolver = function conceptmapCreateResolver(
+module.exports.createConceptMap = function createConceptMap(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conceptmapUpdateResolver
+ * @name exports.updateConceptMap
  * @static
- * @summary ConceptMap Update Resolver.
+ * @summary Update ConceptMap resolver.
  */
-module.exports.conceptmapUpdateResolver = function conceptmapUpdateResolver(
+module.exports.updateConceptMap = function updateConceptMap(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conceptmapDeleteResolver
+ * @name exports.removeConceptMap
  * @static
- * @summary ConceptMap Delete Resolver.
+ * @summary Remove ConceptMap resolver.
  */
-module.exports.conceptmapDeleteResolver = function conceptmapDeleteResolver(
+module.exports.removeConceptMap = function removeConceptMap(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

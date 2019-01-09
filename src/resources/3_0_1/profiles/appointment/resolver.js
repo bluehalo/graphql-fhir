@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.appointmentResolver
+ * @name exports.getAppointment
  * @static
- * @summary Appointment Resolver.
+ * @summary Appointment resolver.
  */
-module.exports.appointmentResolver = function appointmentResolver(
+module.exports.getAppointment = function getAppointment(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.appointmentListResolver
+ * @name exports.getAppointmentList
  * @static
- * @summary Appointment List Resolver.
+ * @summary Appointment list resolver.
  */
-module.exports.appointmentListResolver = function appointmentListResolver(
+module.exports.getAppointmentList = function getAppointmentList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.appointmentInstanceResolver
+ * @name exports.getAppointmentInstance
  * @static
- * @summary Appointment Instance Resolver.
+ * @summary Appointment instance resolver.
  */
-module.exports.appointmentInstanceResolver = function appointmentInstanceResolver(
+module.exports.getAppointmentInstance = function getAppointmentInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.appointmentCreateResolver
+ * @name exports.createAppointment
  * @static
- * @summary Appointment Create Resolver.
+ * @summary Create Appointment resolver.
  */
-module.exports.appointmentCreateResolver = function appointmentCreateResolver(
+module.exports.createAppointment = function createAppointment(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.appointmentUpdateResolver
+ * @name exports.updateAppointment
  * @static
- * @summary Appointment Update Resolver.
+ * @summary Update Appointment resolver.
  */
-module.exports.appointmentUpdateResolver = function appointmentUpdateResolver(
+module.exports.updateAppointment = function updateAppointment(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.appointmentDeleteResolver
+ * @name exports.removeAppointment
  * @static
- * @summary Appointment Delete Resolver.
+ * @summary Remove Appointment resolver.
  */
-module.exports.appointmentDeleteResolver = function appointmentDeleteResolver(
+module.exports.removeAppointment = function removeAppointment(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

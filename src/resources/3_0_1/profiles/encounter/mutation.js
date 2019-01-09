@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const EncounterSchema = require('../../schemas/encounter.schema');
+const EncounterSchema = require('../../schemas/encounter.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const EncounterInput = require('../../inputs/encounter.input');
+const EncounterInput = require('../../inputs/encounter.input.js');
 
-// Resolvers
-const {
-	encounterCreateResolver,
-	encounterUpdateResolver,
-	encounterDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createEncounter,
+	updateEncounter,
+	removeEncounter,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Encounter',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Encounter record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Encounter record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.EncounterCreateMutation
- * @summary EncounterCreate Mutation.
+ * @summary EncounterCreate mutation.
  */
 module.exports.EncounterCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Encounter',
-	resolve: scopeInvariant(scopeOptions, encounterCreateResolver),
+	description: 'Create a Encounter record',
+	resolve: scopeInvariant(scopeOptions, createEncounter),
 	type: EncounterSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.EncounterUpdateMutation
- * @summary EncounterUpdate Mutation.
+ * @summary EncounterUpdate mutation.
  */
 module.exports.EncounterUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Encounters',
-	resolve: scopeInvariant(scopeOptions, encounterUpdateResolver),
+	description: 'Update a Encounter record',
+	resolve: scopeInvariant(scopeOptions, updateEncounter),
 	type: EncounterSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.EncounterDeleteMutation
- * @summary EncounterDelete Mutation.
+ * @name exports.EncounterRemoveMutation
+ * @summary EncounterRemove mutation.
  */
-module.exports.EncounterDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Encounter',
-	resolve: scopeInvariant(scopeOptions, encounterDeleteResolver),
+module.exports.EncounterRemoveMutation = {
+	description: 'Remove a Encounter record',
+	resolve: scopeInvariant(scopeOptions, removeEncounter),
 	type: EncounterSchema,
+	args: DeleteArgs,
 };

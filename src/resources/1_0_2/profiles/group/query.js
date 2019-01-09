@@ -1,55 +1,55 @@
 // Schemas
-const GroupSchema = require('../../schemas/group.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const GroupSchema = require('../../schemas/group.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const GroupArgs = require('../../parameters/group.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const GroupArgs = require('../../parameters/group.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, GroupArgs);
 
 // Resolvers
-const {
-	groupResolver,
-	groupListResolver,
-	groupInstanceResolver,
-} = require('./resolver');
+const { getGroup, getGroupList, getGroupInstance } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Group',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.GroupQuery
- * @summary Group Query.
+ * @summary Group query.
  */
 module.exports.GroupQuery = {
-	args: Object.assign({}, CommonArgs, GroupArgs),
 	description: 'Query for a single Group',
-	resolve: scopeInvariant(scopeOptions, groupResolver),
+	resolve: scopeInvariant(scopeOptions, getGroup),
 	type: GroupSchema,
+	args: args,
 };
 
 /**
  * @name exports.GroupListQuery
- * @summary GroupList Query.
+ * @summary Group query.
  */
 module.exports.GroupListQuery = {
-	args: Object.assign({}, CommonArgs, GroupArgs),
-	description: 'Query for multiple Groups',
-	resolve: scopeInvariant(scopeOptions, groupListResolver),
+	description: 'Query for a more than or just one Group',
+	resolve: scopeInvariant(scopeOptions, getGroupList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.GroupInstanceQuery
- * @summary GroupInstance Query.
+ * @summary Group query.
  */
 module.exports.GroupInstanceQuery = {
-	description: 'Get information about a single Group',
-	resolve: scopeInvariant(scopeOptions, groupInstanceResolver),
+	description: 'Access information about a single Group',
+	resolve: scopeInvariant(scopeOptions, getGroupInstance),
 	type: GroupSchema,
+	args: args,
 };

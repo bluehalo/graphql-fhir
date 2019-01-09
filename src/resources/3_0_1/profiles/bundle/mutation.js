@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const BundleSchema = require('../../schemas/bundle.schema');
+const BundleSchema = require('../../schemas/bundle.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const BundleInput = require('../../inputs/bundle.input');
+const BundleInput = require('../../inputs/bundle.input.js');
 
-// Resolvers
-const {
-	bundleCreateResolver,
-	bundleUpdateResolver,
-	bundleDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createBundle, updateBundle, removeBundle } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Bundle',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Bundle record.',
 	},
 	resource: {
@@ -39,7 +36,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Bundle record for deletion.',
 	},
@@ -47,33 +44,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.BundleCreateMutation
- * @summary BundleCreate Mutation.
+ * @summary BundleCreate mutation.
  */
 module.exports.BundleCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Bundle',
-	resolve: scopeInvariant(scopeOptions, bundleCreateResolver),
+	description: 'Create a Bundle record',
+	resolve: scopeInvariant(scopeOptions, createBundle),
 	type: BundleSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.BundleUpdateMutation
- * @summary BundleUpdate Mutation.
+ * @summary BundleUpdate mutation.
  */
 module.exports.BundleUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Bundles',
-	resolve: scopeInvariant(scopeOptions, bundleUpdateResolver),
+	description: 'Update a Bundle record',
+	resolve: scopeInvariant(scopeOptions, updateBundle),
 	type: BundleSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.BundleDeleteMutation
- * @summary BundleDelete Mutation.
+ * @name exports.BundleRemoveMutation
+ * @summary BundleRemove mutation.
  */
-module.exports.BundleDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Bundle',
-	resolve: scopeInvariant(scopeOptions, bundleDeleteResolver),
+module.exports.BundleRemoveMutation = {
+	description: 'Remove a Bundle record',
+	resolve: scopeInvariant(scopeOptions, removeBundle),
 	type: BundleSchema,
+	args: DeleteArgs,
 };

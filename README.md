@@ -90,7 +90,7 @@ src
 - [ ] Support for more versions
 	- [x] DSTU2 (1.0.2).
 	- [x] STU3 (3.0.1).
-	- [ ] R4
+	- [x] R4
 - [ ] Work with community to continue to establish best practices for FHIR with GraphQL and implement them here.
 
 ## Contributing

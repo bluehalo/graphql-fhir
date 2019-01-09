@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.documentmanifestResolver
+ * @name exports.getDocumentManifest
  * @static
- * @summary DocumentManifest Resolver.
+ * @summary DocumentManifest resolver.
  */
-module.exports.documentmanifestResolver = function documentmanifestResolver(
+module.exports.getDocumentManifest = function getDocumentManifest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.documentmanifestListResolver
+ * @name exports.getDocumentManifestList
  * @static
- * @summary DocumentManifest List Resolver.
+ * @summary DocumentManifest list resolver.
  */
-module.exports.documentmanifestListResolver = function documentmanifestListResolver(
+module.exports.getDocumentManifestList = function getDocumentManifestList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.documentmanifestInstanceResolver
+ * @name exports.getDocumentManifestInstance
  * @static
- * @summary DocumentManifest Instance Resolver.
+ * @summary DocumentManifest instance resolver.
  */
-module.exports.documentmanifestInstanceResolver = function documentmanifestInstanceResolver(
+module.exports.getDocumentManifestInstance = function getDocumentManifestInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.documentmanifestCreateResolver
+ * @name exports.createDocumentManifest
  * @static
- * @summary DocumentManifest Create Resolver.
+ * @summary Create DocumentManifest resolver.
  */
-module.exports.documentmanifestCreateResolver = function documentmanifestCreateResolver(
+module.exports.createDocumentManifest = function createDocumentManifest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.documentmanifestUpdateResolver
+ * @name exports.updateDocumentManifest
  * @static
- * @summary DocumentManifest Update Resolver.
+ * @summary Update DocumentManifest resolver.
  */
-module.exports.documentmanifestUpdateResolver = function documentmanifestUpdateResolver(
+module.exports.updateDocumentManifest = function updateDocumentManifest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.documentmanifestDeleteResolver
+ * @name exports.removeDocumentManifest
  * @static
- * @summary DocumentManifest Delete Resolver.
+ * @summary Remove DocumentManifest resolver.
  */
-module.exports.documentmanifestDeleteResolver = function documentmanifestDeleteResolver(
+module.exports.removeDocumentManifest = function removeDocumentManifest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

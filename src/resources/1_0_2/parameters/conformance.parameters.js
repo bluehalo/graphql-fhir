@@ -1,7 +1,7 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,84 +9,118 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the conformance query
  */
 module.exports = {
-	status: {
-		type: TokenScalar,
-		description:
-			'The current status of the conformance statement (See http://hl7.org/fhir/SearchParameter/conformance-status).',
-	},
-	resource: {
-		type: TokenScalar,
-		description:
-			'Name of a resource mentioned in a conformance statement (See http://hl7.org/fhir/SearchParameter/conformance-resource).',
-	},
-	security: {
-		type: TokenScalar,
-		description:
-			'OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates (See http://hl7.org/fhir/SearchParameter/conformance-security).',
-	},
-	format: {
-		type: TokenScalar,
-		description:
-			'formats supported (xml | json | mime type) (See http://hl7.org/fhir/SearchParameter/conformance-format).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-date
 	date: {
 		type: DateScalar,
-		description:
-			'The conformance statement publication date (See http://hl7.org/fhir/SearchParameter/conformance-date).',
+		fhirtype: 'date',
+		xpath: 'Conformance.date',
+		description: 'The conformance statement publication date',
 	},
-	url: {
-		type: UriScalar,
-		description:
-			'The uri that identifies the conformance statement (See http://hl7.org/fhir/SearchParameter/conformance-url).',
-	},
-	version: {
-		type: TokenScalar,
-		description:
-			'The version identifier of the conformance statement (See http://hl7.org/fhir/SearchParameter/conformance-version).',
-	},
-	publisher: {
-		type: GraphQLString,
-		description:
-			'Name of the publisher of the conformance statement (See http://hl7.org/fhir/SearchParameter/conformance-publisher).',
-	},
-	mode: {
-		type: TokenScalar,
-		description:
-			'Mode - restful (server/client) or messaging (sender/receiver) (See http://hl7.org/fhir/SearchParameter/conformance-mode).',
-	},
-	software: {
-		type: GraphQLString,
-		description:
-			'Part of a the name of a software application (See http://hl7.org/fhir/SearchParameter/conformance-software).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-description
 	description: {
 		type: GraphQLString,
-		description:
-			'Text search in the description of the conformance statement (See http://hl7.org/fhir/SearchParameter/conformance-description).',
+		fhirtype: 'string',
+		xpath: 'Conformance.description',
+		description: 'Text search in the description of the conformance statement',
 	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-event
 	event: {
 		type: TokenScalar,
-		description:
-			'Event code in a conformance statement (See http://hl7.org/fhir/SearchParameter/conformance-event).',
+		fhirtype: 'token',
+		xpath: 'Conformance.messaging.event.code',
+		description: 'Event code in a conformance statement',
 	},
-	name: {
-		type: GraphQLString,
-		description:
-			'Name of the conformance statement (See http://hl7.org/fhir/SearchParameter/conformance-name).',
-	},
-	supported_profile: {
-		type: GraphQLString,
-		description:
-			'Profiles for use cases supported (See http://hl7.org/fhir/SearchParameter/conformance-supported-profile).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-fhirversion
 	fhirversion: {
 		type: TokenScalar,
-		description:
-			'The version of FHIR (See http://hl7.org/fhir/SearchParameter/conformance-fhirversion).',
+		fhirtype: 'token',
+		xpath: 'Conformance.version',
+		description: 'The version of FHIR',
 	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-format
+	format: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Conformance.format',
+		description: 'formats supported (xml | json | mime type)',
+	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-mode
+	mode: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Conformance.rest.mode',
+		description:
+			'Mode - restful (server/client) or messaging (sender/receiver)',
+	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Conformance.name',
+		description: 'Name of the conformance statement',
+	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-profile
 	profile: {
 		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Conformance.rest.resource.profile',
+		description: 'A profile id invoked in a conformance statement',
+	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-publisher
+	publisher: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Conformance.publisher',
+		description: 'Name of the publisher of the conformance statement',
+	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-resource
+	resource: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Conformance.rest.resource.type',
+		description: 'Name of a resource mentioned in a conformance statement',
+	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-security
+	security: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Conformance.rest.security.service',
 		description:
-			'A profile id invoked in a conformance statement (See http://hl7.org/fhir/SearchParameter/conformance-profile).',
+			'OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates',
+	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-software
+	software: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Conformance.software.name',
+		description: 'Part of a the name of a software application',
+	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Conformance.status',
+		description: 'The current status of the conformance statement',
+	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-supported-profile
+	supported_profile: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Conformance.profile',
+		description: 'Profiles for use cases supported',
+	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-url
+	url: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'Conformance.url',
+		description: 'The uri that identifies the conformance statement',
+	},
+	// http://hl7.org/fhir/SearchParameter/Conformance-version
+	version: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Conformance.version',
+		description: 'The version identifier of the conformance statement',
 	},
 };

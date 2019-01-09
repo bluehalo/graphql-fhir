@@ -1,55 +1,55 @@
 // Schemas
-const GoalSchema = require('../../schemas/goal.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const GoalSchema = require('../../schemas/goal.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const GoalArgs = require('../../parameters/goal.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const GoalArgs = require('../../parameters/goal.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, GoalArgs);
 
 // Resolvers
-const {
-	goalResolver,
-	goalListResolver,
-	goalInstanceResolver,
-} = require('./resolver');
+const { getGoal, getGoalList, getGoalInstance } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Goal',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.GoalQuery
- * @summary Goal Query.
+ * @summary Goal query.
  */
 module.exports.GoalQuery = {
-	args: Object.assign({}, CommonArgs, GoalArgs),
 	description: 'Query for a single Goal',
-	resolve: scopeInvariant(scopeOptions, goalResolver),
+	resolve: scopeInvariant(scopeOptions, getGoal),
 	type: GoalSchema,
+	args: args,
 };
 
 /**
  * @name exports.GoalListQuery
- * @summary GoalList Query.
+ * @summary Goal query.
  */
 module.exports.GoalListQuery = {
-	args: Object.assign({}, CommonArgs, GoalArgs),
-	description: 'Query for multiple Goals',
-	resolve: scopeInvariant(scopeOptions, goalListResolver),
+	description: 'Query for a more than or just one Goal',
+	resolve: scopeInvariant(scopeOptions, getGoalList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.GoalInstanceQuery
- * @summary GoalInstance Query.
+ * @summary Goal query.
  */
 module.exports.GoalInstanceQuery = {
-	description: 'Get information about a single Goal',
-	resolve: scopeInvariant(scopeOptions, goalInstanceResolver),
+	description: 'Access information about a single Goal',
+	resolve: scopeInvariant(scopeOptions, getGoalInstance),
 	type: GoalSchema,
+	args: args,
 };

@@ -1,55 +1,59 @@
 // Schemas
-const ConceptMapSchema = require('../../schemas/conceptmap.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ConceptMapSchema = require('../../schemas/conceptmap.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ConceptMapArgs = require('../../parameters/conceptmap.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ConceptMapArgs = require('../../parameters/conceptmap.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ConceptMapArgs);
 
 // Resolvers
 const {
-	conceptmapResolver,
-	conceptmapListResolver,
-	conceptmapInstanceResolver,
+	getConceptMap,
+	getConceptMapList,
+	getConceptMapInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ConceptMap',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ConceptMapQuery
- * @summary ConceptMap Query.
+ * @summary ConceptMap query.
  */
 module.exports.ConceptMapQuery = {
-	args: Object.assign({}, CommonArgs, ConceptMapArgs),
 	description: 'Query for a single ConceptMap',
-	resolve: scopeInvariant(scopeOptions, conceptmapResolver),
+	resolve: scopeInvariant(scopeOptions, getConceptMap),
 	type: ConceptMapSchema,
+	args: args,
 };
 
 /**
  * @name exports.ConceptMapListQuery
- * @summary ConceptMapList Query.
+ * @summary ConceptMap query.
  */
 module.exports.ConceptMapListQuery = {
-	args: Object.assign({}, CommonArgs, ConceptMapArgs),
-	description: 'Query for multiple ConceptMaps',
-	resolve: scopeInvariant(scopeOptions, conceptmapListResolver),
+	description: 'Query for a more than or just one ConceptMap',
+	resolve: scopeInvariant(scopeOptions, getConceptMapList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ConceptMapInstanceQuery
- * @summary ConceptMapInstance Query.
+ * @summary ConceptMap query.
  */
 module.exports.ConceptMapInstanceQuery = {
-	description: 'Get information about a single ConceptMap',
-	resolve: scopeInvariant(scopeOptions, conceptmapInstanceResolver),
+	description: 'Access information about a single ConceptMap',
+	resolve: scopeInvariant(scopeOptions, getConceptMapInstance),
 	type: ConceptMapSchema,
+	args: args,
 };

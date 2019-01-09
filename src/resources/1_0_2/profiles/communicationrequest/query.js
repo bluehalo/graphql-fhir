@@ -1,55 +1,59 @@
 // Schemas
-const CommunicationRequestSchema = require('../../schemas/communicationrequest.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const CommunicationRequestSchema = require('../../schemas/communicationrequest.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const CommunicationRequestArgs = require('../../parameters/communicationrequest.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const CommunicationRequestArgs = require('../../parameters/communicationrequest.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, CommunicationRequestArgs);
 
 // Resolvers
 const {
-	communicationrequestResolver,
-	communicationrequestListResolver,
-	communicationrequestInstanceResolver,
+	getCommunicationRequest,
+	getCommunicationRequestList,
+	getCommunicationRequestInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'CommunicationRequest',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.CommunicationRequestQuery
- * @summary CommunicationRequest Query.
+ * @summary CommunicationRequest query.
  */
 module.exports.CommunicationRequestQuery = {
-	args: Object.assign({}, CommonArgs, CommunicationRequestArgs),
 	description: 'Query for a single CommunicationRequest',
-	resolve: scopeInvariant(scopeOptions, communicationrequestResolver),
+	resolve: scopeInvariant(scopeOptions, getCommunicationRequest),
 	type: CommunicationRequestSchema,
+	args: args,
 };
 
 /**
  * @name exports.CommunicationRequestListQuery
- * @summary CommunicationRequestList Query.
+ * @summary CommunicationRequest query.
  */
 module.exports.CommunicationRequestListQuery = {
-	args: Object.assign({}, CommonArgs, CommunicationRequestArgs),
-	description: 'Query for multiple CommunicationRequests',
-	resolve: scopeInvariant(scopeOptions, communicationrequestListResolver),
+	description: 'Query for a more than or just one CommunicationRequest',
+	resolve: scopeInvariant(scopeOptions, getCommunicationRequestList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.CommunicationRequestInstanceQuery
- * @summary CommunicationRequestInstance Query.
+ * @summary CommunicationRequest query.
  */
 module.exports.CommunicationRequestInstanceQuery = {
-	description: 'Get information about a single CommunicationRequest',
-	resolve: scopeInvariant(scopeOptions, communicationrequestInstanceResolver),
+	description: 'Access information about a single CommunicationRequest',
+	resolve: scopeInvariant(scopeOptions, getCommunicationRequestInstance),
 	type: CommunicationRequestSchema,
+	args: args,
 };

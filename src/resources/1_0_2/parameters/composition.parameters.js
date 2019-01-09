@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,84 +8,116 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the composition query
  */
 module.exports = {
-	status: {
-		type: TokenScalar,
-		description:
-			'preliminary | final | amended | entered-in-error (See http://hl7.org/fhir/SearchParameter/composition-status).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'Who and/or what the composition is about (See http://hl7.org/fhir/SearchParameter/composition-subject).',
-	},
-	class: {
-		type: TokenScalar,
-		description:
-			'Categorization of Composition (See http://hl7.org/fhir/SearchParameter/composition-class).',
-	},
-	encounter: {
-		type: GraphQLString,
-		description:
-			'Context of the Composition (See http://hl7.org/fhir/SearchParameter/composition-encounter).',
-	},
-	period: {
-		type: DateScalar,
-		description:
-			'The period covered by the documentation (See http://hl7.org/fhir/SearchParameter/composition-period).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'Kind of composition (LOINC if possible) (See http://hl7.org/fhir/SearchParameter/composition-type).',
-	},
-	date: {
-		type: DateScalar,
-		description:
-			'Composition editing time (See http://hl7.org/fhir/SearchParameter/composition-date).',
-	},
-	section: {
-		type: TokenScalar,
-		description:
-			'Classification of section (recommended) (See http://hl7.org/fhir/SearchParameter/composition-section).',
-	},
-	author: {
-		type: GraphQLString,
-		description:
-			'Who and/or what authored the composition (See http://hl7.org/fhir/SearchParameter/composition-author).',
-	},
-	title: {
-		type: GraphQLString,
-		description:
-			'Human Readable name/title (See http://hl7.org/fhir/SearchParameter/composition-title).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Who and/or what the composition is about (See http://hl7.org/fhir/SearchParameter/composition-patient).',
-	},
-	confidentiality: {
-		type: TokenScalar,
-		description:
-			'As defined by affinity domain (See http://hl7.org/fhir/SearchParameter/composition-confidentiality).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Composition-attester
 	attester: {
 		type: GraphQLString,
-		description:
-			'Who attested the composition (See http://hl7.org/fhir/SearchParameter/composition-attester).',
+		fhirtype: 'reference',
+		xpath: 'Composition.attester.party',
+		description: 'Who attested the composition',
 	},
-	entry: {
+	// http://hl7.org/fhir/SearchParameter/Composition-author
+	author: {
 		type: GraphQLString,
-		description:
-			'A reference to data that supports this section (See http://hl7.org/fhir/SearchParameter/composition-entry).',
+		fhirtype: 'reference',
+		xpath: 'Composition.author',
+		description: 'Who and/or what authored the composition',
 	},
+	// http://hl7.org/fhir/SearchParameter/Composition-class
+	class: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Composition.class',
+		description: 'Categorization of Composition',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-confidentiality
+	confidentiality: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Composition.confidentiality',
+		description: 'As defined by affinity domain',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-context
 	context: {
 		type: TokenScalar,
-		description:
-			'Code(s) that apply to the event being documented (See http://hl7.org/fhir/SearchParameter/composition-context).',
+		fhirtype: 'token',
+		xpath: 'Composition.event.code',
+		description: 'Code(s) that apply to the event being documented',
 	},
+	// http://hl7.org/fhir/SearchParameter/Composition-date
+	date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Composition.date',
+		description: 'Composition editing time',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-encounter
+	encounter: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Composition.encounter',
+		description: 'Context of the Composition',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-entry
+	entry: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Composition.section.entry',
+		description: 'A reference to data that supports this section',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Logical identifier of composition (version-independent) (See http://hl7.org/fhir/SearchParameter/composition-identifier).',
+		fhirtype: 'token',
+		xpath: 'Composition.identifier',
+		description: 'Logical identifier of composition (version-independent)',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Composition.subject',
+		description: 'Who and/or what the composition is about',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-period
+	period: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Composition.event.period',
+		description: 'The period covered by the documentation',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-section
+	section: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Composition.section.code',
+		description: 'Classification of section (recommended)',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Composition.status',
+		description: 'preliminary | final | amended | entered-in-error',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Composition.subject',
+		description: 'Who and/or what the composition is about',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-title
+	title: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Composition.title',
+		description: 'Human Readable name/title',
+	},
+	// http://hl7.org/fhir/SearchParameter/Composition-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Composition.type',
+		description: 'Kind of composition (LOINC if possible)',
 	},
 };

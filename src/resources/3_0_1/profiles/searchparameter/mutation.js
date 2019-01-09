@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const SearchParameterSchema = require('../../schemas/searchparameter.schema');
+const SearchParameterSchema = require('../../schemas/searchparameter.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const SearchParameterInput = require('../../inputs/searchparameter.input');
+const SearchParameterInput = require('../../inputs/searchparameter.input.js');
 
-// Resolvers
-const {
-	searchparameterCreateResolver,
-	searchparameterUpdateResolver,
-	searchparameterDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createSearchParameter,
+	updateSearchParameter,
+	removeSearchParameter,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'SearchParameter',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a SearchParameter record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a SearchParameter record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.SearchParameterCreateMutation
- * @summary SearchParameterCreate Mutation.
+ * @summary SearchParameterCreate mutation.
  */
 module.exports.SearchParameterCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a SearchParameter',
-	resolve: scopeInvariant(scopeOptions, searchparameterCreateResolver),
+	description: 'Create a SearchParameter record',
+	resolve: scopeInvariant(scopeOptions, createSearchParameter),
 	type: SearchParameterSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.SearchParameterUpdateMutation
- * @summary SearchParameterUpdate Mutation.
+ * @summary SearchParameterUpdate mutation.
  */
 module.exports.SearchParameterUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple SearchParameters',
-	resolve: scopeInvariant(scopeOptions, searchparameterUpdateResolver),
+	description: 'Update a SearchParameter record',
+	resolve: scopeInvariant(scopeOptions, updateSearchParameter),
 	type: SearchParameterSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.SearchParameterDeleteMutation
- * @summary SearchParameterDelete Mutation.
+ * @name exports.SearchParameterRemoveMutation
+ * @summary SearchParameterRemove mutation.
  */
-module.exports.SearchParameterDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single SearchParameter',
-	resolve: scopeInvariant(scopeOptions, searchparameterDeleteResolver),
+module.exports.SearchParameterRemoveMutation = {
+	description: 'Remove a SearchParameter record',
+	resolve: scopeInvariant(scopeOptions, removeSearchParameter),
 	type: SearchParameterSchema,
+	args: DeleteArgs,
 };

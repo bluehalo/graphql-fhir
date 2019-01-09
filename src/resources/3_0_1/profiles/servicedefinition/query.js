@@ -1,55 +1,65 @@
 // Schemas
-const ServiceDefinitionSchema = require('../../schemas/servicedefinition.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ServiceDefinitionSchema = require('../../schemas/servicedefinition.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ServiceDefinitionArgs = require('../../parameters/servicedefinition.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ServiceDefinitionArgs = require('../../parameters/servicedefinition.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+const DomainResourceArgs = require('../../parameters/domainresource.parameters.js');
+
+let args = Object.assign(
+	{},
+	DomainResourceArgs,
+	ResourceArgs,
+	ServiceDefinitionArgs,
+);
 
 // Resolvers
 const {
-	servicedefinitionResolver,
-	servicedefinitionListResolver,
-	servicedefinitionInstanceResolver,
+	getServiceDefinition,
+	getServiceDefinitionList,
+	getServiceDefinitionInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ServiceDefinition',
 	action: 'read',
-	version: '3_0_1',
 };
 
 /**
  * @name exports.ServiceDefinitionQuery
- * @summary ServiceDefinition Query.
+ * @summary ServiceDefinition query.
  */
 module.exports.ServiceDefinitionQuery = {
-	args: Object.assign({}, CommonArgs, ServiceDefinitionArgs),
 	description: 'Query for a single ServiceDefinition',
-	resolve: scopeInvariant(scopeOptions, servicedefinitionResolver),
+	resolve: scopeInvariant(scopeOptions, getServiceDefinition),
 	type: ServiceDefinitionSchema,
+	args: args,
 };
 
 /**
  * @name exports.ServiceDefinitionListQuery
- * @summary ServiceDefinitionList Query.
+ * @summary ServiceDefinition query.
  */
 module.exports.ServiceDefinitionListQuery = {
-	args: Object.assign({}, CommonArgs, ServiceDefinitionArgs),
-	description: 'Query for multiple ServiceDefinitions',
-	resolve: scopeInvariant(scopeOptions, servicedefinitionListResolver),
+	description: 'Query for a more than or just one ServiceDefinition',
+	resolve: scopeInvariant(scopeOptions, getServiceDefinitionList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ServiceDefinitionInstanceQuery
- * @summary ServiceDefinitionInstance Query.
+ * @summary ServiceDefinition query.
  */
 module.exports.ServiceDefinitionInstanceQuery = {
-	description: 'Get information about a single ServiceDefinition',
-	resolve: scopeInvariant(scopeOptions, servicedefinitionInstanceResolver),
+	description: 'Access information about a single ServiceDefinition',
+	resolve: scopeInvariant(scopeOptions, getServiceDefinitionInstance),
 	type: ServiceDefinitionSchema,
+	args: args,
 };

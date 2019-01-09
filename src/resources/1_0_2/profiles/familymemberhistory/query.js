@@ -1,55 +1,59 @@
 // Schemas
-const FamilyMemberHistorySchema = require('../../schemas/familymemberhistory.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const FamilyMemberHistorySchema = require('../../schemas/familymemberhistory.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const FamilyMemberHistoryArgs = require('../../parameters/familymemberhistory.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const FamilyMemberHistoryArgs = require('../../parameters/familymemberhistory.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, FamilyMemberHistoryArgs);
 
 // Resolvers
 const {
-	familymemberhistoryResolver,
-	familymemberhistoryListResolver,
-	familymemberhistoryInstanceResolver,
+	getFamilyMemberHistory,
+	getFamilyMemberHistoryList,
+	getFamilyMemberHistoryInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'FamilyMemberHistory',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.FamilyMemberHistoryQuery
- * @summary FamilyMemberHistory Query.
+ * @summary FamilyMemberHistory query.
  */
 module.exports.FamilyMemberHistoryQuery = {
-	args: Object.assign({}, CommonArgs, FamilyMemberHistoryArgs),
 	description: 'Query for a single FamilyMemberHistory',
-	resolve: scopeInvariant(scopeOptions, familymemberhistoryResolver),
+	resolve: scopeInvariant(scopeOptions, getFamilyMemberHistory),
 	type: FamilyMemberHistorySchema,
+	args: args,
 };
 
 /**
  * @name exports.FamilyMemberHistoryListQuery
- * @summary FamilyMemberHistoryList Query.
+ * @summary FamilyMemberHistory query.
  */
 module.exports.FamilyMemberHistoryListQuery = {
-	args: Object.assign({}, CommonArgs, FamilyMemberHistoryArgs),
-	description: 'Query for multiple FamilyMemberHistorys',
-	resolve: scopeInvariant(scopeOptions, familymemberhistoryListResolver),
+	description: 'Query for a more than or just one FamilyMemberHistory',
+	resolve: scopeInvariant(scopeOptions, getFamilyMemberHistoryList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.FamilyMemberHistoryInstanceQuery
- * @summary FamilyMemberHistoryInstance Query.
+ * @summary FamilyMemberHistory query.
  */
 module.exports.FamilyMemberHistoryInstanceQuery = {
-	description: 'Get information about a single FamilyMemberHistory',
-	resolve: scopeInvariant(scopeOptions, familymemberhistoryInstanceResolver),
+	description: 'Access information about a single FamilyMemberHistory',
+	resolve: scopeInvariant(scopeOptions, getFamilyMemberHistoryInstance),
 	type: FamilyMemberHistorySchema,
+	args: args,
 };

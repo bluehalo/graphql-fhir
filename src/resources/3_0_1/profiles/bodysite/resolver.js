@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.bodysiteResolver
+ * @name exports.getBodySite
  * @static
- * @summary BodySite Resolver.
+ * @summary BodySite resolver.
  */
-module.exports.bodysiteResolver = function bodysiteResolver(
+module.exports.getBodySite = function getBodySite(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.bodysiteListResolver
+ * @name exports.getBodySiteList
  * @static
- * @summary BodySite List Resolver.
+ * @summary BodySite list resolver.
  */
-module.exports.bodysiteListResolver = function bodysiteListResolver(
+module.exports.getBodySiteList = function getBodySiteList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.bodysiteInstanceResolver
+ * @name exports.getBodySiteInstance
  * @static
- * @summary BodySite Instance Resolver.
+ * @summary BodySite instance resolver.
  */
-module.exports.bodysiteInstanceResolver = function bodysiteInstanceResolver(
+module.exports.getBodySiteInstance = function getBodySiteInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.bodysiteCreateResolver
+ * @name exports.createBodySite
  * @static
- * @summary BodySite Create Resolver.
+ * @summary Create BodySite resolver.
  */
-module.exports.bodysiteCreateResolver = function bodysiteCreateResolver(
+module.exports.createBodySite = function createBodySite(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.bodysiteUpdateResolver
+ * @name exports.updateBodySite
  * @static
- * @summary BodySite Update Resolver.
+ * @summary Update BodySite resolver.
  */
-module.exports.bodysiteUpdateResolver = function bodysiteUpdateResolver(
+module.exports.updateBodySite = function updateBodySite(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.bodysiteDeleteResolver
+ * @name exports.removeBodySite
  * @static
- * @summary BodySite Delete Resolver.
+ * @summary Remove BodySite resolver.
  */
-module.exports.bodysiteDeleteResolver = function bodysiteDeleteResolver(
+module.exports.removeBodySite = function removeBodySite(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.nutritionorderResolver
+ * @name exports.getNutritionOrder
  * @static
- * @summary NutritionOrder Resolver.
+ * @summary NutritionOrder resolver.
  */
-module.exports.nutritionorderResolver = function nutritionorderResolver(
+module.exports.getNutritionOrder = function getNutritionOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.nutritionorderListResolver
+ * @name exports.getNutritionOrderList
  * @static
- * @summary NutritionOrder List Resolver.
+ * @summary NutritionOrder list resolver.
  */
-module.exports.nutritionorderListResolver = function nutritionorderListResolver(
+module.exports.getNutritionOrderList = function getNutritionOrderList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.nutritionorderInstanceResolver
+ * @name exports.getNutritionOrderInstance
  * @static
- * @summary NutritionOrder Instance Resolver.
+ * @summary NutritionOrder instance resolver.
  */
-module.exports.nutritionorderInstanceResolver = function nutritionorderInstanceResolver(
+module.exports.getNutritionOrderInstance = function getNutritionOrderInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.nutritionorderCreateResolver
+ * @name exports.createNutritionOrder
  * @static
- * @summary NutritionOrder Create Resolver.
+ * @summary Create NutritionOrder resolver.
  */
-module.exports.nutritionorderCreateResolver = function nutritionorderCreateResolver(
+module.exports.createNutritionOrder = function createNutritionOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.nutritionorderUpdateResolver
+ * @name exports.updateNutritionOrder
  * @static
- * @summary NutritionOrder Update Resolver.
+ * @summary Update NutritionOrder resolver.
  */
-module.exports.nutritionorderUpdateResolver = function nutritionorderUpdateResolver(
+module.exports.updateNutritionOrder = function updateNutritionOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.nutritionorderDeleteResolver
+ * @name exports.removeNutritionOrder
  * @static
- * @summary NutritionOrder Delete Resolver.
+ * @summary Remove NutritionOrder resolver.
  */
-module.exports.nutritionorderDeleteResolver = function nutritionorderDeleteResolver(
+module.exports.removeNutritionOrder = function removeNutritionOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

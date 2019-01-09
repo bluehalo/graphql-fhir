@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ImmunizationSchema = require('../../schemas/immunization.schema');
+const ImmunizationSchema = require('../../schemas/immunization.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ImmunizationInput = require('../../inputs/immunization.input');
+const ImmunizationInput = require('../../inputs/immunization.input.js');
 
-// Resolvers
-const {
-	immunizationCreateResolver,
-	immunizationUpdateResolver,
-	immunizationDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createImmunization,
+	updateImmunization,
+	removeImmunization,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Immunization',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a Immunization record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Immunization record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ImmunizationCreateMutation
- * @summary ImmunizationCreate Mutation.
+ * @summary ImmunizationCreate mutation.
  */
 module.exports.ImmunizationCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Immunization',
-	resolve: scopeInvariant(scopeOptions, immunizationCreateResolver),
+	description: 'Create a Immunization record',
+	resolve: scopeInvariant(scopeOptions, createImmunization),
 	type: ImmunizationSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ImmunizationUpdateMutation
- * @summary ImmunizationUpdate Mutation.
+ * @summary ImmunizationUpdate mutation.
  */
 module.exports.ImmunizationUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Immunizations',
-	resolve: scopeInvariant(scopeOptions, immunizationUpdateResolver),
+	description: 'Update a Immunization record',
+	resolve: scopeInvariant(scopeOptions, updateImmunization),
 	type: ImmunizationSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ImmunizationDeleteMutation
- * @summary ImmunizationDelete Mutation.
+ * @name exports.ImmunizationRemoveMutation
+ * @summary ImmunizationRemove mutation.
  */
-module.exports.ImmunizationDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Immunization',
-	resolve: scopeInvariant(scopeOptions, immunizationDeleteResolver),
+module.exports.ImmunizationRemoveMutation = {
+	description: 'Remove a Immunization record',
+	resolve: scopeInvariant(scopeOptions, removeImmunization),
 	type: ImmunizationSchema,
+	args: DeleteArgs,
 };

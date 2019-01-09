@@ -1,55 +1,59 @@
 // Schemas
-const ConformanceSchema = require('../../schemas/conformance.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ConformanceSchema = require('../../schemas/conformance.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ConformanceArgs = require('../../parameters/conformance.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ConformanceArgs = require('../../parameters/conformance.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ConformanceArgs);
 
 // Resolvers
 const {
-	conformanceResolver,
-	conformanceListResolver,
-	conformanceInstanceResolver,
+	getConformance,
+	getConformanceList,
+	getConformanceInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Conformance',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ConformanceQuery
- * @summary Conformance Query.
+ * @summary Conformance query.
  */
 module.exports.ConformanceQuery = {
-	args: Object.assign({}, CommonArgs, ConformanceArgs),
 	description: 'Query for a single Conformance',
-	resolve: scopeInvariant(scopeOptions, conformanceResolver),
+	resolve: scopeInvariant(scopeOptions, getConformance),
 	type: ConformanceSchema,
+	args: args,
 };
 
 /**
  * @name exports.ConformanceListQuery
- * @summary ConformanceList Query.
+ * @summary Conformance query.
  */
 module.exports.ConformanceListQuery = {
-	args: Object.assign({}, CommonArgs, ConformanceArgs),
-	description: 'Query for multiple Conformances',
-	resolve: scopeInvariant(scopeOptions, conformanceListResolver),
+	description: 'Query for a more than or just one Conformance',
+	resolve: scopeInvariant(scopeOptions, getConformanceList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ConformanceInstanceQuery
- * @summary ConformanceInstance Query.
+ * @summary Conformance query.
  */
 module.exports.ConformanceInstanceQuery = {
-	description: 'Get information about a single Conformance',
-	resolve: scopeInvariant(scopeOptions, conformanceInstanceResolver),
+	description: 'Access information about a single Conformance',
+	resolve: scopeInvariant(scopeOptions, getConformanceInstance),
 	type: ConformanceSchema,
+	args: args,
 };

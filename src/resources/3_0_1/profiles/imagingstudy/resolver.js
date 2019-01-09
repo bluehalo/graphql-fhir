@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.imagingstudyResolver
+ * @name exports.getImagingStudy
  * @static
- * @summary ImagingStudy Resolver.
+ * @summary ImagingStudy resolver.
  */
-module.exports.imagingstudyResolver = function imagingstudyResolver(
+module.exports.getImagingStudy = function getImagingStudy(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingstudyListResolver
+ * @name exports.getImagingStudyList
  * @static
- * @summary ImagingStudy List Resolver.
+ * @summary ImagingStudy list resolver.
  */
-module.exports.imagingstudyListResolver = function imagingstudyListResolver(
+module.exports.getImagingStudyList = function getImagingStudyList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingstudyInstanceResolver
+ * @name exports.getImagingStudyInstance
  * @static
- * @summary ImagingStudy Instance Resolver.
+ * @summary ImagingStudy instance resolver.
  */
-module.exports.imagingstudyInstanceResolver = function imagingstudyInstanceResolver(
+module.exports.getImagingStudyInstance = function getImagingStudyInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingstudyCreateResolver
+ * @name exports.createImagingStudy
  * @static
- * @summary ImagingStudy Create Resolver.
+ * @summary Create ImagingStudy resolver.
  */
-module.exports.imagingstudyCreateResolver = function imagingstudyCreateResolver(
+module.exports.createImagingStudy = function createImagingStudy(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingstudyUpdateResolver
+ * @name exports.updateImagingStudy
  * @static
- * @summary ImagingStudy Update Resolver.
+ * @summary Update ImagingStudy resolver.
  */
-module.exports.imagingstudyUpdateResolver = function imagingstudyUpdateResolver(
+module.exports.updateImagingStudy = function updateImagingStudy(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingstudyDeleteResolver
+ * @name exports.removeImagingStudy
  * @static
- * @summary ImagingStudy Delete Resolver.
+ * @summary Remove ImagingStudy resolver.
  */
-module.exports.imagingstudyDeleteResolver = function imagingstudyDeleteResolver(
+module.exports.removeImagingStudy = function removeImagingStudy(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

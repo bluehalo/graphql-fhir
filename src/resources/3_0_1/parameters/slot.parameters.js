@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,29 +8,39 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the slot query
  */
 module.exports = {
-	schedule: {
-		type: GraphQLString,
-		description:
-			'The Schedule Resource that we are seeking a slot within (See http://hl7.org/fhir/SearchParameter/Slot-schedule).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Slot-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'A Slot Identifier (See http://hl7.org/fhir/SearchParameter/Slot-identifier).',
+		fhirtype: 'token',
+		xpath: 'Slot.identifier',
+		description: 'A Slot Identifier',
 	},
-	start: {
-		type: DateScalar,
-		description:
-			'Appointment date/time. (See http://hl7.org/fhir/SearchParameter/Slot-start).',
+	// http://hl7.org/fhir/SearchParameter/Slot-schedule
+	schedule: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Slot.schedule',
+		description: 'The Schedule Resource that we are seeking a slot within',
 	},
+	// http://hl7.org/fhir/SearchParameter/Slot-slot-type
 	slot_type: {
 		type: TokenScalar,
-		description:
-			'The type of appointments that can be booked into the slot (See http://hl7.org/fhir/SearchParameter/Slot-slot-type).',
+		fhirtype: 'token',
+		xpath: 'Slot.serviceType',
+		description: 'The type of appointments that can be booked into the slot',
 	},
+	// http://hl7.org/fhir/SearchParameter/Slot-start
+	start: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Slot.start',
+		description: 'Appointment date/time.',
+	},
+	// http://hl7.org/fhir/SearchParameter/Slot-status
 	status: {
 		type: TokenScalar,
-		description:
-			'The free/busy status of the appointment (See http://hl7.org/fhir/SearchParameter/Slot-status).',
+		fhirtype: 'token',
+		xpath: 'Slot.status',
+		description: 'The free/busy status of the appointment',
 	},
 };

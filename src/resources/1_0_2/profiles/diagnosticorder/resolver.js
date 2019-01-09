@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.diagnosticorderResolver
+ * @name exports.getDiagnosticOrder
  * @static
- * @summary DiagnosticOrder Resolver.
+ * @summary DiagnosticOrder resolver.
  */
-module.exports.diagnosticorderResolver = function diagnosticorderResolver(
+module.exports.getDiagnosticOrder = function getDiagnosticOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.diagnosticorderListResolver
+ * @name exports.getDiagnosticOrderList
  * @static
- * @summary DiagnosticOrder List Resolver.
+ * @summary DiagnosticOrder list resolver.
  */
-module.exports.diagnosticorderListResolver = function diagnosticorderListResolver(
+module.exports.getDiagnosticOrderList = function getDiagnosticOrderList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.diagnosticorderInstanceResolver
+ * @name exports.getDiagnosticOrderInstance
  * @static
- * @summary DiagnosticOrder Instance Resolver.
+ * @summary DiagnosticOrder instance resolver.
  */
-module.exports.diagnosticorderInstanceResolver = function diagnosticorderInstanceResolver(
+module.exports.getDiagnosticOrderInstance = function getDiagnosticOrderInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.diagnosticorderCreateResolver
+ * @name exports.createDiagnosticOrder
  * @static
- * @summary DiagnosticOrder Create Resolver.
+ * @summary Create DiagnosticOrder resolver.
  */
-module.exports.diagnosticorderCreateResolver = function diagnosticorderCreateResolver(
+module.exports.createDiagnosticOrder = function createDiagnosticOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.diagnosticorderUpdateResolver
+ * @name exports.updateDiagnosticOrder
  * @static
- * @summary DiagnosticOrder Update Resolver.
+ * @summary Update DiagnosticOrder resolver.
  */
-module.exports.diagnosticorderUpdateResolver = function diagnosticorderUpdateResolver(
+module.exports.updateDiagnosticOrder = function updateDiagnosticOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.diagnosticorderDeleteResolver
+ * @name exports.removeDiagnosticOrder
  * @static
- * @summary DiagnosticOrder Delete Resolver.
+ * @summary Remove DiagnosticOrder resolver.
  */
-module.exports.diagnosticorderDeleteResolver = function diagnosticorderDeleteResolver(
+module.exports.removeDiagnosticOrder = function removeDiagnosticOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

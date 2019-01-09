@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ContractSchema = require('../../schemas/contract.schema');
+const ContractSchema = require('../../schemas/contract.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ContractInput = require('../../inputs/contract.input');
+const ContractInput = require('../../inputs/contract.input.js');
 
-// Resolvers
-const {
-	contractCreateResolver,
-	contractUpdateResolver,
-	contractDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createContract,
+	updateContract,
+	removeContract,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Contract',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Contract record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Contract record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ContractCreateMutation
- * @summary ContractCreate Mutation.
+ * @summary ContractCreate mutation.
  */
 module.exports.ContractCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Contract',
-	resolve: scopeInvariant(scopeOptions, contractCreateResolver),
+	description: 'Create a Contract record',
+	resolve: scopeInvariant(scopeOptions, createContract),
 	type: ContractSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ContractUpdateMutation
- * @summary ContractUpdate Mutation.
+ * @summary ContractUpdate mutation.
  */
 module.exports.ContractUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Contracts',
-	resolve: scopeInvariant(scopeOptions, contractUpdateResolver),
+	description: 'Update a Contract record',
+	resolve: scopeInvariant(scopeOptions, updateContract),
 	type: ContractSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ContractDeleteMutation
- * @summary ContractDelete Mutation.
+ * @name exports.ContractRemoveMutation
+ * @summary ContractRemove mutation.
  */
-module.exports.ContractDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Contract',
-	resolve: scopeInvariant(scopeOptions, contractDeleteResolver),
+module.exports.ContractRemoveMutation = {
+	description: 'Remove a Contract record',
+	resolve: scopeInvariant(scopeOptions, removeContract),
 	type: ContractSchema,
+	args: DeleteArgs,
 };

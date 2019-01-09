@@ -1,37 +1,57 @@
-const CodeScalar = require('../scalars/code.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLString,
+	GraphQLList,
+	GraphQLNonNull,
+	GraphQLInputObjectType,
+} = require('graphql');
+const CodeScalar = require('../scalars/code.scalar.js');
 
 /**
  * @name exports
- * @summary Composition.relatesTo Input Schema
+ * @summary CompositionrelatesTo Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'CompositionRelatesTo_Input',
-	description:
-		'Relationships that this composition has with other compositions or documents that already exist.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/document-relationship-type
-			code: {
-				type: new GraphQLNonNull(CodeScalar),
-				description:
-					'The type of relationship that this composition has with anther composition or document.',
-			},
-			_code: {
-				type: require('./element.input'),
-				description:
-					'The type of relationship that this composition has with anther composition or document.',
-			},
-			targetIdentifier: {
-				type: new GraphQLNonNull(require('./identifier.input')),
-				description: 'The target composition/document of this relationship.',
-			},
-			targetReference: {
-				type: new GraphQLNonNull(require('./reference.input')),
-				description: 'The target composition/document of this relationship.',
-			},
-		}),
+	name: 'CompositionrelatesTo_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_code: {
+			type: require('./element.input.js'),
+			description:
+				'The type of relationship that this composition has with anther composition or document.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/document-relationship-type
+		code: {
+			type: new GraphQLNonNull(CodeScalar),
+			description:
+				'The type of relationship that this composition has with anther composition or document.',
+		},
+		targetIdentifier: {
+			type: new GraphQLNonNull(require('./identifier.input.js')),
+			description: 'The target composition/document of this relationship.',
+		},
+		targetReference: {
+			type: new GraphQLNonNull(GraphQLString),
+			description: 'The target composition/document of this relationship.',
+		},
+	}),
 });

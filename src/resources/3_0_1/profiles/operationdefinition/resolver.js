@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.operationdefinitionResolver
+ * @name exports.getOperationDefinition
  * @static
- * @summary OperationDefinition Resolver.
+ * @summary OperationDefinition resolver.
  */
-module.exports.operationdefinitionResolver = function operationdefinitionResolver(
+module.exports.getOperationDefinition = function getOperationDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.operationdefinitionListResolver
+ * @name exports.getOperationDefinitionList
  * @static
- * @summary OperationDefinition List Resolver.
+ * @summary OperationDefinition list resolver.
  */
-module.exports.operationdefinitionListResolver = function operationdefinitionListResolver(
+module.exports.getOperationDefinitionList = function getOperationDefinitionList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.operationdefinitionInstanceResolver
+ * @name exports.getOperationDefinitionInstance
  * @static
- * @summary OperationDefinition Instance Resolver.
+ * @summary OperationDefinition instance resolver.
  */
-module.exports.operationdefinitionInstanceResolver = function operationdefinitionInstanceResolver(
+module.exports.getOperationDefinitionInstance = function getOperationDefinitionInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.operationdefinitionCreateResolver
+ * @name exports.createOperationDefinition
  * @static
- * @summary OperationDefinition Create Resolver.
+ * @summary Create OperationDefinition resolver.
  */
-module.exports.operationdefinitionCreateResolver = function operationdefinitionCreateResolver(
+module.exports.createOperationDefinition = function createOperationDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.operationdefinitionUpdateResolver
+ * @name exports.updateOperationDefinition
  * @static
- * @summary OperationDefinition Update Resolver.
+ * @summary Update OperationDefinition resolver.
  */
-module.exports.operationdefinitionUpdateResolver = function operationdefinitionUpdateResolver(
+module.exports.updateOperationDefinition = function updateOperationDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.operationdefinitionDeleteResolver
+ * @name exports.removeOperationDefinition
  * @static
- * @summary OperationDefinition Delete Resolver.
+ * @summary Remove OperationDefinition resolver.
  */
-module.exports.operationdefinitionDeleteResolver = function operationdefinitionDeleteResolver(
+module.exports.removeOperationDefinition = function removeOperationDefinition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

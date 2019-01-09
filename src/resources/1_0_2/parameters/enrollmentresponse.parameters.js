@@ -1,4 +1,4 @@
-const TokenScalar = require('../scalars/token.scalar');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -6,9 +6,11 @@ const TokenScalar = require('../scalars/token.scalar');
  * @summary Arguments for the enrollmentresponse query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/EnrollmentResponse-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'The business identifier of the Explanation of Benefit (See http://hl7.org/fhir/SearchParameter/enrollmentresponse-identifier).',
+		fhirtype: 'token',
+		xpath: 'EnrollmentResponse.identifier',
+		description: 'The business identifier of the Explanation of Benefit',
 	},
 };

@@ -1,25 +1,24 @@
-const CodeScalar = require('../scalars/code.scalar');
-const Base64BinaryScalar = require('../scalars/base64binary.scalar');
-const InstantScalar = require('../scalars/instant.scalar');
-const UriScalar = require('../scalars/uri.scalar');
-const DateScalar = require('../scalars/date.scalar');
-const DateTimeScalar = require('../scalars/datetime.scalar');
-const TimeScalar = require('../scalars/time.scalar');
-const OidScalar = require('../scalars/oid.scalar');
-const IdScalar = require('../scalars/id.scalar');
-const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
-const PositiveIntScalar = require('../scalars/positiveint.scalar');
 const {
-	GraphQLObjectType,
+	GraphQLList,
 	GraphQLNonNull,
 	GraphQLString,
-	GraphQLList,
 	GraphQLInt,
 	GraphQLBoolean,
 	GraphQLFloat,
+	GraphQLUnionType,
+	GraphQLObjectType,
 } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const IdScalar = require('../scalars/id.scalar.js');
+const CodeScalar = require('../scalars/code.scalar.js');
+const Base64BinaryScalar = require('../scalars/base64Binary.scalar.js');
+const InstantScalar = require('../scalars/instant.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
+const DateTimeScalar = require('../scalars/dateTime.scalar.js');
+const TimeScalar = require('../scalars/time.scalar.js');
+const OidScalar = require('../scalars/oid.scalar.js');
+const UnsignedIntScalar = require('../scalars/unsignedInt.scalar.js');
+const PositiveIntScalar = require('../scalars/positiveInt.scalar.js');
 
 /**
  * @name exports
@@ -27,1695 +26,1709 @@ const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
  */
 module.exports = new GraphQLObjectType({
 	name: 'ElementDefinition',
-	description: 'Base StructureDefinition for ElementDefinition Type.',
-	fields: () =>
-		extendSchema(require('./element.schema'), {
-			path: {
-				type: new GraphQLNonNull(GraphQLString),
-				description:
-					"The path identifies the element and is expressed as a '.'-separated list of ancestor elements, beginning with the name of the resource or extension.",
-			},
-			_path: {
-				type: require('./element.schema'),
-				description:
-					"The path identifies the element and is expressed as a '.'-separated list of ancestor elements, beginning with the name of the resource or extension.",
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/property-representation
-			representation: {
-				type: new GraphQLList(CodeScalar),
-				description:
-					'Codes that define how this element is represented in instances, when the deviation varies from the normal case.',
-			},
-			_representation: {
-				type: require('./element.schema'),
-				description:
-					'Codes that define how this element is represented in instances, when the deviation varies from the normal case.',
-			},
-			name: {
-				type: GraphQLString,
-				description:
-					'The name of this element definition (to refer to it from other element definitions using ElementDefinition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.',
-			},
-			_name: {
-				type: require('./element.schema'),
-				description:
-					'The name of this element definition (to refer to it from other element definitions using ElementDefinition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.',
-			},
-			label: {
-				type: GraphQLString,
-				description:
-					'The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.',
-			},
-			_label: {
-				type: require('./element.schema'),
-				description:
-					'The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/observation-codes
-			code: {
-				type: new GraphQLList(require('./coding.schema')),
-				description:
-					'A code that provides the meaning for the element according to a particular terminology.',
-			},
-			slicing: {
-				type: require('./elementdefinitionslicing.schema'),
-				description:
-					'Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).',
-			},
-			short: {
-				type: GraphQLString,
-				description:
-					'A concise description of what this element means (e.g. for use in autogenerated summaries).',
-			},
-			_short: {
-				type: require('./element.schema'),
-				description:
-					'A concise description of what this element means (e.g. for use in autogenerated summaries).',
-			},
-			definition: {
-				type: GraphQLString,
-				description:
-					'Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.',
-			},
-			_definition: {
-				type: require('./element.schema'),
-				description:
-					'Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.',
-			},
-			comments: {
-				type: GraphQLString,
-				description:
-					'Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.',
-			},
-			_comments: {
-				type: require('./element.schema'),
-				description:
-					'Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.',
-			},
-			requirements: {
-				type: GraphQLString,
-				description:
-					'This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.',
-			},
-			_requirements: {
-				type: require('./element.schema'),
-				description:
-					'This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.',
-			},
-			alias: {
-				type: new GraphQLList(GraphQLString),
-				description:
-					'Identifies additional names by which this element might also be known.',
-			},
-			_alias: {
-				type: require('./element.schema'),
-				description:
-					'Identifies additional names by which this element might also be known.',
-			},
-			min: {
-				type: GraphQLInt,
-				description:
-					'The minimum number of times this element SHALL appear in the instance.',
-			},
-			_min: {
-				type: require('./element.schema'),
-				description:
-					'The minimum number of times this element SHALL appear in the instance.',
-			},
-			max: {
-				type: GraphQLString,
-				description:
-					'The maximum number of times this element is permitted to appear in the instance.',
-			},
-			_max: {
-				type: require('./element.schema'),
-				description:
-					'The maximum number of times this element is permitted to appear in the instance.',
-			},
-			base: {
-				type: require('./elementdefinitionbase.schema'),
-				description:
-					'Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.',
-			},
-			type: {
-				type: new GraphQLList(require('./elementdefinitiontype.schema')),
-				description:
-					'The data type or resource that the value of this element is permitted to be.',
-			},
-			nameReference: {
-				type: GraphQLString,
-				description:
-					'Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element.',
-			},
-			_nameReference: {
-				type: require('./element.schema'),
-				description:
-					'Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element.',
-			},
-			defaultValueBoolean: {
-				type: GraphQLBoolean,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueBoolean: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueInteger: {
-				type: GraphQLInt,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueInteger: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueDecimal: {
-				type: GraphQLFloat,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueDecimal: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueBase64Binary: {
-				type: Base64BinaryScalar,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueBase64Binary: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueInstant: {
-				type: InstantScalar,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueInstant: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueString: {
-				type: GraphQLString,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueString: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueUri: {
-				type: UriScalar,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueUri: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueDate: {
-				type: DateScalar,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueDate: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueDateTime: {
-				type: DateTimeScalar,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueDateTime: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueTime: {
-				type: TimeScalar,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueTime: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueCode: {
-				type: CodeScalar,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueCode: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueOid: {
-				type: OidScalar,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueOid: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueId: {
-				type: IdScalar,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueId: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueUnsignedInt: {
-				type: UnsignedIntScalar,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueUnsignedInt: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValuePositiveInt: {
-				type: PositiveIntScalar,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValuePositiveInt: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueMarkdown: {
-				type: GraphQLString,
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			_defaultValueMarkdown: {
-				type: require('./element.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueAnnotation: {
-				type: require('./annotation.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueAttachment: {
-				type: require('./attachment.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueIdentifier: {
-				type: require('./identifier.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueCodeableConcept: {
-				type: require('./codeableconcept.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueCoding: {
-				type: require('./coding.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueQuantity: {
-				type: require('./quantity.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueRange: {
-				type: require('./range.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValuePeriod: {
-				type: require('./period.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueRatio: {
-				type: require('./ratio.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueSampledData: {
-				type: require('./sampleddata.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueSignature: {
-				type: require('./signature.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueHumanName: {
-				type: require('./humanname.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueAddress: {
-				type: require('./address.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueContactPoint: {
-				type: require('./contactpoint.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueTiming: {
-				type: require('./timing.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueReference: {
-				type: require('./reference.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			defaultValueMeta: {
-				type: require('./meta.schema'),
-				description:
-					"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
-			},
-			meaningWhenMissing: {
-				type: GraphQLString,
-				description:
-					"The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.",
-			},
-			_meaningWhenMissing: {
-				type: require('./element.schema'),
-				description:
-					"The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.",
-			},
-			fixedBoolean: {
-				type: GraphQLBoolean,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedBoolean: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedInteger: {
-				type: GraphQLInt,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedInteger: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedDecimal: {
-				type: GraphQLFloat,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedDecimal: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedBase64Binary: {
-				type: Base64BinaryScalar,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedBase64Binary: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedInstant: {
-				type: InstantScalar,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedInstant: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedString: {
-				type: GraphQLString,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedString: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedUri: {
-				type: UriScalar,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedUri: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedDate: {
-				type: DateScalar,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedDate: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedDateTime: {
-				type: DateTimeScalar,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedDateTime: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedTime: {
-				type: TimeScalar,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedTime: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedCode: {
-				type: CodeScalar,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedCode: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedOid: {
-				type: OidScalar,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedOid: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedId: {
-				type: IdScalar,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedId: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedUnsignedInt: {
-				type: UnsignedIntScalar,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedUnsignedInt: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedPositiveInt: {
-				type: PositiveIntScalar,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedPositiveInt: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedMarkdown: {
-				type: GraphQLString,
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			_fixedMarkdown: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedAnnotation: {
-				type: require('./annotation.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedAttachment: {
-				type: require('./attachment.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedIdentifier: {
-				type: require('./identifier.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedCodeableConcept: {
-				type: require('./codeableconcept.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedCoding: {
-				type: require('./coding.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedQuantity: {
-				type: require('./quantity.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedRange: {
-				type: require('./range.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedPeriod: {
-				type: require('./period.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedRatio: {
-				type: require('./ratio.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedSampledData: {
-				type: require('./sampleddata.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedSignature: {
-				type: require('./signature.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedHumanName: {
-				type: require('./humanname.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedAddress: {
-				type: require('./address.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedContactPoint: {
-				type: require('./contactpoint.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedTiming: {
-				type: require('./timing.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedReference: {
-				type: require('./reference.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			fixedMeta: {
-				type: require('./meta.schema'),
-				description:
-					'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
-			},
-			patternBoolean: {
-				type: GraphQLBoolean,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternBoolean: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternInteger: {
-				type: GraphQLInt,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternInteger: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternDecimal: {
-				type: GraphQLFloat,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternDecimal: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternBase64Binary: {
-				type: Base64BinaryScalar,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternBase64Binary: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternInstant: {
-				type: InstantScalar,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternInstant: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternString: {
-				type: GraphQLString,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternString: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternUri: {
-				type: UriScalar,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternUri: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternDate: {
-				type: DateScalar,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternDate: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternDateTime: {
-				type: DateTimeScalar,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternDateTime: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternTime: {
-				type: TimeScalar,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternTime: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternCode: {
-				type: CodeScalar,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternCode: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternOid: {
-				type: OidScalar,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternOid: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternId: {
-				type: IdScalar,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternId: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternUnsignedInt: {
-				type: UnsignedIntScalar,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternUnsignedInt: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternPositiveInt: {
-				type: PositiveIntScalar,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternPositiveInt: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternMarkdown: {
-				type: GraphQLString,
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			_patternMarkdown: {
-				type: require('./element.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternAnnotation: {
-				type: require('./annotation.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternAttachment: {
-				type: require('./attachment.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternIdentifier: {
-				type: require('./identifier.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternCodeableConcept: {
-				type: require('./codeableconcept.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternCoding: {
-				type: require('./coding.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternQuantity: {
-				type: require('./quantity.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternRange: {
-				type: require('./range.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternPeriod: {
-				type: require('./period.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternRatio: {
-				type: require('./ratio.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternSampledData: {
-				type: require('./sampleddata.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternSignature: {
-				type: require('./signature.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternHumanName: {
-				type: require('./humanname.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternAddress: {
-				type: require('./address.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternContactPoint: {
-				type: require('./contactpoint.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternTiming: {
-				type: require('./timing.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternReference: {
-				type: require('./reference.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			patternMeta: {
-				type: require('./meta.schema'),
-				description:
-					'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
-			},
-			exampleBoolean: {
-				type: GraphQLBoolean,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleBoolean: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleInteger: {
-				type: GraphQLInt,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleInteger: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleDecimal: {
-				type: GraphQLFloat,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleDecimal: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleBase64Binary: {
-				type: Base64BinaryScalar,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleBase64Binary: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleInstant: {
-				type: InstantScalar,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleInstant: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleString: {
-				type: GraphQLString,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleString: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleUri: {
-				type: UriScalar,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleUri: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleDate: {
-				type: DateScalar,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleDate: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleDateTime: {
-				type: DateTimeScalar,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleDateTime: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleTime: {
-				type: TimeScalar,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleTime: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleCode: {
-				type: CodeScalar,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleCode: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleOid: {
-				type: OidScalar,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleOid: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleId: {
-				type: IdScalar,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleId: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleUnsignedInt: {
-				type: UnsignedIntScalar,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleUnsignedInt: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			examplePositiveInt: {
-				type: PositiveIntScalar,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_examplePositiveInt: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleMarkdown: {
-				type: GraphQLString,
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			_exampleMarkdown: {
-				type: require('./element.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleAnnotation: {
-				type: require('./annotation.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleAttachment: {
-				type: require('./attachment.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleIdentifier: {
-				type: require('./identifier.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleCodeableConcept: {
-				type: require('./codeableconcept.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleCoding: {
-				type: require('./coding.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleQuantity: {
-				type: require('./quantity.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleRange: {
-				type: require('./range.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			examplePeriod: {
-				type: require('./period.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleRatio: {
-				type: require('./ratio.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleSampledData: {
-				type: require('./sampleddata.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleSignature: {
-				type: require('./signature.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleHumanName: {
-				type: require('./humanname.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleAddress: {
-				type: require('./address.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleContactPoint: {
-				type: require('./contactpoint.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleTiming: {
-				type: require('./timing.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleReference: {
-				type: require('./reference.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			exampleMeta: {
-				type: require('./meta.schema'),
-				description:
-					'A sample value for this element demonstrating the type of information that would typically be captured.',
-			},
-			minValueBoolean: {
-				type: GraphQLBoolean,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueBoolean: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueInteger: {
-				type: GraphQLInt,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueInteger: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueDecimal: {
-				type: GraphQLFloat,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueDecimal: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueBase64Binary: {
-				type: Base64BinaryScalar,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueBase64Binary: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueInstant: {
-				type: InstantScalar,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueInstant: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueString: {
-				type: GraphQLString,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueString: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueUri: {
-				type: UriScalar,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueUri: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueDate: {
-				type: DateScalar,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueDate: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueDateTime: {
-				type: DateTimeScalar,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueDateTime: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueTime: {
-				type: TimeScalar,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueTime: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueCode: {
-				type: CodeScalar,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueCode: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueOid: {
-				type: OidScalar,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueOid: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueId: {
-				type: IdScalar,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueId: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueUnsignedInt: {
-				type: UnsignedIntScalar,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueUnsignedInt: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValuePositiveInt: {
-				type: PositiveIntScalar,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValuePositiveInt: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueMarkdown: {
-				type: GraphQLString,
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_minValueMarkdown: {
-				type: require('./element.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueAnnotation: {
-				type: require('./annotation.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueAttachment: {
-				type: require('./attachment.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueIdentifier: {
-				type: require('./identifier.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueCodeableConcept: {
-				type: require('./codeableconcept.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueCoding: {
-				type: require('./coding.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueQuantity: {
-				type: require('./quantity.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueRange: {
-				type: require('./range.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValuePeriod: {
-				type: require('./period.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueRatio: {
-				type: require('./ratio.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueSampledData: {
-				type: require('./sampleddata.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueSignature: {
-				type: require('./signature.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueHumanName: {
-				type: require('./humanname.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueAddress: {
-				type: require('./address.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueContactPoint: {
-				type: require('./contactpoint.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueTiming: {
-				type: require('./timing.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueReference: {
-				type: require('./reference.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			minValueMeta: {
-				type: require('./meta.schema'),
-				description:
-					'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueBoolean: {
-				type: GraphQLBoolean,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueBoolean: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueInteger: {
-				type: GraphQLInt,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueInteger: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueDecimal: {
-				type: GraphQLFloat,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueDecimal: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueBase64Binary: {
-				type: Base64BinaryScalar,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueBase64Binary: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueInstant: {
-				type: InstantScalar,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueInstant: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueString: {
-				type: GraphQLString,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueString: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueUri: {
-				type: UriScalar,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueUri: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueDate: {
-				type: DateScalar,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueDate: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueDateTime: {
-				type: DateTimeScalar,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueDateTime: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueTime: {
-				type: TimeScalar,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueTime: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueCode: {
-				type: CodeScalar,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueCode: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueOid: {
-				type: OidScalar,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueOid: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueId: {
-				type: IdScalar,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueId: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueUnsignedInt: {
-				type: UnsignedIntScalar,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueUnsignedInt: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValuePositiveInt: {
-				type: PositiveIntScalar,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValuePositiveInt: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueMarkdown: {
-				type: GraphQLString,
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			_maxValueMarkdown: {
-				type: require('./element.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueAnnotation: {
-				type: require('./annotation.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueAttachment: {
-				type: require('./attachment.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueIdentifier: {
-				type: require('./identifier.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueCodeableConcept: {
-				type: require('./codeableconcept.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueCoding: {
-				type: require('./coding.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueQuantity: {
-				type: require('./quantity.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueRange: {
-				type: require('./range.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValuePeriod: {
-				type: require('./period.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueRatio: {
-				type: require('./ratio.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueSampledData: {
-				type: require('./sampleddata.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueSignature: {
-				type: require('./signature.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueHumanName: {
-				type: require('./humanname.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueAddress: {
-				type: require('./address.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueContactPoint: {
-				type: require('./contactpoint.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueTiming: {
-				type: require('./timing.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueReference: {
-				type: require('./reference.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxValueMeta: {
-				type: require('./meta.schema'),
-				description:
-					'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
-			},
-			maxLength: {
-				type: GraphQLInt,
-				description:
-					'Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.',
-			},
-			_maxLength: {
-				type: require('./element.schema'),
-				description:
-					'Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.',
-			},
-			condition: {
-				type: new GraphQLList(IdScalar),
-				description:
-					'A reference to an invariant that may make additional statements about the cardinality or value in the instance.',
-			},
-			_condition: {
-				type: require('./element.schema'),
-				description:
-					'A reference to an invariant that may make additional statements about the cardinality or value in the instance.',
-			},
-			constraint: {
-				type: new GraphQLList(require('./elementdefinitionconstraint.schema')),
-				description:
-					'Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.',
-			},
-			mustSupport: {
-				type: GraphQLBoolean,
-				description:
-					"If true, implementations that produce or consume resources SHALL provide 'support' for the element in some meaningful way.  If false, the element may be ignored and not supported.",
-			},
-			_mustSupport: {
-				type: require('./element.schema'),
-				description:
-					"If true, implementations that produce or consume resources SHALL provide 'support' for the element in some meaningful way.  If false, the element may be ignored and not supported.",
-			},
-			isModifier: {
-				type: GraphQLBoolean,
-				description:
-					'If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.',
-			},
-			_isModifier: {
-				type: require('./element.schema'),
-				description:
-					'If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.',
-			},
-			isSummary: {
-				type: GraphQLBoolean,
-				description:
-					'Whether the element should be included if a client requests a search with the parameter _summary=true.',
-			},
-			_isSummary: {
-				type: require('./element.schema'),
-				description:
-					'Whether the element should be included if a client requests a search with the parameter _summary=true.',
-			},
-			binding: {
-				type: require('./elementdefinitionbinding.schema'),
-				description:
-					'Binds to a value set if this element is coded (code, Coding, CodeableConcept).',
-			},
-			mapping: {
-				type: new GraphQLList(require('./elementdefinitionmapping.schema')),
-				description:
-					'Identifies a concept from an external specification that roughly corresponds to this element.',
-			},
-		}),
+	description: 'Base StructureDefinition for ElementDefinition Type',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		_path: {
+			type: require('./element.schema.js'),
+			description:
+				"The path identifies the element and is expressed as a '.'-separated list of ancestor elements, beginning with the name of the resource or extension.",
+		},
+		path: {
+			type: new GraphQLNonNull(GraphQLString),
+			description:
+				"The path identifies the element and is expressed as a '.'-separated list of ancestor elements, beginning with the name of the resource or extension.",
+		},
+		_representation: {
+			type: require('./element.schema.js'),
+			description:
+				'Codes that define how this element is represented in instances, when the deviation varies from the normal case.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/property-representation
+		representation: {
+			type: new GraphQLList(CodeScalar),
+			description:
+				'Codes that define how this element is represented in instances, when the deviation varies from the normal case.',
+		},
+		_name: {
+			type: require('./element.schema.js'),
+			description:
+				'The name of this element definition (to refer to it from other element definitions using ElementDefinition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.',
+		},
+		name: {
+			type: GraphQLString,
+			description:
+				'The name of this element definition (to refer to it from other element definitions using ElementDefinition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.',
+		},
+		_label: {
+			type: require('./element.schema.js'),
+			description:
+				'The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.',
+		},
+		label: {
+			type: GraphQLString,
+			description:
+				'The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/observation-codes
+		code: {
+			type: new GraphQLList(require('./coding.schema.js')),
+			description:
+				'A code that provides the meaning for the element according to a particular terminology.',
+		},
+		slicing: {
+			type: require('./element.schema.js'),
+			description:
+				'Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).',
+		},
+		_short: {
+			type: require('./element.schema.js'),
+			description:
+				'A concise description of what this element means (e.g. for use in autogenerated summaries).',
+		},
+		short: {
+			type: GraphQLString,
+			description:
+				'A concise description of what this element means (e.g. for use in autogenerated summaries).',
+		},
+		_definition: {
+			type: require('./element.schema.js'),
+			description:
+				'Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.',
+		},
+		definition: {
+			type: GraphQLString,
+			description:
+				'Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.',
+		},
+		_comments: {
+			type: require('./element.schema.js'),
+			description:
+				'Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.',
+		},
+		comments: {
+			type: GraphQLString,
+			description:
+				'Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.',
+		},
+		_requirements: {
+			type: require('./element.schema.js'),
+			description:
+				'This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.',
+		},
+		requirements: {
+			type: GraphQLString,
+			description:
+				'This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.',
+		},
+		_alias: {
+			type: require('./element.schema.js'),
+			description:
+				'Identifies additional names by which this element might also be known.',
+		},
+		alias: {
+			type: new GraphQLList(GraphQLString),
+			description:
+				'Identifies additional names by which this element might also be known.',
+		},
+		_min: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum number of times this element SHALL appear in the instance.',
+		},
+		min: {
+			type: GraphQLInt,
+			description:
+				'The minimum number of times this element SHALL appear in the instance.',
+		},
+		_max: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum number of times this element is permitted to appear in the instance.',
+		},
+		max: {
+			type: GraphQLString,
+			description:
+				'The maximum number of times this element is permitted to appear in the instance.',
+		},
+		base: {
+			type: require('./element.schema.js'),
+			description:
+				'Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.',
+		},
+		type: {
+			type: new GraphQLList(require('./element.schema.js')),
+			description:
+				'The data type or resource that the value of this element is permitted to be.',
+		},
+		_nameReference: {
+			type: require('./element.schema.js'),
+			description:
+				'Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element.',
+		},
+		nameReference: {
+			type: GraphQLString,
+			description:
+				'Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element.',
+		},
+		_defaultValueBoolean: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueBoolean: {
+			type: GraphQLBoolean,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueInteger: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueInteger: {
+			type: GraphQLInt,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueDecimal: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueDecimal: {
+			type: GraphQLFloat,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueBase64Binary: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueBase64Binary: {
+			type: Base64BinaryScalar,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueInstant: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueInstant: {
+			type: InstantScalar,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueString: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueString: {
+			type: GraphQLString,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueUri: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueUri: {
+			type: UriScalar,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueDate: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueDate: {
+			type: DateScalar,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueDateTime: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueDateTime: {
+			type: DateTimeScalar,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueTime: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueTime: {
+			type: TimeScalar,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueCode: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueCode: {
+			type: CodeScalar,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueOid: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueOid: {
+			type: OidScalar,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueId: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueId: {
+			type: IdScalar,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueUnsignedInt: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueUnsignedInt: {
+			type: UnsignedIntScalar,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValuePositiveInt: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValuePositiveInt: {
+			type: PositiveIntScalar,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_defaultValueMarkdown: {
+			type: require('./element.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueMarkdown: {
+			type: GraphQLString,
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueAnnotation: {
+			type: require('./annotation.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueAttachment: {
+			type: require('./attachment.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueIdentifier: {
+			type: require('./identifier.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueCodeableConcept: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueCoding: {
+			type: require('./coding.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueQuantity: {
+			type: require('./quantity.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueRange: {
+			type: require('./range.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValuePeriod: {
+			type: require('./period.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueRatio: {
+			type: require('./ratio.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueSampledData: {
+			type: require('./sampleddata.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueSignature: {
+			type: require('./signature.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueHumanName: {
+			type: require('./humanname.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueAddress: {
+			type: require('./address.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueContactPoint: {
+			type: require('./contactpoint.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueTiming: {
+			type: require('./timing.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueReference: {
+			type: require('./resourcelist.schema'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		defaultValueMeta: {
+			type: require('./meta.schema.js'),
+			description:
+				"The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').",
+		},
+		_meaningWhenMissing: {
+			type: require('./element.schema.js'),
+			description:
+				"The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.",
+		},
+		meaningWhenMissing: {
+			type: GraphQLString,
+			description:
+				"The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.",
+		},
+		_fixedBoolean: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedBoolean: {
+			type: GraphQLBoolean,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedInteger: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedInteger: {
+			type: GraphQLInt,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedDecimal: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedDecimal: {
+			type: GraphQLFloat,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedBase64Binary: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedBase64Binary: {
+			type: Base64BinaryScalar,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedInstant: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedInstant: {
+			type: InstantScalar,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedString: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedString: {
+			type: GraphQLString,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedUri: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedUri: {
+			type: UriScalar,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedDate: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedDate: {
+			type: DateScalar,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedDateTime: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedDateTime: {
+			type: DateTimeScalar,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedTime: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedTime: {
+			type: TimeScalar,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedCode: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedCode: {
+			type: CodeScalar,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedOid: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedOid: {
+			type: OidScalar,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedId: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedId: {
+			type: IdScalar,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedUnsignedInt: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedUnsignedInt: {
+			type: UnsignedIntScalar,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedPositiveInt: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedPositiveInt: {
+			type: PositiveIntScalar,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_fixedMarkdown: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedMarkdown: {
+			type: GraphQLString,
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedAnnotation: {
+			type: require('./annotation.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedAttachment: {
+			type: require('./attachment.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedIdentifier: {
+			type: require('./identifier.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedCodeableConcept: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedCoding: {
+			type: require('./coding.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedQuantity: {
+			type: require('./quantity.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedRange: {
+			type: require('./range.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedPeriod: {
+			type: require('./period.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedRatio: {
+			type: require('./ratio.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedSampledData: {
+			type: require('./sampleddata.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedSignature: {
+			type: require('./signature.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedHumanName: {
+			type: require('./humanname.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedAddress: {
+			type: require('./address.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedContactPoint: {
+			type: require('./contactpoint.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedTiming: {
+			type: require('./timing.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedReference: {
+			type: require('./resourcelist.schema'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		fixedMeta: {
+			type: require('./meta.schema.js'),
+			description:
+				'Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.',
+		},
+		_patternBoolean: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternBoolean: {
+			type: GraphQLBoolean,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternInteger: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternInteger: {
+			type: GraphQLInt,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternDecimal: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternDecimal: {
+			type: GraphQLFloat,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternBase64Binary: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternBase64Binary: {
+			type: Base64BinaryScalar,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternInstant: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternInstant: {
+			type: InstantScalar,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternString: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternString: {
+			type: GraphQLString,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternUri: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternUri: {
+			type: UriScalar,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternDate: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternDate: {
+			type: DateScalar,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternDateTime: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternDateTime: {
+			type: DateTimeScalar,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternTime: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternTime: {
+			type: TimeScalar,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternCode: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternCode: {
+			type: CodeScalar,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternOid: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternOid: {
+			type: OidScalar,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternId: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternId: {
+			type: IdScalar,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternUnsignedInt: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternUnsignedInt: {
+			type: UnsignedIntScalar,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternPositiveInt: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternPositiveInt: {
+			type: PositiveIntScalar,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_patternMarkdown: {
+			type: require('./element.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternMarkdown: {
+			type: GraphQLString,
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternAnnotation: {
+			type: require('./annotation.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternAttachment: {
+			type: require('./attachment.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternIdentifier: {
+			type: require('./identifier.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternCodeableConcept: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternCoding: {
+			type: require('./coding.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternQuantity: {
+			type: require('./quantity.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternRange: {
+			type: require('./range.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternPeriod: {
+			type: require('./period.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternRatio: {
+			type: require('./ratio.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternSampledData: {
+			type: require('./sampleddata.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternSignature: {
+			type: require('./signature.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternHumanName: {
+			type: require('./humanname.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternAddress: {
+			type: require('./address.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternContactPoint: {
+			type: require('./contactpoint.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternTiming: {
+			type: require('./timing.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternReference: {
+			type: require('./resourcelist.schema'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		patternMeta: {
+			type: require('./meta.schema.js'),
+			description:
+				'Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).',
+		},
+		_exampleBoolean: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleBoolean: {
+			type: GraphQLBoolean,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleInteger: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleInteger: {
+			type: GraphQLInt,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleDecimal: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleDecimal: {
+			type: GraphQLFloat,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleBase64Binary: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleBase64Binary: {
+			type: Base64BinaryScalar,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleInstant: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleInstant: {
+			type: InstantScalar,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleString: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleString: {
+			type: GraphQLString,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleUri: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleUri: {
+			type: UriScalar,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleDate: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleDate: {
+			type: DateScalar,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleDateTime: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleDateTime: {
+			type: DateTimeScalar,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleTime: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleTime: {
+			type: TimeScalar,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleCode: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleCode: {
+			type: CodeScalar,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleOid: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleOid: {
+			type: OidScalar,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleId: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleId: {
+			type: IdScalar,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleUnsignedInt: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleUnsignedInt: {
+			type: UnsignedIntScalar,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_examplePositiveInt: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		examplePositiveInt: {
+			type: PositiveIntScalar,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_exampleMarkdown: {
+			type: require('./element.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleMarkdown: {
+			type: GraphQLString,
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleAnnotation: {
+			type: require('./annotation.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleAttachment: {
+			type: require('./attachment.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleIdentifier: {
+			type: require('./identifier.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleCodeableConcept: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleCoding: {
+			type: require('./coding.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleQuantity: {
+			type: require('./quantity.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleRange: {
+			type: require('./range.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		examplePeriod: {
+			type: require('./period.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleRatio: {
+			type: require('./ratio.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleSampledData: {
+			type: require('./sampleddata.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleSignature: {
+			type: require('./signature.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleHumanName: {
+			type: require('./humanname.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleAddress: {
+			type: require('./address.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleContactPoint: {
+			type: require('./contactpoint.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleTiming: {
+			type: require('./timing.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleReference: {
+			type: require('./resourcelist.schema'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		exampleMeta: {
+			type: require('./meta.schema.js'),
+			description:
+				'A sample value for this element demonstrating the type of information that would typically be captured.',
+		},
+		_minValueBoolean: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueBoolean: {
+			type: GraphQLBoolean,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueInteger: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueInteger: {
+			type: GraphQLInt,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueDecimal: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueDecimal: {
+			type: GraphQLFloat,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueBase64Binary: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueBase64Binary: {
+			type: Base64BinaryScalar,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueInstant: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueInstant: {
+			type: InstantScalar,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueString: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueString: {
+			type: GraphQLString,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueUri: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueUri: {
+			type: UriScalar,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueDate: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueDate: {
+			type: DateScalar,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueDateTime: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueDateTime: {
+			type: DateTimeScalar,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueTime: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueTime: {
+			type: TimeScalar,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueCode: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueCode: {
+			type: CodeScalar,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueOid: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueOid: {
+			type: OidScalar,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueId: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueId: {
+			type: IdScalar,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueUnsignedInt: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueUnsignedInt: {
+			type: UnsignedIntScalar,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValuePositiveInt: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValuePositiveInt: {
+			type: PositiveIntScalar,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_minValueMarkdown: {
+			type: require('./element.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueMarkdown: {
+			type: GraphQLString,
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueAnnotation: {
+			type: require('./annotation.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueAttachment: {
+			type: require('./attachment.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueIdentifier: {
+			type: require('./identifier.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueCodeableConcept: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueCoding: {
+			type: require('./coding.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueQuantity: {
+			type: require('./quantity.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueRange: {
+			type: require('./range.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValuePeriod: {
+			type: require('./period.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueRatio: {
+			type: require('./ratio.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueSampledData: {
+			type: require('./sampleddata.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueSignature: {
+			type: require('./signature.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueHumanName: {
+			type: require('./humanname.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueAddress: {
+			type: require('./address.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueContactPoint: {
+			type: require('./contactpoint.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueTiming: {
+			type: require('./timing.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueReference: {
+			type: require('./resourcelist.schema'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		minValueMeta: {
+			type: require('./meta.schema.js'),
+			description:
+				'The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueBoolean: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueBoolean: {
+			type: GraphQLBoolean,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueInteger: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueInteger: {
+			type: GraphQLInt,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueDecimal: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueDecimal: {
+			type: GraphQLFloat,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueBase64Binary: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueBase64Binary: {
+			type: Base64BinaryScalar,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueInstant: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueInstant: {
+			type: InstantScalar,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueString: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueString: {
+			type: GraphQLString,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueUri: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueUri: {
+			type: UriScalar,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueDate: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueDate: {
+			type: DateScalar,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueDateTime: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueDateTime: {
+			type: DateTimeScalar,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueTime: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueTime: {
+			type: TimeScalar,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueCode: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueCode: {
+			type: CodeScalar,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueOid: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueOid: {
+			type: OidScalar,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueId: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueId: {
+			type: IdScalar,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueUnsignedInt: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueUnsignedInt: {
+			type: UnsignedIntScalar,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValuePositiveInt: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValuePositiveInt: {
+			type: PositiveIntScalar,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxValueMarkdown: {
+			type: require('./element.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueMarkdown: {
+			type: GraphQLString,
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueAnnotation: {
+			type: require('./annotation.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueAttachment: {
+			type: require('./attachment.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueIdentifier: {
+			type: require('./identifier.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueCodeableConcept: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueCoding: {
+			type: require('./coding.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueQuantity: {
+			type: require('./quantity.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueRange: {
+			type: require('./range.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValuePeriod: {
+			type: require('./period.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueRatio: {
+			type: require('./ratio.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueSampledData: {
+			type: require('./sampleddata.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueSignature: {
+			type: require('./signature.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueHumanName: {
+			type: require('./humanname.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueAddress: {
+			type: require('./address.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueContactPoint: {
+			type: require('./contactpoint.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueTiming: {
+			type: require('./timing.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueReference: {
+			type: require('./resourcelist.schema'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		maxValueMeta: {
+			type: require('./meta.schema.js'),
+			description:
+				'The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.',
+		},
+		_maxLength: {
+			type: require('./element.schema.js'),
+			description:
+				'Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.',
+		},
+		maxLength: {
+			type: GraphQLInt,
+			description:
+				'Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.',
+		},
+		_condition: {
+			type: require('./element.schema.js'),
+			description:
+				'A reference to an invariant that may make additional statements about the cardinality or value in the instance.',
+		},
+		condition: {
+			type: new GraphQLList(IdScalar),
+			description:
+				'A reference to an invariant that may make additional statements about the cardinality or value in the instance.',
+		},
+		constraint: {
+			type: new GraphQLList(require('./element.schema.js')),
+			description:
+				'Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.',
+		},
+		_mustSupport: {
+			type: require('./element.schema.js'),
+			description:
+				"If true, implementations that produce or consume resources SHALL provide 'support' for the element in some meaningful way.  If false, the element may be ignored and not supported.",
+		},
+		mustSupport: {
+			type: GraphQLBoolean,
+			description:
+				"If true, implementations that produce or consume resources SHALL provide 'support' for the element in some meaningful way.  If false, the element may be ignored and not supported.",
+		},
+		_isModifier: {
+			type: require('./element.schema.js'),
+			description:
+				'If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.',
+		},
+		isModifier: {
+			type: GraphQLBoolean,
+			description:
+				'If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.',
+		},
+		_isSummary: {
+			type: require('./element.schema.js'),
+			description:
+				'Whether the element should be included if a client requests a search with the parameter _summary=true.',
+		},
+		isSummary: {
+			type: GraphQLBoolean,
+			description:
+				'Whether the element should be included if a client requests a search with the parameter _summary=true.',
+		},
+		binding: {
+			type: require('./element.schema.js'),
+			description:
+				'Binds to a value set if this element is coded (code, Coding, CodeableConcept).',
+		},
+		mapping: {
+			type: new GraphQLList(require('./element.schema.js')),
+			description:
+				'Identifies a concept from an external specification that roughly corresponds to this element.',
+		},
+	}),
 });

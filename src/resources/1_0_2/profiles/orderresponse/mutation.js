@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const OrderResponseSchema = require('../../schemas/orderresponse.schema');
+const OrderResponseSchema = require('../../schemas/orderresponse.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const OrderResponseInput = require('../../inputs/orderresponse.input');
+const OrderResponseInput = require('../../inputs/orderresponse.input.js');
 
-// Resolvers
-const {
-	orderresponseCreateResolver,
-	orderresponseUpdateResolver,
-	orderresponseDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createOrderResponse,
+	updateOrderResponse,
+	removeOrderResponse,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'OrderResponse',
 	action: 'write',
-	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a OrderResponse record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a OrderResponse record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.OrderResponseCreateMutation
- * @summary OrderResponseCreate Mutation.
+ * @summary OrderResponseCreate mutation.
  */
 module.exports.OrderResponseCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a OrderResponse',
-	resolve: scopeInvariant(scopeOptions, orderresponseCreateResolver),
+	description: 'Create a OrderResponse record',
+	resolve: scopeInvariant(scopeOptions, createOrderResponse),
 	type: OrderResponseSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.OrderResponseUpdateMutation
- * @summary OrderResponseUpdate Mutation.
+ * @summary OrderResponseUpdate mutation.
  */
 module.exports.OrderResponseUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple OrderResponses',
-	resolve: scopeInvariant(scopeOptions, orderresponseUpdateResolver),
+	description: 'Update a OrderResponse record',
+	resolve: scopeInvariant(scopeOptions, updateOrderResponse),
 	type: OrderResponseSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.OrderResponseDeleteMutation
- * @summary OrderResponseDelete Mutation.
+ * @name exports.OrderResponseRemoveMutation
+ * @summary OrderResponseRemove mutation.
  */
-module.exports.OrderResponseDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single OrderResponse',
-	resolve: scopeInvariant(scopeOptions, orderresponseDeleteResolver),
+module.exports.OrderResponseRemoveMutation = {
+	description: 'Remove a OrderResponse record',
+	resolve: scopeInvariant(scopeOptions, removeOrderResponse),
 	type: OrderResponseSchema,
+	args: DeleteArgs,
 };

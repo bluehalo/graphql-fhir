@@ -1,48 +1,67 @@
-const DateTimeScalar = require('../scalars/datetime.scalar');
 const {
-	GraphQLInputObjectType,
+	GraphQLList,
 	GraphQLBoolean,
 	GraphQLNonNull,
+	GraphQLString,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const IdScalar = require('../scalars/id.scalar.js');
+const DateTimeScalar = require('../scalars/dateTime.scalar.js');
 
 /**
  * @name exports
- * @summary List.entry Input Schema
+ * @summary Listentry Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'ListEntry_Input',
-	description: 'Entries in this list.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/list-item-flag
-			flag: {
-				type: require('./codeableconcept.input'),
-				description:
-					'The flag allows the system constructing the list to indicate the role and significance of the item in the list.',
-			},
-			deleted: {
-				type: GraphQLBoolean,
-				description: 'True if this item is marked as deleted in the list.',
-			},
-			_deleted: {
-				type: require('./element.input'),
-				description: 'True if this item is marked as deleted in the list.',
-			},
-			date: {
-				type: DateTimeScalar,
-				description: 'When this item was added to the list.',
-			},
-			_date: {
-				type: require('./element.input'),
-				description: 'When this item was added to the list.',
-			},
-			item: {
-				type: new GraphQLNonNull(require('./reference.input')),
-				description:
-					'A reference to the actual resource from which data was derived.',
-			},
-		}),
+	name: 'Listentry_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/list-item-flag
+		flag: {
+			type: require('./codeableconcept.input.js'),
+			description:
+				'The flag allows the system constructing the list to indicate the role and significance of the item in the list.',
+		},
+		_deleted: {
+			type: require('./element.input.js'),
+			description: 'True if this item is marked as deleted in the list.',
+		},
+		deleted: {
+			type: GraphQLBoolean,
+			description: 'True if this item is marked as deleted in the list.',
+		},
+		_date: {
+			type: require('./element.input.js'),
+			description: 'When this item was added to the list.',
+		},
+		date: {
+			type: DateTimeScalar,
+			description: 'When this item was added to the list.',
+		},
+		item: {
+			type: new GraphQLNonNull(GraphQLString),
+			description:
+				'A reference to the actual resource from which data was derived.',
+		},
+	}),
 });

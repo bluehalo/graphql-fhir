@@ -1,7 +1,7 @@
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -9,79 +9,111 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the imagingstudy query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/clinical-identifier
 	identifier: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ImagingStudy.identifier',
 		description:
-			'Other identifiers for the Study (See http://hl7.org/fhir/SearchParameter/clinical-identifier).',
+			'Multiple Resources:     * [DocumentManifest](documentmanifest.html): Unique Identifier for the set of documents  * [Goal](goal.html): External Ids for this goal  * [Consent](consent.html): Identifier for this record (external references)  * [DocumentReference](documentreference.html): Master Version Specific Identifier  * [SupplyRequest](supplyrequest.html): Unique identifier  * [RiskAssessment](riskassessment.html): Unique identifier for the assessment  * [CareTeam](careteam.html): External Ids for this team  * [ImagingStudy](imagingstudy.html): Other identifiers for the Study  * [FamilyMemberHistory](familymemberhistory.html): A search by a record identifier  * [Encounter](encounter.html): Identifier(s) by which this encounter is known  * [DeviceRequest](devicerequest.html): Business identifier for request/order  * [AllergyIntolerance](allergyintolerance.html): External ids for this item  * [CarePlan](careplan.html): External Ids for this plan  * [EpisodeOfCare](episodeofcare.html): Business Identifier(s) relevant for this EpisodeOfCare  * [Procedure](procedure.html): A unique identifier for a procedure  * [List](list.html): Business identifier  * [Immunization](immunization.html): Business identifier  * [VisionPrescription](visionprescription.html): Return prescriptions with this external identifier  * [ProcedureRequest](procedurerequest.html): Identifiers assigned to this order  * [Observation](observation.html): The unique id for a particular observation  * [DiagnosticReport](diagnosticreport.html): An identifier for the report  * [NutritionOrder](nutritionorder.html): Return nutrition orders with this external identifier  * [Condition](condition.html): A unique identifier of the condition record  * [Composition](composition.html): Logical identifier of composition (version-independent)  * [DetectedIssue](detectedissue.html): Unique id for the detected issue  * [SupplyDelivery](supplydelivery.html): External identifier  ',
 	},
-	reason: {
-		type: TokenScalar,
-		description:
-			'The reason for the study (See http://hl7.org/fhir/SearchParameter/ImagingStudy-reason).',
-	},
-	study: {
-		type: UriScalar,
-		description:
-			'The study identifier for the image (See http://hl7.org/fhir/SearchParameter/ImagingStudy-study).',
-	},
-	dicom_class: {
-		type: UriScalar,
-		description:
-			'The type of the instance (See http://hl7.org/fhir/SearchParameter/ImagingStudy-dicom-class).',
-	},
-	modality: {
-		type: TokenScalar,
-		description:
-			'The modality of the series (See http://hl7.org/fhir/SearchParameter/ImagingStudy-modality).',
-	},
-	bodysite: {
-		type: TokenScalar,
-		description:
-			'The body site studied (See http://hl7.org/fhir/SearchParameter/ImagingStudy-bodysite).',
-	},
-	performer: {
-		type: GraphQLString,
-		description:
-			'The person who performed the study (See http://hl7.org/fhir/SearchParameter/ImagingStudy-performer).',
-	},
-	started: {
-		type: DateScalar,
-		description:
-			'When the study was started (See http://hl7.org/fhir/SearchParameter/ImagingStudy-started).',
-	},
-	accession: {
-		type: TokenScalar,
-		description:
-			'The accession identifier for the study (See http://hl7.org/fhir/SearchParameter/ImagingStudy-accession).',
-	},
-	uid: {
-		type: UriScalar,
-		description:
-			'The instance unique identifier (See http://hl7.org/fhir/SearchParameter/ImagingStudy-uid).',
-	},
-	endpoint: {
-		type: GraphQLString,
-		description:
-			'The endpoint for te study or series (See http://hl7.org/fhir/SearchParameter/ImagingStudy-endpoint).',
-	},
+	// http://hl7.org/fhir/SearchParameter/clinical-patient
 	patient: {
 		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ImagingStudy.patient',
 		description:
-			'Who the study is about (See http://hl7.org/fhir/SearchParameter/clinical-patient).',
+			'Multiple Resources:     * [ReferralRequest](referralrequest.html): Who the referral is about  * [DocumentManifest](documentmanifest.html): The subject of the set of documents  * [Goal](goal.html): Who this goal is intended for  * [Consent](consent.html): Who the consent applies to  * [DocumentReference](documentreference.html): Who/what is the subject of the document  * [ImagingManifest](imagingmanifest.html): Subject of the ImagingManifest (or a DICOM Key Object Selection which it represents)  * [RiskAssessment](riskassessment.html): Who/what does assessment apply to?  * [CareTeam](careteam.html): Who care team is for  * [ImagingStudy](imagingstudy.html): Who the study is about  * [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for  * [Encounter](encounter.html): The patient ro group present at the encounter  * [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient  * [DeviceRequest](devicerequest.html): Individual the service is ordered for  * [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for  * [CarePlan](careplan.html): Who care plan is for  * [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care  * [Procedure](procedure.html): Search by subject - a patient  * [List](list.html): If all resources have the same subject  * [Immunization](immunization.html): The patient for the vaccination record  * [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for  * [ProcedureRequest](procedurerequest.html): Search by subject - a patient  * [Flag](flag.html): The identity of a subject to list flags for  * [Observation](observation.html): The subject that the observation is about (if patient)  * [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient  * [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement  * [Condition](condition.html): Who has the condition?  * [Composition](composition.html): Who and/or what the composition is about  * [DetectedIssue](detectedissue.html): Associated patient  * [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied  * [ClinicalImpression](clinicalimpression.html): Patient or group assessed  ',
 	},
-	series: {
-		type: UriScalar,
-		description:
-			'The identifier of the series of images (See http://hl7.org/fhir/SearchParameter/ImagingStudy-series).',
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-accession
+	accession: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ImagingStudy.accession',
+		description: 'The accession identifier for the study',
 	},
-	context: {
-		type: GraphQLString,
-		description:
-			'The context of the study (See http://hl7.org/fhir/SearchParameter/ImagingStudy-context).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-basedon
 	basedon: {
 		type: GraphQLString,
-		description:
-			'The order for the image (See http://hl7.org/fhir/SearchParameter/ImagingStudy-basedon).',
+		fhirtype: 'reference',
+		xpath: 'ImagingStudy.basedOn',
+		description: 'The order for the image',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-bodysite
+	bodysite: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ImagingStudy.series.bodySite',
+		description: 'The body site studied',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-context
+	context: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ImagingStudy.context',
+		description: 'The context of the study',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-dicom-class
+	dicom_class: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ImagingStudy.series.instance.sopClass',
+		description: 'The type of the instance',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-endpoint
+	endpoint: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ImagingStudy.endpoint',
+		description: 'The endpoint for te study or series',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-modality
+	modality: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ImagingStudy.series.modality',
+		description: 'The modality of the series',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-performer
+	performer: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ImagingStudy.series.performer',
+		description: 'The person who performed the study',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-reason
+	reason: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ImagingStudy.reason',
+		description: 'The reason for the study',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-series
+	series: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ImagingStudy.series.uid',
+		description: 'The identifier of the series of images',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-started
+	started: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'ImagingStudy.started',
+		description: 'When the study was started',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-study
+	study: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ImagingStudy.uid',
+		description: 'The study identifier for the image',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingStudy-uid
+	uid: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ImagingStudy.series.instance.uid',
+		description: 'The instance unique identifier',
 	},
 };

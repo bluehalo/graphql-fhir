@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.medicationstatementResolver
+ * @name exports.getMedicationStatement
  * @static
- * @summary MedicationStatement Resolver.
+ * @summary MedicationStatement resolver.
  */
-module.exports.medicationstatementResolver = function medicationstatementResolver(
+module.exports.getMedicationStatement = function getMedicationStatement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationstatementListResolver
+ * @name exports.getMedicationStatementList
  * @static
- * @summary MedicationStatement List Resolver.
+ * @summary MedicationStatement list resolver.
  */
-module.exports.medicationstatementListResolver = function medicationstatementListResolver(
+module.exports.getMedicationStatementList = function getMedicationStatementList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationstatementInstanceResolver
+ * @name exports.getMedicationStatementInstance
  * @static
- * @summary MedicationStatement Instance Resolver.
+ * @summary MedicationStatement instance resolver.
  */
-module.exports.medicationstatementInstanceResolver = function medicationstatementInstanceResolver(
+module.exports.getMedicationStatementInstance = function getMedicationStatementInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationstatementCreateResolver
+ * @name exports.createMedicationStatement
  * @static
- * @summary MedicationStatement Create Resolver.
+ * @summary Create MedicationStatement resolver.
  */
-module.exports.medicationstatementCreateResolver = function medicationstatementCreateResolver(
+module.exports.createMedicationStatement = function createMedicationStatement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationstatementUpdateResolver
+ * @name exports.updateMedicationStatement
  * @static
- * @summary MedicationStatement Update Resolver.
+ * @summary Update MedicationStatement resolver.
  */
-module.exports.medicationstatementUpdateResolver = function medicationstatementUpdateResolver(
+module.exports.updateMedicationStatement = function updateMedicationStatement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationstatementDeleteResolver
+ * @name exports.removeMedicationStatement
  * @static
- * @summary MedicationStatement Delete Resolver.
+ * @summary Remove MedicationStatement resolver.
  */
-module.exports.medicationstatementDeleteResolver = function medicationstatementDeleteResolver(
+module.exports.removeMedicationStatement = function removeMedicationStatement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const DiagnosticOrderSchema = require('../../schemas/diagnosticorder.schema');
+const DiagnosticOrderSchema = require('../../schemas/diagnosticorder.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const DiagnosticOrderInput = require('../../inputs/diagnosticorder.input');
+const DiagnosticOrderInput = require('../../inputs/diagnosticorder.input.js');
 
-// Resolvers
-const {
-	diagnosticorderCreateResolver,
-	diagnosticorderUpdateResolver,
-	diagnosticorderDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createDiagnosticOrder,
+	updateDiagnosticOrder,
+	removeDiagnosticOrder,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DiagnosticOrder',
 	action: 'write',
-	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a DiagnosticOrder record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a DiagnosticOrder record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.DiagnosticOrderCreateMutation
- * @summary DiagnosticOrderCreate Mutation.
+ * @summary DiagnosticOrderCreate mutation.
  */
 module.exports.DiagnosticOrderCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a DiagnosticOrder',
-	resolve: scopeInvariant(scopeOptions, diagnosticorderCreateResolver),
+	description: 'Create a DiagnosticOrder record',
+	resolve: scopeInvariant(scopeOptions, createDiagnosticOrder),
 	type: DiagnosticOrderSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.DiagnosticOrderUpdateMutation
- * @summary DiagnosticOrderUpdate Mutation.
+ * @summary DiagnosticOrderUpdate mutation.
  */
 module.exports.DiagnosticOrderUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple DiagnosticOrders',
-	resolve: scopeInvariant(scopeOptions, diagnosticorderUpdateResolver),
+	description: 'Update a DiagnosticOrder record',
+	resolve: scopeInvariant(scopeOptions, updateDiagnosticOrder),
 	type: DiagnosticOrderSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.DiagnosticOrderDeleteMutation
- * @summary DiagnosticOrderDelete Mutation.
+ * @name exports.DiagnosticOrderRemoveMutation
+ * @summary DiagnosticOrderRemove mutation.
  */
-module.exports.DiagnosticOrderDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single DiagnosticOrder',
-	resolve: scopeInvariant(scopeOptions, diagnosticorderDeleteResolver),
+module.exports.DiagnosticOrderRemoveMutation = {
+	description: 'Remove a DiagnosticOrder record',
+	resolve: scopeInvariant(scopeOptions, removeDiagnosticOrder),
 	type: DiagnosticOrderSchema,
+	args: DeleteArgs,
 };

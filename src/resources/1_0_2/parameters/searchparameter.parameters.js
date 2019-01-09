@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -8,39 +8,54 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the searchparameter query
  */
 module.exports = {
-	description: {
-		type: GraphQLString,
-		description:
-			'Documentation for  search parameter (See http://hl7.org/fhir/SearchParameter/searchparameter-description).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			'Informal name for this search parameter (See http://hl7.org/fhir/SearchParameter/searchparameter-name).',
-	},
-	target: {
-		type: TokenScalar,
-		description:
-			'Types of resource (if a resource reference) (See http://hl7.org/fhir/SearchParameter/searchparameter-target).',
-	},
+	// http://hl7.org/fhir/SearchParameter/SearchParameter-base
 	base: {
 		type: TokenScalar,
-		description:
-			'The resource type this search parameter applies to (See http://hl7.org/fhir/SearchParameter/searchparameter-base).',
+		fhirtype: 'token',
+		xpath: 'SearchParameter.base',
+		description: 'The resource type this search parameter applies to',
 	},
+	// http://hl7.org/fhir/SearchParameter/SearchParameter-code
 	code: {
 		type: TokenScalar,
-		description:
-			'Code used in URL (See http://hl7.org/fhir/SearchParameter/searchparameter-code).',
+		fhirtype: 'token',
+		xpath: 'SearchParameter.code',
+		description: 'Code used in URL',
 	},
+	// http://hl7.org/fhir/SearchParameter/SearchParameter-description
+	description: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'SearchParameter.description',
+		description: 'Documentation for  search parameter',
+	},
+	// http://hl7.org/fhir/SearchParameter/SearchParameter-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'SearchParameter.name',
+		description: 'Informal name for this search parameter',
+	},
+	// http://hl7.org/fhir/SearchParameter/SearchParameter-target
+	target: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'SearchParameter.target',
+		description: 'Types of resource (if a resource reference)',
+	},
+	// http://hl7.org/fhir/SearchParameter/SearchParameter-type
 	type: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'SearchParameter.type',
 		description:
-			'number | date | string | token | reference | composite | quantity | uri (See http://hl7.org/fhir/SearchParameter/searchparameter-type).',
+			'number | date | string | token | reference | composite | quantity | uri',
 	},
+	// http://hl7.org/fhir/SearchParameter/SearchParameter-url
 	url: {
 		type: UriScalar,
-		description:
-			'Absolute URL used to reference this search parameter (See http://hl7.org/fhir/SearchParameter/searchparameter-url).',
+		fhirtype: 'uri',
+		xpath: 'SearchParameter.url',
+		description: 'Absolute URL used to reference this search parameter',
 	},
 };

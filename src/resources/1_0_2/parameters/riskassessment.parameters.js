@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,44 +8,60 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the riskassessment query
  */
 module.exports = {
-	patient: {
-		type: GraphQLString,
-		description:
-			'Who/what does assessment apply to? (See http://hl7.org/fhir/SearchParameter/riskassessment-patient).',
-	},
+	// http://hl7.org/fhir/SearchParameter/RiskAssessment-condition
 	condition: {
 		type: GraphQLString,
-		description:
-			'Condition assessed (See http://hl7.org/fhir/SearchParameter/riskassessment-condition).',
+		fhirtype: 'reference',
+		xpath: 'RiskAssessment.condition',
+		description: 'Condition assessed',
 	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'Who/what does assessment apply to? (See http://hl7.org/fhir/SearchParameter/riskassessment-subject).',
-	},
-	performer: {
-		type: GraphQLString,
-		description:
-			'Who did assessment? (See http://hl7.org/fhir/SearchParameter/riskassessment-performer).',
-	},
-	method: {
-		type: TokenScalar,
-		description:
-			'Evaluation mechanism (See http://hl7.org/fhir/SearchParameter/riskassessment-method).',
-	},
-	encounter: {
-		type: GraphQLString,
-		description:
-			'Where was assessment performed? (See http://hl7.org/fhir/SearchParameter/riskassessment-encounter).',
-	},
+	// http://hl7.org/fhir/SearchParameter/RiskAssessment-date
 	date: {
 		type: DateScalar,
-		description:
-			'When was assessment made? (See http://hl7.org/fhir/SearchParameter/riskassessment-date).',
+		fhirtype: 'date',
+		xpath: 'RiskAssessment.date',
+		description: 'When was assessment made?',
 	},
+	// http://hl7.org/fhir/SearchParameter/RiskAssessment-encounter
+	encounter: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'RiskAssessment.encounter',
+		description: 'Where was assessment performed?',
+	},
+	// http://hl7.org/fhir/SearchParameter/RiskAssessment-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Unique identifier for the assessment (See http://hl7.org/fhir/SearchParameter/riskassessment-identifier).',
+		fhirtype: 'token',
+		xpath: 'RiskAssessment.identifier',
+		description: 'Unique identifier for the assessment',
+	},
+	// http://hl7.org/fhir/SearchParameter/RiskAssessment-method
+	method: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'RiskAssessment.method',
+		description: 'Evaluation mechanism',
+	},
+	// http://hl7.org/fhir/SearchParameter/RiskAssessment-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'RiskAssessment.subject',
+		description: 'Who/what does assessment apply to?',
+	},
+	// http://hl7.org/fhir/SearchParameter/RiskAssessment-performer
+	performer: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'RiskAssessment.performer',
+		description: 'Who did assessment?',
+	},
+	// http://hl7.org/fhir/SearchParameter/RiskAssessment-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'RiskAssessment.subject',
+		description: 'Who/what does assessment apply to?',
 	},
 };

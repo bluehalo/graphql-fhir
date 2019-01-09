@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -8,39 +8,53 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the testscript query
  */
 module.exports = {
-	testscript_test_capability: {
-		type: GraphQLString,
-		description:
-			'TestScript test required and validated capability (See http://hl7.org/fhir/SearchParameter/testscript-testscript-test-capability).',
-	},
-	testscript_setup_capability: {
-		type: GraphQLString,
-		description:
-			'TestScript setup required and validated capability (See http://hl7.org/fhir/SearchParameter/testscript-testscript-setup-capability).',
-	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-description
 	description: {
 		type: GraphQLString,
-		description:
-			'Natural language description of the TestScript (See http://hl7.org/fhir/SearchParameter/testscript-description).',
+		fhirtype: 'string',
+		xpath: 'TestScript.description',
+		description: 'Natural language description of the TestScript',
 	},
-	name: {
-		type: GraphQLString,
-		description:
-			'Informal name for this TestScript (See http://hl7.org/fhir/SearchParameter/testscript-name).',
-	},
-	testscript_capability: {
-		type: GraphQLString,
-		description:
-			'TestScript required and validated capability (See http://hl7.org/fhir/SearchParameter/testscript-testscript-capability).',
-	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'External identifier (See http://hl7.org/fhir/SearchParameter/testscript-identifier).',
+		fhirtype: 'token',
+		xpath: 'TestScript.identifier',
+		description: 'External identifier',
 	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'TestScript.name',
+		description: 'Informal name for this TestScript',
+	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-testscript-capability
+	testscript_capability: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'TestScript.metadata.capability.description',
+		description: 'TestScript required and validated capability',
+	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-testscript-setup-capability
+	testscript_setup_capability: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'TestScript.setup.metadata.capability.description',
+		description: 'TestScript setup required and validated capability',
+	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-testscript-test-capability
+	testscript_test_capability: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'TestScript.test.metadata.capability.description',
+		description: 'TestScript test required and validated capability',
+	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-url
 	url: {
 		type: UriScalar,
-		description:
-			'Absolute URL used to reference this TestScript (See http://hl7.org/fhir/SearchParameter/testscript-url).',
+		fhirtype: 'uri',
+		xpath: 'TestScript.url',
+		description: 'Absolute URL used to reference this TestScript',
 	},
 };

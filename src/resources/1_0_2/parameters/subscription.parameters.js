@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -8,39 +8,53 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the subscription query
  */
 module.exports = {
-	criteria: {
-		type: GraphQLString,
-		description:
-			'Rule for server push criteria (See http://hl7.org/fhir/SearchParameter/subscription-criteria).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'requested | active | error | off (See http://hl7.org/fhir/SearchParameter/subscription-status).',
-	},
-	tag: {
-		type: TokenScalar,
-		description:
-			'A tag to add to matching resources (See http://hl7.org/fhir/SearchParameter/subscription-tag).',
-	},
-	payload: {
-		type: GraphQLString,
-		description:
-			'Mimetype to send, or blank for no payload (See http://hl7.org/fhir/SearchParameter/subscription-payload).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'rest-hook | websocket | email | sms | message (See http://hl7.org/fhir/SearchParameter/subscription-type).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-contact
 	contact: {
 		type: TokenScalar,
-		description:
-			'Contact details for source (e.g. troubleshooting) (See http://hl7.org/fhir/SearchParameter/subscription-contact).',
+		fhirtype: 'token',
+		xpath: 'Subscription.contact',
+		description: 'Contact details for source (e.g. troubleshooting)',
 	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-criteria
+	criteria: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Subscription.criteria',
+		description: 'Rule for server push criteria',
+	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-payload
+	payload: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Subscription.channel.payload',
+		description: 'Mimetype to send, or blank for no payload',
+	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Subscription.status',
+		description: 'requested | active | error | off',
+	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-tag
+	tag: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Subscription.tag',
+		description: 'A tag to add to matching resources',
+	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Subscription.channel.type',
+		description: 'rest-hook | websocket | email | sms | message',
+	},
+	// http://hl7.org/fhir/SearchParameter/Subscription-url
 	url: {
 		type: UriScalar,
-		description:
-			'Where the channel points to (See http://hl7.org/fhir/SearchParameter/subscription-url).',
+		fhirtype: 'uri',
+		xpath: 'Subscription.channel.endpoint',
+		description: 'Where the channel points to',
 	},
 };

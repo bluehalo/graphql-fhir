@@ -1,152 +1,168 @@
-const CodeScalar = require('../scalars/code.scalar');
-const IdScalar = require('../scalars/id.scalar');
 const {
-	GraphQLInputObjectType,
+	GraphQLList,
 	GraphQLString,
 	GraphQLInt,
 	GraphQLBoolean,
-	GraphQLList,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const IdScalar = require('../scalars/id.scalar.js');
+const CodeScalar = require('../scalars/code.scalar.js');
 
 /**
  * @name exports
- * @summary TestScript.setup.action.operation Input Schema
+ * @summary TestScriptsetupactionoperation Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'TestScriptSetupActionOperation_Input',
-	description: 'The operation to perform.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/testscript-operation-codes
-			type: {
-				type: require('./coding.input'),
-				description: 'Server interaction or operation type.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/defined-types
-			resource: {
-				type: CodeScalar,
-				description:
-					'The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.',
-			},
-			_resource: {
-				type: require('./element.input'),
-				description:
-					'The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.',
-			},
-			label: {
-				type: GraphQLString,
-				description:
-					'The label would be used for tracking/logging purposes by test engines.',
-			},
-			_label: {
-				type: require('./element.input'),
-				description:
-					'The label would be used for tracking/logging purposes by test engines.',
-			},
-			description: {
-				type: GraphQLString,
-				description:
-					'The description would be used by test engines for tracking and reporting purposes.',
-			},
-			_description: {
-				type: require('./element.input'),
-				description:
-					'The description would be used by test engines for tracking and reporting purposes.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/content-type
-			accept: {
-				type: CodeScalar,
-				description:
-					"The content-type or mime-type to use for RESTful operation in the 'Accept' header.",
-			},
-			_accept: {
-				type: require('./element.input'),
-				description:
-					"The content-type or mime-type to use for RESTful operation in the 'Accept' header.",
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/content-type
-			contentType: {
-				type: CodeScalar,
-				description:
-					"The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.",
-			},
-			_contentType: {
-				type: require('./element.input'),
-				description:
-					"The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.",
-			},
-			destination: {
-				type: GraphQLInt,
-				description: 'Which server to perform the operation on.',
-			},
-			_destination: {
-				type: require('./element.input'),
-				description: 'Which server to perform the operation on.',
-			},
-			encodeRequestUrl: {
-				type: GraphQLBoolean,
-				description:
-					'Whether or not to implicitly send the request url in encoded format. The default is true to match the standard RESTful client behavior. Set to false when communicating with a server that does not support encoded url paths.',
-			},
-			_encodeRequestUrl: {
-				type: require('./element.input'),
-				description:
-					'Whether or not to implicitly send the request url in encoded format. The default is true to match the standard RESTful client behavior. Set to false when communicating with a server that does not support encoded url paths.',
-			},
-			params: {
-				type: GraphQLString,
-				description:
-					'Path plus parameters after [type].  Used to set parts of the request URL explicitly.',
-			},
-			_params: {
-				type: require('./element.input'),
-				description:
-					'Path plus parameters after [type].  Used to set parts of the request URL explicitly.',
-			},
-			requestHeader: {
-				type: new GraphQLList(
-					require('./testscriptsetupactionoperationrequestheader.input'),
-				),
-				description: 'Header elements would be used to set HTTP headers.',
-			},
-			responseId: {
-				type: IdScalar,
-				description: 'The fixture id (maybe new) to map to the response.',
-			},
-			_responseId: {
-				type: require('./element.input'),
-				description: 'The fixture id (maybe new) to map to the response.',
-			},
-			sourceId: {
-				type: IdScalar,
-				description:
-					'The id of the fixture used as the body of a PUT or POST request.',
-			},
-			_sourceId: {
-				type: require('./element.input'),
-				description:
-					'The id of the fixture used as the body of a PUT or POST request.',
-			},
-			targetId: {
-				type: IdScalar,
-				description:
-					'Id of fixture used for extracting the [id],  [type], and [vid] for GET requests.',
-			},
-			_targetId: {
-				type: require('./element.input'),
-				description:
-					'Id of fixture used for extracting the [id],  [type], and [vid] for GET requests.',
-			},
-			url: {
-				type: GraphQLString,
-				description: 'Complete request URL.',
-			},
-			_url: {
-				type: require('./element.input'),
-				description: 'Complete request URL.',
-			},
-		}),
+	name: 'TestScriptsetupactionoperation_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/testscript-operation-codes
+		type: {
+			type: require('./coding.input.js'),
+			description: 'Server interaction or operation type.',
+		},
+		_resource: {
+			type: require('./element.input.js'),
+			description:
+				'The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/defined-types
+		resource: {
+			type: CodeScalar,
+			description:
+				'The type of the resource.  See http://hl7-fhir.github.io/resourcelist.html.',
+		},
+		_label: {
+			type: require('./element.input.js'),
+			description:
+				'The label would be used for tracking/logging purposes by test engines.',
+		},
+		label: {
+			type: GraphQLString,
+			description:
+				'The label would be used for tracking/logging purposes by test engines.',
+		},
+		_description: {
+			type: require('./element.input.js'),
+			description:
+				'The description would be used by test engines for tracking and reporting purposes.',
+		},
+		description: {
+			type: GraphQLString,
+			description:
+				'The description would be used by test engines for tracking and reporting purposes.',
+		},
+		_accept: {
+			type: require('./element.input.js'),
+			description:
+				"The content-type or mime-type to use for RESTful operation in the 'Accept' header.",
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/content-type
+		accept: {
+			type: CodeScalar,
+			description:
+				"The content-type or mime-type to use for RESTful operation in the 'Accept' header.",
+		},
+		_contentType: {
+			type: require('./element.input.js'),
+			description:
+				"The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.",
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/content-type
+		contentType: {
+			type: CodeScalar,
+			description:
+				"The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.",
+		},
+		_destination: {
+			type: require('./element.input.js'),
+			description: 'Which server to perform the operation on.',
+		},
+		destination: {
+			type: GraphQLInt,
+			description: 'Which server to perform the operation on.',
+		},
+		_encodeRequestUrl: {
+			type: require('./element.input.js'),
+			description:
+				'Whether or not to implicitly send the request url in encoded format. The default is true to match the standard RESTful client behavior. Set to false when communicating with a server that does not support encoded url paths.',
+		},
+		encodeRequestUrl: {
+			type: GraphQLBoolean,
+			description:
+				'Whether or not to implicitly send the request url in encoded format. The default is true to match the standard RESTful client behavior. Set to false when communicating with a server that does not support encoded url paths.',
+		},
+		_params: {
+			type: require('./element.input.js'),
+			description:
+				'Path plus parameters after [type].  Used to set parts of the request URL explicitly.',
+		},
+		params: {
+			type: GraphQLString,
+			description:
+				'Path plus parameters after [type].  Used to set parts of the request URL explicitly.',
+		},
+		requestHeader: {
+			type: new GraphQLList(
+				require('./testscriptsetupactionoperationrequestheader.input.js'),
+			),
+			description: 'Header elements would be used to set HTTP headers.',
+		},
+		_responseId: {
+			type: require('./element.input.js'),
+			description: 'The fixture id (maybe new) to map to the response.',
+		},
+		responseId: {
+			type: IdScalar,
+			description: 'The fixture id (maybe new) to map to the response.',
+		},
+		_sourceId: {
+			type: require('./element.input.js'),
+			description:
+				'The id of the fixture used as the body of a PUT or POST request.',
+		},
+		sourceId: {
+			type: IdScalar,
+			description:
+				'The id of the fixture used as the body of a PUT or POST request.',
+		},
+		_targetId: {
+			type: require('./element.input.js'),
+			description:
+				'Id of fixture used for extracting the [id],  [type], and [vid] for GET requests.',
+		},
+		targetId: {
+			type: IdScalar,
+			description:
+				'Id of fixture used for extracting the [id],  [type], and [vid] for GET requests.',
+		},
+		_url: {
+			type: require('./element.input.js'),
+			description: 'Complete request URL.',
+		},
+		url: {
+			type: GraphQLString,
+			description: 'Complete request URL.',
+		},
+	}),
 });

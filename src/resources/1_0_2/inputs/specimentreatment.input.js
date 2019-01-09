@@ -1,39 +1,55 @@
 const {
-	GraphQLInputObjectType,
-	GraphQLString,
 	GraphQLList,
+	GraphQLString,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary Specimen.treatment Input Schema
+ * @summary Specimentreatment Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'SpecimenTreatment_Input',
-	description:
-		'Details concerning treatment and processing steps for the specimen.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			description: {
-				type: GraphQLString,
-				description: 'Textual description of procedure.',
-			},
-			_description: {
-				type: require('./element.input'),
-				description: 'Textual description of procedure.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-treatment-procedure
-			procedure: {
-				type: require('./codeableconcept.input'),
-				description:
-					'A coded value specifying the procedure used to process the specimen.',
-			},
-			additive: {
-				type: new GraphQLList(require('./reference.input')),
-				description: 'Material used in the processing step.',
-			},
-		}),
+	name: 'Specimentreatment_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_description: {
+			type: require('./element.input.js'),
+			description: 'Textual description of procedure.',
+		},
+		description: {
+			type: GraphQLString,
+			description: 'Textual description of procedure.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/specimen-treatment-procedure
+		procedure: {
+			type: require('./codeableconcept.input.js'),
+			description:
+				'A coded value specifying the procedure used to process the specimen.',
+		},
+		additive: {
+			type: new GraphQLList(GraphQLString),
+			description: 'Material used in the processing step.',
+		},
+	}),
 });

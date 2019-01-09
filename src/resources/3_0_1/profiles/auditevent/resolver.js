@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.auditeventResolver
+ * @name exports.getAuditEvent
  * @static
- * @summary AuditEvent Resolver.
+ * @summary AuditEvent resolver.
  */
-module.exports.auditeventResolver = function auditeventResolver(
+module.exports.getAuditEvent = function getAuditEvent(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.auditeventListResolver
+ * @name exports.getAuditEventList
  * @static
- * @summary AuditEvent List Resolver.
+ * @summary AuditEvent list resolver.
  */
-module.exports.auditeventListResolver = function auditeventListResolver(
+module.exports.getAuditEventList = function getAuditEventList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.auditeventInstanceResolver
+ * @name exports.getAuditEventInstance
  * @static
- * @summary AuditEvent Instance Resolver.
+ * @summary AuditEvent instance resolver.
  */
-module.exports.auditeventInstanceResolver = function auditeventInstanceResolver(
+module.exports.getAuditEventInstance = function getAuditEventInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.auditeventCreateResolver
+ * @name exports.createAuditEvent
  * @static
- * @summary AuditEvent Create Resolver.
+ * @summary Create AuditEvent resolver.
  */
-module.exports.auditeventCreateResolver = function auditeventCreateResolver(
+module.exports.createAuditEvent = function createAuditEvent(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.auditeventUpdateResolver
+ * @name exports.updateAuditEvent
  * @static
- * @summary AuditEvent Update Resolver.
+ * @summary Update AuditEvent resolver.
  */
-module.exports.auditeventUpdateResolver = function auditeventUpdateResolver(
+module.exports.updateAuditEvent = function updateAuditEvent(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.auditeventDeleteResolver
+ * @name exports.removeAuditEvent
  * @static
- * @summary AuditEvent Delete Resolver.
+ * @summary Remove AuditEvent resolver.
  */
-module.exports.auditeventDeleteResolver = function auditeventDeleteResolver(
+module.exports.removeAuditEvent = function removeAuditEvent(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

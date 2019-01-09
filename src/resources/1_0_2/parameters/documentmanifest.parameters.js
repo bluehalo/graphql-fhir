@@ -1,7 +1,7 @@
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,69 +9,95 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the documentmanifest query
  */
 module.exports = {
-	related_ref: {
-		type: GraphQLString,
-		description:
-			'Related Resource (See http://hl7.org/fhir/SearchParameter/documentmanifest-related-ref).',
-	},
-	related_id: {
-		type: TokenScalar,
-		description:
-			'Identifiers of things that are related (See http://hl7.org/fhir/SearchParameter/documentmanifest-related-id).',
-	},
-	content_ref: {
-		type: GraphQLString,
-		description:
-			'Contents of this set of documents (See http://hl7.org/fhir/SearchParameter/documentmanifest-content-ref).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'current | superseded | entered-in-error (See http://hl7.org/fhir/SearchParameter/documentmanifest-status).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'The subject of the set of documents (See http://hl7.org/fhir/SearchParameter/documentmanifest-subject).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'Kind of document set (See http://hl7.org/fhir/SearchParameter/documentmanifest-type).',
-	},
-	recipient: {
-		type: GraphQLString,
-		description:
-			'Intended to get notified about this set of documents (See http://hl7.org/fhir/SearchParameter/documentmanifest-recipient).',
-	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-author
 	author: {
 		type: GraphQLString,
-		description:
-			'Who and/or what authored the manifest (See http://hl7.org/fhir/SearchParameter/documentmanifest-author).',
+		fhirtype: 'reference',
+		xpath: 'DocumentManifest.author',
+		description: 'Who and/or what authored the manifest',
 	},
-	patient: {
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-content-ref
+	content_ref: {
 		type: GraphQLString,
-		description:
-			'The subject of the set of documents (See http://hl7.org/fhir/SearchParameter/documentmanifest-patient).',
+		fhirtype: 'reference',
+		xpath: 'DocumentManifest.content.pReference',
+		description: 'Contents of this set of documents',
 	},
-	source: {
-		type: UriScalar,
-		description:
-			'The source system/application/software (See http://hl7.org/fhir/SearchParameter/documentmanifest-source).',
-	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-created
 	created: {
 		type: DateScalar,
-		description:
-			'When this document manifest created (See http://hl7.org/fhir/SearchParameter/documentmanifest-created).',
+		fhirtype: 'date',
+		xpath: 'DocumentManifest.created',
+		description: 'When this document manifest created',
 	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-description
 	description: {
 		type: GraphQLString,
-		description:
-			'Human-readable description (title) (See http://hl7.org/fhir/SearchParameter/documentmanifest-description).',
+		fhirtype: 'string',
+		xpath: 'DocumentManifest.description',
+		description: 'Human-readable description (title)',
 	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Unique Identifier for the set of documents (See http://hl7.org/fhir/SearchParameter/documentmanifest-identifier).',
+		fhirtype: 'token',
+		xpath: 'DocumentManifest.masterIdentifier',
+		description: 'Unique Identifier for the set of documents',
+	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DocumentManifest.subject',
+		description: 'The subject of the set of documents',
+	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-recipient
+	recipient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DocumentManifest.recipient',
+		description: 'Intended to get notified about this set of documents',
+	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-related-id
+	related_id: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'DocumentManifest.related.identifier',
+		description: 'Identifiers of things that are related',
+	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-related-ref
+	related_ref: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DocumentManifest.related.ref',
+		description: 'Related Resource',
+	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-source
+	source: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'DocumentManifest.source',
+		description: 'The source system/application/software',
+	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'DocumentManifest.status',
+		description: 'current | superseded | entered-in-error',
+	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DocumentManifest.subject',
+		description: 'The subject of the set of documents',
+	},
+	// http://hl7.org/fhir/SearchParameter/DocumentManifest-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'DocumentManifest.type',
+		description: 'Kind of document set',
 	},
 };

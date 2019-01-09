@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,59 +8,82 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the specimen query
  */
 module.exports = {
-	collector: {
-		type: GraphQLString,
-		description:
-			'Who collected the specimen (See http://hl7.org/fhir/SearchParameter/specimen-collector).',
-	},
-	container_id: {
-		type: TokenScalar,
-		description:
-			'The unique identifier associated with the specimen container (See http://hl7.org/fhir/SearchParameter/specimen-container-id).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'The patient the specimen comes from (See http://hl7.org/fhir/SearchParameter/specimen-patient).',
-	},
-	bodysite: {
-		type: TokenScalar,
-		description:
-			'The code for the body site from where the specimen originated (See http://hl7.org/fhir/SearchParameter/specimen-bodysite).',
-	},
-	container: {
-		type: TokenScalar,
-		description:
-			'The kind of specimen container (See http://hl7.org/fhir/SearchParameter/specimen-container).',
-	},
-	collected: {
-		type: DateScalar,
-		description:
-			'The date the specimen was collected (See http://hl7.org/fhir/SearchParameter/specimen-collected).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'The subject of the specimen (See http://hl7.org/fhir/SearchParameter/specimen-subject).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Specimen-accession
 	accession: {
 		type: TokenScalar,
-		description:
-			'The accession number associated with the specimen (See http://hl7.org/fhir/SearchParameter/specimen-accession).',
+		fhirtype: 'token',
+		xpath: 'Specimen.accessionIdentifier',
+		description: 'The accession number associated with the specimen',
 	},
-	parent: {
-		type: GraphQLString,
-		description:
-			'The parent of the specimen (See http://hl7.org/fhir/SearchParameter/specimen-parent).',
-	},
-	type: {
+	// http://hl7.org/fhir/SearchParameter/Specimen-bodysite
+	bodysite: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Specimen.collection.bodySite',
 		description:
-			'The specimen type (See http://hl7.org/fhir/SearchParameter/specimen-type).',
+			'The code for the body site from where the specimen originated',
 	},
+	// http://hl7.org/fhir/SearchParameter/Specimen-collected
+	collected: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Specimen.collection.collectedDateTime',
+		description: 'The date the specimen was collected',
+	},
+	// http://hl7.org/fhir/SearchParameter/Specimen-collector
+	collector: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Specimen.collection.collector',
+		description: 'Who collected the specimen',
+	},
+	// http://hl7.org/fhir/SearchParameter/Specimen-container
+	container: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Specimen.container.type',
+		description: 'The kind of specimen container',
+	},
+	// http://hl7.org/fhir/SearchParameter/Specimen-container-id
+	container_id: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Specimen.container.identifier',
+		description: 'The unique identifier associated with the specimen container',
+	},
+	// http://hl7.org/fhir/SearchParameter/Specimen-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'The unique identifier associated with the specimen (See http://hl7.org/fhir/SearchParameter/specimen-identifier).',
+		fhirtype: 'token',
+		xpath: 'Specimen.identifier',
+		description: 'The unique identifier associated with the specimen',
+	},
+	// http://hl7.org/fhir/SearchParameter/Specimen-parent
+	parent: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Specimen.parent',
+		description: 'The parent of the specimen',
+	},
+	// http://hl7.org/fhir/SearchParameter/Specimen-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Specimen.subject',
+		description: 'The patient the specimen comes from',
+	},
+	// http://hl7.org/fhir/SearchParameter/Specimen-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Specimen.subject',
+		description: 'The subject of the specimen',
+	},
+	// http://hl7.org/fhir/SearchParameter/Specimen-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Specimen.type',
+		description: 'The specimen type',
 	},
 };

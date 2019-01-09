@@ -1,55 +1,59 @@
 // Schemas
-const SubstanceSchema = require('../../schemas/substance.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const SubstanceSchema = require('../../schemas/substance.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const SubstanceArgs = require('../../parameters/substance.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const SubstanceArgs = require('../../parameters/substance.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, SubstanceArgs);
 
 // Resolvers
 const {
-	substanceResolver,
-	substanceListResolver,
-	substanceInstanceResolver,
+	getSubstance,
+	getSubstanceList,
+	getSubstanceInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Substance',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.SubstanceQuery
- * @summary Substance Query.
+ * @summary Substance query.
  */
 module.exports.SubstanceQuery = {
-	args: Object.assign({}, CommonArgs, SubstanceArgs),
 	description: 'Query for a single Substance',
-	resolve: scopeInvariant(scopeOptions, substanceResolver),
+	resolve: scopeInvariant(scopeOptions, getSubstance),
 	type: SubstanceSchema,
+	args: args,
 };
 
 /**
  * @name exports.SubstanceListQuery
- * @summary SubstanceList Query.
+ * @summary Substance query.
  */
 module.exports.SubstanceListQuery = {
-	args: Object.assign({}, CommonArgs, SubstanceArgs),
-	description: 'Query for multiple Substances',
-	resolve: scopeInvariant(scopeOptions, substanceListResolver),
+	description: 'Query for a more than or just one Substance',
+	resolve: scopeInvariant(scopeOptions, getSubstanceList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.SubstanceInstanceQuery
- * @summary SubstanceInstance Query.
+ * @summary Substance query.
  */
 module.exports.SubstanceInstanceQuery = {
-	description: 'Get information about a single Substance',
-	resolve: scopeInvariant(scopeOptions, substanceInstanceResolver),
+	description: 'Access information about a single Substance',
+	resolve: scopeInvariant(scopeOptions, getSubstanceInstance),
 	type: SubstanceSchema,
+	args: args,
 };

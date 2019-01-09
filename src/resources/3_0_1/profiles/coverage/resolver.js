@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.coverageResolver
+ * @name exports.getCoverage
  * @static
- * @summary Coverage Resolver.
+ * @summary Coverage resolver.
  */
-module.exports.coverageResolver = function coverageResolver(
+module.exports.getCoverage = function getCoverage(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.coverageListResolver
+ * @name exports.getCoverageList
  * @static
- * @summary Coverage List Resolver.
+ * @summary Coverage list resolver.
  */
-module.exports.coverageListResolver = function coverageListResolver(
+module.exports.getCoverageList = function getCoverageList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.coverageInstanceResolver
+ * @name exports.getCoverageInstance
  * @static
- * @summary Coverage Instance Resolver.
+ * @summary Coverage instance resolver.
  */
-module.exports.coverageInstanceResolver = function coverageInstanceResolver(
+module.exports.getCoverageInstance = function getCoverageInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.coverageCreateResolver
+ * @name exports.createCoverage
  * @static
- * @summary Coverage Create Resolver.
+ * @summary Create Coverage resolver.
  */
-module.exports.coverageCreateResolver = function coverageCreateResolver(
+module.exports.createCoverage = function createCoverage(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.coverageUpdateResolver
+ * @name exports.updateCoverage
  * @static
- * @summary Coverage Update Resolver.
+ * @summary Update Coverage resolver.
  */
-module.exports.coverageUpdateResolver = function coverageUpdateResolver(
+module.exports.updateCoverage = function updateCoverage(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.coverageDeleteResolver
+ * @name exports.removeCoverage
  * @static
- * @summary Coverage Delete Resolver.
+ * @summary Remove Coverage resolver.
  */
-module.exports.coverageDeleteResolver = function coverageDeleteResolver(
+module.exports.removeCoverage = function removeCoverage(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,37 +1,24 @@
 const { GraphQLScalarType } = require('graphql');
 const { GraphQLError } = require('graphql/error');
-const validator = require('validator');
-
-const parse = (value, ast) => {
-	try {
-		return validator.isInt(value, { min: 0, max: Number.MAX_SAFE_INTEGER })
-			? validator.toInt(value, 10)
-			: new GraphQLError(
-					'Invalid value provided to UnsignedIntScalar. Int must be >= 0.',
-			  );
-	} catch (e) {
-		return new GraphQLError(
-			'Unsupported type value provided to unsigned int. String Int must be >= 0.',
-		);
-	}
-};
+const { Kind } = require('graphql/language');
 
 /**
  * @name exports
- * @summary unsignedint Scalar
+ * @summary unsignedInt scalar
  */
 module.exports = new GraphQLScalarType({
-	name: 'unsignedint',
+	name: 'unsignedInt',
 	description:
-		'Base StructureDefinition for unsignedInt type: An integer with a value that is not negative (e.g. >= 0).',
-	// TODO: Implement proper serialization here
+		'Base StructureDefinition for unsignedInt type: An integer with a value that is not negative (e.g. >= 0)',
+	// TODO: Implement serialization
 	serialize: value => value,
-	// TODO: Implement proper parsing and sanitization here
-	// Throw a GraphQL Error if unable to parse or sanitize error
-	parseValue: (value, ast) => parse(value, ast),
-	// TODO: Implement proper parsing and sanitization here
+	// TODO: Parse and sanitize here, throw a graphql error if things fail
+	parseValue: (value, ast) => {
+		return value;
+	},
+	// TODO: Parse and sanitize here as well, return undefined if unable to parse
 	parseLiteral: ast => {
-		let { value } = ast;
-		return parse(value, ast);
+		let { kind, value } = ast;
+		return kind === Kind.STRING ? value : undefined;
 	},
 });

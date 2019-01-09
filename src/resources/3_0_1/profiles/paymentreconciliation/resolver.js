@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.paymentreconciliationResolver
+ * @name exports.getPaymentReconciliation
  * @static
- * @summary PaymentReconciliation Resolver.
+ * @summary PaymentReconciliation resolver.
  */
-module.exports.paymentreconciliationResolver = function paymentreconciliationResolver(
+module.exports.getPaymentReconciliation = function getPaymentReconciliation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.paymentreconciliationListResolver
+ * @name exports.getPaymentReconciliationList
  * @static
- * @summary PaymentReconciliation List Resolver.
+ * @summary PaymentReconciliation list resolver.
  */
-module.exports.paymentreconciliationListResolver = function paymentreconciliationListResolver(
+module.exports.getPaymentReconciliationList = function getPaymentReconciliationList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.paymentreconciliationInstanceResolver
+ * @name exports.getPaymentReconciliationInstance
  * @static
- * @summary PaymentReconciliation Instance Resolver.
+ * @summary PaymentReconciliation instance resolver.
  */
-module.exports.paymentreconciliationInstanceResolver = function paymentreconciliationInstanceResolver(
+module.exports.getPaymentReconciliationInstance = function getPaymentReconciliationInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.paymentreconciliationCreateResolver
+ * @name exports.createPaymentReconciliation
  * @static
- * @summary PaymentReconciliation Create Resolver.
+ * @summary Create PaymentReconciliation resolver.
  */
-module.exports.paymentreconciliationCreateResolver = function paymentreconciliationCreateResolver(
+module.exports.createPaymentReconciliation = function createPaymentReconciliation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.paymentreconciliationUpdateResolver
+ * @name exports.updatePaymentReconciliation
  * @static
- * @summary PaymentReconciliation Update Resolver.
+ * @summary Update PaymentReconciliation resolver.
  */
-module.exports.paymentreconciliationUpdateResolver = function paymentreconciliationUpdateResolver(
+module.exports.updatePaymentReconciliation = function updatePaymentReconciliation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.paymentreconciliationDeleteResolver
+ * @name exports.removePaymentReconciliation
  * @static
- * @summary PaymentReconciliation Delete Resolver.
+ * @summary Remove PaymentReconciliation resolver.
  */
-module.exports.paymentreconciliationDeleteResolver = function paymentreconciliationDeleteResolver(
+module.exports.removePaymentReconciliation = function removePaymentReconciliation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

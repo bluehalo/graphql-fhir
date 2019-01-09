@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,39 +8,53 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the substance query
  */
 module.exports = {
-	substance: {
-		type: GraphQLString,
-		description:
-			'A component of the substance (See http://hl7.org/fhir/SearchParameter/substance-substance).',
-	},
-	container_identifier: {
-		type: TokenScalar,
-		description:
-			'Identifier of the package/container (See http://hl7.org/fhir/SearchParameter/substance-container-identifier).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Substance-category
 	category: {
 		type: TokenScalar,
-		description:
-			'The category of the substance (See http://hl7.org/fhir/SearchParameter/substance-category).',
+		fhirtype: 'token',
+		xpath: 'Substance.category',
+		description: 'The category of the substance',
 	},
-	quantity: {
-		type: GraphQLString,
-		description:
-			'Amount of substance in the package (See http://hl7.org/fhir/SearchParameter/substance-quantity).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Substance-code
 	code: {
 		type: TokenScalar,
-		description:
-			'The code of the substance (See http://hl7.org/fhir/SearchParameter/substance-code).',
+		fhirtype: 'token',
+		xpath: 'Substance.code',
+		description: 'The code of the substance',
 	},
-	identifier: {
+	// http://hl7.org/fhir/SearchParameter/Substance-container-identifier
+	container_identifier: {
 		type: TokenScalar,
-		description:
-			'Unique identifier for the substance (See http://hl7.org/fhir/SearchParameter/substance-identifier).',
+		fhirtype: 'token',
+		xpath: 'Substance.instance.identifier',
+		description: 'Identifier of the package/container',
 	},
+	// http://hl7.org/fhir/SearchParameter/Substance-expiry
 	expiry: {
 		type: DateScalar,
-		description:
-			'Expiry date of package or container of substance (See http://hl7.org/fhir/SearchParameter/substance-expiry).',
+		fhirtype: 'date',
+		xpath: 'Substance.instance.expiry',
+		description: 'Expiry date of package or container of substance',
+	},
+	// http://hl7.org/fhir/SearchParameter/Substance-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Substance.identifier',
+		description: 'Unique identifier for the substance',
+	},
+	// http://hl7.org/fhir/SearchParameter/Substance-quantity
+	quantity: {
+		type: GraphQLString,
+		fhirtype: 'quantity',
+		xpath: 'Substance.instance.quantity',
+		description: 'Amount of substance in the package',
+	},
+	// http://hl7.org/fhir/SearchParameter/Substance-substance
+	substance: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Substance.ingredient.substance',
+		description: 'A component of the substance',
 	},
 };

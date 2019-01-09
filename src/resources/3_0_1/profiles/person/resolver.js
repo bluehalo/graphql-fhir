@@ -1,91 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.personResolver
+ * @name exports.getPerson
  * @static
- * @summary Person Resolver.
+ * @summary Person resolver.
  */
-module.exports.personResolver = function personResolver(
-	root,
-	args,
-	context,
-	info,
-) {
-	let { server, req, res, version } = context;
+module.exports.getPerson = function getPerson(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.personListResolver
+ * @name exports.getPersonList
  * @static
- * @summary Person List Resolver.
+ * @summary Person list resolver.
  */
-module.exports.personListResolver = function personListResolver(
+module.exports.getPersonList = function getPersonList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.personInstanceResolver
+ * @name exports.getPersonInstance
  * @static
- * @summary Person Instance Resolver.
+ * @summary Person instance resolver.
  */
-module.exports.personInstanceResolver = function personInstanceResolver(
+module.exports.getPersonInstance = function getPersonInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.personCreateResolver
+ * @name exports.createPerson
  * @static
- * @summary Person Create Resolver.
+ * @summary Create Person resolver.
  */
-module.exports.personCreateResolver = function personCreateResolver(
+module.exports.createPerson = function createPerson(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.personUpdateResolver
+ * @name exports.updatePerson
  * @static
- * @summary Person Update Resolver.
+ * @summary Update Person resolver.
  */
-module.exports.personUpdateResolver = function personUpdateResolver(
+module.exports.updatePerson = function updatePerson(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.personDeleteResolver
+ * @name exports.removePerson
  * @static
- * @summary Person Delete Resolver.
+ * @summary Remove Person resolver.
  */
-module.exports.personDeleteResolver = function personDeleteResolver(
+module.exports.removePerson = function removePerson(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,55 +1,59 @@
 // Schemas
-const DiagnosticReportSchema = require('../../schemas/diagnosticreport.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const DiagnosticReportSchema = require('../../schemas/diagnosticreport.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const DiagnosticReportArgs = require('../../parameters/diagnosticreport.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const DiagnosticReportArgs = require('../../parameters/diagnosticreport.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, DiagnosticReportArgs);
 
 // Resolvers
 const {
-	diagnosticreportResolver,
-	diagnosticreportListResolver,
-	diagnosticreportInstanceResolver,
+	getDiagnosticReport,
+	getDiagnosticReportList,
+	getDiagnosticReportInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DiagnosticReport',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.DiagnosticReportQuery
- * @summary DiagnosticReport Query.
+ * @summary DiagnosticReport query.
  */
 module.exports.DiagnosticReportQuery = {
-	args: Object.assign({}, CommonArgs, DiagnosticReportArgs),
 	description: 'Query for a single DiagnosticReport',
-	resolve: scopeInvariant(scopeOptions, diagnosticreportResolver),
+	resolve: scopeInvariant(scopeOptions, getDiagnosticReport),
 	type: DiagnosticReportSchema,
+	args: args,
 };
 
 /**
  * @name exports.DiagnosticReportListQuery
- * @summary DiagnosticReportList Query.
+ * @summary DiagnosticReport query.
  */
 module.exports.DiagnosticReportListQuery = {
-	args: Object.assign({}, CommonArgs, DiagnosticReportArgs),
-	description: 'Query for multiple DiagnosticReports',
-	resolve: scopeInvariant(scopeOptions, diagnosticreportListResolver),
+	description: 'Query for a more than or just one DiagnosticReport',
+	resolve: scopeInvariant(scopeOptions, getDiagnosticReportList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.DiagnosticReportInstanceQuery
- * @summary DiagnosticReportInstance Query.
+ * @summary DiagnosticReport query.
  */
 module.exports.DiagnosticReportInstanceQuery = {
-	description: 'Get information about a single DiagnosticReport',
-	resolve: scopeInvariant(scopeOptions, diagnosticreportInstanceResolver),
+	description: 'Access information about a single DiagnosticReport',
+	resolve: scopeInvariant(scopeOptions, getDiagnosticReportInstance),
 	type: DiagnosticReportSchema,
+	args: args,
 };

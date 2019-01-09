@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const BinarySchema = require('../../schemas/binary.schema');
+const BinarySchema = require('../../schemas/binary.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const BinaryInput = require('../../inputs/binary.input');
+const BinaryInput = require('../../inputs/binary.input.js');
 
-// Resolvers
-const {
-	binaryCreateResolver,
-	binaryUpdateResolver,
-	binaryDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createBinary, updateBinary, removeBinary } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Binary',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Binary record.',
 	},
 	resource: {
@@ -39,7 +36,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Binary record for deletion.',
 	},
@@ -47,33 +44,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.BinaryCreateMutation
- * @summary BinaryCreate Mutation.
+ * @summary BinaryCreate mutation.
  */
 module.exports.BinaryCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Binary',
-	resolve: scopeInvariant(scopeOptions, binaryCreateResolver),
+	description: 'Create a Binary record',
+	resolve: scopeInvariant(scopeOptions, createBinary),
 	type: BinarySchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.BinaryUpdateMutation
- * @summary BinaryUpdate Mutation.
+ * @summary BinaryUpdate mutation.
  */
 module.exports.BinaryUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Binarys',
-	resolve: scopeInvariant(scopeOptions, binaryUpdateResolver),
+	description: 'Update a Binary record',
+	resolve: scopeInvariant(scopeOptions, updateBinary),
 	type: BinarySchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.BinaryDeleteMutation
- * @summary BinaryDelete Mutation.
+ * @name exports.BinaryRemoveMutation
+ * @summary BinaryRemove mutation.
  */
-module.exports.BinaryDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Binary',
-	resolve: scopeInvariant(scopeOptions, binaryDeleteResolver),
+module.exports.BinaryRemoveMutation = {
+	description: 'Remove a Binary record',
+	resolve: scopeInvariant(scopeOptions, removeBinary),
 	type: BinarySchema,
+	args: DeleteArgs,
 };

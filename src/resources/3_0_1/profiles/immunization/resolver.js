@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.immunizationResolver
+ * @name exports.getImmunization
  * @static
- * @summary Immunization Resolver.
+ * @summary Immunization resolver.
  */
-module.exports.immunizationResolver = function immunizationResolver(
+module.exports.getImmunization = function getImmunization(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.immunizationListResolver
+ * @name exports.getImmunizationList
  * @static
- * @summary Immunization List Resolver.
+ * @summary Immunization list resolver.
  */
-module.exports.immunizationListResolver = function immunizationListResolver(
+module.exports.getImmunizationList = function getImmunizationList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.immunizationInstanceResolver
+ * @name exports.getImmunizationInstance
  * @static
- * @summary Immunization Instance Resolver.
+ * @summary Immunization instance resolver.
  */
-module.exports.immunizationInstanceResolver = function immunizationInstanceResolver(
+module.exports.getImmunizationInstance = function getImmunizationInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.immunizationCreateResolver
+ * @name exports.createImmunization
  * @static
- * @summary Immunization Create Resolver.
+ * @summary Create Immunization resolver.
  */
-module.exports.immunizationCreateResolver = function immunizationCreateResolver(
+module.exports.createImmunization = function createImmunization(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.immunizationUpdateResolver
+ * @name exports.updateImmunization
  * @static
- * @summary Immunization Update Resolver.
+ * @summary Update Immunization resolver.
  */
-module.exports.immunizationUpdateResolver = function immunizationUpdateResolver(
+module.exports.updateImmunization = function updateImmunization(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.immunizationDeleteResolver
+ * @name exports.removeImmunization
  * @static
- * @summary Immunization Delete Resolver.
+ * @summary Remove Immunization resolver.
  */
-module.exports.immunizationDeleteResolver = function immunizationDeleteResolver(
+module.exports.removeImmunization = function removeImmunization(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

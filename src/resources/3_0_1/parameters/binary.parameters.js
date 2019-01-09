@@ -1,4 +1,4 @@
-const TokenScalar = require('../scalars/token.scalar');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -6,9 +6,11 @@ const TokenScalar = require('../scalars/token.scalar');
  * @summary Arguments for the binary query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/Binary-contenttype
 	contenttype: {
 		type: TokenScalar,
-		description:
-			'MimeType of the binary content (See http://hl7.org/fhir/SearchParameter/Binary-contenttype).',
+		fhirtype: 'token',
+		xpath: 'Binary.contentType',
+		description: 'MimeType of the binary content',
 	},
 };

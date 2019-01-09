@@ -1,55 +1,60 @@
 // Schemas
-const DataElementSchema = require('../../schemas/dataelement.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const DataElementSchema = require('../../schemas/dataelement.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const DataElementArgs = require('../../parameters/dataelement.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const DataElementArgs = require('../../parameters/dataelement.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+const DomainResourceArgs = require('../../parameters/domainresource.parameters.js');
+
+let args = Object.assign({}, DomainResourceArgs, ResourceArgs, DataElementArgs);
 
 // Resolvers
 const {
-	dataelementResolver,
-	dataelementListResolver,
-	dataelementInstanceResolver,
+	getDataElement,
+	getDataElementList,
+	getDataElementInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DataElement',
 	action: 'read',
-	version: '3_0_1',
 };
 
 /**
  * @name exports.DataElementQuery
- * @summary DataElement Query.
+ * @summary DataElement query.
  */
 module.exports.DataElementQuery = {
-	args: Object.assign({}, CommonArgs, DataElementArgs),
 	description: 'Query for a single DataElement',
-	resolve: scopeInvariant(scopeOptions, dataelementResolver),
+	resolve: scopeInvariant(scopeOptions, getDataElement),
 	type: DataElementSchema,
+	args: args,
 };
 
 /**
  * @name exports.DataElementListQuery
- * @summary DataElementList Query.
+ * @summary DataElement query.
  */
 module.exports.DataElementListQuery = {
-	args: Object.assign({}, CommonArgs, DataElementArgs),
-	description: 'Query for multiple DataElements',
-	resolve: scopeInvariant(scopeOptions, dataelementListResolver),
+	description: 'Query for a more than or just one DataElement',
+	resolve: scopeInvariant(scopeOptions, getDataElementList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.DataElementInstanceQuery
- * @summary DataElementInstance Query.
+ * @summary DataElement query.
  */
 module.exports.DataElementInstanceQuery = {
-	description: 'Get information about a single DataElement',
-	resolve: scopeInvariant(scopeOptions, dataelementInstanceResolver),
+	description: 'Access information about a single DataElement',
+	resolve: scopeInvariant(scopeOptions, getDataElementInstance),
 	type: DataElementSchema,
+	args: args,
 };

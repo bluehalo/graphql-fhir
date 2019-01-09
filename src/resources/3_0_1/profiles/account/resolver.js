@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.accountResolver
+ * @name exports.getAccount
  * @static
- * @summary Account Resolver.
+ * @summary Account resolver.
  */
-module.exports.accountResolver = function accountResolver(
+module.exports.getAccount = function getAccount(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.accountListResolver
+ * @name exports.getAccountList
  * @static
- * @summary Account List Resolver.
+ * @summary Account list resolver.
  */
-module.exports.accountListResolver = function accountListResolver(
+module.exports.getAccountList = function getAccountList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.accountInstanceResolver
+ * @name exports.getAccountInstance
  * @static
- * @summary Account Instance Resolver.
+ * @summary Account instance resolver.
  */
-module.exports.accountInstanceResolver = function accountInstanceResolver(
+module.exports.getAccountInstance = function getAccountInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.accountCreateResolver
+ * @name exports.createAccount
  * @static
- * @summary Account Create Resolver.
+ * @summary Create Account resolver.
  */
-module.exports.accountCreateResolver = function accountCreateResolver(
+module.exports.createAccount = function createAccount(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.accountUpdateResolver
+ * @name exports.updateAccount
  * @static
- * @summary Account Update Resolver.
+ * @summary Update Account resolver.
  */
-module.exports.accountUpdateResolver = function accountUpdateResolver(
+module.exports.updateAccount = function updateAccount(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.accountDeleteResolver
+ * @name exports.removeAccount
  * @static
- * @summary Account Delete Resolver.
+ * @summary Remove Account resolver.
  */
-module.exports.accountDeleteResolver = function accountDeleteResolver(
+module.exports.removeAccount = function removeAccount(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

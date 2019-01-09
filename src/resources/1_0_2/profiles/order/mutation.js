@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const OrderSchema = require('../../schemas/order.schema');
+const OrderSchema = require('../../schemas/order.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const OrderInput = require('../../inputs/order.input');
+const OrderInput = require('../../inputs/order.input.js');
 
-// Resolvers
-const {
-	orderCreateResolver,
-	orderUpdateResolver,
-	orderDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createOrder, updateOrder, removeOrder } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Order',
 	action: 'write',
-	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Order record.',
 	},
 	resource: {
@@ -39,40 +36,40 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description: 'Unique identifier for selecting a Order record for deletion.',
 	},
 };
 
 /**
  * @name exports.OrderCreateMutation
- * @summary OrderCreate Mutation.
+ * @summary OrderCreate mutation.
  */
 module.exports.OrderCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Order',
-	resolve: scopeInvariant(scopeOptions, orderCreateResolver),
+	description: 'Create a Order record',
+	resolve: scopeInvariant(scopeOptions, createOrder),
 	type: OrderSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.OrderUpdateMutation
- * @summary OrderUpdate Mutation.
+ * @summary OrderUpdate mutation.
  */
 module.exports.OrderUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Orders',
-	resolve: scopeInvariant(scopeOptions, orderUpdateResolver),
+	description: 'Update a Order record',
+	resolve: scopeInvariant(scopeOptions, updateOrder),
 	type: OrderSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.OrderDeleteMutation
- * @summary OrderDelete Mutation.
+ * @name exports.OrderRemoveMutation
+ * @summary OrderRemove mutation.
  */
-module.exports.OrderDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Order',
-	resolve: scopeInvariant(scopeOptions, orderDeleteResolver),
+module.exports.OrderRemoveMutation = {
+	description: 'Remove a Order record',
+	resolve: scopeInvariant(scopeOptions, removeOrder),
 	type: OrderSchema,
+	args: DeleteArgs,
 };

@@ -1,55 +1,59 @@
 // Schemas
-const BodySiteSchema = require('../../schemas/bodysite.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const BodySiteSchema = require('../../schemas/bodysite.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const BodySiteArgs = require('../../parameters/bodysite.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const BodySiteArgs = require('../../parameters/bodysite.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, BodySiteArgs);
 
 // Resolvers
 const {
-	bodysiteResolver,
-	bodysiteListResolver,
-	bodysiteInstanceResolver,
+	getBodySite,
+	getBodySiteList,
+	getBodySiteInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'BodySite',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.BodySiteQuery
- * @summary BodySite Query.
+ * @summary BodySite query.
  */
 module.exports.BodySiteQuery = {
-	args: Object.assign({}, CommonArgs, BodySiteArgs),
 	description: 'Query for a single BodySite',
-	resolve: scopeInvariant(scopeOptions, bodysiteResolver),
+	resolve: scopeInvariant(scopeOptions, getBodySite),
 	type: BodySiteSchema,
+	args: args,
 };
 
 /**
  * @name exports.BodySiteListQuery
- * @summary BodySiteList Query.
+ * @summary BodySite query.
  */
 module.exports.BodySiteListQuery = {
-	args: Object.assign({}, CommonArgs, BodySiteArgs),
-	description: 'Query for multiple BodySites',
-	resolve: scopeInvariant(scopeOptions, bodysiteListResolver),
+	description: 'Query for a more than or just one BodySite',
+	resolve: scopeInvariant(scopeOptions, getBodySiteList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.BodySiteInstanceQuery
- * @summary BodySiteInstance Query.
+ * @summary BodySite query.
  */
 module.exports.BodySiteInstanceQuery = {
-	description: 'Get information about a single BodySite',
-	resolve: scopeInvariant(scopeOptions, bodysiteInstanceResolver),
+	description: 'Access information about a single BodySite',
+	resolve: scopeInvariant(scopeOptions, getBodySiteInstance),
 	type: BodySiteSchema,
+	args: args,
 };

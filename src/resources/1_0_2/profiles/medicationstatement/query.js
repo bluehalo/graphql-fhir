@@ -1,55 +1,59 @@
 // Schemas
-const MedicationStatementSchema = require('../../schemas/medicationstatement.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const MedicationStatementSchema = require('../../schemas/medicationstatement.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const MedicationStatementArgs = require('../../parameters/medicationstatement.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const MedicationStatementArgs = require('../../parameters/medicationstatement.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, MedicationStatementArgs);
 
 // Resolvers
 const {
-	medicationstatementResolver,
-	medicationstatementListResolver,
-	medicationstatementInstanceResolver,
+	getMedicationStatement,
+	getMedicationStatementList,
+	getMedicationStatementInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'MedicationStatement',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.MedicationStatementQuery
- * @summary MedicationStatement Query.
+ * @summary MedicationStatement query.
  */
 module.exports.MedicationStatementQuery = {
-	args: Object.assign({}, CommonArgs, MedicationStatementArgs),
 	description: 'Query for a single MedicationStatement',
-	resolve: scopeInvariant(scopeOptions, medicationstatementResolver),
+	resolve: scopeInvariant(scopeOptions, getMedicationStatement),
 	type: MedicationStatementSchema,
+	args: args,
 };
 
 /**
  * @name exports.MedicationStatementListQuery
- * @summary MedicationStatementList Query.
+ * @summary MedicationStatement query.
  */
 module.exports.MedicationStatementListQuery = {
-	args: Object.assign({}, CommonArgs, MedicationStatementArgs),
-	description: 'Query for multiple MedicationStatements',
-	resolve: scopeInvariant(scopeOptions, medicationstatementListResolver),
+	description: 'Query for a more than or just one MedicationStatement',
+	resolve: scopeInvariant(scopeOptions, getMedicationStatementList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.MedicationStatementInstanceQuery
- * @summary MedicationStatementInstance Query.
+ * @summary MedicationStatement query.
  */
 module.exports.MedicationStatementInstanceQuery = {
-	description: 'Get information about a single MedicationStatement',
-	resolve: scopeInvariant(scopeOptions, medicationstatementInstanceResolver),
+	description: 'Access information about a single MedicationStatement',
+	resolve: scopeInvariant(scopeOptions, getMedicationStatementInstance),
 	type: MedicationStatementSchema,
+	args: args,
 };

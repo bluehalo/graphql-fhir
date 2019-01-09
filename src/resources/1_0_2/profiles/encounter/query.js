@@ -1,55 +1,59 @@
 // Schemas
-const EncounterSchema = require('../../schemas/encounter.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const EncounterSchema = require('../../schemas/encounter.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const EncounterArgs = require('../../parameters/encounter.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const EncounterArgs = require('../../parameters/encounter.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, EncounterArgs);
 
 // Resolvers
 const {
-	encounterResolver,
-	encounterListResolver,
-	encounterInstanceResolver,
+	getEncounter,
+	getEncounterList,
+	getEncounterInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Encounter',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.EncounterQuery
- * @summary Encounter Query.
+ * @summary Encounter query.
  */
 module.exports.EncounterQuery = {
-	args: Object.assign({}, CommonArgs, EncounterArgs),
 	description: 'Query for a single Encounter',
-	resolve: scopeInvariant(scopeOptions, encounterResolver),
+	resolve: scopeInvariant(scopeOptions, getEncounter),
 	type: EncounterSchema,
+	args: args,
 };
 
 /**
  * @name exports.EncounterListQuery
- * @summary EncounterList Query.
+ * @summary Encounter query.
  */
 module.exports.EncounterListQuery = {
-	args: Object.assign({}, CommonArgs, EncounterArgs),
-	description: 'Query for multiple Encounters',
-	resolve: scopeInvariant(scopeOptions, encounterListResolver),
+	description: 'Query for a more than or just one Encounter',
+	resolve: scopeInvariant(scopeOptions, getEncounterList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.EncounterInstanceQuery
- * @summary EncounterInstance Query.
+ * @summary Encounter query.
  */
 module.exports.EncounterInstanceQuery = {
-	description: 'Get information about a single Encounter',
-	resolve: scopeInvariant(scopeOptions, encounterInstanceResolver),
+	description: 'Access information about a single Encounter',
+	resolve: scopeInvariant(scopeOptions, getEncounterInstance),
 	type: EncounterSchema,
+	args: args,
 };

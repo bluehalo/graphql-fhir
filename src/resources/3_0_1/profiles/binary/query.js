@@ -1,55 +1,56 @@
 // Schemas
-const BinarySchema = require('../../schemas/binary.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const BinarySchema = require('../../schemas/binary.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const BinaryArgs = require('../../parameters/binary.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const BinaryArgs = require('../../parameters/binary.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+const DomainResourceArgs = require('../../parameters/domainresource.parameters.js');
+
+let args = Object.assign({}, DomainResourceArgs, ResourceArgs, BinaryArgs);
 
 // Resolvers
-const {
-	binaryResolver,
-	binaryListResolver,
-	binaryInstanceResolver,
-} = require('./resolver');
+const { getBinary, getBinaryList, getBinaryInstance } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Binary',
 	action: 'read',
-	version: '3_0_1',
 };
 
 /**
  * @name exports.BinaryQuery
- * @summary Binary Query.
+ * @summary Binary query.
  */
 module.exports.BinaryQuery = {
-	args: Object.assign({}, CommonArgs, BinaryArgs),
 	description: 'Query for a single Binary',
-	resolve: scopeInvariant(scopeOptions, binaryResolver),
+	resolve: scopeInvariant(scopeOptions, getBinary),
 	type: BinarySchema,
+	args: args,
 };
 
 /**
  * @name exports.BinaryListQuery
- * @summary BinaryList Query.
+ * @summary Binary query.
  */
 module.exports.BinaryListQuery = {
-	args: Object.assign({}, CommonArgs, BinaryArgs),
-	description: 'Query for multiple Binarys',
-	resolve: scopeInvariant(scopeOptions, binaryListResolver),
+	description: 'Query for a more than or just one Binary',
+	resolve: scopeInvariant(scopeOptions, getBinaryList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.BinaryInstanceQuery
- * @summary BinaryInstance Query.
+ * @summary Binary query.
  */
 module.exports.BinaryInstanceQuery = {
-	description: 'Get information about a single Binary',
-	resolve: scopeInvariant(scopeOptions, binaryInstanceResolver),
+	description: 'Access information about a single Binary',
+	resolve: scopeInvariant(scopeOptions, getBinaryInstance),
 	type: BinarySchema,
+	args: args,
 };

@@ -1,5 +1,8 @@
-const { SERVER_CONFIG } = require('./config');
-const FHIRServer = require('./lib/server');
+const { SERVER_CONFIG } = require('./config.js');
+const FHIRServer = require('./lib/server.js');
+
+// load environment settings
+require('./environment.js');
 
 // Start buliding our server
 let server = new FHIRServer(SERVER_CONFIG)

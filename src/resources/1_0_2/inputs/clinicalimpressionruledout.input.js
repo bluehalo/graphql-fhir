@@ -1,33 +1,51 @@
 const {
-	GraphQLInputObjectType,
+	GraphQLList,
 	GraphQLNonNull,
 	GraphQLString,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary ClinicalImpression.ruledOut Input Schema
+ * @summary ClinicalImpressionruledOut Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'ClinicalImpressionRuledOut_Input',
-	description: 'Diagnosis considered not possible.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/condition-code
-			item: {
-				type: new GraphQLNonNull(require('./codeableconcept.input')),
-				description: 'Specific text of code for diagnosis.',
-			},
-			reason: {
-				type: GraphQLString,
-				description: 'Grounds for elimination.',
-			},
-			_reason: {
-				type: require('./element.input'),
-				description: 'Grounds for elimination.',
-			},
-		}),
+	name: 'ClinicalImpressionruledOut_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/condition-code
+		item: {
+			type: new GraphQLNonNull(require('./codeableconcept.input.js')),
+			description: 'Specific text of code for diagnosis.',
+		},
+		_reason: {
+			type: require('./element.input.js'),
+			description: 'Grounds for elimination.',
+		},
+		reason: {
+			type: GraphQLString,
+			description: 'Grounds for elimination.',
+		},
+	}),
 });

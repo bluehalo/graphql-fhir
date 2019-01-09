@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,44 +8,60 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the eligibilityresponse query
  */
 module.exports = {
-	identifier: {
-		type: TokenScalar,
-		description:
-			'The business identifier (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-identifier).',
-	},
-	request: {
-		type: GraphQLString,
-		description:
-			'The EligibilityRequest reference (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-request).',
-	},
-	disposition: {
-		type: GraphQLString,
-		description:
-			'The contents of the disposition message (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-disposition).',
-	},
-	insurer: {
-		type: GraphQLString,
-		description:
-			'The organization which generated this resource (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-insurer).',
-	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityResponse-created
 	created: {
 		type: DateScalar,
-		description:
-			'The creation date (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-created).',
+		fhirtype: 'date',
+		xpath: 'EligibilityResponse.created',
+		description: 'The creation date',
 	},
-	request_organization: {
+	// http://hl7.org/fhir/SearchParameter/EligibilityResponse-disposition
+	disposition: {
 		type: GraphQLString,
-		description:
-			'The EligibilityRequest organization (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-request-organization).',
+		fhirtype: 'string',
+		xpath: 'EligibilityResponse.disposition',
+		description: 'The contents of the disposition message',
 	},
-	request_provider: {
+	// http://hl7.org/fhir/SearchParameter/EligibilityResponse-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'EligibilityResponse.identifier',
+		description: 'The business identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityResponse-insurer
+	insurer: {
 		type: GraphQLString,
-		description:
-			'The EligibilityRequest provider (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-request-provider).',
+		fhirtype: 'reference',
+		xpath: 'EligibilityResponse.insurer',
+		description: 'The organization which generated this resource',
 	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityResponse-outcome
 	outcome: {
 		type: TokenScalar,
-		description:
-			'The processing outcome (See http://hl7.org/fhir/SearchParameter/EligibilityResponse-outcome).',
+		fhirtype: 'token',
+		xpath: 'EligibilityResponse.outcome',
+		description: 'The processing outcome',
+	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityResponse-request
+	request: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'EligibilityResponse.request',
+		description: 'The EligibilityRequest reference',
+	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityResponse-request-organization
+	request_organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'EligibilityResponse.requestOrganization',
+		description: 'The EligibilityRequest organization',
+	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityResponse-request-provider
+	request_provider: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'EligibilityResponse.requestProvider',
+		description: 'The EligibilityRequest provider',
 	},
 };

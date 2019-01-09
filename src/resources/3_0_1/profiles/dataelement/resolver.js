@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.dataelementResolver
+ * @name exports.getDataElement
  * @static
- * @summary DataElement Resolver.
+ * @summary DataElement resolver.
  */
-module.exports.dataelementResolver = function dataelementResolver(
+module.exports.getDataElement = function getDataElement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.dataelementListResolver
+ * @name exports.getDataElementList
  * @static
- * @summary DataElement List Resolver.
+ * @summary DataElement list resolver.
  */
-module.exports.dataelementListResolver = function dataelementListResolver(
+module.exports.getDataElementList = function getDataElementList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.dataelementInstanceResolver
+ * @name exports.getDataElementInstance
  * @static
- * @summary DataElement Instance Resolver.
+ * @summary DataElement instance resolver.
  */
-module.exports.dataelementInstanceResolver = function dataelementInstanceResolver(
+module.exports.getDataElementInstance = function getDataElementInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.dataelementCreateResolver
+ * @name exports.createDataElement
  * @static
- * @summary DataElement Create Resolver.
+ * @summary Create DataElement resolver.
  */
-module.exports.dataelementCreateResolver = function dataelementCreateResolver(
+module.exports.createDataElement = function createDataElement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.dataelementUpdateResolver
+ * @name exports.updateDataElement
  * @static
- * @summary DataElement Update Resolver.
+ * @summary Update DataElement resolver.
  */
-module.exports.dataelementUpdateResolver = function dataelementUpdateResolver(
+module.exports.updateDataElement = function updateDataElement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.dataelementDeleteResolver
+ * @name exports.removeDataElement
  * @static
- * @summary DataElement Delete Resolver.
+ * @summary Remove DataElement resolver.
  */
-module.exports.dataelementDeleteResolver = function dataelementDeleteResolver(
+module.exports.removeDataElement = function removeDataElement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

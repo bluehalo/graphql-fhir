@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.deviceusestatementResolver
+ * @name exports.getDeviceUseStatement
  * @static
- * @summary DeviceUseStatement Resolver.
+ * @summary DeviceUseStatement resolver.
  */
-module.exports.deviceusestatementResolver = function deviceusestatementResolver(
+module.exports.getDeviceUseStatement = function getDeviceUseStatement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.deviceusestatementListResolver
+ * @name exports.getDeviceUseStatementList
  * @static
- * @summary DeviceUseStatement List Resolver.
+ * @summary DeviceUseStatement list resolver.
  */
-module.exports.deviceusestatementListResolver = function deviceusestatementListResolver(
+module.exports.getDeviceUseStatementList = function getDeviceUseStatementList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.deviceusestatementInstanceResolver
+ * @name exports.getDeviceUseStatementInstance
  * @static
- * @summary DeviceUseStatement Instance Resolver.
+ * @summary DeviceUseStatement instance resolver.
  */
-module.exports.deviceusestatementInstanceResolver = function deviceusestatementInstanceResolver(
+module.exports.getDeviceUseStatementInstance = function getDeviceUseStatementInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.deviceusestatementCreateResolver
+ * @name exports.createDeviceUseStatement
  * @static
- * @summary DeviceUseStatement Create Resolver.
+ * @summary Create DeviceUseStatement resolver.
  */
-module.exports.deviceusestatementCreateResolver = function deviceusestatementCreateResolver(
+module.exports.createDeviceUseStatement = function createDeviceUseStatement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.deviceusestatementUpdateResolver
+ * @name exports.updateDeviceUseStatement
  * @static
- * @summary DeviceUseStatement Update Resolver.
+ * @summary Update DeviceUseStatement resolver.
  */
-module.exports.deviceusestatementUpdateResolver = function deviceusestatementUpdateResolver(
+module.exports.updateDeviceUseStatement = function updateDeviceUseStatement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.deviceusestatementDeleteResolver
+ * @name exports.removeDeviceUseStatement
  * @static
- * @summary DeviceUseStatement Delete Resolver.
+ * @summary Remove DeviceUseStatement resolver.
  */
-module.exports.deviceusestatementDeleteResolver = function deviceusestatementDeleteResolver(
+module.exports.removeDeviceUseStatement = function removeDeviceUseStatement(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

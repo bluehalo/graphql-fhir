@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.substanceResolver
+ * @name exports.getSubstance
  * @static
- * @summary Substance Resolver.
+ * @summary Substance resolver.
  */
-module.exports.substanceResolver = function substanceResolver(
+module.exports.getSubstance = function getSubstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.substanceListResolver
+ * @name exports.getSubstanceList
  * @static
- * @summary Substance List Resolver.
+ * @summary Substance list resolver.
  */
-module.exports.substanceListResolver = function substanceListResolver(
+module.exports.getSubstanceList = function getSubstanceList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.substanceInstanceResolver
+ * @name exports.getSubstanceInstance
  * @static
- * @summary Substance Instance Resolver.
+ * @summary Substance instance resolver.
  */
-module.exports.substanceInstanceResolver = function substanceInstanceResolver(
+module.exports.getSubstanceInstance = function getSubstanceInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.substanceCreateResolver
+ * @name exports.createSubstance
  * @static
- * @summary Substance Create Resolver.
+ * @summary Create Substance resolver.
  */
-module.exports.substanceCreateResolver = function substanceCreateResolver(
+module.exports.createSubstance = function createSubstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.substanceUpdateResolver
+ * @name exports.updateSubstance
  * @static
- * @summary Substance Update Resolver.
+ * @summary Update Substance resolver.
  */
-module.exports.substanceUpdateResolver = function substanceUpdateResolver(
+module.exports.updateSubstance = function updateSubstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.substanceDeleteResolver
+ * @name exports.removeSubstance
  * @static
- * @summary Substance Delete Resolver.
+ * @summary Remove Substance resolver.
  */
-module.exports.substanceDeleteResolver = function substanceDeleteResolver(
+module.exports.removeSubstance = function removeSubstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

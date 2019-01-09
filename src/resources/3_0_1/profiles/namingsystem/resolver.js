@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.namingsystemResolver
+ * @name exports.getNamingSystem
  * @static
- * @summary NamingSystem Resolver.
+ * @summary NamingSystem resolver.
  */
-module.exports.namingsystemResolver = function namingsystemResolver(
+module.exports.getNamingSystem = function getNamingSystem(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.namingsystemListResolver
+ * @name exports.getNamingSystemList
  * @static
- * @summary NamingSystem List Resolver.
+ * @summary NamingSystem list resolver.
  */
-module.exports.namingsystemListResolver = function namingsystemListResolver(
+module.exports.getNamingSystemList = function getNamingSystemList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.namingsystemInstanceResolver
+ * @name exports.getNamingSystemInstance
  * @static
- * @summary NamingSystem Instance Resolver.
+ * @summary NamingSystem instance resolver.
  */
-module.exports.namingsystemInstanceResolver = function namingsystemInstanceResolver(
+module.exports.getNamingSystemInstance = function getNamingSystemInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.namingsystemCreateResolver
+ * @name exports.createNamingSystem
  * @static
- * @summary NamingSystem Create Resolver.
+ * @summary Create NamingSystem resolver.
  */
-module.exports.namingsystemCreateResolver = function namingsystemCreateResolver(
+module.exports.createNamingSystem = function createNamingSystem(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.namingsystemUpdateResolver
+ * @name exports.updateNamingSystem
  * @static
- * @summary NamingSystem Update Resolver.
+ * @summary Update NamingSystem resolver.
  */
-module.exports.namingsystemUpdateResolver = function namingsystemUpdateResolver(
+module.exports.updateNamingSystem = function updateNamingSystem(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.namingsystemDeleteResolver
+ * @name exports.removeNamingSystem
  * @static
- * @summary NamingSystem Delete Resolver.
+ * @summary Remove NamingSystem resolver.
  */
-module.exports.namingsystemDeleteResolver = function namingsystemDeleteResolver(
+module.exports.removeNamingSystem = function removeNamingSystem(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

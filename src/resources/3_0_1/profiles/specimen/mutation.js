@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const SpecimenSchema = require('../../schemas/specimen.schema');
+const SpecimenSchema = require('../../schemas/specimen.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const SpecimenInput = require('../../inputs/specimen.input');
+const SpecimenInput = require('../../inputs/specimen.input.js');
 
-// Resolvers
-const {
-	specimenCreateResolver,
-	specimenUpdateResolver,
-	specimenDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createSpecimen,
+	updateSpecimen,
+	removeSpecimen,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Specimen',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Specimen record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Specimen record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.SpecimenCreateMutation
- * @summary SpecimenCreate Mutation.
+ * @summary SpecimenCreate mutation.
  */
 module.exports.SpecimenCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Specimen',
-	resolve: scopeInvariant(scopeOptions, specimenCreateResolver),
+	description: 'Create a Specimen record',
+	resolve: scopeInvariant(scopeOptions, createSpecimen),
 	type: SpecimenSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.SpecimenUpdateMutation
- * @summary SpecimenUpdate Mutation.
+ * @summary SpecimenUpdate mutation.
  */
 module.exports.SpecimenUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Specimens',
-	resolve: scopeInvariant(scopeOptions, specimenUpdateResolver),
+	description: 'Update a Specimen record',
+	resolve: scopeInvariant(scopeOptions, updateSpecimen),
 	type: SpecimenSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.SpecimenDeleteMutation
- * @summary SpecimenDelete Mutation.
+ * @name exports.SpecimenRemoveMutation
+ * @summary SpecimenRemove mutation.
  */
-module.exports.SpecimenDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Specimen',
-	resolve: scopeInvariant(scopeOptions, specimenDeleteResolver),
+module.exports.SpecimenRemoveMutation = {
+	description: 'Remove a Specimen record',
+	resolve: scopeInvariant(scopeOptions, removeSpecimen),
 	type: SpecimenSchema,
+	args: DeleteArgs,
 };

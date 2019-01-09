@@ -1,26 +1,70 @@
-const { GraphQLObjectType, GraphQLNonNull } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLString,
+	GraphQLList,
+	GraphQLNonNull,
+	GraphQLUnionType,
+	GraphQLObjectType,
+} = require('graphql');
 
 /**
  * @name exports
- * @summary Contract.friendly Schema
+ * @summary Contractfriendly Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'ContractFriendly',
-	description:
-		"The 'patient friendly language' versionof the Contract in whole or in parts. 'Patient friendly language' means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.",
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			contentAttachment: {
-				type: new GraphQLNonNull(require('./attachment.schema')),
-				description:
-					'Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability.',
-			},
-			contentReference: {
-				type: new GraphQLNonNull(require('./reference.schema')),
-				description:
-					'Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability.',
-			},
-		}),
+	name: 'Contractfriendly',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		contentAttachment: {
+			type: new GraphQLNonNull(require('./attachment.schema.js')),
+			description:
+				'Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability.',
+		},
+		contentReference: {
+			type: new GraphQLNonNull(
+				new GraphQLUnionType({
+					name: 'ContractfriendlycontentReference_contentReference_Union',
+					description:
+						'Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability.',
+					types: () => [
+						require('./composition.schema.js'),
+						require('./documentreference.schema.js'),
+						require('./questionnaireresponse.schema.js'),
+					],
+					resolveType(data) {
+						if (data && data.resourceType === 'Composition') {
+							return require('./composition.schema.js');
+						}
+						if (data && data.resourceType === 'DocumentReference') {
+							return require('./documentreference.schema.js');
+						}
+						if (data && data.resourceType === 'QuestionnaireResponse') {
+							return require('./questionnaireresponse.schema.js');
+						}
+					},
+				}),
+			),
+			description:
+				'Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability.',
+		},
+	}),
 });

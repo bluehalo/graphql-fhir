@@ -1,60 +1,76 @@
-const IdScalar = require('../scalars/id.scalar');
 const {
-	GraphQLInputObjectType,
+	GraphQLList,
 	GraphQLNonNull,
 	GraphQLString,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary TestScript.variable Input Schema
+ * @summary TestScriptvariable Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'TestScriptVariable_Input',
-	description:
-		'Variable is set based either on element value in response body or on header field value in the response headers.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			name: {
-				type: new GraphQLNonNull(GraphQLString),
-				description: 'Descriptive name for this variable.',
-			},
-			_name: {
-				type: require('./element.input'),
-				description: 'Descriptive name for this variable.',
-			},
-			headerField: {
-				type: GraphQLString,
-				description:
-					'Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.',
-			},
-			_headerField: {
-				type: require('./element.input'),
-				description:
-					'Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.',
-			},
-			path: {
-				type: GraphQLString,
-				description:
-					'XPath or JSONPath against the fixture body.  When variables are defined, either headerField must be specified or path, but not both.',
-			},
-			_path: {
-				type: require('./element.input'),
-				description:
-					'XPath or JSONPath against the fixture body.  When variables are defined, either headerField must be specified or path, but not both.',
-			},
-			sourceId: {
-				type: IdScalar,
-				description:
-					'Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.',
-			},
-			_sourceId: {
-				type: require('./element.input'),
-				description:
-					'Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.',
-			},
-		}),
+	name: 'TestScriptvariable_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_name: {
+			type: require('./element.input.js'),
+			description: 'Descriptive name for this variable.',
+		},
+		name: {
+			type: new GraphQLNonNull(GraphQLString),
+			description: 'Descriptive name for this variable.',
+		},
+		_headerField: {
+			type: require('./element.input.js'),
+			description:
+				'Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.',
+		},
+		headerField: {
+			type: GraphQLString,
+			description:
+				'Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.',
+		},
+		_path: {
+			type: require('./element.input.js'),
+			description:
+				'XPath or JSONPath against the fixture body.  When variables are defined, either headerField must be specified or path, but not both.',
+		},
+		path: {
+			type: GraphQLString,
+			description:
+				'XPath or JSONPath against the fixture body.  When variables are defined, either headerField must be specified or path, but not both.',
+		},
+		_sourceId: {
+			type: require('./element.input.js'),
+			description:
+				'Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.',
+		},
+		sourceId: {
+			type: IdScalar,
+			description:
+				'Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.',
+		},
+	}),
 });

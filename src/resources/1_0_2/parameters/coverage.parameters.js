@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,44 +7,60 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the coverage query
  */
 module.exports = {
-	plan: {
-		type: TokenScalar,
-		description:
-			'A plan or policy identifier (See http://hl7.org/fhir/SearchParameter/coverage-plan).',
-	},
-	issuer: {
-		type: GraphQLString,
-		description:
-			'The identity of the insurer (See http://hl7.org/fhir/SearchParameter/coverage-issuer).',
-	},
-	sequence: {
-		type: TokenScalar,
-		description:
-			'Sequence number (See http://hl7.org/fhir/SearchParameter/coverage-sequence).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-dependent
 	dependent: {
 		type: TokenScalar,
-		description:
-			'Dependent number (See http://hl7.org/fhir/SearchParameter/coverage-dependent).',
+		fhirtype: 'token',
+		xpath: 'Coverage.dependent',
+		description: 'Dependent number',
 	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-group
 	group: {
 		type: TokenScalar,
-		description:
-			'Group identifier (See http://hl7.org/fhir/SearchParameter/coverage-group).',
+		fhirtype: 'token',
+		xpath: 'Coverage.group',
+		description: 'Group identifier',
 	},
-	type: {
-		type: TokenScalar,
-		description:
-			'The kind of coverage (See http://hl7.org/fhir/SearchParameter/coverage-type).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'The primary identifier of the insured (See http://hl7.org/fhir/SearchParameter/coverage-identifier).',
+		fhirtype: 'token',
+		xpath: 'Coverage.identifier',
+		description: 'The primary identifier of the insured',
 	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-issuer
+	issuer: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Coverage.issuer',
+		description: 'The identity of the insurer',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-plan
+	plan: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Coverage.plan',
+		description: 'A plan or policy identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-sequence
+	sequence: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Coverage.sequence',
+		description: 'Sequence number',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-subplan
 	subplan: {
 		type: TokenScalar,
-		description:
-			'Sub-plan identifier (See http://hl7.org/fhir/SearchParameter/coverage-subplan).',
+		fhirtype: 'token',
+		xpath: 'Coverage.subPlan',
+		description: 'Sub-plan identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/Coverage-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Coverage.type',
+		description: 'The kind of coverage',
 	},
 };

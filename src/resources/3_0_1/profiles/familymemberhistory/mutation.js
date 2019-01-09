@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const FamilyMemberHistorySchema = require('../../schemas/familymemberhistory.schema');
+const FamilyMemberHistorySchema = require('../../schemas/familymemberhistory.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const FamilyMemberHistoryInput = require('../../inputs/familymemberhistory.input');
+const FamilyMemberHistoryInput = require('../../inputs/familymemberhistory.input.js');
 
-// Resolvers
-const {
-	familymemberhistoryCreateResolver,
-	familymemberhistoryUpdateResolver,
-	familymemberhistoryDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createFamilyMemberHistory,
+	updateFamilyMemberHistory,
+	removeFamilyMemberHistory,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'FamilyMemberHistory',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a FamilyMemberHistory record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a FamilyMemberHistory record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.FamilyMemberHistoryCreateMutation
- * @summary FamilyMemberHistoryCreate Mutation.
+ * @summary FamilyMemberHistoryCreate mutation.
  */
 module.exports.FamilyMemberHistoryCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a FamilyMemberHistory',
-	resolve: scopeInvariant(scopeOptions, familymemberhistoryCreateResolver),
+	description: 'Create a FamilyMemberHistory record',
+	resolve: scopeInvariant(scopeOptions, createFamilyMemberHistory),
 	type: FamilyMemberHistorySchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.FamilyMemberHistoryUpdateMutation
- * @summary FamilyMemberHistoryUpdate Mutation.
+ * @summary FamilyMemberHistoryUpdate mutation.
  */
 module.exports.FamilyMemberHistoryUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple FamilyMemberHistorys',
-	resolve: scopeInvariant(scopeOptions, familymemberhistoryUpdateResolver),
+	description: 'Update a FamilyMemberHistory record',
+	resolve: scopeInvariant(scopeOptions, updateFamilyMemberHistory),
 	type: FamilyMemberHistorySchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.FamilyMemberHistoryDeleteMutation
- * @summary FamilyMemberHistoryDelete Mutation.
+ * @name exports.FamilyMemberHistoryRemoveMutation
+ * @summary FamilyMemberHistoryRemove mutation.
  */
-module.exports.FamilyMemberHistoryDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single FamilyMemberHistory',
-	resolve: scopeInvariant(scopeOptions, familymemberhistoryDeleteResolver),
+module.exports.FamilyMemberHistoryRemoveMutation = {
+	description: 'Remove a FamilyMemberHistory record',
+	resolve: scopeInvariant(scopeOptions, removeFamilyMemberHistory),
 	type: FamilyMemberHistorySchema,
+	args: DeleteArgs,
 };

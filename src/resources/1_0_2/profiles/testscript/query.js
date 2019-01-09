@@ -1,55 +1,59 @@
 // Schemas
-const TestScriptSchema = require('../../schemas/testscript.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const TestScriptSchema = require('../../schemas/testscript.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const TestScriptArgs = require('../../parameters/testscript.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const TestScriptArgs = require('../../parameters/testscript.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, TestScriptArgs);
 
 // Resolvers
 const {
-	testscriptResolver,
-	testscriptListResolver,
-	testscriptInstanceResolver,
+	getTestScript,
+	getTestScriptList,
+	getTestScriptInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'TestScript',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.TestScriptQuery
- * @summary TestScript Query.
+ * @summary TestScript query.
  */
 module.exports.TestScriptQuery = {
-	args: Object.assign({}, CommonArgs, TestScriptArgs),
 	description: 'Query for a single TestScript',
-	resolve: scopeInvariant(scopeOptions, testscriptResolver),
+	resolve: scopeInvariant(scopeOptions, getTestScript),
 	type: TestScriptSchema,
+	args: args,
 };
 
 /**
  * @name exports.TestScriptListQuery
- * @summary TestScriptList Query.
+ * @summary TestScript query.
  */
 module.exports.TestScriptListQuery = {
-	args: Object.assign({}, CommonArgs, TestScriptArgs),
-	description: 'Query for multiple TestScripts',
-	resolve: scopeInvariant(scopeOptions, testscriptListResolver),
+	description: 'Query for a more than or just one TestScript',
+	resolve: scopeInvariant(scopeOptions, getTestScriptList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.TestScriptInstanceQuery
- * @summary TestScriptInstance Query.
+ * @summary TestScript query.
  */
 module.exports.TestScriptInstanceQuery = {
-	description: 'Get information about a single TestScript',
-	resolve: scopeInvariant(scopeOptions, testscriptInstanceResolver),
+	description: 'Access information about a single TestScript',
+	resolve: scopeInvariant(scopeOptions, getTestScriptInstance),
 	type: TestScriptSchema,
+	args: args,
 };

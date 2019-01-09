@@ -1,86 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.slotResolver
+ * @name exports.getSlot
  * @static
- * @summary Slot Resolver.
+ * @summary Slot resolver.
  */
-module.exports.slotResolver = function slotResolver(root, args, context, info) {
-	let { server, req, res, version } = context;
+module.exports.getSlot = function getSlot(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.slotListResolver
+ * @name exports.getSlotList
  * @static
- * @summary Slot List Resolver.
+ * @summary Slot list resolver.
  */
-module.exports.slotListResolver = function slotListResolver(
+module.exports.getSlotList = function getSlotList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.slotInstanceResolver
+ * @name exports.getSlotInstance
  * @static
- * @summary Slot Instance Resolver.
+ * @summary Slot instance resolver.
  */
-module.exports.slotInstanceResolver = function slotInstanceResolver(
+module.exports.getSlotInstance = function getSlotInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.slotCreateResolver
+ * @name exports.createSlot
  * @static
- * @summary Slot Create Resolver.
+ * @summary Create Slot resolver.
  */
-module.exports.slotCreateResolver = function slotCreateResolver(
+module.exports.createSlot = function createSlot(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.slotUpdateResolver
+ * @name exports.updateSlot
  * @static
- * @summary Slot Update Resolver.
+ * @summary Update Slot resolver.
  */
-module.exports.slotUpdateResolver = function slotUpdateResolver(
+module.exports.updateSlot = function updateSlot(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.slotDeleteResolver
+ * @name exports.removeSlot
  * @static
- * @summary Slot Delete Resolver.
+ * @summary Remove Slot resolver.
  */
-module.exports.slotDeleteResolver = function slotDeleteResolver(
+module.exports.removeSlot = function removeSlot(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

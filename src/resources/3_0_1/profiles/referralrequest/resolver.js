@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.referralrequestResolver
+ * @name exports.getReferralRequest
  * @static
- * @summary ReferralRequest Resolver.
+ * @summary ReferralRequest resolver.
  */
-module.exports.referralrequestResolver = function referralrequestResolver(
+module.exports.getReferralRequest = function getReferralRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.referralrequestListResolver
+ * @name exports.getReferralRequestList
  * @static
- * @summary ReferralRequest List Resolver.
+ * @summary ReferralRequest list resolver.
  */
-module.exports.referralrequestListResolver = function referralrequestListResolver(
+module.exports.getReferralRequestList = function getReferralRequestList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.referralrequestInstanceResolver
+ * @name exports.getReferralRequestInstance
  * @static
- * @summary ReferralRequest Instance Resolver.
+ * @summary ReferralRequest instance resolver.
  */
-module.exports.referralrequestInstanceResolver = function referralrequestInstanceResolver(
+module.exports.getReferralRequestInstance = function getReferralRequestInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.referralrequestCreateResolver
+ * @name exports.createReferralRequest
  * @static
- * @summary ReferralRequest Create Resolver.
+ * @summary Create ReferralRequest resolver.
  */
-module.exports.referralrequestCreateResolver = function referralrequestCreateResolver(
+module.exports.createReferralRequest = function createReferralRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.referralrequestUpdateResolver
+ * @name exports.updateReferralRequest
  * @static
- * @summary ReferralRequest Update Resolver.
+ * @summary Update ReferralRequest resolver.
  */
-module.exports.referralrequestUpdateResolver = function referralrequestUpdateResolver(
+module.exports.updateReferralRequest = function updateReferralRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.referralrequestDeleteResolver
+ * @name exports.removeReferralRequest
  * @static
- * @summary ReferralRequest Delete Resolver.
+ * @summary Remove ReferralRequest resolver.
  */
-module.exports.referralrequestDeleteResolver = function referralrequestDeleteResolver(
+module.exports.removeReferralRequest = function removeReferralRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

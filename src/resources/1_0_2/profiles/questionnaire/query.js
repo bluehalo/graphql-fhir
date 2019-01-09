@@ -1,55 +1,59 @@
 // Schemas
-const QuestionnaireSchema = require('../../schemas/questionnaire.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const QuestionnaireSchema = require('../../schemas/questionnaire.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const QuestionnaireArgs = require('../../parameters/questionnaire.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const QuestionnaireArgs = require('../../parameters/questionnaire.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, QuestionnaireArgs);
 
 // Resolvers
 const {
-	questionnaireResolver,
-	questionnaireListResolver,
-	questionnaireInstanceResolver,
+	getQuestionnaire,
+	getQuestionnaireList,
+	getQuestionnaireInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Questionnaire',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.QuestionnaireQuery
- * @summary Questionnaire Query.
+ * @summary Questionnaire query.
  */
 module.exports.QuestionnaireQuery = {
-	args: Object.assign({}, CommonArgs, QuestionnaireArgs),
 	description: 'Query for a single Questionnaire',
-	resolve: scopeInvariant(scopeOptions, questionnaireResolver),
+	resolve: scopeInvariant(scopeOptions, getQuestionnaire),
 	type: QuestionnaireSchema,
+	args: args,
 };
 
 /**
  * @name exports.QuestionnaireListQuery
- * @summary QuestionnaireList Query.
+ * @summary Questionnaire query.
  */
 module.exports.QuestionnaireListQuery = {
-	args: Object.assign({}, CommonArgs, QuestionnaireArgs),
-	description: 'Query for multiple Questionnaires',
-	resolve: scopeInvariant(scopeOptions, questionnaireListResolver),
+	description: 'Query for a more than or just one Questionnaire',
+	resolve: scopeInvariant(scopeOptions, getQuestionnaireList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.QuestionnaireInstanceQuery
- * @summary QuestionnaireInstance Query.
+ * @summary Questionnaire query.
  */
 module.exports.QuestionnaireInstanceQuery = {
-	description: 'Get information about a single Questionnaire',
-	resolve: scopeInvariant(scopeOptions, questionnaireInstanceResolver),
+	description: 'Access information about a single Questionnaire',
+	resolve: scopeInvariant(scopeOptions, getQuestionnaireInstance),
 	type: QuestionnaireSchema,
+	args: args,
 };

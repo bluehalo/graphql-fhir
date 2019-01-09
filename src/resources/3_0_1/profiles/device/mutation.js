@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const DeviceSchema = require('../../schemas/device.schema');
+const DeviceSchema = require('../../schemas/device.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const DeviceInput = require('../../inputs/device.input');
+const DeviceInput = require('../../inputs/device.input.js');
 
-// Resolvers
-const {
-	deviceCreateResolver,
-	deviceUpdateResolver,
-	deviceDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createDevice, updateDevice, removeDevice } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Device',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Device record.',
 	},
 	resource: {
@@ -39,7 +36,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Device record for deletion.',
 	},
@@ -47,33 +44,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.DeviceCreateMutation
- * @summary DeviceCreate Mutation.
+ * @summary DeviceCreate mutation.
  */
 module.exports.DeviceCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Device',
-	resolve: scopeInvariant(scopeOptions, deviceCreateResolver),
+	description: 'Create a Device record',
+	resolve: scopeInvariant(scopeOptions, createDevice),
 	type: DeviceSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.DeviceUpdateMutation
- * @summary DeviceUpdate Mutation.
+ * @summary DeviceUpdate mutation.
  */
 module.exports.DeviceUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Devices',
-	resolve: scopeInvariant(scopeOptions, deviceUpdateResolver),
+	description: 'Update a Device record',
+	resolve: scopeInvariant(scopeOptions, updateDevice),
 	type: DeviceSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.DeviceDeleteMutation
- * @summary DeviceDelete Mutation.
+ * @name exports.DeviceRemoveMutation
+ * @summary DeviceRemove mutation.
  */
-module.exports.DeviceDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Device',
-	resolve: scopeInvariant(scopeOptions, deviceDeleteResolver),
+module.exports.DeviceRemoveMutation = {
+	description: 'Remove a Device record',
+	resolve: scopeInvariant(scopeOptions, removeDevice),
 	type: DeviceSchema,
+	args: DeleteArgs,
 };

@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.conditionResolver
+ * @name exports.getCondition
  * @static
- * @summary Condition Resolver.
+ * @summary Condition resolver.
  */
-module.exports.conditionResolver = function conditionResolver(
+module.exports.getCondition = function getCondition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conditionListResolver
+ * @name exports.getConditionList
  * @static
- * @summary Condition List Resolver.
+ * @summary Condition list resolver.
  */
-module.exports.conditionListResolver = function conditionListResolver(
+module.exports.getConditionList = function getConditionList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conditionInstanceResolver
+ * @name exports.getConditionInstance
  * @static
- * @summary Condition Instance Resolver.
+ * @summary Condition instance resolver.
  */
-module.exports.conditionInstanceResolver = function conditionInstanceResolver(
+module.exports.getConditionInstance = function getConditionInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conditionCreateResolver
+ * @name exports.createCondition
  * @static
- * @summary Condition Create Resolver.
+ * @summary Create Condition resolver.
  */
-module.exports.conditionCreateResolver = function conditionCreateResolver(
+module.exports.createCondition = function createCondition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conditionUpdateResolver
+ * @name exports.updateCondition
  * @static
- * @summary Condition Update Resolver.
+ * @summary Update Condition resolver.
  */
-module.exports.conditionUpdateResolver = function conditionUpdateResolver(
+module.exports.updateCondition = function updateCondition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conditionDeleteResolver
+ * @name exports.removeCondition
  * @static
- * @summary Condition Delete Resolver.
+ * @summary Remove Condition resolver.
  */
-module.exports.conditionDeleteResolver = function conditionDeleteResolver(
+module.exports.removeCondition = function removeCondition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

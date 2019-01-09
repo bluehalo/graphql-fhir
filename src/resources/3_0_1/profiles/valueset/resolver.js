@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.valuesetResolver
+ * @name exports.getValueSet
  * @static
- * @summary ValueSet Resolver.
+ * @summary ValueSet resolver.
  */
-module.exports.valuesetResolver = function valuesetResolver(
+module.exports.getValueSet = function getValueSet(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.valuesetListResolver
+ * @name exports.getValueSetList
  * @static
- * @summary ValueSet List Resolver.
+ * @summary ValueSet list resolver.
  */
-module.exports.valuesetListResolver = function valuesetListResolver(
+module.exports.getValueSetList = function getValueSetList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.valuesetInstanceResolver
+ * @name exports.getValueSetInstance
  * @static
- * @summary ValueSet Instance Resolver.
+ * @summary ValueSet instance resolver.
  */
-module.exports.valuesetInstanceResolver = function valuesetInstanceResolver(
+module.exports.getValueSetInstance = function getValueSetInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.valuesetCreateResolver
+ * @name exports.createValueSet
  * @static
- * @summary ValueSet Create Resolver.
+ * @summary Create ValueSet resolver.
  */
-module.exports.valuesetCreateResolver = function valuesetCreateResolver(
+module.exports.createValueSet = function createValueSet(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.valuesetUpdateResolver
+ * @name exports.updateValueSet
  * @static
- * @summary ValueSet Update Resolver.
+ * @summary Update ValueSet resolver.
  */
-module.exports.valuesetUpdateResolver = function valuesetUpdateResolver(
+module.exports.updateValueSet = function updateValueSet(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.valuesetDeleteResolver
+ * @name exports.removeValueSet
  * @static
- * @summary ValueSet Delete Resolver.
+ * @summary Remove ValueSet resolver.
  */
-module.exports.valuesetDeleteResolver = function valuesetDeleteResolver(
+module.exports.removeValueSet = function removeValueSet(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

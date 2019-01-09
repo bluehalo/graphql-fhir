@@ -1,91 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.mediaResolver
+ * @name exports.getMedia
  * @static
- * @summary Media Resolver.
+ * @summary Media resolver.
  */
-module.exports.mediaResolver = function mediaResolver(
-	root,
-	args,
-	context,
-	info,
-) {
-	let { server, req, res, version } = context;
+module.exports.getMedia = function getMedia(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.mediaListResolver
+ * @name exports.getMediaList
  * @static
- * @summary Media List Resolver.
+ * @summary Media list resolver.
  */
-module.exports.mediaListResolver = function mediaListResolver(
+module.exports.getMediaList = function getMediaList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.mediaInstanceResolver
+ * @name exports.getMediaInstance
  * @static
- * @summary Media Instance Resolver.
+ * @summary Media instance resolver.
  */
-module.exports.mediaInstanceResolver = function mediaInstanceResolver(
+module.exports.getMediaInstance = function getMediaInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.mediaCreateResolver
+ * @name exports.createMedia
  * @static
- * @summary Media Create Resolver.
+ * @summary Create Media resolver.
  */
-module.exports.mediaCreateResolver = function mediaCreateResolver(
+module.exports.createMedia = function createMedia(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.mediaUpdateResolver
+ * @name exports.updateMedia
  * @static
- * @summary Media Update Resolver.
+ * @summary Update Media resolver.
  */
-module.exports.mediaUpdateResolver = function mediaUpdateResolver(
+module.exports.updateMedia = function updateMedia(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.mediaDeleteResolver
+ * @name exports.removeMedia
  * @static
- * @summary Media Delete Resolver.
+ * @summary Remove Media resolver.
  */
-module.exports.mediaDeleteResolver = function mediaDeleteResolver(
+module.exports.removeMedia = function removeMedia(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

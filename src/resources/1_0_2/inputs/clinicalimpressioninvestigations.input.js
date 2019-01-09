@@ -1,32 +1,48 @@
 const {
-	GraphQLInputObjectType,
-	GraphQLNonNull,
 	GraphQLList,
+	GraphQLNonNull,
+	GraphQLString,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary ClinicalImpression.investigations Input Schema
+ * @summary ClinicalImpressioninvestigations Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'ClinicalImpressionInvestigations_Input',
-	description:
-		'One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/investigation-sets
-			code: {
-				type: new GraphQLNonNull(require('./codeableconcept.input')),
-				description:
-					"A name/code for the group ('set') of investigations. Typically, this will be something like 'signs', 'symptoms', 'clinical', 'diagnostic', but the list is not constrained, and others such groups such as (exposure|family|travel|nutitirional) history may be used.",
-			},
-			item: {
-				type: new GraphQLList(require('./reference.input')),
-				description:
-					'A record of a specific investigation that was undertaken.',
-			},
-		}),
+	name: 'ClinicalImpressioninvestigations_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/investigation-sets
+		code: {
+			type: new GraphQLNonNull(require('./codeableconcept.input.js')),
+			description:
+				"A name/code for the group ('set') of investigations. Typically, this will be something like 'signs', 'symptoms', 'clinical', 'diagnostic', but the list is not constrained, and others such groups such as (exposure|family|travel|nutitirional) history may be used.",
+		},
+		item: {
+			type: new GraphQLList(GraphQLString),
+			description: 'A record of a specific investigation that was undertaken.',
+		},
+	}),
 });

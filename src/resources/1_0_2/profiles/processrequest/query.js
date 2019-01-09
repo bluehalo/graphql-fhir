@@ -1,55 +1,59 @@
 // Schemas
-const ProcessRequestSchema = require('../../schemas/processrequest.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ProcessRequestSchema = require('../../schemas/processrequest.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ProcessRequestArgs = require('../../parameters/processrequest.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ProcessRequestArgs = require('../../parameters/processrequest.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ProcessRequestArgs);
 
 // Resolvers
 const {
-	processrequestResolver,
-	processrequestListResolver,
-	processrequestInstanceResolver,
+	getProcessRequest,
+	getProcessRequestList,
+	getProcessRequestInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ProcessRequest',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ProcessRequestQuery
- * @summary ProcessRequest Query.
+ * @summary ProcessRequest query.
  */
 module.exports.ProcessRequestQuery = {
-	args: Object.assign({}, CommonArgs, ProcessRequestArgs),
 	description: 'Query for a single ProcessRequest',
-	resolve: scopeInvariant(scopeOptions, processrequestResolver),
+	resolve: scopeInvariant(scopeOptions, getProcessRequest),
 	type: ProcessRequestSchema,
+	args: args,
 };
 
 /**
  * @name exports.ProcessRequestListQuery
- * @summary ProcessRequestList Query.
+ * @summary ProcessRequest query.
  */
 module.exports.ProcessRequestListQuery = {
-	args: Object.assign({}, CommonArgs, ProcessRequestArgs),
-	description: 'Query for multiple ProcessRequests',
-	resolve: scopeInvariant(scopeOptions, processrequestListResolver),
+	description: 'Query for a more than or just one ProcessRequest',
+	resolve: scopeInvariant(scopeOptions, getProcessRequestList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ProcessRequestInstanceQuery
- * @summary ProcessRequestInstance Query.
+ * @summary ProcessRequest query.
  */
 module.exports.ProcessRequestInstanceQuery = {
-	description: 'Get information about a single ProcessRequest',
-	resolve: scopeInvariant(scopeOptions, processrequestInstanceResolver),
+	description: 'Access information about a single ProcessRequest',
+	resolve: scopeInvariant(scopeOptions, getProcessRequestInstance),
 	type: ProcessRequestSchema,
+	args: args,
 };

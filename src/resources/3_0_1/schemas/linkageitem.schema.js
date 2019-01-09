@@ -1,32 +1,54 @@
-const CodeScalar = require('../scalars/code.scalar');
-const { GraphQLObjectType, GraphQLNonNull } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLString,
+	GraphQLList,
+	GraphQLNonNull,
+	GraphQLUnionType,
+	GraphQLObjectType,
+} = require('graphql');
+const CodeScalar = require('../scalars/code.scalar.js');
 
 /**
  * @name exports
- * @summary Linkage.item Schema
+ * @summary Linkageitem Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'LinkageItem',
-	description:
-		'Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items hould be evaluated within the collection of linked items.',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/linkage-type
-			type: {
-				type: new GraphQLNonNull(CodeScalar),
-				description:
-					"Distinguishes which item is 'source of truth' (if any) and which items are no longer considered to be current representations.",
-			},
-			_type: {
-				type: require('./element.schema'),
-				description:
-					"Distinguishes which item is 'source of truth' (if any) and which items are no longer considered to be current representations.",
-			},
-			resource: {
-				type: new GraphQLNonNull(require('./reference.schema')),
-				description: 'The resource instance being linked as part of the group.',
-			},
-		}),
+	name: 'Linkageitem',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_type: {
+			type: require('./element.schema.js'),
+			description:
+				"Distinguishes which item is 'source of truth' (if any) and which items are no longer considered to be current representations.",
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/linkage-type
+		type: {
+			type: new GraphQLNonNull(CodeScalar),
+			description:
+				"Distinguishes which item is 'source of truth' (if any) and which items are no longer considered to be current representations.",
+		},
+		resource: {
+			type: new GraphQLNonNull(require('./resourcelist.schema')),
+			description: 'The resource instance being linked as part of the group.',
+		},
+	}),
 });

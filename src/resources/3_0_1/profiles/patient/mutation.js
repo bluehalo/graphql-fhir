@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const PatientSchema = require('../../schemas/patient.schema');
+const PatientSchema = require('../../schemas/patient.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const PatientInput = require('../../inputs/patient.input');
+const PatientInput = require('../../inputs/patient.input.js');
 
-// Resolvers
-const {
-	patientCreateResolver,
-	patientUpdateResolver,
-	patientDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createPatient, updatePatient, removePatient } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Patient',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Patient record.',
 	},
 	resource: {
@@ -39,7 +36,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Patient record for deletion.',
 	},
@@ -47,33 +44,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.PatientCreateMutation
- * @summary PatientCreate Mutation.
+ * @summary PatientCreate mutation.
  */
 module.exports.PatientCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Patient',
-	resolve: scopeInvariant(scopeOptions, patientCreateResolver),
+	description: 'Create a Patient record',
+	resolve: scopeInvariant(scopeOptions, createPatient),
 	type: PatientSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.PatientUpdateMutation
- * @summary PatientUpdate Mutation.
+ * @summary PatientUpdate mutation.
  */
 module.exports.PatientUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Patients',
-	resolve: scopeInvariant(scopeOptions, patientUpdateResolver),
+	description: 'Update a Patient record',
+	resolve: scopeInvariant(scopeOptions, updatePatient),
 	type: PatientSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.PatientDeleteMutation
- * @summary PatientDelete Mutation.
+ * @name exports.PatientRemoveMutation
+ * @summary PatientRemove mutation.
  */
-module.exports.PatientDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Patient',
-	resolve: scopeInvariant(scopeOptions, patientDeleteResolver),
+module.exports.PatientRemoveMutation = {
+	description: 'Remove a Patient record',
+	resolve: scopeInvariant(scopeOptions, removePatient),
 	type: PatientSchema,
+	args: DeleteArgs,
 };

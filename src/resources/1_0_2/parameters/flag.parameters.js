@@ -1,5 +1,5 @@
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -7,29 +7,39 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the flag query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/Flag-author
 	author: {
 		type: GraphQLString,
-		description:
-			'Flag creator (See http://hl7.org/fhir/SearchParameter/flag-author).',
+		fhirtype: 'reference',
+		xpath: 'Flag.author',
+		description: 'Flag creator',
 	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'The identity of a subject to list flags for (See http://hl7.org/fhir/SearchParameter/flag-patient).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'The identity of a subject to list flags for (See http://hl7.org/fhir/SearchParameter/flag-subject).',
-	},
-	encounter: {
-		type: GraphQLString,
-		description:
-			'Alert relevant during encounter (See http://hl7.org/fhir/SearchParameter/flag-encounter).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Flag-date
 	date: {
 		type: DateScalar,
-		description:
-			'Time period when flag is active (See http://hl7.org/fhir/SearchParameter/flag-date).',
+		fhirtype: 'date',
+		xpath: 'Flag.period',
+		description: 'Time period when flag is active',
+	},
+	// http://hl7.org/fhir/SearchParameter/Flag-encounter
+	encounter: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Flag.encounter',
+		description: 'Alert relevant during encounter',
+	},
+	// http://hl7.org/fhir/SearchParameter/Flag-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Flag.subject',
+		description: 'The identity of a subject to list flags for',
+	},
+	// http://hl7.org/fhir/SearchParameter/Flag-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Flag.subject',
+		description: 'The identity of a subject to list flags for',
 	},
 };

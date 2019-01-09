@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.riskassessmentResolver
+ * @name exports.getRiskAssessment
  * @static
- * @summary RiskAssessment Resolver.
+ * @summary RiskAssessment resolver.
  */
-module.exports.riskassessmentResolver = function riskassessmentResolver(
+module.exports.getRiskAssessment = function getRiskAssessment(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.riskassessmentListResolver
+ * @name exports.getRiskAssessmentList
  * @static
- * @summary RiskAssessment List Resolver.
+ * @summary RiskAssessment list resolver.
  */
-module.exports.riskassessmentListResolver = function riskassessmentListResolver(
+module.exports.getRiskAssessmentList = function getRiskAssessmentList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.riskassessmentInstanceResolver
+ * @name exports.getRiskAssessmentInstance
  * @static
- * @summary RiskAssessment Instance Resolver.
+ * @summary RiskAssessment instance resolver.
  */
-module.exports.riskassessmentInstanceResolver = function riskassessmentInstanceResolver(
+module.exports.getRiskAssessmentInstance = function getRiskAssessmentInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.riskassessmentCreateResolver
+ * @name exports.createRiskAssessment
  * @static
- * @summary RiskAssessment Create Resolver.
+ * @summary Create RiskAssessment resolver.
  */
-module.exports.riskassessmentCreateResolver = function riskassessmentCreateResolver(
+module.exports.createRiskAssessment = function createRiskAssessment(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.riskassessmentUpdateResolver
+ * @name exports.updateRiskAssessment
  * @static
- * @summary RiskAssessment Update Resolver.
+ * @summary Update RiskAssessment resolver.
  */
-module.exports.riskassessmentUpdateResolver = function riskassessmentUpdateResolver(
+module.exports.updateRiskAssessment = function updateRiskAssessment(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.riskassessmentDeleteResolver
+ * @name exports.removeRiskAssessment
  * @static
- * @summary RiskAssessment Delete Resolver.
+ * @summary Remove RiskAssessment resolver.
  */
-module.exports.riskassessmentDeleteResolver = function riskassessmentDeleteResolver(
+module.exports.removeRiskAssessment = function removeRiskAssessment(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

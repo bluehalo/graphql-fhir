@@ -1,71 +1,116 @@
-const CodeScalar = require('../scalars/code.scalar');
-const { GraphQLObjectType, GraphQLNonNull, GraphQLString } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLList,
+	GraphQLNonNull,
+	GraphQLUnionType,
+	GraphQLString,
+	GraphQLObjectType,
+} = require('graphql');
+const IdScalar = require('../scalars/id.scalar.js');
+const CodeScalar = require('../scalars/code.scalar.js');
 
 /**
  * @name exports
- * @summary Conformance.messaging.event Schema
+ * @summary Conformancemessagingevent Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'ConformanceMessagingEvent',
-	description:
-		"A description of the solution's support for an event at this end-point.",
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/message-events
-			code: {
-				type: new GraphQLNonNull(require('./coding.schema')),
-				description: 'A coded identifier of a supported messaging event.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/message-significance-category
-			category: {
-				type: CodeScalar,
-				description: 'The impact of the content of the message.',
-			},
-			_category: {
-				type: require('./element.schema'),
-				description: 'The impact of the content of the message.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/message-conformance-event-mode
-			mode: {
-				type: new GraphQLNonNull(CodeScalar),
-				description:
-					'The mode of this event declaration - whether application is sender or receiver.',
-			},
-			_mode: {
-				type: require('./element.schema'),
-				description:
-					'The mode of this event declaration - whether application is sender or receiver.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-types
-			focus: {
-				type: new GraphQLNonNull(CodeScalar),
-				description:
-					'A resource associated with the event.  This is the resource that defines the event.',
-			},
-			_focus: {
-				type: require('./element.schema'),
-				description:
-					'A resource associated with the event.  This is the resource that defines the event.',
-			},
-			request: {
-				type: new GraphQLNonNull(require('./reference.schema')),
-				description: 'Information about the request for this event.',
-			},
-			response: {
-				type: new GraphQLNonNull(require('./reference.schema')),
-				description: 'Information about the response for this event.',
-			},
-			documentation: {
-				type: GraphQLString,
-				description:
-					'Guidance on how this event is handled, such as internal system trigger points, business rules, etc.',
-			},
-			_documentation: {
-				type: require('./element.schema'),
-				description:
-					'Guidance on how this event is handled, such as internal system trigger points, business rules, etc.',
-			},
-		}),
+	name: 'Conformancemessagingevent',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/message-events
+		code: {
+			type: new GraphQLNonNull(require('./coding.schema.js')),
+			description: 'A coded identifier of a supported messaging event.',
+		},
+		_category: {
+			type: require('./element.schema.js'),
+			description: 'The impact of the content of the message.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/message-significance-category
+		category: {
+			type: CodeScalar,
+			description: 'The impact of the content of the message.',
+		},
+		_mode: {
+			type: require('./element.schema.js'),
+			description:
+				'The mode of this event declaration - whether application is sender or receiver.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/message-conformance-event-mode
+		mode: {
+			type: new GraphQLNonNull(CodeScalar),
+			description:
+				'The mode of this event declaration - whether application is sender or receiver.',
+		},
+		_focus: {
+			type: require('./element.schema.js'),
+			description:
+				'A resource associated with the event.  This is the resource that defines the event.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/resource-types
+		focus: {
+			type: new GraphQLNonNull(CodeScalar),
+			description:
+				'A resource associated with the event.  This is the resource that defines the event.',
+		},
+		request: {
+			type: new GraphQLNonNull(
+				new GraphQLUnionType({
+					name: 'Conformancemessagingeventrequest_request_Union',
+					description: 'Information about the request for this event.',
+					types: () => [require('./structuredefinition.schema.js')],
+					resolveType(data) {
+						if (data && data.resourceType === 'StructureDefinition') {
+							return require('./structuredefinition.schema.js');
+						}
+					},
+				}),
+			),
+			description: 'Information about the request for this event.',
+		},
+		response: {
+			type: new GraphQLNonNull(
+				new GraphQLUnionType({
+					name: 'Conformancemessagingeventresponse_response_Union',
+					description: 'Information about the response for this event.',
+					types: () => [require('./structuredefinition.schema.js')],
+					resolveType(data) {
+						if (data && data.resourceType === 'StructureDefinition') {
+							return require('./structuredefinition.schema.js');
+						}
+					},
+				}),
+			),
+			description: 'Information about the response for this event.',
+		},
+		_documentation: {
+			type: require('./element.schema.js'),
+			description:
+				'Guidance on how this event is handled, such as internal system trigger points, business rules, etc.',
+		},
+		documentation: {
+			type: GraphQLString,
+			description:
+				'Guidance on how this event is handled, such as internal system trigger points, business rules, etc.',
+		},
+	}),
 });

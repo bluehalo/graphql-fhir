@@ -1,55 +1,59 @@
 // Schemas
-const ImmunizationSchema = require('../../schemas/immunization.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ImmunizationSchema = require('../../schemas/immunization.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ImmunizationArgs = require('../../parameters/immunization.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ImmunizationArgs = require('../../parameters/immunization.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ImmunizationArgs);
 
 // Resolvers
 const {
-	immunizationResolver,
-	immunizationListResolver,
-	immunizationInstanceResolver,
+	getImmunization,
+	getImmunizationList,
+	getImmunizationInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Immunization',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ImmunizationQuery
- * @summary Immunization Query.
+ * @summary Immunization query.
  */
 module.exports.ImmunizationQuery = {
-	args: Object.assign({}, CommonArgs, ImmunizationArgs),
 	description: 'Query for a single Immunization',
-	resolve: scopeInvariant(scopeOptions, immunizationResolver),
+	resolve: scopeInvariant(scopeOptions, getImmunization),
 	type: ImmunizationSchema,
+	args: args,
 };
 
 /**
  * @name exports.ImmunizationListQuery
- * @summary ImmunizationList Query.
+ * @summary Immunization query.
  */
 module.exports.ImmunizationListQuery = {
-	args: Object.assign({}, CommonArgs, ImmunizationArgs),
-	description: 'Query for multiple Immunizations',
-	resolve: scopeInvariant(scopeOptions, immunizationListResolver),
+	description: 'Query for a more than or just one Immunization',
+	resolve: scopeInvariant(scopeOptions, getImmunizationList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ImmunizationInstanceQuery
- * @summary ImmunizationInstance Query.
+ * @summary Immunization query.
  */
 module.exports.ImmunizationInstanceQuery = {
-	description: 'Get information about a single Immunization',
-	resolve: scopeInvariant(scopeOptions, immunizationInstanceResolver),
+	description: 'Access information about a single Immunization',
+	resolve: scopeInvariant(scopeOptions, getImmunizationInstance),
 	type: ImmunizationSchema,
+	args: args,
 };

@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ProcedureSchema = require('../../schemas/procedure.schema');
+const ProcedureSchema = require('../../schemas/procedure.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ProcedureInput = require('../../inputs/procedure.input');
+const ProcedureInput = require('../../inputs/procedure.input.js');
 
-// Resolvers
-const {
-	procedureCreateResolver,
-	procedureUpdateResolver,
-	procedureDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createProcedure,
+	updateProcedure,
+	removeProcedure,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Procedure',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Procedure record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Procedure record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ProcedureCreateMutation
- * @summary ProcedureCreate Mutation.
+ * @summary ProcedureCreate mutation.
  */
 module.exports.ProcedureCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Procedure',
-	resolve: scopeInvariant(scopeOptions, procedureCreateResolver),
+	description: 'Create a Procedure record',
+	resolve: scopeInvariant(scopeOptions, createProcedure),
 	type: ProcedureSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ProcedureUpdateMutation
- * @summary ProcedureUpdate Mutation.
+ * @summary ProcedureUpdate mutation.
  */
 module.exports.ProcedureUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Procedures',
-	resolve: scopeInvariant(scopeOptions, procedureUpdateResolver),
+	description: 'Update a Procedure record',
+	resolve: scopeInvariant(scopeOptions, updateProcedure),
 	type: ProcedureSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ProcedureDeleteMutation
- * @summary ProcedureDelete Mutation.
+ * @name exports.ProcedureRemoveMutation
+ * @summary ProcedureRemove mutation.
  */
-module.exports.ProcedureDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Procedure',
-	resolve: scopeInvariant(scopeOptions, procedureDeleteResolver),
+module.exports.ProcedureRemoveMutation = {
+	description: 'Remove a Procedure record',
+	resolve: scopeInvariant(scopeOptions, removeProcedure),
 	type: ProcedureSchema,
+	args: DeleteArgs,
 };

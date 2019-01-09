@@ -1,55 +1,59 @@
 // Schemas
-const VisionPrescriptionSchema = require('../../schemas/visionprescription.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const VisionPrescriptionSchema = require('../../schemas/visionprescription.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const VisionPrescriptionArgs = require('../../parameters/visionprescription.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const VisionPrescriptionArgs = require('../../parameters/visionprescription.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, VisionPrescriptionArgs);
 
 // Resolvers
 const {
-	visionprescriptionResolver,
-	visionprescriptionListResolver,
-	visionprescriptionInstanceResolver,
+	getVisionPrescription,
+	getVisionPrescriptionList,
+	getVisionPrescriptionInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'VisionPrescription',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.VisionPrescriptionQuery
- * @summary VisionPrescription Query.
+ * @summary VisionPrescription query.
  */
 module.exports.VisionPrescriptionQuery = {
-	args: Object.assign({}, CommonArgs, VisionPrescriptionArgs),
 	description: 'Query for a single VisionPrescription',
-	resolve: scopeInvariant(scopeOptions, visionprescriptionResolver),
+	resolve: scopeInvariant(scopeOptions, getVisionPrescription),
 	type: VisionPrescriptionSchema,
+	args: args,
 };
 
 /**
  * @name exports.VisionPrescriptionListQuery
- * @summary VisionPrescriptionList Query.
+ * @summary VisionPrescription query.
  */
 module.exports.VisionPrescriptionListQuery = {
-	args: Object.assign({}, CommonArgs, VisionPrescriptionArgs),
-	description: 'Query for multiple VisionPrescriptions',
-	resolve: scopeInvariant(scopeOptions, visionprescriptionListResolver),
+	description: 'Query for a more than or just one VisionPrescription',
+	resolve: scopeInvariant(scopeOptions, getVisionPrescriptionList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.VisionPrescriptionInstanceQuery
- * @summary VisionPrescriptionInstance Query.
+ * @summary VisionPrescription query.
  */
 module.exports.VisionPrescriptionInstanceQuery = {
-	description: 'Get information about a single VisionPrescription',
-	resolve: scopeInvariant(scopeOptions, visionprescriptionInstanceResolver),
+	description: 'Access information about a single VisionPrescription',
+	resolve: scopeInvariant(scopeOptions, getVisionPrescriptionInstance),
 	type: VisionPrescriptionSchema,
+	args: args,
 };

@@ -1,55 +1,55 @@
 // Schemas
-const MediaSchema = require('../../schemas/media.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const MediaSchema = require('../../schemas/media.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const MediaArgs = require('../../parameters/media.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const MediaArgs = require('../../parameters/media.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, MediaArgs);
 
 // Resolvers
-const {
-	mediaResolver,
-	mediaListResolver,
-	mediaInstanceResolver,
-} = require('./resolver');
+const { getMedia, getMediaList, getMediaInstance } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Media',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.MediaQuery
- * @summary Media Query.
+ * @summary Media query.
  */
 module.exports.MediaQuery = {
-	args: Object.assign({}, CommonArgs, MediaArgs),
 	description: 'Query for a single Media',
-	resolve: scopeInvariant(scopeOptions, mediaResolver),
+	resolve: scopeInvariant(scopeOptions, getMedia),
 	type: MediaSchema,
+	args: args,
 };
 
 /**
  * @name exports.MediaListQuery
- * @summary MediaList Query.
+ * @summary Media query.
  */
 module.exports.MediaListQuery = {
-	args: Object.assign({}, CommonArgs, MediaArgs),
-	description: 'Query for multiple Medias',
-	resolve: scopeInvariant(scopeOptions, mediaListResolver),
+	description: 'Query for a more than or just one Media',
+	resolve: scopeInvariant(scopeOptions, getMediaList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.MediaInstanceQuery
- * @summary MediaInstance Query.
+ * @summary Media query.
  */
 module.exports.MediaInstanceQuery = {
-	description: 'Get information about a single Media',
-	resolve: scopeInvariant(scopeOptions, mediaInstanceResolver),
+	description: 'Access information about a single Media',
+	resolve: scopeInvariant(scopeOptions, getMediaInstance),
 	type: MediaSchema,
+	args: args,
 };

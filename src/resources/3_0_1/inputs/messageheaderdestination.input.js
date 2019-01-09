@@ -1,42 +1,59 @@
-const UriScalar = require('../scalars/uri.scalar');
 const {
-	GraphQLInputObjectType,
 	GraphQLString,
+	GraphQLList,
 	GraphQLNonNull,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
- * @summary MessageHeader.destination Input Schema
+ * @summary MessageHeaderdestination Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'MessageHeaderDestination_Input',
-	description: 'The destination application which the message is intended for.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			name: {
-				type: GraphQLString,
-				description: 'Human-readable name for the target system.',
-			},
-			_name: {
-				type: require('./element.input'),
-				description: 'Human-readable name for the target system.',
-			},
-			target: {
-				type: require('./reference.input'),
-				description:
-					'Identifies the target end system in situations where the initial message transmission is to an intermediary system.',
-			},
-			endpoint: {
-				type: new GraphQLNonNull(UriScalar),
-				description: 'Indicates where the message should be routed to.',
-			},
-			_endpoint: {
-				type: require('./element.input'),
-				description: 'Indicates where the message should be routed to.',
-			},
-		}),
+	name: 'MessageHeaderdestination_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_name: {
+			type: require('./element.input.js'),
+			description: 'Human-readable name for the target system.',
+		},
+		name: {
+			type: GraphQLString,
+			description: 'Human-readable name for the target system.',
+		},
+		target: {
+			type: GraphQLString,
+			description:
+				'Identifies the target end system in situations where the initial message transmission is to an intermediary system.',
+		},
+		_endpoint: {
+			type: require('./element.input.js'),
+			description: 'Indicates where the message should be routed to.',
+		},
+		endpoint: {
+			type: new GraphQLNonNull(UriScalar),
+			description: 'Indicates where the message should be routed to.',
+		},
+	}),
 });

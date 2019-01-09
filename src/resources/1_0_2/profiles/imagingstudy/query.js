@@ -1,55 +1,59 @@
 // Schemas
-const ImagingStudySchema = require('../../schemas/imagingstudy.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ImagingStudySchema = require('../../schemas/imagingstudy.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ImagingStudyArgs = require('../../parameters/imagingstudy.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ImagingStudyArgs = require('../../parameters/imagingstudy.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ImagingStudyArgs);
 
 // Resolvers
 const {
-	imagingstudyResolver,
-	imagingstudyListResolver,
-	imagingstudyInstanceResolver,
+	getImagingStudy,
+	getImagingStudyList,
+	getImagingStudyInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ImagingStudy',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ImagingStudyQuery
- * @summary ImagingStudy Query.
+ * @summary ImagingStudy query.
  */
 module.exports.ImagingStudyQuery = {
-	args: Object.assign({}, CommonArgs, ImagingStudyArgs),
 	description: 'Query for a single ImagingStudy',
-	resolve: scopeInvariant(scopeOptions, imagingstudyResolver),
+	resolve: scopeInvariant(scopeOptions, getImagingStudy),
 	type: ImagingStudySchema,
+	args: args,
 };
 
 /**
  * @name exports.ImagingStudyListQuery
- * @summary ImagingStudyList Query.
+ * @summary ImagingStudy query.
  */
 module.exports.ImagingStudyListQuery = {
-	args: Object.assign({}, CommonArgs, ImagingStudyArgs),
-	description: 'Query for multiple ImagingStudys',
-	resolve: scopeInvariant(scopeOptions, imagingstudyListResolver),
+	description: 'Query for a more than or just one ImagingStudy',
+	resolve: scopeInvariant(scopeOptions, getImagingStudyList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ImagingStudyInstanceQuery
- * @summary ImagingStudyInstance Query.
+ * @summary ImagingStudy query.
  */
 module.exports.ImagingStudyInstanceQuery = {
-	description: 'Get information about a single ImagingStudy',
-	resolve: scopeInvariant(scopeOptions, imagingstudyInstanceResolver),
+	description: 'Access information about a single ImagingStudy',
+	resolve: scopeInvariant(scopeOptions, getImagingStudyInstance),
 	type: ImagingStudySchema,
+	args: args,
 };

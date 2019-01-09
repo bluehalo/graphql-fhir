@@ -1,55 +1,59 @@
 // Schemas
-const DeviceUseStatementSchema = require('../../schemas/deviceusestatement.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const DeviceUseStatementSchema = require('../../schemas/deviceusestatement.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const DeviceUseStatementArgs = require('../../parameters/deviceusestatement.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const DeviceUseStatementArgs = require('../../parameters/deviceusestatement.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, DeviceUseStatementArgs);
 
 // Resolvers
 const {
-	deviceusestatementResolver,
-	deviceusestatementListResolver,
-	deviceusestatementInstanceResolver,
+	getDeviceUseStatement,
+	getDeviceUseStatementList,
+	getDeviceUseStatementInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DeviceUseStatement',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.DeviceUseStatementQuery
- * @summary DeviceUseStatement Query.
+ * @summary DeviceUseStatement query.
  */
 module.exports.DeviceUseStatementQuery = {
-	args: Object.assign({}, CommonArgs, DeviceUseStatementArgs),
 	description: 'Query for a single DeviceUseStatement',
-	resolve: scopeInvariant(scopeOptions, deviceusestatementResolver),
+	resolve: scopeInvariant(scopeOptions, getDeviceUseStatement),
 	type: DeviceUseStatementSchema,
+	args: args,
 };
 
 /**
  * @name exports.DeviceUseStatementListQuery
- * @summary DeviceUseStatementList Query.
+ * @summary DeviceUseStatement query.
  */
 module.exports.DeviceUseStatementListQuery = {
-	args: Object.assign({}, CommonArgs, DeviceUseStatementArgs),
-	description: 'Query for multiple DeviceUseStatements',
-	resolve: scopeInvariant(scopeOptions, deviceusestatementListResolver),
+	description: 'Query for a more than or just one DeviceUseStatement',
+	resolve: scopeInvariant(scopeOptions, getDeviceUseStatementList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.DeviceUseStatementInstanceQuery
- * @summary DeviceUseStatementInstance Query.
+ * @summary DeviceUseStatement query.
  */
 module.exports.DeviceUseStatementInstanceQuery = {
-	description: 'Get information about a single DeviceUseStatement',
-	resolve: scopeInvariant(scopeOptions, deviceusestatementInstanceResolver),
+	description: 'Access information about a single DeviceUseStatement',
+	resolve: scopeInvariant(scopeOptions, getDeviceUseStatementInstance),
 	type: DeviceUseStatementSchema,
+	args: args,
 };

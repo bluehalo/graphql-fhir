@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,34 +7,46 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the procedurerequest query
  */
 module.exports = {
-	orderer: {
-		type: GraphQLString,
-		description:
-			'Who made request (See http://hl7.org/fhir/SearchParameter/procedurerequest-orderer).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Search by subject - a patient (See http://hl7.org/fhir/SearchParameter/procedurerequest-patient).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'Search by subject (See http://hl7.org/fhir/SearchParameter/procedurerequest-subject).',
-	},
-	performer: {
-		type: GraphQLString,
-		description:
-			'Who should perform the procedure (See http://hl7.org/fhir/SearchParameter/procedurerequest-performer).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ProcedureRequest-encounter
 	encounter: {
 		type: GraphQLString,
-		description:
-			'Encounter request created during (See http://hl7.org/fhir/SearchParameter/procedurerequest-encounter).',
+		fhirtype: 'reference',
+		xpath: 'ProcedureRequest.encounter',
+		description: 'Encounter request created during',
 	},
+	// http://hl7.org/fhir/SearchParameter/ProcedureRequest-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'A unique identifier of the Procedure Request (See http://hl7.org/fhir/SearchParameter/procedurerequest-identifier).',
+		fhirtype: 'token',
+		xpath: 'ProcedureRequest.identifier',
+		description: 'A unique identifier of the Procedure Request',
+	},
+	// http://hl7.org/fhir/SearchParameter/ProcedureRequest-orderer
+	orderer: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ProcedureRequest.orderer',
+		description: 'Who made request',
+	},
+	// http://hl7.org/fhir/SearchParameter/ProcedureRequest-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ProcedureRequest.subject',
+		description: 'Search by subject - a patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/ProcedureRequest-performer
+	performer: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ProcedureRequest.performer',
+		description: 'Who should perform the procedure',
+	},
+	// http://hl7.org/fhir/SearchParameter/ProcedureRequest-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ProcedureRequest.subject',
+		description: 'Search by subject',
 	},
 };

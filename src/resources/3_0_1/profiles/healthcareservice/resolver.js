@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.healthcareserviceResolver
+ * @name exports.getHealthcareService
  * @static
- * @summary HealthcareService Resolver.
+ * @summary HealthcareService resolver.
  */
-module.exports.healthcareserviceResolver = function healthcareserviceResolver(
+module.exports.getHealthcareService = function getHealthcareService(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.healthcareserviceListResolver
+ * @name exports.getHealthcareServiceList
  * @static
- * @summary HealthcareService List Resolver.
+ * @summary HealthcareService list resolver.
  */
-module.exports.healthcareserviceListResolver = function healthcareserviceListResolver(
+module.exports.getHealthcareServiceList = function getHealthcareServiceList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.healthcareserviceInstanceResolver
+ * @name exports.getHealthcareServiceInstance
  * @static
- * @summary HealthcareService Instance Resolver.
+ * @summary HealthcareService instance resolver.
  */
-module.exports.healthcareserviceInstanceResolver = function healthcareserviceInstanceResolver(
+module.exports.getHealthcareServiceInstance = function getHealthcareServiceInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.healthcareserviceCreateResolver
+ * @name exports.createHealthcareService
  * @static
- * @summary HealthcareService Create Resolver.
+ * @summary Create HealthcareService resolver.
  */
-module.exports.healthcareserviceCreateResolver = function healthcareserviceCreateResolver(
+module.exports.createHealthcareService = function createHealthcareService(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.healthcareserviceUpdateResolver
+ * @name exports.updateHealthcareService
  * @static
- * @summary HealthcareService Update Resolver.
+ * @summary Update HealthcareService resolver.
  */
-module.exports.healthcareserviceUpdateResolver = function healthcareserviceUpdateResolver(
+module.exports.updateHealthcareService = function updateHealthcareService(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.healthcareserviceDeleteResolver
+ * @name exports.removeHealthcareService
  * @static
- * @summary HealthcareService Delete Resolver.
+ * @summary Remove HealthcareService resolver.
  */
-module.exports.healthcareserviceDeleteResolver = function healthcareserviceDeleteResolver(
+module.exports.removeHealthcareService = function removeHealthcareService(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

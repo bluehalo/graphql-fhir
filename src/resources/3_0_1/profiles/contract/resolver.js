@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.contractResolver
+ * @name exports.getContract
  * @static
- * @summary Contract Resolver.
+ * @summary Contract resolver.
  */
-module.exports.contractResolver = function contractResolver(
+module.exports.getContract = function getContract(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.contractListResolver
+ * @name exports.getContractList
  * @static
- * @summary Contract List Resolver.
+ * @summary Contract list resolver.
  */
-module.exports.contractListResolver = function contractListResolver(
+module.exports.getContractList = function getContractList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.contractInstanceResolver
+ * @name exports.getContractInstance
  * @static
- * @summary Contract Instance Resolver.
+ * @summary Contract instance resolver.
  */
-module.exports.contractInstanceResolver = function contractInstanceResolver(
+module.exports.getContractInstance = function getContractInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.contractCreateResolver
+ * @name exports.createContract
  * @static
- * @summary Contract Create Resolver.
+ * @summary Create Contract resolver.
  */
-module.exports.contractCreateResolver = function contractCreateResolver(
+module.exports.createContract = function createContract(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.contractUpdateResolver
+ * @name exports.updateContract
  * @static
- * @summary Contract Update Resolver.
+ * @summary Update Contract resolver.
  */
-module.exports.contractUpdateResolver = function contractUpdateResolver(
+module.exports.updateContract = function updateContract(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.contractDeleteResolver
+ * @name exports.removeContract
  * @static
- * @summary Contract Delete Resolver.
+ * @summary Remove Contract resolver.
  */
-module.exports.contractDeleteResolver = function contractDeleteResolver(
+module.exports.removeContract = function removeContract(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,39 +1,57 @@
 const {
-	GraphQLInputObjectType,
+	GraphQLString,
+	GraphQLList,
 	GraphQLNonNull,
 	GraphQLBoolean,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 /**
  * @name exports
- * @summary Account.guarantor Input Schema
+ * @summary Accountguarantor Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'AccountGuarantor_Input',
-	description: 'Parties financially responsible for the account.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			party: {
-				type: new GraphQLNonNull(require('./reference.input')),
-				description: 'The entity who is responsible.',
-			},
-			onHold: {
-				type: GraphQLBoolean,
-				description:
-					'A guarantor may be placed on credit hold or otherwise have their role temporarily suspended.',
-			},
-			_onHold: {
-				type: require('./element.input'),
-				description:
-					'A guarantor may be placed on credit hold or otherwise have their role temporarily suspended.',
-			},
-			period: {
-				type: require('./period.input'),
-				description:
-					'The timeframe during which the guarantor accepts responsibility for the account.',
-			},
-		}),
+	name: 'Accountguarantor_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		party: {
+			type: new GraphQLNonNull(GraphQLString),
+			description: 'The entity who is responsible.',
+		},
+		_onHold: {
+			type: require('./element.input.js'),
+			description:
+				'A guarantor may be placed on credit hold or otherwise have their role temporarily suspended.',
+		},
+		onHold: {
+			type: GraphQLBoolean,
+			description:
+				'A guarantor may be placed on credit hold or otherwise have their role temporarily suspended.',
+		},
+		period: {
+			type: require('./period.input.js'),
+			description:
+				'The timeframe during which the guarantor accepts responsibility for the account.',
+		},
+	}),
 });

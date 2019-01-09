@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const CommunicationRequestSchema = require('../../schemas/communicationrequest.schema');
+const CommunicationRequestSchema = require('../../schemas/communicationrequest.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const CommunicationRequestInput = require('../../inputs/communicationrequest.input');
+const CommunicationRequestInput = require('../../inputs/communicationrequest.input.js');
 
-// Resolvers
-const {
-	communicationrequestCreateResolver,
-	communicationrequestUpdateResolver,
-	communicationrequestDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createCommunicationRequest,
+	updateCommunicationRequest,
+	removeCommunicationRequest,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'CommunicationRequest',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a CommunicationRequest record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a CommunicationRequest record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.CommunicationRequestCreateMutation
- * @summary CommunicationRequestCreate Mutation.
+ * @summary CommunicationRequestCreate mutation.
  */
 module.exports.CommunicationRequestCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a CommunicationRequest',
-	resolve: scopeInvariant(scopeOptions, communicationrequestCreateResolver),
+	description: 'Create a CommunicationRequest record',
+	resolve: scopeInvariant(scopeOptions, createCommunicationRequest),
 	type: CommunicationRequestSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.CommunicationRequestUpdateMutation
- * @summary CommunicationRequestUpdate Mutation.
+ * @summary CommunicationRequestUpdate mutation.
  */
 module.exports.CommunicationRequestUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple CommunicationRequests',
-	resolve: scopeInvariant(scopeOptions, communicationrequestUpdateResolver),
+	description: 'Update a CommunicationRequest record',
+	resolve: scopeInvariant(scopeOptions, updateCommunicationRequest),
 	type: CommunicationRequestSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.CommunicationRequestDeleteMutation
- * @summary CommunicationRequestDelete Mutation.
+ * @name exports.CommunicationRequestRemoveMutation
+ * @summary CommunicationRequestRemove mutation.
  */
-module.exports.CommunicationRequestDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single CommunicationRequest',
-	resolve: scopeInvariant(scopeOptions, communicationrequestDeleteResolver),
+module.exports.CommunicationRequestRemoveMutation = {
+	description: 'Remove a CommunicationRequest record',
+	resolve: scopeInvariant(scopeOptions, removeCommunicationRequest),
 	type: CommunicationRequestSchema,
+	args: DeleteArgs,
 };

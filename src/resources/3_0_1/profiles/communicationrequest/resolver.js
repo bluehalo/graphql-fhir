@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.communicationrequestResolver
+ * @name exports.getCommunicationRequest
  * @static
- * @summary CommunicationRequest Resolver.
+ * @summary CommunicationRequest resolver.
  */
-module.exports.communicationrequestResolver = function communicationrequestResolver(
+module.exports.getCommunicationRequest = function getCommunicationRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.communicationrequestListResolver
+ * @name exports.getCommunicationRequestList
  * @static
- * @summary CommunicationRequest List Resolver.
+ * @summary CommunicationRequest list resolver.
  */
-module.exports.communicationrequestListResolver = function communicationrequestListResolver(
+module.exports.getCommunicationRequestList = function getCommunicationRequestList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.communicationrequestInstanceResolver
+ * @name exports.getCommunicationRequestInstance
  * @static
- * @summary CommunicationRequest Instance Resolver.
+ * @summary CommunicationRequest instance resolver.
  */
-module.exports.communicationrequestInstanceResolver = function communicationrequestInstanceResolver(
+module.exports.getCommunicationRequestInstance = function getCommunicationRequestInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.communicationrequestCreateResolver
+ * @name exports.createCommunicationRequest
  * @static
- * @summary CommunicationRequest Create Resolver.
+ * @summary Create CommunicationRequest resolver.
  */
-module.exports.communicationrequestCreateResolver = function communicationrequestCreateResolver(
+module.exports.createCommunicationRequest = function createCommunicationRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.communicationrequestUpdateResolver
+ * @name exports.updateCommunicationRequest
  * @static
- * @summary CommunicationRequest Update Resolver.
+ * @summary Update CommunicationRequest resolver.
  */
-module.exports.communicationrequestUpdateResolver = function communicationrequestUpdateResolver(
+module.exports.updateCommunicationRequest = function updateCommunicationRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.communicationrequestDeleteResolver
+ * @name exports.removeCommunicationRequest
  * @static
- * @summary CommunicationRequest Delete Resolver.
+ * @summary Remove CommunicationRequest resolver.
  */
-module.exports.communicationrequestDeleteResolver = function communicationrequestDeleteResolver(
+module.exports.removeCommunicationRequest = function removeCommunicationRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

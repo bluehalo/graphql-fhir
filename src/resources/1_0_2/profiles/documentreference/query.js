@@ -1,55 +1,59 @@
 // Schemas
-const DocumentReferenceSchema = require('../../schemas/documentreference.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const DocumentReferenceSchema = require('../../schemas/documentreference.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const DocumentReferenceArgs = require('../../parameters/documentreference.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const DocumentReferenceArgs = require('../../parameters/documentreference.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, DocumentReferenceArgs);
 
 // Resolvers
 const {
-	documentreferenceResolver,
-	documentreferenceListResolver,
-	documentreferenceInstanceResolver,
+	getDocumentReference,
+	getDocumentReferenceList,
+	getDocumentReferenceInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DocumentReference',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.DocumentReferenceQuery
- * @summary DocumentReference Query.
+ * @summary DocumentReference query.
  */
 module.exports.DocumentReferenceQuery = {
-	args: Object.assign({}, CommonArgs, DocumentReferenceArgs),
 	description: 'Query for a single DocumentReference',
-	resolve: scopeInvariant(scopeOptions, documentreferenceResolver),
+	resolve: scopeInvariant(scopeOptions, getDocumentReference),
 	type: DocumentReferenceSchema,
+	args: args,
 };
 
 /**
  * @name exports.DocumentReferenceListQuery
- * @summary DocumentReferenceList Query.
+ * @summary DocumentReference query.
  */
 module.exports.DocumentReferenceListQuery = {
-	args: Object.assign({}, CommonArgs, DocumentReferenceArgs),
-	description: 'Query for multiple DocumentReferences',
-	resolve: scopeInvariant(scopeOptions, documentreferenceListResolver),
+	description: 'Query for a more than or just one DocumentReference',
+	resolve: scopeInvariant(scopeOptions, getDocumentReferenceList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.DocumentReferenceInstanceQuery
- * @summary DocumentReferenceInstance Query.
+ * @summary DocumentReference query.
  */
 module.exports.DocumentReferenceInstanceQuery = {
-	description: 'Get information about a single DocumentReference',
-	resolve: scopeInvariant(scopeOptions, documentreferenceInstanceResolver),
+	description: 'Access information about a single DocumentReference',
+	resolve: scopeInvariant(scopeOptions, getDocumentReferenceInstance),
 	type: DocumentReferenceSchema,
+	args: args,
 };

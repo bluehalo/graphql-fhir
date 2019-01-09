@@ -1,47 +1,63 @@
 const {
-	GraphQLInputObjectType,
+	GraphQLList,
 	GraphQLNonNull,
 	GraphQLString,
-	GraphQLList,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary ImplementationGuide.package Input Schema
+ * @summary ImplementationGuidepackage Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'ImplementationGuidePackage_Input',
-	description:
-		'A logical group of resources. Logical groups can be used when building pages.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			name: {
-				type: new GraphQLNonNull(GraphQLString),
-				description: 'The name for the group, as used in page.package.',
-			},
-			_name: {
-				type: require('./element.input'),
-				description: 'The name for the group, as used in page.package.',
-			},
-			description: {
-				type: GraphQLString,
-				description: 'Human readable text describing the package.',
-			},
-			_description: {
-				type: require('./element.input'),
-				description: 'Human readable text describing the package.',
-			},
-			resource: {
-				type: new GraphQLList(
-					new GraphQLNonNull(
-						require('./implementationguidepackageresource.input'),
-					),
+	name: 'ImplementationGuidepackage_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_name: {
+			type: require('./element.input.js'),
+			description: 'The name for the group, as used in page.package.',
+		},
+		name: {
+			type: new GraphQLNonNull(GraphQLString),
+			description: 'The name for the group, as used in page.package.',
+		},
+		_description: {
+			type: require('./element.input.js'),
+			description: 'Human readable text describing the package.',
+		},
+		description: {
+			type: GraphQLString,
+			description: 'Human readable text describing the package.',
+		},
+		resource: {
+			type: new GraphQLList(
+				new GraphQLNonNull(
+					require('./implementationguidepackageresource.input.js'),
 				),
-				description:
-					'A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.',
-			},
-		}),
+			),
+			description:
+				'A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.',
+		},
+	}),
 });

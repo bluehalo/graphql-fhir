@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,64 +7,91 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the organization query
  */
 module.exports = {
-	address_state: {
-		type: GraphQLString,
-		description:
-			'A state specified in an address (See http://hl7.org/fhir/SearchParameter/organization-address-state).',
-	},
-	address_city: {
-		type: GraphQLString,
-		description:
-			'A city specified in an address (See http://hl7.org/fhir/SearchParameter/organization-address-city).',
-	},
-	phonetic: {
-		type: GraphQLString,
-		description:
-			"A portion of the organization's name using some kind of phonetic matching algorithm (See http://hl7.org/fhir/SearchParameter/organization-phonetic).",
-	},
-	partof: {
-		type: GraphQLString,
-		description:
-			'Search all organizations that are part of the given organization (See http://hl7.org/fhir/SearchParameter/organization-partof).',
-	},
-	address: {
-		type: GraphQLString,
-		description:
-			'A (part of the) address of the Organization (See http://hl7.org/fhir/SearchParameter/organization-address).',
-	},
-	address_use: {
-		type: TokenScalar,
-		description:
-			'A use code specified in an address (See http://hl7.org/fhir/SearchParameter/organization-address-use).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			"A portion of the organization's name (See http://hl7.org/fhir/SearchParameter/organization-name).",
-	},
-	address_country: {
-		type: GraphQLString,
-		description:
-			'A country specified in an address (See http://hl7.org/fhir/SearchParameter/organization-address-country).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Organization-active
 	active: {
 		type: TokenScalar,
-		description:
-			"Whether the organization's record is active (See http://hl7.org/fhir/SearchParameter/organization-active).",
+		fhirtype: 'token',
+		xpath: 'Organization.active',
+		description: "Whether the organization's record is active",
 	},
-	type: {
-		type: TokenScalar,
-		description:
-			'A code for the type of organization (See http://hl7.org/fhir/SearchParameter/organization-type).',
+	// http://hl7.org/fhir/SearchParameter/Organization-address
+	address: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Organization.address',
+		description: 'A (part of the) address of the Organization',
 	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			"Any identifier for the organization (not the accreditation issuer's identifier) (See http://hl7.org/fhir/SearchParameter/organization-identifier).",
+	// http://hl7.org/fhir/SearchParameter/Organization-address-city
+	address_city: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Organization.address.city',
+		description: 'A city specified in an address',
 	},
+	// http://hl7.org/fhir/SearchParameter/Organization-address-country
+	address_country: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Organization.address.country',
+		description: 'A country specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Organization-address-postalcode
 	address_postalcode: {
 		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Organization.address.postalCode',
+		description: 'A postal code specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Organization-address-state
+	address_state: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Organization.address.state',
+		description: 'A state specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Organization-address-use
+	address_use: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Organization.address.use',
+		description: 'A use code specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Organization-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Organization.identifier',
 		description:
-			'A postal code specified in an address (See http://hl7.org/fhir/SearchParameter/organization-address-postalcode).',
+			"Any identifier for the organization (not the accreditation issuer's identifier)",
+	},
+	// http://hl7.org/fhir/SearchParameter/Organization-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Organization.name',
+		description: "A portion of the organization's name",
+	},
+	// http://hl7.org/fhir/SearchParameter/Organization-partof
+	partof: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Organization.partOf',
+		description:
+			'Search all organizations that are part of the given organization',
+	},
+	// http://hl7.org/fhir/SearchParameter/Organization-phonetic
+	phonetic: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Organization.name',
+		description:
+			"A portion of the organization's name using some kind of phonetic matching algorithm",
+	},
+	// http://hl7.org/fhir/SearchParameter/Organization-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Organization.type',
+		description: 'A code for the type of organization',
 	},
 };

@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,69 +8,95 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the claim query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/Claim-care-team
 	care_team: {
 		type: GraphQLString,
-		description:
-			'Member of the CareTeam (See http://hl7.org/fhir/SearchParameter/Claim-care-team).',
+		fhirtype: 'reference',
+		xpath: 'Claim.careTeam.provider',
+		description: 'Member of the CareTeam',
 	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'The primary identifier of the financial resource (See http://hl7.org/fhir/SearchParameter/Claim-identifier).',
-	},
-	use: {
-		type: TokenScalar,
-		description:
-			'The kind of financial resource (See http://hl7.org/fhir/SearchParameter/Claim-use).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Claim-created
 	created: {
 		type: DateScalar,
-		description:
-			'The creation date for the Claim (See http://hl7.org/fhir/SearchParameter/Claim-created).',
+		fhirtype: 'date',
+		xpath: 'Claim.created',
+		description: 'The creation date for the Claim',
 	},
+	// http://hl7.org/fhir/SearchParameter/Claim-encounter
 	encounter: {
 		type: GraphQLString,
-		description:
-			'Encounters associated with a billed line item (See http://hl7.org/fhir/SearchParameter/Claim-encounter).',
+		fhirtype: 'reference',
+		xpath: 'Claim.item.encounter',
+		description: 'Encounters associated with a billed line item',
 	},
-	priority: {
-		type: TokenScalar,
-		description:
-			'Processing priority requested (See http://hl7.org/fhir/SearchParameter/Claim-priority).',
-	},
-	payee: {
-		type: GraphQLString,
-		description:
-			'The party receiving any payment for the Claim (See http://hl7.org/fhir/SearchParameter/Claim-payee).',
-	},
-	provider: {
-		type: GraphQLString,
-		description:
-			'Provider responsible for the Claim (See http://hl7.org/fhir/SearchParameter/Claim-provider).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Patient receiving the services (See http://hl7.org/fhir/SearchParameter/Claim-patient).',
-	},
-	insurer: {
-		type: GraphQLString,
-		description:
-			'The target payor/insurer for the Claim (See http://hl7.org/fhir/SearchParameter/Claim-insurer).',
-	},
-	organization: {
-		type: GraphQLString,
-		description:
-			'The reference to the providing organization (See http://hl7.org/fhir/SearchParameter/Claim-organization).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Claim-enterer
 	enterer: {
 		type: GraphQLString,
-		description:
-			'The party responsible for the entry of the Claim (See http://hl7.org/fhir/SearchParameter/Claim-enterer).',
+		fhirtype: 'reference',
+		xpath: 'Claim.enterer',
+		description: 'The party responsible for the entry of the Claim',
 	},
+	// http://hl7.org/fhir/SearchParameter/Claim-facility
 	facility: {
 		type: GraphQLString,
-		description:
-			'Facility responsible for the goods and services (See http://hl7.org/fhir/SearchParameter/Claim-facility).',
+		fhirtype: 'reference',
+		xpath: 'Claim.facility',
+		description: 'Facility responsible for the goods and services',
+	},
+	// http://hl7.org/fhir/SearchParameter/Claim-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Claim.identifier',
+		description: 'The primary identifier of the financial resource',
+	},
+	// http://hl7.org/fhir/SearchParameter/Claim-insurer
+	insurer: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Claim.insurer',
+		description: 'The target payor/insurer for the Claim',
+	},
+	// http://hl7.org/fhir/SearchParameter/Claim-organization
+	organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Claim.organization',
+		description: 'The reference to the providing organization',
+	},
+	// http://hl7.org/fhir/SearchParameter/Claim-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Claim.patient',
+		description: 'Patient receiving the services',
+	},
+	// http://hl7.org/fhir/SearchParameter/Claim-payee
+	payee: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Claim.payee.party',
+		description: 'The party receiving any payment for the Claim',
+	},
+	// http://hl7.org/fhir/SearchParameter/Claim-priority
+	priority: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Claim.priority',
+		description: 'Processing priority requested',
+	},
+	// http://hl7.org/fhir/SearchParameter/Claim-provider
+	provider: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Claim.provider',
+		description: 'Provider responsible for the Claim',
+	},
+	// http://hl7.org/fhir/SearchParameter/Claim-use
+	use: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Claim.use',
+		description: 'The kind of financial resource',
 	},
 };

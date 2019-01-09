@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,49 +8,67 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the claimresponse query
  */
 module.exports = {
-	identifier: {
-		type: TokenScalar,
-		description:
-			'The identity of the claimresponse (See http://hl7.org/fhir/SearchParameter/ClaimResponse-identifier).',
-	},
-	request: {
-		type: GraphQLString,
-		description:
-			'The claim reference (See http://hl7.org/fhir/SearchParameter/ClaimResponse-request).',
-	},
-	disposition: {
-		type: GraphQLString,
-		description:
-			'The contents of the disposition message (See http://hl7.org/fhir/SearchParameter/ClaimResponse-disposition).',
-	},
-	insurer: {
-		type: GraphQLString,
-		description:
-			'The organization who generated this resource (See http://hl7.org/fhir/SearchParameter/ClaimResponse-insurer).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ClaimResponse-created
 	created: {
 		type: DateScalar,
-		description:
-			'The creation date (See http://hl7.org/fhir/SearchParameter/ClaimResponse-created).',
+		fhirtype: 'date',
+		xpath: 'ClaimResponse.created',
+		description: 'The creation date',
 	},
-	patient: {
+	// http://hl7.org/fhir/SearchParameter/ClaimResponse-disposition
+	disposition: {
 		type: GraphQLString,
-		description:
-			'The subject of care. (See http://hl7.org/fhir/SearchParameter/ClaimResponse-patient).',
+		fhirtype: 'string',
+		xpath: 'ClaimResponse.disposition',
+		description: 'The contents of the disposition message',
 	},
-	payment_date: {
-		type: DateScalar,
-		description:
-			'The expected paymentDate (See http://hl7.org/fhir/SearchParameter/ClaimResponse-payment-date).',
+	// http://hl7.org/fhir/SearchParameter/ClaimResponse-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ClaimResponse.identifier',
+		description: 'The identity of the claimresponse',
 	},
-	request_provider: {
+	// http://hl7.org/fhir/SearchParameter/ClaimResponse-insurer
+	insurer: {
 		type: GraphQLString,
-		description:
-			'The Provider of the claim (See http://hl7.org/fhir/SearchParameter/ClaimResponse-request-provider).',
+		fhirtype: 'reference',
+		xpath: 'ClaimResponse.insurer',
+		description: 'The organization who generated this resource',
 	},
+	// http://hl7.org/fhir/SearchParameter/ClaimResponse-outcome
 	outcome: {
 		type: TokenScalar,
-		description:
-			'The processing outcome (See http://hl7.org/fhir/SearchParameter/ClaimResponse-outcome).',
+		fhirtype: 'token',
+		xpath: 'ClaimResponse.outcome',
+		description: 'The processing outcome',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClaimResponse-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ClaimResponse.patient',
+		description: 'The subject of care.',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClaimResponse-payment-date
+	payment_date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'ClaimResponse.payment.date',
+		description: 'The expected paymentDate',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClaimResponse-request
+	request: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ClaimResponse.request',
+		description: 'The claim reference',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClaimResponse-request-provider
+	request_provider: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ClaimResponse.requestProvider',
+		description: 'The Provider of the claim',
 	},
 };

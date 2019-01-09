@@ -1,55 +1,65 @@
 // Schemas
-const ReferralRequestSchema = require('../../schemas/referralrequest.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ReferralRequestSchema = require('../../schemas/referralrequest.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ReferralRequestArgs = require('../../parameters/referralrequest.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ReferralRequestArgs = require('../../parameters/referralrequest.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+const DomainResourceArgs = require('../../parameters/domainresource.parameters.js');
+
+let args = Object.assign(
+	{},
+	DomainResourceArgs,
+	ResourceArgs,
+	ReferralRequestArgs,
+);
 
 // Resolvers
 const {
-	referralrequestResolver,
-	referralrequestListResolver,
-	referralrequestInstanceResolver,
+	getReferralRequest,
+	getReferralRequestList,
+	getReferralRequestInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ReferralRequest',
 	action: 'read',
-	version: '3_0_1',
 };
 
 /**
  * @name exports.ReferralRequestQuery
- * @summary ReferralRequest Query.
+ * @summary ReferralRequest query.
  */
 module.exports.ReferralRequestQuery = {
-	args: Object.assign({}, CommonArgs, ReferralRequestArgs),
 	description: 'Query for a single ReferralRequest',
-	resolve: scopeInvariant(scopeOptions, referralrequestResolver),
+	resolve: scopeInvariant(scopeOptions, getReferralRequest),
 	type: ReferralRequestSchema,
+	args: args,
 };
 
 /**
  * @name exports.ReferralRequestListQuery
- * @summary ReferralRequestList Query.
+ * @summary ReferralRequest query.
  */
 module.exports.ReferralRequestListQuery = {
-	args: Object.assign({}, CommonArgs, ReferralRequestArgs),
-	description: 'Query for multiple ReferralRequests',
-	resolve: scopeInvariant(scopeOptions, referralrequestListResolver),
+	description: 'Query for a more than or just one ReferralRequest',
+	resolve: scopeInvariant(scopeOptions, getReferralRequestList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ReferralRequestInstanceQuery
- * @summary ReferralRequestInstance Query.
+ * @summary ReferralRequest query.
  */
 module.exports.ReferralRequestInstanceQuery = {
-	description: 'Get information about a single ReferralRequest',
-	resolve: scopeInvariant(scopeOptions, referralrequestInstanceResolver),
+	description: 'Access information about a single ReferralRequest',
+	resolve: scopeInvariant(scopeOptions, getReferralRequestInstance),
 	type: ReferralRequestSchema,
+	args: args,
 };

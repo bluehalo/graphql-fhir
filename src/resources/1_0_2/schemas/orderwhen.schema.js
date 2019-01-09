@@ -1,24 +1,42 @@
-const { GraphQLObjectType } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const { GraphQLList, GraphQLObjectType } = require('graphql');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary Order.when Schema
+ * @summary Orderwhen Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'OrderWhen',
-	description: 'When order should be fulfilled.',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			code: {
-				type: require('./codeableconcept.schema'),
-				description:
-					'Code specifies when request should be done. The code may simply be a priority code.',
-			},
-			schedule: {
-				type: require('./timing.schema'),
-				description: 'A formal schedule.',
-			},
-		}),
+	name: 'Orderwhen',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		code: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				'Code specifies when request should be done. The code may simply be a priority code.',
+		},
+		schedule: {
+			type: require('./timing.schema.js'),
+			description: 'A formal schedule.',
+		},
+	}),
 });

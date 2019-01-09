@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ConformanceSchema = require('../../schemas/conformance.schema');
+const ConformanceSchema = require('../../schemas/conformance.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ConformanceInput = require('../../inputs/conformance.input');
+const ConformanceInput = require('../../inputs/conformance.input.js');
 
-// Resolvers
-const {
-	conformanceCreateResolver,
-	conformanceUpdateResolver,
-	conformanceDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createConformance,
+	updateConformance,
+	removeConformance,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Conformance',
 	action: 'write',
-	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a Conformance record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Conformance record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ConformanceCreateMutation
- * @summary ConformanceCreate Mutation.
+ * @summary ConformanceCreate mutation.
  */
 module.exports.ConformanceCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Conformance',
-	resolve: scopeInvariant(scopeOptions, conformanceCreateResolver),
+	description: 'Create a Conformance record',
+	resolve: scopeInvariant(scopeOptions, createConformance),
 	type: ConformanceSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ConformanceUpdateMutation
- * @summary ConformanceUpdate Mutation.
+ * @summary ConformanceUpdate mutation.
  */
 module.exports.ConformanceUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Conformances',
-	resolve: scopeInvariant(scopeOptions, conformanceUpdateResolver),
+	description: 'Update a Conformance record',
+	resolve: scopeInvariant(scopeOptions, updateConformance),
 	type: ConformanceSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ConformanceDeleteMutation
- * @summary ConformanceDelete Mutation.
+ * @name exports.ConformanceRemoveMutation
+ * @summary ConformanceRemove mutation.
  */
-module.exports.ConformanceDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Conformance',
-	resolve: scopeInvariant(scopeOptions, conformanceDeleteResolver),
+module.exports.ConformanceRemoveMutation = {
+	description: 'Remove a Conformance record',
+	resolve: scopeInvariant(scopeOptions, removeConformance),
 	type: ConformanceSchema,
+	args: DeleteArgs,
 };

@@ -1,55 +1,59 @@
 // Schemas
-const ExplanationOfBenefitSchema = require('../../schemas/explanationofbenefit.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ExplanationOfBenefitSchema = require('../../schemas/explanationofbenefit.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ExplanationOfBenefitArgs = require('../../parameters/explanationofbenefit.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ExplanationOfBenefitArgs = require('../../parameters/explanationofbenefit.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ExplanationOfBenefitArgs);
 
 // Resolvers
 const {
-	explanationofbenefitResolver,
-	explanationofbenefitListResolver,
-	explanationofbenefitInstanceResolver,
+	getExplanationOfBenefit,
+	getExplanationOfBenefitList,
+	getExplanationOfBenefitInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ExplanationOfBenefit',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ExplanationOfBenefitQuery
- * @summary ExplanationOfBenefit Query.
+ * @summary ExplanationOfBenefit query.
  */
 module.exports.ExplanationOfBenefitQuery = {
-	args: Object.assign({}, CommonArgs, ExplanationOfBenefitArgs),
 	description: 'Query for a single ExplanationOfBenefit',
-	resolve: scopeInvariant(scopeOptions, explanationofbenefitResolver),
+	resolve: scopeInvariant(scopeOptions, getExplanationOfBenefit),
 	type: ExplanationOfBenefitSchema,
+	args: args,
 };
 
 /**
  * @name exports.ExplanationOfBenefitListQuery
- * @summary ExplanationOfBenefitList Query.
+ * @summary ExplanationOfBenefit query.
  */
 module.exports.ExplanationOfBenefitListQuery = {
-	args: Object.assign({}, CommonArgs, ExplanationOfBenefitArgs),
-	description: 'Query for multiple ExplanationOfBenefits',
-	resolve: scopeInvariant(scopeOptions, explanationofbenefitListResolver),
+	description: 'Query for a more than or just one ExplanationOfBenefit',
+	resolve: scopeInvariant(scopeOptions, getExplanationOfBenefitList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ExplanationOfBenefitInstanceQuery
- * @summary ExplanationOfBenefitInstance Query.
+ * @summary ExplanationOfBenefit query.
  */
 module.exports.ExplanationOfBenefitInstanceQuery = {
-	description: 'Get information about a single ExplanationOfBenefit',
-	resolve: scopeInvariant(scopeOptions, explanationofbenefitInstanceResolver),
+	description: 'Access information about a single ExplanationOfBenefit',
+	resolve: scopeInvariant(scopeOptions, getExplanationOfBenefitInstance),
 	type: ExplanationOfBenefitSchema,
+	args: args,
 };

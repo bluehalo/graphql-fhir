@@ -1,42 +1,59 @@
-const { GraphQLObjectType, GraphQLString, GraphQLList } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const { GraphQLList, GraphQLString, GraphQLObjectType } = require('graphql');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary QuestionnaireResponse.group.question Schema
+ * @summary QuestionnaireResponsegroupquestion Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'QuestionnaireResponseGroupQuestion',
-	description:
-		'Set of questions within this group. The order of questions within the group is relevant.',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			linkId: {
-				type: GraphQLString,
-				description:
-					'Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireResponse resource.',
-			},
-			_linkId: {
-				type: require('./element.schema'),
-				description:
-					'Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireResponse resource.',
-			},
-			text: {
-				type: GraphQLString,
-				description:
-					'The actual question as shown to the user to prompt them for an answer.',
-			},
-			_text: {
-				type: require('./element.schema'),
-				description:
-					'The actual question as shown to the user to prompt them for an answer.',
-			},
-			answer: {
-				type: new GraphQLList(
-					require('./questionnaireresponsegroupquestionanswer.schema'),
-				),
-				description: "The respondent's answer(s) to the question.",
-			},
-		}),
+	name: 'QuestionnaireResponsegroupquestion',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_linkId: {
+			type: require('./element.schema.js'),
+			description:
+				'Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireResponse resource.',
+		},
+		linkId: {
+			type: GraphQLString,
+			description:
+				'Identifies the question from the Questionnaire that corresponds to this question in the QuestionnaireResponse resource.',
+		},
+		_text: {
+			type: require('./element.schema.js'),
+			description:
+				'The actual question as shown to the user to prompt them for an answer.',
+		},
+		text: {
+			type: GraphQLString,
+			description:
+				'The actual question as shown to the user to prompt them for an answer.',
+		},
+		answer: {
+			type: new GraphQLList(
+				require('./questionnaireresponsegroupquestionanswer.schema.js'),
+			),
+			description: "The respondent's answer(s) to the question.",
+		},
+	}),
 });

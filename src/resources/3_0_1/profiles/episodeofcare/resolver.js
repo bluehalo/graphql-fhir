@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.episodeofcareResolver
+ * @name exports.getEpisodeOfCare
  * @static
- * @summary EpisodeOfCare Resolver.
+ * @summary EpisodeOfCare resolver.
  */
-module.exports.episodeofcareResolver = function episodeofcareResolver(
+module.exports.getEpisodeOfCare = function getEpisodeOfCare(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.episodeofcareListResolver
+ * @name exports.getEpisodeOfCareList
  * @static
- * @summary EpisodeOfCare List Resolver.
+ * @summary EpisodeOfCare list resolver.
  */
-module.exports.episodeofcareListResolver = function episodeofcareListResolver(
+module.exports.getEpisodeOfCareList = function getEpisodeOfCareList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.episodeofcareInstanceResolver
+ * @name exports.getEpisodeOfCareInstance
  * @static
- * @summary EpisodeOfCare Instance Resolver.
+ * @summary EpisodeOfCare instance resolver.
  */
-module.exports.episodeofcareInstanceResolver = function episodeofcareInstanceResolver(
+module.exports.getEpisodeOfCareInstance = function getEpisodeOfCareInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.episodeofcareCreateResolver
+ * @name exports.createEpisodeOfCare
  * @static
- * @summary EpisodeOfCare Create Resolver.
+ * @summary Create EpisodeOfCare resolver.
  */
-module.exports.episodeofcareCreateResolver = function episodeofcareCreateResolver(
+module.exports.createEpisodeOfCare = function createEpisodeOfCare(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.episodeofcareUpdateResolver
+ * @name exports.updateEpisodeOfCare
  * @static
- * @summary EpisodeOfCare Update Resolver.
+ * @summary Update EpisodeOfCare resolver.
  */
-module.exports.episodeofcareUpdateResolver = function episodeofcareUpdateResolver(
+module.exports.updateEpisodeOfCare = function updateEpisodeOfCare(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.episodeofcareDeleteResolver
+ * @name exports.removeEpisodeOfCare
  * @static
- * @summary EpisodeOfCare Delete Resolver.
+ * @summary Remove EpisodeOfCare resolver.
  */
-module.exports.episodeofcareDeleteResolver = function episodeofcareDeleteResolver(
+module.exports.removeEpisodeOfCare = function removeEpisodeOfCare(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
