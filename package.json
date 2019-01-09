@@ -63,6 +63,7 @@
       "<rootDir>/src/scripts/"
     ],
     "coveragePathIgnorePatterns": [
+			"<rootDir>/src/environment.js",
       "<rootDir>/src/resources/"
     ]
   }
