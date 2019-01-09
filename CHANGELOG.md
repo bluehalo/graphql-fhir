@@ -1,0 +1,18 @@
+# 1.0.0 (2019-01-09)
+
+
+### Features
+
+* added support for automatic changleog generation ([70725d6](https://github.com/Asymmetrik/graphql-fhir/commit/70725d6))
+* Added support for R4 resources and environment setup ([686a764](https://github.com/Asymmetrik/graphql-fhir/commit/686a764))
+
+
+### BREAKING CHANGES
+
+* New resources contain new dependencies. One of these
+contains graphql which may require you to delete and reinstall node
+modules. We have updated several versions so when updating, you should
+rerun yarn install and may need to remove node_modules before hand.
+
+
+
