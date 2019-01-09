@@ -4,8 +4,8 @@ const {
 	GraphQLNonNull,
 	GraphQLInputObjectType,
 } = require('graphql');
-const DateTimeScalar = require('../scalars/dateTime.scalar.js');
-const PositiveIntScalar = require('../scalars/positiveInt.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
+const PositiveIntScalar = require('../scalars/positiveint.scalar.js');
 
 /**
  * @name exports

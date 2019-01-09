@@ -1,9 +1,14 @@
 # 1.0.0 (2019-01-09)
 
 
+### Bug Fixes
+
+* fixed issues with filenames in newly generated code ([77e7a6b](https://github.com/Asymmetrik/graphql-fhir/commit/77e7a6b))
+
+
 ### Features
 
-* added support for automatic changleog generation ([70725d6](https://github.com/Asymmetrik/graphql-fhir/commit/70725d6))
+* Added support for automatic changleog generation ([2fe0f75](https://github.com/Asymmetrik/graphql-fhir/commit/2fe0f75))
 * Added support for R4 resources and environment setup ([686a764](https://github.com/Asymmetrik/graphql-fhir/commit/686a764))
 
 

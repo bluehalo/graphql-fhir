@@ -5,7 +5,7 @@ const {
 	GraphQLBoolean,
 	GraphQLInputObjectType,
 } = require('graphql');
-const PositiveIntScalar = require('../scalars/positiveInt.scalar.js');
+const PositiveIntScalar = require('../scalars/positiveint.scalar.js');
 
 /**
  * @name exports

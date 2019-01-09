@@ -1,6 +1,6 @@
 const { GraphQLString, GraphQLList, GraphQLObjectType } = require('graphql');
 const CodeScalar = require('../scalars/code.scalar.js');
-const Base64BinaryScalar = require('../scalars/base64Binary.scalar.js');
+const Base64BinaryScalar = require('../scalars/base64binary.scalar.js');
 
 /**
  * @name exports

@@ -5,7 +5,7 @@ const {
 	GraphQLInputObjectType,
 } = require('graphql');
 const IdScalar = require('../scalars/id.scalar.js');
-const UnsignedIntScalar = require('../scalars/unsignedInt.scalar.js');
+const UnsignedIntScalar = require('../scalars/unsignedint.scalar.js');
 
 /**
  * @name exports

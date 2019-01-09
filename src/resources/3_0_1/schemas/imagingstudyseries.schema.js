@@ -6,9 +6,9 @@ const {
 	GraphQLObjectType,
 } = require('graphql');
 const OidScalar = require('../scalars/oid.scalar.js');
-const UnsignedIntScalar = require('../scalars/unsignedInt.scalar.js');
+const UnsignedIntScalar = require('../scalars/unsignedint.scalar.js');
 const CodeScalar = require('../scalars/code.scalar.js');
-const DateTimeScalar = require('../scalars/dateTime.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 
 /**
  * @name exports

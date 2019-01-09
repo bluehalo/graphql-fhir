@@ -7,7 +7,7 @@ const {
 } = require('graphql');
 const CodeScalar = require('../scalars/code.scalar.js');
 const TimeScalar = require('../scalars/time.scalar.js');
-const UnsignedIntScalar = require('../scalars/unsignedInt.scalar.js');
+const UnsignedIntScalar = require('../scalars/unsignedint.scalar.js');
 
 /**
  * @name exports

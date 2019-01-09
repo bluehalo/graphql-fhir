@@ -4,7 +4,7 @@ const {
 	GraphQLInputObjectType,
 } = require('graphql');
 const IdScalar = require('../scalars/id.scalar.js');
-const DateTimeScalar = require('../scalars/dateTime.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 const CodeScalar = require('../scalars/code.scalar.js');
 
 /**

@@ -8,10 +8,10 @@ const {
 const IdScalar = require('../scalars/id.scalar.js');
 const UriScalar = require('../scalars/uri.scalar.js');
 const CodeScalar = require('../scalars/code.scalar.js');
-const UnsignedIntScalar = require('../scalars/unsignedInt.scalar.js');
+const UnsignedIntScalar = require('../scalars/unsignedint.scalar.js');
 const InstantScalar = require('../scalars/instant.scalar.js');
-const PositiveIntScalar = require('../scalars/positiveInt.scalar.js');
-const DateTimeScalar = require('../scalars/dateTime.scalar.js');
+const PositiveIntScalar = require('../scalars/positiveint.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 
 /**
  * @name exports

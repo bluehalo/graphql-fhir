@@ -6,7 +6,7 @@ const {
 	GraphQLFloat,
 	GraphQLObjectType,
 } = require('graphql');
-const PositiveIntScalar = require('../scalars/positiveInt.scalar.js');
+const PositiveIntScalar = require('../scalars/positiveint.scalar.js');
 const DateScalar = require('../scalars/date.scalar.js');
 
 /**

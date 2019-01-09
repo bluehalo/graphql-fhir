@@ -7,7 +7,7 @@ const {
 const IdScalar = require('../scalars/id.scalar.js');
 const UriScalar = require('../scalars/uri.scalar.js');
 const CodeScalar = require('../scalars/code.scalar.js');
-const Base64BinaryScalar = require('../scalars/base64Binary.scalar.js');
+const Base64BinaryScalar = require('../scalars/base64binary.scalar.js');
 
 /**
  * @name exports

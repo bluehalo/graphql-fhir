@@ -5,8 +5,8 @@ const {
 	GraphQLUnionType,
 	GraphQLObjectType,
 } = require('graphql');
-const PositiveIntScalar = require('../scalars/positiveInt.scalar.js');
-const DateTimeScalar = require('../scalars/dateTime.scalar.js');
+const PositiveIntScalar = require('../scalars/positiveint.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 
 /**
  * @name exports

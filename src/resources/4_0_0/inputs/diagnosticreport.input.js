@@ -8,7 +8,7 @@ const {
 const IdScalar = require('../scalars/id.scalar.js');
 const UriScalar = require('../scalars/uri.scalar.js');
 const CodeScalar = require('../scalars/code.scalar.js');
-const DateTimeScalar = require('../scalars/dateTime.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 const InstantScalar = require('../scalars/instant.scalar.js');
 
 /**

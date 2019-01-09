@@ -10,7 +10,7 @@ const {
 const IdScalar = require('../scalars/id.scalar.js');
 const UriScalar = require('../scalars/uri.scalar.js');
 const CodeScalar = require('../scalars/code.scalar.js');
-const UnsignedIntScalar = require('../scalars/unsignedInt.scalar.js');
+const UnsignedIntScalar = require('../scalars/unsignedint.scalar.js');
 
 /**
  * @name exports

@@ -1,6 +1,6 @@
 const { GraphQLList, GraphQLString, GraphQLObjectType } = require('graphql');
 const IdScalar = require('../scalars/id.scalar.js');
-const PositiveIntScalar = require('../scalars/positiveInt.scalar.js');
+const PositiveIntScalar = require('../scalars/positiveint.scalar.js');
 
 /**
  * @name exports

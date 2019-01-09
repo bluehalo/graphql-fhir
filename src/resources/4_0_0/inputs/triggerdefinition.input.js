@@ -6,7 +6,7 @@ const {
 } = require('graphql');
 const CodeScalar = require('../scalars/code.scalar.js');
 const DateScalar = require('../scalars/date.scalar.js');
-const DateTimeScalar = require('../scalars/dateTime.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 
 /**
  * @name exports

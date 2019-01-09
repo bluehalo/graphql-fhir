@@ -9,7 +9,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node src/index",
     "nodemon": "cross-env NODE_ENV=development node src/scripts/nodemon",
-    "test": "cross-env NODE_ENV=test node src/scripts/test --env=jsdom",
+    "test": "cross-env NODE_ENV=test node src/scripts/test",
     "prettier": "prettier \"src/**/*.js\" --write",
     "lint": "eslint \"src/**/*.js\"",
 		"changelog": "conventional-changelog -p angular -s -r 0 -i CHANGELOG.md"
@@ -55,6 +55,10 @@
       "lcov",
       "json"
     ],
+		"setupFiles": [
+			"<rootDir>/src/environment.js"
+		],
+		"testEnvironment": "node",
     "testPathIgnorePatterns": [
       "<rootDir>/src/scripts/"
     ],

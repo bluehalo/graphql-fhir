@@ -7,16 +7,16 @@ const {
 	GraphQLInt,
 	GraphQLInputObjectType,
 } = require('graphql');
-const Base64BinaryScalar = require('../scalars/base64Binary.scalar.js');
+const Base64BinaryScalar = require('../scalars/base64binary.scalar.js');
 const CodeScalar = require('../scalars/code.scalar.js');
 const DateScalar = require('../scalars/date.scalar.js');
-const DateTimeScalar = require('../scalars/dateTime.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 const IdScalar = require('../scalars/id.scalar.js');
 const InstantScalar = require('../scalars/instant.scalar.js');
 const OidScalar = require('../scalars/oid.scalar.js');
-const PositiveIntScalar = require('../scalars/positiveInt.scalar.js');
+const PositiveIntScalar = require('../scalars/positiveint.scalar.js');
 const TimeScalar = require('../scalars/time.scalar.js');
-const UnsignedIntScalar = require('../scalars/unsignedInt.scalar.js');
+const UnsignedIntScalar = require('../scalars/unsignedint.scalar.js');
 const UriScalar = require('../scalars/uri.scalar.js');
 
 /**

@@ -1,5 +1,5 @@
 const { GraphQLString, GraphQLList, GraphQLObjectType } = require('graphql');
-const DateTimeScalar = require('../scalars/dateTime.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 
 /**
  * @name exports
