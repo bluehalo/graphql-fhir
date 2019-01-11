@@ -1,34 +1,66 @@
-const { GraphQLObjectType, GraphQLList, GraphQLNonNull } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLList,
+	GraphQLNonNull,
+	GraphQLUnionType,
+	GraphQLObjectType,
+} = require('graphql');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary Practitioner.qualification Schema
+ * @summary Practitionerqualification Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'PractitionerQualification',
-	description: 'Qualifications obtained by training and certification.',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			identifier: {
-				type: new GraphQLList(require('./identifier.schema')),
-				description:
-					"An identifier that applies to this person's qualification in this role.",
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/anzsco-occupations
-			code: {
-				type: new GraphQLNonNull(require('./codeableconcept.schema')),
-				description: 'Coded representation of the qualification.',
-			},
-			period: {
-				type: require('./period.schema'),
-				description: 'Period during which the qualification is valid.',
-			},
-			issuer: {
-				type: require('./reference.schema'),
+	name: 'Practitionerqualification',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		identifier: {
+			type: new GraphQLList(require('./identifier.schema.js')),
+			description:
+				"An identifier that applies to this person's qualification in this role.",
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/anzsco-occupations
+		code: {
+			type: new GraphQLNonNull(require('./codeableconcept.schema.js')),
+			description: 'Coded representation of the qualification.',
+		},
+		period: {
+			type: require('./period.schema.js'),
+			description: 'Period during which the qualification is valid.',
+		},
+		issuer: {
+			type: new GraphQLUnionType({
+				name: 'Practitionerqualificationissuer_issuer_Union',
 				description:
 					'Organization that regulates and issues the qualification.',
-			},
-		}),
+				types: () => [require('./organization.schema.js')],
+				resolveType(data) {
+					if (data && data.resourceType === 'Organization') {
+						return require('./organization.schema.js');
+					}
+				},
+			}),
+			description: 'Organization that regulates and issues the qualification.',
+		},
+	}),
 });

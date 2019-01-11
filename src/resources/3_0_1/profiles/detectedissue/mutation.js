@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const DetectedIssueSchema = require('../../schemas/detectedissue.schema');
+const DetectedIssueSchema = require('../../schemas/detectedissue.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const DetectedIssueInput = require('../../inputs/detectedissue.input');
+const DetectedIssueInput = require('../../inputs/detectedissue.input.js');
 
-// Resolvers
-const {
-	detectedissueCreateResolver,
-	detectedissueUpdateResolver,
-	detectedissueDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createDetectedIssue,
+	updateDetectedIssue,
+	removeDetectedIssue,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DetectedIssue',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a DetectedIssue record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a DetectedIssue record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.DetectedIssueCreateMutation
- * @summary DetectedIssueCreate Mutation.
+ * @summary DetectedIssueCreate mutation.
  */
 module.exports.DetectedIssueCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a DetectedIssue',
-	resolve: scopeInvariant(scopeOptions, detectedissueCreateResolver),
+	description: 'Create a DetectedIssue record',
+	resolve: scopeInvariant(scopeOptions, createDetectedIssue),
 	type: DetectedIssueSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.DetectedIssueUpdateMutation
- * @summary DetectedIssueUpdate Mutation.
+ * @summary DetectedIssueUpdate mutation.
  */
 module.exports.DetectedIssueUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple DetectedIssues',
-	resolve: scopeInvariant(scopeOptions, detectedissueUpdateResolver),
+	description: 'Update a DetectedIssue record',
+	resolve: scopeInvariant(scopeOptions, updateDetectedIssue),
 	type: DetectedIssueSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.DetectedIssueDeleteMutation
- * @summary DetectedIssueDelete Mutation.
+ * @name exports.DetectedIssueRemoveMutation
+ * @summary DetectedIssueRemove mutation.
  */
-module.exports.DetectedIssueDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single DetectedIssue',
-	resolve: scopeInvariant(scopeOptions, detectedissueDeleteResolver),
+module.exports.DetectedIssueRemoveMutation = {
+	description: 'Remove a DetectedIssue record',
+	resolve: scopeInvariant(scopeOptions, removeDetectedIssue),
 	type: DetectedIssueSchema,
+	args: DeleteArgs,
 };

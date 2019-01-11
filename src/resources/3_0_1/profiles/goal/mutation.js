@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const GoalSchema = require('../../schemas/goal.schema');
+const GoalSchema = require('../../schemas/goal.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const GoalInput = require('../../inputs/goal.input');
+const GoalInput = require('../../inputs/goal.input.js');
 
-// Resolvers
-const {
-	goalCreateResolver,
-	goalUpdateResolver,
-	goalDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createGoal, updateGoal, removeGoal } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Goal',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Goal record.',
 	},
 	resource: {
@@ -39,40 +36,40 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description: 'Unique identifier for selecting a Goal record for deletion.',
 	},
 };
 
 /**
  * @name exports.GoalCreateMutation
- * @summary GoalCreate Mutation.
+ * @summary GoalCreate mutation.
  */
 module.exports.GoalCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Goal',
-	resolve: scopeInvariant(scopeOptions, goalCreateResolver),
+	description: 'Create a Goal record',
+	resolve: scopeInvariant(scopeOptions, createGoal),
 	type: GoalSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.GoalUpdateMutation
- * @summary GoalUpdate Mutation.
+ * @summary GoalUpdate mutation.
  */
 module.exports.GoalUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Goals',
-	resolve: scopeInvariant(scopeOptions, goalUpdateResolver),
+	description: 'Update a Goal record',
+	resolve: scopeInvariant(scopeOptions, updateGoal),
 	type: GoalSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.GoalDeleteMutation
- * @summary GoalDelete Mutation.
+ * @name exports.GoalRemoveMutation
+ * @summary GoalRemove mutation.
  */
-module.exports.GoalDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Goal',
-	resolve: scopeInvariant(scopeOptions, goalDeleteResolver),
+module.exports.GoalRemoveMutation = {
+	description: 'Remove a Goal record',
+	resolve: scopeInvariant(scopeOptions, removeGoal),
 	type: GoalSchema,
+	args: DeleteArgs,
 };

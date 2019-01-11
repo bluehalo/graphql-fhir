@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,74 +7,105 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the location query
  */
 module.exports = {
-	organization: {
-		type: GraphQLString,
-		description:
-			'Searches for locations that are managed by the provided organization (See http://hl7.org/fhir/SearchParameter/location-organization).',
-	},
-	address_state: {
-		type: GraphQLString,
-		description:
-			'A state specified in an address (See http://hl7.org/fhir/SearchParameter/location-address-state).',
-	},
-	address_city: {
-		type: GraphQLString,
-		description:
-			'A city specified in an address (See http://hl7.org/fhir/SearchParameter/location-address-city).',
-	},
-	near: {
-		type: TokenScalar,
-		description:
-			'The coordinates expressed as [lat],[long] (using the WGS84 datum, see notes) to find locations near to (servers may search using a square rather than a circle for efficiency) (See http://hl7.org/fhir/SearchParameter/location-near).',
-	},
-	partof: {
-		type: GraphQLString,
-		description:
-			'The location of which this location is a part (See http://hl7.org/fhir/SearchParameter/location-partof).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'Searches for locations with a specific kind of status (See http://hl7.org/fhir/SearchParameter/location-status).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Location-address
 	address: {
 		type: GraphQLString,
-		description:
-			'A (part of the) address of the location (See http://hl7.org/fhir/SearchParameter/location-address).',
+		fhirtype: 'string',
+		xpath: 'Location.address',
+		description: 'A (part of the) address of the location',
 	},
-	address_use: {
-		type: TokenScalar,
-		description:
-			'A use code specified in an address (See http://hl7.org/fhir/SearchParameter/location-address-use).',
-	},
-	name: {
+	// http://hl7.org/fhir/SearchParameter/Location-address-city
+	address_city: {
 		type: GraphQLString,
-		description:
-			'A (portion of the) name of the location (See http://hl7.org/fhir/SearchParameter/location-name).',
+		fhirtype: 'string',
+		xpath: 'Location.address.city',
+		description: 'A city specified in an address',
 	},
+	// http://hl7.org/fhir/SearchParameter/Location-address-country
 	address_country: {
 		type: GraphQLString,
-		description:
-			'A country specified in an address (See http://hl7.org/fhir/SearchParameter/location-address-country).',
+		fhirtype: 'string',
+		xpath: 'Location.address.country',
+		description: 'A country specified in an address',
 	},
-	near_distance: {
-		type: TokenScalar,
-		description:
-			'A distance quantity to limit the near search to locations within a specific distance (See http://hl7.org/fhir/SearchParameter/location-near-distance).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'A code for the type of location (See http://hl7.org/fhir/SearchParameter/location-type).',
-	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'Unique code or number identifying the location to its users (See http://hl7.org/fhir/SearchParameter/location-identifier).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Location-address-postalcode
 	address_postalcode: {
 		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Location.address.postalCode',
+		description: 'A postal code specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Location-address-state
+	address_state: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Location.address.state',
+		description: 'A state specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Location-address-use
+	address_use: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Location.address.use',
+		description: 'A use code specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Location-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Location.identifier',
+		description: 'Unique code or number identifying the location to its users',
+	},
+	// http://hl7.org/fhir/SearchParameter/Location-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Location.name',
+		description: 'A (portion of the) name of the location',
+	},
+	// http://hl7.org/fhir/SearchParameter/Location-near
+	near: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Location.position',
 		description:
-			'A postal code specified in an address (See http://hl7.org/fhir/SearchParameter/location-address-postalcode).',
+			'The coordinates expressed as [lat],[long] (using the WGS84 datum, see notes) to find locations near to (servers may search using a square rather than a circle for efficiency)',
+	},
+	// http://hl7.org/fhir/SearchParameter/Location-near-distance
+	near_distance: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Location.position',
+		description:
+			'A distance quantity to limit the near search to locations within a specific distance',
+	},
+	// http://hl7.org/fhir/SearchParameter/Location-organization
+	organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Location.managingOrganization',
+		description:
+			'Searches for locations that are managed by the provided organization',
+	},
+	// http://hl7.org/fhir/SearchParameter/Location-partof
+	partof: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Location.partOf',
+		description: 'The location of which this location is a part',
+	},
+	// http://hl7.org/fhir/SearchParameter/Location-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Location.status',
+		description: 'Searches for locations with a specific kind of status',
+	},
+	// http://hl7.org/fhir/SearchParameter/Location-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Location.type',
+		description: 'A code for the type of location',
 	},
 };

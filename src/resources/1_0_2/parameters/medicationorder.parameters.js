@@ -1,6 +1,6 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,44 +8,60 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the medicationorder query
  */
 module.exports = {
-	medication: {
-		type: GraphQLString,
-		description:
-			'Return administrations of this medication reference (See http://hl7.org/fhir/SearchParameter/medicationorder-medication).',
-	},
-	datewritten: {
-		type: DateScalar,
-		description:
-			'Return prescriptions written on this date (See http://hl7.org/fhir/SearchParameter/medicationorder-datewritten).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'The identity of a patient to list orders  for (See http://hl7.org/fhir/SearchParameter/medicationorder-patient).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'Status of the prescription (See http://hl7.org/fhir/SearchParameter/medicationorder-status).',
-	},
-	prescriber: {
-		type: GraphQLString,
-		description:
-			'Who ordered the medication(s) (See http://hl7.org/fhir/SearchParameter/medicationorder-prescriber).',
-	},
+	// http://hl7.org/fhir/SearchParameter/MedicationOrder-code
 	code: {
 		type: TokenScalar,
-		description:
-			'Return administrations of this medication code (See http://hl7.org/fhir/SearchParameter/medicationorder-code).',
+		fhirtype: 'token',
+		xpath: 'MedicationOrder.medicationCodeableConcept',
+		description: 'Return administrations of this medication code',
 	},
+	// http://hl7.org/fhir/SearchParameter/MedicationOrder-datewritten
+	datewritten: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'MedicationOrder.dateWritten',
+		description: 'Return prescriptions written on this date',
+	},
+	// http://hl7.org/fhir/SearchParameter/MedicationOrder-encounter
 	encounter: {
 		type: GraphQLString,
-		description:
-			'Return prescriptions with this encounter identifier (See http://hl7.org/fhir/SearchParameter/medicationorder-encounter).',
+		fhirtype: 'reference',
+		xpath: 'MedicationOrder.encounter',
+		description: 'Return prescriptions with this encounter identifier',
 	},
+	// http://hl7.org/fhir/SearchParameter/MedicationOrder-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Return prescriptions with this external identifier (See http://hl7.org/fhir/SearchParameter/medicationorder-identifier).',
+		fhirtype: 'token',
+		xpath: 'MedicationOrder.identifier',
+		description: 'Return prescriptions with this external identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/MedicationOrder-medication
+	medication: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'MedicationOrder.medicationReference',
+		description: 'Return administrations of this medication reference',
+	},
+	// http://hl7.org/fhir/SearchParameter/MedicationOrder-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'MedicationOrder.patient',
+		description: 'The identity of a patient to list orders  for',
+	},
+	// http://hl7.org/fhir/SearchParameter/MedicationOrder-prescriber
+	prescriber: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'MedicationOrder.prescriber',
+		description: 'Who ordered the medication(s)',
+	},
+	// http://hl7.org/fhir/SearchParameter/MedicationOrder-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'MedicationOrder.status',
+		description: 'Status of the prescription',
 	},
 };

@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ImagingStudySchema = require('../../schemas/imagingstudy.schema');
+const ImagingStudySchema = require('../../schemas/imagingstudy.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ImagingStudyInput = require('../../inputs/imagingstudy.input');
+const ImagingStudyInput = require('../../inputs/imagingstudy.input.js');
 
-// Resolvers
-const {
-	imagingstudyCreateResolver,
-	imagingstudyUpdateResolver,
-	imagingstudyDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createImagingStudy,
+	updateImagingStudy,
+	removeImagingStudy,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ImagingStudy',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a ImagingStudy record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a ImagingStudy record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ImagingStudyCreateMutation
- * @summary ImagingStudyCreate Mutation.
+ * @summary ImagingStudyCreate mutation.
  */
 module.exports.ImagingStudyCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a ImagingStudy',
-	resolve: scopeInvariant(scopeOptions, imagingstudyCreateResolver),
+	description: 'Create a ImagingStudy record',
+	resolve: scopeInvariant(scopeOptions, createImagingStudy),
 	type: ImagingStudySchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ImagingStudyUpdateMutation
- * @summary ImagingStudyUpdate Mutation.
+ * @summary ImagingStudyUpdate mutation.
  */
 module.exports.ImagingStudyUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple ImagingStudys',
-	resolve: scopeInvariant(scopeOptions, imagingstudyUpdateResolver),
+	description: 'Update a ImagingStudy record',
+	resolve: scopeInvariant(scopeOptions, updateImagingStudy),
 	type: ImagingStudySchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ImagingStudyDeleteMutation
- * @summary ImagingStudyDelete Mutation.
+ * @name exports.ImagingStudyRemoveMutation
+ * @summary ImagingStudyRemove mutation.
  */
-module.exports.ImagingStudyDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single ImagingStudy',
-	resolve: scopeInvariant(scopeOptions, imagingstudyDeleteResolver),
+module.exports.ImagingStudyRemoveMutation = {
+	description: 'Remove a ImagingStudy record',
+	resolve: scopeInvariant(scopeOptions, removeImagingStudy),
 	type: ImagingStudySchema,
+	args: DeleteArgs,
 };

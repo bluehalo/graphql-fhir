@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const NamingSystemSchema = require('../../schemas/namingsystem.schema');
+const NamingSystemSchema = require('../../schemas/namingsystem.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const NamingSystemInput = require('../../inputs/namingsystem.input');
+const NamingSystemInput = require('../../inputs/namingsystem.input.js');
 
-// Resolvers
-const {
-	namingsystemCreateResolver,
-	namingsystemUpdateResolver,
-	namingsystemDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createNamingSystem,
+	updateNamingSystem,
+	removeNamingSystem,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'NamingSystem',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a NamingSystem record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a NamingSystem record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.NamingSystemCreateMutation
- * @summary NamingSystemCreate Mutation.
+ * @summary NamingSystemCreate mutation.
  */
 module.exports.NamingSystemCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a NamingSystem',
-	resolve: scopeInvariant(scopeOptions, namingsystemCreateResolver),
+	description: 'Create a NamingSystem record',
+	resolve: scopeInvariant(scopeOptions, createNamingSystem),
 	type: NamingSystemSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.NamingSystemUpdateMutation
- * @summary NamingSystemUpdate Mutation.
+ * @summary NamingSystemUpdate mutation.
  */
 module.exports.NamingSystemUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple NamingSystems',
-	resolve: scopeInvariant(scopeOptions, namingsystemUpdateResolver),
+	description: 'Update a NamingSystem record',
+	resolve: scopeInvariant(scopeOptions, updateNamingSystem),
 	type: NamingSystemSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.NamingSystemDeleteMutation
- * @summary NamingSystemDelete Mutation.
+ * @name exports.NamingSystemRemoveMutation
+ * @summary NamingSystemRemove mutation.
  */
-module.exports.NamingSystemDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single NamingSystem',
-	resolve: scopeInvariant(scopeOptions, namingsystemDeleteResolver),
+module.exports.NamingSystemRemoveMutation = {
+	description: 'Remove a NamingSystem record',
+	resolve: scopeInvariant(scopeOptions, removeNamingSystem),
 	type: NamingSystemSchema,
+	args: DeleteArgs,
 };

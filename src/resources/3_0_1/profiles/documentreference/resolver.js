@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.documentreferenceResolver
+ * @name exports.getDocumentReference
  * @static
- * @summary DocumentReference Resolver.
+ * @summary DocumentReference resolver.
  */
-module.exports.documentreferenceResolver = function documentreferenceResolver(
+module.exports.getDocumentReference = function getDocumentReference(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.documentreferenceListResolver
+ * @name exports.getDocumentReferenceList
  * @static
- * @summary DocumentReference List Resolver.
+ * @summary DocumentReference list resolver.
  */
-module.exports.documentreferenceListResolver = function documentreferenceListResolver(
+module.exports.getDocumentReferenceList = function getDocumentReferenceList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.documentreferenceInstanceResolver
+ * @name exports.getDocumentReferenceInstance
  * @static
- * @summary DocumentReference Instance Resolver.
+ * @summary DocumentReference instance resolver.
  */
-module.exports.documentreferenceInstanceResolver = function documentreferenceInstanceResolver(
+module.exports.getDocumentReferenceInstance = function getDocumentReferenceInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.documentreferenceCreateResolver
+ * @name exports.createDocumentReference
  * @static
- * @summary DocumentReference Create Resolver.
+ * @summary Create DocumentReference resolver.
  */
-module.exports.documentreferenceCreateResolver = function documentreferenceCreateResolver(
+module.exports.createDocumentReference = function createDocumentReference(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.documentreferenceUpdateResolver
+ * @name exports.updateDocumentReference
  * @static
- * @summary DocumentReference Update Resolver.
+ * @summary Update DocumentReference resolver.
  */
-module.exports.documentreferenceUpdateResolver = function documentreferenceUpdateResolver(
+module.exports.updateDocumentReference = function updateDocumentReference(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.documentreferenceDeleteResolver
+ * @name exports.removeDocumentReference
  * @static
- * @summary DocumentReference Delete Resolver.
+ * @summary Remove DocumentReference resolver.
  */
-module.exports.documentreferenceDeleteResolver = function documentreferenceDeleteResolver(
+module.exports.removeDocumentReference = function removeDocumentReference(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

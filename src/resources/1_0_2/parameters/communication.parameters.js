@@ -1,6 +1,6 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,64 +8,88 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the communication query
  */
 module.exports = {
-	sender: {
-		type: GraphQLString,
-		description:
-			'Message sender (See http://hl7.org/fhir/SearchParameter/communication-sender).',
-	},
-	sent: {
-		type: DateScalar,
-		description:
-			'When sent (See http://hl7.org/fhir/SearchParameter/communication-sent).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Communication-category
 	category: {
 		type: TokenScalar,
-		description:
-			'Message category (See http://hl7.org/fhir/SearchParameter/communication-category).',
+		fhirtype: 'token',
+		xpath: 'Communication.category',
+		description: 'Message category',
 	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Focus of message (See http://hl7.org/fhir/SearchParameter/communication-patient).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'in-progress | completed | suspended | rejected | failed (See http://hl7.org/fhir/SearchParameter/communication-status).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'Focus of message (See http://hl7.org/fhir/SearchParameter/communication-subject).',
-	},
-	request: {
-		type: GraphQLString,
-		description:
-			'CommunicationRequest producing this message (See http://hl7.org/fhir/SearchParameter/communication-request).',
-	},
-	received: {
-		type: DateScalar,
-		description:
-			'When received (See http://hl7.org/fhir/SearchParameter/communication-received).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Communication-encounter
 	encounter: {
 		type: GraphQLString,
-		description:
-			'Encounter leading to message (See http://hl7.org/fhir/SearchParameter/communication-encounter).',
+		fhirtype: 'reference',
+		xpath: 'Communication.encounter',
+		description: 'Encounter leading to message',
 	},
+	// http://hl7.org/fhir/SearchParameter/Communication-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Unique identifier (See http://hl7.org/fhir/SearchParameter/communication-identifier).',
+		fhirtype: 'token',
+		xpath: 'Communication.identifier',
+		description: 'Unique identifier',
 	},
+	// http://hl7.org/fhir/SearchParameter/Communication-medium
 	medium: {
 		type: TokenScalar,
-		description:
-			'A channel of communication (See http://hl7.org/fhir/SearchParameter/communication-medium).',
+		fhirtype: 'token',
+		xpath: 'Communication.medium',
+		description: 'A channel of communication',
 	},
+	// http://hl7.org/fhir/SearchParameter/Communication-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Communication.subject',
+		description: 'Focus of message',
+	},
+	// http://hl7.org/fhir/SearchParameter/Communication-received
+	received: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Communication.received',
+		description: 'When received',
+	},
+	// http://hl7.org/fhir/SearchParameter/Communication-recipient
 	recipient: {
 		type: GraphQLString,
-		description:
-			'Message recipient (See http://hl7.org/fhir/SearchParameter/communication-recipient).',
+		fhirtype: 'reference',
+		xpath: 'Communication.recipient',
+		description: 'Message recipient',
+	},
+	// http://hl7.org/fhir/SearchParameter/Communication-request
+	request: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Communication.requestDetail',
+		description: 'CommunicationRequest producing this message',
+	},
+	// http://hl7.org/fhir/SearchParameter/Communication-sender
+	sender: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Communication.sender',
+		description: 'Message sender',
+	},
+	// http://hl7.org/fhir/SearchParameter/Communication-sent
+	sent: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Communication.sent',
+		description: 'When sent',
+	},
+	// http://hl7.org/fhir/SearchParameter/Communication-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Communication.status',
+		description: 'in-progress | completed | suspended | rejected | failed',
+	},
+	// http://hl7.org/fhir/SearchParameter/Communication-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Communication.subject',
+		description: 'Focus of message',
 	},
 };

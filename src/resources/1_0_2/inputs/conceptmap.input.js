@@ -1,24 +1,15 @@
-const UriScalar = require('../scalars/uri.scalar');
-const CodeScalar = require('../scalars/code.scalar');
-const DateTimeScalar = require('../scalars/datetime.scalar');
 const {
-	GraphQLInputObjectType,
-	GraphQLEnumType,
 	GraphQLNonNull,
+	GraphQLEnumType,
+	GraphQLList,
 	GraphQLString,
 	GraphQLBoolean,
-	GraphQLList,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
-
-let ConceptMapResourceInputType = new GraphQLEnumType({
-	name: 'ConceptMapResourceInputType',
-	values: {
-		ConceptMap: { value: 'ConceptMap' },
-	},
-});
+const IdScalar = require('../scalars/id.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
+const CodeScalar = require('../scalars/code.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 
 /**
  * @name exports
@@ -26,162 +17,219 @@ let ConceptMapResourceInputType = new GraphQLEnumType({
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'ConceptMap_Input',
-	description: 'Base StructureDefinition for ConceptMap Resource.',
-	fields: () =>
-		extendSchema(require('./domainresource.input'), {
-			resourceType: {
-				type: new GraphQLNonNull(ConceptMapResourceInputType),
-				description: 'Type of this resource.',
-			},
-			url: {
-				type: UriScalar,
-				description:
-					'An absolute URL that is used to identify this concept map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this concept map is (or will be) published.',
-			},
-			_url: {
-				type: require('./element.input'),
-				description:
-					'An absolute URL that is used to identify this concept map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this concept map is (or will be) published.',
-			},
-			identifier: {
-				type: require('./identifier.input'),
-				description:
-					'Formal identifier that is used to identify this concept map when it is represented in other formats, or referenced in a specification, model, design or an instance.',
-			},
-			version: {
-				type: GraphQLString,
-				description:
-					'The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.',
-			},
-			_version: {
-				type: require('./element.input'),
-				description:
-					'The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.',
-			},
-			name: {
-				type: GraphQLString,
-				description:
-					'A free text natural language name describing the concept map.',
-			},
-			_name: {
-				type: require('./element.input'),
-				description:
-					'A free text natural language name describing the concept map.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
-			status: {
-				type: new GraphQLNonNull(CodeScalar),
-				description: 'The status of the concept map.',
-			},
-			_status: {
-				type: require('./element.input'),
-				description: 'The status of the concept map.',
-			},
-			experimental: {
-				type: GraphQLBoolean,
-				description:
-					'This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.',
-			},
-			_experimental: {
-				type: require('./element.input'),
-				description:
-					'This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.',
-			},
-			publisher: {
-				type: GraphQLString,
-				description:
-					'The name of the individual or organization that published the concept map.',
-			},
-			_publisher: {
-				type: require('./element.input'),
-				description:
-					'The name of the individual or organization that published the concept map.',
-			},
-			contact: {
-				type: new GraphQLList(require('./conceptmapcontact.input')),
-				description:
-					'Contacts to assist a user in finding and communicating with the publisher.',
-			},
-			date: {
-				type: DateTimeScalar,
-				description:
-					'The date this version of the concept map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the concept map changes.',
-			},
-			_date: {
-				type: require('./element.input'),
-				description:
-					'The date this version of the concept map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the concept map changes.',
-			},
-			description: {
-				type: GraphQLString,
-				description:
-					'A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.',
-			},
-			_description: {
-				type: require('./element.input'),
-				description:
-					'A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/use-context
-			useContext: {
-				type: new GraphQLList(require('./codeableconcept.input')),
-				description:
-					'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of concept map instances.',
-			},
-			requirements: {
-				type: GraphQLString,
-				description:
-					'Explains why this concept map is needed and why it has been constrained as it has.',
-			},
-			_requirements: {
-				type: require('./element.input'),
-				description:
-					'Explains why this concept map is needed and why it has been constrained as it has.',
-			},
-			copyright: {
-				type: GraphQLString,
-				description:
-					'A copyright statement relating to the concept map and/or its contents.',
-			},
-			_copyright: {
-				type: require('./element.input'),
-				description:
-					'A copyright statement relating to the concept map and/or its contents.',
-			},
-			sourceUri: {
-				type: new GraphQLNonNull(UriScalar),
-				description:
-					'The source value set that specifies the concepts that are being mapped.',
-			},
-			_sourceUri: {
-				type: require('./element.input'),
-				description:
-					'The source value set that specifies the concepts that are being mapped.',
-			},
-			sourceReference: {
-				type: new GraphQLNonNull(require('./reference.input')),
-				description:
-					'The source value set that specifies the concepts that are being mapped.',
-			},
-			targetUri: {
-				type: new GraphQLNonNull(UriScalar),
-				description:
-					'The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.',
-			},
-			_targetUri: {
-				type: require('./element.input'),
-				description:
-					'The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.',
-			},
-			targetReference: {
-				type: new GraphQLNonNull(require('./reference.input')),
-				description:
-					'The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.',
-			},
-			element: {
-				type: new GraphQLList(require('./conceptmapelement.input')),
-				description:
-					'Mappings for an individual concept in the source to one or more concepts in the target.',
-			},
-		}),
+	description: 'Base StructureDefinition for ConceptMap Resource',
+	fields: () => ({
+		resourceType: {
+			type: new GraphQLNonNull(
+				new GraphQLEnumType({
+					name: 'ConceptMap_Enum_input',
+					values: { ConceptMap: { value: 'ConceptMap' } },
+				}),
+			),
+			description: 'Type of resource',
+		},
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.',
+		},
+		meta: {
+			type: require('./meta.input.js'),
+			description:
+				'The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.',
+		},
+		_implicitRules: {
+			type: require('./element.input.js'),
+			description:
+				'A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.',
+		},
+		implicitRules: {
+			type: UriScalar,
+			description:
+				'A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.',
+		},
+		_language: {
+			type: require('./element.input.js'),
+			description: 'The base language in which the resource is written.',
+		},
+		language: {
+			type: CodeScalar,
+			description: 'The base language in which the resource is written.',
+		},
+		text: {
+			type: require('./narrative.input.js'),
+			description:
+				"A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it 'clinically safe' for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+		},
+		contained: {
+			type: new GraphQLList(GraphQLString),
+			description:
+				'These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_url: {
+			type: require('./element.input.js'),
+			description:
+				'An absolute URL that is used to identify this concept map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this concept map is (or will be) published.',
+		},
+		url: {
+			type: UriScalar,
+			description:
+				'An absolute URL that is used to identify this concept map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this concept map is (or will be) published.',
+		},
+		identifier: {
+			type: require('./identifier.input.js'),
+			description:
+				'Formal identifier that is used to identify this concept map when it is represented in other formats, or referenced in a specification, model, design or an instance.',
+		},
+		_version: {
+			type: require('./element.input.js'),
+			description:
+				'The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.',
+		},
+		version: {
+			type: GraphQLString,
+			description:
+				'The identifier that is used to identify this version of the concept map when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.',
+		},
+		_name: {
+			type: require('./element.input.js'),
+			description:
+				'A free text natural language name describing the concept map.',
+		},
+		name: {
+			type: GraphQLString,
+			description:
+				'A free text natural language name describing the concept map.',
+		},
+		_status: {
+			type: require('./element.input.js'),
+			description: 'The status of the concept map.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/conformance-resource-status
+		status: {
+			type: new GraphQLNonNull(CodeScalar),
+			description: 'The status of the concept map.',
+		},
+		_experimental: {
+			type: require('./element.input.js'),
+			description:
+				'This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.',
+		},
+		experimental: {
+			type: GraphQLBoolean,
+			description:
+				'This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.',
+		},
+		_publisher: {
+			type: require('./element.input.js'),
+			description:
+				'The name of the individual or organization that published the concept map.',
+		},
+		publisher: {
+			type: GraphQLString,
+			description:
+				'The name of the individual or organization that published the concept map.',
+		},
+		contact: {
+			type: new GraphQLList(require('./conceptmapcontact.input.js')),
+			description:
+				'Contacts to assist a user in finding and communicating with the publisher.',
+		},
+		_date: {
+			type: require('./element.input.js'),
+			description:
+				'The date this version of the concept map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the concept map changes.',
+		},
+		date: {
+			type: DateTimeScalar,
+			description:
+				'The date this version of the concept map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the concept map changes.',
+		},
+		_description: {
+			type: require('./element.input.js'),
+			description:
+				'A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.',
+		},
+		description: {
+			type: GraphQLString,
+			description:
+				'A free text natural language description of the use of the concept map - reason for definition, conditions of use, etc.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/use-context
+		useContext: {
+			type: new GraphQLList(require('./codeableconcept.input.js')),
+			description:
+				'The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of concept map instances.',
+		},
+		_requirements: {
+			type: require('./element.input.js'),
+			description:
+				'Explains why this concept map is needed and why it has been constrained as it has.',
+		},
+		requirements: {
+			type: GraphQLString,
+			description:
+				'Explains why this concept map is needed and why it has been constrained as it has.',
+		},
+		_copyright: {
+			type: require('./element.input.js'),
+			description:
+				'A copyright statement relating to the concept map and/or its contents.',
+		},
+		copyright: {
+			type: GraphQLString,
+			description:
+				'A copyright statement relating to the concept map and/or its contents.',
+		},
+		_sourceUri: {
+			type: require('./element.input.js'),
+			description:
+				'The source value set that specifies the concepts that are being mapped.',
+		},
+		sourceUri: {
+			type: new GraphQLNonNull(UriScalar),
+			description:
+				'The source value set that specifies the concepts that are being mapped.',
+		},
+		sourceReference: {
+			type: new GraphQLNonNull(GraphQLString),
+			description:
+				'The source value set that specifies the concepts that are being mapped.',
+		},
+		_targetUri: {
+			type: require('./element.input.js'),
+			description:
+				'The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.',
+		},
+		targetUri: {
+			type: new GraphQLNonNull(UriScalar),
+			description:
+				'The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.',
+		},
+		targetReference: {
+			type: new GraphQLNonNull(GraphQLString),
+			description:
+				'The target value set provides context to the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made.',
+		},
+		element: {
+			type: new GraphQLList(require('./conceptmapelement.input.js')),
+			description:
+				'Mappings for an individual concept in the source to one or more concepts in the target.',
+		},
+	}),
 });

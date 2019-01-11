@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,69 +8,95 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the explanationofbenefit query
  */
 module.exports = {
-	coverage: {
-		type: GraphQLString,
-		description:
-			'The plan under which the claim was adjudicated (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-coverage).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-care-team
 	care_team: {
 		type: GraphQLString,
-		description:
-			'Member of the CareTeam (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-care-team).',
+		fhirtype: 'reference',
+		xpath: 'ExplanationOfBenefit.careTeam.provider',
+		description: 'Member of the CareTeam',
 	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'The business identifier of the Explanation of Benefit (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-identifier).',
-	},
-	created: {
-		type: DateScalar,
-		description:
-			'The creation date for the EOB (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-created).',
-	},
-	encounter: {
-		type: GraphQLString,
-		description:
-			'Encounters associated with a billed line item (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-encounter).',
-	},
-	payee: {
-		type: GraphQLString,
-		description:
-			'The party receiving any payment for the Claim (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-payee).',
-	},
-	disposition: {
-		type: GraphQLString,
-		description:
-			'The contents of the disposition message (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-disposition).',
-	},
-	provider: {
-		type: GraphQLString,
-		description:
-			'The reference to the provider (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-provider).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'The reference to the patient (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-patient).',
-	},
-	organization: {
-		type: GraphQLString,
-		description:
-			'The reference to the providing organization (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-organization).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-claim
 	claim: {
 		type: GraphQLString,
-		description:
-			'The reference to the claim (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-claim).',
+		fhirtype: 'reference',
+		xpath: 'ExplanationOfBenefit.claim',
+		description: 'The reference to the claim',
 	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-coverage
+	coverage: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ExplanationOfBenefit.insurance.coverage',
+		description: 'The plan under which the claim was adjudicated',
+	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-created
+	created: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'ExplanationOfBenefit.created',
+		description: 'The creation date for the EOB',
+	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-disposition
+	disposition: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'ExplanationOfBenefit.disposition',
+		description: 'The contents of the disposition message',
+	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-encounter
+	encounter: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ExplanationOfBenefit.item.encounter',
+		description: 'Encounters associated with a billed line item',
+	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-enterer
 	enterer: {
 		type: GraphQLString,
-		description:
-			'The party responsible for the entry of the Claim (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-enterer).',
+		fhirtype: 'reference',
+		xpath: 'ExplanationOfBenefit.enterer',
+		description: 'The party responsible for the entry of the Claim',
 	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-facility
 	facility: {
 		type: GraphQLString,
-		description:
-			'Facility responsible for the goods and services (See http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-facility).',
+		fhirtype: 'reference',
+		xpath: 'ExplanationOfBenefit.facility',
+		description: 'Facility responsible for the goods and services',
+	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ExplanationOfBenefit.identifier',
+		description: 'The business identifier of the Explanation of Benefit',
+	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-organization
+	organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ExplanationOfBenefit.organization',
+		description: 'The reference to the providing organization',
+	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ExplanationOfBenefit.patient',
+		description: 'The reference to the patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-payee
+	payee: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ExplanationOfBenefit.payee.party',
+		description: 'The party receiving any payment for the Claim',
+	},
+	// http://hl7.org/fhir/SearchParameter/ExplanationOfBenefit-provider
+	provider: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ExplanationOfBenefit.provider',
+		description: 'The reference to the provider',
 	},
 };

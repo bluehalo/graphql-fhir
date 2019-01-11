@@ -7,6 +7,7 @@ const path = require('path');
 const VERSION = {
 	'1_0_2': '1_0_2',
 	'3_0_1': '3_0_1',
+	'4_0_0': '4_0_0',
 };
 
 /**
@@ -57,7 +58,7 @@ const RESOURCE_CONFIG = {
 	// base folder for all the resources relative to src
 	resourceBase: 'resources',
 	// Path is relative to version folder under resources
-	profilesRelativePath: 'profiles/**/index.js',
+	profilesRelativePath: 'profiles/**/register.js',
 };
 
 module.exports = {

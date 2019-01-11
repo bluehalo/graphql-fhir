@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.supplyrequestResolver
+ * @name exports.getSupplyRequest
  * @static
- * @summary SupplyRequest Resolver.
+ * @summary SupplyRequest resolver.
  */
-module.exports.supplyrequestResolver = function supplyrequestResolver(
+module.exports.getSupplyRequest = function getSupplyRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.supplyrequestListResolver
+ * @name exports.getSupplyRequestList
  * @static
- * @summary SupplyRequest List Resolver.
+ * @summary SupplyRequest list resolver.
  */
-module.exports.supplyrequestListResolver = function supplyrequestListResolver(
+module.exports.getSupplyRequestList = function getSupplyRequestList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.supplyrequestInstanceResolver
+ * @name exports.getSupplyRequestInstance
  * @static
- * @summary SupplyRequest Instance Resolver.
+ * @summary SupplyRequest instance resolver.
  */
-module.exports.supplyrequestInstanceResolver = function supplyrequestInstanceResolver(
+module.exports.getSupplyRequestInstance = function getSupplyRequestInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.supplyrequestCreateResolver
+ * @name exports.createSupplyRequest
  * @static
- * @summary SupplyRequest Create Resolver.
+ * @summary Create SupplyRequest resolver.
  */
-module.exports.supplyrequestCreateResolver = function supplyrequestCreateResolver(
+module.exports.createSupplyRequest = function createSupplyRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.supplyrequestUpdateResolver
+ * @name exports.updateSupplyRequest
  * @static
- * @summary SupplyRequest Update Resolver.
+ * @summary Update SupplyRequest resolver.
  */
-module.exports.supplyrequestUpdateResolver = function supplyrequestUpdateResolver(
+module.exports.updateSupplyRequest = function updateSupplyRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.supplyrequestDeleteResolver
+ * @name exports.removeSupplyRequest
  * @static
- * @summary SupplyRequest Delete Resolver.
+ * @summary Remove SupplyRequest resolver.
  */
-module.exports.supplyrequestDeleteResolver = function supplyrequestDeleteResolver(
+module.exports.removeSupplyRequest = function removeSupplyRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

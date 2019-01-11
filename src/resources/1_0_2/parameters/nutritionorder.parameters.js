@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,54 +8,76 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the nutritionorder query
  */
 module.exports = {
-	patient: {
-		type: GraphQLString,
-		description:
-			'The identity of the person who requires the diet, formula or nutritional supplement (See http://hl7.org/fhir/SearchParameter/nutritionorder-patient).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'Status of the nutrition order. (See http://hl7.org/fhir/SearchParameter/nutritionorder-status).',
-	},
-	supplement: {
-		type: TokenScalar,
-		description:
-			'Type of supplement product requested (See http://hl7.org/fhir/SearchParameter/nutritionorder-supplement).',
-	},
-	oraldiet: {
-		type: TokenScalar,
-		description:
-			'Type of diet that can be consumed orally (i.e., take via the mouth). (See http://hl7.org/fhir/SearchParameter/nutritionorder-oraldiet).',
-	},
-	provider: {
-		type: GraphQLString,
-		description:
-			'The identify of the provider who placed the nutrition order (See http://hl7.org/fhir/SearchParameter/nutritionorder-provider).',
-	},
-	encounter: {
-		type: GraphQLString,
-		description:
-			'Return nutrition orders with this encounter identifier (See http://hl7.org/fhir/SearchParameter/nutritionorder-encounter).',
-	},
-	datetime: {
-		type: DateScalar,
-		description:
-			'Return nutrition orders requested on this date (See http://hl7.org/fhir/SearchParameter/nutritionorder-datetime).',
-	},
+	// http://hl7.org/fhir/SearchParameter/NutritionOrder-additive
 	additive: {
 		type: TokenScalar,
-		description:
-			'Type of module component to add to the feeding (See http://hl7.org/fhir/SearchParameter/nutritionorder-additive).',
+		fhirtype: 'token',
+		xpath: 'NutritionOrder.enteralFormula.additiveType',
+		description: 'Type of module component to add to the feeding',
 	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'Return nutrition orders with this external identifier (See http://hl7.org/fhir/SearchParameter/nutritionorder-identifier).',
+	// http://hl7.org/fhir/SearchParameter/NutritionOrder-datetime
+	datetime: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'NutritionOrder.dateTime',
+		description: 'Return nutrition orders requested on this date',
 	},
+	// http://hl7.org/fhir/SearchParameter/NutritionOrder-encounter
+	encounter: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'NutritionOrder.encounter',
+		description: 'Return nutrition orders with this encounter identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/NutritionOrder-formula
 	formula: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'NutritionOrder.enteralFormula.baseFormulaType',
+		description: 'Type of enteral or infant formula',
+	},
+	// http://hl7.org/fhir/SearchParameter/NutritionOrder-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'NutritionOrder.identifier',
+		description: 'Return nutrition orders with this external identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/NutritionOrder-oraldiet
+	oraldiet: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'NutritionOrder.oralDiet.type',
 		description:
-			'Type of enteral or infant formula (See http://hl7.org/fhir/SearchParameter/nutritionorder-formula).',
+			'Type of diet that can be consumed orally (i.e., take via the mouth).',
+	},
+	// http://hl7.org/fhir/SearchParameter/NutritionOrder-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'NutritionOrder.patient',
+		description:
+			'The identity of the person who requires the diet, formula or nutritional supplement',
+	},
+	// http://hl7.org/fhir/SearchParameter/NutritionOrder-provider
+	provider: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'NutritionOrder.orderer',
+		description: 'The identify of the provider who placed the nutrition order',
+	},
+	// http://hl7.org/fhir/SearchParameter/NutritionOrder-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'NutritionOrder.status',
+		description: 'Status of the nutrition order.',
+	},
+	// http://hl7.org/fhir/SearchParameter/NutritionOrder-supplement
+	supplement: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'NutritionOrder.supplement.type',
+		description: 'Type of supplement product requested',
 	},
 };

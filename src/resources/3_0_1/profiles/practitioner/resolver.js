@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.practitionerResolver
+ * @name exports.getPractitioner
  * @static
- * @summary Practitioner Resolver.
+ * @summary Practitioner resolver.
  */
-module.exports.practitionerResolver = function practitionerResolver(
+module.exports.getPractitioner = function getPractitioner(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.practitionerListResolver
+ * @name exports.getPractitionerList
  * @static
- * @summary Practitioner List Resolver.
+ * @summary Practitioner list resolver.
  */
-module.exports.practitionerListResolver = function practitionerListResolver(
+module.exports.getPractitionerList = function getPractitionerList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.practitionerInstanceResolver
+ * @name exports.getPractitionerInstance
  * @static
- * @summary Practitioner Instance Resolver.
+ * @summary Practitioner instance resolver.
  */
-module.exports.practitionerInstanceResolver = function practitionerInstanceResolver(
+module.exports.getPractitionerInstance = function getPractitionerInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.practitionerCreateResolver
+ * @name exports.createPractitioner
  * @static
- * @summary Practitioner Create Resolver.
+ * @summary Create Practitioner resolver.
  */
-module.exports.practitionerCreateResolver = function practitionerCreateResolver(
+module.exports.createPractitioner = function createPractitioner(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.practitionerUpdateResolver
+ * @name exports.updatePractitioner
  * @static
- * @summary Practitioner Update Resolver.
+ * @summary Update Practitioner resolver.
  */
-module.exports.practitionerUpdateResolver = function practitionerUpdateResolver(
+module.exports.updatePractitioner = function updatePractitioner(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.practitionerDeleteResolver
+ * @name exports.removePractitioner
  * @static
- * @summary Practitioner Delete Resolver.
+ * @summary Remove Practitioner resolver.
  */
-module.exports.practitionerDeleteResolver = function practitionerDeleteResolver(
+module.exports.removePractitioner = function removePractitioner(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

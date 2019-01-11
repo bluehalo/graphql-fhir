@@ -1,7 +1,7 @@
-const UriScalar = require('../scalars/uri.scalar');
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,94 +9,130 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the conceptmap query
  */
 module.exports = {
-	dependson: {
-		type: UriScalar,
-		description:
-			'Reference to element/field/ValueSet mapping depends on (See http://hl7.org/fhir/SearchParameter/conceptmap-dependson).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'Status of the concept map (See http://hl7.org/fhir/SearchParameter/conceptmap-status).',
-	},
-	date: {
-		type: DateScalar,
-		description:
-			'The concept map publication date (See http://hl7.org/fhir/SearchParameter/conceptmap-date).',
-	},
-	url: {
-		type: UriScalar,
-		description:
-			'The URL of the concept map (See http://hl7.org/fhir/SearchParameter/conceptmap-url).',
-	},
-	targetsystem: {
-		type: UriScalar,
-		description:
-			'System of the target (if necessary) (See http://hl7.org/fhir/SearchParameter/conceptmap-targetsystem).',
-	},
-	version: {
-		type: TokenScalar,
-		description:
-			'The version identifier of the concept map (See http://hl7.org/fhir/SearchParameter/conceptmap-version).',
-	},
-	publisher: {
-		type: GraphQLString,
-		description:
-			'Name of the publisher of the concept map (See http://hl7.org/fhir/SearchParameter/conceptmap-publisher).',
-	},
-	product: {
-		type: UriScalar,
-		description:
-			'Reference to element/field/ValueSet mapping depends on (See http://hl7.org/fhir/SearchParameter/conceptmap-product).',
-	},
-	sourcecode: {
-		type: TokenScalar,
-		description:
-			'Identifies element being mapped (See http://hl7.org/fhir/SearchParameter/conceptmap-sourcecode).',
-	},
-	sourceuri: {
-		type: GraphQLString,
-		description:
-			'Identifies the source of the concepts which are being mapped (See http://hl7.org/fhir/SearchParameter/conceptmap-sourceuri).',
-	},
-	source: {
-		type: GraphQLString,
-		description:
-			'Identifies the source of the concepts which are being mapped (See http://hl7.org/fhir/SearchParameter/conceptmap-source).',
-	},
-	description: {
-		type: GraphQLString,
-		description:
-			'Text search in the description of the concept map (See http://hl7.org/fhir/SearchParameter/conceptmap-description).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			'Name of the concept map (See http://hl7.org/fhir/SearchParameter/conceptmap-name).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-context
 	context: {
 		type: TokenScalar,
-		description:
-			'A use context assigned to the concept map (See http://hl7.org/fhir/SearchParameter/conceptmap-context).',
+		fhirtype: 'token',
+		xpath: 'ConceptMap.useContext',
+		description: 'A use context assigned to the concept map',
 	},
-	target: {
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-date
+	date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'ConceptMap.date',
+		description: 'The concept map publication date',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-dependson
+	dependson: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ConceptMap.element.target.dependsOn.element',
+		description: 'Reference to element/field/ValueSet mapping depends on',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-description
+	description: {
 		type: GraphQLString,
-		description:
-			'Provides context to the mappings (See http://hl7.org/fhir/SearchParameter/conceptmap-target).',
+		fhirtype: 'string',
+		xpath: 'ConceptMap.description',
+		description: 'Text search in the description of the concept map',
 	},
-	targetcode: {
-		type: TokenScalar,
-		description:
-			'Code that identifies the target element (See http://hl7.org/fhir/SearchParameter/conceptmap-targetcode).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Additional identifier for the concept map (See http://hl7.org/fhir/SearchParameter/conceptmap-identifier).',
+		fhirtype: 'token',
+		xpath: 'ConceptMap.identifier',
+		description: 'Additional identifier for the concept map',
 	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'ConceptMap.name',
+		description: 'Name of the concept map',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-product
+	product: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ConceptMap.element.target.product.element',
+		description: 'Reference to element/field/ValueSet mapping depends on',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-publisher
+	publisher: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'ConceptMap.publisher',
+		description: 'Name of the publisher of the concept map',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-source
+	source: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ConceptMap.sourceReference',
+		description: 'Identifies the source of the concepts which are being mapped',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-sourcecode
+	sourcecode: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ConceptMap.element.code',
+		description: 'Identifies element being mapped',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-sourcesystem
 	sourcesystem: {
 		type: UriScalar,
-		description:
-			'Code System (if value set crosses code systems) (See http://hl7.org/fhir/SearchParameter/conceptmap-sourcesystem).',
+		fhirtype: 'uri',
+		xpath: 'ConceptMap.element.codeSystem',
+		description: 'Code System (if value set crosses code systems)',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-sourceuri
+	sourceuri: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ConceptMap.sourceUri',
+		description: 'Identifies the source of the concepts which are being mapped',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ConceptMap.status',
+		description: 'Status of the concept map',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-target
+	target: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ConceptMap.targetUri',
+		description: 'Provides context to the mappings',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-targetcode
+	targetcode: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ConceptMap.element.target.code',
+		description: 'Code that identifies the target element',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-targetsystem
+	targetsystem: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ConceptMap.element.target.codeSystem',
+		description: 'System of the target (if necessary)',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-url
+	url: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ConceptMap.url',
+		description: 'The URL of the concept map',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-version
+	version: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ConceptMap.version',
+		description: 'The version identifier of the concept map',
 	},
 };

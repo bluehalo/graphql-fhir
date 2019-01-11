@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,29 +7,39 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the processresponse query
  */
 module.exports = {
-	organization: {
-		type: GraphQLString,
-		description:
-			'The organization who generated this resource (See http://hl7.org/fhir/SearchParameter/processresponse-organization).',
-	},
-	requestprovider: {
-		type: GraphQLString,
-		description:
-			'The Provider who is responsible the request transaction (See http://hl7.org/fhir/SearchParameter/processresponse-requestprovider).',
-	},
-	request: {
-		type: GraphQLString,
-		description:
-			'The reference to the claim (See http://hl7.org/fhir/SearchParameter/processresponse-request).',
-	},
-	requestorganization: {
-		type: GraphQLString,
-		description:
-			'The Organization who is responsible the request transaction (See http://hl7.org/fhir/SearchParameter/processresponse-requestorganization).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ProcessResponse-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'The business identifier of the Explanation of Benefit (See http://hl7.org/fhir/SearchParameter/processresponse-identifier).',
+		fhirtype: 'token',
+		xpath: 'ProcessResponse.identifier',
+		description: 'The business identifier of the Explanation of Benefit',
+	},
+	// http://hl7.org/fhir/SearchParameter/ProcessResponse-organization
+	organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ProcessResponse.organization',
+		description: 'The organization who generated this resource',
+	},
+	// http://hl7.org/fhir/SearchParameter/ProcessResponse-request
+	request: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ProcessResponse.request',
+		description: 'The reference to the claim',
+	},
+	// http://hl7.org/fhir/SearchParameter/ProcessResponse-requestorganization
+	requestorganization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ProcessResponse.requestOrganization',
+		description: 'The Organization who is responsible the request transaction',
+	},
+	// http://hl7.org/fhir/SearchParameter/ProcessResponse-requestprovider
+	requestprovider: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ProcessResponse.requestProvider',
+		description: 'The Provider who is responsible the request transaction',
 	},
 };

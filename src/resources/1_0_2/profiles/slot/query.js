@@ -1,55 +1,55 @@
 // Schemas
-const SlotSchema = require('../../schemas/slot.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const SlotSchema = require('../../schemas/slot.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const SlotArgs = require('../../parameters/slot.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const SlotArgs = require('../../parameters/slot.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, SlotArgs);
 
 // Resolvers
-const {
-	slotResolver,
-	slotListResolver,
-	slotInstanceResolver,
-} = require('./resolver');
+const { getSlot, getSlotList, getSlotInstance } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Slot',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.SlotQuery
- * @summary Slot Query.
+ * @summary Slot query.
  */
 module.exports.SlotQuery = {
-	args: Object.assign({}, CommonArgs, SlotArgs),
 	description: 'Query for a single Slot',
-	resolve: scopeInvariant(scopeOptions, slotResolver),
+	resolve: scopeInvariant(scopeOptions, getSlot),
 	type: SlotSchema,
+	args: args,
 };
 
 /**
  * @name exports.SlotListQuery
- * @summary SlotList Query.
+ * @summary Slot query.
  */
 module.exports.SlotListQuery = {
-	args: Object.assign({}, CommonArgs, SlotArgs),
-	description: 'Query for multiple Slots',
-	resolve: scopeInvariant(scopeOptions, slotListResolver),
+	description: 'Query for a more than or just one Slot',
+	resolve: scopeInvariant(scopeOptions, getSlotList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.SlotInstanceQuery
- * @summary SlotInstance Query.
+ * @summary Slot query.
  */
 module.exports.SlotInstanceQuery = {
-	description: 'Get information about a single Slot',
-	resolve: scopeInvariant(scopeOptions, slotInstanceResolver),
+	description: 'Access information about a single Slot',
+	resolve: scopeInvariant(scopeOptions, getSlotInstance),
 	type: SlotSchema,
+	args: args,
 };

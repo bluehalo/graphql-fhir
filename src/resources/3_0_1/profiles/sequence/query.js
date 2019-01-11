@@ -1,55 +1,60 @@
 // Schemas
-const SequenceSchema = require('../../schemas/sequence.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const SequenceSchema = require('../../schemas/sequence.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const SequenceArgs = require('../../parameters/sequence.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const SequenceArgs = require('../../parameters/sequence.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+const DomainResourceArgs = require('../../parameters/domainresource.parameters.js');
+
+let args = Object.assign({}, DomainResourceArgs, ResourceArgs, SequenceArgs);
 
 // Resolvers
 const {
-	sequenceResolver,
-	sequenceListResolver,
-	sequenceInstanceResolver,
+	getSequence,
+	getSequenceList,
+	getSequenceInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Sequence',
 	action: 'read',
-	version: '3_0_1',
 };
 
 /**
  * @name exports.SequenceQuery
- * @summary Sequence Query.
+ * @summary Sequence query.
  */
 module.exports.SequenceQuery = {
-	args: Object.assign({}, CommonArgs, SequenceArgs),
 	description: 'Query for a single Sequence',
-	resolve: scopeInvariant(scopeOptions, sequenceResolver),
+	resolve: scopeInvariant(scopeOptions, getSequence),
 	type: SequenceSchema,
+	args: args,
 };
 
 /**
  * @name exports.SequenceListQuery
- * @summary SequenceList Query.
+ * @summary Sequence query.
  */
 module.exports.SequenceListQuery = {
-	args: Object.assign({}, CommonArgs, SequenceArgs),
-	description: 'Query for multiple Sequences',
-	resolve: scopeInvariant(scopeOptions, sequenceListResolver),
+	description: 'Query for a more than or just one Sequence',
+	resolve: scopeInvariant(scopeOptions, getSequenceList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.SequenceInstanceQuery
- * @summary SequenceInstance Query.
+ * @summary Sequence query.
  */
 module.exports.SequenceInstanceQuery = {
-	description: 'Get information about a single Sequence',
-	resolve: scopeInvariant(scopeOptions, sequenceInstanceResolver),
+	description: 'Access information about a single Sequence',
+	resolve: scopeInvariant(scopeOptions, getSequenceInstance),
 	type: SequenceSchema,
+	args: args,
 };

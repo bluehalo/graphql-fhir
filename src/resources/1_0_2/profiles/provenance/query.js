@@ -1,55 +1,59 @@
 // Schemas
-const ProvenanceSchema = require('../../schemas/provenance.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ProvenanceSchema = require('../../schemas/provenance.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ProvenanceArgs = require('../../parameters/provenance.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ProvenanceArgs = require('../../parameters/provenance.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ProvenanceArgs);
 
 // Resolvers
 const {
-	provenanceResolver,
-	provenanceListResolver,
-	provenanceInstanceResolver,
+	getProvenance,
+	getProvenanceList,
+	getProvenanceInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Provenance',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ProvenanceQuery
- * @summary Provenance Query.
+ * @summary Provenance query.
  */
 module.exports.ProvenanceQuery = {
-	args: Object.assign({}, CommonArgs, ProvenanceArgs),
 	description: 'Query for a single Provenance',
-	resolve: scopeInvariant(scopeOptions, provenanceResolver),
+	resolve: scopeInvariant(scopeOptions, getProvenance),
 	type: ProvenanceSchema,
+	args: args,
 };
 
 /**
  * @name exports.ProvenanceListQuery
- * @summary ProvenanceList Query.
+ * @summary Provenance query.
  */
 module.exports.ProvenanceListQuery = {
-	args: Object.assign({}, CommonArgs, ProvenanceArgs),
-	description: 'Query for multiple Provenances',
-	resolve: scopeInvariant(scopeOptions, provenanceListResolver),
+	description: 'Query for a more than or just one Provenance',
+	resolve: scopeInvariant(scopeOptions, getProvenanceList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ProvenanceInstanceQuery
- * @summary ProvenanceInstance Query.
+ * @summary Provenance query.
  */
 module.exports.ProvenanceInstanceQuery = {
-	description: 'Get information about a single Provenance',
-	resolve: scopeInvariant(scopeOptions, provenanceInstanceResolver),
+	description: 'Access information about a single Provenance',
+	resolve: scopeInvariant(scopeOptions, getProvenanceInstance),
 	type: ProvenanceSchema,
+	args: args,
 };

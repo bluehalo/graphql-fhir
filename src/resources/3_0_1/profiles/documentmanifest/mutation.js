@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const DocumentManifestSchema = require('../../schemas/documentmanifest.schema');
+const DocumentManifestSchema = require('../../schemas/documentmanifest.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const DocumentManifestInput = require('../../inputs/documentmanifest.input');
+const DocumentManifestInput = require('../../inputs/documentmanifest.input.js');
 
-// Resolvers
-const {
-	documentmanifestCreateResolver,
-	documentmanifestUpdateResolver,
-	documentmanifestDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createDocumentManifest,
+	updateDocumentManifest,
+	removeDocumentManifest,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DocumentManifest',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a DocumentManifest record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a DocumentManifest record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.DocumentManifestCreateMutation
- * @summary DocumentManifestCreate Mutation.
+ * @summary DocumentManifestCreate mutation.
  */
 module.exports.DocumentManifestCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a DocumentManifest',
-	resolve: scopeInvariant(scopeOptions, documentmanifestCreateResolver),
+	description: 'Create a DocumentManifest record',
+	resolve: scopeInvariant(scopeOptions, createDocumentManifest),
 	type: DocumentManifestSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.DocumentManifestUpdateMutation
- * @summary DocumentManifestUpdate Mutation.
+ * @summary DocumentManifestUpdate mutation.
  */
 module.exports.DocumentManifestUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple DocumentManifests',
-	resolve: scopeInvariant(scopeOptions, documentmanifestUpdateResolver),
+	description: 'Update a DocumentManifest record',
+	resolve: scopeInvariant(scopeOptions, updateDocumentManifest),
 	type: DocumentManifestSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.DocumentManifestDeleteMutation
- * @summary DocumentManifestDelete Mutation.
+ * @name exports.DocumentManifestRemoveMutation
+ * @summary DocumentManifestRemove mutation.
  */
-module.exports.DocumentManifestDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single DocumentManifest',
-	resolve: scopeInvariant(scopeOptions, documentmanifestDeleteResolver),
+module.exports.DocumentManifestRemoveMutation = {
+	description: 'Remove a DocumentManifest record',
+	resolve: scopeInvariant(scopeOptions, removeDocumentManifest),
 	type: DocumentManifestSchema,
+	args: DeleteArgs,
 };

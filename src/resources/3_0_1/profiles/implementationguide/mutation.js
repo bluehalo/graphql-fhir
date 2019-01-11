@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ImplementationGuideSchema = require('../../schemas/implementationguide.schema');
+const ImplementationGuideSchema = require('../../schemas/implementationguide.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ImplementationGuideInput = require('../../inputs/implementationguide.input');
+const ImplementationGuideInput = require('../../inputs/implementationguide.input.js');
 
-// Resolvers
-const {
-	implementationguideCreateResolver,
-	implementationguideUpdateResolver,
-	implementationguideDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createImplementationGuide,
+	updateImplementationGuide,
+	removeImplementationGuide,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ImplementationGuide',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a ImplementationGuide record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a ImplementationGuide record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ImplementationGuideCreateMutation
- * @summary ImplementationGuideCreate Mutation.
+ * @summary ImplementationGuideCreate mutation.
  */
 module.exports.ImplementationGuideCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a ImplementationGuide',
-	resolve: scopeInvariant(scopeOptions, implementationguideCreateResolver),
+	description: 'Create a ImplementationGuide record',
+	resolve: scopeInvariant(scopeOptions, createImplementationGuide),
 	type: ImplementationGuideSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ImplementationGuideUpdateMutation
- * @summary ImplementationGuideUpdate Mutation.
+ * @summary ImplementationGuideUpdate mutation.
  */
 module.exports.ImplementationGuideUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple ImplementationGuides',
-	resolve: scopeInvariant(scopeOptions, implementationguideUpdateResolver),
+	description: 'Update a ImplementationGuide record',
+	resolve: scopeInvariant(scopeOptions, updateImplementationGuide),
 	type: ImplementationGuideSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ImplementationGuideDeleteMutation
- * @summary ImplementationGuideDelete Mutation.
+ * @name exports.ImplementationGuideRemoveMutation
+ * @summary ImplementationGuideRemove mutation.
  */
-module.exports.ImplementationGuideDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single ImplementationGuide',
-	resolve: scopeInvariant(scopeOptions, implementationguideDeleteResolver),
+module.exports.ImplementationGuideRemoveMutation = {
+	description: 'Remove a ImplementationGuide record',
+	resolve: scopeInvariant(scopeOptions, removeImplementationGuide),
 	type: ImplementationGuideSchema,
+	args: DeleteArgs,
 };

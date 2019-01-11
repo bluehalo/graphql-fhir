@@ -1,51 +1,64 @@
 const {
-	GraphQLObjectType,
+	GraphQLList,
 	GraphQLNonNull,
 	GraphQLString,
 	GraphQLInt,
+	GraphQLObjectType,
 } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary ElementDefinition.base Schema
+ * @summary ElementDefinitionbase Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'ElementDefinitionBase',
-	description:
-		'Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.',
-	fields: () =>
-		extendSchema(require('./element.schema'), {
-			path: {
-				type: new GraphQLNonNull(GraphQLString),
-				description:
-					'The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.',
-			},
-			_path: {
-				type: require('./element.schema'),
-				description:
-					'The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.',
-			},
-			min: {
-				type: new GraphQLNonNull(GraphQLInt),
-				description:
-					'Minimum cardinality of the base element identified by the path.',
-			},
-			_min: {
-				type: require('./element.schema'),
-				description:
-					'Minimum cardinality of the base element identified by the path.',
-			},
-			max: {
-				type: new GraphQLNonNull(GraphQLString),
-				description:
-					'Maximum cardinality of the base element identified by the path.',
-			},
-			_max: {
-				type: require('./element.schema'),
-				description:
-					'Maximum cardinality of the base element identified by the path.',
-			},
-		}),
+	name: 'ElementDefinitionbase',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		_path: {
+			type: require('./element.schema.js'),
+			description:
+				'The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.',
+		},
+		path: {
+			type: new GraphQLNonNull(GraphQLString),
+			description:
+				'The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.',
+		},
+		_min: {
+			type: require('./element.schema.js'),
+			description:
+				'Minimum cardinality of the base element identified by the path.',
+		},
+		min: {
+			type: new GraphQLNonNull(GraphQLInt),
+			description:
+				'Minimum cardinality of the base element identified by the path.',
+		},
+		_max: {
+			type: require('./element.schema.js'),
+			description:
+				'Maximum cardinality of the base element identified by the path.',
+		},
+		max: {
+			type: new GraphQLNonNull(GraphQLString),
+			description:
+				'Maximum cardinality of the base element identified by the path.',
+		},
+	}),
 });

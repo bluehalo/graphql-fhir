@@ -1,55 +1,59 @@
 // Schemas
-const ConditionSchema = require('../../schemas/condition.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ConditionSchema = require('../../schemas/condition.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ConditionArgs = require('../../parameters/condition.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ConditionArgs = require('../../parameters/condition.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ConditionArgs);
 
 // Resolvers
 const {
-	conditionResolver,
-	conditionListResolver,
-	conditionInstanceResolver,
+	getCondition,
+	getConditionList,
+	getConditionInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Condition',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ConditionQuery
- * @summary Condition Query.
+ * @summary Condition query.
  */
 module.exports.ConditionQuery = {
-	args: Object.assign({}, CommonArgs, ConditionArgs),
 	description: 'Query for a single Condition',
-	resolve: scopeInvariant(scopeOptions, conditionResolver),
+	resolve: scopeInvariant(scopeOptions, getCondition),
 	type: ConditionSchema,
+	args: args,
 };
 
 /**
  * @name exports.ConditionListQuery
- * @summary ConditionList Query.
+ * @summary Condition query.
  */
 module.exports.ConditionListQuery = {
-	args: Object.assign({}, CommonArgs, ConditionArgs),
-	description: 'Query for multiple Conditions',
-	resolve: scopeInvariant(scopeOptions, conditionListResolver),
+	description: 'Query for a more than or just one Condition',
+	resolve: scopeInvariant(scopeOptions, getConditionList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ConditionInstanceQuery
- * @summary ConditionInstance Query.
+ * @summary Condition query.
  */
 module.exports.ConditionInstanceQuery = {
-	description: 'Get information about a single Condition',
-	resolve: scopeInvariant(scopeOptions, conditionInstanceResolver),
+	description: 'Access information about a single Condition',
+	resolve: scopeInvariant(scopeOptions, getConditionInstance),
 	type: ConditionSchema,
+	args: args,
 };

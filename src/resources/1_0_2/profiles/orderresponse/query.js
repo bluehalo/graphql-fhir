@@ -1,55 +1,59 @@
 // Schemas
-const OrderResponseSchema = require('../../schemas/orderresponse.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const OrderResponseSchema = require('../../schemas/orderresponse.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const OrderResponseArgs = require('../../parameters/orderresponse.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const OrderResponseArgs = require('../../parameters/orderresponse.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, OrderResponseArgs);
 
 // Resolvers
 const {
-	orderresponseResolver,
-	orderresponseListResolver,
-	orderresponseInstanceResolver,
+	getOrderResponse,
+	getOrderResponseList,
+	getOrderResponseInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'OrderResponse',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.OrderResponseQuery
- * @summary OrderResponse Query.
+ * @summary OrderResponse query.
  */
 module.exports.OrderResponseQuery = {
-	args: Object.assign({}, CommonArgs, OrderResponseArgs),
 	description: 'Query for a single OrderResponse',
-	resolve: scopeInvariant(scopeOptions, orderresponseResolver),
+	resolve: scopeInvariant(scopeOptions, getOrderResponse),
 	type: OrderResponseSchema,
+	args: args,
 };
 
 /**
  * @name exports.OrderResponseListQuery
- * @summary OrderResponseList Query.
+ * @summary OrderResponse query.
  */
 module.exports.OrderResponseListQuery = {
-	args: Object.assign({}, CommonArgs, OrderResponseArgs),
-	description: 'Query for multiple OrderResponses',
-	resolve: scopeInvariant(scopeOptions, orderresponseListResolver),
+	description: 'Query for a more than or just one OrderResponse',
+	resolve: scopeInvariant(scopeOptions, getOrderResponseList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.OrderResponseInstanceQuery
- * @summary OrderResponseInstance Query.
+ * @summary OrderResponse query.
  */
 module.exports.OrderResponseInstanceQuery = {
-	description: 'Get information about a single OrderResponse',
-	resolve: scopeInvariant(scopeOptions, orderresponseInstanceResolver),
+	description: 'Access information about a single OrderResponse',
+	resolve: scopeInvariant(scopeOptions, getOrderResponseInstance),
 	type: OrderResponseSchema,
+	args: args,
 };

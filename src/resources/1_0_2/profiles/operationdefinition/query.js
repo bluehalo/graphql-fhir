@@ -1,55 +1,59 @@
 // Schemas
-const OperationDefinitionSchema = require('../../schemas/operationdefinition.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const OperationDefinitionSchema = require('../../schemas/operationdefinition.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const OperationDefinitionArgs = require('../../parameters/operationdefinition.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const OperationDefinitionArgs = require('../../parameters/operationdefinition.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, OperationDefinitionArgs);
 
 // Resolvers
 const {
-	operationdefinitionResolver,
-	operationdefinitionListResolver,
-	operationdefinitionInstanceResolver,
+	getOperationDefinition,
+	getOperationDefinitionList,
+	getOperationDefinitionInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'OperationDefinition',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.OperationDefinitionQuery
- * @summary OperationDefinition Query.
+ * @summary OperationDefinition query.
  */
 module.exports.OperationDefinitionQuery = {
-	args: Object.assign({}, CommonArgs, OperationDefinitionArgs),
 	description: 'Query for a single OperationDefinition',
-	resolve: scopeInvariant(scopeOptions, operationdefinitionResolver),
+	resolve: scopeInvariant(scopeOptions, getOperationDefinition),
 	type: OperationDefinitionSchema,
+	args: args,
 };
 
 /**
  * @name exports.OperationDefinitionListQuery
- * @summary OperationDefinitionList Query.
+ * @summary OperationDefinition query.
  */
 module.exports.OperationDefinitionListQuery = {
-	args: Object.assign({}, CommonArgs, OperationDefinitionArgs),
-	description: 'Query for multiple OperationDefinitions',
-	resolve: scopeInvariant(scopeOptions, operationdefinitionListResolver),
+	description: 'Query for a more than or just one OperationDefinition',
+	resolve: scopeInvariant(scopeOptions, getOperationDefinitionList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.OperationDefinitionInstanceQuery
- * @summary OperationDefinitionInstance Query.
+ * @summary OperationDefinition query.
  */
 module.exports.OperationDefinitionInstanceQuery = {
-	description: 'Get information about a single OperationDefinition',
-	resolve: scopeInvariant(scopeOptions, operationdefinitionInstanceResolver),
+	description: 'Access information about a single OperationDefinition',
+	resolve: scopeInvariant(scopeOptions, getOperationDefinitionInstance),
 	type: OperationDefinitionSchema,
+	args: args,
 };

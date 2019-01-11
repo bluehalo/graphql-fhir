@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,24 +7,32 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the devicecomponent query
  */
 module.exports = {
-	parent: {
-		type: GraphQLString,
-		description:
-			'The parent DeviceComponent resource (See http://hl7.org/fhir/SearchParameter/DeviceComponent-parent).',
-	},
+	// http://hl7.org/fhir/SearchParameter/DeviceComponent-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'The identifier of the component (See http://hl7.org/fhir/SearchParameter/DeviceComponent-identifier).',
+		fhirtype: 'token',
+		xpath: 'DeviceComponent.identifier',
+		description: 'The identifier of the component',
 	},
+	// http://hl7.org/fhir/SearchParameter/DeviceComponent-parent
+	parent: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'DeviceComponent.parent',
+		description: 'The parent DeviceComponent resource',
+	},
+	// http://hl7.org/fhir/SearchParameter/DeviceComponent-source
 	source: {
 		type: GraphQLString,
-		description:
-			'The device source (See http://hl7.org/fhir/SearchParameter/DeviceComponent-source).',
+		fhirtype: 'reference',
+		xpath: 'DeviceComponent.source',
+		description: 'The device source',
 	},
+	// http://hl7.org/fhir/SearchParameter/DeviceComponent-type
 	type: {
 		type: TokenScalar,
-		description:
-			'The device component type (See http://hl7.org/fhir/SearchParameter/DeviceComponent-type).',
+		fhirtype: 'token',
+		xpath: 'DeviceComponent.type',
+		description: 'The device component type',
 	},
 };

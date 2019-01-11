@@ -1,55 +1,59 @@
 // Schemas
-const AppointmentResponseSchema = require('../../schemas/appointmentresponse.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const AppointmentResponseSchema = require('../../schemas/appointmentresponse.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const AppointmentResponseArgs = require('../../parameters/appointmentresponse.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const AppointmentResponseArgs = require('../../parameters/appointmentresponse.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, AppointmentResponseArgs);
 
 // Resolvers
 const {
-	appointmentresponseResolver,
-	appointmentresponseListResolver,
-	appointmentresponseInstanceResolver,
+	getAppointmentResponse,
+	getAppointmentResponseList,
+	getAppointmentResponseInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'AppointmentResponse',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.AppointmentResponseQuery
- * @summary AppointmentResponse Query.
+ * @summary AppointmentResponse query.
  */
 module.exports.AppointmentResponseQuery = {
-	args: Object.assign({}, CommonArgs, AppointmentResponseArgs),
 	description: 'Query for a single AppointmentResponse',
-	resolve: scopeInvariant(scopeOptions, appointmentresponseResolver),
+	resolve: scopeInvariant(scopeOptions, getAppointmentResponse),
 	type: AppointmentResponseSchema,
+	args: args,
 };
 
 /**
  * @name exports.AppointmentResponseListQuery
- * @summary AppointmentResponseList Query.
+ * @summary AppointmentResponse query.
  */
 module.exports.AppointmentResponseListQuery = {
-	args: Object.assign({}, CommonArgs, AppointmentResponseArgs),
-	description: 'Query for multiple AppointmentResponses',
-	resolve: scopeInvariant(scopeOptions, appointmentresponseListResolver),
+	description: 'Query for a more than or just one AppointmentResponse',
+	resolve: scopeInvariant(scopeOptions, getAppointmentResponseList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.AppointmentResponseInstanceQuery
- * @summary AppointmentResponseInstance Query.
+ * @summary AppointmentResponse query.
  */
 module.exports.AppointmentResponseInstanceQuery = {
-	description: 'Get information about a single AppointmentResponse',
-	resolve: scopeInvariant(scopeOptions, appointmentresponseInstanceResolver),
+	description: 'Access information about a single AppointmentResponse',
+	resolve: scopeInvariant(scopeOptions, getAppointmentResponseInstance),
 	type: AppointmentResponseSchema,
+	args: args,
 };

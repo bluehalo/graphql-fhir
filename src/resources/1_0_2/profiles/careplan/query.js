@@ -1,55 +1,59 @@
 // Schemas
-const CarePlanSchema = require('../../schemas/careplan.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const CarePlanSchema = require('../../schemas/careplan.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const CarePlanArgs = require('../../parameters/careplan.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const CarePlanArgs = require('../../parameters/careplan.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, CarePlanArgs);
 
 // Resolvers
 const {
-	careplanResolver,
-	careplanListResolver,
-	careplanInstanceResolver,
+	getCarePlan,
+	getCarePlanList,
+	getCarePlanInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'CarePlan',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.CarePlanQuery
- * @summary CarePlan Query.
+ * @summary CarePlan query.
  */
 module.exports.CarePlanQuery = {
-	args: Object.assign({}, CommonArgs, CarePlanArgs),
 	description: 'Query for a single CarePlan',
-	resolve: scopeInvariant(scopeOptions, careplanResolver),
+	resolve: scopeInvariant(scopeOptions, getCarePlan),
 	type: CarePlanSchema,
+	args: args,
 };
 
 /**
  * @name exports.CarePlanListQuery
- * @summary CarePlanList Query.
+ * @summary CarePlan query.
  */
 module.exports.CarePlanListQuery = {
-	args: Object.assign({}, CommonArgs, CarePlanArgs),
-	description: 'Query for multiple CarePlans',
-	resolve: scopeInvariant(scopeOptions, careplanListResolver),
+	description: 'Query for a more than or just one CarePlan',
+	resolve: scopeInvariant(scopeOptions, getCarePlanList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.CarePlanInstanceQuery
- * @summary CarePlanInstance Query.
+ * @summary CarePlan query.
  */
 module.exports.CarePlanInstanceQuery = {
-	description: 'Get information about a single CarePlan',
-	resolve: scopeInvariant(scopeOptions, careplanInstanceResolver),
+	description: 'Access information about a single CarePlan',
+	resolve: scopeInvariant(scopeOptions, getCarePlanInstance),
 	type: CarePlanSchema,
+	args: args,
 };

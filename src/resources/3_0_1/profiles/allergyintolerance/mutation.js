@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const AllergyIntoleranceSchema = require('../../schemas/allergyintolerance.schema');
+const AllergyIntoleranceSchema = require('../../schemas/allergyintolerance.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const AllergyIntoleranceInput = require('../../inputs/allergyintolerance.input');
+const AllergyIntoleranceInput = require('../../inputs/allergyintolerance.input.js');
 
-// Resolvers
-const {
-	allergyintoleranceCreateResolver,
-	allergyintoleranceUpdateResolver,
-	allergyintoleranceDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createAllergyIntolerance,
+	updateAllergyIntolerance,
+	removeAllergyIntolerance,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'AllergyIntolerance',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a AllergyIntolerance record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a AllergyIntolerance record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.AllergyIntoleranceCreateMutation
- * @summary AllergyIntoleranceCreate Mutation.
+ * @summary AllergyIntoleranceCreate mutation.
  */
 module.exports.AllergyIntoleranceCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a AllergyIntolerance',
-	resolve: scopeInvariant(scopeOptions, allergyintoleranceCreateResolver),
+	description: 'Create a AllergyIntolerance record',
+	resolve: scopeInvariant(scopeOptions, createAllergyIntolerance),
 	type: AllergyIntoleranceSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.AllergyIntoleranceUpdateMutation
- * @summary AllergyIntoleranceUpdate Mutation.
+ * @summary AllergyIntoleranceUpdate mutation.
  */
 module.exports.AllergyIntoleranceUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple AllergyIntolerances',
-	resolve: scopeInvariant(scopeOptions, allergyintoleranceUpdateResolver),
+	description: 'Update a AllergyIntolerance record',
+	resolve: scopeInvariant(scopeOptions, updateAllergyIntolerance),
 	type: AllergyIntoleranceSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.AllergyIntoleranceDeleteMutation
- * @summary AllergyIntoleranceDelete Mutation.
+ * @name exports.AllergyIntoleranceRemoveMutation
+ * @summary AllergyIntoleranceRemove mutation.
  */
-module.exports.AllergyIntoleranceDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single AllergyIntolerance',
-	resolve: scopeInvariant(scopeOptions, allergyintoleranceDeleteResolver),
+module.exports.AllergyIntoleranceRemoveMutation = {
+	description: 'Remove a AllergyIntolerance record',
+	resolve: scopeInvariant(scopeOptions, removeAllergyIntolerance),
 	type: AllergyIntoleranceSchema,
+	args: DeleteArgs,
 };

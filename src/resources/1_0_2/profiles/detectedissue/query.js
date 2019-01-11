@@ -1,55 +1,59 @@
 // Schemas
-const DetectedIssueSchema = require('../../schemas/detectedissue.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const DetectedIssueSchema = require('../../schemas/detectedissue.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const DetectedIssueArgs = require('../../parameters/detectedissue.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const DetectedIssueArgs = require('../../parameters/detectedissue.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, DetectedIssueArgs);
 
 // Resolvers
 const {
-	detectedissueResolver,
-	detectedissueListResolver,
-	detectedissueInstanceResolver,
+	getDetectedIssue,
+	getDetectedIssueList,
+	getDetectedIssueInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DetectedIssue',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.DetectedIssueQuery
- * @summary DetectedIssue Query.
+ * @summary DetectedIssue query.
  */
 module.exports.DetectedIssueQuery = {
-	args: Object.assign({}, CommonArgs, DetectedIssueArgs),
 	description: 'Query for a single DetectedIssue',
-	resolve: scopeInvariant(scopeOptions, detectedissueResolver),
+	resolve: scopeInvariant(scopeOptions, getDetectedIssue),
 	type: DetectedIssueSchema,
+	args: args,
 };
 
 /**
  * @name exports.DetectedIssueListQuery
- * @summary DetectedIssueList Query.
+ * @summary DetectedIssue query.
  */
 module.exports.DetectedIssueListQuery = {
-	args: Object.assign({}, CommonArgs, DetectedIssueArgs),
-	description: 'Query for multiple DetectedIssues',
-	resolve: scopeInvariant(scopeOptions, detectedissueListResolver),
+	description: 'Query for a more than or just one DetectedIssue',
+	resolve: scopeInvariant(scopeOptions, getDetectedIssueList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.DetectedIssueInstanceQuery
- * @summary DetectedIssueInstance Query.
+ * @summary DetectedIssue query.
  */
 module.exports.DetectedIssueInstanceQuery = {
-	description: 'Get information about a single DetectedIssue',
-	resolve: scopeInvariant(scopeOptions, detectedissueInstanceResolver),
+	description: 'Access information about a single DetectedIssue',
+	resolve: scopeInvariant(scopeOptions, getDetectedIssueInstance),
 	type: DetectedIssueSchema,
+	args: args,
 };

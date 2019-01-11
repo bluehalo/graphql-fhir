@@ -1,34 +1,52 @@
-const DateTimeScalar = require('../scalars/datetime.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLList,
+	GraphQLNonNull,
+	GraphQLInputObjectType,
+} = require('graphql');
+const IdScalar = require('../scalars/id.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 
 /**
  * @name exports
- * @summary ImmunizationRecommendation.recommendation.dateCriterion Input Schema
+ * @summary ImmunizationRecommendationrecommendationdateCriterion Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'ImmunizationRecommendationRecommendationDateCriterion_Input',
-	description:
-		'Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/immunization-recommendation-date-criterion
-			code: {
-				type: new GraphQLNonNull(require('./codeableconcept.input')),
-				description:
-					'Date classification of recommendation.  For example, earliest date to give, latest date to give, etc.',
-			},
-			value: {
-				type: new GraphQLNonNull(DateTimeScalar),
-				description:
-					'The date whose meaning is specified by dateCriterion.code.',
-			},
-			_value: {
-				type: require('./element.input'),
-				description:
-					'The date whose meaning is specified by dateCriterion.code.',
-			},
-		}),
+	name: 'ImmunizationRecommendationrecommendationdateCriterion_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/immunization-recommendation-date-criterion
+		code: {
+			type: new GraphQLNonNull(require('./codeableconcept.input.js')),
+			description:
+				'Date classification of recommendation.  For example, earliest date to give, latest date to give, etc.',
+		},
+		_value: {
+			type: require('./element.input.js'),
+			description: 'The date whose meaning is specified by dateCriterion.code.',
+		},
+		value: {
+			type: new GraphQLNonNull(DateTimeScalar),
+			description: 'The date whose meaning is specified by dateCriterion.code.',
+		},
+	}),
 });

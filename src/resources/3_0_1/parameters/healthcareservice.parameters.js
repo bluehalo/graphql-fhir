@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,54 +7,75 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the healthcareservice query
  */
 module.exports = {
-	identifier: {
-		type: TokenScalar,
-		description:
-			'External identifiers for this item (See http://hl7.org/fhir/SearchParameter/HealthcareService-identifier).',
-	},
-	endpoint: {
-		type: GraphQLString,
-		description:
-			'Technical endpoints providing access to services operated for the location (See http://hl7.org/fhir/SearchParameter/HealthcareService-endpoint).',
-	},
-	organization: {
-		type: GraphQLString,
-		description:
-			'The organization that provides this Healthcare Service (See http://hl7.org/fhir/SearchParameter/HealthcareService-organization).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			'A portion of the Healthcare service name (See http://hl7.org/fhir/SearchParameter/HealthcareService-name).',
-	},
-	programname: {
-		type: GraphQLString,
-		description:
-			'One of the Program Names serviced by this HealthcareService (See http://hl7.org/fhir/SearchParameter/HealthcareService-programname).',
-	},
+	// http://hl7.org/fhir/SearchParameter/HealthcareService-active
 	active: {
 		type: TokenScalar,
-		description:
-			'The Healthcare Service is currently marked as active (See http://hl7.org/fhir/SearchParameter/HealthcareService-active).',
+		fhirtype: 'token',
+		xpath: 'HealthcareService.active',
+		description: 'The Healthcare Service is currently marked as active',
 	},
-	location: {
-		type: GraphQLString,
-		description:
-			'The location of the Healthcare Service (See http://hl7.org/fhir/SearchParameter/HealthcareService-location).',
-	},
+	// http://hl7.org/fhir/SearchParameter/HealthcareService-category
 	category: {
 		type: TokenScalar,
-		description:
-			'Service Category of the Healthcare Service (See http://hl7.org/fhir/SearchParameter/HealthcareService-category).',
+		fhirtype: 'token',
+		xpath: 'HealthcareService.category',
+		description: 'Service Category of the Healthcare Service',
 	},
-	type: {
-		type: TokenScalar,
-		description:
-			'The type of service provided by this healthcare service (See http://hl7.org/fhir/SearchParameter/HealthcareService-type).',
-	},
+	// http://hl7.org/fhir/SearchParameter/HealthcareService-characteristic
 	characteristic: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'HealthcareService.characteristic',
+		description: "One of the HealthcareService's characteristics",
+	},
+	// http://hl7.org/fhir/SearchParameter/HealthcareService-endpoint
+	endpoint: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'HealthcareService.endpoint',
 		description:
-			"One of the HealthcareService's characteristics (See http://hl7.org/fhir/SearchParameter/HealthcareService-characteristic).",
+			'Technical endpoints providing access to services operated for the location',
+	},
+	// http://hl7.org/fhir/SearchParameter/HealthcareService-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'HealthcareService.identifier',
+		description: 'External identifiers for this item',
+	},
+	// http://hl7.org/fhir/SearchParameter/HealthcareService-location
+	location: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'HealthcareService.location',
+		description: 'The location of the Healthcare Service',
+	},
+	// http://hl7.org/fhir/SearchParameter/HealthcareService-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'HealthcareService.name',
+		description: 'A portion of the Healthcare service name',
+	},
+	// http://hl7.org/fhir/SearchParameter/HealthcareService-organization
+	organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'HealthcareService.providedBy',
+		description: 'The organization that provides this Healthcare Service',
+	},
+	// http://hl7.org/fhir/SearchParameter/HealthcareService-programname
+	programname: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'HealthcareService.programName',
+		description: 'One of the Program Names serviced by this HealthcareService',
+	},
+	// http://hl7.org/fhir/SearchParameter/HealthcareService-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'HealthcareService.type',
+		description: 'The type of service provided by this healthcare service',
 	},
 };

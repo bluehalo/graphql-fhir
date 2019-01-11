@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const PersonSchema = require('../../schemas/person.schema');
+const PersonSchema = require('../../schemas/person.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const PersonInput = require('../../inputs/person.input');
+const PersonInput = require('../../inputs/person.input.js');
 
-// Resolvers
-const {
-	personCreateResolver,
-	personUpdateResolver,
-	personDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createPerson, updatePerson, removePerson } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Person',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Person record.',
 	},
 	resource: {
@@ -39,7 +36,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Person record for deletion.',
 	},
@@ -47,33 +44,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.PersonCreateMutation
- * @summary PersonCreate Mutation.
+ * @summary PersonCreate mutation.
  */
 module.exports.PersonCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Person',
-	resolve: scopeInvariant(scopeOptions, personCreateResolver),
+	description: 'Create a Person record',
+	resolve: scopeInvariant(scopeOptions, createPerson),
 	type: PersonSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.PersonUpdateMutation
- * @summary PersonUpdate Mutation.
+ * @summary PersonUpdate mutation.
  */
 module.exports.PersonUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Persons',
-	resolve: scopeInvariant(scopeOptions, personUpdateResolver),
+	description: 'Update a Person record',
+	resolve: scopeInvariant(scopeOptions, updatePerson),
 	type: PersonSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.PersonDeleteMutation
- * @summary PersonDelete Mutation.
+ * @name exports.PersonRemoveMutation
+ * @summary PersonRemove mutation.
  */
-module.exports.PersonDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Person',
-	resolve: scopeInvariant(scopeOptions, personDeleteResolver),
+module.exports.PersonRemoveMutation = {
+	description: 'Remove a Person record',
+	resolve: scopeInvariant(scopeOptions, removePerson),
 	type: PersonSchema,
+	args: DeleteArgs,
 };

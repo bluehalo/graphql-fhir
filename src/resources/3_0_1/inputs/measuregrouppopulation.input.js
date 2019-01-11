@@ -1,58 +1,75 @@
 const {
-	GraphQLInputObjectType,
 	GraphQLString,
+	GraphQLList,
 	GraphQLNonNull,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
 
 /**
  * @name exports
- * @summary Measure.group.population Input Schema
+ * @summary Measuregrouppopulation Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'MeasureGroupPopulation_Input',
-	description: 'A population criteria for the measure.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			identifier: {
-				type: require('./identifier.input'),
-				description:
-					'A unique identifier for the population criteria. This identifier is used to report data against this criteria within the measure report.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/measure-population
-			code: {
-				type: require('./codeableconcept.input'),
-				description: 'The type of population criteria.',
-			},
-			name: {
-				type: GraphQLString,
-				description: 'Optional name or short description of this population.',
-			},
-			_name: {
-				type: require('./element.input'),
-				description: 'Optional name or short description of this population.',
-			},
-			description: {
-				type: GraphQLString,
-				description:
-					'The human readable description of this population criteria.',
-			},
-			_description: {
-				type: require('./element.input'),
-				description:
-					'The human readable description of this population criteria.',
-			},
-			criteria: {
-				type: new GraphQLNonNull(GraphQLString),
-				description:
-					'The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria.',
-			},
-			_criteria: {
-				type: require('./element.input'),
-				description:
-					'The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria.',
-			},
-		}),
+	name: 'Measuregrouppopulation_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		identifier: {
+			type: require('./identifier.input.js'),
+			description:
+				'A unique identifier for the population criteria. This identifier is used to report data against this criteria within the measure report.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/measure-population
+		code: {
+			type: require('./codeableconcept.input.js'),
+			description: 'The type of population criteria.',
+		},
+		_name: {
+			type: require('./element.input.js'),
+			description: 'Optional name or short description of this population.',
+		},
+		name: {
+			type: GraphQLString,
+			description: 'Optional name or short description of this population.',
+		},
+		_description: {
+			type: require('./element.input.js'),
+			description:
+				'The human readable description of this population criteria.',
+		},
+		description: {
+			type: GraphQLString,
+			description:
+				'The human readable description of this population criteria.',
+		},
+		_criteria: {
+			type: require('./element.input.js'),
+			description:
+				'The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria.',
+		},
+		criteria: {
+			type: new GraphQLNonNull(GraphQLString),
+			description:
+				'The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria.',
+		},
+	}),
 });

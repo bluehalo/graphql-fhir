@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.careplanResolver
+ * @name exports.getCarePlan
  * @static
- * @summary CarePlan Resolver.
+ * @summary CarePlan resolver.
  */
-module.exports.careplanResolver = function careplanResolver(
+module.exports.getCarePlan = function getCarePlan(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.careplanListResolver
+ * @name exports.getCarePlanList
  * @static
- * @summary CarePlan List Resolver.
+ * @summary CarePlan list resolver.
  */
-module.exports.careplanListResolver = function careplanListResolver(
+module.exports.getCarePlanList = function getCarePlanList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.careplanInstanceResolver
+ * @name exports.getCarePlanInstance
  * @static
- * @summary CarePlan Instance Resolver.
+ * @summary CarePlan instance resolver.
  */
-module.exports.careplanInstanceResolver = function careplanInstanceResolver(
+module.exports.getCarePlanInstance = function getCarePlanInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.careplanCreateResolver
+ * @name exports.createCarePlan
  * @static
- * @summary CarePlan Create Resolver.
+ * @summary Create CarePlan resolver.
  */
-module.exports.careplanCreateResolver = function careplanCreateResolver(
+module.exports.createCarePlan = function createCarePlan(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.careplanUpdateResolver
+ * @name exports.updateCarePlan
  * @static
- * @summary CarePlan Update Resolver.
+ * @summary Update CarePlan resolver.
  */
-module.exports.careplanUpdateResolver = function careplanUpdateResolver(
+module.exports.updateCarePlan = function updateCarePlan(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.careplanDeleteResolver
+ * @name exports.removeCarePlan
  * @static
- * @summary CarePlan Delete Resolver.
+ * @summary Remove CarePlan resolver.
  */
-module.exports.careplanDeleteResolver = function careplanDeleteResolver(
+module.exports.removeCarePlan = function removeCarePlan(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,55 +1,65 @@
 // Schemas
-const ImagingManifestSchema = require('../../schemas/imagingmanifest.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ImagingManifestSchema = require('../../schemas/imagingmanifest.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ImagingManifestArgs = require('../../parameters/imagingmanifest.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ImagingManifestArgs = require('../../parameters/imagingmanifest.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+const DomainResourceArgs = require('../../parameters/domainresource.parameters.js');
+
+let args = Object.assign(
+	{},
+	DomainResourceArgs,
+	ResourceArgs,
+	ImagingManifestArgs,
+);
 
 // Resolvers
 const {
-	imagingmanifestResolver,
-	imagingmanifestListResolver,
-	imagingmanifestInstanceResolver,
+	getImagingManifest,
+	getImagingManifestList,
+	getImagingManifestInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ImagingManifest',
 	action: 'read',
-	version: '3_0_1',
 };
 
 /**
  * @name exports.ImagingManifestQuery
- * @summary ImagingManifest Query.
+ * @summary ImagingManifest query.
  */
 module.exports.ImagingManifestQuery = {
-	args: Object.assign({}, CommonArgs, ImagingManifestArgs),
 	description: 'Query for a single ImagingManifest',
-	resolve: scopeInvariant(scopeOptions, imagingmanifestResolver),
+	resolve: scopeInvariant(scopeOptions, getImagingManifest),
 	type: ImagingManifestSchema,
+	args: args,
 };
 
 /**
  * @name exports.ImagingManifestListQuery
- * @summary ImagingManifestList Query.
+ * @summary ImagingManifest query.
  */
 module.exports.ImagingManifestListQuery = {
-	args: Object.assign({}, CommonArgs, ImagingManifestArgs),
-	description: 'Query for multiple ImagingManifests',
-	resolve: scopeInvariant(scopeOptions, imagingmanifestListResolver),
+	description: 'Query for a more than or just one ImagingManifest',
+	resolve: scopeInvariant(scopeOptions, getImagingManifestList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ImagingManifestInstanceQuery
- * @summary ImagingManifestInstance Query.
+ * @summary ImagingManifest query.
  */
 module.exports.ImagingManifestInstanceQuery = {
-	description: 'Get information about a single ImagingManifest',
-	resolve: scopeInvariant(scopeOptions, imagingmanifestInstanceResolver),
+	description: 'Access information about a single ImagingManifest',
+	resolve: scopeInvariant(scopeOptions, getImagingManifestInstance),
 	type: ImagingManifestSchema,
+	args: args,
 };

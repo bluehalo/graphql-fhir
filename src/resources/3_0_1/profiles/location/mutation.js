@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const LocationSchema = require('../../schemas/location.schema');
+const LocationSchema = require('../../schemas/location.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const LocationInput = require('../../inputs/location.input');
+const LocationInput = require('../../inputs/location.input.js');
 
-// Resolvers
-const {
-	locationCreateResolver,
-	locationUpdateResolver,
-	locationDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createLocation,
+	updateLocation,
+	removeLocation,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Location',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Location record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Location record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.LocationCreateMutation
- * @summary LocationCreate Mutation.
+ * @summary LocationCreate mutation.
  */
 module.exports.LocationCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Location',
-	resolve: scopeInvariant(scopeOptions, locationCreateResolver),
+	description: 'Create a Location record',
+	resolve: scopeInvariant(scopeOptions, createLocation),
 	type: LocationSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.LocationUpdateMutation
- * @summary LocationUpdate Mutation.
+ * @summary LocationUpdate mutation.
  */
 module.exports.LocationUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Locations',
-	resolve: scopeInvariant(scopeOptions, locationUpdateResolver),
+	description: 'Update a Location record',
+	resolve: scopeInvariant(scopeOptions, updateLocation),
 	type: LocationSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.LocationDeleteMutation
- * @summary LocationDelete Mutation.
+ * @name exports.LocationRemoveMutation
+ * @summary LocationRemove mutation.
  */
-module.exports.LocationDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Location',
-	resolve: scopeInvariant(scopeOptions, locationDeleteResolver),
+module.exports.LocationRemoveMutation = {
+	description: 'Remove a Location record',
+	resolve: scopeInvariant(scopeOptions, removeLocation),
 	type: LocationSchema,
+	args: DeleteArgs,
 };

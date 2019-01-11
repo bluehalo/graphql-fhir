@@ -1,26 +1,67 @@
-const { GraphQLObjectType, GraphQLNonNull } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLString,
+	GraphQLList,
+	GraphQLNonNull,
+	GraphQLUnionType,
+	GraphQLObjectType,
+} = require('graphql');
 
 /**
  * @name exports
- * @summary DiagnosticReport.performer Schema
+ * @summary DiagnosticReportperformer Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'DiagnosticReportPerformer',
-	description: 'Indicates who or what participated in producing the report.',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/performer-role
-			role: {
-				type: require('./codeableconcept.schema'),
-				description:
-					'Describes the type of participation (e.g.  a responsible party, author, or verifier).',
-			},
-			actor: {
-				type: new GraphQLNonNull(require('./reference.schema')),
-				description:
-					'The reference to the  practitioner or organization involved in producing the report. For example, the diagnostic service that is responsible for issuing the report.',
-			},
-		}),
+	name: 'DiagnosticReportperformer',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/performer-role
+		role: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				'Describes the type of participation (e.g.  a responsible party, author, or verifier).',
+		},
+		actor: {
+			type: new GraphQLNonNull(
+				new GraphQLUnionType({
+					name: 'DiagnosticReportperformeractor_actor_Union',
+					description:
+						'The reference to the  practitioner or organization involved in producing the report. For example, the diagnostic service that is responsible for issuing the report.',
+					types: () => [
+						require('./practitioner.schema.js'),
+						require('./organization.schema.js'),
+					],
+					resolveType(data) {
+						if (data && data.resourceType === 'Practitioner') {
+							return require('./practitioner.schema.js');
+						}
+						if (data && data.resourceType === 'Organization') {
+							return require('./organization.schema.js');
+						}
+					},
+				}),
+			),
+			description:
+				'The reference to the  practitioner or organization involved in producing the report. For example, the diagnostic service that is responsible for issuing the report.',
+		},
+	}),
 });

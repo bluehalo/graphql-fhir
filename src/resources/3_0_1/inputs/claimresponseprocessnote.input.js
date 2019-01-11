@@ -1,46 +1,66 @@
-const PositiveIntScalar = require('../scalars/positiveint.scalar');
-const { GraphQLInputObjectType, GraphQLString } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLString,
+	GraphQLList,
+	GraphQLInputObjectType,
+} = require('graphql');
+const PositiveIntScalar = require('../scalars/positiveint.scalar.js');
 
 /**
  * @name exports
- * @summary ClaimResponse.processNote Input Schema
+ * @summary ClaimResponseprocessNote Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'ClaimResponseProcessNote_Input',
-	description: 'Note text.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			number: {
-				type: PositiveIntScalar,
-				description:
-					'An integer associated with each note which may be referred to from each service line item.',
-			},
-			_number: {
-				type: require('./element.input'),
-				description:
-					'An integer associated with each note which may be referred to from each service line item.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/note-type
-			type: {
-				type: require('./codeableconcept.input'),
-				description: 'The note purpose: Print/Display.',
-			},
-			text: {
-				type: GraphQLString,
-				description: 'The note text.',
-			},
-			_text: {
-				type: require('./element.input'),
-				description: 'The note text.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
-			language: {
-				type: require('./codeableconcept.input'),
-				description:
-					"The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. 'en' for English, or 'en-US' for American English versus 'en-EN' for England English.",
-			},
-		}),
+	name: 'ClaimResponseprocessNote_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_number: {
+			type: require('./element.input.js'),
+			description:
+				'An integer associated with each note which may be referred to from each service line item.',
+		},
+		number: {
+			type: PositiveIntScalar,
+			description:
+				'An integer associated with each note which may be referred to from each service line item.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/note-type
+		type: {
+			type: require('./codeableconcept.input.js'),
+			description: 'The note purpose: Print/Display.',
+		},
+		_text: {
+			type: require('./element.input.js'),
+			description: 'The note text.',
+		},
+		text: {
+			type: GraphQLString,
+			description: 'The note text.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/languages
+		language: {
+			type: require('./codeableconcept.input.js'),
+			description:
+				"The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. 'en' for English, or 'en-US' for American English versus 'en-EN' for England English.",
+		},
+	}),
 });

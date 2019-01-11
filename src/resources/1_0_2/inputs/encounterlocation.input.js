@@ -1,38 +1,59 @@
-const CodeScalar = require('../scalars/code.scalar');
-const { GraphQLInputObjectType, GraphQLNonNull } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLList,
+	GraphQLNonNull,
+	GraphQLString,
+	GraphQLInputObjectType,
+} = require('graphql');
+const IdScalar = require('../scalars/id.scalar.js');
+const CodeScalar = require('../scalars/code.scalar.js');
 
 /**
  * @name exports
- * @summary Encounter.location Input Schema
+ * @summary Encounterlocation Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'EncounterLocation_Input',
-	description:
-		'List of locations where  the patient has been during this encounter.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			location: {
-				type: new GraphQLNonNull(require('./reference.input')),
-				description: 'The location where the encounter takes place.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-location-status
-			status: {
-				type: CodeScalar,
-				description:
-					"The status of the participants' presence at the specified location during the period specified. If the participant is is no longer at the location, then the period will have an end date/time.",
-			},
-			_status: {
-				type: require('./element.input'),
-				description:
-					"The status of the participants' presence at the specified location during the period specified. If the participant is is no longer at the location, then the period will have an end date/time.",
-			},
-			period: {
-				type: require('./period.input'),
-				description:
-					'Time period during which the patient was present at the location.',
-			},
-		}),
+	name: 'Encounterlocation_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		location: {
+			type: new GraphQLNonNull(GraphQLString),
+			description: 'The location where the encounter takes place.',
+		},
+		_status: {
+			type: require('./element.input.js'),
+			description:
+				"The status of the participants' presence at the specified location during the period specified. If the participant is is no longer at the location, then the period will have an end date/time.",
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/encounter-location-status
+		status: {
+			type: CodeScalar,
+			description:
+				"The status of the participants' presence at the specified location during the period specified. If the participant is is no longer at the location, then the period will have an end date/time.",
+		},
+		period: {
+			type: require('./period.input.js'),
+			description:
+				'Time period during which the patient was present at the location.',
+		},
+	}),
 });

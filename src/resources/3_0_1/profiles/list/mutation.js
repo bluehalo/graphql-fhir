@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ListSchema = require('../../schemas/list.schema');
+const ListSchema = require('../../schemas/list.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ListInput = require('../../inputs/list.input');
+const ListInput = require('../../inputs/list.input.js');
 
-// Resolvers
-const {
-	listCreateResolver,
-	listUpdateResolver,
-	listDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createList, updateList, removeList } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'List',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a List record.',
 	},
 	resource: {
@@ -39,40 +36,40 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description: 'Unique identifier for selecting a List record for deletion.',
 	},
 };
 
 /**
  * @name exports.ListCreateMutation
- * @summary ListCreate Mutation.
+ * @summary ListCreate mutation.
  */
 module.exports.ListCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a List',
-	resolve: scopeInvariant(scopeOptions, listCreateResolver),
+	description: 'Create a List record',
+	resolve: scopeInvariant(scopeOptions, createList),
 	type: ListSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ListUpdateMutation
- * @summary ListUpdate Mutation.
+ * @summary ListUpdate mutation.
  */
 module.exports.ListUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Lists',
-	resolve: scopeInvariant(scopeOptions, listUpdateResolver),
+	description: 'Update a List record',
+	resolve: scopeInvariant(scopeOptions, updateList),
 	type: ListSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ListDeleteMutation
- * @summary ListDelete Mutation.
+ * @name exports.ListRemoveMutation
+ * @summary ListRemove mutation.
  */
-module.exports.ListDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single List',
-	resolve: scopeInvariant(scopeOptions, listDeleteResolver),
+module.exports.ListRemoveMutation = {
+	description: 'Remove a List record',
+	resolve: scopeInvariant(scopeOptions, removeList),
 	type: ListSchema,
+	args: DeleteArgs,
 };

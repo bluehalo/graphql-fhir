@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const SequenceSchema = require('../../schemas/sequence.schema');
+const SequenceSchema = require('../../schemas/sequence.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const SequenceInput = require('../../inputs/sequence.input');
+const SequenceInput = require('../../inputs/sequence.input.js');
 
-// Resolvers
-const {
-	sequenceCreateResolver,
-	sequenceUpdateResolver,
-	sequenceDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createSequence,
+	updateSequence,
+	removeSequence,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Sequence',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Sequence record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Sequence record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.SequenceCreateMutation
- * @summary SequenceCreate Mutation.
+ * @summary SequenceCreate mutation.
  */
 module.exports.SequenceCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Sequence',
-	resolve: scopeInvariant(scopeOptions, sequenceCreateResolver),
+	description: 'Create a Sequence record',
+	resolve: scopeInvariant(scopeOptions, createSequence),
 	type: SequenceSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.SequenceUpdateMutation
- * @summary SequenceUpdate Mutation.
+ * @summary SequenceUpdate mutation.
  */
 module.exports.SequenceUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Sequences',
-	resolve: scopeInvariant(scopeOptions, sequenceUpdateResolver),
+	description: 'Update a Sequence record',
+	resolve: scopeInvariant(scopeOptions, updateSequence),
 	type: SequenceSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.SequenceDeleteMutation
- * @summary SequenceDelete Mutation.
+ * @name exports.SequenceRemoveMutation
+ * @summary SequenceRemove mutation.
  */
-module.exports.SequenceDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Sequence',
-	resolve: scopeInvariant(scopeOptions, sequenceDeleteResolver),
+module.exports.SequenceRemoveMutation = {
+	description: 'Remove a Sequence record',
+	resolve: scopeInvariant(scopeOptions, removeSequence),
 	type: SequenceSchema,
+	args: DeleteArgs,
 };

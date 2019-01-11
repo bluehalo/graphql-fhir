@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const DeviceUseRequestSchema = require('../../schemas/deviceuserequest.schema');
+const DeviceUseRequestSchema = require('../../schemas/deviceuserequest.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const DeviceUseRequestInput = require('../../inputs/deviceuserequest.input');
+const DeviceUseRequestInput = require('../../inputs/deviceuserequest.input.js');
 
-// Resolvers
-const {
-	deviceuserequestCreateResolver,
-	deviceuserequestUpdateResolver,
-	deviceuserequestDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createDeviceUseRequest,
+	updateDeviceUseRequest,
+	removeDeviceUseRequest,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DeviceUseRequest',
 	action: 'write',
-	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a DeviceUseRequest record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a DeviceUseRequest record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.DeviceUseRequestCreateMutation
- * @summary DeviceUseRequestCreate Mutation.
+ * @summary DeviceUseRequestCreate mutation.
  */
 module.exports.DeviceUseRequestCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a DeviceUseRequest',
-	resolve: scopeInvariant(scopeOptions, deviceuserequestCreateResolver),
+	description: 'Create a DeviceUseRequest record',
+	resolve: scopeInvariant(scopeOptions, createDeviceUseRequest),
 	type: DeviceUseRequestSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.DeviceUseRequestUpdateMutation
- * @summary DeviceUseRequestUpdate Mutation.
+ * @summary DeviceUseRequestUpdate mutation.
  */
 module.exports.DeviceUseRequestUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple DeviceUseRequests',
-	resolve: scopeInvariant(scopeOptions, deviceuserequestUpdateResolver),
+	description: 'Update a DeviceUseRequest record',
+	resolve: scopeInvariant(scopeOptions, updateDeviceUseRequest),
 	type: DeviceUseRequestSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.DeviceUseRequestDeleteMutation
- * @summary DeviceUseRequestDelete Mutation.
+ * @name exports.DeviceUseRequestRemoveMutation
+ * @summary DeviceUseRequestRemove mutation.
  */
-module.exports.DeviceUseRequestDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single DeviceUseRequest',
-	resolve: scopeInvariant(scopeOptions, deviceuserequestDeleteResolver),
+module.exports.DeviceUseRequestRemoveMutation = {
+	description: 'Remove a DeviceUseRequest record',
+	resolve: scopeInvariant(scopeOptions, removeDeviceUseRequest),
 	type: DeviceUseRequestSchema,
+	args: DeleteArgs,
 };

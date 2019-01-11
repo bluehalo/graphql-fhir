@@ -1,7 +1,7 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,59 +9,81 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the testscript query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/TestScript-date
 	date: {
 		type: DateScalar,
-		description:
-			'The test script publication date (See http://hl7.org/fhir/SearchParameter/TestScript-date).',
+		fhirtype: 'date',
+		xpath: 'TestScript.date',
+		description: 'The test script publication date',
 	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'External identifier for the test script (See http://hl7.org/fhir/SearchParameter/TestScript-identifier).',
-	},
-	jurisdiction: {
-		type: TokenScalar,
-		description:
-			'Intended jurisdiction for the test script (See http://hl7.org/fhir/SearchParameter/TestScript-jurisdiction).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			'Computationally friendly name of the test script (See http://hl7.org/fhir/SearchParameter/TestScript-name).',
-	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-description
 	description: {
 		type: GraphQLString,
-		description:
-			'The description of the test script (See http://hl7.org/fhir/SearchParameter/TestScript-description).',
+		fhirtype: 'string',
+		xpath: 'TestScript.description',
+		description: 'The description of the test script',
 	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'TestScript.identifier',
+		description: 'External identifier for the test script',
+	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-jurisdiction
+	jurisdiction: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'TestScript.jurisdiction',
+		description: 'Intended jurisdiction for the test script',
+	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'TestScript.name',
+		description: 'Computationally friendly name of the test script',
+	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-publisher
 	publisher: {
 		type: GraphQLString,
-		description:
-			'Name of the publisher of the test script (See http://hl7.org/fhir/SearchParameter/TestScript-publisher).',
+		fhirtype: 'string',
+		xpath: 'TestScript.publisher',
+		description: 'Name of the publisher of the test script',
 	},
-	testscript_capability: {
-		type: GraphQLString,
-		description:
-			'TestScript required and validated capability (See http://hl7.org/fhir/SearchParameter/TestScript-testscript-capability).',
-	},
-	title: {
-		type: GraphQLString,
-		description:
-			'The human-friendly name of the test script (See http://hl7.org/fhir/SearchParameter/TestScript-title).',
-	},
-	version: {
-		type: TokenScalar,
-		description:
-			'The business version of the test script (See http://hl7.org/fhir/SearchParameter/TestScript-version).',
-	},
-	url: {
-		type: UriScalar,
-		description:
-			'The uri that identifies the test script (See http://hl7.org/fhir/SearchParameter/TestScript-url).',
-	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-status
 	status: {
 		type: TokenScalar,
-		description:
-			'The current status of the test script (See http://hl7.org/fhir/SearchParameter/TestScript-status).',
+		fhirtype: 'token',
+		xpath: 'TestScript.status',
+		description: 'The current status of the test script',
+	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-testscript-capability
+	testscript_capability: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'TestScript.metadata.capability.description',
+		description: 'TestScript required and validated capability',
+	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-title
+	title: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'TestScript.title',
+		description: 'The human-friendly name of the test script',
+	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-url
+	url: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'TestScript.url',
+		description: 'The uri that identifies the test script',
+	},
+	// http://hl7.org/fhir/SearchParameter/TestScript-version
+	version: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'TestScript.version',
+		description: 'The business version of the test script',
 	},
 };

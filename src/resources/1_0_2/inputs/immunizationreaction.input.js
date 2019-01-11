@@ -1,38 +1,59 @@
-const DateTimeScalar = require('../scalars/datetime.scalar');
-const { GraphQLInputObjectType, GraphQLBoolean } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLList,
+	GraphQLString,
+	GraphQLBoolean,
+	GraphQLInputObjectType,
+} = require('graphql');
+const IdScalar = require('../scalars/id.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 
 /**
  * @name exports
- * @summary Immunization.reaction Input Schema
+ * @summary Immunizationreaction Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'ImmunizationReaction_Input',
-	description:
-		'Categorical data indicating that an adverse event is associated in time to an immunization.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			date: {
-				type: DateTimeScalar,
-				description: 'Date of reaction to the immunization.',
-			},
-			_date: {
-				type: require('./element.input'),
-				description: 'Date of reaction to the immunization.',
-			},
-			detail: {
-				type: require('./reference.input'),
-				description: 'Details of the reaction.',
-			},
-			reported: {
-				type: GraphQLBoolean,
-				description: 'Self-reported indicator.',
-			},
-			_reported: {
-				type: require('./element.input'),
-				description: 'Self-reported indicator.',
-			},
-		}),
+	name: 'Immunizationreaction_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_date: {
+			type: require('./element.input.js'),
+			description: 'Date of reaction to the immunization.',
+		},
+		date: {
+			type: DateTimeScalar,
+			description: 'Date of reaction to the immunization.',
+		},
+		detail: {
+			type: GraphQLString,
+			description: 'Details of the reaction.',
+		},
+		_reported: {
+			type: require('./element.input.js'),
+			description: 'Self-reported indicator.',
+		},
+		reported: {
+			type: GraphQLBoolean,
+			description: 'Self-reported indicator.',
+		},
+	}),
 });

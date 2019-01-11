@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.procedurerequestResolver
+ * @name exports.getProcedureRequest
  * @static
- * @summary ProcedureRequest Resolver.
+ * @summary ProcedureRequest resolver.
  */
-module.exports.procedurerequestResolver = function procedurerequestResolver(
+module.exports.getProcedureRequest = function getProcedureRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.procedurerequestListResolver
+ * @name exports.getProcedureRequestList
  * @static
- * @summary ProcedureRequest List Resolver.
+ * @summary ProcedureRequest list resolver.
  */
-module.exports.procedurerequestListResolver = function procedurerequestListResolver(
+module.exports.getProcedureRequestList = function getProcedureRequestList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.procedurerequestInstanceResolver
+ * @name exports.getProcedureRequestInstance
  * @static
- * @summary ProcedureRequest Instance Resolver.
+ * @summary ProcedureRequest instance resolver.
  */
-module.exports.procedurerequestInstanceResolver = function procedurerequestInstanceResolver(
+module.exports.getProcedureRequestInstance = function getProcedureRequestInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.procedurerequestCreateResolver
+ * @name exports.createProcedureRequest
  * @static
- * @summary ProcedureRequest Create Resolver.
+ * @summary Create ProcedureRequest resolver.
  */
-module.exports.procedurerequestCreateResolver = function procedurerequestCreateResolver(
+module.exports.createProcedureRequest = function createProcedureRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.procedurerequestUpdateResolver
+ * @name exports.updateProcedureRequest
  * @static
- * @summary ProcedureRequest Update Resolver.
+ * @summary Update ProcedureRequest resolver.
  */
-module.exports.procedurerequestUpdateResolver = function procedurerequestUpdateResolver(
+module.exports.updateProcedureRequest = function updateProcedureRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.procedurerequestDeleteResolver
+ * @name exports.removeProcedureRequest
  * @static
- * @summary ProcedureRequest Delete Resolver.
+ * @summary Remove ProcedureRequest resolver.
  */
-module.exports.procedurerequestDeleteResolver = function procedurerequestDeleteResolver(
+module.exports.removeProcedureRequest = function removeProcedureRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

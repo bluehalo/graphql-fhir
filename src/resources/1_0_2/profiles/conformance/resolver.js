@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.conformanceResolver
+ * @name exports.getConformance
  * @static
- * @summary Conformance Resolver.
+ * @summary Conformance resolver.
  */
-module.exports.conformanceResolver = function conformanceResolver(
+module.exports.getConformance = function getConformance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conformanceListResolver
+ * @name exports.getConformanceList
  * @static
- * @summary Conformance List Resolver.
+ * @summary Conformance list resolver.
  */
-module.exports.conformanceListResolver = function conformanceListResolver(
+module.exports.getConformanceList = function getConformanceList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conformanceInstanceResolver
+ * @name exports.getConformanceInstance
  * @static
- * @summary Conformance Instance Resolver.
+ * @summary Conformance instance resolver.
  */
-module.exports.conformanceInstanceResolver = function conformanceInstanceResolver(
+module.exports.getConformanceInstance = function getConformanceInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conformanceCreateResolver
+ * @name exports.createConformance
  * @static
- * @summary Conformance Create Resolver.
+ * @summary Create Conformance resolver.
  */
-module.exports.conformanceCreateResolver = function conformanceCreateResolver(
+module.exports.createConformance = function createConformance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conformanceUpdateResolver
+ * @name exports.updateConformance
  * @static
- * @summary Conformance Update Resolver.
+ * @summary Update Conformance resolver.
  */
-module.exports.conformanceUpdateResolver = function conformanceUpdateResolver(
+module.exports.updateConformance = function updateConformance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.conformanceDeleteResolver
+ * @name exports.removeConformance
  * @static
- * @summary Conformance Delete Resolver.
+ * @summary Remove Conformance resolver.
  */
-module.exports.conformanceDeleteResolver = function conformanceDeleteResolver(
+module.exports.removeConformance = function removeConformance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

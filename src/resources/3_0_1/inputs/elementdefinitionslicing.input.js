@@ -1,62 +1,70 @@
-const CodeScalar = require('../scalars/code.scalar');
 const {
-	GraphQLInputObjectType,
-	GraphQLList,
 	GraphQLString,
+	GraphQLList,
 	GraphQLBoolean,
 	GraphQLNonNull,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const CodeScalar = require('../scalars/code.scalar.js');
 
 /**
  * @name exports
- * @summary ElementDefinition.slicing Input Schema
+ * @summary ElementDefinitionslicing Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'ElementDefinitionSlicing_Input',
-	description:
-		'Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).',
-	fields: () =>
-		extendSchema(require('./element.input'), {
-			discriminator: {
-				type: new GraphQLList(
-					require('./elementdefinitionslicingdiscriminator.input'),
-				),
-				description:
-					'Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.',
-			},
-			description: {
-				type: GraphQLString,
-				description:
-					'A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.',
-			},
-			_description: {
-				type: require('./element.input'),
-				description:
-					'A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.',
-			},
-			ordered: {
-				type: GraphQLBoolean,
-				description:
-					'If the matching elements have to occur in the same order as defined in the profile.',
-			},
-			_ordered: {
-				type: require('./element.input'),
-				description:
-					'If the matching elements have to occur in the same order as defined in the profile.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/resource-slicing-rules
-			rules: {
-				type: new GraphQLNonNull(CodeScalar),
-				description:
-					'Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.',
-			},
-			_rules: {
-				type: require('./element.input'),
-				description:
-					'Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.',
-			},
-		}),
+	name: 'ElementDefinitionslicing_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		discriminator: {
+			type: new GraphQLList(require('./element.input.js')),
+			description:
+				'Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.',
+		},
+		_description: {
+			type: require('./element.input.js'),
+			description:
+				'A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.',
+		},
+		description: {
+			type: GraphQLString,
+			description:
+				'A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.',
+		},
+		_ordered: {
+			type: require('./element.input.js'),
+			description:
+				'If the matching elements have to occur in the same order as defined in the profile.',
+		},
+		ordered: {
+			type: GraphQLBoolean,
+			description:
+				'If the matching elements have to occur in the same order as defined in the profile.',
+		},
+		_rules: {
+			type: require('./element.input.js'),
+			description:
+				'Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/resource-slicing-rules
+		rules: {
+			type: new GraphQLNonNull(CodeScalar),
+			description:
+				'Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.',
+		},
+	}),
 });

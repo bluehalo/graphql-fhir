@@ -1,55 +1,59 @@
 // Schemas
-const SubscriptionSchema = require('../../schemas/subscription.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const SubscriptionSchema = require('../../schemas/subscription.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const SubscriptionArgs = require('../../parameters/subscription.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const SubscriptionArgs = require('../../parameters/subscription.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, SubscriptionArgs);
 
 // Resolvers
 const {
-	subscriptionResolver,
-	subscriptionListResolver,
-	subscriptionInstanceResolver,
+	getSubscription,
+	getSubscriptionList,
+	getSubscriptionInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Subscription',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.SubscriptionQuery
- * @summary Subscription Query.
+ * @summary Subscription query.
  */
 module.exports.SubscriptionQuery = {
-	args: Object.assign({}, CommonArgs, SubscriptionArgs),
 	description: 'Query for a single Subscription',
-	resolve: scopeInvariant(scopeOptions, subscriptionResolver),
+	resolve: scopeInvariant(scopeOptions, getSubscription),
 	type: SubscriptionSchema,
+	args: args,
 };
 
 /**
  * @name exports.SubscriptionListQuery
- * @summary SubscriptionList Query.
+ * @summary Subscription query.
  */
 module.exports.SubscriptionListQuery = {
-	args: Object.assign({}, CommonArgs, SubscriptionArgs),
-	description: 'Query for multiple Subscriptions',
-	resolve: scopeInvariant(scopeOptions, subscriptionListResolver),
+	description: 'Query for a more than or just one Subscription',
+	resolve: scopeInvariant(scopeOptions, getSubscriptionList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.SubscriptionInstanceQuery
- * @summary SubscriptionInstance Query.
+ * @summary Subscription query.
  */
 module.exports.SubscriptionInstanceQuery = {
-	description: 'Get information about a single Subscription',
-	resolve: scopeInvariant(scopeOptions, subscriptionInstanceResolver),
+	description: 'Access information about a single Subscription',
+	resolve: scopeInvariant(scopeOptions, getSubscriptionInstance),
 	type: SubscriptionSchema,
+	args: args,
 };

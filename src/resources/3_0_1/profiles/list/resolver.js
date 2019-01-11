@@ -1,86 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.listResolver
+ * @name exports.getList
  * @static
- * @summary List Resolver.
+ * @summary List resolver.
  */
-module.exports.listResolver = function listResolver(root, args, context, info) {
-	let { server, req, res, version } = context;
+module.exports.getList = function getList(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.listListResolver
+ * @name exports.getListList
  * @static
- * @summary List List Resolver.
+ * @summary List list resolver.
  */
-module.exports.listListResolver = function listListResolver(
+module.exports.getListList = function getListList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.listInstanceResolver
+ * @name exports.getListInstance
  * @static
- * @summary List Instance Resolver.
+ * @summary List instance resolver.
  */
-module.exports.listInstanceResolver = function listInstanceResolver(
+module.exports.getListInstance = function getListInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.listCreateResolver
+ * @name exports.createList
  * @static
- * @summary List Create Resolver.
+ * @summary Create List resolver.
  */
-module.exports.listCreateResolver = function listCreateResolver(
+module.exports.createList = function createList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.listUpdateResolver
+ * @name exports.updateList
  * @static
- * @summary List Update Resolver.
+ * @summary Update List resolver.
  */
-module.exports.listUpdateResolver = function listUpdateResolver(
+module.exports.updateList = function updateList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.listDeleteResolver
+ * @name exports.removeList
  * @static
- * @summary List Delete Resolver.
+ * @summary Remove List resolver.
  */
-module.exports.listDeleteResolver = function listDeleteResolver(
+module.exports.removeList = function removeList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,19 +7,25 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the enrollmentrequest query
  */
 module.exports = {
-	patient: {
-		type: GraphQLString,
-		description:
-			'The party to be enrolled (See http://hl7.org/fhir/SearchParameter/enrollmentrequest-patient).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'The party to be enrolled (See http://hl7.org/fhir/SearchParameter/enrollmentrequest-subject).',
-	},
+	// http://hl7.org/fhir/SearchParameter/EnrollmentRequest-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'The business identifier of the Enrollment (See http://hl7.org/fhir/SearchParameter/enrollmentrequest-identifier).',
+		fhirtype: 'token',
+		xpath: 'EnrollmentRequest.identifier',
+		description: 'The business identifier of the Enrollment',
+	},
+	// http://hl7.org/fhir/SearchParameter/EnrollmentRequest-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'EnrollmentRequest.subject',
+		description: 'The party to be enrolled',
+	},
+	// http://hl7.org/fhir/SearchParameter/EnrollmentRequest-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'EnrollmentRequest.subject',
+		description: 'The party to be enrolled',
 	},
 };

@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const AuditEventSchema = require('../../schemas/auditevent.schema');
+const AuditEventSchema = require('../../schemas/auditevent.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const AuditEventInput = require('../../inputs/auditevent.input');
+const AuditEventInput = require('../../inputs/auditevent.input.js');
 
-// Resolvers
-const {
-	auditeventCreateResolver,
-	auditeventUpdateResolver,
-	auditeventDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createAuditEvent,
+	updateAuditEvent,
+	removeAuditEvent,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'AuditEvent',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a AuditEvent record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a AuditEvent record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.AuditEventCreateMutation
- * @summary AuditEventCreate Mutation.
+ * @summary AuditEventCreate mutation.
  */
 module.exports.AuditEventCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a AuditEvent',
-	resolve: scopeInvariant(scopeOptions, auditeventCreateResolver),
+	description: 'Create a AuditEvent record',
+	resolve: scopeInvariant(scopeOptions, createAuditEvent),
 	type: AuditEventSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.AuditEventUpdateMutation
- * @summary AuditEventUpdate Mutation.
+ * @summary AuditEventUpdate mutation.
  */
 module.exports.AuditEventUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple AuditEvents',
-	resolve: scopeInvariant(scopeOptions, auditeventUpdateResolver),
+	description: 'Update a AuditEvent record',
+	resolve: scopeInvariant(scopeOptions, updateAuditEvent),
 	type: AuditEventSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.AuditEventDeleteMutation
- * @summary AuditEventDelete Mutation.
+ * @name exports.AuditEventRemoveMutation
+ * @summary AuditEventRemove mutation.
  */
-module.exports.AuditEventDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single AuditEvent',
-	resolve: scopeInvariant(scopeOptions, auditeventDeleteResolver),
+module.exports.AuditEventRemoveMutation = {
+	description: 'Remove a AuditEvent record',
+	resolve: scopeInvariant(scopeOptions, removeAuditEvent),
 	type: AuditEventSchema,
+	args: DeleteArgs,
 };

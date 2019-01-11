@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.expansionprofileResolver
+ * @name exports.getExpansionProfile
  * @static
- * @summary ExpansionProfile Resolver.
+ * @summary ExpansionProfile resolver.
  */
-module.exports.expansionprofileResolver = function expansionprofileResolver(
+module.exports.getExpansionProfile = function getExpansionProfile(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.expansionprofileListResolver
+ * @name exports.getExpansionProfileList
  * @static
- * @summary ExpansionProfile List Resolver.
+ * @summary ExpansionProfile list resolver.
  */
-module.exports.expansionprofileListResolver = function expansionprofileListResolver(
+module.exports.getExpansionProfileList = function getExpansionProfileList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.expansionprofileInstanceResolver
+ * @name exports.getExpansionProfileInstance
  * @static
- * @summary ExpansionProfile Instance Resolver.
+ * @summary ExpansionProfile instance resolver.
  */
-module.exports.expansionprofileInstanceResolver = function expansionprofileInstanceResolver(
+module.exports.getExpansionProfileInstance = function getExpansionProfileInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.expansionprofileCreateResolver
+ * @name exports.createExpansionProfile
  * @static
- * @summary ExpansionProfile Create Resolver.
+ * @summary Create ExpansionProfile resolver.
  */
-module.exports.expansionprofileCreateResolver = function expansionprofileCreateResolver(
+module.exports.createExpansionProfile = function createExpansionProfile(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.expansionprofileUpdateResolver
+ * @name exports.updateExpansionProfile
  * @static
- * @summary ExpansionProfile Update Resolver.
+ * @summary Update ExpansionProfile resolver.
  */
-module.exports.expansionprofileUpdateResolver = function expansionprofileUpdateResolver(
+module.exports.updateExpansionProfile = function updateExpansionProfile(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.expansionprofileDeleteResolver
+ * @name exports.removeExpansionProfile
  * @static
- * @summary ExpansionProfile Delete Resolver.
+ * @summary Remove ExpansionProfile resolver.
  */
-module.exports.expansionprofileDeleteResolver = function expansionprofileDeleteResolver(
+module.exports.removeExpansionProfile = function removeExpansionProfile(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,55 +1,59 @@
 // Schemas
-const OrganizationSchema = require('../../schemas/organization.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const OrganizationSchema = require('../../schemas/organization.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const OrganizationArgs = require('../../parameters/organization.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const OrganizationArgs = require('../../parameters/organization.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, OrganizationArgs);
 
 // Resolvers
 const {
-	organizationResolver,
-	organizationListResolver,
-	organizationInstanceResolver,
+	getOrganization,
+	getOrganizationList,
+	getOrganizationInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Organization',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.OrganizationQuery
- * @summary Organization Query.
+ * @summary Organization query.
  */
 module.exports.OrganizationQuery = {
-	args: Object.assign({}, CommonArgs, OrganizationArgs),
 	description: 'Query for a single Organization',
-	resolve: scopeInvariant(scopeOptions, organizationResolver),
+	resolve: scopeInvariant(scopeOptions, getOrganization),
 	type: OrganizationSchema,
+	args: args,
 };
 
 /**
  * @name exports.OrganizationListQuery
- * @summary OrganizationList Query.
+ * @summary Organization query.
  */
 module.exports.OrganizationListQuery = {
-	args: Object.assign({}, CommonArgs, OrganizationArgs),
-	description: 'Query for multiple Organizations',
-	resolve: scopeInvariant(scopeOptions, organizationListResolver),
+	description: 'Query for a more than or just one Organization',
+	resolve: scopeInvariant(scopeOptions, getOrganizationList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.OrganizationInstanceQuery
- * @summary OrganizationInstance Query.
+ * @summary Organization query.
  */
 module.exports.OrganizationInstanceQuery = {
-	description: 'Get information about a single Organization',
-	resolve: scopeInvariant(scopeOptions, organizationInstanceResolver),
+	description: 'Access information about a single Organization',
+	resolve: scopeInvariant(scopeOptions, getOrganizationInstance),
 	type: OrganizationSchema,
+	args: args,
 };

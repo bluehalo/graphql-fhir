@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const EligibilityResponseSchema = require('../../schemas/eligibilityresponse.schema');
+const EligibilityResponseSchema = require('../../schemas/eligibilityresponse.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const EligibilityResponseInput = require('../../inputs/eligibilityresponse.input');
+const EligibilityResponseInput = require('../../inputs/eligibilityresponse.input.js');
 
-// Resolvers
-const {
-	eligibilityresponseCreateResolver,
-	eligibilityresponseUpdateResolver,
-	eligibilityresponseDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createEligibilityResponse,
+	updateEligibilityResponse,
+	removeEligibilityResponse,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'EligibilityResponse',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a EligibilityResponse record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a EligibilityResponse record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.EligibilityResponseCreateMutation
- * @summary EligibilityResponseCreate Mutation.
+ * @summary EligibilityResponseCreate mutation.
  */
 module.exports.EligibilityResponseCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a EligibilityResponse',
-	resolve: scopeInvariant(scopeOptions, eligibilityresponseCreateResolver),
+	description: 'Create a EligibilityResponse record',
+	resolve: scopeInvariant(scopeOptions, createEligibilityResponse),
 	type: EligibilityResponseSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.EligibilityResponseUpdateMutation
- * @summary EligibilityResponseUpdate Mutation.
+ * @summary EligibilityResponseUpdate mutation.
  */
 module.exports.EligibilityResponseUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple EligibilityResponses',
-	resolve: scopeInvariant(scopeOptions, eligibilityresponseUpdateResolver),
+	description: 'Update a EligibilityResponse record',
+	resolve: scopeInvariant(scopeOptions, updateEligibilityResponse),
 	type: EligibilityResponseSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.EligibilityResponseDeleteMutation
- * @summary EligibilityResponseDelete Mutation.
+ * @name exports.EligibilityResponseRemoveMutation
+ * @summary EligibilityResponseRemove mutation.
  */
-module.exports.EligibilityResponseDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single EligibilityResponse',
-	resolve: scopeInvariant(scopeOptions, eligibilityresponseDeleteResolver),
+module.exports.EligibilityResponseRemoveMutation = {
+	description: 'Remove a EligibilityResponse record',
+	resolve: scopeInvariant(scopeOptions, removeEligibilityResponse),
 	type: EligibilityResponseSchema,
+	args: DeleteArgs,
 };

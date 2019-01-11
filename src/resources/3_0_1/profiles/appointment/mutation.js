@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const AppointmentSchema = require('../../schemas/appointment.schema');
+const AppointmentSchema = require('../../schemas/appointment.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const AppointmentInput = require('../../inputs/appointment.input');
+const AppointmentInput = require('../../inputs/appointment.input.js');
 
-// Resolvers
-const {
-	appointmentCreateResolver,
-	appointmentUpdateResolver,
-	appointmentDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createAppointment,
+	updateAppointment,
+	removeAppointment,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Appointment',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a Appointment record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Appointment record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.AppointmentCreateMutation
- * @summary AppointmentCreate Mutation.
+ * @summary AppointmentCreate mutation.
  */
 module.exports.AppointmentCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Appointment',
-	resolve: scopeInvariant(scopeOptions, appointmentCreateResolver),
+	description: 'Create a Appointment record',
+	resolve: scopeInvariant(scopeOptions, createAppointment),
 	type: AppointmentSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.AppointmentUpdateMutation
- * @summary AppointmentUpdate Mutation.
+ * @summary AppointmentUpdate mutation.
  */
 module.exports.AppointmentUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Appointments',
-	resolve: scopeInvariant(scopeOptions, appointmentUpdateResolver),
+	description: 'Update a Appointment record',
+	resolve: scopeInvariant(scopeOptions, updateAppointment),
 	type: AppointmentSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.AppointmentDeleteMutation
- * @summary AppointmentDelete Mutation.
+ * @name exports.AppointmentRemoveMutation
+ * @summary AppointmentRemove mutation.
  */
-module.exports.AppointmentDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Appointment',
-	resolve: scopeInvariant(scopeOptions, appointmentDeleteResolver),
+module.exports.AppointmentRemoveMutation = {
+	description: 'Remove a Appointment record',
+	resolve: scopeInvariant(scopeOptions, removeAppointment),
 	type: AppointmentSchema,
+	args: DeleteArgs,
 };

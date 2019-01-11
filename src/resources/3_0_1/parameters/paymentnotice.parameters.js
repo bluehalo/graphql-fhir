@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,44 +8,60 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the paymentnotice query
  */
 module.exports = {
-	identifier: {
-		type: TokenScalar,
-		description:
-			'The business identifier of the notice (See http://hl7.org/fhir/SearchParameter/PaymentNotice-identifier).',
-	},
-	request: {
-		type: GraphQLString,
-		description:
-			'The Claim (See http://hl7.org/fhir/SearchParameter/PaymentNotice-request).',
-	},
-	provider: {
-		type: GraphQLString,
-		description:
-			'The reference to the provider (See http://hl7.org/fhir/SearchParameter/PaymentNotice-provider).',
-	},
+	// http://hl7.org/fhir/SearchParameter/PaymentNotice-created
 	created: {
 		type: DateScalar,
-		description:
-			'Creation date fro the notice (See http://hl7.org/fhir/SearchParameter/PaymentNotice-created).',
+		fhirtype: 'date',
+		xpath: 'PaymentNotice.created',
+		description: 'Creation date fro the notice',
 	},
-	response: {
-		type: GraphQLString,
-		description:
-			'The ClaimResponse (See http://hl7.org/fhir/SearchParameter/PaymentNotice-response).',
+	// http://hl7.org/fhir/SearchParameter/PaymentNotice-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'PaymentNotice.identifier',
+		description: 'The business identifier of the notice',
 	},
+	// http://hl7.org/fhir/SearchParameter/PaymentNotice-organization
 	organization: {
 		type: GraphQLString,
-		description:
-			'The organization who generated this resource (See http://hl7.org/fhir/SearchParameter/PaymentNotice-organization).',
+		fhirtype: 'reference',
+		xpath: 'PaymentNotice.organization',
+		description: 'The organization who generated this resource',
 	},
+	// http://hl7.org/fhir/SearchParameter/PaymentNotice-payment-status
 	payment_status: {
 		type: TokenScalar,
-		description:
-			'The type of payment notice (See http://hl7.org/fhir/SearchParameter/PaymentNotice-payment-status).',
+		fhirtype: 'token',
+		xpath: 'PaymentNotice.paymentStatus',
+		description: 'The type of payment notice',
 	},
+	// http://hl7.org/fhir/SearchParameter/PaymentNotice-provider
+	provider: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'PaymentNotice.provider',
+		description: 'The reference to the provider',
+	},
+	// http://hl7.org/fhir/SearchParameter/PaymentNotice-request
+	request: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'PaymentNotice.request',
+		description: 'The Claim',
+	},
+	// http://hl7.org/fhir/SearchParameter/PaymentNotice-response
+	response: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'PaymentNotice.response',
+		description: 'The ClaimResponse',
+	},
+	// http://hl7.org/fhir/SearchParameter/PaymentNotice-statusdate
 	statusdate: {
 		type: DateScalar,
-		description:
-			'The date of the payment action (See http://hl7.org/fhir/SearchParameter/PaymentNotice-statusdate).',
+		fhirtype: 'date',
+		xpath: 'PaymentNotice.statusDate',
+		description: 'The date of the payment action',
 	},
 };

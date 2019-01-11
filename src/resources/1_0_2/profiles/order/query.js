@@ -1,55 +1,55 @@
 // Schemas
-const OrderSchema = require('../../schemas/order.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const OrderSchema = require('../../schemas/order.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const OrderArgs = require('../../parameters/order.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const OrderArgs = require('../../parameters/order.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, OrderArgs);
 
 // Resolvers
-const {
-	orderResolver,
-	orderListResolver,
-	orderInstanceResolver,
-} = require('./resolver');
+const { getOrder, getOrderList, getOrderInstance } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Order',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.OrderQuery
- * @summary Order Query.
+ * @summary Order query.
  */
 module.exports.OrderQuery = {
-	args: Object.assign({}, CommonArgs, OrderArgs),
 	description: 'Query for a single Order',
-	resolve: scopeInvariant(scopeOptions, orderResolver),
+	resolve: scopeInvariant(scopeOptions, getOrder),
 	type: OrderSchema,
+	args: args,
 };
 
 /**
  * @name exports.OrderListQuery
- * @summary OrderList Query.
+ * @summary Order query.
  */
 module.exports.OrderListQuery = {
-	args: Object.assign({}, CommonArgs, OrderArgs),
-	description: 'Query for multiple Orders',
-	resolve: scopeInvariant(scopeOptions, orderListResolver),
+	description: 'Query for a more than or just one Order',
+	resolve: scopeInvariant(scopeOptions, getOrderList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.OrderInstanceQuery
- * @summary OrderInstance Query.
+ * @summary Order query.
  */
 module.exports.OrderInstanceQuery = {
-	description: 'Get information about a single Order',
-	resolve: scopeInvariant(scopeOptions, orderInstanceResolver),
+	description: 'Access information about a single Order',
+	resolve: scopeInvariant(scopeOptions, getOrderInstance),
 	type: OrderSchema,
+	args: args,
 };

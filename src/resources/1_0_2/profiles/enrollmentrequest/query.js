@@ -1,55 +1,59 @@
 // Schemas
-const EnrollmentRequestSchema = require('../../schemas/enrollmentrequest.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const EnrollmentRequestSchema = require('../../schemas/enrollmentrequest.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const EnrollmentRequestArgs = require('../../parameters/enrollmentrequest.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const EnrollmentRequestArgs = require('../../parameters/enrollmentrequest.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, EnrollmentRequestArgs);
 
 // Resolvers
 const {
-	enrollmentrequestResolver,
-	enrollmentrequestListResolver,
-	enrollmentrequestInstanceResolver,
+	getEnrollmentRequest,
+	getEnrollmentRequestList,
+	getEnrollmentRequestInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'EnrollmentRequest',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.EnrollmentRequestQuery
- * @summary EnrollmentRequest Query.
+ * @summary EnrollmentRequest query.
  */
 module.exports.EnrollmentRequestQuery = {
-	args: Object.assign({}, CommonArgs, EnrollmentRequestArgs),
 	description: 'Query for a single EnrollmentRequest',
-	resolve: scopeInvariant(scopeOptions, enrollmentrequestResolver),
+	resolve: scopeInvariant(scopeOptions, getEnrollmentRequest),
 	type: EnrollmentRequestSchema,
+	args: args,
 };
 
 /**
  * @name exports.EnrollmentRequestListQuery
- * @summary EnrollmentRequestList Query.
+ * @summary EnrollmentRequest query.
  */
 module.exports.EnrollmentRequestListQuery = {
-	args: Object.assign({}, CommonArgs, EnrollmentRequestArgs),
-	description: 'Query for multiple EnrollmentRequests',
-	resolve: scopeInvariant(scopeOptions, enrollmentrequestListResolver),
+	description: 'Query for a more than or just one EnrollmentRequest',
+	resolve: scopeInvariant(scopeOptions, getEnrollmentRequestList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.EnrollmentRequestInstanceQuery
- * @summary EnrollmentRequestInstance Query.
+ * @summary EnrollmentRequest query.
  */
 module.exports.EnrollmentRequestInstanceQuery = {
-	description: 'Get information about a single EnrollmentRequest',
-	resolve: scopeInvariant(scopeOptions, enrollmentrequestInstanceResolver),
+	description: 'Access information about a single EnrollmentRequest',
+	resolve: scopeInvariant(scopeOptions, getEnrollmentRequestInstance),
 	type: EnrollmentRequestSchema,
+	args: args,
 };

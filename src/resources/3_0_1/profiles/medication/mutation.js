@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const MedicationSchema = require('../../schemas/medication.schema');
+const MedicationSchema = require('../../schemas/medication.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const MedicationInput = require('../../inputs/medication.input');
+const MedicationInput = require('../../inputs/medication.input.js');
 
-// Resolvers
-const {
-	medicationCreateResolver,
-	medicationUpdateResolver,
-	medicationDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createMedication,
+	updateMedication,
+	removeMedication,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Medication',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Medication record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Medication record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.MedicationCreateMutation
- * @summary MedicationCreate Mutation.
+ * @summary MedicationCreate mutation.
  */
 module.exports.MedicationCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Medication',
-	resolve: scopeInvariant(scopeOptions, medicationCreateResolver),
+	description: 'Create a Medication record',
+	resolve: scopeInvariant(scopeOptions, createMedication),
 	type: MedicationSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.MedicationUpdateMutation
- * @summary MedicationUpdate Mutation.
+ * @summary MedicationUpdate mutation.
  */
 module.exports.MedicationUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Medications',
-	resolve: scopeInvariant(scopeOptions, medicationUpdateResolver),
+	description: 'Update a Medication record',
+	resolve: scopeInvariant(scopeOptions, updateMedication),
 	type: MedicationSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.MedicationDeleteMutation
- * @summary MedicationDelete Mutation.
+ * @name exports.MedicationRemoveMutation
+ * @summary MedicationRemove mutation.
  */
-module.exports.MedicationDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Medication',
-	resolve: scopeInvariant(scopeOptions, medicationDeleteResolver),
+module.exports.MedicationRemoveMutation = {
+	description: 'Remove a Medication record',
+	resolve: scopeInvariant(scopeOptions, removeMedication),
 	type: MedicationSchema,
+	args: DeleteArgs,
 };

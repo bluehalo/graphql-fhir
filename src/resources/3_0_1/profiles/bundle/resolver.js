@@ -1,91 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.bundleResolver
+ * @name exports.getBundle
  * @static
- * @summary Bundle Resolver.
+ * @summary Bundle resolver.
  */
-module.exports.bundleResolver = function bundleResolver(
-	root,
-	args,
-	context,
-	info,
-) {
-	let { server, req, res, version } = context;
+module.exports.getBundle = function getBundle(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.bundleListResolver
+ * @name exports.getBundleList
  * @static
- * @summary Bundle List Resolver.
+ * @summary Bundle list resolver.
  */
-module.exports.bundleListResolver = function bundleListResolver(
+module.exports.getBundleList = function getBundleList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.bundleInstanceResolver
+ * @name exports.getBundleInstance
  * @static
- * @summary Bundle Instance Resolver.
+ * @summary Bundle instance resolver.
  */
-module.exports.bundleInstanceResolver = function bundleInstanceResolver(
+module.exports.getBundleInstance = function getBundleInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.bundleCreateResolver
+ * @name exports.createBundle
  * @static
- * @summary Bundle Create Resolver.
+ * @summary Create Bundle resolver.
  */
-module.exports.bundleCreateResolver = function bundleCreateResolver(
+module.exports.createBundle = function createBundle(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.bundleUpdateResolver
+ * @name exports.updateBundle
  * @static
- * @summary Bundle Update Resolver.
+ * @summary Update Bundle resolver.
  */
-module.exports.bundleUpdateResolver = function bundleUpdateResolver(
+module.exports.updateBundle = function updateBundle(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.bundleDeleteResolver
+ * @name exports.removeBundle
  * @static
- * @summary Bundle Delete Resolver.
+ * @summary Remove Bundle resolver.
  */
-module.exports.bundleDeleteResolver = function bundleDeleteResolver(
+module.exports.removeBundle = function removeBundle(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

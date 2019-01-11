@@ -1,4 +1,4 @@
-const TokenScalar = require('../scalars/token.scalar');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -6,9 +6,11 @@ const TokenScalar = require('../scalars/token.scalar');
  * @summary Arguments for the paymentnotice query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/PaymentNotice-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'The business identifier of the Eligibility (See http://hl7.org/fhir/SearchParameter/paymentnotice-identifier).',
+		fhirtype: 'token',
+		xpath: 'PaymentNotice.identifier',
+		description: 'The business identifier of the Eligibility',
 	},
 };

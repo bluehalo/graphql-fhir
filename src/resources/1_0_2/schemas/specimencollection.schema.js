@@ -1,62 +1,94 @@
-const DateTimeScalar = require('../scalars/datetime.scalar');
-const { GraphQLObjectType, GraphQLList, GraphQLString } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLList,
+	GraphQLUnionType,
+	GraphQLString,
+	GraphQLObjectType,
+} = require('graphql');
+const IdScalar = require('../scalars/id.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 
 /**
  * @name exports
- * @summary Specimen.collection Schema
+ * @summary Specimencollection Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'SpecimenCollection',
-	description: 'Details concerning the specimen collection.',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			collector: {
-				type: require('./reference.schema'),
+	name: 'Specimencollection',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		collector: {
+			type: new GraphQLUnionType({
+				name: 'Specimencollectioncollector_collector_Union',
 				description: 'Person who collected the specimen.',
-			},
-			comment: {
-				type: new GraphQLList(GraphQLString),
-				description:
-					'To communicate any details or issues encountered during the specimen collection procedure.',
-			},
-			_comment: {
-				type: require('./element.schema'),
-				description:
-					'To communicate any details or issues encountered during the specimen collection procedure.',
-			},
-			collectedDateTime: {
-				type: DateTimeScalar,
-				description:
-					'Time when specimen was collected from subject - the physiologically relevant time.',
-			},
-			_collectedDateTime: {
-				type: require('./element.schema'),
-				description:
-					'Time when specimen was collected from subject - the physiologically relevant time.',
-			},
-			collectedPeriod: {
-				type: require('./period.schema'),
-				description:
-					'Time when specimen was collected from subject - the physiologically relevant time.',
-			},
-			quantity: {
-				type: require('./quantity.schema'),
-				description:
-					'The quantity of specimen collected; for instance the volume of a blood sample, or the physical measurement of an anatomic pathology sample.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/specimen-collection-method
-			method: {
-				type: require('./codeableconcept.schema'),
-				description:
-					'A coded value specifying the technique that is used to perform the procedure.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/body-site
-			bodySite: {
-				type: require('./codeableconcept.schema'),
-				description:
-					'Anatomical location from which the specimen was collected (if subject is a patient). This is the target site.  This element is not used for environmental specimens.',
-			},
-		}),
+				types: () => [require('./practitioner.schema.js')],
+				resolveType(data) {
+					if (data && data.resourceType === 'Practitioner') {
+						return require('./practitioner.schema.js');
+					}
+				},
+			}),
+			description: 'Person who collected the specimen.',
+		},
+		_comment: {
+			type: require('./element.schema.js'),
+			description:
+				'To communicate any details or issues encountered during the specimen collection procedure.',
+		},
+		comment: {
+			type: new GraphQLList(GraphQLString),
+			description:
+				'To communicate any details or issues encountered during the specimen collection procedure.',
+		},
+		_collectedDateTime: {
+			type: require('./element.schema.js'),
+			description:
+				'Time when specimen was collected from subject - the physiologically relevant time.',
+		},
+		collectedDateTime: {
+			type: DateTimeScalar,
+			description:
+				'Time when specimen was collected from subject - the physiologically relevant time.',
+		},
+		collectedPeriod: {
+			type: require('./period.schema.js'),
+			description:
+				'Time when specimen was collected from subject - the physiologically relevant time.',
+		},
+		quantity: {
+			type: require('./quantity.schema.js'),
+			description:
+				'The quantity of specimen collected; for instance the volume of a blood sample, or the physical measurement of an anatomic pathology sample.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/specimen-collection-method
+		method: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				'A coded value specifying the technique that is used to perform the procedure.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/body-site
+		bodySite: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				'Anatomical location from which the specimen was collected (if subject is a patient). This is the target site.  This element is not used for environmental specimens.',
+		},
+	}),
 });

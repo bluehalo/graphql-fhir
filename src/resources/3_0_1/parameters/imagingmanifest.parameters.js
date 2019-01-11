@@ -1,7 +1,7 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,39 +9,59 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the imagingmanifest query
  */
 module.exports = {
-	identifier: {
-		type: TokenScalar,
-		description:
-			'UID of the ImagingManifest (or a DICOM Key Object Selection which it represents) (See http://hl7.org/fhir/SearchParameter/ImagingManifest-identifier).',
-	},
-	endpoint: {
-		type: GraphQLString,
-		description:
-			'The endpoint for the study or series (See http://hl7.org/fhir/SearchParameter/ImagingManifest-endpoint).',
-	},
-	authoring_time: {
-		type: DateScalar,
-		description:
-			'Time of the ImagingManifest (or a DICOM Key Object Selection which it represents) authoring (See http://hl7.org/fhir/SearchParameter/ImagingManifest-authoring-time).',
-	},
-	selected_study: {
-		type: UriScalar,
-		description:
-			'Study selected in the ImagingManifest (or a DICOM Key Object Selection which it represents) (See http://hl7.org/fhir/SearchParameter/ImagingManifest-selected-study).',
-	},
-	author: {
-		type: GraphQLString,
-		description:
-			'Author of the ImagingManifest (or a DICOM Key Object Selection which it represents) (See http://hl7.org/fhir/SearchParameter/ImagingManifest-author).',
-	},
+	// http://hl7.org/fhir/SearchParameter/clinical-patient
 	patient: {
 		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ImagingManifest.patient',
 		description:
-			'Subject of the ImagingManifest (or a DICOM Key Object Selection which it represents) (See http://hl7.org/fhir/SearchParameter/clinical-patient).',
+			'Multiple Resources:     * [ReferralRequest](referralrequest.html): Who the referral is about  * [DocumentManifest](documentmanifest.html): The subject of the set of documents  * [Goal](goal.html): Who this goal is intended for  * [Consent](consent.html): Who the consent applies to  * [DocumentReference](documentreference.html): Who/what is the subject of the document  * [ImagingManifest](imagingmanifest.html): Subject of the ImagingManifest (or a DICOM Key Object Selection which it represents)  * [RiskAssessment](riskassessment.html): Who/what does assessment apply to?  * [CareTeam](careteam.html): Who care team is for  * [ImagingStudy](imagingstudy.html): Who the study is about  * [FamilyMemberHistory](familymemberhistory.html): The identity of a subject to list family member history items for  * [Encounter](encounter.html): The patient ro group present at the encounter  * [DeviceUseStatement](deviceusestatement.html): Search by subject - a patient  * [DeviceRequest](devicerequest.html): Individual the service is ordered for  * [AllergyIntolerance](allergyintolerance.html): Who the sensitivity is for  * [CarePlan](careplan.html): Who care plan is for  * [EpisodeOfCare](episodeofcare.html): The patient who is the focus of this episode of care  * [Procedure](procedure.html): Search by subject - a patient  * [List](list.html): If all resources have the same subject  * [Immunization](immunization.html): The patient for the vaccination record  * [VisionPrescription](visionprescription.html): The identity of a patient to list dispenses for  * [ProcedureRequest](procedurerequest.html): Search by subject - a patient  * [Flag](flag.html): The identity of a subject to list flags for  * [Observation](observation.html): The subject that the observation is about (if patient)  * [DiagnosticReport](diagnosticreport.html): The subject of the report if a patient  * [NutritionOrder](nutritionorder.html): The identity of the person who requires the diet, formula or nutritional supplement  * [Condition](condition.html): Who has the condition?  * [Composition](composition.html): Who and/or what the composition is about  * [DetectedIssue](detectedissue.html): Associated patient  * [SupplyDelivery](supplydelivery.html): Patient for whom the item is supplied  * [ClinicalImpression](clinicalimpression.html): Patient or group assessed  ',
 	},
+	// http://hl7.org/fhir/SearchParameter/ImagingManifest-author
+	author: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ImagingManifest.author',
+		description:
+			'Author of the ImagingManifest (or a DICOM Key Object Selection which it represents)',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingManifest-authoring-time
+	authoring_time: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'ImagingManifest.authoringTime',
+		description:
+			'Time of the ImagingManifest (or a DICOM Key Object Selection which it represents) authoring',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingManifest-endpoint
+	endpoint: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ImagingManifest.study.endpoint',
+		description: 'The endpoint for the study or series',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingManifest-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ImagingManifest.identifier',
+		description:
+			'UID of the ImagingManifest (or a DICOM Key Object Selection which it represents)',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingManifest-imaging-study
 	imaging_study: {
 		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ImagingManifest.study.imagingStudy',
 		description:
-			'ImagingStudy resource selected in the ImagingManifest (or a DICOM Key Object Selection which it represents) (See http://hl7.org/fhir/SearchParameter/ImagingManifest-imaging-study).',
+			'ImagingStudy resource selected in the ImagingManifest (or a DICOM Key Object Selection which it represents)',
+	},
+	// http://hl7.org/fhir/SearchParameter/ImagingManifest-selected-study
+	selected_study: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ImagingManifest.study.uid',
+		description:
+			'Study selected in the ImagingManifest (or a DICOM Key Object Selection which it represents)',
 	},
 };

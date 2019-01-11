@@ -1,55 +1,59 @@
 // Schemas
-const AuditEventSchema = require('../../schemas/auditevent.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const AuditEventSchema = require('../../schemas/auditevent.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const AuditEventArgs = require('../../parameters/auditevent.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const AuditEventArgs = require('../../parameters/auditevent.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, AuditEventArgs);
 
 // Resolvers
 const {
-	auditeventResolver,
-	auditeventListResolver,
-	auditeventInstanceResolver,
+	getAuditEvent,
+	getAuditEventList,
+	getAuditEventInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'AuditEvent',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.AuditEventQuery
- * @summary AuditEvent Query.
+ * @summary AuditEvent query.
  */
 module.exports.AuditEventQuery = {
-	args: Object.assign({}, CommonArgs, AuditEventArgs),
 	description: 'Query for a single AuditEvent',
-	resolve: scopeInvariant(scopeOptions, auditeventResolver),
+	resolve: scopeInvariant(scopeOptions, getAuditEvent),
 	type: AuditEventSchema,
+	args: args,
 };
 
 /**
  * @name exports.AuditEventListQuery
- * @summary AuditEventList Query.
+ * @summary AuditEvent query.
  */
 module.exports.AuditEventListQuery = {
-	args: Object.assign({}, CommonArgs, AuditEventArgs),
-	description: 'Query for multiple AuditEvents',
-	resolve: scopeInvariant(scopeOptions, auditeventListResolver),
+	description: 'Query for a more than or just one AuditEvent',
+	resolve: scopeInvariant(scopeOptions, getAuditEventList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.AuditEventInstanceQuery
- * @summary AuditEventInstance Query.
+ * @summary AuditEvent query.
  */
 module.exports.AuditEventInstanceQuery = {
-	description: 'Get information about a single AuditEvent',
-	resolve: scopeInvariant(scopeOptions, auditeventInstanceResolver),
+	description: 'Access information about a single AuditEvent',
+	resolve: scopeInvariant(scopeOptions, getAuditEventInstance),
 	type: AuditEventSchema,
+	args: args,
 };

@@ -4,20 +4,19 @@ const { Kind } = require('graphql/language');
 
 /**
  * @name exports
- * @summary code Scalar
+ * @summary code scalar
  */
 module.exports = new GraphQLScalarType({
 	name: 'code',
 	description:
-		'Base StructureDefinition for code type: A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents.',
-	// TODO: Implement proper serialization here
+		'Base StructureDefinition for code type: A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents',
+	// TODO: Implement serialization
 	serialize: value => value,
-	// TODO: Implement proper parsing and sanitization here
-	// Throw a GraphQL Error if unable to parse or sanitize error
+	// TODO: Parse and sanitize here, throw a graphql error if things fail
 	parseValue: (value, ast) => {
 		return value;
 	},
-	// TODO: Implement proper parsing and sanitization here
+	// TODO: Parse and sanitize here as well, return undefined if unable to parse
 	parseLiteral: ast => {
 		let { kind, value } = ast;
 		return kind === Kind.STRING ? value : undefined;

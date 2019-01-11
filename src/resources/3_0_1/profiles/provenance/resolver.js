@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.provenanceResolver
+ * @name exports.getProvenance
  * @static
- * @summary Provenance Resolver.
+ * @summary Provenance resolver.
  */
-module.exports.provenanceResolver = function provenanceResolver(
+module.exports.getProvenance = function getProvenance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.provenanceListResolver
+ * @name exports.getProvenanceList
  * @static
- * @summary Provenance List Resolver.
+ * @summary Provenance list resolver.
  */
-module.exports.provenanceListResolver = function provenanceListResolver(
+module.exports.getProvenanceList = function getProvenanceList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.provenanceInstanceResolver
+ * @name exports.getProvenanceInstance
  * @static
- * @summary Provenance Instance Resolver.
+ * @summary Provenance instance resolver.
  */
-module.exports.provenanceInstanceResolver = function provenanceInstanceResolver(
+module.exports.getProvenanceInstance = function getProvenanceInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.provenanceCreateResolver
+ * @name exports.createProvenance
  * @static
- * @summary Provenance Create Resolver.
+ * @summary Create Provenance resolver.
  */
-module.exports.provenanceCreateResolver = function provenanceCreateResolver(
+module.exports.createProvenance = function createProvenance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.provenanceUpdateResolver
+ * @name exports.updateProvenance
  * @static
- * @summary Provenance Update Resolver.
+ * @summary Update Provenance resolver.
  */
-module.exports.provenanceUpdateResolver = function provenanceUpdateResolver(
+module.exports.updateProvenance = function updateProvenance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.provenanceDeleteResolver
+ * @name exports.removeProvenance
  * @static
- * @summary Provenance Delete Resolver.
+ * @summary Remove Provenance resolver.
  */
-module.exports.provenanceDeleteResolver = function provenanceDeleteResolver(
+module.exports.removeProvenance = function removeProvenance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

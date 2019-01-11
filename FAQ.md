@@ -224,9 +224,10 @@ We also allow for partial error handling, so you can reject things in one resolv
 ```
 
 ## Resource configuration
-By default, we support almost all the resources from STU3(3.0.1) and DSTU2(1.0.2). We allow you to turn on or off entire versions very easily. We also allow you to turn off individual profiles or even capabilities within a profile if you desire.
+By default, we support almost all the resources from R4(4.0.0), STU3(3.0.1), and DSTU2(1.0.2). Since most teams will not need to support all the resources for all three versions, we make it very easy to disable resources or even entire versions. Furthermore, you can disable operations at the resource level incase you only want to support read or something similar.
 
-To configure which version you want to support, add/remove a value to the `VERSION` constant in `src/config.js`. You just need to make sure you have a corresponding set of resources in `src/resources`.
+### Version configuration
+To configure which version you want to support, add/remove a value to the `VERSION` constant in `src/config.js`. You just need to make sure you have a corresponding set of resources in `src/resources`. So if you only want to support R4, just remove the `1_0_2` and `3_0_1` entries.
 
 In order to explain how to configure a specific profile, let's walk through an example of configuring the patient profile and completely disabling the observation profile for version 1.0.2.
 

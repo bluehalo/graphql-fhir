@@ -1,55 +1,59 @@
 // Schemas
-const PaymentReconciliationSchema = require('../../schemas/paymentreconciliation.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const PaymentReconciliationSchema = require('../../schemas/paymentreconciliation.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const PaymentReconciliationArgs = require('../../parameters/paymentreconciliation.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const PaymentReconciliationArgs = require('../../parameters/paymentreconciliation.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, PaymentReconciliationArgs);
 
 // Resolvers
 const {
-	paymentreconciliationResolver,
-	paymentreconciliationListResolver,
-	paymentreconciliationInstanceResolver,
+	getPaymentReconciliation,
+	getPaymentReconciliationList,
+	getPaymentReconciliationInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'PaymentReconciliation',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.PaymentReconciliationQuery
- * @summary PaymentReconciliation Query.
+ * @summary PaymentReconciliation query.
  */
 module.exports.PaymentReconciliationQuery = {
-	args: Object.assign({}, CommonArgs, PaymentReconciliationArgs),
 	description: 'Query for a single PaymentReconciliation',
-	resolve: scopeInvariant(scopeOptions, paymentreconciliationResolver),
+	resolve: scopeInvariant(scopeOptions, getPaymentReconciliation),
 	type: PaymentReconciliationSchema,
+	args: args,
 };
 
 /**
  * @name exports.PaymentReconciliationListQuery
- * @summary PaymentReconciliationList Query.
+ * @summary PaymentReconciliation query.
  */
 module.exports.PaymentReconciliationListQuery = {
-	args: Object.assign({}, CommonArgs, PaymentReconciliationArgs),
-	description: 'Query for multiple PaymentReconciliations',
-	resolve: scopeInvariant(scopeOptions, paymentreconciliationListResolver),
+	description: 'Query for a more than or just one PaymentReconciliation',
+	resolve: scopeInvariant(scopeOptions, getPaymentReconciliationList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.PaymentReconciliationInstanceQuery
- * @summary PaymentReconciliationInstance Query.
+ * @summary PaymentReconciliation query.
  */
 module.exports.PaymentReconciliationInstanceQuery = {
-	description: 'Get information about a single PaymentReconciliation',
-	resolve: scopeInvariant(scopeOptions, paymentreconciliationInstanceResolver),
+	description: 'Access information about a single PaymentReconciliation',
+	resolve: scopeInvariant(scopeOptions, getPaymentReconciliationInstance),
 	type: PaymentReconciliationSchema,
+	args: args,
 };

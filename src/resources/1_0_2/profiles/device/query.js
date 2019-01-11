@@ -1,55 +1,55 @@
 // Schemas
-const DeviceSchema = require('../../schemas/device.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const DeviceSchema = require('../../schemas/device.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const DeviceArgs = require('../../parameters/device.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const DeviceArgs = require('../../parameters/device.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, DeviceArgs);
 
 // Resolvers
-const {
-	deviceResolver,
-	deviceListResolver,
-	deviceInstanceResolver,
-} = require('./resolver');
+const { getDevice, getDeviceList, getDeviceInstance } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Device',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.DeviceQuery
- * @summary Device Query.
+ * @summary Device query.
  */
 module.exports.DeviceQuery = {
-	args: Object.assign({}, CommonArgs, DeviceArgs),
 	description: 'Query for a single Device',
-	resolve: scopeInvariant(scopeOptions, deviceResolver),
+	resolve: scopeInvariant(scopeOptions, getDevice),
 	type: DeviceSchema,
+	args: args,
 };
 
 /**
  * @name exports.DeviceListQuery
- * @summary DeviceList Query.
+ * @summary Device query.
  */
 module.exports.DeviceListQuery = {
-	args: Object.assign({}, CommonArgs, DeviceArgs),
-	description: 'Query for multiple Devices',
-	resolve: scopeInvariant(scopeOptions, deviceListResolver),
+	description: 'Query for a more than or just one Device',
+	resolve: scopeInvariant(scopeOptions, getDeviceList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.DeviceInstanceQuery
- * @summary DeviceInstance Query.
+ * @summary Device query.
  */
 module.exports.DeviceInstanceQuery = {
-	description: 'Get information about a single Device',
-	resolve: scopeInvariant(scopeOptions, deviceInstanceResolver),
+	description: 'Access information about a single Device',
+	resolve: scopeInvariant(scopeOptions, getDeviceInstance),
 	type: DeviceSchema,
+	args: args,
 };

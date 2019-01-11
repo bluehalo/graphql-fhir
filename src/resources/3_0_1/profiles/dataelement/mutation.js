@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const DataElementSchema = require('../../schemas/dataelement.schema');
+const DataElementSchema = require('../../schemas/dataelement.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const DataElementInput = require('../../inputs/dataelement.input');
+const DataElementInput = require('../../inputs/dataelement.input.js');
 
-// Resolvers
-const {
-	dataelementCreateResolver,
-	dataelementUpdateResolver,
-	dataelementDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createDataElement,
+	updateDataElement,
+	removeDataElement,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DataElement',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a DataElement record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a DataElement record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.DataElementCreateMutation
- * @summary DataElementCreate Mutation.
+ * @summary DataElementCreate mutation.
  */
 module.exports.DataElementCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a DataElement',
-	resolve: scopeInvariant(scopeOptions, dataelementCreateResolver),
+	description: 'Create a DataElement record',
+	resolve: scopeInvariant(scopeOptions, createDataElement),
 	type: DataElementSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.DataElementUpdateMutation
- * @summary DataElementUpdate Mutation.
+ * @summary DataElementUpdate mutation.
  */
 module.exports.DataElementUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple DataElements',
-	resolve: scopeInvariant(scopeOptions, dataelementUpdateResolver),
+	description: 'Update a DataElement record',
+	resolve: scopeInvariant(scopeOptions, updateDataElement),
 	type: DataElementSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.DataElementDeleteMutation
- * @summary DataElementDelete Mutation.
+ * @name exports.DataElementRemoveMutation
+ * @summary DataElementRemove mutation.
  */
-module.exports.DataElementDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single DataElement',
-	resolve: scopeInvariant(scopeOptions, dataelementDeleteResolver),
+module.exports.DataElementRemoveMutation = {
+	description: 'Remove a DataElement record',
+	resolve: scopeInvariant(scopeOptions, removeDataElement),
 	type: DataElementSchema,
+	args: DeleteArgs,
 };

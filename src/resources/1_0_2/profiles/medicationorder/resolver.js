@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.medicationorderResolver
+ * @name exports.getMedicationOrder
  * @static
- * @summary MedicationOrder Resolver.
+ * @summary MedicationOrder resolver.
  */
-module.exports.medicationorderResolver = function medicationorderResolver(
+module.exports.getMedicationOrder = function getMedicationOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationorderListResolver
+ * @name exports.getMedicationOrderList
  * @static
- * @summary MedicationOrder List Resolver.
+ * @summary MedicationOrder list resolver.
  */
-module.exports.medicationorderListResolver = function medicationorderListResolver(
+module.exports.getMedicationOrderList = function getMedicationOrderList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationorderInstanceResolver
+ * @name exports.getMedicationOrderInstance
  * @static
- * @summary MedicationOrder Instance Resolver.
+ * @summary MedicationOrder instance resolver.
  */
-module.exports.medicationorderInstanceResolver = function medicationorderInstanceResolver(
+module.exports.getMedicationOrderInstance = function getMedicationOrderInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationorderCreateResolver
+ * @name exports.createMedicationOrder
  * @static
- * @summary MedicationOrder Create Resolver.
+ * @summary Create MedicationOrder resolver.
  */
-module.exports.medicationorderCreateResolver = function medicationorderCreateResolver(
+module.exports.createMedicationOrder = function createMedicationOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationorderUpdateResolver
+ * @name exports.updateMedicationOrder
  * @static
- * @summary MedicationOrder Update Resolver.
+ * @summary Update MedicationOrder resolver.
  */
-module.exports.medicationorderUpdateResolver = function medicationorderUpdateResolver(
+module.exports.updateMedicationOrder = function updateMedicationOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.medicationorderDeleteResolver
+ * @name exports.removeMedicationOrder
  * @static
- * @summary MedicationOrder Delete Resolver.
+ * @summary Remove MedicationOrder resolver.
  */
-module.exports.medicationorderDeleteResolver = function medicationorderDeleteResolver(
+module.exports.removeMedicationOrder = function removeMedicationOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

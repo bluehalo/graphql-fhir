@@ -1,36 +1,57 @@
-const { GraphQLObjectType, GraphQLNonNull, GraphQLString } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLString,
+	GraphQLList,
+	GraphQLNonNull,
+	GraphQLObjectType,
+} = require('graphql');
 
 /**
  * @name exports
- * @summary TestScript.setup.action.assert.rule.param Schema
+ * @summary TestScriptsetupactionassertruleparam Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'TestScriptSetupActionAssertRuleParam',
-	description:
-		'Each rule template can take one or more parameters for rule evaluation.',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			name: {
-				type: new GraphQLNonNull(GraphQLString),
-				description:
-					'Descriptive name for this parameter that matches the external assert rule parameter name.',
-			},
-			_name: {
-				type: require('./element.schema'),
-				description:
-					'Descriptive name for this parameter that matches the external assert rule parameter name.',
-			},
-			value: {
-				type: new GraphQLNonNull(GraphQLString),
-				description:
-					'The value for the parameter that will be passed on to the external rule template.',
-			},
-			_value: {
-				type: require('./element.schema'),
-				description:
-					'The value for the parameter that will be passed on to the external rule template.',
-			},
-		}),
+	name: 'TestScriptsetupactionassertruleparam',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_name: {
+			type: require('./element.schema.js'),
+			description:
+				'Descriptive name for this parameter that matches the external assert rule parameter name.',
+		},
+		name: {
+			type: new GraphQLNonNull(GraphQLString),
+			description:
+				'Descriptive name for this parameter that matches the external assert rule parameter name.',
+		},
+		_value: {
+			type: require('./element.schema.js'),
+			description:
+				'The value for the parameter that will be passed on to the external rule template.',
+		},
+		value: {
+			type: new GraphQLNonNull(GraphQLString),
+			description:
+				'The value for the parameter that will be passed on to the external rule template.',
+		},
+	}),
 });

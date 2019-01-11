@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.familymemberhistoryResolver
+ * @name exports.getFamilyMemberHistory
  * @static
- * @summary FamilyMemberHistory Resolver.
+ * @summary FamilyMemberHistory resolver.
  */
-module.exports.familymemberhistoryResolver = function familymemberhistoryResolver(
+module.exports.getFamilyMemberHistory = function getFamilyMemberHistory(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.familymemberhistoryListResolver
+ * @name exports.getFamilyMemberHistoryList
  * @static
- * @summary FamilyMemberHistory List Resolver.
+ * @summary FamilyMemberHistory list resolver.
  */
-module.exports.familymemberhistoryListResolver = function familymemberhistoryListResolver(
+module.exports.getFamilyMemberHistoryList = function getFamilyMemberHistoryList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.familymemberhistoryInstanceResolver
+ * @name exports.getFamilyMemberHistoryInstance
  * @static
- * @summary FamilyMemberHistory Instance Resolver.
+ * @summary FamilyMemberHistory instance resolver.
  */
-module.exports.familymemberhistoryInstanceResolver = function familymemberhistoryInstanceResolver(
+module.exports.getFamilyMemberHistoryInstance = function getFamilyMemberHistoryInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.familymemberhistoryCreateResolver
+ * @name exports.createFamilyMemberHistory
  * @static
- * @summary FamilyMemberHistory Create Resolver.
+ * @summary Create FamilyMemberHistory resolver.
  */
-module.exports.familymemberhistoryCreateResolver = function familymemberhistoryCreateResolver(
+module.exports.createFamilyMemberHistory = function createFamilyMemberHistory(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.familymemberhistoryUpdateResolver
+ * @name exports.updateFamilyMemberHistory
  * @static
- * @summary FamilyMemberHistory Update Resolver.
+ * @summary Update FamilyMemberHistory resolver.
  */
-module.exports.familymemberhistoryUpdateResolver = function familymemberhistoryUpdateResolver(
+module.exports.updateFamilyMemberHistory = function updateFamilyMemberHistory(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.familymemberhistoryDeleteResolver
+ * @name exports.removeFamilyMemberHistory
  * @static
- * @summary FamilyMemberHistory Delete Resolver.
+ * @summary Remove FamilyMemberHistory resolver.
  */
-module.exports.familymemberhistoryDeleteResolver = function familymemberhistoryDeleteResolver(
+module.exports.removeFamilyMemberHistory = function removeFamilyMemberHistory(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

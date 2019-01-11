@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -8,64 +8,90 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the device query
  */
 module.exports = {
-	udi_di: {
-		type: GraphQLString,
-		description:
-			'The udi Device Identifier (DI) (See http://hl7.org/fhir/SearchParameter/Device-udi-di).',
-	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'Instance id from manufacturer, owner, and others (See http://hl7.org/fhir/SearchParameter/Device-identifier).',
-	},
-	udi_carrier: {
-		type: GraphQLString,
-		description:
-			'UDI Barcode (RFID or other technology) string either in HRF format or AIDC format converted to base64 string. (See http://hl7.org/fhir/SearchParameter/Device-udi-carrier).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Device-device-name
 	device_name: {
 		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Device.udi.name',
 		description:
-			'A server defined search that may match any of the string fields in the Device.udi.name  or Device.type.coding.display or  Device.type.text (See http://hl7.org/fhir/SearchParameter/Device-device-name).',
+			'A server defined search that may match any of the string fields in the Device.udi.name  or Device.type.coding.display or  Device.type.text',
 	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Patient information, if the resource is affixed to a person (See http://hl7.org/fhir/SearchParameter/Device-patient).',
+	// http://hl7.org/fhir/SearchParameter/Device-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Device.identifier',
+		description: 'Instance id from manufacturer, owner, and others',
 	},
-	organization: {
-		type: GraphQLString,
-		description:
-			'The organization responsible for the device (See http://hl7.org/fhir/SearchParameter/Device-organization).',
-	},
-	model: {
-		type: GraphQLString,
-		description:
-			'The model of the device (See http://hl7.org/fhir/SearchParameter/Device-model).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Device-location
 	location: {
 		type: GraphQLString,
-		description:
-			'A location, where the resource is found (See http://hl7.org/fhir/SearchParameter/Device-location).',
+		fhirtype: 'reference',
+		xpath: 'Device.location',
+		description: 'A location, where the resource is found',
 	},
-	type: {
-		type: TokenScalar,
-		description:
-			'The type of the device (See http://hl7.org/fhir/SearchParameter/Device-type).',
-	},
-	url: {
-		type: UriScalar,
-		description:
-			'Network address to contact device (See http://hl7.org/fhir/SearchParameter/Device-url).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Device-manufacturer
 	manufacturer: {
 		type: GraphQLString,
-		description:
-			'The manufacturer of the device (See http://hl7.org/fhir/SearchParameter/Device-manufacturer).',
+		fhirtype: 'string',
+		xpath: 'Device.manufacturer',
+		description: 'The manufacturer of the device',
 	},
+	// http://hl7.org/fhir/SearchParameter/Device-model
+	model: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Device.model',
+		description: 'The model of the device',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-organization
+	organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Device.owner',
+		description: 'The organization responsible for the device',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Device.patient',
+		description: 'Patient information, if the resource is affixed to a person',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-status
 	status: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Device.status',
+		description: 'active | inactive | entered-in-error | unknown',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Device.type',
+		description: 'The type of the device',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-udi-carrier
+	udi_carrier: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Device.udi.carrierHRF',
 		description:
-			'active | inactive | entered-in-error | unknown (See http://hl7.org/fhir/SearchParameter/Device-status).',
+			'UDI Barcode (RFID or other technology) string either in HRF format or AIDC format converted to base64 string.',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-udi-di
+	udi_di: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Device.udi.deviceIdentifier',
+		description: 'The udi Device Identifier (DI)',
+	},
+	// http://hl7.org/fhir/SearchParameter/Device-url
+	url: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'Device.url',
+		description: 'Network address to contact device',
 	},
 };

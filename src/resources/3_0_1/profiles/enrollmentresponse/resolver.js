@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.enrollmentresponseResolver
+ * @name exports.getEnrollmentResponse
  * @static
- * @summary EnrollmentResponse Resolver.
+ * @summary EnrollmentResponse resolver.
  */
-module.exports.enrollmentresponseResolver = function enrollmentresponseResolver(
+module.exports.getEnrollmentResponse = function getEnrollmentResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.enrollmentresponseListResolver
+ * @name exports.getEnrollmentResponseList
  * @static
- * @summary EnrollmentResponse List Resolver.
+ * @summary EnrollmentResponse list resolver.
  */
-module.exports.enrollmentresponseListResolver = function enrollmentresponseListResolver(
+module.exports.getEnrollmentResponseList = function getEnrollmentResponseList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.enrollmentresponseInstanceResolver
+ * @name exports.getEnrollmentResponseInstance
  * @static
- * @summary EnrollmentResponse Instance Resolver.
+ * @summary EnrollmentResponse instance resolver.
  */
-module.exports.enrollmentresponseInstanceResolver = function enrollmentresponseInstanceResolver(
+module.exports.getEnrollmentResponseInstance = function getEnrollmentResponseInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.enrollmentresponseCreateResolver
+ * @name exports.createEnrollmentResponse
  * @static
- * @summary EnrollmentResponse Create Resolver.
+ * @summary Create EnrollmentResponse resolver.
  */
-module.exports.enrollmentresponseCreateResolver = function enrollmentresponseCreateResolver(
+module.exports.createEnrollmentResponse = function createEnrollmentResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.enrollmentresponseUpdateResolver
+ * @name exports.updateEnrollmentResponse
  * @static
- * @summary EnrollmentResponse Update Resolver.
+ * @summary Update EnrollmentResponse resolver.
  */
-module.exports.enrollmentresponseUpdateResolver = function enrollmentresponseUpdateResolver(
+module.exports.updateEnrollmentResponse = function updateEnrollmentResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.enrollmentresponseDeleteResolver
+ * @name exports.removeEnrollmentResponse
  * @static
- * @summary EnrollmentResponse Delete Resolver.
+ * @summary Remove EnrollmentResponse resolver.
  */
-module.exports.enrollmentresponseDeleteResolver = function enrollmentresponseDeleteResolver(
+module.exports.removeEnrollmentResponse = function removeEnrollmentResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

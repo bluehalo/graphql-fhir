@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const CompositionSchema = require('../../schemas/composition.schema');
+const CompositionSchema = require('../../schemas/composition.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const CompositionInput = require('../../inputs/composition.input');
+const CompositionInput = require('../../inputs/composition.input.js');
 
-// Resolvers
-const {
-	compositionCreateResolver,
-	compositionUpdateResolver,
-	compositionDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createComposition,
+	updateComposition,
+	removeComposition,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Composition',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a Composition record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Composition record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.CompositionCreateMutation
- * @summary CompositionCreate Mutation.
+ * @summary CompositionCreate mutation.
  */
 module.exports.CompositionCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Composition',
-	resolve: scopeInvariant(scopeOptions, compositionCreateResolver),
+	description: 'Create a Composition record',
+	resolve: scopeInvariant(scopeOptions, createComposition),
 	type: CompositionSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.CompositionUpdateMutation
- * @summary CompositionUpdate Mutation.
+ * @summary CompositionUpdate mutation.
  */
 module.exports.CompositionUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Compositions',
-	resolve: scopeInvariant(scopeOptions, compositionUpdateResolver),
+	description: 'Update a Composition record',
+	resolve: scopeInvariant(scopeOptions, updateComposition),
 	type: CompositionSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.CompositionDeleteMutation
- * @summary CompositionDelete Mutation.
+ * @name exports.CompositionRemoveMutation
+ * @summary CompositionRemove mutation.
  */
-module.exports.CompositionDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Composition',
-	resolve: scopeInvariant(scopeOptions, compositionDeleteResolver),
+module.exports.CompositionRemoveMutation = {
+	description: 'Remove a Composition record',
+	resolve: scopeInvariant(scopeOptions, removeComposition),
 	type: CompositionSchema,
+	args: DeleteArgs,
 };

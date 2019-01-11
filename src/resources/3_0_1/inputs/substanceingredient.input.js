@@ -1,31 +1,52 @@
-const { GraphQLInputObjectType, GraphQLNonNull } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLString,
+	GraphQLList,
+	GraphQLNonNull,
+	GraphQLInputObjectType,
+} = require('graphql');
 
 /**
  * @name exports
- * @summary Substance.ingredient Input Schema
+ * @summary Substanceingredient Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'SubstanceIngredient_Input',
-	description: 'A substance can be composed of other substances.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			quantity: {
-				type: require('./ratio.input'),
-				description:
-					'The amount of the ingredient in the substance - a concentration ratio.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/substance-code
-			substanceCodeableConcept: {
-				type: new GraphQLNonNull(require('./codeableconcept.input')),
-				description: 'Another substance that is a component of this substance.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/substance-code
-			substanceReference: {
-				type: new GraphQLNonNull(require('./reference.input')),
-				description: 'Another substance that is a component of this substance.',
-			},
-		}),
+	name: 'Substanceingredient_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		quantity: {
+			type: require('./ratio.input.js'),
+			description:
+				'The amount of the ingredient in the substance - a concentration ratio.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/substance-code
+		substanceCodeableConcept: {
+			type: new GraphQLNonNull(require('./codeableconcept.input.js')),
+			description: 'Another substance that is a component of this substance.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/substance-code
+		substanceReference: {
+			type: new GraphQLNonNull(GraphQLString),
+			description: 'Another substance that is a component of this substance.',
+		},
+	}),
 });

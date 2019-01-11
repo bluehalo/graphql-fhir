@@ -1,91 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.deviceResolver
+ * @name exports.getDevice
  * @static
- * @summary Device Resolver.
+ * @summary Device resolver.
  */
-module.exports.deviceResolver = function deviceResolver(
-	root,
-	args,
-	context,
-	info,
-) {
-	let { server, req, res, version } = context;
+module.exports.getDevice = function getDevice(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.deviceListResolver
+ * @name exports.getDeviceList
  * @static
- * @summary Device List Resolver.
+ * @summary Device list resolver.
  */
-module.exports.deviceListResolver = function deviceListResolver(
+module.exports.getDeviceList = function getDeviceList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.deviceInstanceResolver
+ * @name exports.getDeviceInstance
  * @static
- * @summary Device Instance Resolver.
+ * @summary Device instance resolver.
  */
-module.exports.deviceInstanceResolver = function deviceInstanceResolver(
+module.exports.getDeviceInstance = function getDeviceInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.deviceCreateResolver
+ * @name exports.createDevice
  * @static
- * @summary Device Create Resolver.
+ * @summary Create Device resolver.
  */
-module.exports.deviceCreateResolver = function deviceCreateResolver(
+module.exports.createDevice = function createDevice(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.deviceUpdateResolver
+ * @name exports.updateDevice
  * @static
- * @summary Device Update Resolver.
+ * @summary Update Device resolver.
  */
-module.exports.deviceUpdateResolver = function deviceUpdateResolver(
+module.exports.updateDevice = function updateDevice(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.deviceDeleteResolver
+ * @name exports.removeDevice
  * @static
- * @summary Device Delete Resolver.
+ * @summary Remove Device resolver.
  */
-module.exports.deviceDeleteResolver = function deviceDeleteResolver(
+module.exports.removeDevice = function removeDevice(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

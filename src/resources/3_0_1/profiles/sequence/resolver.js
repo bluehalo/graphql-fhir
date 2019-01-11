@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.sequenceResolver
+ * @name exports.getSequence
  * @static
- * @summary Sequence Resolver.
+ * @summary Sequence resolver.
  */
-module.exports.sequenceResolver = function sequenceResolver(
+module.exports.getSequence = function getSequence(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.sequenceListResolver
+ * @name exports.getSequenceList
  * @static
- * @summary Sequence List Resolver.
+ * @summary Sequence list resolver.
  */
-module.exports.sequenceListResolver = function sequenceListResolver(
+module.exports.getSequenceList = function getSequenceList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.sequenceInstanceResolver
+ * @name exports.getSequenceInstance
  * @static
- * @summary Sequence Instance Resolver.
+ * @summary Sequence instance resolver.
  */
-module.exports.sequenceInstanceResolver = function sequenceInstanceResolver(
+module.exports.getSequenceInstance = function getSequenceInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.sequenceCreateResolver
+ * @name exports.createSequence
  * @static
- * @summary Sequence Create Resolver.
+ * @summary Create Sequence resolver.
  */
-module.exports.sequenceCreateResolver = function sequenceCreateResolver(
+module.exports.createSequence = function createSequence(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.sequenceUpdateResolver
+ * @name exports.updateSequence
  * @static
- * @summary Sequence Update Resolver.
+ * @summary Update Sequence resolver.
  */
-module.exports.sequenceUpdateResolver = function sequenceUpdateResolver(
+module.exports.updateSequence = function updateSequence(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.sequenceDeleteResolver
+ * @name exports.removeSequence
  * @static
- * @summary Sequence Delete Resolver.
+ * @summary Remove Sequence resolver.
  */
-module.exports.sequenceDeleteResolver = function sequenceDeleteResolver(
+module.exports.removeSequence = function removeSequence(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

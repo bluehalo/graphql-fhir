@@ -1,7 +1,7 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,104 +9,144 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the auditevent query
  */
 module.exports = {
-	date: {
-		type: DateScalar,
-		description:
-			'Time when the event occurred on source (See http://hl7.org/fhir/SearchParameter/AuditEvent-date).',
-	},
-	entity_type: {
-		type: TokenScalar,
-		description:
-			'Type of entity involved (See http://hl7.org/fhir/SearchParameter/AuditEvent-entity-type).',
-	},
-	agent: {
-		type: GraphQLString,
-		description:
-			'Direct reference to resource (See http://hl7.org/fhir/SearchParameter/AuditEvent-agent).',
-	},
-	address: {
-		type: GraphQLString,
-		description:
-			'Identifier for the network access point of the user device (See http://hl7.org/fhir/SearchParameter/AuditEvent-address).',
-	},
-	entity_role: {
-		type: TokenScalar,
-		description:
-			'What role the entity played (See http://hl7.org/fhir/SearchParameter/AuditEvent-entity-role).',
-	},
-	source: {
-		type: TokenScalar,
-		description:
-			'The identity of source detecting the event (See http://hl7.org/fhir/SearchParameter/AuditEvent-source).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'Type/identifier of event (See http://hl7.org/fhir/SearchParameter/AuditEvent-type).',
-	},
-	altid: {
-		type: TokenScalar,
-		description:
-			'Alternative User id e.g. authentication (See http://hl7.org/fhir/SearchParameter/AuditEvent-altid).',
-	},
-	site: {
-		type: TokenScalar,
-		description:
-			'Logical source location within the enterprise (See http://hl7.org/fhir/SearchParameter/AuditEvent-site).',
-	},
-	agent_name: {
-		type: GraphQLString,
-		description:
-			'Human-meaningful name for the agent (See http://hl7.org/fhir/SearchParameter/AuditEvent-agent-name).',
-	},
-	entity_name: {
-		type: GraphQLString,
-		description:
-			'Descriptor for entity (See http://hl7.org/fhir/SearchParameter/AuditEvent-entity-name).',
-	},
-	subtype: {
-		type: TokenScalar,
-		description:
-			'More specific type/id for the event (See http://hl7.org/fhir/SearchParameter/AuditEvent-subtype).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Direct reference to resource (See http://hl7.org/fhir/SearchParameter/AuditEvent-patient).',
-	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-action
 	action: {
 		type: TokenScalar,
-		description:
-			'Type of action performed during the event (See http://hl7.org/fhir/SearchParameter/AuditEvent-action).',
+		fhirtype: 'token',
+		xpath: 'AuditEvent.action',
+		description: 'Type of action performed during the event',
 	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-address
+	address: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'AuditEvent.agent.network.address',
+		description: 'Identifier for the network access point of the user device',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-agent
+	agent: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'AuditEvent.agent.reference',
+		description: 'Direct reference to resource',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-agent-name
+	agent_name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'AuditEvent.agent.name',
+		description: 'Human-meaningful name for the agent',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-agent-role
 	agent_role: {
 		type: TokenScalar,
-		description:
-			'Agent role in the event (See http://hl7.org/fhir/SearchParameter/AuditEvent-agent-role).',
+		fhirtype: 'token',
+		xpath: 'AuditEvent.agent.role',
+		description: 'Agent role in the event',
 	},
-	user: {
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-altid
+	altid: {
 		type: TokenScalar,
-		description:
-			'Unique identifier for the user (See http://hl7.org/fhir/SearchParameter/AuditEvent-user).',
+		fhirtype: 'token',
+		xpath: 'AuditEvent.agent.altId',
+		description: 'Alternative User id e.g. authentication',
 	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-date
+	date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'AuditEvent.recorded',
+		description: 'Time when the event occurred on source',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-entity
 	entity: {
 		type: GraphQLString,
-		description:
-			'Specific instance of resource (See http://hl7.org/fhir/SearchParameter/AuditEvent-entity).',
+		fhirtype: 'reference',
+		xpath: 'AuditEvent.entity.reference',
+		description: 'Specific instance of resource',
 	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-entity-id
 	entity_id: {
 		type: TokenScalar,
-		description:
-			'Specific instance of object (See http://hl7.org/fhir/SearchParameter/AuditEvent-entity-id).',
+		fhirtype: 'token',
+		xpath: 'AuditEvent.entity.identifier',
+		description: 'Specific instance of object',
 	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-entity-name
+	entity_name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'AuditEvent.entity.name',
+		description: 'Descriptor for entity',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-entity-role
+	entity_role: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.entity.role',
+		description: 'What role the entity played',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-entity-type
+	entity_type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.entity.type',
+		description: 'Type of entity involved',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-outcome
 	outcome: {
 		type: TokenScalar,
-		description:
-			'Whether the event succeeded or failed (See http://hl7.org/fhir/SearchParameter/AuditEvent-outcome).',
+		fhirtype: 'token',
+		xpath: 'AuditEvent.outcome',
+		description: 'Whether the event succeeded or failed',
 	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'AuditEvent.agent.reference',
+		description: 'Direct reference to resource',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-policy
 	policy: {
 		type: UriScalar,
-		description:
-			'Policy that authorized event (See http://hl7.org/fhir/SearchParameter/AuditEvent-policy).',
+		fhirtype: 'uri',
+		xpath: 'AuditEvent.agent.policy',
+		description: 'Policy that authorized event',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-site
+	site: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.source.site',
+		description: 'Logical source location within the enterprise',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-source
+	source: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.source.identifier',
+		description: 'The identity of source detecting the event',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-subtype
+	subtype: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.subtype',
+		description: 'More specific type/id for the event',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.type',
+		description: 'Type/identifier of event',
+	},
+	// http://hl7.org/fhir/SearchParameter/AuditEvent-user
+	user: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AuditEvent.agent.userId',
+		description: 'Unique identifier for the user',
 	},
 };

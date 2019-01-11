@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.testscriptResolver
+ * @name exports.getTestScript
  * @static
- * @summary TestScript Resolver.
+ * @summary TestScript resolver.
  */
-module.exports.testscriptResolver = function testscriptResolver(
+module.exports.getTestScript = function getTestScript(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.testscriptListResolver
+ * @name exports.getTestScriptList
  * @static
- * @summary TestScript List Resolver.
+ * @summary TestScript list resolver.
  */
-module.exports.testscriptListResolver = function testscriptListResolver(
+module.exports.getTestScriptList = function getTestScriptList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.testscriptInstanceResolver
+ * @name exports.getTestScriptInstance
  * @static
- * @summary TestScript Instance Resolver.
+ * @summary TestScript instance resolver.
  */
-module.exports.testscriptInstanceResolver = function testscriptInstanceResolver(
+module.exports.getTestScriptInstance = function getTestScriptInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.testscriptCreateResolver
+ * @name exports.createTestScript
  * @static
- * @summary TestScript Create Resolver.
+ * @summary Create TestScript resolver.
  */
-module.exports.testscriptCreateResolver = function testscriptCreateResolver(
+module.exports.createTestScript = function createTestScript(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.testscriptUpdateResolver
+ * @name exports.updateTestScript
  * @static
- * @summary TestScript Update Resolver.
+ * @summary Update TestScript resolver.
  */
-module.exports.testscriptUpdateResolver = function testscriptUpdateResolver(
+module.exports.updateTestScript = function updateTestScript(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.testscriptDeleteResolver
+ * @name exports.removeTestScript
  * @static
- * @summary TestScript Delete Resolver.
+ * @summary Remove TestScript resolver.
  */
-module.exports.testscriptDeleteResolver = function testscriptDeleteResolver(
+module.exports.removeTestScript = function removeTestScript(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

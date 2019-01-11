@@ -1,55 +1,55 @@
 // Schemas
-const PersonSchema = require('../../schemas/person.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const PersonSchema = require('../../schemas/person.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const PersonArgs = require('../../parameters/person.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const PersonArgs = require('../../parameters/person.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, PersonArgs);
 
 // Resolvers
-const {
-	personResolver,
-	personListResolver,
-	personInstanceResolver,
-} = require('./resolver');
+const { getPerson, getPersonList, getPersonInstance } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Person',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.PersonQuery
- * @summary Person Query.
+ * @summary Person query.
  */
 module.exports.PersonQuery = {
-	args: Object.assign({}, CommonArgs, PersonArgs),
 	description: 'Query for a single Person',
-	resolve: scopeInvariant(scopeOptions, personResolver),
+	resolve: scopeInvariant(scopeOptions, getPerson),
 	type: PersonSchema,
+	args: args,
 };
 
 /**
  * @name exports.PersonListQuery
- * @summary PersonList Query.
+ * @summary Person query.
  */
 module.exports.PersonListQuery = {
-	args: Object.assign({}, CommonArgs, PersonArgs),
-	description: 'Query for multiple Persons',
-	resolve: scopeInvariant(scopeOptions, personListResolver),
+	description: 'Query for a more than or just one Person',
+	resolve: scopeInvariant(scopeOptions, getPersonList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.PersonInstanceQuery
- * @summary PersonInstance Query.
+ * @summary Person query.
  */
 module.exports.PersonInstanceQuery = {
-	description: 'Get information about a single Person',
-	resolve: scopeInvariant(scopeOptions, personInstanceResolver),
+	description: 'Access information about a single Person',
+	resolve: scopeInvariant(scopeOptions, getPersonInstance),
 	type: PersonSchema,
+	args: args,
 };

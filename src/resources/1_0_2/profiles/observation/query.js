@@ -1,55 +1,59 @@
 // Schemas
-const ObservationSchema = require('../../schemas/observation.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ObservationSchema = require('../../schemas/observation.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ObservationArgs = require('../../parameters/observation.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ObservationArgs = require('../../parameters/observation.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ObservationArgs);
 
 // Resolvers
 const {
-	observationResolver,
-	observationListResolver,
-	observationInstanceResolver,
+	getObservation,
+	getObservationList,
+	getObservationInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Observation',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ObservationQuery
- * @summary Observation Query.
+ * @summary Observation query.
  */
 module.exports.ObservationQuery = {
-	args: Object.assign({}, CommonArgs, ObservationArgs),
 	description: 'Query for a single Observation',
-	resolve: scopeInvariant(scopeOptions, observationResolver),
+	resolve: scopeInvariant(scopeOptions, getObservation),
 	type: ObservationSchema,
+	args: args,
 };
 
 /**
  * @name exports.ObservationListQuery
- * @summary ObservationList Query.
+ * @summary Observation query.
  */
 module.exports.ObservationListQuery = {
-	args: Object.assign({}, CommonArgs, ObservationArgs),
-	description: 'Query for multiple Observations',
-	resolve: scopeInvariant(scopeOptions, observationListResolver),
+	description: 'Query for a more than or just one Observation',
+	resolve: scopeInvariant(scopeOptions, getObservationList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ObservationInstanceQuery
- * @summary ObservationInstance Query.
+ * @summary Observation query.
  */
 module.exports.ObservationInstanceQuery = {
-	description: 'Get information about a single Observation',
-	resolve: scopeInvariant(scopeOptions, observationInstanceResolver),
+	description: 'Access information about a single Observation',
+	resolve: scopeInvariant(scopeOptions, getObservationInstance),
 	type: ObservationSchema,
+	args: args,
 };

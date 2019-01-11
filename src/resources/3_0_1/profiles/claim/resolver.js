@@ -1,91 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.claimResolver
+ * @name exports.getClaim
  * @static
- * @summary Claim Resolver.
+ * @summary Claim resolver.
  */
-module.exports.claimResolver = function claimResolver(
-	root,
-	args,
-	context,
-	info,
-) {
-	let { server, req, res, version } = context;
+module.exports.getClaim = function getClaim(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.claimListResolver
+ * @name exports.getClaimList
  * @static
- * @summary Claim List Resolver.
+ * @summary Claim list resolver.
  */
-module.exports.claimListResolver = function claimListResolver(
+module.exports.getClaimList = function getClaimList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.claimInstanceResolver
+ * @name exports.getClaimInstance
  * @static
- * @summary Claim Instance Resolver.
+ * @summary Claim instance resolver.
  */
-module.exports.claimInstanceResolver = function claimInstanceResolver(
+module.exports.getClaimInstance = function getClaimInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.claimCreateResolver
+ * @name exports.createClaim
  * @static
- * @summary Claim Create Resolver.
+ * @summary Create Claim resolver.
  */
-module.exports.claimCreateResolver = function claimCreateResolver(
+module.exports.createClaim = function createClaim(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.claimUpdateResolver
+ * @name exports.updateClaim
  * @static
- * @summary Claim Update Resolver.
+ * @summary Update Claim resolver.
  */
-module.exports.claimUpdateResolver = function claimUpdateResolver(
+module.exports.updateClaim = function updateClaim(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.claimDeleteResolver
+ * @name exports.removeClaim
  * @static
- * @summary Claim Delete Resolver.
+ * @summary Remove Claim resolver.
  */
-module.exports.claimDeleteResolver = function claimDeleteResolver(
+module.exports.removeClaim = function removeClaim(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,55 +1,59 @@
 // Schemas
-const SpecimenSchema = require('../../schemas/specimen.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const SpecimenSchema = require('../../schemas/specimen.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const SpecimenArgs = require('../../parameters/specimen.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const SpecimenArgs = require('../../parameters/specimen.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, SpecimenArgs);
 
 // Resolvers
 const {
-	specimenResolver,
-	specimenListResolver,
-	specimenInstanceResolver,
+	getSpecimen,
+	getSpecimenList,
+	getSpecimenInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Specimen',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.SpecimenQuery
- * @summary Specimen Query.
+ * @summary Specimen query.
  */
 module.exports.SpecimenQuery = {
-	args: Object.assign({}, CommonArgs, SpecimenArgs),
 	description: 'Query for a single Specimen',
-	resolve: scopeInvariant(scopeOptions, specimenResolver),
+	resolve: scopeInvariant(scopeOptions, getSpecimen),
 	type: SpecimenSchema,
+	args: args,
 };
 
 /**
  * @name exports.SpecimenListQuery
- * @summary SpecimenList Query.
+ * @summary Specimen query.
  */
 module.exports.SpecimenListQuery = {
-	args: Object.assign({}, CommonArgs, SpecimenArgs),
-	description: 'Query for multiple Specimens',
-	resolve: scopeInvariant(scopeOptions, specimenListResolver),
+	description: 'Query for a more than or just one Specimen',
+	resolve: scopeInvariant(scopeOptions, getSpecimenList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.SpecimenInstanceQuery
- * @summary SpecimenInstance Query.
+ * @summary Specimen query.
  */
 module.exports.SpecimenInstanceQuery = {
-	description: 'Get information about a single Specimen',
-	resolve: scopeInvariant(scopeOptions, specimenInstanceResolver),
+	description: 'Access information about a single Specimen',
+	resolve: scopeInvariant(scopeOptions, getSpecimenInstance),
 	type: SpecimenSchema,
+	args: args,
 };

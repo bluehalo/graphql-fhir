@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const DocumentReferenceSchema = require('../../schemas/documentreference.schema');
+const DocumentReferenceSchema = require('../../schemas/documentreference.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const DocumentReferenceInput = require('../../inputs/documentreference.input');
+const DocumentReferenceInput = require('../../inputs/documentreference.input.js');
 
-// Resolvers
-const {
-	documentreferenceCreateResolver,
-	documentreferenceUpdateResolver,
-	documentreferenceDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createDocumentReference,
+	updateDocumentReference,
+	removeDocumentReference,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DocumentReference',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a DocumentReference record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a DocumentReference record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.DocumentReferenceCreateMutation
- * @summary DocumentReferenceCreate Mutation.
+ * @summary DocumentReferenceCreate mutation.
  */
 module.exports.DocumentReferenceCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a DocumentReference',
-	resolve: scopeInvariant(scopeOptions, documentreferenceCreateResolver),
+	description: 'Create a DocumentReference record',
+	resolve: scopeInvariant(scopeOptions, createDocumentReference),
 	type: DocumentReferenceSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.DocumentReferenceUpdateMutation
- * @summary DocumentReferenceUpdate Mutation.
+ * @summary DocumentReferenceUpdate mutation.
  */
 module.exports.DocumentReferenceUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple DocumentReferences',
-	resolve: scopeInvariant(scopeOptions, documentreferenceUpdateResolver),
+	description: 'Update a DocumentReference record',
+	resolve: scopeInvariant(scopeOptions, updateDocumentReference),
 	type: DocumentReferenceSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.DocumentReferenceDeleteMutation
- * @summary DocumentReferenceDelete Mutation.
+ * @name exports.DocumentReferenceRemoveMutation
+ * @summary DocumentReferenceRemove mutation.
  */
-module.exports.DocumentReferenceDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single DocumentReference',
-	resolve: scopeInvariant(scopeOptions, documentreferenceDeleteResolver),
+module.exports.DocumentReferenceRemoveMutation = {
+	description: 'Remove a DocumentReference record',
+	resolve: scopeInvariant(scopeOptions, removeDocumentReference),
 	type: DocumentReferenceSchema,
+	args: DeleteArgs,
 };

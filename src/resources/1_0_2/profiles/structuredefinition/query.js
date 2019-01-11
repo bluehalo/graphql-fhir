@@ -1,55 +1,59 @@
 // Schemas
-const StructureDefinitionSchema = require('../../schemas/structuredefinition.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const StructureDefinitionSchema = require('../../schemas/structuredefinition.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const StructureDefinitionArgs = require('../../parameters/structuredefinition.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const StructureDefinitionArgs = require('../../parameters/structuredefinition.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, StructureDefinitionArgs);
 
 // Resolvers
 const {
-	structuredefinitionResolver,
-	structuredefinitionListResolver,
-	structuredefinitionInstanceResolver,
+	getStructureDefinition,
+	getStructureDefinitionList,
+	getStructureDefinitionInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'StructureDefinition',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.StructureDefinitionQuery
- * @summary StructureDefinition Query.
+ * @summary StructureDefinition query.
  */
 module.exports.StructureDefinitionQuery = {
-	args: Object.assign({}, CommonArgs, StructureDefinitionArgs),
 	description: 'Query for a single StructureDefinition',
-	resolve: scopeInvariant(scopeOptions, structuredefinitionResolver),
+	resolve: scopeInvariant(scopeOptions, getStructureDefinition),
 	type: StructureDefinitionSchema,
+	args: args,
 };
 
 /**
  * @name exports.StructureDefinitionListQuery
- * @summary StructureDefinitionList Query.
+ * @summary StructureDefinition query.
  */
 module.exports.StructureDefinitionListQuery = {
-	args: Object.assign({}, CommonArgs, StructureDefinitionArgs),
-	description: 'Query for multiple StructureDefinitions',
-	resolve: scopeInvariant(scopeOptions, structuredefinitionListResolver),
+	description: 'Query for a more than or just one StructureDefinition',
+	resolve: scopeInvariant(scopeOptions, getStructureDefinitionList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.StructureDefinitionInstanceQuery
- * @summary StructureDefinitionInstance Query.
+ * @summary StructureDefinition query.
  */
 module.exports.StructureDefinitionInstanceQuery = {
-	description: 'Get information about a single StructureDefinition',
-	resolve: scopeInvariant(scopeOptions, structuredefinitionInstanceResolver),
+	description: 'Access information about a single StructureDefinition',
+	resolve: scopeInvariant(scopeOptions, getStructureDefinitionInstance),
 	type: StructureDefinitionSchema,
+	args: args,
 };

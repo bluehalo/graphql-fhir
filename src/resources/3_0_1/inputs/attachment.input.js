@@ -1,12 +1,13 @@
-const CodeScalar = require('../scalars/code.scalar');
-const Base64BinaryScalar = require('../scalars/base64binary.scalar');
-const UriScalar = require('../scalars/uri.scalar');
-const UnsignedIntScalar = require('../scalars/unsignedint.scalar');
-const DateTimeScalar = require('../scalars/datetime.scalar');
-const { GraphQLInputObjectType, GraphQLString } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLString,
+	GraphQLList,
+	GraphQLInputObjectType,
+} = require('graphql');
+const CodeScalar = require('../scalars/code.scalar.js');
+const Base64BinaryScalar = require('../scalars/base64binary.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
+const UnsignedIntScalar = require('../scalars/unsignedint.scalar.js');
+const DateTimeScalar = require('../scalars/datetime.scalar.js');
 
 /**
  * @name exports
@@ -14,83 +15,97 @@ const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'Attachment_Input',
-	description: 'Base StructureDefinition for Attachment Type.',
-	fields: () =>
-		extendSchema(require('./element.input'), {
-			contentType: {
-				type: CodeScalar,
-				description:
-					'Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.',
-			},
-			_contentType: {
-				type: require('./element.input'),
-				description:
-					'Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/languages
-			language: {
-				type: CodeScalar,
-				description:
-					'The human language of the content. The value can be any valid value according to BCP 47.',
-			},
-			_language: {
-				type: require('./element.input'),
-				description:
-					'The human language of the content. The value can be any valid value according to BCP 47.',
-			},
-			data: {
-				type: Base64BinaryScalar,
-				description:
-					'The actual data of the attachment - a sequence of bytes. In XML, represented using base64.',
-			},
-			_data: {
-				type: require('./element.input'),
-				description:
-					'The actual data of the attachment - a sequence of bytes. In XML, represented using base64.',
-			},
-			url: {
-				type: UriScalar,
-				description: 'An alternative location where the data can be accessed.',
-			},
-			_url: {
-				type: require('./element.input'),
-				description: 'An alternative location where the data can be accessed.',
-			},
-			size: {
-				type: UnsignedIntScalar,
-				description:
-					'The number of bytes of data that make up this attachment (before base64 encoding, if that is done).',
-			},
-			_size: {
-				type: require('./element.input'),
-				description:
-					'The number of bytes of data that make up this attachment (before base64 encoding, if that is done).',
-			},
-			hash: {
-				type: Base64BinaryScalar,
-				description:
-					'The calculated hash of the data using SHA-1. Represented using base64.',
-			},
-			_hash: {
-				type: require('./element.input'),
-				description:
-					'The calculated hash of the data using SHA-1. Represented using base64.',
-			},
-			title: {
-				type: GraphQLString,
-				description: 'A label or set of text to display in place of the data.',
-			},
-			_title: {
-				type: require('./element.input'),
-				description: 'A label or set of text to display in place of the data.',
-			},
-			creation: {
-				type: DateTimeScalar,
-				description: 'The date that the attachment was first created.',
-			},
-			_creation: {
-				type: require('./element.input'),
-				description: 'The date that the attachment was first created.',
-			},
-		}),
+	description: 'Base StructureDefinition for Attachment Type',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		_contentType: {
+			type: require('./element.input.js'),
+			description:
+				'Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.',
+		},
+		contentType: {
+			type: CodeScalar,
+			description:
+				'Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.',
+		},
+		_language: {
+			type: require('./element.input.js'),
+			description:
+				'The human language of the content. The value can be any valid value according to BCP 47.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/languages
+		language: {
+			type: CodeScalar,
+			description:
+				'The human language of the content. The value can be any valid value according to BCP 47.',
+		},
+		_data: {
+			type: require('./element.input.js'),
+			description:
+				'The actual data of the attachment - a sequence of bytes. In XML, represented using base64.',
+		},
+		data: {
+			type: Base64BinaryScalar,
+			description:
+				'The actual data of the attachment - a sequence of bytes. In XML, represented using base64.',
+		},
+		_url: {
+			type: require('./element.input.js'),
+			description: 'An alternative location where the data can be accessed.',
+		},
+		url: {
+			type: UriScalar,
+			description: 'An alternative location where the data can be accessed.',
+		},
+		_size: {
+			type: require('./element.input.js'),
+			description:
+				'The number of bytes of data that make up this attachment (before base64 encoding, if that is done).',
+		},
+		size: {
+			type: UnsignedIntScalar,
+			description:
+				'The number of bytes of data that make up this attachment (before base64 encoding, if that is done).',
+		},
+		_hash: {
+			type: require('./element.input.js'),
+			description:
+				'The calculated hash of the data using SHA-1. Represented using base64.',
+		},
+		hash: {
+			type: Base64BinaryScalar,
+			description:
+				'The calculated hash of the data using SHA-1. Represented using base64.',
+		},
+		_title: {
+			type: require('./element.input.js'),
+			description: 'A label or set of text to display in place of the data.',
+		},
+		title: {
+			type: GraphQLString,
+			description: 'A label or set of text to display in place of the data.',
+		},
+		_creation: {
+			type: require('./element.input.js'),
+			description: 'The date that the attachment was first created.',
+		},
+		creation: {
+			type: DateTimeScalar,
+			description: 'The date that the attachment was first created.',
+		},
+	}),
 });

@@ -1,55 +1,59 @@
 // Schemas
-const EpisodeOfCareSchema = require('../../schemas/episodeofcare.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const EpisodeOfCareSchema = require('../../schemas/episodeofcare.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const EpisodeOfCareArgs = require('../../parameters/episodeofcare.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const EpisodeOfCareArgs = require('../../parameters/episodeofcare.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, EpisodeOfCareArgs);
 
 // Resolvers
 const {
-	episodeofcareResolver,
-	episodeofcareListResolver,
-	episodeofcareInstanceResolver,
+	getEpisodeOfCare,
+	getEpisodeOfCareList,
+	getEpisodeOfCareInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'EpisodeOfCare',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.EpisodeOfCareQuery
- * @summary EpisodeOfCare Query.
+ * @summary EpisodeOfCare query.
  */
 module.exports.EpisodeOfCareQuery = {
-	args: Object.assign({}, CommonArgs, EpisodeOfCareArgs),
 	description: 'Query for a single EpisodeOfCare',
-	resolve: scopeInvariant(scopeOptions, episodeofcareResolver),
+	resolve: scopeInvariant(scopeOptions, getEpisodeOfCare),
 	type: EpisodeOfCareSchema,
+	args: args,
 };
 
 /**
  * @name exports.EpisodeOfCareListQuery
- * @summary EpisodeOfCareList Query.
+ * @summary EpisodeOfCare query.
  */
 module.exports.EpisodeOfCareListQuery = {
-	args: Object.assign({}, CommonArgs, EpisodeOfCareArgs),
-	description: 'Query for multiple EpisodeOfCares',
-	resolve: scopeInvariant(scopeOptions, episodeofcareListResolver),
+	description: 'Query for a more than or just one EpisodeOfCare',
+	resolve: scopeInvariant(scopeOptions, getEpisodeOfCareList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.EpisodeOfCareInstanceQuery
- * @summary EpisodeOfCareInstance Query.
+ * @summary EpisodeOfCare query.
  */
 module.exports.EpisodeOfCareInstanceQuery = {
-	description: 'Get information about a single EpisodeOfCare',
-	resolve: scopeInvariant(scopeOptions, episodeofcareInstanceResolver),
+	description: 'Access information about a single EpisodeOfCare',
+	resolve: scopeInvariant(scopeOptions, getEpisodeOfCareInstance),
 	type: EpisodeOfCareSchema,
+	args: args,
 };

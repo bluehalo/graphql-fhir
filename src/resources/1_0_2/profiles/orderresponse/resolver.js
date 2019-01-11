@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.orderresponseResolver
+ * @name exports.getOrderResponse
  * @static
- * @summary OrderResponse Resolver.
+ * @summary OrderResponse resolver.
  */
-module.exports.orderresponseResolver = function orderresponseResolver(
+module.exports.getOrderResponse = function getOrderResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.orderresponseListResolver
+ * @name exports.getOrderResponseList
  * @static
- * @summary OrderResponse List Resolver.
+ * @summary OrderResponse list resolver.
  */
-module.exports.orderresponseListResolver = function orderresponseListResolver(
+module.exports.getOrderResponseList = function getOrderResponseList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.orderresponseInstanceResolver
+ * @name exports.getOrderResponseInstance
  * @static
- * @summary OrderResponse Instance Resolver.
+ * @summary OrderResponse instance resolver.
  */
-module.exports.orderresponseInstanceResolver = function orderresponseInstanceResolver(
+module.exports.getOrderResponseInstance = function getOrderResponseInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.orderresponseCreateResolver
+ * @name exports.createOrderResponse
  * @static
- * @summary OrderResponse Create Resolver.
+ * @summary Create OrderResponse resolver.
  */
-module.exports.orderresponseCreateResolver = function orderresponseCreateResolver(
+module.exports.createOrderResponse = function createOrderResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.orderresponseUpdateResolver
+ * @name exports.updateOrderResponse
  * @static
- * @summary OrderResponse Update Resolver.
+ * @summary Update OrderResponse resolver.
  */
-module.exports.orderresponseUpdateResolver = function orderresponseUpdateResolver(
+module.exports.updateOrderResponse = function updateOrderResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.orderresponseDeleteResolver
+ * @name exports.removeOrderResponse
  * @static
- * @summary OrderResponse Delete Resolver.
+ * @summary Remove OrderResponse resolver.
  */
-module.exports.orderresponseDeleteResolver = function orderresponseDeleteResolver(
+module.exports.removeOrderResponse = function removeOrderResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

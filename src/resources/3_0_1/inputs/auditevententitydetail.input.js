@@ -1,40 +1,56 @@
-const Base64BinaryScalar = require('../scalars/base64binary.scalar');
 const {
-	GraphQLInputObjectType,
-	GraphQLNonNull,
 	GraphQLString,
+	GraphQLList,
+	GraphQLNonNull,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const Base64BinaryScalar = require('../scalars/base64binary.scalar.js');
 
 /**
  * @name exports
- * @summary AuditEvent.entity.detail Input Schema
+ * @summary AuditEvententitydetail Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'AuditEventEntityDetail_Input',
-	description:
-		'Tagged value pairs for conveying additional information about the entity.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			type: {
-				type: new GraphQLNonNull(GraphQLString),
-				description: 'The type of extra detail provided in the value.',
-			},
-			_type: {
-				type: require('./element.input'),
-				description: 'The type of extra detail provided in the value.',
-			},
-			value: {
-				type: new GraphQLNonNull(Base64BinaryScalar),
-				description:
-					'The details, base64 encoded. Used to carry bulk information.',
-			},
-			_value: {
-				type: require('./element.input'),
-				description:
-					'The details, base64 encoded. Used to carry bulk information.',
-			},
-		}),
+	name: 'AuditEvententitydetail_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_type: {
+			type: require('./element.input.js'),
+			description: 'The type of extra detail provided in the value.',
+		},
+		type: {
+			type: new GraphQLNonNull(GraphQLString),
+			description: 'The type of extra detail provided in the value.',
+		},
+		_value: {
+			type: require('./element.input.js'),
+			description:
+				'The details, base64 encoded. Used to carry bulk information.',
+		},
+		value: {
+			type: new GraphQLNonNull(Base64BinaryScalar),
+			description:
+				'The details, base64 encoded. Used to carry bulk information.',
+		},
+	}),
 });

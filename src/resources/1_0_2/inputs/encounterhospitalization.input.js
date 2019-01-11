@@ -1,70 +1,90 @@
-const { GraphQLInputObjectType, GraphQLList } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLList,
+	GraphQLString,
+	GraphQLInputObjectType,
+} = require('graphql');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary Encounter.hospitalization Input Schema
+ * @summary Encounterhospitalization Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'EncounterHospitalization_Input',
-	description: 'Details about the admission to a healthcare service.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			preAdmissionIdentifier: {
-				type: require('./identifier.input'),
-				description: 'Pre-admission identifier.',
-			},
-			origin: {
-				type: require('./reference.input'),
-				description:
-					'The location from which the patient came before admission.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-admit-source
-			admitSource: {
-				type: require('./codeableconcept.input'),
-				description:
-					'From where patient was admitted (physician referral, transfer).',
-			},
-			admittingDiagnosis: {
-				type: new GraphQLList(require('./reference.input')),
-				description:
-					'The admitting diagnosis field is used to record the diagnosis codes as reported by admitting practitioner. This could be different or in addition to the conditions reported as reason-condition(s) for the encounter.',
-			},
-			reAdmission: {
-				type: require('./codeableconcept.input'),
-				description:
-					'Whether this hospitalization is a readmission and why if known.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-diet
-			dietPreference: {
-				type: new GraphQLList(require('./codeableconcept.input')),
-				description: 'Diet preferences reported by the patient.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-special-courtesy
-			specialCourtesy: {
-				type: new GraphQLList(require('./codeableconcept.input')),
-				description: 'Special courtesies (VIP, board member).',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-special-arrangements
-			specialArrangement: {
-				type: new GraphQLList(require('./codeableconcept.input')),
-				description: 'Wheelchair, translator, stretcher, etc.',
-			},
-			destination: {
-				type: require('./reference.input'),
-				description: 'Location to which the patient is discharged.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/encounter-discharge-disposition
-			dischargeDisposition: {
-				type: require('./codeableconcept.input'),
-				description: 'Category or kind of location after discharge.',
-			},
-			dischargeDiagnosis: {
-				type: new GraphQLList(require('./reference.input')),
-				description:
-					'The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete.',
-			},
-		}),
+	name: 'Encounterhospitalization_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		preAdmissionIdentifier: {
+			type: require('./identifier.input.js'),
+			description: 'Pre-admission identifier.',
+		},
+		origin: {
+			type: GraphQLString,
+			description: 'The location from which the patient came before admission.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/encounter-admit-source
+		admitSource: {
+			type: require('./codeableconcept.input.js'),
+			description:
+				'From where patient was admitted (physician referral, transfer).',
+		},
+		admittingDiagnosis: {
+			type: new GraphQLList(GraphQLString),
+			description:
+				'The admitting diagnosis field is used to record the diagnosis codes as reported by admitting practitioner. This could be different or in addition to the conditions reported as reason-condition(s) for the encounter.',
+		},
+		reAdmission: {
+			type: require('./codeableconcept.input.js'),
+			description:
+				'Whether this hospitalization is a readmission and why if known.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/encounter-diet
+		dietPreference: {
+			type: new GraphQLList(require('./codeableconcept.input.js')),
+			description: 'Diet preferences reported by the patient.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/encounter-special-courtesy
+		specialCourtesy: {
+			type: new GraphQLList(require('./codeableconcept.input.js')),
+			description: 'Special courtesies (VIP, board member).',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/encounter-special-arrangements
+		specialArrangement: {
+			type: new GraphQLList(require('./codeableconcept.input.js')),
+			description: 'Wheelchair, translator, stretcher, etc.',
+		},
+		destination: {
+			type: GraphQLString,
+			description: 'Location to which the patient is discharged.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/encounter-discharge-disposition
+		dischargeDisposition: {
+			type: require('./codeableconcept.input.js'),
+			description: 'Category or kind of location after discharge.',
+		},
+		dischargeDiagnosis: {
+			type: new GraphQLList(GraphQLString),
+			description:
+				'The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete.',
+		},
+	}),
 });

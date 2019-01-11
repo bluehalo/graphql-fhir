@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.subscriptionResolver
+ * @name exports.getSubscription
  * @static
- * @summary Subscription Resolver.
+ * @summary Subscription resolver.
  */
-module.exports.subscriptionResolver = function subscriptionResolver(
+module.exports.getSubscription = function getSubscription(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.subscriptionListResolver
+ * @name exports.getSubscriptionList
  * @static
- * @summary Subscription List Resolver.
+ * @summary Subscription list resolver.
  */
-module.exports.subscriptionListResolver = function subscriptionListResolver(
+module.exports.getSubscriptionList = function getSubscriptionList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.subscriptionInstanceResolver
+ * @name exports.getSubscriptionInstance
  * @static
- * @summary Subscription Instance Resolver.
+ * @summary Subscription instance resolver.
  */
-module.exports.subscriptionInstanceResolver = function subscriptionInstanceResolver(
+module.exports.getSubscriptionInstance = function getSubscriptionInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.subscriptionCreateResolver
+ * @name exports.createSubscription
  * @static
- * @summary Subscription Create Resolver.
+ * @summary Create Subscription resolver.
  */
-module.exports.subscriptionCreateResolver = function subscriptionCreateResolver(
+module.exports.createSubscription = function createSubscription(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.subscriptionUpdateResolver
+ * @name exports.updateSubscription
  * @static
- * @summary Subscription Update Resolver.
+ * @summary Update Subscription resolver.
  */
-module.exports.subscriptionUpdateResolver = function subscriptionUpdateResolver(
+module.exports.updateSubscription = function updateSubscription(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.subscriptionDeleteResolver
+ * @name exports.removeSubscription
  * @static
- * @summary Subscription Delete Resolver.
+ * @summary Remove Subscription resolver.
  */
-module.exports.subscriptionDeleteResolver = function subscriptionDeleteResolver(
+module.exports.removeSubscription = function removeSubscription(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

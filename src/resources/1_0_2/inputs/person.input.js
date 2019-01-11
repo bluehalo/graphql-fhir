@@ -1,23 +1,15 @@
-const CodeScalar = require('../scalars/code.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const {
-	GraphQLInputObjectType,
-	GraphQLEnumType,
 	GraphQLNonNull,
-	GraphQLString,
+	GraphQLEnumType,
 	GraphQLList,
+	GraphQLString,
 	GraphQLBoolean,
+	GraphQLInputObjectType,
 } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
-
-let PersonResourceInputType = new GraphQLEnumType({
-	name: 'PersonResourceInputType',
-	values: {
-		Person: { value: 'Person' },
-	},
-});
+const IdScalar = require('../scalars/id.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
+const CodeScalar = require('../scalars/code.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -25,68 +17,125 @@ let PersonResourceInputType = new GraphQLEnumType({
  */
 module.exports = new GraphQLInputObjectType({
 	name: 'Person_Input',
-	description: 'Base StructureDefinition for Person Resource.',
-	fields: () =>
-		extendSchema(require('./domainresource.input'), {
-			resourceType: {
-				type: new GraphQLNonNull(PersonResourceInputType),
-				description: 'Type of this resource.',
-			},
-			identifier: {
-				type: new GraphQLList(require('./identifier.input')),
-				description: 'Identifier for a person within a particular scope.',
-			},
-			name: {
-				type: new GraphQLList(require('./humanname.input')),
-				description: 'A name associated with the person.',
-			},
-			telecom: {
-				type: new GraphQLList(require('./contactpoint.input')),
-				description:
-					'A contact detail for the person, e.g. a telephone number or an email address.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
-			gender: {
-				type: CodeScalar,
-				description: 'Administrative Gender.',
-			},
-			_gender: {
-				type: require('./element.input'),
-				description: 'Administrative Gender.',
-			},
-			birthDate: {
-				type: DateScalar,
-				description: 'The birth date for the person.',
-			},
-			_birthDate: {
-				type: require('./element.input'),
-				description: 'The birth date for the person.',
-			},
-			address: {
-				type: new GraphQLList(require('./address.input')),
-				description: 'One or more addresses for the person.',
-			},
-			photo: {
-				type: require('./attachment.input'),
-				description:
-					'An image that can be displayed as a thumbnail of the person to enhance the identification of the individual.',
-			},
-			managingOrganization: {
-				type: require('./reference.input'),
-				description:
-					'The organization that is the custodian of the person record.',
-			},
-			active: {
-				type: GraphQLBoolean,
-				description: "Whether this person's record is in active use.",
-			},
-			_active: {
-				type: require('./element.input'),
-				description: "Whether this person's record is in active use.",
-			},
-			link: {
-				type: new GraphQLList(require('./personlink.input')),
-				description: 'Link to a resource that concerns the same actual person.',
-			},
-		}),
+	description: 'Base StructureDefinition for Person Resource',
+	fields: () => ({
+		resourceType: {
+			type: new GraphQLNonNull(
+				new GraphQLEnumType({
+					name: 'Person_Enum_input',
+					values: { Person: { value: 'Person' } },
+				}),
+			),
+			description: 'Type of resource',
+		},
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.',
+		},
+		meta: {
+			type: require('./meta.input.js'),
+			description:
+				'The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.',
+		},
+		_implicitRules: {
+			type: require('./element.input.js'),
+			description:
+				'A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.',
+		},
+		implicitRules: {
+			type: UriScalar,
+			description:
+				'A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.',
+		},
+		_language: {
+			type: require('./element.input.js'),
+			description: 'The base language in which the resource is written.',
+		},
+		language: {
+			type: CodeScalar,
+			description: 'The base language in which the resource is written.',
+		},
+		text: {
+			type: require('./narrative.input.js'),
+			description:
+				"A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it 'clinically safe' for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+		},
+		contained: {
+			type: new GraphQLList(GraphQLString),
+			description:
+				'These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		identifier: {
+			type: new GraphQLList(require('./identifier.input.js')),
+			description: 'Identifier for a person within a particular scope.',
+		},
+		name: {
+			type: new GraphQLList(require('./humanname.input.js')),
+			description: 'A name associated with the person.',
+		},
+		telecom: {
+			type: new GraphQLList(require('./contactpoint.input.js')),
+			description:
+				'A contact detail for the person, e.g. a telephone number or an email address.',
+		},
+		_gender: {
+			type: require('./element.input.js'),
+			description: 'Administrative Gender.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/administrative-gender
+		gender: {
+			type: CodeScalar,
+			description: 'Administrative Gender.',
+		},
+		_birthDate: {
+			type: require('./element.input.js'),
+			description: 'The birth date for the person.',
+		},
+		birthDate: {
+			type: DateScalar,
+			description: 'The birth date for the person.',
+		},
+		address: {
+			type: new GraphQLList(require('./address.input.js')),
+			description: 'One or more addresses for the person.',
+		},
+		photo: {
+			type: require('./attachment.input.js'),
+			description:
+				'An image that can be displayed as a thumbnail of the person to enhance the identification of the individual.',
+		},
+		managingOrganization: {
+			type: GraphQLString,
+			description:
+				'The organization that is the custodian of the person record.',
+		},
+		_active: {
+			type: require('./element.input.js'),
+			description: "Whether this person's record is in active use.",
+		},
+		active: {
+			type: GraphQLBoolean,
+			description: "Whether this person's record is in active use.",
+		},
+		link: {
+			type: new GraphQLList(require('./personlink.input.js')),
+			description: 'Link to a resource that concerns the same actual person.',
+		},
+	}),
 });

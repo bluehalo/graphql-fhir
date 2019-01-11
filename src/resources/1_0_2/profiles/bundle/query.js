@@ -1,54 +1,54 @@
 // Schemas
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const BundleArgs = require('../../parameters/bundle.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const BundleArgs = require('../../parameters/bundle.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, BundleArgs);
 
 // Resolvers
-const {
-	bundleResolver,
-	bundleListResolver,
-	bundleInstanceResolver,
-} = require('./resolver');
+const { getBundle, getBundleList, getBundleInstance } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Bundle',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.BundleQuery
- * @summary Bundle Query.
+ * @summary Bundle query.
  */
 module.exports.BundleQuery = {
-	args: Object.assign({}, CommonArgs, BundleArgs),
 	description: 'Query for a single Bundle',
-	resolve: scopeInvariant(scopeOptions, bundleResolver),
+	resolve: scopeInvariant(scopeOptions, getBundle),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.BundleListQuery
- * @summary BundleList Query.
+ * @summary Bundle query.
  */
 module.exports.BundleListQuery = {
-	args: Object.assign({}, CommonArgs, BundleArgs),
-	description: 'Query for multiple Bundles',
-	resolve: scopeInvariant(scopeOptions, bundleListResolver),
+	description: 'Query for a more than or just one Bundle',
+	resolve: scopeInvariant(scopeOptions, getBundleList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.BundleInstanceQuery
- * @summary BundleInstance Query.
+ * @summary Bundle query.
  */
 module.exports.BundleInstanceQuery = {
-	description: 'Get information about a single Bundle',
-	resolve: scopeInvariant(scopeOptions, bundleInstanceResolver),
+	description: 'Access information about a single Bundle',
+	resolve: scopeInvariant(scopeOptions, getBundleInstance),
 	type: BundleSchema,
+	args: args,
 };

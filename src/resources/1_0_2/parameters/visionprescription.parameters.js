@@ -1,6 +1,6 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,29 +8,39 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the visionprescription query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/VisionPrescription-datewritten
 	datewritten: {
 		type: DateScalar,
-		description:
-			'Return prescriptions written on this date (See http://hl7.org/fhir/SearchParameter/visionprescription-datewritten).',
+		fhirtype: 'date',
+		xpath: 'VisionPrescription.dateWritten',
+		description: 'Return prescriptions written on this date',
 	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'The identity of a patient to list dispenses for (See http://hl7.org/fhir/SearchParameter/visionprescription-patient).',
-	},
-	prescriber: {
-		type: GraphQLString,
-		description:
-			'Who authorizes the vision product (See http://hl7.org/fhir/SearchParameter/visionprescription-prescriber).',
-	},
+	// http://hl7.org/fhir/SearchParameter/VisionPrescription-encounter
 	encounter: {
 		type: GraphQLString,
-		description:
-			'Return prescriptions with this encounter identifier (See http://hl7.org/fhir/SearchParameter/visionprescription-encounter).',
+		fhirtype: 'reference',
+		xpath: 'VisionPrescription.encounter',
+		description: 'Return prescriptions with this encounter identifier',
 	},
+	// http://hl7.org/fhir/SearchParameter/VisionPrescription-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Return prescriptions with this external identifier (See http://hl7.org/fhir/SearchParameter/visionprescription-identifier).',
+		fhirtype: 'token',
+		xpath: 'VisionPrescription.identifier',
+		description: 'Return prescriptions with this external identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/VisionPrescription-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'VisionPrescription.patient',
+		description: 'The identity of a patient to list dispenses for',
+	},
+	// http://hl7.org/fhir/SearchParameter/VisionPrescription-prescriber
+	prescriber: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'VisionPrescription.prescriber',
+		description: 'Who authorizes the vision product',
 	},
 };

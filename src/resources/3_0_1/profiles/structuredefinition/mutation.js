@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const StructureDefinitionSchema = require('../../schemas/structuredefinition.schema');
+const StructureDefinitionSchema = require('../../schemas/structuredefinition.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const StructureDefinitionInput = require('../../inputs/structuredefinition.input');
+const StructureDefinitionInput = require('../../inputs/structuredefinition.input.js');
 
-// Resolvers
-const {
-	structuredefinitionCreateResolver,
-	structuredefinitionUpdateResolver,
-	structuredefinitionDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createStructureDefinition,
+	updateStructureDefinition,
+	removeStructureDefinition,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'StructureDefinition',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a StructureDefinition record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a StructureDefinition record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.StructureDefinitionCreateMutation
- * @summary StructureDefinitionCreate Mutation.
+ * @summary StructureDefinitionCreate mutation.
  */
 module.exports.StructureDefinitionCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a StructureDefinition',
-	resolve: scopeInvariant(scopeOptions, structuredefinitionCreateResolver),
+	description: 'Create a StructureDefinition record',
+	resolve: scopeInvariant(scopeOptions, createStructureDefinition),
 	type: StructureDefinitionSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.StructureDefinitionUpdateMutation
- * @summary StructureDefinitionUpdate Mutation.
+ * @summary StructureDefinitionUpdate mutation.
  */
 module.exports.StructureDefinitionUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple StructureDefinitions',
-	resolve: scopeInvariant(scopeOptions, structuredefinitionUpdateResolver),
+	description: 'Update a StructureDefinition record',
+	resolve: scopeInvariant(scopeOptions, updateStructureDefinition),
 	type: StructureDefinitionSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.StructureDefinitionDeleteMutation
- * @summary StructureDefinitionDelete Mutation.
+ * @name exports.StructureDefinitionRemoveMutation
+ * @summary StructureDefinitionRemove mutation.
  */
-module.exports.StructureDefinitionDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single StructureDefinition',
-	resolve: scopeInvariant(scopeOptions, structuredefinitionDeleteResolver),
+module.exports.StructureDefinitionRemoveMutation = {
+	description: 'Remove a StructureDefinition record',
+	resolve: scopeInvariant(scopeOptions, removeStructureDefinition),
 	type: StructureDefinitionSchema,
+	args: DeleteArgs,
 };

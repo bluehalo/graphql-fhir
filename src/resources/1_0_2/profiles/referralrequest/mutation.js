@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ReferralRequestSchema = require('../../schemas/referralrequest.schema');
+const ReferralRequestSchema = require('../../schemas/referralrequest.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ReferralRequestInput = require('../../inputs/referralrequest.input');
+const ReferralRequestInput = require('../../inputs/referralrequest.input.js');
 
-// Resolvers
-const {
-	referralrequestCreateResolver,
-	referralrequestUpdateResolver,
-	referralrequestDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createReferralRequest,
+	updateReferralRequest,
+	removeReferralRequest,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ReferralRequest',
 	action: 'write',
-	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a ReferralRequest record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a ReferralRequest record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ReferralRequestCreateMutation
- * @summary ReferralRequestCreate Mutation.
+ * @summary ReferralRequestCreate mutation.
  */
 module.exports.ReferralRequestCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a ReferralRequest',
-	resolve: scopeInvariant(scopeOptions, referralrequestCreateResolver),
+	description: 'Create a ReferralRequest record',
+	resolve: scopeInvariant(scopeOptions, createReferralRequest),
 	type: ReferralRequestSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ReferralRequestUpdateMutation
- * @summary ReferralRequestUpdate Mutation.
+ * @summary ReferralRequestUpdate mutation.
  */
 module.exports.ReferralRequestUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple ReferralRequests',
-	resolve: scopeInvariant(scopeOptions, referralrequestUpdateResolver),
+	description: 'Update a ReferralRequest record',
+	resolve: scopeInvariant(scopeOptions, updateReferralRequest),
 	type: ReferralRequestSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ReferralRequestDeleteMutation
- * @summary ReferralRequestDelete Mutation.
+ * @name exports.ReferralRequestRemoveMutation
+ * @summary ReferralRequestRemove mutation.
  */
-module.exports.ReferralRequestDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single ReferralRequest',
-	resolve: scopeInvariant(scopeOptions, referralrequestDeleteResolver),
+module.exports.ReferralRequestRemoveMutation = {
+	description: 'Remove a ReferralRequest record',
+	resolve: scopeInvariant(scopeOptions, removeReferralRequest),
 	type: ReferralRequestSchema,
+	args: DeleteArgs,
 };

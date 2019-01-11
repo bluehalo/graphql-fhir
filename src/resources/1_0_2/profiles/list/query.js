@@ -1,55 +1,55 @@
 // Schemas
-const ListSchema = require('../../schemas/list.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ListSchema = require('../../schemas/list.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ListArgs = require('../../parameters/list.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ListArgs = require('../../parameters/list.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ListArgs);
 
 // Resolvers
-const {
-	listResolver,
-	listListResolver,
-	listInstanceResolver,
-} = require('./resolver');
+const { getList, getListList, getListInstance } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'List',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ListQuery
- * @summary List Query.
+ * @summary List query.
  */
 module.exports.ListQuery = {
-	args: Object.assign({}, CommonArgs, ListArgs),
 	description: 'Query for a single List',
-	resolve: scopeInvariant(scopeOptions, listResolver),
+	resolve: scopeInvariant(scopeOptions, getList),
 	type: ListSchema,
+	args: args,
 };
 
 /**
  * @name exports.ListListQuery
- * @summary ListList Query.
+ * @summary List query.
  */
 module.exports.ListListQuery = {
-	args: Object.assign({}, CommonArgs, ListArgs),
-	description: 'Query for multiple Lists',
-	resolve: scopeInvariant(scopeOptions, listListResolver),
+	description: 'Query for a more than or just one List',
+	resolve: scopeInvariant(scopeOptions, getListList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ListInstanceQuery
- * @summary ListInstance Query.
+ * @summary List query.
  */
 module.exports.ListInstanceQuery = {
-	description: 'Get information about a single List',
-	resolve: scopeInvariant(scopeOptions, listInstanceResolver),
+	description: 'Access information about a single List',
+	resolve: scopeInvariant(scopeOptions, getListInstance),
 	type: ListSchema,
+	args: args,
 };

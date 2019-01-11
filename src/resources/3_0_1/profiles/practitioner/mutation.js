@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const PractitionerSchema = require('../../schemas/practitioner.schema');
+const PractitionerSchema = require('../../schemas/practitioner.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const PractitionerInput = require('../../inputs/practitioner.input');
+const PractitionerInput = require('../../inputs/practitioner.input.js');
 
-// Resolvers
-const {
-	practitionerCreateResolver,
-	practitionerUpdateResolver,
-	practitionerDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createPractitioner,
+	updatePractitioner,
+	removePractitioner,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Practitioner',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a Practitioner record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Practitioner record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.PractitionerCreateMutation
- * @summary PractitionerCreate Mutation.
+ * @summary PractitionerCreate mutation.
  */
 module.exports.PractitionerCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Practitioner',
-	resolve: scopeInvariant(scopeOptions, practitionerCreateResolver),
+	description: 'Create a Practitioner record',
+	resolve: scopeInvariant(scopeOptions, createPractitioner),
 	type: PractitionerSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.PractitionerUpdateMutation
- * @summary PractitionerUpdate Mutation.
+ * @summary PractitionerUpdate mutation.
  */
 module.exports.PractitionerUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Practitioners',
-	resolve: scopeInvariant(scopeOptions, practitionerUpdateResolver),
+	description: 'Update a Practitioner record',
+	resolve: scopeInvariant(scopeOptions, updatePractitioner),
 	type: PractitionerSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.PractitionerDeleteMutation
- * @summary PractitionerDelete Mutation.
+ * @name exports.PractitionerRemoveMutation
+ * @summary PractitionerRemove mutation.
  */
-module.exports.PractitionerDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Practitioner',
-	resolve: scopeInvariant(scopeOptions, practitionerDeleteResolver),
+module.exports.PractitionerRemoveMutation = {
+	description: 'Remove a Practitioner record',
+	resolve: scopeInvariant(scopeOptions, removePractitioner),
 	type: PractitionerSchema,
+	args: DeleteArgs,
 };

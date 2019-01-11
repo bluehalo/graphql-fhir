@@ -1,55 +1,59 @@
 // Schemas
-const MessageHeaderSchema = require('../../schemas/messageheader.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const MessageHeaderSchema = require('../../schemas/messageheader.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const MessageHeaderArgs = require('../../parameters/messageheader.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const MessageHeaderArgs = require('../../parameters/messageheader.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, MessageHeaderArgs);
 
 // Resolvers
 const {
-	messageheaderResolver,
-	messageheaderListResolver,
-	messageheaderInstanceResolver,
+	getMessageHeader,
+	getMessageHeaderList,
+	getMessageHeaderInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'MessageHeader',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.MessageHeaderQuery
- * @summary MessageHeader Query.
+ * @summary MessageHeader query.
  */
 module.exports.MessageHeaderQuery = {
-	args: Object.assign({}, CommonArgs, MessageHeaderArgs),
 	description: 'Query for a single MessageHeader',
-	resolve: scopeInvariant(scopeOptions, messageheaderResolver),
+	resolve: scopeInvariant(scopeOptions, getMessageHeader),
 	type: MessageHeaderSchema,
+	args: args,
 };
 
 /**
  * @name exports.MessageHeaderListQuery
- * @summary MessageHeaderList Query.
+ * @summary MessageHeader query.
  */
 module.exports.MessageHeaderListQuery = {
-	args: Object.assign({}, CommonArgs, MessageHeaderArgs),
-	description: 'Query for multiple MessageHeaders',
-	resolve: scopeInvariant(scopeOptions, messageheaderListResolver),
+	description: 'Query for a more than or just one MessageHeader',
+	resolve: scopeInvariant(scopeOptions, getMessageHeaderList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.MessageHeaderInstanceQuery
- * @summary MessageHeaderInstance Query.
+ * @summary MessageHeader query.
  */
 module.exports.MessageHeaderInstanceQuery = {
-	description: 'Get information about a single MessageHeader',
-	resolve: scopeInvariant(scopeOptions, messageheaderInstanceResolver),
+	description: 'Access information about a single MessageHeader',
+	resolve: scopeInvariant(scopeOptions, getMessageHeaderInstance),
 	type: MessageHeaderSchema,
+	args: args,
 };

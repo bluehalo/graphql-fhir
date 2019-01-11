@@ -91,7 +91,7 @@ describe('Router Utils Test', () => {
 			let { mock } = require('express-graphql');
 			// Create a mock resource config
 			let mockResourceConfig = {
-				profilesRelativePath: 'profiles/__mocks__/*.js',
+				profilesRelativePath: '../../utils/__mocks__/*.js',
 			};
 			// configure routes
 			configureRoutes(server, {

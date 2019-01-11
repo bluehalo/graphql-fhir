@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.claimresponseResolver
+ * @name exports.getClaimResponse
  * @static
- * @summary ClaimResponse Resolver.
+ * @summary ClaimResponse resolver.
  */
-module.exports.claimresponseResolver = function claimresponseResolver(
+module.exports.getClaimResponse = function getClaimResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.claimresponseListResolver
+ * @name exports.getClaimResponseList
  * @static
- * @summary ClaimResponse List Resolver.
+ * @summary ClaimResponse list resolver.
  */
-module.exports.claimresponseListResolver = function claimresponseListResolver(
+module.exports.getClaimResponseList = function getClaimResponseList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.claimresponseInstanceResolver
+ * @name exports.getClaimResponseInstance
  * @static
- * @summary ClaimResponse Instance Resolver.
+ * @summary ClaimResponse instance resolver.
  */
-module.exports.claimresponseInstanceResolver = function claimresponseInstanceResolver(
+module.exports.getClaimResponseInstance = function getClaimResponseInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.claimresponseCreateResolver
+ * @name exports.createClaimResponse
  * @static
- * @summary ClaimResponse Create Resolver.
+ * @summary Create ClaimResponse resolver.
  */
-module.exports.claimresponseCreateResolver = function claimresponseCreateResolver(
+module.exports.createClaimResponse = function createClaimResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.claimresponseUpdateResolver
+ * @name exports.updateClaimResponse
  * @static
- * @summary ClaimResponse Update Resolver.
+ * @summary Update ClaimResponse resolver.
  */
-module.exports.claimresponseUpdateResolver = function claimresponseUpdateResolver(
+module.exports.updateClaimResponse = function updateClaimResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.claimresponseDeleteResolver
+ * @name exports.removeClaimResponse
  * @static
- * @summary ClaimResponse Delete Resolver.
+ * @summary Remove ClaimResponse resolver.
  */
-module.exports.claimresponseDeleteResolver = function claimresponseDeleteResolver(
+module.exports.removeClaimResponse = function removeClaimResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

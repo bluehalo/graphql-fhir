@@ -1,4 +1,4 @@
-const TokenScalar = require('../scalars/token.scalar');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -6,9 +6,11 @@ const TokenScalar = require('../scalars/token.scalar');
  * @summary Arguments for the claimresponse query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/ClaimResponse-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'The identity of the insurer (See http://hl7.org/fhir/SearchParameter/claimresponse-identifier).',
+		fhirtype: 'token',
+		xpath: 'ClaimResponse.identifier',
+		description: 'The identity of the insurer',
 	},
 };

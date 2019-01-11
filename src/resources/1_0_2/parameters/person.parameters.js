@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,99 +8,140 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the person query
  */
 module.exports = {
-	phone: {
-		type: TokenScalar,
-		description:
-			'A value in a phone contact (See http://hl7.org/fhir/SearchParameter/person-phone).',
-	},
-	phonetic: {
-		type: GraphQLString,
-		description:
-			'A portion of name using some kind of phonetic matching algorithm (See http://hl7.org/fhir/SearchParameter/person-phonetic).',
-	},
-	link: {
-		type: GraphQLString,
-		description:
-			'Any link has this Patient, Person, RelatedPerson or Practitioner reference (See http://hl7.org/fhir/SearchParameter/person-link).',
-	},
-	address_country: {
-		type: GraphQLString,
-		description:
-			'A country specified in an address (See http://hl7.org/fhir/SearchParameter/person-address-country).',
-	},
-	relatedperson: {
-		type: GraphQLString,
-		description:
-			'The Person links to this RelatedPerson (See http://hl7.org/fhir/SearchParameter/person-relatedperson).',
-	},
-	organization: {
-		type: GraphQLString,
-		description:
-			'The organization at which this person record is being managed (See http://hl7.org/fhir/SearchParameter/person-organization).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'The Person links to this Patient (See http://hl7.org/fhir/SearchParameter/person-patient).',
-	},
-	address_city: {
-		type: GraphQLString,
-		description:
-			'A city specified in an address (See http://hl7.org/fhir/SearchParameter/person-address-city).',
-	},
-	address_state: {
-		type: GraphQLString,
-		description:
-			'A state specified in an address (See http://hl7.org/fhir/SearchParameter/person-address-state).',
-	},
-	practitioner: {
-		type: GraphQLString,
-		description:
-			'The Person links to this Practitioner (See http://hl7.org/fhir/SearchParameter/person-practitioner).',
-	},
-	email: {
-		type: TokenScalar,
-		description:
-			'A value in an email contact (See http://hl7.org/fhir/SearchParameter/person-email).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Person-address
 	address: {
 		type: GraphQLString,
-		description:
-			'An address in any kind of address/part (See http://hl7.org/fhir/SearchParameter/person-address).',
+		fhirtype: 'string',
+		xpath: 'Person.address',
+		description: 'An address in any kind of address/part',
 	},
-	address_use: {
-		type: TokenScalar,
-		description:
-			'A use code specified in an address (See http://hl7.org/fhir/SearchParameter/person-address-use).',
-	},
-	name: {
+	// http://hl7.org/fhir/SearchParameter/Person-address-city
+	address_city: {
 		type: GraphQLString,
-		description:
-			'A portion of name in any name part (See http://hl7.org/fhir/SearchParameter/person-name).',
+		fhirtype: 'string',
+		xpath: 'Person.address.city',
+		description: 'A city specified in an address',
 	},
-	birthdate: {
-		type: DateScalar,
-		description:
-			"The person's date of birth (See http://hl7.org/fhir/SearchParameter/person-birthdate).",
+	// http://hl7.org/fhir/SearchParameter/Person-address-country
+	address_country: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Person.address.country',
+		description: 'A country specified in an address',
 	},
-	telecom: {
-		type: TokenScalar,
-		description:
-			'The value in any kind of contact (See http://hl7.org/fhir/SearchParameter/person-telecom).',
-	},
-	gender: {
-		type: TokenScalar,
-		description:
-			'The gender of the person (See http://hl7.org/fhir/SearchParameter/person-gender).',
-	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'A person Identifier (See http://hl7.org/fhir/SearchParameter/person-identifier).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Person-address-postalcode
 	address_postalcode: {
 		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Person.address.postalCode',
+		description: 'A postal code specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-address-state
+	address_state: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Person.address.state',
+		description: 'A state specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-address-use
+	address_use: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Person.address.use',
+		description: 'A use code specified in an address',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-birthdate
+	birthdate: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Person.birthDate',
+		description: "The person's date of birth",
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-email
+	email: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: "Person.telecom[system/@value='email']",
+		description: 'A value in an email contact',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-gender
+	gender: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Person.gender',
+		description: 'The gender of the person',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Person.identifier',
+		description: 'A person Identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-link
+	link: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Person.link.target',
 		description:
-			'A postal code specified in an address (See http://hl7.org/fhir/SearchParameter/person-address-postalcode).',
+			'Any link has this Patient, Person, RelatedPerson or Practitioner reference',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Person.name',
+		description: 'A portion of name in any name part',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-organization
+	organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Person.managingOrganization',
+		description:
+			'The organization at which this person record is being managed',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Person.link.target',
+		description: 'The Person links to this Patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-phone
+	phone: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: "Person.telecom[system/@value='phone']",
+		description: 'A value in a phone contact',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-phonetic
+	phonetic: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Person.name',
+		description:
+			'A portion of name using some kind of phonetic matching algorithm',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-practitioner
+	practitioner: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Person.link.target',
+		description: 'The Person links to this Practitioner',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-relatedperson
+	relatedperson: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Person.link.target',
+		description: 'The Person links to this RelatedPerson',
+	},
+	// http://hl7.org/fhir/SearchParameter/Person-telecom
+	telecom: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Person.telecom',
+		description: 'The value in any kind of contact',
 	},
 };

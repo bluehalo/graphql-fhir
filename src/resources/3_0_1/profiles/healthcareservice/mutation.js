@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const HealthcareServiceSchema = require('../../schemas/healthcareservice.schema');
+const HealthcareServiceSchema = require('../../schemas/healthcareservice.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const HealthcareServiceInput = require('../../inputs/healthcareservice.input');
+const HealthcareServiceInput = require('../../inputs/healthcareservice.input.js');
 
-// Resolvers
-const {
-	healthcareserviceCreateResolver,
-	healthcareserviceUpdateResolver,
-	healthcareserviceDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createHealthcareService,
+	updateHealthcareService,
+	removeHealthcareService,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'HealthcareService',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a HealthcareService record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a HealthcareService record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.HealthcareServiceCreateMutation
- * @summary HealthcareServiceCreate Mutation.
+ * @summary HealthcareServiceCreate mutation.
  */
 module.exports.HealthcareServiceCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a HealthcareService',
-	resolve: scopeInvariant(scopeOptions, healthcareserviceCreateResolver),
+	description: 'Create a HealthcareService record',
+	resolve: scopeInvariant(scopeOptions, createHealthcareService),
 	type: HealthcareServiceSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.HealthcareServiceUpdateMutation
- * @summary HealthcareServiceUpdate Mutation.
+ * @summary HealthcareServiceUpdate mutation.
  */
 module.exports.HealthcareServiceUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple HealthcareServices',
-	resolve: scopeInvariant(scopeOptions, healthcareserviceUpdateResolver),
+	description: 'Update a HealthcareService record',
+	resolve: scopeInvariant(scopeOptions, updateHealthcareService),
 	type: HealthcareServiceSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.HealthcareServiceDeleteMutation
- * @summary HealthcareServiceDelete Mutation.
+ * @name exports.HealthcareServiceRemoveMutation
+ * @summary HealthcareServiceRemove mutation.
  */
-module.exports.HealthcareServiceDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single HealthcareService',
-	resolve: scopeInvariant(scopeOptions, healthcareserviceDeleteResolver),
+module.exports.HealthcareServiceRemoveMutation = {
+	description: 'Remove a HealthcareService record',
+	resolve: scopeInvariant(scopeOptions, removeHealthcareService),
 	type: HealthcareServiceSchema,
+	args: DeleteArgs,
 };

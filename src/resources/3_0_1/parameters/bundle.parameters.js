@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,24 +7,35 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the bundle query
  */
 module.exports = {
-	identifier: {
-		type: TokenScalar,
-		description:
-			'Persistent identifier for the bundle (See http://hl7.org/fhir/SearchParameter/Bundle-identifier).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Bundle-composition
 	composition: {
 		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Bundle.entry[0].resource',
 		description:
-			"The first resource in the bundle, if the bundle type is 'document' - this is a composition, and this parameter provides access to searches its contents (See http://hl7.org/fhir/SearchParameter/Bundle-composition).",
+			"The first resource in the bundle, if the bundle type is 'document' - this is a composition, and this parameter provides access to searches its contents",
 	},
-	type: {
+	// http://hl7.org/fhir/SearchParameter/Bundle-identifier
+	identifier: {
 		type: TokenScalar,
-		description:
-			'document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection (See http://hl7.org/fhir/SearchParameter/Bundle-type).',
+		fhirtype: 'token',
+		xpath: 'Bundle.identifier',
+		description: 'Persistent identifier for the bundle',
 	},
+	// http://hl7.org/fhir/SearchParameter/Bundle-message
 	message: {
 		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Bundle.entry[0].resource',
 		description:
-			"The first resource in the bundle, if the bundle type is 'message' - this is a message header, and this parameter provides access to search its contents (See http://hl7.org/fhir/SearchParameter/Bundle-message).",
+			"The first resource in the bundle, if the bundle type is 'message' - this is a message header, and this parameter provides access to search its contents",
+	},
+	// http://hl7.org/fhir/SearchParameter/Bundle-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Bundle.type',
+		description:
+			'document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection',
 	},
 };

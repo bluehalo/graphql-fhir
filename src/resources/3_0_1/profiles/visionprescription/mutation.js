@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const VisionPrescriptionSchema = require('../../schemas/visionprescription.schema');
+const VisionPrescriptionSchema = require('../../schemas/visionprescription.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const VisionPrescriptionInput = require('../../inputs/visionprescription.input');
+const VisionPrescriptionInput = require('../../inputs/visionprescription.input.js');
 
-// Resolvers
-const {
-	visionprescriptionCreateResolver,
-	visionprescriptionUpdateResolver,
-	visionprescriptionDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createVisionPrescription,
+	updateVisionPrescription,
+	removeVisionPrescription,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'VisionPrescription',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a VisionPrescription record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a VisionPrescription record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.VisionPrescriptionCreateMutation
- * @summary VisionPrescriptionCreate Mutation.
+ * @summary VisionPrescriptionCreate mutation.
  */
 module.exports.VisionPrescriptionCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a VisionPrescription',
-	resolve: scopeInvariant(scopeOptions, visionprescriptionCreateResolver),
+	description: 'Create a VisionPrescription record',
+	resolve: scopeInvariant(scopeOptions, createVisionPrescription),
 	type: VisionPrescriptionSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.VisionPrescriptionUpdateMutation
- * @summary VisionPrescriptionUpdate Mutation.
+ * @summary VisionPrescriptionUpdate mutation.
  */
 module.exports.VisionPrescriptionUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple VisionPrescriptions',
-	resolve: scopeInvariant(scopeOptions, visionprescriptionUpdateResolver),
+	description: 'Update a VisionPrescription record',
+	resolve: scopeInvariant(scopeOptions, updateVisionPrescription),
 	type: VisionPrescriptionSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.VisionPrescriptionDeleteMutation
- * @summary VisionPrescriptionDelete Mutation.
+ * @name exports.VisionPrescriptionRemoveMutation
+ * @summary VisionPrescriptionRemove mutation.
  */
-module.exports.VisionPrescriptionDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single VisionPrescription',
-	resolve: scopeInvariant(scopeOptions, visionprescriptionDeleteResolver),
+module.exports.VisionPrescriptionRemoveMutation = {
+	description: 'Remove a VisionPrescription record',
+	resolve: scopeInvariant(scopeOptions, removeVisionPrescription),
 	type: VisionPrescriptionSchema,
+	args: DeleteArgs,
 };

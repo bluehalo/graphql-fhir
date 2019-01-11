@@ -1,6 +1,6 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,59 +8,85 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the questionnaireresponse query
  */
 module.exports = {
-	authored: {
-		type: DateScalar,
-		description:
-			'When the questionnaire response was last changed (See http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-authored).',
-	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'The unique identifier for the questionnaire response (See http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-identifier).',
-	},
-	parent: {
-		type: GraphQLString,
-		description:
-			'Procedure or observation this questionnaire response was performed as a part of (See http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-parent).',
-	},
-	questionnaire: {
-		type: GraphQLString,
-		description:
-			'The questionnaire the answers are provided for (See http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-questionnaire).',
-	},
-	based_on: {
-		type: GraphQLString,
-		description:
-			'Plan/proposal/order fulfilled by this questionnaire response (See http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-based-on).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'The subject of the questionnaire response (See http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-subject).',
-	},
+	// http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-author
 	author: {
 		type: GraphQLString,
-		description:
-			'The author of the questionnaire response (See http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-author).',
+		fhirtype: 'reference',
+		xpath: 'QuestionnaireResponse.author',
+		description: 'The author of the questionnaire response',
 	},
-	patient: {
+	// http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-authored
+	authored: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'QuestionnaireResponse.authored',
+		description: 'When the questionnaire response was last changed',
+	},
+	// http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-based-on
+	based_on: {
 		type: GraphQLString,
-		description:
-			'The patient that is the subject of the questionnaire response (See http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-patient).',
+		fhirtype: 'reference',
+		xpath: 'QuestionnaireResponse.basedOn',
+		description: 'Plan/proposal/order fulfilled by this questionnaire response',
 	},
+	// http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-context
 	context: {
 		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'QuestionnaireResponse.context',
 		description:
-			'Encounter or episode associated with the questionnaire response (See http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-context).',
+			'Encounter or episode associated with the questionnaire response',
 	},
+	// http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'QuestionnaireResponse.identifier',
+		description: 'The unique identifier for the questionnaire response',
+	},
+	// http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-parent
+	parent: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'QuestionnaireResponse.parent',
+		description:
+			'Procedure or observation this questionnaire response was performed as a part of',
+	},
+	// http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'QuestionnaireResponse.subject',
+		description:
+			'The patient that is the subject of the questionnaire response',
+	},
+	// http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-questionnaire
+	questionnaire: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'QuestionnaireResponse.questionnaire',
+		description: 'The questionnaire the answers are provided for',
+	},
+	// http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-source
 	source: {
 		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'QuestionnaireResponse.source',
 		description:
-			'The individual providing the information reflected in the questionnaire respose (See http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-source).',
+			'The individual providing the information reflected in the questionnaire respose',
 	},
+	// http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-status
 	status: {
 		type: TokenScalar,
-		description:
-			'The status of the questionnaire response (See http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-status).',
+		fhirtype: 'token',
+		xpath: 'QuestionnaireResponse.status',
+		description: 'The status of the questionnaire response',
+	},
+	// http://hl7.org/fhir/SearchParameter/QuestionnaireResponse-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'QuestionnaireResponse.subject',
+		description: 'The subject of the questionnaire response',
 	},
 };

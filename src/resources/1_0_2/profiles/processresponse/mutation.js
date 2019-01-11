@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ProcessResponseSchema = require('../../schemas/processresponse.schema');
+const ProcessResponseSchema = require('../../schemas/processresponse.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ProcessResponseInput = require('../../inputs/processresponse.input');
+const ProcessResponseInput = require('../../inputs/processresponse.input.js');
 
-// Resolvers
-const {
-	processresponseCreateResolver,
-	processresponseUpdateResolver,
-	processresponseDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createProcessResponse,
+	updateProcessResponse,
+	removeProcessResponse,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ProcessResponse',
 	action: 'write',
-	version: '1_0_2',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a ProcessResponse record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a ProcessResponse record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ProcessResponseCreateMutation
- * @summary ProcessResponseCreate Mutation.
+ * @summary ProcessResponseCreate mutation.
  */
 module.exports.ProcessResponseCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a ProcessResponse',
-	resolve: scopeInvariant(scopeOptions, processresponseCreateResolver),
+	description: 'Create a ProcessResponse record',
+	resolve: scopeInvariant(scopeOptions, createProcessResponse),
 	type: ProcessResponseSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ProcessResponseUpdateMutation
- * @summary ProcessResponseUpdate Mutation.
+ * @summary ProcessResponseUpdate mutation.
  */
 module.exports.ProcessResponseUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple ProcessResponses',
-	resolve: scopeInvariant(scopeOptions, processresponseUpdateResolver),
+	description: 'Update a ProcessResponse record',
+	resolve: scopeInvariant(scopeOptions, updateProcessResponse),
 	type: ProcessResponseSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ProcessResponseDeleteMutation
- * @summary ProcessResponseDelete Mutation.
+ * @name exports.ProcessResponseRemoveMutation
+ * @summary ProcessResponseRemove mutation.
  */
-module.exports.ProcessResponseDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single ProcessResponse',
-	resolve: scopeInvariant(scopeOptions, processresponseDeleteResolver),
+module.exports.ProcessResponseRemoveMutation = {
+	description: 'Remove a ProcessResponse record',
+	resolve: scopeInvariant(scopeOptions, removeProcessResponse),
 	type: ProcessResponseSchema,
+	args: DeleteArgs,
 };

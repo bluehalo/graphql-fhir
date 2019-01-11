@@ -1,55 +1,59 @@
 // Schemas
-const DiagnosticOrderSchema = require('../../schemas/diagnosticorder.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const DiagnosticOrderSchema = require('../../schemas/diagnosticorder.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const DiagnosticOrderArgs = require('../../parameters/diagnosticorder.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const DiagnosticOrderArgs = require('../../parameters/diagnosticorder.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, DiagnosticOrderArgs);
 
 // Resolvers
 const {
-	diagnosticorderResolver,
-	diagnosticorderListResolver,
-	diagnosticorderInstanceResolver,
+	getDiagnosticOrder,
+	getDiagnosticOrderList,
+	getDiagnosticOrderInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DiagnosticOrder',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.DiagnosticOrderQuery
- * @summary DiagnosticOrder Query.
+ * @summary DiagnosticOrder query.
  */
 module.exports.DiagnosticOrderQuery = {
-	args: Object.assign({}, CommonArgs, DiagnosticOrderArgs),
 	description: 'Query for a single DiagnosticOrder',
-	resolve: scopeInvariant(scopeOptions, diagnosticorderResolver),
+	resolve: scopeInvariant(scopeOptions, getDiagnosticOrder),
 	type: DiagnosticOrderSchema,
+	args: args,
 };
 
 /**
  * @name exports.DiagnosticOrderListQuery
- * @summary DiagnosticOrderList Query.
+ * @summary DiagnosticOrder query.
  */
 module.exports.DiagnosticOrderListQuery = {
-	args: Object.assign({}, CommonArgs, DiagnosticOrderArgs),
-	description: 'Query for multiple DiagnosticOrders',
-	resolve: scopeInvariant(scopeOptions, diagnosticorderListResolver),
+	description: 'Query for a more than or just one DiagnosticOrder',
+	resolve: scopeInvariant(scopeOptions, getDiagnosticOrderList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.DiagnosticOrderInstanceQuery
- * @summary DiagnosticOrderInstance Query.
+ * @summary DiagnosticOrder query.
  */
 module.exports.DiagnosticOrderInstanceQuery = {
-	description: 'Get information about a single DiagnosticOrder',
-	resolve: scopeInvariant(scopeOptions, diagnosticorderInstanceResolver),
+	description: 'Access information about a single DiagnosticOrder',
+	resolve: scopeInvariant(scopeOptions, getDiagnosticOrderInstance),
 	type: DiagnosticOrderSchema,
+	args: args,
 };

@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const CoverageSchema = require('../../schemas/coverage.schema');
+const CoverageSchema = require('../../schemas/coverage.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const CoverageInput = require('../../inputs/coverage.input');
+const CoverageInput = require('../../inputs/coverage.input.js');
 
-// Resolvers
-const {
-	coverageCreateResolver,
-	coverageUpdateResolver,
-	coverageDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createCoverage,
+	updateCoverage,
+	removeCoverage,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Coverage',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Coverage record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Coverage record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.CoverageCreateMutation
- * @summary CoverageCreate Mutation.
+ * @summary CoverageCreate mutation.
  */
 module.exports.CoverageCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Coverage',
-	resolve: scopeInvariant(scopeOptions, coverageCreateResolver),
+	description: 'Create a Coverage record',
+	resolve: scopeInvariant(scopeOptions, createCoverage),
 	type: CoverageSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.CoverageUpdateMutation
- * @summary CoverageUpdate Mutation.
+ * @summary CoverageUpdate mutation.
  */
 module.exports.CoverageUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Coverages',
-	resolve: scopeInvariant(scopeOptions, coverageUpdateResolver),
+	description: 'Update a Coverage record',
+	resolve: scopeInvariant(scopeOptions, updateCoverage),
 	type: CoverageSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.CoverageDeleteMutation
- * @summary CoverageDelete Mutation.
+ * @name exports.CoverageRemoveMutation
+ * @summary CoverageRemove mutation.
  */
-module.exports.CoverageDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Coverage',
-	resolve: scopeInvariant(scopeOptions, coverageDeleteResolver),
+module.exports.CoverageRemoveMutation = {
+	description: 'Remove a Coverage record',
+	resolve: scopeInvariant(scopeOptions, removeCoverage),
 	type: CoverageSchema,
+	args: DeleteArgs,
 };

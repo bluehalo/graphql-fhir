@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,19 +7,25 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the bodysite query
  */
 module.exports = {
-	patient: {
-		type: GraphQLString,
-		description:
-			'Patient to whom bodysite belongs (See http://hl7.org/fhir/SearchParameter/bodysite-patient).',
-	},
+	// http://hl7.org/fhir/SearchParameter/BodySite-code
 	code: {
 		type: TokenScalar,
-		description:
-			'Named anatomical location (See http://hl7.org/fhir/SearchParameter/bodysite-code).',
+		fhirtype: 'token',
+		xpath: 'BodySite.code',
+		description: 'Named anatomical location',
 	},
+	// http://hl7.org/fhir/SearchParameter/BodySite-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'Identifier for this instance of the anatomical location (See http://hl7.org/fhir/SearchParameter/bodysite-identifier).',
+		fhirtype: 'token',
+		xpath: 'BodySite.identifier',
+		description: 'Identifier for this instance of the anatomical location',
+	},
+	// http://hl7.org/fhir/SearchParameter/BodySite-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'BodySite.patient',
+		description: 'Patient to whom bodysite belongs',
 	},
 };

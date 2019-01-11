@@ -1,7 +1,7 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
 
 /**
  * @name exports
@@ -9,54 +9,74 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the structuremap query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/StructureMap-date
 	date: {
 		type: DateScalar,
-		description:
-			'The structure map publication date (See http://hl7.org/fhir/SearchParameter/StructureMap-date).',
+		fhirtype: 'date',
+		xpath: 'StructureMap.date',
+		description: 'The structure map publication date',
 	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'External identifier for the structure map (See http://hl7.org/fhir/SearchParameter/StructureMap-identifier).',
-	},
-	jurisdiction: {
-		type: TokenScalar,
-		description:
-			'Intended jurisdiction for the structure map (See http://hl7.org/fhir/SearchParameter/StructureMap-jurisdiction).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			'Computationally friendly name of the structure map (See http://hl7.org/fhir/SearchParameter/StructureMap-name).',
-	},
+	// http://hl7.org/fhir/SearchParameter/StructureMap-description
 	description: {
 		type: GraphQLString,
-		description:
-			'The description of the structure map (See http://hl7.org/fhir/SearchParameter/StructureMap-description).',
+		fhirtype: 'string',
+		xpath: 'StructureMap.description',
+		description: 'The description of the structure map',
 	},
+	// http://hl7.org/fhir/SearchParameter/StructureMap-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'StructureMap.identifier',
+		description: 'External identifier for the structure map',
+	},
+	// http://hl7.org/fhir/SearchParameter/StructureMap-jurisdiction
+	jurisdiction: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'StructureMap.jurisdiction',
+		description: 'Intended jurisdiction for the structure map',
+	},
+	// http://hl7.org/fhir/SearchParameter/StructureMap-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'StructureMap.name',
+		description: 'Computationally friendly name of the structure map',
+	},
+	// http://hl7.org/fhir/SearchParameter/StructureMap-publisher
 	publisher: {
 		type: GraphQLString,
-		description:
-			'Name of the publisher of the structure map (See http://hl7.org/fhir/SearchParameter/StructureMap-publisher).',
+		fhirtype: 'string',
+		xpath: 'StructureMap.publisher',
+		description: 'Name of the publisher of the structure map',
 	},
-	title: {
-		type: GraphQLString,
-		description:
-			'The human-friendly name of the structure map (See http://hl7.org/fhir/SearchParameter/StructureMap-title).',
-	},
-	version: {
-		type: TokenScalar,
-		description:
-			'The business version of the structure map (See http://hl7.org/fhir/SearchParameter/StructureMap-version).',
-	},
-	url: {
-		type: UriScalar,
-		description:
-			'The uri that identifies the structure map (See http://hl7.org/fhir/SearchParameter/StructureMap-url).',
-	},
+	// http://hl7.org/fhir/SearchParameter/StructureMap-status
 	status: {
 		type: TokenScalar,
-		description:
-			'The current status of the structure map (See http://hl7.org/fhir/SearchParameter/StructureMap-status).',
+		fhirtype: 'token',
+		xpath: 'StructureMap.status',
+		description: 'The current status of the structure map',
+	},
+	// http://hl7.org/fhir/SearchParameter/StructureMap-title
+	title: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'StructureMap.title',
+		description: 'The human-friendly name of the structure map',
+	},
+	// http://hl7.org/fhir/SearchParameter/StructureMap-url
+	url: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'StructureMap.url',
+		description: 'The uri that identifies the structure map',
+	},
+	// http://hl7.org/fhir/SearchParameter/StructureMap-version
+	version: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'StructureMap.version',
+		description: 'The business version of the structure map',
 	},
 };

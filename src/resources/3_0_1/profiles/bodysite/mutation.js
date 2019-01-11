@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const BodySiteSchema = require('../../schemas/bodysite.schema');
+const BodySiteSchema = require('../../schemas/bodysite.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const BodySiteInput = require('../../inputs/bodysite.input');
+const BodySiteInput = require('../../inputs/bodysite.input.js');
 
-// Resolvers
-const {
-	bodysiteCreateResolver,
-	bodysiteUpdateResolver,
-	bodysiteDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createBodySite,
+	updateBodySite,
+	removeBodySite,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'BodySite',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a BodySite record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a BodySite record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.BodySiteCreateMutation
- * @summary BodySiteCreate Mutation.
+ * @summary BodySiteCreate mutation.
  */
 module.exports.BodySiteCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a BodySite',
-	resolve: scopeInvariant(scopeOptions, bodysiteCreateResolver),
+	description: 'Create a BodySite record',
+	resolve: scopeInvariant(scopeOptions, createBodySite),
 	type: BodySiteSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.BodySiteUpdateMutation
- * @summary BodySiteUpdate Mutation.
+ * @summary BodySiteUpdate mutation.
  */
 module.exports.BodySiteUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple BodySites',
-	resolve: scopeInvariant(scopeOptions, bodysiteUpdateResolver),
+	description: 'Update a BodySite record',
+	resolve: scopeInvariant(scopeOptions, updateBodySite),
 	type: BodySiteSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.BodySiteDeleteMutation
- * @summary BodySiteDelete Mutation.
+ * @name exports.BodySiteRemoveMutation
+ * @summary BodySiteRemove mutation.
  */
-module.exports.BodySiteDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single BodySite',
-	resolve: scopeInvariant(scopeOptions, bodysiteDeleteResolver),
+module.exports.BodySiteRemoveMutation = {
+	description: 'Remove a BodySite record',
+	resolve: scopeInvariant(scopeOptions, removeBodySite),
 	type: BodySiteSchema,
+	args: DeleteArgs,
 };

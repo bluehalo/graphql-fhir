@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.messageheaderResolver
+ * @name exports.getMessageHeader
  * @static
- * @summary MessageHeader Resolver.
+ * @summary MessageHeader resolver.
  */
-module.exports.messageheaderResolver = function messageheaderResolver(
+module.exports.getMessageHeader = function getMessageHeader(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.messageheaderListResolver
+ * @name exports.getMessageHeaderList
  * @static
- * @summary MessageHeader List Resolver.
+ * @summary MessageHeader list resolver.
  */
-module.exports.messageheaderListResolver = function messageheaderListResolver(
+module.exports.getMessageHeaderList = function getMessageHeaderList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.messageheaderInstanceResolver
+ * @name exports.getMessageHeaderInstance
  * @static
- * @summary MessageHeader Instance Resolver.
+ * @summary MessageHeader instance resolver.
  */
-module.exports.messageheaderInstanceResolver = function messageheaderInstanceResolver(
+module.exports.getMessageHeaderInstance = function getMessageHeaderInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.messageheaderCreateResolver
+ * @name exports.createMessageHeader
  * @static
- * @summary MessageHeader Create Resolver.
+ * @summary Create MessageHeader resolver.
  */
-module.exports.messageheaderCreateResolver = function messageheaderCreateResolver(
+module.exports.createMessageHeader = function createMessageHeader(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.messageheaderUpdateResolver
+ * @name exports.updateMessageHeader
  * @static
- * @summary MessageHeader Update Resolver.
+ * @summary Update MessageHeader resolver.
  */
-module.exports.messageheaderUpdateResolver = function messageheaderUpdateResolver(
+module.exports.updateMessageHeader = function updateMessageHeader(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.messageheaderDeleteResolver
+ * @name exports.removeMessageHeader
  * @static
- * @summary MessageHeader Delete Resolver.
+ * @summary Remove MessageHeader resolver.
  */
-module.exports.messageheaderDeleteResolver = function messageheaderDeleteResolver(
+module.exports.removeMessageHeader = function removeMessageHeader(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,28 +1,48 @@
-const { GraphQLInputObjectType } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLList,
+	GraphQLString,
+	GraphQLInputObjectType,
+} = require('graphql');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary CarePlan.participant Input Schema
+ * @summary CarePlanparticipant Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'CarePlanParticipant_Input',
-	description:
-		'Identifies all people and organizations who are expected to be involved in the care envisioned by this plan.',
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/participant-role
-			role: {
-				type: require('./codeableconcept.input'),
-				description:
-					"Indicates specific responsibility of an individual within the care plan; e.g. 'Primary physician', 'Team coordinator', 'Caregiver', etc.",
-			},
-			member: {
-				type: require('./reference.input'),
-				description:
-					'The specific person or organization who is participating/expected to participate in the care plan.',
-			},
-		}),
+	name: 'CarePlanparticipant_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/participant-role
+		role: {
+			type: require('./codeableconcept.input.js'),
+			description:
+				"Indicates specific responsibility of an individual within the care plan; e.g. 'Primary physician', 'Team coordinator', 'Caregiver', etc.",
+		},
+		member: {
+			type: GraphQLString,
+			description:
+				'The specific person or organization who is participating/expected to participate in the care plan.',
+		},
+	}),
 });

@@ -1,91 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.orderResolver
+ * @name exports.getOrder
  * @static
- * @summary Order Resolver.
+ * @summary Order resolver.
  */
-module.exports.orderResolver = function orderResolver(
-	root,
-	args,
-	context,
-	info,
-) {
-	let { server, req, res, version } = context;
+module.exports.getOrder = function getOrder(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.orderListResolver
+ * @name exports.getOrderList
  * @static
- * @summary Order List Resolver.
+ * @summary Order list resolver.
  */
-module.exports.orderListResolver = function orderListResolver(
+module.exports.getOrderList = function getOrderList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.orderInstanceResolver
+ * @name exports.getOrderInstance
  * @static
- * @summary Order Instance Resolver.
+ * @summary Order instance resolver.
  */
-module.exports.orderInstanceResolver = function orderInstanceResolver(
+module.exports.getOrderInstance = function getOrderInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.orderCreateResolver
+ * @name exports.createOrder
  * @static
- * @summary Order Create Resolver.
+ * @summary Create Order resolver.
  */
-module.exports.orderCreateResolver = function orderCreateResolver(
+module.exports.createOrder = function createOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.orderUpdateResolver
+ * @name exports.updateOrder
  * @static
- * @summary Order Update Resolver.
+ * @summary Update Order resolver.
  */
-module.exports.orderUpdateResolver = function orderUpdateResolver(
+module.exports.updateOrder = function updateOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.orderDeleteResolver
+ * @name exports.removeOrder
  * @static
- * @summary Order Delete Resolver.
+ * @summary Remove Order resolver.
  */
-module.exports.orderDeleteResolver = function orderDeleteResolver(
+module.exports.removeOrder = function removeOrder(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

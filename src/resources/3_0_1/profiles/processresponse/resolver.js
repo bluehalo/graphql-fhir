@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.processresponseResolver
+ * @name exports.getProcessResponse
  * @static
- * @summary ProcessResponse Resolver.
+ * @summary ProcessResponse resolver.
  */
-module.exports.processresponseResolver = function processresponseResolver(
+module.exports.getProcessResponse = function getProcessResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.processresponseListResolver
+ * @name exports.getProcessResponseList
  * @static
- * @summary ProcessResponse List Resolver.
+ * @summary ProcessResponse list resolver.
  */
-module.exports.processresponseListResolver = function processresponseListResolver(
+module.exports.getProcessResponseList = function getProcessResponseList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.processresponseInstanceResolver
+ * @name exports.getProcessResponseInstance
  * @static
- * @summary ProcessResponse Instance Resolver.
+ * @summary ProcessResponse instance resolver.
  */
-module.exports.processresponseInstanceResolver = function processresponseInstanceResolver(
+module.exports.getProcessResponseInstance = function getProcessResponseInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.processresponseCreateResolver
+ * @name exports.createProcessResponse
  * @static
- * @summary ProcessResponse Create Resolver.
+ * @summary Create ProcessResponse resolver.
  */
-module.exports.processresponseCreateResolver = function processresponseCreateResolver(
+module.exports.createProcessResponse = function createProcessResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.processresponseUpdateResolver
+ * @name exports.updateProcessResponse
  * @static
- * @summary ProcessResponse Update Resolver.
+ * @summary Update ProcessResponse resolver.
  */
-module.exports.processresponseUpdateResolver = function processresponseUpdateResolver(
+module.exports.updateProcessResponse = function updateProcessResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.processresponseDeleteResolver
+ * @name exports.removeProcessResponse
  * @static
- * @summary ProcessResponse Delete Resolver.
+ * @summary Remove ProcessResponse resolver.
  */
-module.exports.processresponseDeleteResolver = function processresponseDeleteResolver(
+module.exports.removeProcessResponse = function removeProcessResponse(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

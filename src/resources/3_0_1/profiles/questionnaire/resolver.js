@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.questionnaireResolver
+ * @name exports.getQuestionnaire
  * @static
- * @summary Questionnaire Resolver.
+ * @summary Questionnaire resolver.
  */
-module.exports.questionnaireResolver = function questionnaireResolver(
+module.exports.getQuestionnaire = function getQuestionnaire(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.questionnaireListResolver
+ * @name exports.getQuestionnaireList
  * @static
- * @summary Questionnaire List Resolver.
+ * @summary Questionnaire list resolver.
  */
-module.exports.questionnaireListResolver = function questionnaireListResolver(
+module.exports.getQuestionnaireList = function getQuestionnaireList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.questionnaireInstanceResolver
+ * @name exports.getQuestionnaireInstance
  * @static
- * @summary Questionnaire Instance Resolver.
+ * @summary Questionnaire instance resolver.
  */
-module.exports.questionnaireInstanceResolver = function questionnaireInstanceResolver(
+module.exports.getQuestionnaireInstance = function getQuestionnaireInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.questionnaireCreateResolver
+ * @name exports.createQuestionnaire
  * @static
- * @summary Questionnaire Create Resolver.
+ * @summary Create Questionnaire resolver.
  */
-module.exports.questionnaireCreateResolver = function questionnaireCreateResolver(
+module.exports.createQuestionnaire = function createQuestionnaire(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.questionnaireUpdateResolver
+ * @name exports.updateQuestionnaire
  * @static
- * @summary Questionnaire Update Resolver.
+ * @summary Update Questionnaire resolver.
  */
-module.exports.questionnaireUpdateResolver = function questionnaireUpdateResolver(
+module.exports.updateQuestionnaire = function updateQuestionnaire(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.questionnaireDeleteResolver
+ * @name exports.removeQuestionnaire
  * @static
- * @summary Questionnaire Delete Resolver.
+ * @summary Remove Questionnaire resolver.
  */
-module.exports.questionnaireDeleteResolver = function questionnaireDeleteResolver(
+module.exports.removeQuestionnaire = function removeQuestionnaire(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

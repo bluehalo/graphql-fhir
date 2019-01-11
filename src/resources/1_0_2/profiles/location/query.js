@@ -1,55 +1,59 @@
 // Schemas
-const LocationSchema = require('../../schemas/location.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const LocationSchema = require('../../schemas/location.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const LocationArgs = require('../../parameters/location.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const LocationArgs = require('../../parameters/location.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, LocationArgs);
 
 // Resolvers
 const {
-	locationResolver,
-	locationListResolver,
-	locationInstanceResolver,
+	getLocation,
+	getLocationList,
+	getLocationInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Location',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.LocationQuery
- * @summary Location Query.
+ * @summary Location query.
  */
 module.exports.LocationQuery = {
-	args: Object.assign({}, CommonArgs, LocationArgs),
 	description: 'Query for a single Location',
-	resolve: scopeInvariant(scopeOptions, locationResolver),
+	resolve: scopeInvariant(scopeOptions, getLocation),
 	type: LocationSchema,
+	args: args,
 };
 
 /**
  * @name exports.LocationListQuery
- * @summary LocationList Query.
+ * @summary Location query.
  */
 module.exports.LocationListQuery = {
-	args: Object.assign({}, CommonArgs, LocationArgs),
-	description: 'Query for multiple Locations',
-	resolve: scopeInvariant(scopeOptions, locationListResolver),
+	description: 'Query for a more than or just one Location',
+	resolve: scopeInvariant(scopeOptions, getLocationList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.LocationInstanceQuery
- * @summary LocationInstance Query.
+ * @summary Location query.
  */
 module.exports.LocationInstanceQuery = {
-	description: 'Get information about a single Location',
-	resolve: scopeInvariant(scopeOptions, locationInstanceResolver),
+	description: 'Access information about a single Location',
+	resolve: scopeInvariant(scopeOptions, getLocationInstance),
 	type: LocationSchema,
+	args: args,
 };

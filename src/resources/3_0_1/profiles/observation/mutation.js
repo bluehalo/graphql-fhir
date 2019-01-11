@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ObservationSchema = require('../../schemas/observation.schema');
+const ObservationSchema = require('../../schemas/observation.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ObservationInput = require('../../inputs/observation.input');
+const ObservationInput = require('../../inputs/observation.input.js');
 
-// Resolvers
-const {
-	observationCreateResolver,
-	observationUpdateResolver,
-	observationDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createObservation,
+	updateObservation,
+	removeObservation,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Observation',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a Observation record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Observation record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ObservationCreateMutation
- * @summary ObservationCreate Mutation.
+ * @summary ObservationCreate mutation.
  */
 module.exports.ObservationCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Observation',
-	resolve: scopeInvariant(scopeOptions, observationCreateResolver),
+	description: 'Create a Observation record',
+	resolve: scopeInvariant(scopeOptions, createObservation),
 	type: ObservationSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ObservationUpdateMutation
- * @summary ObservationUpdate Mutation.
+ * @summary ObservationUpdate mutation.
  */
 module.exports.ObservationUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Observations',
-	resolve: scopeInvariant(scopeOptions, observationUpdateResolver),
+	description: 'Update a Observation record',
+	resolve: scopeInvariant(scopeOptions, updateObservation),
 	type: ObservationSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ObservationDeleteMutation
- * @summary ObservationDelete Mutation.
+ * @name exports.ObservationRemoveMutation
+ * @summary ObservationRemove mutation.
  */
-module.exports.ObservationDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Observation',
-	resolve: scopeInvariant(scopeOptions, observationDeleteResolver),
+module.exports.ObservationRemoveMutation = {
+	description: 'Remove a Observation record',
+	resolve: scopeInvariant(scopeOptions, removeObservation),
 	type: ObservationSchema,
+	args: DeleteArgs,
 };

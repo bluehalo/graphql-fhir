@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.imagingobjectselectionResolver
+ * @name exports.getImagingObjectSelection
  * @static
- * @summary ImagingObjectSelection Resolver.
+ * @summary ImagingObjectSelection resolver.
  */
-module.exports.imagingobjectselectionResolver = function imagingobjectselectionResolver(
+module.exports.getImagingObjectSelection = function getImagingObjectSelection(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingobjectselectionListResolver
+ * @name exports.getImagingObjectSelectionList
  * @static
- * @summary ImagingObjectSelection List Resolver.
+ * @summary ImagingObjectSelection list resolver.
  */
-module.exports.imagingobjectselectionListResolver = function imagingobjectselectionListResolver(
+module.exports.getImagingObjectSelectionList = function getImagingObjectSelectionList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingobjectselectionInstanceResolver
+ * @name exports.getImagingObjectSelectionInstance
  * @static
- * @summary ImagingObjectSelection Instance Resolver.
+ * @summary ImagingObjectSelection instance resolver.
  */
-module.exports.imagingobjectselectionInstanceResolver = function imagingobjectselectionInstanceResolver(
+module.exports.getImagingObjectSelectionInstance = function getImagingObjectSelectionInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingobjectselectionCreateResolver
+ * @name exports.createImagingObjectSelection
  * @static
- * @summary ImagingObjectSelection Create Resolver.
+ * @summary Create ImagingObjectSelection resolver.
  */
-module.exports.imagingobjectselectionCreateResolver = function imagingobjectselectionCreateResolver(
+module.exports.createImagingObjectSelection = function createImagingObjectSelection(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingobjectselectionUpdateResolver
+ * @name exports.updateImagingObjectSelection
  * @static
- * @summary ImagingObjectSelection Update Resolver.
+ * @summary Update ImagingObjectSelection resolver.
  */
-module.exports.imagingobjectselectionUpdateResolver = function imagingobjectselectionUpdateResolver(
+module.exports.updateImagingObjectSelection = function updateImagingObjectSelection(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.imagingobjectselectionDeleteResolver
+ * @name exports.removeImagingObjectSelection
  * @static
- * @summary ImagingObjectSelection Delete Resolver.
+ * @summary Remove ImagingObjectSelection resolver.
  */
-module.exports.imagingobjectselectionDeleteResolver = function imagingobjectselectionDeleteResolver(
+module.exports.removeImagingObjectSelection = function removeImagingObjectSelection(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

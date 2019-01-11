@@ -1,86 +1,84 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.goalResolver
+ * @name exports.getGoal
  * @static
- * @summary Goal Resolver.
+ * @summary Goal resolver.
  */
-module.exports.goalResolver = function goalResolver(root, args, context, info) {
-	let { server, req, res, version } = context;
+module.exports.getGoal = function getGoal(root, args, context = {}, info) {
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.goalListResolver
+ * @name exports.getGoalList
  * @static
- * @summary Goal List Resolver.
+ * @summary Goal list resolver.
  */
-module.exports.goalListResolver = function goalListResolver(
+module.exports.getGoalList = function getGoalList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.goalInstanceResolver
+ * @name exports.getGoalInstance
  * @static
- * @summary Goal Instance Resolver.
+ * @summary Goal instance resolver.
  */
-module.exports.goalInstanceResolver = function goalInstanceResolver(
+module.exports.getGoalInstance = function getGoalInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.goalCreateResolver
+ * @name exports.createGoal
  * @static
- * @summary Goal Create Resolver.
+ * @summary Create Goal resolver.
  */
-module.exports.goalCreateResolver = function goalCreateResolver(
+module.exports.createGoal = function createGoal(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.goalUpdateResolver
+ * @name exports.updateGoal
  * @static
- * @summary Goal Update Resolver.
+ * @summary Update Goal resolver.
  */
-module.exports.goalUpdateResolver = function goalUpdateResolver(
+module.exports.updateGoal = function updateGoal(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.goalDeleteResolver
+ * @name exports.removeGoal
  * @static
- * @summary Goal Delete Resolver.
+ * @summary Remove Goal resolver.
  */
-module.exports.goalDeleteResolver = function goalDeleteResolver(
+module.exports.removeGoal = function removeGoal(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

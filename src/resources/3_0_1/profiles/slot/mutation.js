@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const SlotSchema = require('../../schemas/slot.schema');
+const SlotSchema = require('../../schemas/slot.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const SlotInput = require('../../inputs/slot.input');
+const SlotInput = require('../../inputs/slot.input.js');
 
-// Resolvers
-const {
-	slotCreateResolver,
-	slotUpdateResolver,
-	slotDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createSlot, updateSlot, removeSlot } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Slot',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Slot record.',
 	},
 	resource: {
@@ -39,40 +36,40 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description: 'Unique identifier for selecting a Slot record for deletion.',
 	},
 };
 
 /**
  * @name exports.SlotCreateMutation
- * @summary SlotCreate Mutation.
+ * @summary SlotCreate mutation.
  */
 module.exports.SlotCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Slot',
-	resolve: scopeInvariant(scopeOptions, slotCreateResolver),
+	description: 'Create a Slot record',
+	resolve: scopeInvariant(scopeOptions, createSlot),
 	type: SlotSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.SlotUpdateMutation
- * @summary SlotUpdate Mutation.
+ * @summary SlotUpdate mutation.
  */
 module.exports.SlotUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Slots',
-	resolve: scopeInvariant(scopeOptions, slotUpdateResolver),
+	description: 'Update a Slot record',
+	resolve: scopeInvariant(scopeOptions, updateSlot),
 	type: SlotSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.SlotDeleteMutation
- * @summary SlotDelete Mutation.
+ * @name exports.SlotRemoveMutation
+ * @summary SlotRemove mutation.
  */
-module.exports.SlotDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Slot',
-	resolve: scopeInvariant(scopeOptions, slotDeleteResolver),
+module.exports.SlotRemoveMutation = {
+	description: 'Remove a Slot record',
+	resolve: scopeInvariant(scopeOptions, removeSlot),
 	type: SlotSchema,
+	args: DeleteArgs,
 };

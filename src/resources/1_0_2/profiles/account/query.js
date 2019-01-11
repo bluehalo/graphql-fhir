@@ -1,55 +1,59 @@
 // Schemas
-const AccountSchema = require('../../schemas/account.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const AccountSchema = require('../../schemas/account.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const AccountArgs = require('../../parameters/account.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const AccountArgs = require('../../parameters/account.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, AccountArgs);
 
 // Resolvers
 const {
-	accountResolver,
-	accountListResolver,
-	accountInstanceResolver,
+	getAccount,
+	getAccountList,
+	getAccountInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Account',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.AccountQuery
- * @summary Account Query.
+ * @summary Account query.
  */
 module.exports.AccountQuery = {
-	args: Object.assign({}, CommonArgs, AccountArgs),
 	description: 'Query for a single Account',
-	resolve: scopeInvariant(scopeOptions, accountResolver),
+	resolve: scopeInvariant(scopeOptions, getAccount),
 	type: AccountSchema,
+	args: args,
 };
 
 /**
  * @name exports.AccountListQuery
- * @summary AccountList Query.
+ * @summary Account query.
  */
 module.exports.AccountListQuery = {
-	args: Object.assign({}, CommonArgs, AccountArgs),
-	description: 'Query for multiple Accounts',
-	resolve: scopeInvariant(scopeOptions, accountListResolver),
+	description: 'Query for a more than or just one Account',
+	resolve: scopeInvariant(scopeOptions, getAccountList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.AccountInstanceQuery
- * @summary AccountInstance Query.
+ * @summary Account query.
  */
 module.exports.AccountInstanceQuery = {
-	description: 'Get information about a single Account',
-	resolve: scopeInvariant(scopeOptions, accountInstanceResolver),
+	description: 'Access information about a single Account',
+	resolve: scopeInvariant(scopeOptions, getAccountInstance),
 	type: AccountSchema,
+	args: args,
 };

@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,54 +7,75 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the medication query
  */
 module.exports = {
-	ingredient_code: {
-		type: TokenScalar,
-		description:
-			'The product contained (See http://hl7.org/fhir/SearchParameter/Medication-ingredient-code).',
-	},
-	container: {
-		type: TokenScalar,
-		description:
-			'E.g. box, vial, blister-pack (See http://hl7.org/fhir/SearchParameter/Medication-container).',
-	},
-	package_item: {
-		type: GraphQLString,
-		description:
-			'The item in the package (See http://hl7.org/fhir/SearchParameter/Medication-package-item).',
-	},
+	// http://hl7.org/fhir/SearchParameter/medications-code
 	code: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Medication.code',
 		description:
-			'Codes that identify this medication (See http://hl7.org/fhir/SearchParameter/medications-code).',
+			'Multiple Resources:     * [Medication](medication.html): Codes that identify this medication  * [MedicationRequest](medicationrequest.html): Return prescriptions of this medication code  * [MedicationAdministration](medicationadministration.html): Return administrations of this medication code  * [MedicationStatement](medicationstatement.html): Return statements of this medication code  * [MedicationDispense](medicationdispense.html): Return dispenses of this medicine code  ',
 	},
-	ingredient: {
-		type: GraphQLString,
-		description:
-			'The product contained (See http://hl7.org/fhir/SearchParameter/Medication-ingredient).',
+	// http://hl7.org/fhir/SearchParameter/Medication-container
+	container: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Medication.package.container',
+		description: 'E.g. box, vial, blister-pack',
 	},
+	// http://hl7.org/fhir/SearchParameter/Medication-form
 	form: {
 		type: TokenScalar,
-		description:
-			'powder | tablets | capsule + (See http://hl7.org/fhir/SearchParameter/Medication-form).',
+		fhirtype: 'token',
+		xpath: 'Medication.form',
+		description: 'powder | tablets | capsule +',
 	},
-	package_item_code: {
+	// http://hl7.org/fhir/SearchParameter/Medication-ingredient
+	ingredient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Medication.ingredient.itemReference',
+		description: 'The product contained',
+	},
+	// http://hl7.org/fhir/SearchParameter/Medication-ingredient-code
+	ingredient_code: {
 		type: TokenScalar,
-		description:
-			'The item in the package (See http://hl7.org/fhir/SearchParameter/Medication-package-item-code).',
+		fhirtype: 'token',
+		xpath: 'Medication.ingredient.itemCodeableConcept',
+		description: 'The product contained',
 	},
+	// http://hl7.org/fhir/SearchParameter/Medication-manufacturer
 	manufacturer: {
 		type: GraphQLString,
-		description:
-			'Manufacturer of the item (See http://hl7.org/fhir/SearchParameter/Medication-manufacturer).',
+		fhirtype: 'reference',
+		xpath: 'Medication.manufacturer',
+		description: 'Manufacturer of the item',
 	},
+	// http://hl7.org/fhir/SearchParameter/Medication-over-the-counter
 	over_the_counter: {
 		type: TokenScalar,
-		description:
-			'True if medication does not require a prescription (See http://hl7.org/fhir/SearchParameter/Medication-over-the-counter).',
+		fhirtype: 'token',
+		xpath: 'Medication.isOverTheCounter',
+		description: 'True if medication does not require a prescription',
 	},
+	// http://hl7.org/fhir/SearchParameter/Medication-package-item
+	package_item: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Medication.package.content.itemReference',
+		description: 'The item in the package',
+	},
+	// http://hl7.org/fhir/SearchParameter/Medication-package-item-code
+	package_item_code: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Medication.package.content.itemCodeableConcept',
+		description: 'The item in the package',
+	},
+	// http://hl7.org/fhir/SearchParameter/Medication-status
 	status: {
 		type: TokenScalar,
-		description:
-			'active | inactive | entered-in-error (See http://hl7.org/fhir/SearchParameter/Medication-status).',
+		fhirtype: 'token',
+		xpath: 'Medication.status',
+		description: 'active | inactive | entered-in-error',
 	},
 };

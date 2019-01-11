@@ -1,55 +1,59 @@
 // Schemas
-const ImplementationGuideSchema = require('../../schemas/implementationguide.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ImplementationGuideSchema = require('../../schemas/implementationguide.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ImplementationGuideArgs = require('../../parameters/implementationguide.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ImplementationGuideArgs = require('../../parameters/implementationguide.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ImplementationGuideArgs);
 
 // Resolvers
 const {
-	implementationguideResolver,
-	implementationguideListResolver,
-	implementationguideInstanceResolver,
+	getImplementationGuide,
+	getImplementationGuideList,
+	getImplementationGuideInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ImplementationGuide',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ImplementationGuideQuery
- * @summary ImplementationGuide Query.
+ * @summary ImplementationGuide query.
  */
 module.exports.ImplementationGuideQuery = {
-	args: Object.assign({}, CommonArgs, ImplementationGuideArgs),
 	description: 'Query for a single ImplementationGuide',
-	resolve: scopeInvariant(scopeOptions, implementationguideResolver),
+	resolve: scopeInvariant(scopeOptions, getImplementationGuide),
 	type: ImplementationGuideSchema,
+	args: args,
 };
 
 /**
  * @name exports.ImplementationGuideListQuery
- * @summary ImplementationGuideList Query.
+ * @summary ImplementationGuide query.
  */
 module.exports.ImplementationGuideListQuery = {
-	args: Object.assign({}, CommonArgs, ImplementationGuideArgs),
-	description: 'Query for multiple ImplementationGuides',
-	resolve: scopeInvariant(scopeOptions, implementationguideListResolver),
+	description: 'Query for a more than or just one ImplementationGuide',
+	resolve: scopeInvariant(scopeOptions, getImplementationGuideList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ImplementationGuideInstanceQuery
- * @summary ImplementationGuideInstance Query.
+ * @summary ImplementationGuide query.
  */
 module.exports.ImplementationGuideInstanceQuery = {
-	description: 'Get information about a single ImplementationGuide',
-	resolve: scopeInvariant(scopeOptions, implementationguideInstanceResolver),
+	description: 'Access information about a single ImplementationGuide',
+	resolve: scopeInvariant(scopeOptions, getImplementationGuideInstance),
 	type: ImplementationGuideSchema,
+	args: args,
 };

@@ -1,55 +1,59 @@
 // Schemas
-const ContractSchema = require('../../schemas/contract.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ContractSchema = require('../../schemas/contract.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ContractArgs = require('../../parameters/contract.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ContractArgs = require('../../parameters/contract.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ContractArgs);
 
 // Resolvers
 const {
-	contractResolver,
-	contractListResolver,
-	contractInstanceResolver,
+	getContract,
+	getContractList,
+	getContractInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Contract',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ContractQuery
- * @summary Contract Query.
+ * @summary Contract query.
  */
 module.exports.ContractQuery = {
-	args: Object.assign({}, CommonArgs, ContractArgs),
 	description: 'Query for a single Contract',
-	resolve: scopeInvariant(scopeOptions, contractResolver),
+	resolve: scopeInvariant(scopeOptions, getContract),
 	type: ContractSchema,
+	args: args,
 };
 
 /**
  * @name exports.ContractListQuery
- * @summary ContractList Query.
+ * @summary Contract query.
  */
 module.exports.ContractListQuery = {
-	args: Object.assign({}, CommonArgs, ContractArgs),
-	description: 'Query for multiple Contracts',
-	resolve: scopeInvariant(scopeOptions, contractListResolver),
+	description: 'Query for a more than or just one Contract',
+	resolve: scopeInvariant(scopeOptions, getContractList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ContractInstanceQuery
- * @summary ContractInstance Query.
+ * @summary Contract query.
  */
 module.exports.ContractInstanceQuery = {
-	description: 'Get information about a single Contract',
-	resolve: scopeInvariant(scopeOptions, contractInstanceResolver),
+	description: 'Access information about a single Contract',
+	resolve: scopeInvariant(scopeOptions, getContractInstance),
 	type: ContractSchema,
+	args: args,
 };

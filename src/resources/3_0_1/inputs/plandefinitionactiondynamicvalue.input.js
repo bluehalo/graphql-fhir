@@ -1,55 +1,74 @@
-const { GraphQLInputObjectType, GraphQLString } = require('graphql');
-
-// Util for extending gql objects
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const {
+	GraphQLString,
+	GraphQLList,
+	GraphQLInputObjectType,
+} = require('graphql');
 
 /**
  * @name exports
- * @summary PlanDefinition.action.dynamicValue Input Schema
+ * @summary PlanDefinitionactiondynamicValue Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name: 'PlanDefinitionActionDynamicValue_Input',
-	description:
-		"Customizations that should be applied to the statically defined resource. For example, if the dosage of a medication must be computed based on the patient's weight, a customization would be used to specify an expression that calculated the weight, and the path on the resource that would contain the result.",
-	fields: () =>
-		extendSchema(require('./backboneelement.input'), {
-			description: {
-				type: GraphQLString,
-				description:
-					'A brief, natural language description of the intended semantics of the dynamic value.',
-			},
-			_description: {
-				type: require('./element.input'),
-				description:
-					'A brief, natural language description of the intended semantics of the dynamic value.',
-			},
-			path: {
-				type: GraphQLString,
-				description:
-					'The path to the element to be customized. This is the path on the resource that will hold the result of the calculation defined by the expression.',
-			},
-			_path: {
-				type: require('./element.input'),
-				description:
-					'The path to the element to be customized. This is the path on the resource that will hold the result of the calculation defined by the expression.',
-			},
-			language: {
-				type: GraphQLString,
-				description: 'The media type of the language for the expression.',
-			},
-			_language: {
-				type: require('./element.input'),
-				description: 'The media type of the language for the expression.',
-			},
-			expression: {
-				type: GraphQLString,
-				description:
-					'An expression specifying the value of the customized element.',
-			},
-			_expression: {
-				type: require('./element.input'),
-				description:
-					'An expression specifying the value of the customized element.',
-			},
-		}),
+	name: 'PlanDefinitionactiondynamicValue_Input',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.input.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.input.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_description: {
+			type: require('./element.input.js'),
+			description:
+				'A brief, natural language description of the intended semantics of the dynamic value.',
+		},
+		description: {
+			type: GraphQLString,
+			description:
+				'A brief, natural language description of the intended semantics of the dynamic value.',
+		},
+		_path: {
+			type: require('./element.input.js'),
+			description:
+				'The path to the element to be customized. This is the path on the resource that will hold the result of the calculation defined by the expression.',
+		},
+		path: {
+			type: GraphQLString,
+			description:
+				'The path to the element to be customized. This is the path on the resource that will hold the result of the calculation defined by the expression.',
+		},
+		_language: {
+			type: require('./element.input.js'),
+			description: 'The media type of the language for the expression.',
+		},
+		language: {
+			type: GraphQLString,
+			description: 'The media type of the language for the expression.',
+		},
+		_expression: {
+			type: require('./element.input.js'),
+			description:
+				'An expression specifying the value of the customized element.',
+		},
+		expression: {
+			type: GraphQLString,
+			description:
+				'An expression specifying the value of the customized element.',
+		},
+	}),
 });

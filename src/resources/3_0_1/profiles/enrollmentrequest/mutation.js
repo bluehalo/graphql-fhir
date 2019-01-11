@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const EnrollmentRequestSchema = require('../../schemas/enrollmentrequest.schema');
+const EnrollmentRequestSchema = require('../../schemas/enrollmentrequest.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const EnrollmentRequestInput = require('../../inputs/enrollmentrequest.input');
+const EnrollmentRequestInput = require('../../inputs/enrollmentrequest.input.js');
 
-// Resolvers
-const {
-	enrollmentrequestCreateResolver,
-	enrollmentrequestUpdateResolver,
-	enrollmentrequestDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createEnrollmentRequest,
+	updateEnrollmentRequest,
+	removeEnrollmentRequest,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'EnrollmentRequest',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a EnrollmentRequest record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a EnrollmentRequest record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.EnrollmentRequestCreateMutation
- * @summary EnrollmentRequestCreate Mutation.
+ * @summary EnrollmentRequestCreate mutation.
  */
 module.exports.EnrollmentRequestCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a EnrollmentRequest',
-	resolve: scopeInvariant(scopeOptions, enrollmentrequestCreateResolver),
+	description: 'Create a EnrollmentRequest record',
+	resolve: scopeInvariant(scopeOptions, createEnrollmentRequest),
 	type: EnrollmentRequestSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.EnrollmentRequestUpdateMutation
- * @summary EnrollmentRequestUpdate Mutation.
+ * @summary EnrollmentRequestUpdate mutation.
  */
 module.exports.EnrollmentRequestUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple EnrollmentRequests',
-	resolve: scopeInvariant(scopeOptions, enrollmentrequestUpdateResolver),
+	description: 'Update a EnrollmentRequest record',
+	resolve: scopeInvariant(scopeOptions, updateEnrollmentRequest),
 	type: EnrollmentRequestSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.EnrollmentRequestDeleteMutation
- * @summary EnrollmentRequestDelete Mutation.
+ * @name exports.EnrollmentRequestRemoveMutation
+ * @summary EnrollmentRequestRemove mutation.
  */
-module.exports.EnrollmentRequestDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single EnrollmentRequest',
-	resolve: scopeInvariant(scopeOptions, enrollmentrequestDeleteResolver),
+module.exports.EnrollmentRequestRemoveMutation = {
+	description: 'Remove a EnrollmentRequest record',
+	resolve: scopeInvariant(scopeOptions, removeEnrollmentRequest),
 	type: EnrollmentRequestSchema,
+	args: DeleteArgs,
 };

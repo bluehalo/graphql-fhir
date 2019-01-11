@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const OperationDefinitionSchema = require('../../schemas/operationdefinition.schema');
+const OperationDefinitionSchema = require('../../schemas/operationdefinition.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const OperationDefinitionInput = require('../../inputs/operationdefinition.input');
+const OperationDefinitionInput = require('../../inputs/operationdefinition.input.js');
 
-// Resolvers
-const {
-	operationdefinitionCreateResolver,
-	operationdefinitionUpdateResolver,
-	operationdefinitionDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createOperationDefinition,
+	updateOperationDefinition,
+	removeOperationDefinition,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'OperationDefinition',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a OperationDefinition record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a OperationDefinition record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.OperationDefinitionCreateMutation
- * @summary OperationDefinitionCreate Mutation.
+ * @summary OperationDefinitionCreate mutation.
  */
 module.exports.OperationDefinitionCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a OperationDefinition',
-	resolve: scopeInvariant(scopeOptions, operationdefinitionCreateResolver),
+	description: 'Create a OperationDefinition record',
+	resolve: scopeInvariant(scopeOptions, createOperationDefinition),
 	type: OperationDefinitionSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.OperationDefinitionUpdateMutation
- * @summary OperationDefinitionUpdate Mutation.
+ * @summary OperationDefinitionUpdate mutation.
  */
 module.exports.OperationDefinitionUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple OperationDefinitions',
-	resolve: scopeInvariant(scopeOptions, operationdefinitionUpdateResolver),
+	description: 'Update a OperationDefinition record',
+	resolve: scopeInvariant(scopeOptions, updateOperationDefinition),
 	type: OperationDefinitionSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.OperationDefinitionDeleteMutation
- * @summary OperationDefinitionDelete Mutation.
+ * @name exports.OperationDefinitionRemoveMutation
+ * @summary OperationDefinitionRemove mutation.
  */
-module.exports.OperationDefinitionDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single OperationDefinition',
-	resolve: scopeInvariant(scopeOptions, operationdefinitionDeleteResolver),
+module.exports.OperationDefinitionRemoveMutation = {
+	description: 'Remove a OperationDefinition record',
+	resolve: scopeInvariant(scopeOptions, removeOperationDefinition),
 	type: OperationDefinitionSchema,
+	args: DeleteArgs,
 };

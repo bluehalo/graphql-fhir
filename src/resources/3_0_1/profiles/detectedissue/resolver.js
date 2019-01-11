@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.detectedissueResolver
+ * @name exports.getDetectedIssue
  * @static
- * @summary DetectedIssue Resolver.
+ * @summary DetectedIssue resolver.
  */
-module.exports.detectedissueResolver = function detectedissueResolver(
+module.exports.getDetectedIssue = function getDetectedIssue(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.detectedissueListResolver
+ * @name exports.getDetectedIssueList
  * @static
- * @summary DetectedIssue List Resolver.
+ * @summary DetectedIssue list resolver.
  */
-module.exports.detectedissueListResolver = function detectedissueListResolver(
+module.exports.getDetectedIssueList = function getDetectedIssueList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.detectedissueInstanceResolver
+ * @name exports.getDetectedIssueInstance
  * @static
- * @summary DetectedIssue Instance Resolver.
+ * @summary DetectedIssue instance resolver.
  */
-module.exports.detectedissueInstanceResolver = function detectedissueInstanceResolver(
+module.exports.getDetectedIssueInstance = function getDetectedIssueInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.detectedissueCreateResolver
+ * @name exports.createDetectedIssue
  * @static
- * @summary DetectedIssue Create Resolver.
+ * @summary Create DetectedIssue resolver.
  */
-module.exports.detectedissueCreateResolver = function detectedissueCreateResolver(
+module.exports.createDetectedIssue = function createDetectedIssue(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.detectedissueUpdateResolver
+ * @name exports.updateDetectedIssue
  * @static
- * @summary DetectedIssue Update Resolver.
+ * @summary Update DetectedIssue resolver.
  */
-module.exports.detectedissueUpdateResolver = function detectedissueUpdateResolver(
+module.exports.updateDetectedIssue = function updateDetectedIssue(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.detectedissueDeleteResolver
+ * @name exports.removeDetectedIssue
  * @static
- * @summary DetectedIssue Delete Resolver.
+ * @summary Remove DetectedIssue resolver.
  */
-module.exports.detectedissueDeleteResolver = function detectedissueDeleteResolver(
+module.exports.removeDetectedIssue = function removeDetectedIssue(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

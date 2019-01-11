@@ -1,55 +1,59 @@
 // Schemas
-const NutritionOrderSchema = require('../../schemas/nutritionorder.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const NutritionOrderSchema = require('../../schemas/nutritionorder.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const NutritionOrderArgs = require('../../parameters/nutritionorder.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const NutritionOrderArgs = require('../../parameters/nutritionorder.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, NutritionOrderArgs);
 
 // Resolvers
 const {
-	nutritionorderResolver,
-	nutritionorderListResolver,
-	nutritionorderInstanceResolver,
+	getNutritionOrder,
+	getNutritionOrderList,
+	getNutritionOrderInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'NutritionOrder',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.NutritionOrderQuery
- * @summary NutritionOrder Query.
+ * @summary NutritionOrder query.
  */
 module.exports.NutritionOrderQuery = {
-	args: Object.assign({}, CommonArgs, NutritionOrderArgs),
 	description: 'Query for a single NutritionOrder',
-	resolve: scopeInvariant(scopeOptions, nutritionorderResolver),
+	resolve: scopeInvariant(scopeOptions, getNutritionOrder),
 	type: NutritionOrderSchema,
+	args: args,
 };
 
 /**
  * @name exports.NutritionOrderListQuery
- * @summary NutritionOrderList Query.
+ * @summary NutritionOrder query.
  */
 module.exports.NutritionOrderListQuery = {
-	args: Object.assign({}, CommonArgs, NutritionOrderArgs),
-	description: 'Query for multiple NutritionOrders',
-	resolve: scopeInvariant(scopeOptions, nutritionorderListResolver),
+	description: 'Query for a more than or just one NutritionOrder',
+	resolve: scopeInvariant(scopeOptions, getNutritionOrderList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.NutritionOrderInstanceQuery
- * @summary NutritionOrderInstance Query.
+ * @summary NutritionOrder query.
  */
 module.exports.NutritionOrderInstanceQuery = {
-	description: 'Get information about a single NutritionOrder',
-	resolve: scopeInvariant(scopeOptions, nutritionorderInstanceResolver),
+	description: 'Access information about a single NutritionOrder',
+	resolve: scopeInvariant(scopeOptions, getNutritionOrderInstance),
 	type: NutritionOrderSchema,
+	args: args,
 };

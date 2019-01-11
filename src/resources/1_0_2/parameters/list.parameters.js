@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,59 +8,81 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the list query
  */
 module.exports = {
-	title: {
-		type: GraphQLString,
-		description:
-			'Descriptive name for the list (See http://hl7.org/fhir/SearchParameter/list-title).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'If all resources have the same subject (See http://hl7.org/fhir/SearchParameter/list-patient).',
-	},
-	source: {
-		type: GraphQLString,
-		description:
-			'Who and/or what defined the list contents (aka Author) (See http://hl7.org/fhir/SearchParameter/list-source).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'current | retired | entered-in-error (See http://hl7.org/fhir/SearchParameter/list-status).',
-	},
-	subject: {
-		type: GraphQLString,
-		description:
-			'If all resources have the same subject (See http://hl7.org/fhir/SearchParameter/list-subject).',
-	},
-	item: {
-		type: GraphQLString,
-		description:
-			'Actual entry (See http://hl7.org/fhir/SearchParameter/list-item).',
-	},
-	encounter: {
-		type: GraphQLString,
-		description:
-			'Context in which list created (See http://hl7.org/fhir/SearchParameter/list-encounter).',
-	},
+	// http://hl7.org/fhir/SearchParameter/List-code
 	code: {
 		type: TokenScalar,
-		description:
-			'What the purpose of this list is (See http://hl7.org/fhir/SearchParameter/list-code).',
+		fhirtype: 'token',
+		xpath: 'List.code',
+		description: 'What the purpose of this list is',
 	},
-	notes: {
-		type: GraphQLString,
-		description:
-			'Comments about the list (See http://hl7.org/fhir/SearchParameter/list-notes).',
-	},
+	// http://hl7.org/fhir/SearchParameter/List-date
 	date: {
 		type: DateScalar,
-		description:
-			'When the list was prepared (See http://hl7.org/fhir/SearchParameter/list-date).',
+		fhirtype: 'date',
+		xpath: 'List.date',
+		description: 'When the list was prepared',
 	},
+	// http://hl7.org/fhir/SearchParameter/List-empty-reason
 	empty_reason: {
 		type: TokenScalar,
-		description:
-			'Why list is empty (See http://hl7.org/fhir/SearchParameter/list-empty-reason).',
+		fhirtype: 'token',
+		xpath: 'List.emptyReason',
+		description: 'Why list is empty',
+	},
+	// http://hl7.org/fhir/SearchParameter/List-encounter
+	encounter: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'List.encounter',
+		description: 'Context in which list created',
+	},
+	// http://hl7.org/fhir/SearchParameter/List-item
+	item: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'List.entry.item',
+		description: 'Actual entry',
+	},
+	// http://hl7.org/fhir/SearchParameter/List-notes
+	notes: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'List.note',
+		description: 'Comments about the list',
+	},
+	// http://hl7.org/fhir/SearchParameter/List-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'List.subject',
+		description: 'If all resources have the same subject',
+	},
+	// http://hl7.org/fhir/SearchParameter/List-source
+	source: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'List.source',
+		description: 'Who and/or what defined the list contents (aka Author)',
+	},
+	// http://hl7.org/fhir/SearchParameter/List-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'List.status',
+		description: 'current | retired | entered-in-error',
+	},
+	// http://hl7.org/fhir/SearchParameter/List-subject
+	subject: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'List.subject',
+		description: 'If all resources have the same subject',
+	},
+	// http://hl7.org/fhir/SearchParameter/List-title
+	title: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'List.title',
+		description: 'Descriptive name for the list',
 	},
 };

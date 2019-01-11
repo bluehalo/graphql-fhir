@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,74 +8,102 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the namingsystem query
  */
 module.exports = {
-	responsible: {
-		type: GraphQLString,
-		description:
-			'Who maintains system namespace? (See http://hl7.org/fhir/SearchParameter/namingsystem-responsible).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'draft | active | retired (See http://hl7.org/fhir/SearchParameter/namingsystem-status).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'e.g. driver,  provider,  patient, bank etc. (See http://hl7.org/fhir/SearchParameter/namingsystem-type).',
-	},
-	date: {
-		type: DateScalar,
-		description:
-			'Publication Date(/time) (See http://hl7.org/fhir/SearchParameter/namingsystem-date).',
-	},
-	period: {
-		type: DateScalar,
-		description:
-			'When is identifier valid? (See http://hl7.org/fhir/SearchParameter/namingsystem-period).',
-	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-contact
 	contact: {
 		type: GraphQLString,
-		description:
-			'Name of a individual to contact (See http://hl7.org/fhir/SearchParameter/namingsystem-contact).',
+		fhirtype: 'string',
+		xpath: 'NamingSystem.contact.name',
+		description: 'Name of a individual to contact',
 	},
-	kind: {
-		type: TokenScalar,
-		description:
-			'codesystem | identifier | root (See http://hl7.org/fhir/SearchParameter/namingsystem-kind).',
-	},
-	publisher: {
-		type: GraphQLString,
-		description:
-			'Name of the publisher (Organization or individual) (See http://hl7.org/fhir/SearchParameter/namingsystem-publisher).',
-	},
-	id_type: {
-		type: TokenScalar,
-		description:
-			'oid | uuid | uri | other (See http://hl7.org/fhir/SearchParameter/namingsystem-id-type).',
-	},
-	name: {
-		type: GraphQLString,
-		description:
-			'Human-readable label (See http://hl7.org/fhir/SearchParameter/namingsystem-name).',
-	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-context
 	context: {
 		type: TokenScalar,
-		description:
-			'Content intends to support these contexts (See http://hl7.org/fhir/SearchParameter/namingsystem-context).',
+		fhirtype: 'token',
+		xpath: 'NamingSystem.useContext',
+		description: 'Content intends to support these contexts',
 	},
-	value: {
-		type: GraphQLString,
-		description:
-			'The unique identifier (See http://hl7.org/fhir/SearchParameter/namingsystem-value).',
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-date
+	date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'NamingSystem.date',
+		description: 'Publication Date(/time)',
 	},
-	telecom: {
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-id-type
+	id_type: {
 		type: TokenScalar,
-		description:
-			'Contact details for individual or publisher (See http://hl7.org/fhir/SearchParameter/namingsystem-telecom).',
+		fhirtype: 'token',
+		xpath: 'NamingSystem.uniqueId.type',
+		description: 'oid | uuid | uri | other',
 	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-kind
+	kind: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'NamingSystem.kind',
+		description: 'codesystem | identifier | root',
+	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-name
+	name: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'NamingSystem.name',
+		description: 'Human-readable label',
+	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-period
+	period: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'NamingSystem.uniqueId.period',
+		description: 'When is identifier valid?',
+	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-publisher
+	publisher: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'NamingSystem.publisher',
+		description: 'Name of the publisher (Organization or individual)',
+	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-replaced-by
 	replaced_by: {
 		type: GraphQLString,
-		description:
-			'Use this instead (See http://hl7.org/fhir/SearchParameter/namingsystem-replaced-by).',
+		fhirtype: 'reference',
+		xpath: 'NamingSystem.replacedBy',
+		description: 'Use this instead',
+	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-responsible
+	responsible: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'NamingSystem.responsible',
+		description: 'Who maintains system namespace?',
+	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'NamingSystem.status',
+		description: 'draft | active | retired',
+	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-telecom
+	telecom: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'NamingSystem.contact.telecom',
+		description: 'Contact details for individual or publisher',
+	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'NamingSystem.type',
+		description: 'e.g. driver,  provider,  patient, bank etc.',
+	},
+	// http://hl7.org/fhir/SearchParameter/NamingSystem-value
+	value: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'NamingSystem.uniqueId.value',
+		description: 'The unique identifier',
 	},
 };

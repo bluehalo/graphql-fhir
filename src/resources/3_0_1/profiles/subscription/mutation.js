@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const SubscriptionSchema = require('../../schemas/subscription.schema');
+const SubscriptionSchema = require('../../schemas/subscription.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const SubscriptionInput = require('../../inputs/subscription.input');
+const SubscriptionInput = require('../../inputs/subscription.input.js');
 
-// Resolvers
-const {
-	subscriptionCreateResolver,
-	subscriptionUpdateResolver,
-	subscriptionDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createSubscription,
+	updateSubscription,
+	removeSubscription,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Subscription',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a Subscription record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Subscription record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.SubscriptionCreateMutation
- * @summary SubscriptionCreate Mutation.
+ * @summary SubscriptionCreate mutation.
  */
 module.exports.SubscriptionCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Subscription',
-	resolve: scopeInvariant(scopeOptions, subscriptionCreateResolver),
+	description: 'Create a Subscription record',
+	resolve: scopeInvariant(scopeOptions, createSubscription),
 	type: SubscriptionSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.SubscriptionUpdateMutation
- * @summary SubscriptionUpdate Mutation.
+ * @summary SubscriptionUpdate mutation.
  */
 module.exports.SubscriptionUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Subscriptions',
-	resolve: scopeInvariant(scopeOptions, subscriptionUpdateResolver),
+	description: 'Update a Subscription record',
+	resolve: scopeInvariant(scopeOptions, updateSubscription),
 	type: SubscriptionSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.SubscriptionDeleteMutation
- * @summary SubscriptionDelete Mutation.
+ * @name exports.SubscriptionRemoveMutation
+ * @summary SubscriptionRemove mutation.
  */
-module.exports.SubscriptionDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Subscription',
-	resolve: scopeInvariant(scopeOptions, subscriptionDeleteResolver),
+module.exports.SubscriptionRemoveMutation = {
+	description: 'Remove a Subscription record',
+	resolve: scopeInvariant(scopeOptions, removeSubscription),
 	type: SubscriptionSchema,
+	args: DeleteArgs,
 };

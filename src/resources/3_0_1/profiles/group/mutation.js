@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const GroupSchema = require('../../schemas/group.schema');
+const GroupSchema = require('../../schemas/group.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const GroupInput = require('../../inputs/group.input');
+const GroupInput = require('../../inputs/group.input.js');
 
-// Resolvers
-const {
-	groupCreateResolver,
-	groupUpdateResolver,
-	groupDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createGroup, updateGroup, removeGroup } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Group',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Group record.',
 	},
 	resource: {
@@ -39,40 +36,40 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description: 'Unique identifier for selecting a Group record for deletion.',
 	},
 };
 
 /**
  * @name exports.GroupCreateMutation
- * @summary GroupCreate Mutation.
+ * @summary GroupCreate mutation.
  */
 module.exports.GroupCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Group',
-	resolve: scopeInvariant(scopeOptions, groupCreateResolver),
+	description: 'Create a Group record',
+	resolve: scopeInvariant(scopeOptions, createGroup),
 	type: GroupSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.GroupUpdateMutation
- * @summary GroupUpdate Mutation.
+ * @summary GroupUpdate mutation.
  */
 module.exports.GroupUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Groups',
-	resolve: scopeInvariant(scopeOptions, groupUpdateResolver),
+	description: 'Update a Group record',
+	resolve: scopeInvariant(scopeOptions, updateGroup),
 	type: GroupSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.GroupDeleteMutation
- * @summary GroupDelete Mutation.
+ * @name exports.GroupRemoveMutation
+ * @summary GroupRemove mutation.
  */
-module.exports.GroupDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Group',
-	resolve: scopeInvariant(scopeOptions, groupDeleteResolver),
+module.exports.GroupRemoveMutation = {
+	description: 'Remove a Group record',
+	resolve: scopeInvariant(scopeOptions, removeGroup),
 	type: GroupSchema,
+	args: DeleteArgs,
 };

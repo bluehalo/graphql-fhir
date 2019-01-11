@@ -1,55 +1,59 @@
 // Schemas
-const ProcedureSchema = require('../../schemas/procedure.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const ProcedureSchema = require('../../schemas/procedure.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const ProcedureArgs = require('../../parameters/procedure.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const ProcedureArgs = require('../../parameters/procedure.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, ProcedureArgs);
 
 // Resolvers
 const {
-	procedureResolver,
-	procedureListResolver,
-	procedureInstanceResolver,
+	getProcedure,
+	getProcedureList,
+	getProcedureInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Procedure',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.ProcedureQuery
- * @summary Procedure Query.
+ * @summary Procedure query.
  */
 module.exports.ProcedureQuery = {
-	args: Object.assign({}, CommonArgs, ProcedureArgs),
 	description: 'Query for a single Procedure',
-	resolve: scopeInvariant(scopeOptions, procedureResolver),
+	resolve: scopeInvariant(scopeOptions, getProcedure),
 	type: ProcedureSchema,
+	args: args,
 };
 
 /**
  * @name exports.ProcedureListQuery
- * @summary ProcedureList Query.
+ * @summary Procedure query.
  */
 module.exports.ProcedureListQuery = {
-	args: Object.assign({}, CommonArgs, ProcedureArgs),
-	description: 'Query for multiple Procedures',
-	resolve: scopeInvariant(scopeOptions, procedureListResolver),
+	description: 'Query for a more than or just one Procedure',
+	resolve: scopeInvariant(scopeOptions, getProcedureList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.ProcedureInstanceQuery
- * @summary ProcedureInstance Query.
+ * @summary Procedure query.
  */
 module.exports.ProcedureInstanceQuery = {
-	description: 'Get information about a single Procedure',
-	resolve: scopeInvariant(scopeOptions, procedureInstanceResolver),
+	description: 'Access information about a single Procedure',
+	resolve: scopeInvariant(scopeOptions, getProcedureInstance),
 	type: ProcedureSchema,
+	args: args,
 };

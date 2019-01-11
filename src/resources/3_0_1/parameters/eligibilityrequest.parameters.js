@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,39 +8,53 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the eligibilityrequest query
  */
 module.exports = {
-	identifier: {
-		type: TokenScalar,
-		description:
-			'The business identifier of the Eligibility (See http://hl7.org/fhir/SearchParameter/EligibilityRequest-identifier).',
-	},
-	provider: {
-		type: GraphQLString,
-		description:
-			'The reference to the provider (See http://hl7.org/fhir/SearchParameter/EligibilityRequest-provider).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'The reference to the patient (See http://hl7.org/fhir/SearchParameter/EligibilityRequest-patient).',
-	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityRequest-created
 	created: {
 		type: DateScalar,
-		description:
-			'The creation date for the EOB (See http://hl7.org/fhir/SearchParameter/EligibilityRequest-created).',
+		fhirtype: 'date',
+		xpath: 'EligibilityRequest.created',
+		description: 'The creation date for the EOB',
 	},
-	organization: {
-		type: GraphQLString,
-		description:
-			'The reference to the providing organization (See http://hl7.org/fhir/SearchParameter/EligibilityRequest-organization).',
-	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityRequest-enterer
 	enterer: {
 		type: GraphQLString,
-		description:
-			'The party who is responsible for the request (See http://hl7.org/fhir/SearchParameter/EligibilityRequest-enterer).',
+		fhirtype: 'reference',
+		xpath: 'EligibilityRequest.enterer',
+		description: 'The party who is responsible for the request',
 	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityRequest-facility
 	facility: {
 		type: GraphQLString,
-		description:
-			'Facility responsible for the goods and services (See http://hl7.org/fhir/SearchParameter/EligibilityRequest-facility).',
+		fhirtype: 'reference',
+		xpath: 'EligibilityRequest.facility',
+		description: 'Facility responsible for the goods and services',
+	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityRequest-identifier
+	identifier: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'EligibilityRequest.identifier',
+		description: 'The business identifier of the Eligibility',
+	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityRequest-organization
+	organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'EligibilityRequest.organization',
+		description: 'The reference to the providing organization',
+	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityRequest-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'EligibilityRequest.patient',
+		description: 'The reference to the patient',
+	},
+	// http://hl7.org/fhir/SearchParameter/EligibilityRequest-provider
+	provider: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'EligibilityRequest.provider',
+		description: 'The reference to the provider',
 	},
 };

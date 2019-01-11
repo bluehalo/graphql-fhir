@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.scheduleResolver
+ * @name exports.getSchedule
  * @static
- * @summary Schedule Resolver.
+ * @summary Schedule resolver.
  */
-module.exports.scheduleResolver = function scheduleResolver(
+module.exports.getSchedule = function getSchedule(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.scheduleListResolver
+ * @name exports.getScheduleList
  * @static
- * @summary Schedule List Resolver.
+ * @summary Schedule list resolver.
  */
-module.exports.scheduleListResolver = function scheduleListResolver(
+module.exports.getScheduleList = function getScheduleList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.scheduleInstanceResolver
+ * @name exports.getScheduleInstance
  * @static
- * @summary Schedule Instance Resolver.
+ * @summary Schedule instance resolver.
  */
-module.exports.scheduleInstanceResolver = function scheduleInstanceResolver(
+module.exports.getScheduleInstance = function getScheduleInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.scheduleCreateResolver
+ * @name exports.createSchedule
  * @static
- * @summary Schedule Create Resolver.
+ * @summary Create Schedule resolver.
  */
-module.exports.scheduleCreateResolver = function scheduleCreateResolver(
+module.exports.createSchedule = function createSchedule(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.scheduleUpdateResolver
+ * @name exports.updateSchedule
  * @static
- * @summary Schedule Update Resolver.
+ * @summary Update Schedule resolver.
  */
-module.exports.scheduleUpdateResolver = function scheduleUpdateResolver(
+module.exports.updateSchedule = function updateSchedule(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.scheduleDeleteResolver
+ * @name exports.removeSchedule
  * @static
- * @summary Schedule Delete Resolver.
+ * @summary Remove Schedule resolver.
  */
-module.exports.scheduleDeleteResolver = function scheduleDeleteResolver(
+module.exports.removeSchedule = function removeSchedule(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

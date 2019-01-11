@@ -1,55 +1,59 @@
 // Schemas
-const AllergyIntoleranceSchema = require('../../schemas/allergyintolerance.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const AllergyIntoleranceSchema = require('../../schemas/allergyintolerance.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const AllergyIntoleranceArgs = require('../../parameters/allergyintolerance.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const AllergyIntoleranceArgs = require('../../parameters/allergyintolerance.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, AllergyIntoleranceArgs);
 
 // Resolvers
 const {
-	allergyintoleranceResolver,
-	allergyintoleranceListResolver,
-	allergyintoleranceInstanceResolver,
+	getAllergyIntolerance,
+	getAllergyIntoleranceList,
+	getAllergyIntoleranceInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'AllergyIntolerance',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.AllergyIntoleranceQuery
- * @summary AllergyIntolerance Query.
+ * @summary AllergyIntolerance query.
  */
 module.exports.AllergyIntoleranceQuery = {
-	args: Object.assign({}, CommonArgs, AllergyIntoleranceArgs),
 	description: 'Query for a single AllergyIntolerance',
-	resolve: scopeInvariant(scopeOptions, allergyintoleranceResolver),
+	resolve: scopeInvariant(scopeOptions, getAllergyIntolerance),
 	type: AllergyIntoleranceSchema,
+	args: args,
 };
 
 /**
  * @name exports.AllergyIntoleranceListQuery
- * @summary AllergyIntoleranceList Query.
+ * @summary AllergyIntolerance query.
  */
 module.exports.AllergyIntoleranceListQuery = {
-	args: Object.assign({}, CommonArgs, AllergyIntoleranceArgs),
-	description: 'Query for multiple AllergyIntolerances',
-	resolve: scopeInvariant(scopeOptions, allergyintoleranceListResolver),
+	description: 'Query for a more than or just one AllergyIntolerance',
+	resolve: scopeInvariant(scopeOptions, getAllergyIntoleranceList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.AllergyIntoleranceInstanceQuery
- * @summary AllergyIntoleranceInstance Query.
+ * @summary AllergyIntolerance query.
  */
 module.exports.AllergyIntoleranceInstanceQuery = {
-	description: 'Get information about a single AllergyIntolerance',
-	resolve: scopeInvariant(scopeOptions, allergyintoleranceInstanceResolver),
+	description: 'Access information about a single AllergyIntolerance',
+	resolve: scopeInvariant(scopeOptions, getAllergyIntoleranceInstance),
 	type: AllergyIntoleranceSchema,
+	args: args,
 };

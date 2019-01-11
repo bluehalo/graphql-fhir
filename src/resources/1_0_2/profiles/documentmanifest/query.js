@@ -1,55 +1,59 @@
 // Schemas
-const DocumentManifestSchema = require('../../schemas/documentmanifest.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const DocumentManifestSchema = require('../../schemas/documentmanifest.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const DocumentManifestArgs = require('../../parameters/documentmanifest.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const DocumentManifestArgs = require('../../parameters/documentmanifest.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, DocumentManifestArgs);
 
 // Resolvers
 const {
-	documentmanifestResolver,
-	documentmanifestListResolver,
-	documentmanifestInstanceResolver,
+	getDocumentManifest,
+	getDocumentManifestList,
+	getDocumentManifestInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'DocumentManifest',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.DocumentManifestQuery
- * @summary DocumentManifest Query.
+ * @summary DocumentManifest query.
  */
 module.exports.DocumentManifestQuery = {
-	args: Object.assign({}, CommonArgs, DocumentManifestArgs),
 	description: 'Query for a single DocumentManifest',
-	resolve: scopeInvariant(scopeOptions, documentmanifestResolver),
+	resolve: scopeInvariant(scopeOptions, getDocumentManifest),
 	type: DocumentManifestSchema,
+	args: args,
 };
 
 /**
  * @name exports.DocumentManifestListQuery
- * @summary DocumentManifestList Query.
+ * @summary DocumentManifest query.
  */
 module.exports.DocumentManifestListQuery = {
-	args: Object.assign({}, CommonArgs, DocumentManifestArgs),
-	description: 'Query for multiple DocumentManifests',
-	resolve: scopeInvariant(scopeOptions, documentmanifestListResolver),
+	description: 'Query for a more than or just one DocumentManifest',
+	resolve: scopeInvariant(scopeOptions, getDocumentManifestList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.DocumentManifestInstanceQuery
- * @summary DocumentManifestInstance Query.
+ * @summary DocumentManifest query.
  */
 module.exports.DocumentManifestInstanceQuery = {
-	description: 'Get information about a single DocumentManifest',
-	resolve: scopeInvariant(scopeOptions, documentmanifestInstanceResolver),
+	description: 'Access information about a single DocumentManifest',
+	resolve: scopeInvariant(scopeOptions, getDocumentManifestInstance),
 	type: DocumentManifestSchema,
+	args: args,
 };

@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.eligibilityrequestResolver
+ * @name exports.getEligibilityRequest
  * @static
- * @summary EligibilityRequest Resolver.
+ * @summary EligibilityRequest resolver.
  */
-module.exports.eligibilityrequestResolver = function eligibilityrequestResolver(
+module.exports.getEligibilityRequest = function getEligibilityRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.eligibilityrequestListResolver
+ * @name exports.getEligibilityRequestList
  * @static
- * @summary EligibilityRequest List Resolver.
+ * @summary EligibilityRequest list resolver.
  */
-module.exports.eligibilityrequestListResolver = function eligibilityrequestListResolver(
+module.exports.getEligibilityRequestList = function getEligibilityRequestList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.eligibilityrequestInstanceResolver
+ * @name exports.getEligibilityRequestInstance
  * @static
- * @summary EligibilityRequest Instance Resolver.
+ * @summary EligibilityRequest instance resolver.
  */
-module.exports.eligibilityrequestInstanceResolver = function eligibilityrequestInstanceResolver(
+module.exports.getEligibilityRequestInstance = function getEligibilityRequestInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.eligibilityrequestCreateResolver
+ * @name exports.createEligibilityRequest
  * @static
- * @summary EligibilityRequest Create Resolver.
+ * @summary Create EligibilityRequest resolver.
  */
-module.exports.eligibilityrequestCreateResolver = function eligibilityrequestCreateResolver(
+module.exports.createEligibilityRequest = function createEligibilityRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.eligibilityrequestUpdateResolver
+ * @name exports.updateEligibilityRequest
  * @static
- * @summary EligibilityRequest Update Resolver.
+ * @summary Update EligibilityRequest resolver.
  */
-module.exports.eligibilityrequestUpdateResolver = function eligibilityrequestUpdateResolver(
+module.exports.updateEligibilityRequest = function updateEligibilityRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.eligibilityrequestDeleteResolver
+ * @name exports.removeEligibilityRequest
  * @static
- * @summary EligibilityRequest Delete Resolver.
+ * @summary Remove EligibilityRequest resolver.
  */
-module.exports.eligibilityrequestDeleteResolver = function eligibilityrequestDeleteResolver(
+module.exports.removeEligibilityRequest = function removeEligibilityRequest(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,72 +1,110 @@
-const PositiveIntScalar = require('../scalars/positiveint.scalar');
 const {
-	GraphQLObjectType,
-	GraphQLNonNull,
-	GraphQLBoolean,
 	GraphQLString,
 	GraphQLList,
+	GraphQLNonNull,
+	GraphQLBoolean,
+	GraphQLUnionType,
+	GraphQLObjectType,
 } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const PositiveIntScalar = require('../scalars/positiveint.scalar.js');
 
 /**
  * @name exports
- * @summary Claim.insurance Schema
+ * @summary Claiminsurance Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'ClaimInsurance',
-	description:
-		'Financial instrument by which payment information for health care.',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			sequence: {
-				type: new GraphQLNonNull(PositiveIntScalar),
-				description:
-					'Sequence of coverage which serves to provide a link and convey coordination of benefit order.',
-			},
-			_sequence: {
-				type: require('./element.schema'),
-				description:
-					'Sequence of coverage which serves to provide a link and convey coordination of benefit order.',
-			},
-			focal: {
-				type: new GraphQLNonNull(GraphQLBoolean),
-				description:
-					'A flag to indicate that this Coverage is the focus for adjudication. The Coverage against which the claim is to be adjudicated.',
-			},
-			_focal: {
-				type: require('./element.schema'),
-				description:
-					'A flag to indicate that this Coverage is the focus for adjudication. The Coverage against which the claim is to be adjudicated.',
-			},
-			coverage: {
-				type: new GraphQLNonNull(require('./reference.schema')),
-				description:
-					'Reference to the program or plan identification, underwriter or payor.',
-			},
-			businessArrangement: {
-				type: GraphQLString,
-				description:
-					'The contract number of a business agreement which describes the terms and conditions.',
-			},
-			_businessArrangement: {
-				type: require('./element.schema'),
-				description:
-					'The contract number of a business agreement which describes the terms and conditions.',
-			},
-			preAuthRef: {
-				type: new GraphQLList(GraphQLString),
-				description:
-					'A list of references from the Insurer to which these services pertain.',
-			},
-			_preAuthRef: {
-				type: require('./element.schema'),
-				description:
-					'A list of references from the Insurer to which these services pertain.',
-			},
-			claimResponse: {
-				type: require('./reference.schema'),
+	name: 'Claiminsurance',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_sequence: {
+			type: require('./element.schema.js'),
+			description:
+				'Sequence of coverage which serves to provide a link and convey coordination of benefit order.',
+		},
+		sequence: {
+			type: new GraphQLNonNull(PositiveIntScalar),
+			description:
+				'Sequence of coverage which serves to provide a link and convey coordination of benefit order.',
+		},
+		_focal: {
+			type: require('./element.schema.js'),
+			description:
+				'A flag to indicate that this Coverage is the focus for adjudication. The Coverage against which the claim is to be adjudicated.',
+		},
+		focal: {
+			type: new GraphQLNonNull(GraphQLBoolean),
+			description:
+				'A flag to indicate that this Coverage is the focus for adjudication. The Coverage against which the claim is to be adjudicated.',
+		},
+		coverage: {
+			type: new GraphQLNonNull(
+				new GraphQLUnionType({
+					name: 'Claiminsurancecoverage_coverage_Union',
+					description:
+						'Reference to the program or plan identification, underwriter or payor.',
+					types: () => [require('./coverage.schema.js')],
+					resolveType(data) {
+						if (data && data.resourceType === 'Coverage') {
+							return require('./coverage.schema.js');
+						}
+					},
+				}),
+			),
+			description:
+				'Reference to the program or plan identification, underwriter or payor.',
+		},
+		_businessArrangement: {
+			type: require('./element.schema.js'),
+			description:
+				'The contract number of a business agreement which describes the terms and conditions.',
+		},
+		businessArrangement: {
+			type: GraphQLString,
+			description:
+				'The contract number of a business agreement which describes the terms and conditions.',
+		},
+		_preAuthRef: {
+			type: require('./element.schema.js'),
+			description:
+				'A list of references from the Insurer to which these services pertain.',
+		},
+		preAuthRef: {
+			type: new GraphQLList(GraphQLString),
+			description:
+				'A list of references from the Insurer to which these services pertain.',
+		},
+		claimResponse: {
+			type: new GraphQLUnionType({
+				name: 'ClaiminsuranceclaimResponse_claimResponse_Union',
 				description: 'The Coverages adjudication details.',
-			},
-		}),
+				types: () => [require('./claimresponse.schema.js')],
+				resolveType(data) {
+					if (data && data.resourceType === 'ClaimResponse') {
+						return require('./claimresponse.schema.js');
+					}
+				},
+			}),
+			description: 'The Coverages adjudication details.',
+		},
+	}),
 });

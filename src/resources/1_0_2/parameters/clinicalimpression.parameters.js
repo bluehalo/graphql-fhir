@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,74 +8,102 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the clinicalimpression query
  */
 module.exports = {
-	assessor: {
-		type: GraphQLString,
-		description:
-			'The clinician performing the assessment (See http://hl7.org/fhir/SearchParameter/clinicalimpression-assessor).',
-	},
-	trigger: {
-		type: GraphQLString,
-		description:
-			'Request or event that necessitated this assessment (See http://hl7.org/fhir/SearchParameter/clinicalimpression-trigger).',
-	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'The patient being assessed (See http://hl7.org/fhir/SearchParameter/clinicalimpression-patient).',
-	},
-	plan: {
-		type: GraphQLString,
-		description:
-			'Plan of action after assessment (See http://hl7.org/fhir/SearchParameter/clinicalimpression-plan).',
-	},
-	resolved: {
-		type: TokenScalar,
-		description:
-			'Diagnoses/conditions resolved since previous assessment (See http://hl7.org/fhir/SearchParameter/clinicalimpression-resolved).',
-	},
-	trigger_code: {
-		type: TokenScalar,
-		description:
-			'Request or event that necessitated this assessment (See http://hl7.org/fhir/SearchParameter/clinicalimpression-trigger-code).',
-	},
-	previous: {
-		type: GraphQLString,
-		description:
-			'Reference to last assessment (See http://hl7.org/fhir/SearchParameter/clinicalimpression-previous).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'in-progress | completed | entered-in-error (See http://hl7.org/fhir/SearchParameter/clinicalimpression-status).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-action
 	action: {
 		type: GraphQLString,
-		description:
-			'Actions taken during assessment (See http://hl7.org/fhir/SearchParameter/clinicalimpression-action).',
+		fhirtype: 'reference',
+		xpath: 'ClinicalImpression.action',
+		description: 'Actions taken during assessment',
 	},
-	finding: {
-		type: TokenScalar,
-		description:
-			'Specific text or code for finding (See http://hl7.org/fhir/SearchParameter/clinicalimpression-finding).',
-	},
-	investigation: {
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-assessor
+	assessor: {
 		type: GraphQLString,
-		description:
-			'Record of a specific investigation (See http://hl7.org/fhir/SearchParameter/clinicalimpression-investigation).',
+		fhirtype: 'reference',
+		xpath: 'ClinicalImpression.assessor',
+		description: 'The clinician performing the assessment',
 	},
-	problem: {
-		type: GraphQLString,
-		description:
-			'General assessment of patient state (See http://hl7.org/fhir/SearchParameter/clinicalimpression-problem).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-date
 	date: {
 		type: DateScalar,
-		description:
-			'When the assessment occurred (See http://hl7.org/fhir/SearchParameter/clinicalimpression-date).',
+		fhirtype: 'date',
+		xpath: 'ClinicalImpression.date',
+		description: 'When the assessment occurred',
 	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-finding
+	finding: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ClinicalImpression.finding.item',
+		description: 'Specific text or code for finding',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-investigation
+	investigation: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ClinicalImpression.investigations.item',
+		description: 'Record of a specific investigation',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ClinicalImpression.patient',
+		description: 'The patient being assessed',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-plan
+	plan: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ClinicalImpression.plan',
+		description: 'Plan of action after assessment',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-previous
+	previous: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ClinicalImpression.previous',
+		description: 'Reference to last assessment',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-problem
+	problem: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ClinicalImpression.problem',
+		description: 'General assessment of patient state',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-resolved
+	resolved: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ClinicalImpression.resolved',
+		description: 'Diagnoses/conditions resolved since previous assessment',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-ruledout
 	ruledout: {
 		type: TokenScalar,
-		description:
-			'Specific text of code for diagnosis (See http://hl7.org/fhir/SearchParameter/clinicalimpression-ruledout).',
+		fhirtype: 'token',
+		xpath: 'ClinicalImpression.ruledOut.item',
+		description: 'Specific text of code for diagnosis',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ClinicalImpression.status',
+		description: 'in-progress | completed | entered-in-error',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-trigger
+	trigger: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ClinicalImpression.triggerReference',
+		description: 'Request or event that necessitated this assessment',
+	},
+	// http://hl7.org/fhir/SearchParameter/ClinicalImpression-trigger-code
+	trigger_code: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ClinicalImpression.triggerCodeableConcept',
+		description: 'Request or event that necessitated this assessment',
 	},
 };

@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ConceptMapSchema = require('../../schemas/conceptmap.schema');
+const ConceptMapSchema = require('../../schemas/conceptmap.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ConceptMapInput = require('../../inputs/conceptmap.input');
+const ConceptMapInput = require('../../inputs/conceptmap.input.js');
 
-// Resolvers
-const {
-	conceptmapCreateResolver,
-	conceptmapUpdateResolver,
-	conceptmapDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createConceptMap,
+	updateConceptMap,
+	removeConceptMap,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ConceptMap',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a ConceptMap record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a ConceptMap record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ConceptMapCreateMutation
- * @summary ConceptMapCreate Mutation.
+ * @summary ConceptMapCreate mutation.
  */
 module.exports.ConceptMapCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a ConceptMap',
-	resolve: scopeInvariant(scopeOptions, conceptmapCreateResolver),
+	description: 'Create a ConceptMap record',
+	resolve: scopeInvariant(scopeOptions, createConceptMap),
 	type: ConceptMapSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ConceptMapUpdateMutation
- * @summary ConceptMapUpdate Mutation.
+ * @summary ConceptMapUpdate mutation.
  */
 module.exports.ConceptMapUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple ConceptMaps',
-	resolve: scopeInvariant(scopeOptions, conceptmapUpdateResolver),
+	description: 'Update a ConceptMap record',
+	resolve: scopeInvariant(scopeOptions, updateConceptMap),
 	type: ConceptMapSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ConceptMapDeleteMutation
- * @summary ConceptMapDelete Mutation.
+ * @name exports.ConceptMapRemoveMutation
+ * @summary ConceptMapRemove mutation.
  */
-module.exports.ConceptMapDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single ConceptMap',
-	resolve: scopeInvariant(scopeOptions, conceptmapDeleteResolver),
+module.exports.ConceptMapRemoveMutation = {
+	description: 'Remove a ConceptMap record',
+	resolve: scopeInvariant(scopeOptions, removeConceptMap),
 	type: ConceptMapSchema,
+	args: DeleteArgs,
 };

@@ -1,7 +1,7 @@
-const DateScalar = require('../scalars/date.scalar');
-const TokenScalar = require('../scalars/token.scalar');
-const UriScalar = require('../scalars/uri.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const UriScalar = require('../scalars/uri.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -9,109 +9,151 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the conceptmap query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-date
 	date: {
 		type: DateScalar,
-		description:
-			'The concept map publication date (See http://hl7.org/fhir/SearchParameter/ConceptMap-date).',
+		fhirtype: 'date',
+		xpath: 'ConceptMap.date',
+		description: 'The concept map publication date',
 	},
-	identifier: {
-		type: TokenScalar,
-		description:
-			'External identifier for the concept map (See http://hl7.org/fhir/SearchParameter/ConceptMap-identifier).',
-	},
-	product: {
-		type: UriScalar,
-		description:
-			'Reference to property mapping depends on (See http://hl7.org/fhir/SearchParameter/ConceptMap-product).',
-	},
-	other: {
-		type: UriScalar,
-		description:
-			'Canonical URL for other concept map (See http://hl7.org/fhir/SearchParameter/ConceptMap-other).',
-	},
-	target_system: {
-		type: UriScalar,
-		description:
-			'System of the target (if necessary) (See http://hl7.org/fhir/SearchParameter/ConceptMap-target-system).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-dependson
 	dependson: {
 		type: UriScalar,
-		description:
-			'Reference to property mapping depends on (See http://hl7.org/fhir/SearchParameter/ConceptMap-dependson).',
+		fhirtype: 'uri',
+		xpath: 'ConceptMap.group.element.target.dependsOn.property',
+		description: 'Reference to property mapping depends on',
 	},
-	jurisdiction: {
-		type: TokenScalar,
-		description:
-			'Intended jurisdiction for the concept map (See http://hl7.org/fhir/SearchParameter/ConceptMap-jurisdiction).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-description
 	description: {
 		type: GraphQLString,
-		description:
-			'The description of the concept map (See http://hl7.org/fhir/SearchParameter/ConceptMap-description).',
+		fhirtype: 'string',
+		xpath: 'ConceptMap.description',
+		description: 'The description of the concept map',
 	},
-	source: {
-		type: GraphQLString,
-		description:
-			'Identifies the source of the concepts which are being mapped (See http://hl7.org/fhir/SearchParameter/ConceptMap-source).',
-	},
-	title: {
-		type: GraphQLString,
-		description:
-			'The human-friendly name of the concept map (See http://hl7.org/fhir/SearchParameter/ConceptMap-title).',
-	},
-	version: {
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-identifier
+	identifier: {
 		type: TokenScalar,
-		description:
-			'The business version of the concept map (See http://hl7.org/fhir/SearchParameter/ConceptMap-version).',
+		fhirtype: 'token',
+		xpath: 'ConceptMap.identifier',
+		description: 'External identifier for the concept map',
 	},
-	url: {
-		type: UriScalar,
-		description:
-			'The uri that identifies the concept map (See http://hl7.org/fhir/SearchParameter/ConceptMap-url).',
-	},
-	target: {
-		type: GraphQLString,
-		description:
-			'Provides context to the mappings (See http://hl7.org/fhir/SearchParameter/ConceptMap-target).',
-	},
-	source_code: {
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-jurisdiction
+	jurisdiction: {
 		type: TokenScalar,
-		description:
-			'Identifies element being mapped (See http://hl7.org/fhir/SearchParameter/ConceptMap-source-code).',
+		fhirtype: 'token',
+		xpath: 'ConceptMap.jurisdiction',
+		description: 'Intended jurisdiction for the concept map',
 	},
-	source_uri: {
-		type: GraphQLString,
-		description:
-			'Identifies the source of the concepts which are being mapped (See http://hl7.org/fhir/SearchParameter/ConceptMap-source-uri).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-name
 	name: {
 		type: GraphQLString,
-		description:
-			'Computationally friendly name of the concept map (See http://hl7.org/fhir/SearchParameter/ConceptMap-name).',
+		fhirtype: 'string',
+		xpath: 'ConceptMap.name',
+		description: 'Computationally friendly name of the concept map',
 	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-other
+	other: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ConceptMap.group.unmapped.url',
+		description: 'Canonical URL for other concept map',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-product
+	product: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ConceptMap.group.element.target.product.property',
+		description: 'Reference to property mapping depends on',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-publisher
 	publisher: {
 		type: GraphQLString,
-		description:
-			'Name of the publisher of the concept map (See http://hl7.org/fhir/SearchParameter/ConceptMap-publisher).',
+		fhirtype: 'string',
+		xpath: 'ConceptMap.publisher',
+		description: 'Name of the publisher of the concept map',
 	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-source
+	source: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ConceptMap.sourceReference',
+		description: 'Identifies the source of the concepts which are being mapped',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-source-code
+	source_code: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ConceptMap.group.element.code',
+		description: 'Identifies element being mapped',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-source-system
 	source_system: {
 		type: UriScalar,
-		description:
-			'Code System (if value set crosses code systems) (See http://hl7.org/fhir/SearchParameter/ConceptMap-source-system).',
+		fhirtype: 'uri',
+		xpath: 'ConceptMap.group.source',
+		description: 'Code System (if value set crosses code systems)',
 	},
-	target_code: {
-		type: TokenScalar,
-		description:
-			'Code that identifies the target element (See http://hl7.org/fhir/SearchParameter/ConceptMap-target-code).',
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-source-uri
+	source_uri: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ConceptMap.sourceUri',
+		description: 'Identifies the source of the concepts which are being mapped',
 	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-status
 	status: {
 		type: TokenScalar,
-		description:
-			'The current status of the concept map (See http://hl7.org/fhir/SearchParameter/ConceptMap-status).',
+		fhirtype: 'token',
+		xpath: 'ConceptMap.status',
+		description: 'The current status of the concept map',
 	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-target
+	target: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ConceptMap.targetReference',
+		description: 'Provides context to the mappings',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-target-code
+	target_code: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ConceptMap.group.element.target.code',
+		description: 'Code that identifies the target element',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-target-system
+	target_system: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ConceptMap.group.target',
+		description: 'System of the target (if necessary)',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-target-uri
 	target_uri: {
 		type: GraphQLString,
-		description:
-			'Provides context to the mappings (See http://hl7.org/fhir/SearchParameter/ConceptMap-target-uri).',
+		fhirtype: 'reference',
+		xpath: 'ConceptMap.targetUri',
+		description: 'Provides context to the mappings',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-title
+	title: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'ConceptMap.title',
+		description: 'The human-friendly name of the concept map',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-url
+	url: {
+		type: UriScalar,
+		fhirtype: 'uri',
+		xpath: 'ConceptMap.url',
+		description: 'The uri that identifies the concept map',
+	},
+	// http://hl7.org/fhir/SearchParameter/ConceptMap-version
+	version: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'ConceptMap.version',
+		description: 'The business version of the concept map',
 	},
 };

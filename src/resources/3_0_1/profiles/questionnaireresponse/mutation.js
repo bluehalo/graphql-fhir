@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const QuestionnaireResponseSchema = require('../../schemas/questionnaireresponse.schema');
+const QuestionnaireResponseSchema = require('../../schemas/questionnaireresponse.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const QuestionnaireResponseInput = require('../../inputs/questionnaireresponse.input');
+const QuestionnaireResponseInput = require('../../inputs/questionnaireresponse.input.js');
 
-// Resolvers
-const {
-	questionnaireresponseCreateResolver,
-	questionnaireresponseUpdateResolver,
-	questionnaireresponseDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createQuestionnaireResponse,
+	updateQuestionnaireResponse,
+	removeQuestionnaireResponse,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'QuestionnaireResponse',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a QuestionnaireResponse record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a QuestionnaireResponse record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.QuestionnaireResponseCreateMutation
- * @summary QuestionnaireResponseCreate Mutation.
+ * @summary QuestionnaireResponseCreate mutation.
  */
 module.exports.QuestionnaireResponseCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a QuestionnaireResponse',
-	resolve: scopeInvariant(scopeOptions, questionnaireresponseCreateResolver),
+	description: 'Create a QuestionnaireResponse record',
+	resolve: scopeInvariant(scopeOptions, createQuestionnaireResponse),
 	type: QuestionnaireResponseSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.QuestionnaireResponseUpdateMutation
- * @summary QuestionnaireResponseUpdate Mutation.
+ * @summary QuestionnaireResponseUpdate mutation.
  */
 module.exports.QuestionnaireResponseUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple QuestionnaireResponses',
-	resolve: scopeInvariant(scopeOptions, questionnaireresponseUpdateResolver),
+	description: 'Update a QuestionnaireResponse record',
+	resolve: scopeInvariant(scopeOptions, updateQuestionnaireResponse),
 	type: QuestionnaireResponseSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.QuestionnaireResponseDeleteMutation
- * @summary QuestionnaireResponseDelete Mutation.
+ * @name exports.QuestionnaireResponseRemoveMutation
+ * @summary QuestionnaireResponseRemove mutation.
  */
-module.exports.QuestionnaireResponseDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single QuestionnaireResponse',
-	resolve: scopeInvariant(scopeOptions, questionnaireresponseDeleteResolver),
+module.exports.QuestionnaireResponseRemoveMutation = {
+	description: 'Remove a QuestionnaireResponse record',
+	resolve: scopeInvariant(scopeOptions, removeQuestionnaireResponse),
 	type: QuestionnaireResponseSchema,
+	args: DeleteArgs,
 };

@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.diagnosticreportResolver
+ * @name exports.getDiagnosticReport
  * @static
- * @summary DiagnosticReport Resolver.
+ * @summary DiagnosticReport resolver.
  */
-module.exports.diagnosticreportResolver = function diagnosticreportResolver(
+module.exports.getDiagnosticReport = function getDiagnosticReport(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.diagnosticreportListResolver
+ * @name exports.getDiagnosticReportList
  * @static
- * @summary DiagnosticReport List Resolver.
+ * @summary DiagnosticReport list resolver.
  */
-module.exports.diagnosticreportListResolver = function diagnosticreportListResolver(
+module.exports.getDiagnosticReportList = function getDiagnosticReportList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.diagnosticreportInstanceResolver
+ * @name exports.getDiagnosticReportInstance
  * @static
- * @summary DiagnosticReport Instance Resolver.
+ * @summary DiagnosticReport instance resolver.
  */
-module.exports.diagnosticreportInstanceResolver = function diagnosticreportInstanceResolver(
+module.exports.getDiagnosticReportInstance = function getDiagnosticReportInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.diagnosticreportCreateResolver
+ * @name exports.createDiagnosticReport
  * @static
- * @summary DiagnosticReport Create Resolver.
+ * @summary Create DiagnosticReport resolver.
  */
-module.exports.diagnosticreportCreateResolver = function diagnosticreportCreateResolver(
+module.exports.createDiagnosticReport = function createDiagnosticReport(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.diagnosticreportUpdateResolver
+ * @name exports.updateDiagnosticReport
  * @static
- * @summary DiagnosticReport Update Resolver.
+ * @summary Update DiagnosticReport resolver.
  */
-module.exports.diagnosticreportUpdateResolver = function diagnosticreportUpdateResolver(
+module.exports.updateDiagnosticReport = function updateDiagnosticReport(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.diagnosticreportDeleteResolver
+ * @name exports.removeDiagnosticReport
  * @static
- * @summary DiagnosticReport Delete Resolver.
+ * @summary Remove DiagnosticReport resolver.
  */
-module.exports.diagnosticreportDeleteResolver = function diagnosticreportDeleteResolver(
+module.exports.removeDiagnosticReport = function removeDiagnosticReport(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

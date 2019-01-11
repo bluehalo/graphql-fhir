@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,29 +8,39 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the slot query
  */
 module.exports = {
+	// http://hl7.org/fhir/SearchParameter/Slot-fb-type
 	fb_type: {
 		type: TokenScalar,
-		description:
-			'The free/busy status of the appointment (See http://hl7.org/fhir/SearchParameter/slot-fb-type).',
+		fhirtype: 'token',
+		xpath: 'Slot.freeBusyType',
+		description: 'The free/busy status of the appointment',
 	},
-	schedule: {
-		type: GraphQLString,
-		description:
-			'The Schedule Resource that we are seeking a slot within (See http://hl7.org/fhir/SearchParameter/slot-schedule).',
-	},
-	start: {
-		type: DateScalar,
-		description:
-			'Appointment date/time. (See http://hl7.org/fhir/SearchParameter/slot-start).',
-	},
-	slot_type: {
-		type: TokenScalar,
-		description:
-			'The type of appointments that can be booked into the slot (See http://hl7.org/fhir/SearchParameter/slot-slot-type).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Slot-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'A Slot Identifier (See http://hl7.org/fhir/SearchParameter/slot-identifier).',
+		fhirtype: 'token',
+		xpath: 'Slot.identifier',
+		description: 'A Slot Identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/Slot-schedule
+	schedule: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Slot.schedule',
+		description: 'The Schedule Resource that we are seeking a slot within',
+	},
+	// http://hl7.org/fhir/SearchParameter/Slot-slot-type
+	slot_type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Slot.type',
+		description: 'The type of appointments that can be booked into the slot',
+	},
+	// http://hl7.org/fhir/SearchParameter/Slot-start
+	start: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Slot.start',
+		description: 'Appointment date/time.',
 	},
 };

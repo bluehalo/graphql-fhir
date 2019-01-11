@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const DateScalar = require('../scalars/date.scalar.js');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -8,84 +8,117 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the immunization query
  */
 module.exports = {
-	reaction: {
-		type: GraphQLString,
-		description:
-			'Additional information on reaction (See http://hl7.org/fhir/SearchParameter/immunization-reaction).',
-	},
-	requester: {
-		type: GraphQLString,
-		description:
-			'The practitioner who ordered the vaccination (See http://hl7.org/fhir/SearchParameter/immunization-requester).',
-	},
-	dose_sequence: {
-		type: GraphQLString,
-		description:
-			'Dose number within series (See http://hl7.org/fhir/SearchParameter/immunization-dose-sequence).',
-	},
-	status: {
-		type: TokenScalar,
-		description:
-			'Immunization event status (See http://hl7.org/fhir/SearchParameter/immunization-status).',
-	},
-	location: {
-		type: GraphQLString,
-		description:
-			'The service delivery location or facility in which the vaccine was / was to be administered (See http://hl7.org/fhir/SearchParameter/immunization-location).',
-	},
-	reason: {
-		type: TokenScalar,
-		description:
-			'Why immunization occurred (See http://hl7.org/fhir/SearchParameter/immunization-reason).',
-	},
-	reaction_date: {
-		type: DateScalar,
-		description:
-			'When reaction started (See http://hl7.org/fhir/SearchParameter/immunization-reaction-date).',
-	},
-	notgiven: {
-		type: TokenScalar,
-		description:
-			'Administrations which were not given (See http://hl7.org/fhir/SearchParameter/immunization-notgiven).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-date
 	date: {
 		type: DateScalar,
-		description:
-			'Vaccination  (non)-Administration Date (See http://hl7.org/fhir/SearchParameter/immunization-date).',
+		fhirtype: 'date',
+		xpath: 'Immunization.date',
+		description: 'Vaccination  (non)-Administration Date',
 	},
-	reason_not_given: {
-		type: TokenScalar,
-		description:
-			'Explanation of reason vaccination was not administered (See http://hl7.org/fhir/SearchParameter/immunization-reason-not-given).',
-	},
-	vaccine_code: {
-		type: TokenScalar,
-		description:
-			'Vaccine Product Administered (See http://hl7.org/fhir/SearchParameter/immunization-vaccine-code).',
-	},
-	patient: {
+	// http://hl7.org/fhir/SearchParameter/Immunization-dose-sequence
+	dose_sequence: {
 		type: GraphQLString,
-		description:
-			'The patient for the vaccination record (See http://hl7.org/fhir/SearchParameter/immunization-patient).',
+		fhirtype: 'number',
+		xpath: 'Immunization.vaccinationProtocol.doseSequence',
+		description: 'Dose number within series',
 	},
-	lot_number: {
-		type: GraphQLString,
-		description:
-			'Vaccine Lot Number (See http://hl7.org/fhir/SearchParameter/immunization-lot-number).',
-	},
-	manufacturer: {
-		type: GraphQLString,
-		description:
-			'Vaccine Manufacturer (See http://hl7.org/fhir/SearchParameter/immunization-manufacturer).',
-	},
-	performer: {
-		type: GraphQLString,
-		description:
-			'The practitioner who administered the vaccination (See http://hl7.org/fhir/SearchParameter/immunization-performer).',
-	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-identifier
 	identifier: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Immunization.identifier',
+		description: 'Business identifier',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-location
+	location: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Immunization.location',
 		description:
-			'Business identifier (See http://hl7.org/fhir/SearchParameter/immunization-identifier).',
+			'The service delivery location or facility in which the vaccine was / was to be administered',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-lot-number
+	lot_number: {
+		type: GraphQLString,
+		fhirtype: 'string',
+		xpath: 'Immunization.lotNumber',
+		description: 'Vaccine Lot Number',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-manufacturer
+	manufacturer: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Immunization.manufacturer',
+		description: 'Vaccine Manufacturer',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-notgiven
+	notgiven: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Immunization.wasNotGiven',
+		description: 'Administrations which were not given',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Immunization.patient',
+		description: 'The patient for the vaccination record',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-performer
+	performer: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Immunization.performer',
+		description: 'The practitioner who administered the vaccination',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-reaction
+	reaction: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Immunization.reaction.detail',
+		description: 'Additional information on reaction',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-reaction-date
+	reaction_date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'Immunization.reaction.date',
+		description: 'When reaction started',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-reason
+	reason: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Immunization.explanation.reason',
+		description: 'Why immunization occurred',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-reason-not-given
+	reason_not_given: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Immunization.explanation.reasonNotGiven',
+		description: 'Explanation of reason vaccination was not administered',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-requester
+	requester: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'Immunization.requester',
+		description: 'The practitioner who ordered the vaccination',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Immunization.status',
+		description: 'Immunization event status',
+	},
+	// http://hl7.org/fhir/SearchParameter/Immunization-vaccine-code
+	vaccine_code: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'Immunization.vaccineCode',
+		description: 'Vaccine Product Administered',
 	},
 };

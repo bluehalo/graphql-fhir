@@ -1,55 +1,59 @@
 // Schemas
-const AppointmentSchema = require('../../schemas/appointment.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const AppointmentSchema = require('../../schemas/appointment.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const AppointmentArgs = require('../../parameters/appointment.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const AppointmentArgs = require('../../parameters/appointment.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, AppointmentArgs);
 
 // Resolvers
 const {
-	appointmentResolver,
-	appointmentListResolver,
-	appointmentInstanceResolver,
+	getAppointment,
+	getAppointmentList,
+	getAppointmentInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Appointment',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.AppointmentQuery
- * @summary Appointment Query.
+ * @summary Appointment query.
  */
 module.exports.AppointmentQuery = {
-	args: Object.assign({}, CommonArgs, AppointmentArgs),
 	description: 'Query for a single Appointment',
-	resolve: scopeInvariant(scopeOptions, appointmentResolver),
+	resolve: scopeInvariant(scopeOptions, getAppointment),
 	type: AppointmentSchema,
+	args: args,
 };
 
 /**
  * @name exports.AppointmentListQuery
- * @summary AppointmentList Query.
+ * @summary Appointment query.
  */
 module.exports.AppointmentListQuery = {
-	args: Object.assign({}, CommonArgs, AppointmentArgs),
-	description: 'Query for multiple Appointments',
-	resolve: scopeInvariant(scopeOptions, appointmentListResolver),
+	description: 'Query for a more than or just one Appointment',
+	resolve: scopeInvariant(scopeOptions, getAppointmentList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.AppointmentInstanceQuery
- * @summary AppointmentInstance Query.
+ * @summary Appointment query.
  */
 module.exports.AppointmentInstanceQuery = {
-	description: 'Get information about a single Appointment',
-	resolve: scopeInvariant(scopeOptions, appointmentInstanceResolver),
+	description: 'Access information about a single Appointment',
+	resolve: scopeInvariant(scopeOptions, getAppointmentInstance),
 	type: AppointmentSchema,
+	args: args,
 };

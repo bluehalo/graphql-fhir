@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.observationResolver
+ * @name exports.getObservation
  * @static
- * @summary Observation Resolver.
+ * @summary Observation resolver.
  */
-module.exports.observationResolver = function observationResolver(
+module.exports.getObservation = function getObservation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.observationListResolver
+ * @name exports.getObservationList
  * @static
- * @summary Observation List Resolver.
+ * @summary Observation list resolver.
  */
-module.exports.observationListResolver = function observationListResolver(
+module.exports.getObservationList = function getObservationList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.observationInstanceResolver
+ * @name exports.getObservationInstance
  * @static
- * @summary Observation Instance Resolver.
+ * @summary Observation instance resolver.
  */
-module.exports.observationInstanceResolver = function observationInstanceResolver(
+module.exports.getObservationInstance = function getObservationInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.observationCreateResolver
+ * @name exports.createObservation
  * @static
- * @summary Observation Create Resolver.
+ * @summary Create Observation resolver.
  */
-module.exports.observationCreateResolver = function observationCreateResolver(
+module.exports.createObservation = function createObservation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.observationUpdateResolver
+ * @name exports.updateObservation
  * @static
- * @summary Observation Update Resolver.
+ * @summary Update Observation resolver.
  */
-module.exports.observationUpdateResolver = function observationUpdateResolver(
+module.exports.updateObservation = function updateObservation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.observationDeleteResolver
+ * @name exports.removeObservation
  * @static
- * @summary Observation Delete Resolver.
+ * @summary Remove Observation resolver.
  */
-module.exports.observationDeleteResolver = function observationDeleteResolver(
+module.exports.removeObservation = function removeObservation(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

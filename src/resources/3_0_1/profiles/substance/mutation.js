@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const SubstanceSchema = require('../../schemas/substance.schema');
+const SubstanceSchema = require('../../schemas/substance.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const SubstanceInput = require('../../inputs/substance.input');
+const SubstanceInput = require('../../inputs/substance.input.js');
 
-// Resolvers
-const {
-	substanceCreateResolver,
-	substanceUpdateResolver,
-	substanceDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createSubstance,
+	updateSubstance,
+	removeSubstance,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Substance',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Substance record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Substance record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.SubstanceCreateMutation
- * @summary SubstanceCreate Mutation.
+ * @summary SubstanceCreate mutation.
  */
 module.exports.SubstanceCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Substance',
-	resolve: scopeInvariant(scopeOptions, substanceCreateResolver),
+	description: 'Create a Substance record',
+	resolve: scopeInvariant(scopeOptions, createSubstance),
 	type: SubstanceSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.SubstanceUpdateMutation
- * @summary SubstanceUpdate Mutation.
+ * @summary SubstanceUpdate mutation.
  */
 module.exports.SubstanceUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Substances',
-	resolve: scopeInvariant(scopeOptions, substanceUpdateResolver),
+	description: 'Update a Substance record',
+	resolve: scopeInvariant(scopeOptions, updateSubstance),
 	type: SubstanceSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.SubstanceDeleteMutation
- * @summary SubstanceDelete Mutation.
+ * @name exports.SubstanceRemoveMutation
+ * @summary SubstanceRemove mutation.
  */
-module.exports.SubstanceDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Substance',
-	resolve: scopeInvariant(scopeOptions, substanceDeleteResolver),
+module.exports.SubstanceRemoveMutation = {
+	description: 'Remove a Substance record',
+	resolve: scopeInvariant(scopeOptions, removeSubstance),
 	type: SubstanceSchema,
+	args: DeleteArgs,
 };

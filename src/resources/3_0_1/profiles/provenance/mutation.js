@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ProvenanceSchema = require('../../schemas/provenance.schema');
+const ProvenanceSchema = require('../../schemas/provenance.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ProvenanceInput = require('../../inputs/provenance.input');
+const ProvenanceInput = require('../../inputs/provenance.input.js');
 
-// Resolvers
-const {
-	provenanceCreateResolver,
-	provenanceUpdateResolver,
-	provenanceDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createProvenance,
+	updateProvenance,
+	removeProvenance,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Provenance',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Provenance record.',
 	},
 	resource: {
@@ -39,7 +40,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Provenance record for deletion.',
 	},
@@ -47,33 +48,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ProvenanceCreateMutation
- * @summary ProvenanceCreate Mutation.
+ * @summary ProvenanceCreate mutation.
  */
 module.exports.ProvenanceCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Provenance',
-	resolve: scopeInvariant(scopeOptions, provenanceCreateResolver),
+	description: 'Create a Provenance record',
+	resolve: scopeInvariant(scopeOptions, createProvenance),
 	type: ProvenanceSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ProvenanceUpdateMutation
- * @summary ProvenanceUpdate Mutation.
+ * @summary ProvenanceUpdate mutation.
  */
 module.exports.ProvenanceUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Provenances',
-	resolve: scopeInvariant(scopeOptions, provenanceUpdateResolver),
+	description: 'Update a Provenance record',
+	resolve: scopeInvariant(scopeOptions, updateProvenance),
 	type: ProvenanceSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ProvenanceDeleteMutation
- * @summary ProvenanceDelete Mutation.
+ * @name exports.ProvenanceRemoveMutation
+ * @summary ProvenanceRemove mutation.
  */
-module.exports.ProvenanceDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Provenance',
-	resolve: scopeInvariant(scopeOptions, provenanceDeleteResolver),
+module.exports.ProvenanceRemoveMutation = {
+	description: 'Remove a Provenance record',
+	resolve: scopeInvariant(scopeOptions, removeProvenance),
 	type: ProvenanceSchema,
+	args: DeleteArgs,
 };

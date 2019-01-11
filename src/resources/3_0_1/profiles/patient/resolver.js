@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.patientResolver
+ * @name exports.getPatient
  * @static
- * @summary Patient Resolver.
+ * @summary Patient resolver.
  */
-module.exports.patientResolver = function patientResolver(
+module.exports.getPatient = function getPatient(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.patientListResolver
+ * @name exports.getPatientList
  * @static
- * @summary Patient List Resolver.
+ * @summary Patient list resolver.
  */
-module.exports.patientListResolver = function patientListResolver(
+module.exports.getPatientList = function getPatientList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.patientInstanceResolver
+ * @name exports.getPatientInstance
  * @static
- * @summary Patient Instance Resolver.
+ * @summary Patient instance resolver.
  */
-module.exports.patientInstanceResolver = function patientInstanceResolver(
+module.exports.getPatientInstance = function getPatientInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.patientCreateResolver
+ * @name exports.createPatient
  * @static
- * @summary Patient Create Resolver.
+ * @summary Create Patient resolver.
  */
-module.exports.patientCreateResolver = function patientCreateResolver(
+module.exports.createPatient = function createPatient(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.patientUpdateResolver
+ * @name exports.updatePatient
  * @static
- * @summary Patient Update Resolver.
+ * @summary Update Patient resolver.
  */
-module.exports.patientUpdateResolver = function patientUpdateResolver(
+module.exports.updatePatient = function updatePatient(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.patientDeleteResolver
+ * @name exports.removePatient
  * @static
- * @summary Patient Delete Resolver.
+ * @summary Remove Patient resolver.
  */
-module.exports.patientDeleteResolver = function patientDeleteResolver(
+module.exports.removePatient = function removePatient(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const NutritionOrderSchema = require('../../schemas/nutritionorder.schema');
+const NutritionOrderSchema = require('../../schemas/nutritionorder.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const NutritionOrderInput = require('../../inputs/nutritionorder.input');
+const NutritionOrderInput = require('../../inputs/nutritionorder.input.js');
 
-// Resolvers
-const {
-	nutritionorderCreateResolver,
-	nutritionorderUpdateResolver,
-	nutritionorderDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createNutritionOrder,
+	updateNutritionOrder,
+	removeNutritionOrder,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'NutritionOrder',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a NutritionOrder record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a NutritionOrder record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.NutritionOrderCreateMutation
- * @summary NutritionOrderCreate Mutation.
+ * @summary NutritionOrderCreate mutation.
  */
 module.exports.NutritionOrderCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a NutritionOrder',
-	resolve: scopeInvariant(scopeOptions, nutritionorderCreateResolver),
+	description: 'Create a NutritionOrder record',
+	resolve: scopeInvariant(scopeOptions, createNutritionOrder),
 	type: NutritionOrderSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.NutritionOrderUpdateMutation
- * @summary NutritionOrderUpdate Mutation.
+ * @summary NutritionOrderUpdate mutation.
  */
 module.exports.NutritionOrderUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple NutritionOrders',
-	resolve: scopeInvariant(scopeOptions, nutritionorderUpdateResolver),
+	description: 'Update a NutritionOrder record',
+	resolve: scopeInvariant(scopeOptions, updateNutritionOrder),
 	type: NutritionOrderSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.NutritionOrderDeleteMutation
- * @summary NutritionOrderDelete Mutation.
+ * @name exports.NutritionOrderRemoveMutation
+ * @summary NutritionOrderRemove mutation.
  */
-module.exports.NutritionOrderDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single NutritionOrder',
-	resolve: scopeInvariant(scopeOptions, nutritionorderDeleteResolver),
+module.exports.NutritionOrderRemoveMutation = {
+	description: 'Remove a NutritionOrder record',
+	resolve: scopeInvariant(scopeOptions, removeNutritionOrder),
 	type: NutritionOrderSchema,
+	args: DeleteArgs,
 };

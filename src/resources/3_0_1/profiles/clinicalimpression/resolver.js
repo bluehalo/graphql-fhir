@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.clinicalimpressionResolver
+ * @name exports.getClinicalImpression
  * @static
- * @summary ClinicalImpression Resolver.
+ * @summary ClinicalImpression resolver.
  */
-module.exports.clinicalimpressionResolver = function clinicalimpressionResolver(
+module.exports.getClinicalImpression = function getClinicalImpression(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.clinicalimpressionListResolver
+ * @name exports.getClinicalImpressionList
  * @static
- * @summary ClinicalImpression List Resolver.
+ * @summary ClinicalImpression list resolver.
  */
-module.exports.clinicalimpressionListResolver = function clinicalimpressionListResolver(
+module.exports.getClinicalImpressionList = function getClinicalImpressionList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.clinicalimpressionInstanceResolver
+ * @name exports.getClinicalImpressionInstance
  * @static
- * @summary ClinicalImpression Instance Resolver.
+ * @summary ClinicalImpression instance resolver.
  */
-module.exports.clinicalimpressionInstanceResolver = function clinicalimpressionInstanceResolver(
+module.exports.getClinicalImpressionInstance = function getClinicalImpressionInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.clinicalimpressionCreateResolver
+ * @name exports.createClinicalImpression
  * @static
- * @summary ClinicalImpression Create Resolver.
+ * @summary Create ClinicalImpression resolver.
  */
-module.exports.clinicalimpressionCreateResolver = function clinicalimpressionCreateResolver(
+module.exports.createClinicalImpression = function createClinicalImpression(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.clinicalimpressionUpdateResolver
+ * @name exports.updateClinicalImpression
  * @static
- * @summary ClinicalImpression Update Resolver.
+ * @summary Update ClinicalImpression resolver.
  */
-module.exports.clinicalimpressionUpdateResolver = function clinicalimpressionUpdateResolver(
+module.exports.updateClinicalImpression = function updateClinicalImpression(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.clinicalimpressionDeleteResolver
+ * @name exports.removeClinicalImpression
  * @static
- * @summary ClinicalImpression Delete Resolver.
+ * @summary Remove ClinicalImpression resolver.
  */
-module.exports.clinicalimpressionDeleteResolver = function clinicalimpressionDeleteResolver(
+module.exports.removeClinicalImpression = function removeClinicalImpression(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

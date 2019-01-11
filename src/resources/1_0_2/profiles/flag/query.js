@@ -1,55 +1,55 @@
 // Schemas
-const FlagSchema = require('../../schemas/flag.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const FlagSchema = require('../../schemas/flag.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const FlagArgs = require('../../parameters/flag.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const FlagArgs = require('../../parameters/flag.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, FlagArgs);
 
 // Resolvers
-const {
-	flagResolver,
-	flagListResolver,
-	flagInstanceResolver,
-} = require('./resolver');
+const { getFlag, getFlagList, getFlagInstance } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Flag',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.FlagQuery
- * @summary Flag Query.
+ * @summary Flag query.
  */
 module.exports.FlagQuery = {
-	args: Object.assign({}, CommonArgs, FlagArgs),
 	description: 'Query for a single Flag',
-	resolve: scopeInvariant(scopeOptions, flagResolver),
+	resolve: scopeInvariant(scopeOptions, getFlag),
 	type: FlagSchema,
+	args: args,
 };
 
 /**
  * @name exports.FlagListQuery
- * @summary FlagList Query.
+ * @summary Flag query.
  */
 module.exports.FlagListQuery = {
-	args: Object.assign({}, CommonArgs, FlagArgs),
-	description: 'Query for multiple Flags',
-	resolve: scopeInvariant(scopeOptions, flagListResolver),
+	description: 'Query for a more than or just one Flag',
+	resolve: scopeInvariant(scopeOptions, getFlagList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.FlagInstanceQuery
- * @summary FlagInstance Query.
+ * @summary Flag query.
  */
 module.exports.FlagInstanceQuery = {
-	description: 'Get information about a single Flag',
-	resolve: scopeInvariant(scopeOptions, flagInstanceResolver),
+	description: 'Access information about a single Flag',
+	resolve: scopeInvariant(scopeOptions, getFlagInstance),
 	type: FlagSchema,
+	args: args,
 };

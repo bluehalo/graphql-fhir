@@ -1,55 +1,59 @@
 // Schemas
-const PaymentNoticeSchema = require('../../schemas/paymentnotice.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const PaymentNoticeSchema = require('../../schemas/paymentnotice.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const PaymentNoticeArgs = require('../../parameters/paymentnotice.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const PaymentNoticeArgs = require('../../parameters/paymentnotice.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, PaymentNoticeArgs);
 
 // Resolvers
 const {
-	paymentnoticeResolver,
-	paymentnoticeListResolver,
-	paymentnoticeInstanceResolver,
+	getPaymentNotice,
+	getPaymentNoticeList,
+	getPaymentNoticeInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'PaymentNotice',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.PaymentNoticeQuery
- * @summary PaymentNotice Query.
+ * @summary PaymentNotice query.
  */
 module.exports.PaymentNoticeQuery = {
-	args: Object.assign({}, CommonArgs, PaymentNoticeArgs),
 	description: 'Query for a single PaymentNotice',
-	resolve: scopeInvariant(scopeOptions, paymentnoticeResolver),
+	resolve: scopeInvariant(scopeOptions, getPaymentNotice),
 	type: PaymentNoticeSchema,
+	args: args,
 };
 
 /**
  * @name exports.PaymentNoticeListQuery
- * @summary PaymentNoticeList Query.
+ * @summary PaymentNotice query.
  */
 module.exports.PaymentNoticeListQuery = {
-	args: Object.assign({}, CommonArgs, PaymentNoticeArgs),
-	description: 'Query for multiple PaymentNotices',
-	resolve: scopeInvariant(scopeOptions, paymentnoticeListResolver),
+	description: 'Query for a more than or just one PaymentNotice',
+	resolve: scopeInvariant(scopeOptions, getPaymentNoticeList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.PaymentNoticeInstanceQuery
- * @summary PaymentNoticeInstance Query.
+ * @summary PaymentNotice query.
  */
 module.exports.PaymentNoticeInstanceQuery = {
-	description: 'Get information about a single PaymentNotice',
-	resolve: scopeInvariant(scopeOptions, paymentnoticeInstanceResolver),
+	description: 'Access information about a single PaymentNotice',
+	resolve: scopeInvariant(scopeOptions, getPaymentNoticeInstance),
 	type: PaymentNoticeSchema,
+	args: args,
 };

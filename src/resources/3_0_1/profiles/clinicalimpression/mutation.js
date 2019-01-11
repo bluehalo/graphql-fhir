@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ClinicalImpressionSchema = require('../../schemas/clinicalimpression.schema');
+const ClinicalImpressionSchema = require('../../schemas/clinicalimpression.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ClinicalImpressionInput = require('../../inputs/clinicalimpression.input');
+const ClinicalImpressionInput = require('../../inputs/clinicalimpression.input.js');
 
-// Resolvers
-const {
-	clinicalimpressionCreateResolver,
-	clinicalimpressionUpdateResolver,
-	clinicalimpressionDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createClinicalImpression,
+	updateClinicalImpression,
+	removeClinicalImpression,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ClinicalImpression',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a ClinicalImpression record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a ClinicalImpression record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ClinicalImpressionCreateMutation
- * @summary ClinicalImpressionCreate Mutation.
+ * @summary ClinicalImpressionCreate mutation.
  */
 module.exports.ClinicalImpressionCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a ClinicalImpression',
-	resolve: scopeInvariant(scopeOptions, clinicalimpressionCreateResolver),
+	description: 'Create a ClinicalImpression record',
+	resolve: scopeInvariant(scopeOptions, createClinicalImpression),
 	type: ClinicalImpressionSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ClinicalImpressionUpdateMutation
- * @summary ClinicalImpressionUpdate Mutation.
+ * @summary ClinicalImpressionUpdate mutation.
  */
 module.exports.ClinicalImpressionUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple ClinicalImpressions',
-	resolve: scopeInvariant(scopeOptions, clinicalimpressionUpdateResolver),
+	description: 'Update a ClinicalImpression record',
+	resolve: scopeInvariant(scopeOptions, updateClinicalImpression),
 	type: ClinicalImpressionSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ClinicalImpressionDeleteMutation
- * @summary ClinicalImpressionDelete Mutation.
+ * @name exports.ClinicalImpressionRemoveMutation
+ * @summary ClinicalImpressionRemove mutation.
  */
-module.exports.ClinicalImpressionDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single ClinicalImpression',
-	resolve: scopeInvariant(scopeOptions, clinicalimpressionDeleteResolver),
+module.exports.ClinicalImpressionRemoveMutation = {
+	description: 'Remove a ClinicalImpression record',
+	resolve: scopeInvariant(scopeOptions, removeClinicalImpression),
 	type: ClinicalImpressionSchema,
+	args: DeleteArgs,
 };

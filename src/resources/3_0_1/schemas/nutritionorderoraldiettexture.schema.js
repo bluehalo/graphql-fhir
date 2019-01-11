@@ -1,28 +1,44 @@
-const { GraphQLObjectType } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const { GraphQLString, GraphQLList, GraphQLObjectType } = require('graphql');
 
 /**
  * @name exports
- * @summary NutritionOrder.oralDiet.texture Schema
+ * @summary NutritionOrderoralDiettexture Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'NutritionOrderOralDietTexture',
-	description:
-		'Class that describes any texture modifications required for the patient to safely consume various types of solid foods.',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/texture-code
-			modifier: {
-				type: require('./codeableconcept.schema'),
-				description:
-					'Any texture modifications (for solid foods) that should be made, e.g. easy to chew, chopped, ground, and pureed.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/modified-foodtype
-			foodType: {
-				type: require('./codeableconcept.schema'),
-				description:
-					'The food type(s) (e.g. meats, all foods)  that the texture modification applies to.  This could be all foods types.',
-			},
-		}),
+	name: 'NutritionOrderoralDiettexture',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		id: {
+			type: GraphQLString,
+			description:
+				'unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/texture-code
+		modifier: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				'Any texture modifications (for solid foods) that should be made, e.g. easy to chew, chopped, ground, and pureed.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/modified-foodtype
+		foodType: {
+			type: require('./codeableconcept.schema.js'),
+			description:
+				'The food type(s) (e.g. meats, all foods)  that the texture modification applies to.  This could be all foods types.',
+		},
+	}),
 });

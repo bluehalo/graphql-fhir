@@ -1,40 +1,57 @@
 const {
-	GraphQLObjectType,
+	GraphQLList,
 	GraphQLString,
 	GraphQLNonNull,
-	GraphQLList,
+	GraphQLObjectType,
 } = require('graphql');
-
-const { extendSchema } = require('@asymmetrik/fhir-gql-schema-utils');
+const IdScalar = require('../scalars/id.scalar.js');
 
 /**
  * @name exports
- * @summary AuditEvent.source Schema
+ * @summary AuditEventsource Schema
  */
 module.exports = new GraphQLObjectType({
-	name: 'AuditEventSource',
-	description: 'Application systems and processes.',
-	fields: () =>
-		extendSchema(require('./backboneelement.schema'), {
-			site: {
-				type: GraphQLString,
-				description:
-					'Logical source location within the healthcare enterprise network.  For example, a hospital or other provider location within a multi-entity provider group.',
-			},
-			_site: {
-				type: require('./element.schema'),
-				description:
-					'Logical source location within the healthcare enterprise network.  For example, a hospital or other provider location within a multi-entity provider group.',
-			},
-			identifier: {
-				type: new GraphQLNonNull(require('./identifier.schema')),
-				description: 'Identifier of the source where the event was detected.',
-			},
-			// ValueSetReference: http://hl7.org/fhir/ValueSet/audit-source-type
-			type: {
-				type: new GraphQLList(require('./coding.schema')),
-				description:
-					'Code specifying the type of source where event originated.',
-			},
-		}),
+	name: 'AuditEventsource',
+	description: '',
+	fields: () => ({
+		_id: {
+			type: require('./element.schema.js'),
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		id: {
+			type: IdScalar,
+			description:
+				'unique id for the element within a resource (for internal references).',
+		},
+		extension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.',
+		},
+		modifierExtension: {
+			type: new GraphQLList(require('./extension.schema.js')),
+			description:
+				'May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.',
+		},
+		_site: {
+			type: require('./element.schema.js'),
+			description:
+				'Logical source location within the healthcare enterprise network.  For example, a hospital or other provider location within a multi-entity provider group.',
+		},
+		site: {
+			type: GraphQLString,
+			description:
+				'Logical source location within the healthcare enterprise network.  For example, a hospital or other provider location within a multi-entity provider group.',
+		},
+		identifier: {
+			type: new GraphQLNonNull(require('./identifier.schema.js')),
+			description: 'Identifier of the source where the event was detected.',
+		},
+		// valueSetReference: http://hl7.org/fhir/ValueSet/audit-source-type
+		type: {
+			type: new GraphQLList(require('./coding.schema.js')),
+			description: 'Code specifying the type of source where event originated.',
+		},
+	}),
 });

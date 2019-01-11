@@ -1,6 +1,6 @@
-const TokenScalar = require('../scalars/token.scalar');
-const DateScalar = require('../scalars/date.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
+const DateScalar = require('../scalars/date.scalar.js');
 
 /**
  * @name exports
@@ -8,79 +8,111 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the allergyintolerance query
  */
 module.exports = {
-	status: {
-		type: TokenScalar,
-		description:
-			'active | unconfirmed | confirmed | inactive | resolved | refuted | entered-in-error (See http://hl7.org/fhir/SearchParameter/allergyintolerance-status).',
-	},
-	onset: {
-		type: DateScalar,
-		description:
-			'Date(/time) when manifestations showed (See http://hl7.org/fhir/SearchParameter/allergyintolerance-onset).',
-	},
-	last_date: {
-		type: DateScalar,
-		description:
-			'Date(/time) of last known occurrence of a reaction (See http://hl7.org/fhir/SearchParameter/allergyintolerance-last-date).',
-	},
-	severity: {
-		type: TokenScalar,
-		description:
-			'mild | moderate | severe (of event as a whole) (See http://hl7.org/fhir/SearchParameter/allergyintolerance-severity).',
-	},
-	type: {
-		type: TokenScalar,
-		description:
-			'allergy | intolerance - Underlying mechanism (if known) (See http://hl7.org/fhir/SearchParameter/allergyintolerance-type).',
-	},
-	date: {
-		type: DateScalar,
-		description:
-			'When recorded (See http://hl7.org/fhir/SearchParameter/allergyintolerance-date).',
-	},
-	reporter: {
-		type: GraphQLString,
-		description:
-			'Source of the information about the allergy (See http://hl7.org/fhir/SearchParameter/allergyintolerance-reporter).',
-	},
-	substance: {
-		type: TokenScalar,
-		description:
-			'Substance, (or class) considered to be responsible for risk (See http://hl7.org/fhir/SearchParameter/allergyintolerance-substance).',
-	},
-	criticality: {
-		type: TokenScalar,
-		description:
-			'CRITL | CRITH | CRITU (See http://hl7.org/fhir/SearchParameter/allergyintolerance-criticality).',
-	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-category
 	category: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AllergyIntolerance.category',
 		description:
-			'food | medication | environment | other - Category of Substance (See http://hl7.org/fhir/SearchParameter/allergyintolerance-category).',
+			'food | medication | environment | other - Category of Substance',
 	},
-	patient: {
-		type: GraphQLString,
-		description:
-			'Who the sensitivity is for (See http://hl7.org/fhir/SearchParameter/allergyintolerance-patient).',
-	},
-	recorder: {
-		type: GraphQLString,
-		description:
-			'Who recorded the sensitivity (See http://hl7.org/fhir/SearchParameter/allergyintolerance-recorder).',
-	},
-	route: {
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-criticality
+	criticality: {
 		type: TokenScalar,
-		description:
-			'How the subject was exposed to the substance (See http://hl7.org/fhir/SearchParameter/allergyintolerance-route).',
+		fhirtype: 'token',
+		xpath: 'AllergyIntolerance.criticality',
+		description: 'CRITL | CRITH | CRITU',
 	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-date
+	date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'AllergyIntolerance.recordedDate',
+		description: 'When recorded',
+	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'External ids for this item (See http://hl7.org/fhir/SearchParameter/allergyintolerance-identifier).',
+		fhirtype: 'token',
+		xpath: 'AllergyIntolerance.identifier',
+		description: 'External ids for this item',
 	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-last-date
+	last_date: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'AllergyIntolerance.lastOccurence',
+		description: 'Date(/time) of last known occurrence of a reaction',
+	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-manifestation
 	manifestation: {
 		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AllergyIntolerance.reaction.manifestation',
+		description: 'Clinical symptoms/signs associated with the Event',
+	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-onset
+	onset: {
+		type: DateScalar,
+		fhirtype: 'date',
+		xpath: 'AllergyIntolerance.reaction.onset',
+		description: 'Date(/time) when manifestations showed',
+	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-patient
+	patient: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'AllergyIntolerance.patient',
+		description: 'Who the sensitivity is for',
+	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-recorder
+	recorder: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'AllergyIntolerance.recorder',
+		description: 'Who recorded the sensitivity',
+	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-reporter
+	reporter: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'AllergyIntolerance.reporter',
+		description: 'Source of the information about the allergy',
+	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-route
+	route: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AllergyIntolerance.reaction.exposureRoute',
+		description: 'How the subject was exposed to the substance',
+	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-severity
+	severity: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AllergyIntolerance.reaction.severity',
+		description: 'mild | moderate | severe (of event as a whole)',
+	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-status
+	status: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AllergyIntolerance.status',
 		description:
-			'Clinical symptoms/signs associated with the Event (See http://hl7.org/fhir/SearchParameter/allergyintolerance-manifestation).',
+			'active | unconfirmed | confirmed | inactive | resolved | refuted | entered-in-error',
+	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-substance
+	substance: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AllergyIntolerance.substance',
+		description: 'Substance, (or class) considered to be responsible for risk',
+	},
+	// http://hl7.org/fhir/SearchParameter/AllergyIntolerance-type
+	type: {
+		type: TokenScalar,
+		fhirtype: 'token',
+		xpath: 'AllergyIntolerance.type',
+		description: 'allergy | intolerance - Underlying mechanism (if known)',
 	},
 };

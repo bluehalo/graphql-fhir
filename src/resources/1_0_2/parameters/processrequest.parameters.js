@@ -1,5 +1,5 @@
-const TokenScalar = require('../scalars/token.scalar');
 const { GraphQLString } = require('graphql');
+const TokenScalar = require('../scalars/token.scalar.js');
 
 /**
  * @name exports
@@ -7,24 +7,32 @@ const { GraphQLString } = require('graphql');
  * @summary Arguments for the processrequest query
  */
 module.exports = {
-	organization: {
-		type: GraphQLString,
-		description:
-			'The organization who generated this request (See http://hl7.org/fhir/SearchParameter/processrequest-organization).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ProcessRequest-action
 	action: {
 		type: TokenScalar,
-		description:
-			'The action requested by this resource (See http://hl7.org/fhir/SearchParameter/processrequest-action).',
+		fhirtype: 'token',
+		xpath: 'ProcessRequest.action',
+		description: 'The action requested by this resource',
 	},
-	provider: {
-		type: GraphQLString,
-		description:
-			'The provider who regenerated this request (See http://hl7.org/fhir/SearchParameter/processrequest-provider).',
-	},
+	// http://hl7.org/fhir/SearchParameter/ProcessRequest-identifier
 	identifier: {
 		type: TokenScalar,
-		description:
-			'The business identifier of the ProcessRequest (See http://hl7.org/fhir/SearchParameter/processrequest-identifier).',
+		fhirtype: 'token',
+		xpath: 'ProcessRequest.identifier',
+		description: 'The business identifier of the ProcessRequest',
+	},
+	// http://hl7.org/fhir/SearchParameter/ProcessRequest-organization
+	organization: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ProcessRequest.organization',
+		description: 'The organization who generated this request',
+	},
+	// http://hl7.org/fhir/SearchParameter/ProcessRequest-provider
+	provider: {
+		type: GraphQLString,
+		fhirtype: 'reference',
+		xpath: 'ProcessRequest.provider',
+		description: 'The provider who regenerated this request',
 	},
 };

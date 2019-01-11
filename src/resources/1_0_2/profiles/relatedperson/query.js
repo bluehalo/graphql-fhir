@@ -1,55 +1,59 @@
 // Schemas
-const RelatedPersonSchema = require('../../schemas/relatedperson.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const RelatedPersonSchema = require('../../schemas/relatedperson.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const RelatedPersonArgs = require('../../parameters/relatedperson.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const RelatedPersonArgs = require('../../parameters/relatedperson.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, RelatedPersonArgs);
 
 // Resolvers
 const {
-	relatedpersonResolver,
-	relatedpersonListResolver,
-	relatedpersonInstanceResolver,
+	getRelatedPerson,
+	getRelatedPersonList,
+	getRelatedPersonInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'RelatedPerson',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.RelatedPersonQuery
- * @summary RelatedPerson Query.
+ * @summary RelatedPerson query.
  */
 module.exports.RelatedPersonQuery = {
-	args: Object.assign({}, CommonArgs, RelatedPersonArgs),
 	description: 'Query for a single RelatedPerson',
-	resolve: scopeInvariant(scopeOptions, relatedpersonResolver),
+	resolve: scopeInvariant(scopeOptions, getRelatedPerson),
 	type: RelatedPersonSchema,
+	args: args,
 };
 
 /**
  * @name exports.RelatedPersonListQuery
- * @summary RelatedPersonList Query.
+ * @summary RelatedPerson query.
  */
 module.exports.RelatedPersonListQuery = {
-	args: Object.assign({}, CommonArgs, RelatedPersonArgs),
-	description: 'Query for multiple RelatedPersons',
-	resolve: scopeInvariant(scopeOptions, relatedpersonListResolver),
+	description: 'Query for a more than or just one RelatedPerson',
+	resolve: scopeInvariant(scopeOptions, getRelatedPersonList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.RelatedPersonInstanceQuery
- * @summary RelatedPersonInstance Query.
+ * @summary RelatedPerson query.
  */
 module.exports.RelatedPersonInstanceQuery = {
-	description: 'Get information about a single RelatedPerson',
-	resolve: scopeInvariant(scopeOptions, relatedpersonInstanceResolver),
+	description: 'Access information about a single RelatedPerson',
+	resolve: scopeInvariant(scopeOptions, getRelatedPersonInstance),
 	type: RelatedPersonSchema,
+	args: args,
 };

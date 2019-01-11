@@ -1,55 +1,59 @@
 // Schemas
-const SearchParameterSchema = require('../../schemas/searchparameter.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const SearchParameterSchema = require('../../schemas/searchparameter.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const SearchParameterArgs = require('../../parameters/searchparameter.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const SearchParameterArgs = require('../../parameters/searchparameter.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, SearchParameterArgs);
 
 // Resolvers
 const {
-	searchparameterResolver,
-	searchparameterListResolver,
-	searchparameterInstanceResolver,
+	getSearchParameter,
+	getSearchParameterList,
+	getSearchParameterInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'SearchParameter',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.SearchParameterQuery
- * @summary SearchParameter Query.
+ * @summary SearchParameter query.
  */
 module.exports.SearchParameterQuery = {
-	args: Object.assign({}, CommonArgs, SearchParameterArgs),
 	description: 'Query for a single SearchParameter',
-	resolve: scopeInvariant(scopeOptions, searchparameterResolver),
+	resolve: scopeInvariant(scopeOptions, getSearchParameter),
 	type: SearchParameterSchema,
+	args: args,
 };
 
 /**
  * @name exports.SearchParameterListQuery
- * @summary SearchParameterList Query.
+ * @summary SearchParameter query.
  */
 module.exports.SearchParameterListQuery = {
-	args: Object.assign({}, CommonArgs, SearchParameterArgs),
-	description: 'Query for multiple SearchParameters',
-	resolve: scopeInvariant(scopeOptions, searchparameterListResolver),
+	description: 'Query for a more than or just one SearchParameter',
+	resolve: scopeInvariant(scopeOptions, getSearchParameterList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.SearchParameterInstanceQuery
- * @summary SearchParameterInstance Query.
+ * @summary SearchParameter query.
  */
 module.exports.SearchParameterInstanceQuery = {
-	description: 'Get information about a single SearchParameter',
-	resolve: scopeInvariant(scopeOptions, searchparameterInstanceResolver),
+	description: 'Access information about a single SearchParameter',
+	resolve: scopeInvariant(scopeOptions, getSearchParameterInstance),
 	type: SearchParameterSchema,
+	args: args,
 };

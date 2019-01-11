@@ -1,34 +1,31 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const AccountSchema = require('../../schemas/account.schema');
+const AccountSchema = require('../../schemas/account.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const AccountInput = require('../../inputs/account.input');
+const AccountInput = require('../../inputs/account.input.js');
 
-// Resolvers
-const {
-	accountCreateResolver,
-	accountUpdateResolver,
-	accountDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const { createAccount, updateAccount, removeAccount } = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Account',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description: 'Unique identifier for creating/updating a Account record.',
 	},
 	resource: {
@@ -39,7 +36,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a Account record for deletion.',
 	},
@@ -47,33 +44,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.AccountCreateMutation
- * @summary AccountCreate Mutation.
+ * @summary AccountCreate mutation.
  */
 module.exports.AccountCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a Account',
-	resolve: scopeInvariant(scopeOptions, accountCreateResolver),
+	description: 'Create a Account record',
+	resolve: scopeInvariant(scopeOptions, createAccount),
 	type: AccountSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.AccountUpdateMutation
- * @summary AccountUpdate Mutation.
+ * @summary AccountUpdate mutation.
  */
 module.exports.AccountUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple Accounts',
-	resolve: scopeInvariant(scopeOptions, accountUpdateResolver),
+	description: 'Update a Account record',
+	resolve: scopeInvariant(scopeOptions, updateAccount),
 	type: AccountSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.AccountDeleteMutation
- * @summary AccountDelete Mutation.
+ * @name exports.AccountRemoveMutation
+ * @summary AccountRemove mutation.
  */
-module.exports.AccountDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single Account',
-	resolve: scopeInvariant(scopeOptions, accountDeleteResolver),
+module.exports.AccountRemoveMutation = {
+	description: 'Remove a Account record',
+	resolve: scopeInvariant(scopeOptions, removeAccount),
 	type: AccountSchema,
+	args: DeleteArgs,
 };

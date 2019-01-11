@@ -1,34 +1,35 @@
-// Scalars
-const IdScalar = require('../../scalars/id.scalar');
-
 // Schemas
-const ExpansionProfileSchema = require('../../schemas/expansionprofile.schema');
+const ExpansionProfileSchema = require('../../schemas/expansionprofile.schema.js');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
 
 // Inputs
-const ExpansionProfileInput = require('../../inputs/expansionprofile.input');
+const ExpansionProfileInput = require('../../inputs/expansionprofile.input.js');
 
-// Resolvers
-const {
-	expansionprofileCreateResolver,
-	expansionprofileUpdateResolver,
-	expansionprofileDeleteResolver,
-} = require('./resolver');
+// Scalars
+const idScalar = require('../../scalars/id.scalar.js');
 
 // GraphQL
 const { GraphQLNonNull } = require('graphql');
 
+// Resolvers
+const {
+	createExpansionProfile,
+	updateExpansionProfile,
+	removeExpansionProfile,
+} = require('./resolver');
+
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'ExpansionProfile',
 	action: 'write',
-	version: '3_0_1',
 };
 
 let WriteArgs = {
 	id: {
-		type: IdScalar,
+		type: idScalar,
 		description:
 			'Unique identifier for creating/updating a ExpansionProfile record.',
 	},
@@ -40,7 +41,7 @@ let WriteArgs = {
 
 let DeleteArgs = {
 	id: {
-		type: new GraphQLNonNull(IdScalar),
+		type: new GraphQLNonNull(idScalar),
 		description:
 			'Unique identifier for selecting a ExpansionProfile record for deletion.',
 	},
@@ -48,33 +49,33 @@ let DeleteArgs = {
 
 /**
  * @name exports.ExpansionProfileCreateMutation
- * @summary ExpansionProfileCreate Mutation.
+ * @summary ExpansionProfileCreate mutation.
  */
 module.exports.ExpansionProfileCreateMutation = {
-	args: WriteArgs,
-	description: 'Create a ExpansionProfile',
-	resolve: scopeInvariant(scopeOptions, expansionprofileCreateResolver),
+	description: 'Create a ExpansionProfile record',
+	resolve: scopeInvariant(scopeOptions, createExpansionProfile),
 	type: ExpansionProfileSchema,
+	args: WriteArgs,
 };
 
 /**
  * @name exports.ExpansionProfileUpdateMutation
- * @summary ExpansionProfileUpdate Mutation.
+ * @summary ExpansionProfileUpdate mutation.
  */
 module.exports.ExpansionProfileUpdateMutation = {
-	args: WriteArgs,
-	description: 'Query for multiple ExpansionProfiles',
-	resolve: scopeInvariant(scopeOptions, expansionprofileUpdateResolver),
+	description: 'Update a ExpansionProfile record',
+	resolve: scopeInvariant(scopeOptions, updateExpansionProfile),
 	type: ExpansionProfileSchema,
+	args: WriteArgs,
 };
 
 /**
- * @name exports.ExpansionProfileDeleteMutation
- * @summary ExpansionProfileDelete Mutation.
+ * @name exports.ExpansionProfileRemoveMutation
+ * @summary ExpansionProfileRemove mutation.
  */
-module.exports.ExpansionProfileDeleteMutation = {
-	args: DeleteArgs,
-	description: 'Get information about a single ExpansionProfile',
-	resolve: scopeInvariant(scopeOptions, expansionprofileDeleteResolver),
+module.exports.ExpansionProfileRemoveMutation = {
+	description: 'Remove a ExpansionProfile record',
+	resolve: scopeInvariant(scopeOptions, removeExpansionProfile),
 	type: ExpansionProfileSchema,
+	args: DeleteArgs,
 };

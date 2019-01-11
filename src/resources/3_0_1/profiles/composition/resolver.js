@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.compositionResolver
+ * @name exports.getComposition
  * @static
- * @summary Composition Resolver.
+ * @summary Composition resolver.
  */
-module.exports.compositionResolver = function compositionResolver(
+module.exports.getComposition = function getComposition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.compositionListResolver
+ * @name exports.getCompositionList
  * @static
- * @summary Composition List Resolver.
+ * @summary Composition list resolver.
  */
-module.exports.compositionListResolver = function compositionListResolver(
+module.exports.getCompositionList = function getCompositionList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.compositionInstanceResolver
+ * @name exports.getCompositionInstance
  * @static
- * @summary Composition Instance Resolver.
+ * @summary Composition instance resolver.
  */
-module.exports.compositionInstanceResolver = function compositionInstanceResolver(
+module.exports.getCompositionInstance = function getCompositionInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.compositionCreateResolver
+ * @name exports.createComposition
  * @static
- * @summary Composition Create Resolver.
+ * @summary Create Composition resolver.
  */
-module.exports.compositionCreateResolver = function compositionCreateResolver(
+module.exports.createComposition = function createComposition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.compositionUpdateResolver
+ * @name exports.updateComposition
  * @static
- * @summary Composition Update Resolver.
+ * @summary Update Composition resolver.
  */
-module.exports.compositionUpdateResolver = function compositionUpdateResolver(
+module.exports.updateComposition = function updateComposition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.compositionDeleteResolver
+ * @name exports.removeComposition
  * @static
- * @summary Composition Delete Resolver.
+ * @summary Remove Composition resolver.
  */
-module.exports.compositionDeleteResolver = function compositionDeleteResolver(
+module.exports.removeComposition = function removeComposition(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

@@ -1,55 +1,59 @@
 // Schemas
-const PatientSchema = require('../../schemas/patient.schema');
-const BundleSchema = require('../../schemas/bundle.schema');
+const OperationOutcome = require('../../inputs/operationoutcome.input.js');
+const PatientSchema = require('../../schemas/patient.schema.js');
+const BundleSchema = require('../../schemas/bundle.schema.js');
 
 // Arguments
-const PatientArgs = require('../../parameters/patient.parameters');
-const CommonArgs = require('../../parameters/common.parameters');
+const PatientArgs = require('../../parameters/patient.parameters.js');
+const ResourceArgs = require('../../parameters/resource.parameters.js');
+
+let args = Object.assign({}, ResourceArgs, PatientArgs);
 
 // Resolvers
 const {
-	patientResolver,
-	patientListResolver,
-	patientInstanceResolver,
+	getPatient,
+	getPatientList,
+	getPatientInstance,
 } = require('./resolver');
 
 // Scope Utilities
-const { scopeInvariant } = require('../../../../utils/scope.utils');
+const scopeInvariant = require('@asymmetrik/sof-graphql-invariant');
 
 let scopeOptions = {
+	schema: OperationOutcome,
 	name: 'Patient',
 	action: 'read',
-	version: '1_0_2',
 };
 
 /**
  * @name exports.PatientQuery
- * @summary Patient Query.
+ * @summary Patient query.
  */
 module.exports.PatientQuery = {
-	args: Object.assign({}, CommonArgs, PatientArgs),
 	description: 'Query for a single Patient',
-	resolve: scopeInvariant(scopeOptions, patientResolver),
+	resolve: scopeInvariant(scopeOptions, getPatient),
 	type: PatientSchema,
+	args: args,
 };
 
 /**
  * @name exports.PatientListQuery
- * @summary PatientList Query.
+ * @summary Patient query.
  */
 module.exports.PatientListQuery = {
-	args: Object.assign({}, CommonArgs, PatientArgs),
-	description: 'Query for multiple Patients',
-	resolve: scopeInvariant(scopeOptions, patientListResolver),
+	description: 'Query for a more than or just one Patient',
+	resolve: scopeInvariant(scopeOptions, getPatientList),
 	type: BundleSchema,
+	args: args,
 };
 
 /**
  * @name exports.PatientInstanceQuery
- * @summary PatientInstance Query.
+ * @summary Patient query.
  */
 module.exports.PatientInstanceQuery = {
-	description: 'Get information about a single Patient',
-	resolve: scopeInvariant(scopeOptions, patientInstanceResolver),
+	description: 'Access information about a single Patient',
+	resolve: scopeInvariant(scopeOptions, getPatientInstance),
 	type: PatientSchema,
+	args: args,
 };

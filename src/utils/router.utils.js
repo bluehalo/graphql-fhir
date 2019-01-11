@@ -92,6 +92,7 @@ function configureRoutes(server, options = {}) {
 			resolveFromVersion(version, resourceConfig.profilesRelativePath),
 		);
 		let configs = config_paths.map(require);
+
 		// Grab all the necessary properties from each config
 		// Ignore instance_queries for now, we will add them in later
 		let query_fields = {},
@@ -107,8 +108,8 @@ function configureRoutes(server, options = {}) {
 			Object.assign(query_fields, config.query);
 			Object.assign(mutation_fields, config.mutation);
 			// Go ahead and add the endpoint for instances if it is defined
-			if (config.instance_query) {
-				let { path: instance_path, query, name } = config.instance_query;
+			if (config.instance) {
+				let { path: instance_path, query, name } = config.instance;
 
 				server.app.use(
 					// Path for this graphql endpoint

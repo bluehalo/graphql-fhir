@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.explanationofbenefitResolver
+ * @name exports.getExplanationOfBenefit
  * @static
- * @summary ExplanationOfBenefit Resolver.
+ * @summary ExplanationOfBenefit resolver.
  */
-module.exports.explanationofbenefitResolver = function explanationofbenefitResolver(
+module.exports.getExplanationOfBenefit = function getExplanationOfBenefit(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.explanationofbenefitListResolver
+ * @name exports.getExplanationOfBenefitList
  * @static
- * @summary ExplanationOfBenefit List Resolver.
+ * @summary ExplanationOfBenefit list resolver.
  */
-module.exports.explanationofbenefitListResolver = function explanationofbenefitListResolver(
+module.exports.getExplanationOfBenefitList = function getExplanationOfBenefitList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.explanationofbenefitInstanceResolver
+ * @name exports.getExplanationOfBenefitInstance
  * @static
- * @summary ExplanationOfBenefit Instance Resolver.
+ * @summary ExplanationOfBenefit instance resolver.
  */
-module.exports.explanationofbenefitInstanceResolver = function explanationofbenefitInstanceResolver(
+module.exports.getExplanationOfBenefitInstance = function getExplanationOfBenefitInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.explanationofbenefitCreateResolver
+ * @name exports.createExplanationOfBenefit
  * @static
- * @summary ExplanationOfBenefit Create Resolver.
+ * @summary Create ExplanationOfBenefit resolver.
  */
-module.exports.explanationofbenefitCreateResolver = function explanationofbenefitCreateResolver(
+module.exports.createExplanationOfBenefit = function createExplanationOfBenefit(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.explanationofbenefitUpdateResolver
+ * @name exports.updateExplanationOfBenefit
  * @static
- * @summary ExplanationOfBenefit Update Resolver.
+ * @summary Update ExplanationOfBenefit resolver.
  */
-module.exports.explanationofbenefitUpdateResolver = function explanationofbenefitUpdateResolver(
+module.exports.updateExplanationOfBenefit = function updateExplanationOfBenefit(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.explanationofbenefitDeleteResolver
+ * @name exports.removeExplanationOfBenefit
  * @static
- * @summary ExplanationOfBenefit Delete Resolver.
+ * @summary Remove ExplanationOfBenefit resolver.
  */
-module.exports.explanationofbenefitDeleteResolver = function explanationofbenefitDeleteResolver(
+module.exports.removeExplanationOfBenefit = function removeExplanationOfBenefit(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };

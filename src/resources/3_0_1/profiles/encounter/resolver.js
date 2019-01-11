@@ -1,91 +1,89 @@
-const errorUtils = require('../../../../utils/error.utils');
-
 /**
- * @name exports.encounterResolver
+ * @name exports.getEncounter
  * @static
- * @summary Encounter Resolver.
+ * @summary Encounter resolver.
  */
-module.exports.encounterResolver = function encounterResolver(
+module.exports.getEncounter = function getEncounter(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.encounterListResolver
+ * @name exports.getEncounterList
  * @static
- * @summary Encounter List Resolver.
+ * @summary Encounter list resolver.
  */
-module.exports.encounterListResolver = function encounterListResolver(
+module.exports.getEncounterList = function getEncounterList(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.encounterInstanceResolver
+ * @name exports.getEncounterInstance
  * @static
- * @summary Encounter Instance Resolver.
+ * @summary Encounter instance resolver.
  */
-module.exports.encounterInstanceResolver = function encounterInstanceResolver(
+module.exports.getEncounterInstance = function getEncounterInstance(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.encounterCreateResolver
+ * @name exports.createEncounter
  * @static
- * @summary Encounter Create Resolver.
+ * @summary Create Encounter resolver.
  */
-module.exports.encounterCreateResolver = function encounterCreateResolver(
+module.exports.createEncounter = function createEncounter(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.encounterUpdateResolver
+ * @name exports.updateEncounter
  * @static
- * @summary Encounter Update Resolver.
+ * @summary Update Encounter resolver.
  */
-module.exports.encounterUpdateResolver = function encounterUpdateResolver(
+module.exports.updateEncounter = function updateEncounter(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
 
 /**
- * @name exports.encounterDeleteResolver
+ * @name exports.removeEncounter
  * @static
- * @summary Encounter Delete Resolver.
+ * @summary Remove Encounter resolver.
  */
-module.exports.encounterDeleteResolver = function encounterDeleteResolver(
+module.exports.removeEncounter = function removeEncounter(
 	root,
 	args,
-	context,
+	context = {},
 	info,
 ) {
-	let { server, req, res, version } = context;
+	let { server, version, req, res } = context;
 	return {};
 };
