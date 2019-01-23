@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/Asymmetrik/graphql-fhir/compare/v1.0.0...v1.0.1) (2019-01-23)
+
+
+### Bug Fixes
+
+* Fixes issue with ResourceList being unable to resolve correct type ([7e3d30d](https://github.com/Asymmetrik/graphql-fhir/commit/7e3d30d)), closes [#19](https://github.com/Asymmetrik/graphql-fhir/issues/19)
+
+
+
 # [1.0.0](https://github.com/Asymmetrik/graphql-fhir/compare/74986a8...v1.0.0) (2019-01-11)
 
 
