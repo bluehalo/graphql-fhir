@@ -105,7 +105,7 @@ module.exports = new GraphQLUnionType({
 		require('./testscript.schema.js'),
 		require('./visionprescription.schema.js'),
 	],
-	resolveType(value) {
+	resolveType(data) {
 		if (data && data.resourceType === 'ValueSet') {
 			return require('./valueset.schema.js');
 		}

@@ -1,6 +1,6 @@
 {
   "name": "graphql-fhir",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Javascript based GraphQL FHIR server",
   "main": "index.js",
   "author": "Robert-W <rwinterbottom@asymmetrik.com>>",
@@ -12,7 +12,7 @@
     "test": "cross-env NODE_ENV=test node src/scripts/test",
     "prettier": "prettier \"src/**/*.js\" --write",
     "lint": "eslint \"src/**/*.js\"",
-		"changelog": "conventional-changelog -p angular -s -r 0 -i CHANGELOG.md"
+    "changelog": "conventional-changelog -p angular -s -r 0 -i CHANGELOG.md"
   },
   "prettier": {
     "trailingComma": "all",
@@ -55,15 +55,15 @@
       "lcov",
       "json"
     ],
-		"setupFiles": [
-			"<rootDir>/src/environment.js"
-		],
-		"testEnvironment": "node",
+    "setupFiles": [
+      "<rootDir>/src/environment.js"
+    ],
+    "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "<rootDir>/src/scripts/"
     ],
     "coveragePathIgnorePatterns": [
-			"<rootDir>/src/environment.js",
+      "<rootDir>/src/environment.js",
       "<rootDir>/src/resources/"
     ]
   }
