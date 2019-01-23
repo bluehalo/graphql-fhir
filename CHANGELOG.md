@@ -1,18 +1,15 @@
-## [1.0.1](https://github.com/Asymmetrik/graphql-fhir/compare/v1.0.0...v1.0.1) (2019-01-23)
+# 1.0.0 (2019-01-09)
 
 
 ### Bug Fixes
 
-* Fixes issue with ResourceList being unable to resolve correct type ([7e3d30d](https://github.com/Asymmetrik/graphql-fhir/commit/7e3d30d)), closes [#19](https://github.com/Asymmetrik/graphql-fhir/issues/19)
-
-
-
-# [1.0.0](https://github.com/Asymmetrik/graphql-fhir/compare/74986a8...v1.0.0) (2019-01-11)
+* fixed issues with filenames in newly generated code ([77e7a6b](https://github.com/Asymmetrik/graphql-fhir/commit/77e7a6b))
 
 
 ### Features
 
-* new resources ([#17](https://github.com/Asymmetrik/graphql-fhir/issues/17)) ([74986a8](https://github.com/Asymmetrik/graphql-fhir/commit/74986a8))
+* Added support for automatic changleog generation ([2fe0f75](https://github.com/Asymmetrik/graphql-fhir/commit/2fe0f75))
+* Added support for R4 resources and environment setup ([686a764](https://github.com/Asymmetrik/graphql-fhir/commit/686a764))
 
 
 ### BREAKING CHANGES
