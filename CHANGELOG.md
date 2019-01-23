@@ -18,6 +18,3 @@
 contains graphql which may require you to delete and reinstall node
 modules. We have updated several versions so when updating, you should
 rerun yarn install and may need to remove node_modules before hand.
-
-
-
