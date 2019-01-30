@@ -1,4 +1,4 @@
-const path = require('path');
+const smartBearerStrategy = require('@asymmetrik/sof-strategy');
 
 /**
  * @name VERSION
@@ -27,10 +27,11 @@ const SERVER_CONFIG = {
 	// Auth configurations
 	auth: {
 		name: 'bearer',
-		clientId: process.env.CLIENT_ID,
-		clientSecret: process.env.CLIENT_SECRET,
-		introspectionUrl: process.env.INTROSPECTION_URL,
-		strategy: path.posix.resolve('src/strategies/bearer.strategy.js'),
+		strategy: smartBearerStrategy({
+			clientId: process.env.CLIENT_ID,
+			clientSecret: process.env.CLIENT_SECRET,
+			introspectionUrl: process.env.INTROSPECTION_URL,
+		}),
 		passportOptions: {
 			session: false,
 		},

@@ -30,9 +30,6 @@ You can configure which version you want to support here. The values should neve
 - **logging** - Place to put logging configurations. Currently only level is allowed, but we intend to add more in the future. You can also customize the logger in `src/lib/logger` to add support for whatever you need.
 - **auth** - Various configurations for authentication.
 	- **name** - Name of the strategy to use for passport
-	- **clientId** - Client Id needed for an introspection query. This will be populated by a CLIENT_ID environment variable.
-	- **clientSecret** - Client Secret needed for an introspection query. This will be populated by a CLIENT_SECRET environment variable.
-	- **introspectionUrl** - Introspection url
 	- **strategy** - Path to your strategy
 	- **passportOptions** - Options object passed directly into passport.
 
@@ -51,9 +48,16 @@ Authentication is implemented based on the [SMART App Authorization Guide](http:
 
 The way it works is our server will parse the bearer token from headers and then send the token back to the introspection url along with the client id and client secret to validate the token. If the token is valid, the scopes will be used to validate access to all resources.  For example, let's say Joe logs in to some app that uses this server as a backend. He authenticates with the application and then tries to load up a dashboard full of data. When the request comes to this server, we will take the token provided by the app, validate it, then check the scopes associated with it before returning any data. If Joe has enough scope to view the resources requested, they will be returned, otherwise, an insufficient scope error will be returned.
 
-To set all this up in our server, you only need to define a few environment variables. However, you will need a valid auth server with an introspection endpoint available. This must be used to prevent someone from resigning a token after modifying it or some other man in the middle type attacks. We already wrote our own bearer strategy (`src/strategies/bearer.strategy`) that will utilize the introspection endpoint. You can use it, customize it, or add your own passport strategies (writing your own requires more customization). The three environment variables you need to define are `CLIENT_ID`, `CLIENT_SECRET`, and `INTROSPECTION_URL`.
+To set all this up in our server, you only need to define a few environment variables. However, you will need a valid auth server with an introspection endpoint available. This must be used to prevent someone from resigning a token after modifying it or some other man in the middle type attacks. We already wrote our own bearer strategy, [https://github.com/Asymmetrik/phx-tools/tree/master/packages/sof-strategy](https://github.com/Asymmetrik/phx-tools/tree/master/packages/sof-strategy), that will utilize the introspection endpoint. You can use it, customize it, or add your own passport strategies (writing your own requires more customization). The three environment variables you need to define are `CLIENT_ID`, `CLIENT_SECRET`, and `INTROSPECTION_URL`.
 
-That's it. Remember authentication is enabled by default and will throw an error if you attempt to query the graphql endpoint without setting those three environment variables. If you want to disable auth completely, just remove the name or strategy from `src/config.js` under the `SERVER_CONFIG.auth` property or remove the `configurePassport` call in `src/index.js`.
+That's it. Remember authentication is enabled by default and will throw an error if you attempt to query the graphql endpoint without setting those three environment variables. If you want to disable auth completely, see below.
+
+### Disabling Authentication
+There are two things you will need to do to if you want to disable authentication. We are using [https://github.com/Asymmetrik/phx-tools/tree/master/packages/sof-strategy](https://github.com/Asymmetrik/phx-tools/tree/master/packages/sof-strategy) and [https://github.com/Asymmetrik/phx-tools/tree/master/packages/sof-graphql-invariant](https://github.com/Asymmetrik/phx-tools/tree/master/packages/sof-graphql-invariant).
+
+To disable the strategy, just remove the name or strategy from `src/config.js` under the `SERVER_CONFIG.auth` property or remove the `configurePassport` call in `src/index.js`. This enables the authentication piece.
+
+To disable the scope invariant, or the authorization piece, change the feature flags in `src/environment.js` for the environment you want to disable it in from true to false. For example, change `process.env.SOF_AUTHENTICATION = true;` to `process.env.SOF_AUTHENTICATION = false;`. This tells the scopeInvariantResolver to not do any scope checking, which only works if SMART is enabled.
 
 ## Resolvers
 You can read a little bit about GraphQL resolvers on  [graphql.org](https://graphql.org/learn/execution/#root-fields-resolvers). Resolvers are where you return data back for the API and it needs to be in the correct format. GraphQL will attempt to coerce data types being resolved when possible, but if you return an invalid property, it will throw an error. You can return an object, array of objects, promise, or an array or promises and GraphQL will just handle it. All of the resolvers are located in `src/resources/{version}/profiles/{profile_name}/resolver.js`.
@@ -62,7 +66,7 @@ All of the resolver's contain stubs that just need to be filled in, so all you n
 
 ```javascript
 // In src/resources/3_0_1/profiles/patient/resolver.js
-module.exports.patientResolver = function patientResolver (root, args, ctx, info) {
+module.exports.getPatient = function getPatient (root, args, ctx, info) {
   // This is not very realistic, but just giving you a simple idea of how
   // this works
   let id = args._id;
@@ -148,7 +152,7 @@ Finally, grab the connnection or client in your resolvers so you can start worki
 // In src/resources/3_0_1/profiles/patient/resolver.js
 const errorUtils = require('../../../../utils/error.utils'); 
 
-module.exports.patientResolver = function patientResolver (root, args, ctx, info) {
+module.exports.getPatient = function getPatient (root, args, ctx, info) {
   let db = ctx.server.db;
   let version = ctx.version;
   let logger = ctx.server.logger;
