@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/Asymmetrik/graphql-fhir/compare/v1.0.1...v1.1.0) (2019-02-08)
+
+
+### Features
+
+* sof strategy from phx tools ([#22](https://github.com/Asymmetrik/graphql-fhir/issues/22)) ([41e37c1](https://github.com/Asymmetrik/graphql-fhir/commit/41e37c1))
+
+
+
 ## [1.0.1](https://github.com/Asymmetrik/graphql-fhir/compare/v1.0.0...v1.0.1) (2019-01-23)
 
 
