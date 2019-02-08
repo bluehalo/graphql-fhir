@@ -101,7 +101,7 @@ class Server {
 			// to make it easy to determine if the server is using authentication
 			this.env.AUTHENTICATION = true;
 			// Add the strategy to passport
-			passport.use(require(auth.strategy));
+			passport.use(auth.strategy);
 		}
 		// return self for chaining
 		return this;
