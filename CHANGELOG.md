@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/Asymmetrik/graphql-fhir/compare/v1.1.0...v1.2.0) (2019-03-11)
+
+
+### Features
+
+* Added Dockerfile ([e56f5a0](https://github.com/Asymmetrik/graphql-fhir/commit/e56f5a0))
+
+
+
 # [1.1.0](https://github.com/Asymmetrik/graphql-fhir/compare/v1.0.1...v1.1.0) (2019-02-08)
 
 
