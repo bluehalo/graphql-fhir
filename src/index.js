@@ -10,6 +10,7 @@ let server = new FHIRServer(SERVER_CONFIG)
 	.configureMiddleware()
 	.configurePassport()
 	.configureHelmet()
+	.enableHealthCheck()
 	.setProfileRoutes()
 	.setErrorRoutes();
 

@@ -119,6 +119,16 @@ class Server {
 		return this;
 	}
 
+	// enable health check
+	enableHealthCheck () {
+		// just send a simple 200 response for healthcheck
+		this.app.use('/healthcheck', (_req, res) =>
+			res.status(200).json({ uptime: process.uptime() })
+		);
+		// return self for chaining
+		return this;
+	}
+
 	// Setup profile routes
 	setProfileRoutes() {
 		this.logger.info('Loading GraphQL schemas and setting routes');
