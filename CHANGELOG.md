@@ -1,9 +1,10 @@
-# [1.2.0](https://github.com/Asymmetrik/graphql-fhir/compare/v1.1.0...v1.2.0) (2019-03-11)
+# [1.2.0](https://github.com/Asymmetrik/graphql-fhir/compare/v1.1.0...v1.2.0) (2019-03-22)
 
 
 ### Features
 
-* Added Dockerfile ([e56f5a0](https://github.com/Asymmetrik/graphql-fhir/commit/e56f5a0))
+* docker ([#23](https://github.com/Asymmetrik/graphql-fhir/issues/23)) ([af7bfa3](https://github.com/Asymmetrik/graphql-fhir/commit/af7bfa3))
+* enabled healthcheck for ALB in AWS healthchecks ([#24](https://github.com/Asymmetrik/graphql-fhir/issues/24)) ([0d05919](https://github.com/Asymmetrik/graphql-fhir/commit/0d05919))
 
 
 
