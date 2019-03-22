@@ -1,6 +1,6 @@
 {
   "name": "graphql-fhir",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A Javascript based GraphQL FHIR server",
   "main": "index.js",
   "author": "Robert-W <rwinterbottom@asymmetrik.com>>",
