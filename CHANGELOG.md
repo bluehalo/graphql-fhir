@@ -1,9 +1,9 @@
+## [1.2.2](https://github.com/Asymmetrik/graphql-fhir/compare/v1.2.1...v1.2.2) (2019-04-02)
+
+
+
 ## [1.2.1](https://github.com/Asymmetrik/graphql-fhir/compare/v1.2.0...v1.2.1) (2019-03-22)
 
-
-### Bug Fixes
-
-* removed duplicate parameter ([0443cef](https://github.com/Asymmetrik/graphql-fhir/commit/0443cef))
 
 
 # [1.2.0](https://github.com/Asymmetrik/graphql-fhir/compare/v1.1.0...v1.2.0) (2019-03-22)
@@ -48,3 +48,6 @@
 contains graphql which may require you to delete and reinstall node
 modules. We have updated several versions so when updating, you should
 rerun yarn install and may need to remove node_modules before hand.
+
+
+
