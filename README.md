@@ -21,7 +21,7 @@ yarn nodemon
 3. View `http://localhost:3000/3_0_1/$graphiql` to explore the available queries and mutations in the graphiql interface. The standard graphql endpoint is available at `http://localhost:3000/3_0_1/$graphql`.
 
 ## What's next
-See our [Frequently Asked Questions](#frequently-asked-questions) for explanations on how to configure the server, connect to an actual database, setup authentication, and more. You can also read up on the project structure under the [Architecture](#architecture) section if you are curious about that kind of thing. If you are want to know about our future plans, see our [Roadmap](#roadmap). If you have any other questions, please don't hesitate to [create an issue](https://github.com/Asymmetrik/graphql-fhir/issues) with the question label and ask.
+See our [Frequently Asked Questions](#frequently-asked-questions) for explanations on how to configure the server, connect to an actual database, setup authentication, and more. You can also read up on the project structure under the [Architecture](#architecture) section if you are curious about that kind of thing. If you are want to know about our future plans, see our [Roadmap](#roadmap). If you have any other questions, please ask them on [StackOverflow](https://stackoverflow.com/) with the tag `graphql-fhir`.
 
 ## Frequently Asked Questions
 - [What yarn(or npm) commands are available?](./FAQ.md#commands)
