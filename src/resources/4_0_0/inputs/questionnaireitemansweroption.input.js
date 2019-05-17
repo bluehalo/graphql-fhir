@@ -43,7 +43,7 @@ module.exports = new GraphQLInputObjectType({
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueInteger: {
-			type: new GraphQLNonNull(GraphQLInt),
+			type: GraphQLInt,
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
@@ -53,7 +53,7 @@ module.exports = new GraphQLInputObjectType({
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueDate: {
-			type: new GraphQLNonNull(DateScalar),
+			type: DateScalar,
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
@@ -63,7 +63,7 @@ module.exports = new GraphQLInputObjectType({
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueTime: {
-			type: new GraphQLNonNull(TimeScalar),
+			type: TimeScalar,
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
@@ -73,17 +73,17 @@ module.exports = new GraphQLInputObjectType({
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueString: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: GraphQLString,
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueCoding: {
-			type: new GraphQLNonNull(require('./coding.input.js')),
+			type: new require('./coding.input.js'),
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueReference: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: GraphQLString,
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
