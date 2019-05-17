@@ -78,7 +78,7 @@ module.exports = new GraphQLInputObjectType({
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueCoding: {
-			type: new require('./coding.input.js'),
+			type: require('./coding.input.js'),
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
