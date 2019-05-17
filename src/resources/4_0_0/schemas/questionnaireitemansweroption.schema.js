@@ -44,7 +44,7 @@ module.exports = new GraphQLObjectType({
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueInteger: {
-			type: new GraphQLNonNull(GraphQLInt),
+			type: GraphQLInt,
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
@@ -54,7 +54,7 @@ module.exports = new GraphQLObjectType({
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueDate: {
-			type: new GraphQLNonNull(DateScalar),
+			type: DateScalar,
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
@@ -64,7 +64,7 @@ module.exports = new GraphQLObjectType({
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueTime: {
-			type: new GraphQLNonNull(TimeScalar),
+			type: TimeScalar,
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
@@ -74,18 +74,17 @@ module.exports = new GraphQLObjectType({
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueString: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: GraphQLString,
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueCoding: {
-			type: new GraphQLNonNull(require('./coding.schema.js')),
+			type: require('./coding.schema.js'),
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
 		valueReference: {
-			type: new GraphQLNonNull(
-				new GraphQLUnionType({
+			type: new GraphQLUnionType({
 					name:
 						'QuestionnaireitemanswerOptionvalueReference_valueReference_Union',
 					description:
@@ -97,7 +96,6 @@ module.exports = new GraphQLObjectType({
 						}
 					},
 				}),
-			),
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},
