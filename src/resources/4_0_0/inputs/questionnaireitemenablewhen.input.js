@@ -74,7 +74,7 @@ module.exports = new GraphQLInputObjectType({
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
 		answerDecimal: {
-			type: new GraphQLNonNull(GraphQLFloat),
+			type: GraphQLFloat,
 			description:
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
@@ -84,7 +84,7 @@ module.exports = new GraphQLInputObjectType({
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
 		answerInteger: {
-			type: new GraphQLNonNull(GraphQLInt),
+			type: GraphQLInt,
 			description:
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
@@ -94,7 +94,7 @@ module.exports = new GraphQLInputObjectType({
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
 		answerDate: {
-			type: new GraphQLNonNull(DateScalar),
+			type: DateScalar,
 			description:
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
@@ -104,7 +104,7 @@ module.exports = new GraphQLInputObjectType({
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
 		answerDateTime: {
-			type: new GraphQLNonNull(DateTimeScalar),
+			type: DateTimeScalar,
 			description:
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
@@ -114,7 +114,7 @@ module.exports = new GraphQLInputObjectType({
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
 		answerTime: {
-			type: new GraphQLNonNull(TimeScalar),
+			type: TimeScalar,
 			description:
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
@@ -124,22 +124,22 @@ module.exports = new GraphQLInputObjectType({
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
 		answerString: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: GraphQLString,
 			description:
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
 		answerCoding: {
-			type: new GraphQLNonNull(require('./coding.input.js')),
+			type: require('./coding.input.js'),
 			description:
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
 		answerQuantity: {
-			type: new GraphQLNonNull(require('./quantity.input.js')),
+			type: require('./quantity.input.js'),
 			description:
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
 		answerReference: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: GraphQLString,
 			description:
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},
