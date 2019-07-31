@@ -129,14 +129,14 @@ class Server {
 		return this;
 	}
 
-	// Setup profile routes
-	setProfileRoutes() {
+	// Setup profile routes, overrides for testing
+	setProfileRoutes(config = {}) {
 		this.logger.info('Loading GraphQL schemas and setting routes');
 		// Pass this instance so I can grab the express app and any config
 		// that may or may not be necessary for the router utils
 		configureRoutes(this, {
-			resourceConfig: RESOURCE_CONFIG,
-			versions: Object.keys(VERSION),
+			resourceConfig: config.resourceConfig || RESOURCE_CONFIG,
+			versions: Object.keys(config.versionConfig || VERSION),
 		});
 		// return self for chaining
 		return this;
@@ -193,9 +193,7 @@ class Server {
 			  );
 
 		// Listen
-		this.app.listen(port, callback);
-
-		return this;
+		return this.app.listen(port, callback);
 	}
 }
 

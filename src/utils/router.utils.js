@@ -1,4 +1,5 @@
 const authenticationMiddleware = require('../middleware/authentication.middleware');
+const gqlInstanceMiddleware = require('../middleware/graphql.middleware');
 const { resolveFromVersion } = require('./resolve.utils');
 const expressGraphql = require('express-graphql');
 const errorUtils = require('./error.utils');
@@ -32,15 +33,15 @@ function generateRootSchema(version, query_fields, mutation_fields) {
 }
 
 // Helper for generating instance schemas
-function generateInstanceSchema(version, name, query) {
-	return new GraphQLSchema({
-		query: new GraphQLObjectType({
-			name: `${name}_Query`,
-			description: `${name} query for a specific ${name}.`,
-			fields: { [name]: query },
-		}),
-	});
-}
+// function generateInstanceSchema(version, name, query) {
+// 	return new GraphQLSchema({
+// 		query: new GraphQLObjectType({
+// 			name: `${name}_Query`,
+// 			description: `${name} query for a specific ${name}.`,
+// 			fields: { [name]: query },
+// 		}),
+// 	});
+// }
 
 // Helper function for generating graphql server
 function setupGraphqlServer(server, version, options) {
@@ -109,18 +110,20 @@ function configureRoutes(server, options = {}) {
 			Object.assign(mutation_fields, config.mutation);
 			// Go ahead and add the endpoint for instances if it is defined
 			if (config.instance) {
-				let { path: instance_path, query, name } = config.instance;
+				let { path: instance_path, query } = config.instance;
 
 				server.app.use(
 					// Path for this graphql endpoint
 					path.posix.join(instance_path, '([$])graphql'),
 					// Add our validation middlware
 					authenticationMiddleware(server),
+					// middleware wrapper for Graphql
+					gqlInstanceMiddleware({ server, version, instance: query })
 					// middleware wrapper for Graphql Express
-					setupGraphqlServer(server, version, {
-						formatError: graphqlErrorFormatter(server.logger, version),
-						schema: generateInstanceSchema(version, name, query),
-					}),
+					// setupGraphqlServer(server, version, {
+					// 	formatError: graphqlErrorFormatter(server.logger, version),
+					// 	schema: generateInstanceSchema(version, name, query),
+					// }),
 				);
 			}
 		}
