@@ -1,3 +1,13 @@
+## [1.2.4](https://github.com/Asymmetrik/graphql-fhir/compare/1.2.3...1.2.4) (2019-08-20)
+
+
+### Bug Fixes
+
+* updated package containing vulnerability ([0d99acd](https://github.com/Asymmetrik/graphql-fhir/commit/0d99acd))
+* upgrade packages ([#30](https://github.com/Asymmetrik/graphql-fhir/issues/30)) ([5cd0619](https://github.com/Asymmetrik/graphql-fhir/commit/5cd0619))
+
+
+
 ## [1.2.3](https://github.com/Asymmetrik/graphql-fhir/compare/v1.2.2...v1.2.3) (2019-05-21)
 
 

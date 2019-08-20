@@ -12,7 +12,7 @@
     "test": "cross-env NODE_ENV=test node src/scripts/test",
     "prettier": "prettier \"src/**/*.js\" --write",
     "lint": "eslint \"src/**/*.js\"",
-    "changelog": "conventional-changelog -p angular -s -r 0 -i CHANGELOG.md"
+    "changelog": "conventional-changelog -p angular -s -i CHANGELOG.md"
   },
   "prettier": {
     "trailingComma": "all",
