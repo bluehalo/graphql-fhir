@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const Winston = require('./winston');
 const express = require('express');
+const { MongoClient } = require('mongodb');
 const helmet = require('helmet');
 const https = require('https');
 const http = require('http');
@@ -38,10 +39,24 @@ class Server {
 	// Initialize a database connection
 	// eslint-disable-next-line no-unused-vars
 	initializeDatabaseConnection(options = {}) {
-		// Store the db on this somehow
-
-		// return self for chaining
-		return this;
+		// Connect to mongo and pass any options here
+		return new Promise((resolve, reject) => {
+			let {
+				url,
+				db_name,
+				mongo_options
+			} = options;
+					
+			MongoClient.connect(url, mongo_options, (err, client) => {
+				if (err) return reject(err);
+				// Store the client and db on the server instance,
+				// the server instance is passed into the resolvers
+				// so it will make accessing this later a breeze
+				this.client = client;
+				this.db = client.db(db_name);
+				return resolve();
+			});		
+		});
 	}
 
 	// Configure session

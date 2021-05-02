@@ -1,3 +1,4 @@
+const env = require('var');
 const smartBearerStrategy = require('@asymmetrik/sof-strategy');
 
 /**
@@ -62,9 +63,33 @@ const RESOURCE_CONFIG = {
 	profilesRelativePath: 'profiles/**/register.js',
 };
 
+let mongoUrl = env.MONGO_URL || `mongodb://${env.MONGO_HOSTNAME}:${env.MONGO_PORT}`;
+if (env.MONGO_USERNAME !== undefined) {
+    mongoUrl = mongoUrl.replace('mongodb://', `mongodb://${env.MONGO_USERNAME}:${env.MONGO_PASSWORD}@`);
+}
+// url-encode the url
+mongoUrl = encodeURI(mongoUrl);
+/**
+ * @name mongoConfig
+ * @summary Configurations for our Mongo instance
+ */
+let MONGO_CONFIG = {
+    connection: mongoUrl,
+    db_name: env.MONGO_DB_NAME,
+    options: {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        auto_reconnect: true,
+        keepAlive: 1,
+        connectTimeoutMS: 60000,
+        socketTimeoutMS: 60000,
+    },
+};
+
 module.exports = {
 	RESOURCE_CONFIG,
 	SERVER_CONFIG,
 	DATE_CONFIG,
 	VERSION,
+	MONGO_CONFIG
 };

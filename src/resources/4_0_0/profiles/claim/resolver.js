@@ -1,11 +1,25 @@
+const errorUtils = require('../../../../utils/error.utils'); 
 /**
  * @name exports.getClaim
  * @static
  * @summary Claim resolver.
  */
-module.exports.getClaim = function getClaim(root, args, context = {}, info) {
-	let { server, version, req, res } = context;
-	return {};
+module.exports.getClaim = function getClaim(root, args, context, info) {
+	let db = context.server.db;
+  	let version = context.version;
+  	let logger = context.server.logger;
+	return new Promise((resolve, reject) => {
+		const claims = db.collection("claims");
+		claims.findOne({ _id: args._id }, (err, claim) => {
+		  if (err) {
+			logger.error(err);
+			let error = errorUtils.internal(version, err.message);
+			reject(errorUtils.formatErrorForGraphQL(error));
+		  } else {
+			resolve(claim.resource);
+		  }
+		});
+	  });
 };
 
 /**
@@ -19,8 +33,21 @@ module.exports.getClaimList = function getClaimList(
 	context = {},
 	info,
 ) {
-	let { server, version, req, res } = context;
-	return {};
+	let db = context.server.db;
+  	let version = context.version;
+  	let logger = context.server.logger;
+	return new Promise((resolve, reject) => {
+		const claims = db.collection("claims");
+		claims.find({}).toArray(function(err, result) {
+			if (err) {
+			logger.error(err);
+			let error = errorUtils.internal(version, err.message);
+			reject(errorUtils.formatErrorForGraphQL(error));
+			} else {
+				resolve(result); //TODO proper mapping
+			}
+		  });
+	});	
 };
 
 /**
@@ -49,8 +76,31 @@ module.exports.createClaim = function createClaim(
 	context = {},
 	info,
 ) {
-	let { server, version, req, res } = context;
-	return {};
+	let db = context.server.db;
+  	let version = context.version;
+  	let logger = context.server.logger;
+	return new Promise((resolve, reject) => { //TODO mapping incomplete probably not the best way either
+		const claim = { resourceType: args.resource.claim, 
+						id: args.id, 
+						status: args.resource.status,
+						type: {id: args.resource.type.id},
+						use: args.resource.use, 
+						provider: args.resource.provider, 
+	  					priority: {id: args.resource.id},
+						patient: args.resource.patient, 
+						created: args.resource.created  				
+				};
+		const claims = db.collection("claims");
+		claims.insertOne({_id: args.id, resource: claim}, (err, result) => {
+			if (err) {
+			  logger.error(err);
+			  let error = errorUtils.internal(version, err.message);
+			  reject(errorUtils.formatErrorForGraphQL(error));
+			} else {
+				resolve(args.resource);
+			}
+		  });
+	});
 };
 
 /**
