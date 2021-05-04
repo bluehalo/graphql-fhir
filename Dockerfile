@@ -1,12 +1,13 @@
-FROM node:11-alpine
+FROM node:15-alpine
 
 # Update any outdated packages
 RUN apk update
+RUN apk --no-cache add curl
 
 WORKDIR /srv
 
 # Download the Amazon DocumentDB Certificate Authority (CA) certificate required to authenticate to your cluster
-RUN curl https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem --output /srv/src/rds-combined-ca-bundle.pem
+RUN curl https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem --output /srv/rds-combined-ca-bundle.pem
 
 # Move this separately so install get's cached
 COPY package.json /srv/package.json
