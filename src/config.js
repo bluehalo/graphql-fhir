@@ -6,8 +6,8 @@ const smartBearerStrategy = require('@asymmetrik/sof-strategy');
  * @summary Versions constants. These are the versions we support
  */
 const VERSION = {
-	'1_0_2': '1_0_2',
-	'3_0_1': '3_0_1',
+//	'1_0_2': '1_0_2',
+//	'3_0_1': '3_0_1',
 	'4_0_0': '4_0_0',
 };
 
@@ -18,7 +18,7 @@ const VERSION = {
 const SERVER_CONFIG = {
 	// Default version of FHIR, needed to know which version of OperationOutcome to
 	// use for 404 errors if a valid version is not present
-	defaultVersion: '3_0_1',
+	defaultVersion: '4_0_0',
 	// defaut port for the app
 	port: process.env.PORT || 3000,
 	// Logger configurations
