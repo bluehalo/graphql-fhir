@@ -1,9 +1,8 @@
 {
-  "name": "graphql-fhir",
-  "version": "1.2.4",
+  "name": "bwell-graphql-fhir",
+  "version": "0.0.1",
   "description": "A Javascript based GraphQL FHIR server",
   "main": "index.js",
-  "author": "Robert-W <rwinterbottom@asymmetrik.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
@@ -39,9 +38,12 @@
     "superagent": "^3.8.3",
     "validator": "^10.4.0",
     "winston": "^3.0.0",
-    "xss": "^1.0.3"
+    "xss": "^1.0.3",
+    "var": "^0.4.0",
+    "mongodb": "^3.6.5"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^1.2.3",
     "conventional-changelog-cli": "^2.0.11",
     "coveralls": "^3.0.2",
     "eslint": "^5.1.0",
