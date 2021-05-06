@@ -1,4 +1,4 @@
-const errorUtils = require('../../../../utils/error.utils'); 
+const errorUtils = require('../../../../utils/error.utils');
 /**
  * @name exports.getClaim
  * @static
@@ -10,15 +10,22 @@ module.exports.getClaim = function getClaim(root, args, context, info) {
   	let logger = context.server.logger;
 	return new Promise((resolve, reject) => {
 		const claims = db.collection("claims");
-		claims.findOne({ _id: args._id }, (err, claim) => {
-		  if (err) {
-			logger.error(err);
-			let error = errorUtils.internal(version, err.message);
-			reject(errorUtils.formatErrorForGraphQL(error));
-		  } else {
-			resolve(claim.resource);
-		  }
-		});
+		let claim = claims.findOne({ _id: args._id }).then(
+			(claim)=> {
+				if (!claim){
+					resolve({});
+				}
+				else {
+					resolve(claim.resource);
+				}
+			},
+			(err)=> {
+				logger.error(err);
+				let error = errorUtils.internal(version, err.message);
+				reject(errorUtils.formatErrorForGraphQL(error));
+			}
+		);
+
 	  });
 };
 
@@ -38,16 +45,16 @@ module.exports.getClaimList = function getClaimList(
   	let logger = context.server.logger;
 	return new Promise((resolve, reject) => {
 		const claims = db.collection("claims");
-		claims.find({}).toArray(function(err, result) {
-			if (err) {
+		claims.find({}).toArray().then(function(result) {
+				let b=[];
+				result.forEach((res)=> {b.push(res['resource']);});
+				resolve(b); //TODO proper mapping
+		  }, function(err) {
 			logger.error(err);
 			let error = errorUtils.internal(version, err.message);
 			reject(errorUtils.formatErrorForGraphQL(error));
-			} else {
-				resolve(result); //TODO proper mapping
-			}
 		  });
-	});	
+	});
 };
 
 /**
@@ -80,16 +87,7 @@ module.exports.createClaim = function createClaim(
   	let version = context.version;
   	let logger = context.server.logger;
 	return new Promise((resolve, reject) => { //TODO mapping incomplete probably not the best way either
-		const claim = { resourceType: args.resource.claim, 
-						id: args.id, 
-						status: args.resource.status,
-						type: {id: args.resource.type.id},
-						use: args.resource.use, 
-						provider: args.resource.provider, 
-	  					priority: {id: args.resource.id},
-						patient: args.resource.patient, 
-						created: args.resource.created  				
-				};
+		const claim = args.resource;
 		const claims = db.collection("claims");
 		claims.insertOne({_id: args.id, resource: claim}, (err, result) => {
 			if (err) {
