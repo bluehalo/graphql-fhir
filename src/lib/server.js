@@ -46,7 +46,7 @@ class Server {
 				db_name,
 				mongo_options
 			} = options;
-					
+
 			MongoClient.connect(url, mongo_options, (err, client) => {
 				if (err) return reject(err);
 				// Store the client and db on the server instance,
@@ -55,7 +55,7 @@ class Server {
 				this.client = client;
 				this.db = client.db(db_name);
 				return resolve();
-			});		
+			});
 		});
 	}
 
@@ -114,7 +114,8 @@ class Server {
 		if (auth.strategy && auth.name) {
 			// Set this boolean for auth to true if we have a strategy
 			// to make it easy to determine if the server is using authentication
-			this.env.AUTHENTICATION = true;
+			// TODO: Revisit
+			this.env.AUTHENTICATION = false;
 			// Add the strategy to passport
 			passport.use(auth.strategy);
 		}

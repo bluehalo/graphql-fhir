@@ -5,6 +5,8 @@ const errorUtils = require('./error.utils');
 const { VERSION } = require('../config');
 const glob = require('glob');
 const path = require('path');
+const { transformSchemaFederation } = require('graphql-transform-federation');
+const { delegateToSchema } = require('graphql-tools');
 
 const { GraphQLSchema, GraphQLObjectType } = require('graphql');
 
@@ -127,6 +129,16 @@ function configureRoutes(server, options = {}) {
 
 		// Generate a top-level schema for all resources in this version
 		let rootSchema = generateRootSchema(version, query_fields, mutation_fields);
+		rootSchema = transformSchemaFederation(rootSchema, {
+  Query: {
+    // Ensure the root queries of this schema show up the combined schema
+    extend: true,
+  },
+  Mutation: {
+    // Ensure the root queries of this schema show up the combined schema
+    extend: true,
+  }
+});
 
 		// Add our graphql endpoint
 		server.app.use(
