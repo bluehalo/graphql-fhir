@@ -44,7 +44,20 @@ module.exports.getClaimList = function getClaimList(
 			let error = errorUtils.internal(version, err.message);
 			reject(errorUtils.formatErrorForGraphQL(error));
 			} else {
-				resolve(result); //TODO proper mapping
+				const claimArray = result.map(c => {
+					let res = c.resource;
+					res.resourceType = "Claim";
+					let entry = {
+						id: res.id,
+						resource: res
+					}
+					return entry});
+				const returnValue = {
+					type: "Claim",
+					total: result.length,
+					entry: claimArray
+				};
+				resolve(returnValue); //TODO proper mapping
 			}
 		  });
 	});	
@@ -61,8 +74,21 @@ module.exports.getClaimInstance = function getClaimInstance(
 	context = {},
 	info,
 ) {
-	let { server, version, req, res } = context;
-	return {};
+	let db = context.server.db;
+  	let version = context.version;
+  	let logger = context.server.logger;
+	return new Promise((resolve, reject) => {
+		const claims = db.collection("claims");
+		claims.findOne({ _id: args._id }, (err, claim) => {
+		  if (err) {
+			logger.error(err);
+			let error = errorUtils.internal(version, err.message);
+			reject(errorUtils.formatErrorForGraphQL(error));
+		  } else {
+			resolve(claim.resource);
+		  }
+		});
+	  });
 };
 
 /**
@@ -79,19 +105,10 @@ module.exports.createClaim = function createClaim(
 	let db = context.server.db;
   	let version = context.version;
   	let logger = context.server.logger;
-	return new Promise((resolve, reject) => { //TODO mapping incomplete probably not the best way either
-		const claim = { resourceType: args.resource.claim, 
-						id: args.id, 
-						status: args.resource.status,
-						type: {id: args.resource.type.id},
-						use: args.resource.use, 
-						provider: args.resource.provider, 
-	  					priority: {id: args.resource.id},
-						patient: args.resource.patient, 
-						created: args.resource.created  				
-				};
+	return new Promise((resolve, reject) => {
+		const claim = args.resource;
 		const claims = db.collection("claims");
-		claims.insertOne({_id: args.id, resource: claim}, (err, result) => {
+		claims.updateOne({_id: args.id, resource: claim}, (err, result) => {
 			if (err) {
 			  logger.error(err);
 			  let error = errorUtils.internal(version, err.message);
@@ -114,8 +131,24 @@ module.exports.updateClaim = function updateClaim(
 	context = {},
 	info,
 ) {
-	let { server, version, req, res } = context;
-	return {};
+	let db = context.server.db;
+  	let version = context.version;
+  	let logger = context.server.logger;
+	return new Promise((resolve, reject) => {
+		const claim = args.resource;
+		const claims = db.collection("claims");
+		claims.updateOne({_id: args.id}, 
+			{ $set: {claim}}, 
+			{ upsert:true }, (err, result) => {
+			if (err) {
+			  logger.error(err);
+			  let error = errorUtils.internal(version, err.message);
+			  reject(errorUtils.formatErrorForGraphQL(error));
+			} else {
+				resolve(args.resource);
+			}
+		  });
+	});
 };
 
 /**
@@ -129,6 +162,19 @@ module.exports.removeClaim = function removeClaim(
 	context = {},
 	info,
 ) {
-	let { server, version, req, res } = context;
-	return {};
+	let db = context.server.db;
+  	let version = context.version;
+  	let logger = context.server.logger;
+	return new Promise((resolve, reject) => {
+		const claims = db.collection("claims");
+		claims.deleteOne({_id: args.id}, (err) => {
+			if (err) {
+			  logger.error(err);
+			  let error = errorUtils.internal(version, err.message);
+			  reject(errorUtils.formatErrorForGraphQL(error));
+			} else {
+				resolve ( {id: args.id});
+			}
+		  });
+	});
 };
