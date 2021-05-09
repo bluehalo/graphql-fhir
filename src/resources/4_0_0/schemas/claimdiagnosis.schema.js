@@ -49,7 +49,8 @@ module.exports = new GraphQLObjectType({
 				'The nature of illness or problem in a coded form or as a reference to an external defined Condition.',
 		},
 		diagnosisReference: {
-			type: new GraphQLNonNull(
+			type:
+//			new GraphQLNonNull(
 				new GraphQLUnionType({
 					name: 'ClaimdiagnosisdiagnosisReference_diagnosisReference_Union',
 					description:
@@ -61,7 +62,7 @@ module.exports = new GraphQLObjectType({
 						}
 					},
 				}),
-			),
+//			),
 			description:
 				'The nature of illness or problem in a coded form or as a reference to an external defined Condition.',
 		},

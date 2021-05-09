@@ -23,7 +23,7 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ./src:/srv/src/src
+      - ./src:/srv/src
       - ./package.json:/srv/src/package.json
     command: yarn nodemon
 
