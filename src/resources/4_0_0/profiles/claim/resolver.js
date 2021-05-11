@@ -46,9 +46,20 @@ module.exports.getClaimList = function getClaimList(
 	return new Promise((resolve, reject) => {
 		const claims = db.collection("claims");
 		claims.find({}).toArray().then(function(result) {
-				let b=[];
-				result.forEach((res)=> {b.push(res['resource']);});
-				resolve(b); //TODO proper mapping
+			const claimArray = result.map(c => {
+				let res = c.resource;
+				res.resourceType = "Claim";
+				let entry = {
+					id: res.id,
+					resource: res
+				}
+				return entry});
+			const returnValue = {
+				type: "Claim",
+				total: result.length,
+				entry: claimArray
+			};
+			resolve(returnValue);
 		  }, function(err) {
 			logger.error(err);
 			let error = errorUtils.internal(version, err.message);
@@ -68,8 +79,28 @@ module.exports.getClaimInstance = function getClaimInstance(
 	context = {},
 	info,
 ) {
-	let { server, version, req, res } = context;
-	return {};
+	let db = context.server.db;
+  	let version = context.version;
+  	let logger = context.server.logger;
+	return new Promise((resolve, reject) => {
+		const claims = db.collection("claims");
+		let claim = claims.findOne({ _id: args._id }).then(
+			(claim)=> {
+				if (!claim){
+					resolve({});
+				}
+				else {
+					resolve(claim.resource);
+				}
+			},
+			(err)=> {
+				logger.error(err);
+				let error = errorUtils.internal(version, err.message);
+				reject(errorUtils.formatErrorForGraphQL(error));
+			}
+		);
+
+	  });
 };
 
 /**
@@ -112,8 +143,24 @@ module.exports.updateClaim = function updateClaim(
 	context = {},
 	info,
 ) {
-	let { server, version, req, res } = context;
-	return {};
+	let db = context.server.db;
+    let version = context.version;
+    let logger = context.server.logger;
+    return new Promise((resolve, reject) => {
+        const claim = args.resource;
+        const claims = db.collection("claims");
+        claims.updateOne({_id: args.id}, 
+            { $set: {claim}}, 
+            { upsert:true }, (err, result) => {
+            if (err) {
+              logger.error(err);
+              let error = errorUtils.internal(version, err.message);
+              reject(errorUtils.formatErrorForGraphQL(error));
+            } else {
+                resolve(args.resource);
+            }
+          });
+    });
 };
 
 /**
@@ -127,6 +174,19 @@ module.exports.removeClaim = function removeClaim(
 	context = {},
 	info,
 ) {
-	let { server, version, req, res } = context;
-	return {};
+	let db = context.server.db;
+    let version = context.version;
+    let logger = context.server.logger;
+    return new Promise((resolve, reject) => {
+        const claims = db.collection("claims");
+        claims.deleteOne({_id: args.id}, (err) => {
+            if (err) {
+              logger.error(err);
+              let error = errorUtils.internal(version, err.message);
+              reject(errorUtils.formatErrorForGraphQL(error));
+            } else {
+                resolve ( {id: args.id});
+            }
+          });
+    });
 };
