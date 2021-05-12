@@ -10,6 +10,7 @@ const passport = require('passport');
 const Winston = require('./winston');
 const express = require('express');
 const { MongoClient } = require('mongodb');
+const Prometheus = require('../middleware/prometheus');
 const helmet = require('helmet');
 const https = require('https');
 const http = require('http');
@@ -25,6 +26,10 @@ class Server {
 
 		// Create our express instance
 		this.app = express();
+		this.app.use(Prometheus.requestCounters);
+		this.app.use(Prometheus.responseCounters);
+		Prometheus.injectMetricsRoute(this.app);
+		Prometheus.startCollection();
 
 		// Store some environment settings
 		this.env = {

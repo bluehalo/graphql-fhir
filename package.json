@@ -44,7 +44,9 @@
     "winston": "^3.0.0",
     "xss": "^1.0.3",
     "var": "^0.4.0",
-    "mongodb": "^3.6.5"
+    "mongodb": "^3.6.5",
+    "response-time": "^2.3.2",
+    "prom-client": "^13.1.0"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.2.3",
