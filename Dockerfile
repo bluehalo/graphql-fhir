@@ -13,4 +13,5 @@ RUN yarn install --production
 COPY . /srv/
 
 # By default, use the production command
-CMD yarn start
+# CMD yarn start
+CMD yarn nodemon
