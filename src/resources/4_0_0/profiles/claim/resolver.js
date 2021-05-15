@@ -1,15 +1,19 @@
 const errorUtils = require('../../../../utils/error.utils');
+const { COLLECTION } = require('../../../../constants');
+const mongo_provider = require('../../../../providers/mongo.common');
+const resource_name = 'Claim';
+const collection_name = COLLECTION.CLAIM;
 /**
  * @name exports.getClaim
  * @static
  * @summary Claim resolver.
  */
 module.exports.getClaim = function getClaim(root, args, context, info) {
-	let db = context.server.db;
-  	let version = context.version;
-  	let logger = context.server.logger;
+	const db = context.server.db;
+  	const version = context.version;
+  	const logger = context.server.logger;
 	return new Promise((resolve, reject) => {
-		const claims = db.collection("claims");
+		const claims = db.collection(collection_name);
 		let claim = claims.findOne({ _id: args._id }).then(
 			(claim)=> {
 				if (!claim){
@@ -44,7 +48,7 @@ module.exports.getClaimList = function getClaimList(
   	let version = context.version;
   	let logger = context.server.logger;
 	return new Promise((resolve, reject) => {
-		const claims = db.collection("claims");
+		const claims = db.collection(collection_name);
 		claims.find({}).toArray().then(function(result) {
 			const claimArray = result.map(c => {
 				let res = c.resource;
@@ -83,7 +87,7 @@ module.exports.getClaimInstance = function getClaimInstance(
   	let version = context.version;
   	let logger = context.server.logger;
 	return new Promise((resolve, reject) => {
-		const claims = db.collection("claims");
+		const claims = db.collection(collection_name);
 		let claim = claims.findOne({ _id: args._id }).then(
 			(claim)=> {
 				if (!claim){
@@ -114,23 +118,17 @@ module.exports.createClaim = function createClaim(
 	context = {},
 	info,
 ) {
-	let db = context.server.db;
-  	let version = context.version;
-  	let logger = context.server.logger;
-	return new Promise((resolve, reject) => { //TODO mapping incomplete probably not the best way either
-		const claim = args.resource;
-		const claims = db.collection("claims");
-		claims.insertOne({_id: args.id, resource: claim}, (err, result) => {
-			if (err) {
-			  logger.error(err);
-			  let error = errorUtils.internal(version, err.message);
-			  reject(errorUtils.formatErrorForGraphQL(error));
-			} else {
-				resolve(args.resource);
-			}
-		  });
-	});
-};
+	mongo_provider.create(args, context, resource_name, collection_name)
+	.then(
+		(claim)=> {
+			return claim;
+		},
+		(err)=> {
+			context.server.logger.error(err);
+			let error = errorUtils.internal(context.version, err.message);
+			reject(errorUtils.formatErrorForGraphQL(error));
+		});
+}
 
 /**
  * @name exports.updateClaim
@@ -148,7 +146,7 @@ module.exports.updateClaim = function updateClaim(
     let logger = context.server.logger;
     return new Promise((resolve, reject) => {
         const claim = args.resource;
-        const claims = db.collection("claims");
+        const claims = db.collection(collection_name);
         claims.updateOne({_id: args.id}, 
             { $set: {claim}}, 
             { upsert:true }, (err, result) => {
@@ -178,7 +176,7 @@ module.exports.removeClaim = function removeClaim(
     let version = context.version;
     let logger = context.server.logger;
     return new Promise((resolve, reject) => {
-        const claims = db.collection("claims");
+        const claims = db.collection(collection_name);
         claims.deleteOne({_id: args.id}, (err) => {
             if (err) {
               logger.error(err);
