@@ -1,5 +1,6 @@
 const logger = require('@asymmetrik/node-fhir-server-core').loggers.get();
 const {resolveSchema} = require('@asymmetrik/node-fhir-server-core');
+const {mapJsonToSchema} = require('../utils/schema.utils');
 const {verifyHasValidScopes} = require('./security');
 const {getUuid} = require('./uid');
 const moment = require('moment-timezone');
@@ -13,7 +14,7 @@ const env = require('var');
  * @param {string} resource_name
  * @param {string} collection_name
  */
- module.exports.create = async (args, context, resource_name, collection_name) => {
+ module.exports.create = async (args, context, resource_name, collection_name, graphQLInpupt) => {
     const db = context.server.db;
   	const version = context.version;
     let resource_incoming = args.resource;
@@ -76,7 +77,7 @@ const env = require('var');
 
         // Insert our resource record to history but don't assign _id
         await history_collection.insertOne(history_doc);
-        return doc;
+        return mapJsonToSchema(doc, graphQLInpupt);
     } catch (e) {
         logger.error(`Error with merging resource ${resource_name}.merge with id: ${uuid} `, e);
         throw e;

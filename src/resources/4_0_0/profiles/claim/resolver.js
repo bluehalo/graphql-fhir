@@ -1,5 +1,6 @@
 const errorUtils = require('../../../../utils/error.utils');
 const { COLLECTION } = require('../../../../constants');
+const claimGraphQLInput = require('../../inputs/claim.input');
 const mongo_provider = require('../../../../providers/mongo.common');
 const resource_name = 'Claim';
 const collection_name = COLLECTION.CLAIM;
@@ -118,7 +119,7 @@ module.exports.createClaim = function createClaim(
 	context = {},
 	info,
 ) {
-	mongo_provider.create(args, context, resource_name, collection_name)
+	mongo_provider.create(args, context, resource_name, collection_name, claimGraphQLInput)
 	.then(
 		(claim)=> {
 			return claim;
@@ -126,7 +127,7 @@ module.exports.createClaim = function createClaim(
 		(err)=> {
 			context.server.logger.error(err);
 			let error = errorUtils.internal(context.version, err.message);
-			reject(errorUtils.formatErrorForGraphQL(error));
+			return errorUtils.formatErrorForGraphQL(error);
 		});
 }
 
