@@ -29,7 +29,7 @@ module.exports = new GraphQLInputObjectType({
 			description: 'Type of resource',
 		},
 		_id: {
-			type: require('./element.input.js'),
+			type: IdScalar,
 			description:
 				'The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.',
 		},
@@ -114,7 +114,7 @@ module.exports = new GraphQLInputObjectType({
 				'A code to indicate whether the nature of the request is: to request adjudication of products and services previously rendered; or requesting authorization and adjudication for provision in the future; or requesting the non-binding adjudication of the listed products and services which could be provided in the future.',
 		},
 		patient: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				'The party to whom the professional services and/or products have been supplied or are being considered and for whom actual or forecast reimbursement is sought.',
 		},
@@ -140,7 +140,7 @@ module.exports = new GraphQLInputObjectType({
 			description: 'The Insurer who is target of the request.',
 		},
 		provider: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				'The provider which is responsible for the claim, predetermination or preauthorization.',
 		},
