@@ -131,7 +131,7 @@ module.exports = new GraphQLInputObjectType({
 			description: 'The date this resource was created.',
 		},
 		enterer: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'Individual who created the claim, predetermination or preauthorization.',
 		},
@@ -160,12 +160,12 @@ module.exports = new GraphQLInputObjectType({
 				'Other claims which are related to this claim such as prior submissions or claims for related services or for the same event.',
 		},
 		prescription: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'Prescription to support the dispensing of pharmacy, device or vision products.',
 		},
 		originalPrescription: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'Original prescription which has been superseded by this prescription to support the dispensing of pharmacy services, medications or products.',
 		},
@@ -175,7 +175,7 @@ module.exports = new GraphQLInputObjectType({
 				'The party to be reimbursed for cost of the products and services according to the terms of the policy.',
 		},
 		referral: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description: 'A reference to a referral resource.',
 		},
 		facility: {
