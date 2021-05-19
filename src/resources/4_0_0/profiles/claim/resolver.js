@@ -1,6 +1,5 @@
 const errorUtils = require('../../../../utils/error.utils');
 const { COLLECTION } = require('../../../../constants');
-const claimGraphQLInput = require('../../inputs/claim.input');
 const mongo_provider = require('../../../../providers/mongo.common');
 const resource_name = 'Claim';
 const collection_name = COLLECTION.CLAIM;
@@ -14,14 +13,14 @@ module.exports.getClaim = function getClaim(root, args, context, info) {
   	const version = context.version;
   	const logger = context.server.logger;
 	return new Promise((resolve, reject) => {
-		const claims = db.collection(collection_name);
+		const claims = db.collection(`${collection_name}_${version}`);
 		let claim = claims.findOne({ _id: args._id }).then(
 			(claim)=> {
 				if (!claim){
 					resolve({});
 				}
 				else {
-					resolve(claim.resource);
+					resolve(claim);
 				}
 			},
 			(err)=> {
@@ -113,24 +112,9 @@ module.exports.getClaimInstance = function getClaimInstance(
  * @static
  * @summary Create Claim resolver.
  */
-module.exports.createClaim = function createClaim(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	mongo_provider.create(args, context, resource_name, collection_name, claimGraphQLInput)
-	.then(
-		(claim)=> {
-			return claim;
-		},
-		(err)=> {
-			context.server.logger.error(err);
-			let error = errorUtils.internal(context.version, err.message);
-			return errorUtils.formatErrorForGraphQL(error);
-		});
-}
-
+module.exports.createClaim =(root,args,context = {},info) => 
+	mongo_provider.create(args, context, resource_name, collection_name);
+	
 /**
  * @name exports.updateClaim
  * @static
