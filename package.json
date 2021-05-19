@@ -21,6 +21,7 @@
     "@apollo/federation": "^0.24.0",
     "@asymmetrik/fhir-gql-schema-utils": "^1.0.1",
     "@asymmetrik/sof-graphql-invariant": "^1.0.2",
+    "@asymmetrik/node-fhir-server-core": "^2.2.3",
     "@asymmetrik/sof-strategy": "^1.0.2",
     "apollo-graphql": "^0.9.2",
     "body-parser": "^1.18.3",
@@ -44,6 +45,7 @@
     "winston": "^3.0.0",
     "xss": "^1.0.3",
     "var": "^0.4.0",
+    "@sentry/node": "^6.2.1",
     "mongodb": "^3.6.5",
     "response-time": "^2.3.2",
     "prom-client": "^13.1.0"

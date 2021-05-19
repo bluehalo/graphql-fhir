@@ -1,3 +1,9 @@
+# Local Development Certs
+cert.pem
+key.pem
+
+# ENV Files
+.local-secrets/auth.secrets
 # Secrets
 secrets.js
 
