@@ -18,8 +18,7 @@ const env = require('var');
     const db = context.server.db;
   	const version = context.version;
     let resource_incoming = args.resource;
-    logRequest(`${resource_name} >>> create`);
-    verifyHasValidScopes(resource_name, 'write', resource_incoming.patient); //TODO add scopes req.authInfo && req.authInfo.scope);
+    verifyHasValidScopes(resource_name, 'write', resource_incoming.patient.resource); //TODO add scopes req.authInfo && req.authInfo.scope);
     const uuid = getUuid(resource_incoming);
 
     try {
@@ -30,7 +29,6 @@ const env = require('var');
         let resource = new Resource(resource_incoming);
         // If no resource ID was provided, generate one.
         let id = getUuid(resource);
-        logInfo(`id: ${id}`);
         // Create the resource's metadata
         let Meta = getMeta(version);
         resource.meta = new Meta({
@@ -38,7 +36,6 @@ const env = require('var');
             lastUpdated: moment.utc().format('YYYY-MM-DDTHH:mm:ssZ'),
         });
         // Create the document to be inserted into Mongo
-        // noinspection JSUnresolvedFunction
         let doc = JSON.parse(JSON.stringify(resource.toJSON()));
         Object.assign(doc, {id: id});
         // Create a clone of the object without the _id parameter before assigning a value to
@@ -55,32 +52,41 @@ const env = require('var');
         }
         // Save the resource to history
         let history_collection = db.collection(`${collection_name}_${version}_History`);
-
         // Insert our resource record to history but don't assign _id
         await history_collection.insertOne(history_doc);
         return doc;
     } catch (e) {
-        logger.error(`Error with merging resource ${resource_name}.merge with id: ${uuid} `, e);
+        logger.error(`Error with creating resource ${resource_name}.create with id: ${uuid} `, e);
         throw e;
     }
 };
 
 /**
- * Always logs regardless of env.IS_PRODUCTION
- * @param {*} msg
+ * does a FHIR Search By Id
+ * @param {string[]} args
+ * @param {IncomingMessage} req
+ * @param {string} resource_name
+ * @param {string} collection_name
  */
- let logRequest = (msg) => {
-    logger.info(msg);
-};
-
-
-/**
- * Logs as info if env.IS_PRODUCTION is not set
- * @param {*} msg
- */
- let logInfo = (msg) => {
-    if (!env.IS_PRODUCTION) {
-        logger.info(msg);
+// eslint-disable-next-line no-unused-vars
+module.exports.searchById = async (args, context, resource_name, collection_name) => {
+    const db = context.server.db;
+  	const version = context.version;
+    let id = args._id;
+    verifyHasValidScopes(resource_name, 'read', id);//TODO fix scopes, req.authInfo && req.authInfo.scope);
+    let collection = db.collection(`${collection_name}_${version}`);
+    let Resource = getResource(version, resource_name);
+    let resource;
+    try {
+        resource = await collection.findOne({_id: id});
+    } catch (e) {
+        let error = errorUtils.internal(version, e.message);
+		return errorUtils.formatErrorForGraphQL(error);
+    }
+    if (resource) {
+        return new Resource(resource);
+    } else {
+        return errorUtils.formatErrorForGraphQL(`${id} does not resolve to a valid value`);
     }
 };
 

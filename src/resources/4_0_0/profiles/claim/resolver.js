@@ -8,30 +8,8 @@ const collection_name = COLLECTION.CLAIM;
  * @static
  * @summary Claim resolver.
  */
-module.exports.getClaim = function getClaim(root, args, context, info) {
-	const db = context.server.db;
-  	const version = context.version;
-  	const logger = context.server.logger;
-	return new Promise((resolve, reject) => {
-		const claims = db.collection(`${collection_name}_${version}`);
-		let claim = claims.findOne({ _id: args._id }).then(
-			(claim)=> {
-				if (!claim){
-					resolve({});
-				}
-				else {
-					resolve(claim);
-				}
-			},
-			(err)=> {
-				logger.error(err);
-				let error = errorUtils.internal(version, err.message);
-				reject(errorUtils.formatErrorForGraphQL(error));
-			}
-		);
-
-	  });
-};
+module.exports.getClaim = (root, args, context, info) => 
+	mongo_provider.searchById(args, context, resource_name, collection_name);
 
 /**
  * @name exports.getClaimList
@@ -120,12 +98,7 @@ module.exports.createClaim =(root,args,context = {},info) =>
  * @static
  * @summary Update Claim resolver.
  */
-module.exports.updateClaim = function updateClaim(
-	root,
-	args,
-	context = {},
-	info,
-) {
+module.exports.updateClaim = function updateClaim(root,args,context = {},info,) {
 	let db = context.server.db;
     let version = context.version;
     let logger = context.server.logger;
