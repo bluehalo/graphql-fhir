@@ -1,8 +1,10 @@
-const errorUtils = require('../utils/error.utils');
+const {VERSIONS} = require('@asymmetrik/node-fhir-server-core').constants;
 const logger = require('@asymmetrik/node-fhir-server-core').loggers.get();
 const {resolveSchema} = require('@asymmetrik/node-fhir-server-core');
 const {verifyHasValidScopes} = require('./security');
 const {getUuid} = require('./uid');
+const {buildDstu2SearchQuery, buildStu3SearchQuery, buildR4SearchQuery} = require('./query.builder');
+const errorUtils = require('../utils/error.utils');
 const moment = require('moment-timezone');
 const async = require('async');
 const env = require('var');
@@ -88,6 +90,74 @@ module.exports.searchById = async (args, context, resource_name, collection_name
     } else {
         return errorUtils.formatErrorForGraphQL(`${id} does not resolve to a valid value`);
     }
+};
+
+/**
+ * does a FHIR Search
+ * @param {string[]} args
+ * @param {IncomingMessage} req
+ * @param {string} resource_name
+ * @param {string} collection_name
+ * @return {Resource[] | Resource} array of resources
+ */
+ module.exports.search = async (args, context, resource_name, collection_name) => {
+    const db = context.server.db;
+  	const version = context.version;
+    verifyHasValidScopes(resource_name, 'read', version);//TODO fix, req.authInfo && req.authInfo.scope);
+    let query;
+    if (version === VERSIONS['3_0_1']) {
+        query = buildStu3SearchQuery(args);
+    } else if (version === VERSIONS['1_0_2']) {
+        query = buildDstu2SearchQuery(args);
+    } else {
+        query = buildR4SearchQuery(resource_name, args);
+    }
+    let collection = db.collection(`${collection_name}_${version}`);
+    let Resource = getResource(version, resource_name);
+    let options = {};
+    const maxMongoTimeMS = 30 * 1000;
+    let cursor = await collection.find(query, options).maxTimeMS(maxMongoTimeMS);
+    if (args['_count']) {
+        cursor = cursor.sort({'_id': 1});
+        const nPerPage = Number(args['_count']);
+        if (args['_getpagesoffset']) {
+            const pageNumber = Number(args['_getpagesoffset']);
+            cursor = cursor.skip(pageNumber > 0 ? (pageNumber * nPerPage) : 0);
+        }
+        cursor = cursor.limit(nPerPage);
+    } else {
+        if (!args['id'] && !args['_elements']) {
+            // set a limit so the server does not come down due to volume of data
+            cursor = cursor.limit(10);
+        }
+    }
+    const resources = [];
+    while (await cursor.hasNext()) {
+        const element = await cursor.next();
+        if (args['_elements']) {
+            const properties_to_return_as_csv = args['_elements'];
+            const properties_to_return_list = properties_to_return_as_csv.split(',');
+            const element_to_return = new Resource(null);
+            for (const property of properties_to_return_list) {
+                if (property in element_to_return) {
+                    element_to_return[`${property}`] = element[`${property}`];
+                }
+            }
+            resources.push(element_to_return);
+        } else {
+            resources.push(new Resource(element));
+        }
+    }
+    const Bundle = getResource(version, 'bundle'); 
+    const entries = resources.map(resource => {
+        return {resource: resource};
+    });
+    return new Bundle({
+        type: 'searchset',
+        timestamp: moment.utc().format('YYYY-MM-DDThh:mm:ss.sss') + 'Z',
+        entry: entries,
+        total: entries.length
+    });
 };
 
 /**
