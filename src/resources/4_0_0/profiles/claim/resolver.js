@@ -16,39 +16,8 @@ module.exports.getClaim = (root, args, context, info) =>
  * @static
  * @summary Claim list resolver.
  */
-module.exports.getClaimList = function getClaimList(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let db = context.server.db;
-  	let version = context.version;
-  	let logger = context.server.logger;
-	return new Promise((resolve, reject) => {
-		const claims = db.collection(collection_name);
-		claims.find({}).toArray().then(function(result) {
-			const claimArray = result.map(c => {
-				let res = c.resource;
-				res.resourceType = "Claim";
-				let entry = {
-					id: res.id,
-					resource: res
-				}
-				return entry});
-			const returnValue = {
-				type: "Claim",
-				total: result.length,
-				entry: claimArray
-			};
-			resolve(returnValue);
-		  }, function(err) {
-			logger.error(err);
-			let error = errorUtils.internal(version, err.message);
-			reject(errorUtils.formatErrorForGraphQL(error));
-		  });
-	});
-};
+module.exports.getClaimList = (root, args, context = {}, info) => 
+	mongo_provider.search(args, context, resource_name, collection_name);
 
 /**
  * @name exports.getClaimInstance
