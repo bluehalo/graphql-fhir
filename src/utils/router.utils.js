@@ -1,6 +1,8 @@
 const authenticationMiddleware = require('../middleware/authentication.middleware');
 const { resolveFromVersion } = require('./resolve.utils');
 const expressGraphql = require('express-graphql');
+const expressPlayground = require('graphql-playground-middleware-express')
+  .default
 const errorUtils = require('./error.utils');
 const { VERSION } = require('../config');
 const glob = require('glob');
@@ -130,16 +132,21 @@ function configureRoutes(server, options = {}) {
 		// Generate a top-level schema for all resources in this version
 		let rootSchema = generateRootSchema(version, query_fields, mutation_fields);
 		rootSchema = transformSchemaFederation(rootSchema, {
-  Query: {
-    // Ensure the root queries of this schema show up the combined schema
-    extend: true,
-  },
-  Mutation: {
-    // Ensure the root queries of this schema show up the combined schema
-    extend: true,
-  }
-});
-
+			Query: {
+				// Ensure the root queries of this schema show up the combined schema
+				extend: true,
+			},
+			Mutation: {
+				// Ensure the root queries of this schema show up the combined schema
+				extend: true,
+			}
+		});
+		server.app.use(
+			`/${version}/playground`,
+			expressPlayground({
+			  endpoint: `/${version}/\$graphql`,
+			}),
+		  );
 		// Add our graphql endpoint
 		server.app.use(
 			// Path for this graphql endpoint
@@ -152,6 +159,8 @@ function configureRoutes(server, options = {}) {
 				schema: rootSchema,
 			}),
 		);
+
+		
 
 		// Add a graphiql endpoint for exploring only if we're not in production
 		if (!server.env.IS_PRODUCTION) {
