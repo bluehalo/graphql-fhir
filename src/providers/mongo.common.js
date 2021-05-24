@@ -22,7 +22,7 @@ const env = require('var');
     const db = context.server.db;
   	const version = context.version;
     let resource_incoming = args.resource;
-    verifyHasValidScopes(resource_name, 'write', resource_incoming.patient.resource); //TODO add scopes req.authInfo && req.authInfo.scope);
+    verifyHasValidScopes(resource_name, 'write', resource_incoming.id); //TODO add scopes req.authInfo && req.authInfo.scope);
     const uuid = getUuid(resource_incoming);
 
     try {
@@ -173,7 +173,7 @@ module.exports.searchById = async (args, context, resource_name, collection_name
     const db = context.server.db;
     const version = context.version;
     const resource_incoming = args.resource;
-    verifyHasValidScopes(resource_name, 'write', resource_incoming.patient.resource); //TODO add scopes req.authInfo && req.authInfo.scope);
+    verifyHasValidScopes(resource_name, 'write', resource_incoming.id); //TODO add scopes req.authInfo && req.authInfo.scope);
     const id = args.id;
 
     try {
