@@ -123,17 +123,17 @@ module.exports = new GraphQLInputObjectType({
 				'The period of time that the health insurance product is available.',
 		},
 		ownedBy: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				"The entity that is providing  the health insurance product and underwriting the risk.  This is typically an insurance carriers, other third-party payers, or health plan sponsors comonly referred to as 'payers'.",
 		},
 		administeredBy: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'An organization which administer other services such as underwriting, customer service and/or claims processing on behalf of the health insurance product owner.',
 		},
 		coverageArea: {
-			type: new GraphQLList(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				"The geographic region in which a health insurance product's benefits apply.",
 		},
@@ -143,12 +143,12 @@ module.exports = new GraphQLInputObjectType({
 				'The contact for the health insurance product for a certain purpose.',
 		},
 		endpoint: {
-			type: new GraphQLList(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				'The technical endpoints providing access to services operated for the health insurance product.',
 		},
 		network: {
-			type: new GraphQLList(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				'Reference to the network included in the health insurance product.',
 		},
