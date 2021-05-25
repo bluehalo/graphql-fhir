@@ -103,6 +103,16 @@ module.exports.searchById = async (args, context, resource_name, collection_name
  * @return {Resource[] | Resource} array of resources
  */
  module.exports.search = async (args, context, resource_name, collection_name) => {
+    try{
+        const parsed_args = JSON.parse(args._query);
+        if(parsed_args){
+            args = {
+                ...args,
+                ...parsed_args
+            };
+        }
+    } catch(e){  //ignore bad params 
+    }
     const db = context.server.db;
   	const version = context.version;
     verifyHasValidScopes(resource_name, 'read', version);//TODO fix, req.authInfo && req.authInfo.scope);
@@ -147,7 +157,7 @@ module.exports.searchById = async (args, context, resource_name, collection_name
             }
             resources.push(element_to_return);
         } else {
-            resources.push(new Resource(element));
+            resources.push(element);//new Resource(element));
         }
     }
     const Bundle = getResource(version, 'bundle'); 
