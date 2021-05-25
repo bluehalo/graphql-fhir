@@ -157,7 +157,7 @@ module.exports.searchById = async (args, context, resource_name, collection_name
             }
             resources.push(element_to_return);
         } else {
-            resources.push(element);//new Resource(element));
+            resources.push(new Resource(element));
         }
     }
     const Bundle = getResource(version, 'bundle'); 
