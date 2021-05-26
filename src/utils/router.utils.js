@@ -1,8 +1,8 @@
 const authenticationMiddleware = require('../middleware/authentication.middleware');
 const { resolveFromVersion } = require('./resolve.utils');
 const expressGraphql = require('express-graphql');
-const expressPlayground = require('graphql-playground-middleware-express')
-  .default
+//const expressPlayground = require('graphql-playground-middleware-express')
+//  .default
 const errorUtils = require('./error.utils');
 const { VERSION } = require('../config');
 const glob = require('glob');
@@ -141,12 +141,12 @@ function configureRoutes(server, options = {}) {
 				extend: true,
 			}
 		});
-		server.app.use(
+		/*server.app.use(
 			`/${version}/playground`,
 			expressPlayground({
 			  endpoint: `/${version}/\$graphql`,
 			}),
-		  );
+		  );*/
 		// Add our graphql endpoint
 		server.app.use(
 			// Path for this graphql endpoint
