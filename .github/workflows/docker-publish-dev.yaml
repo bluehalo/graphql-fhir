@@ -42,6 +42,7 @@ jobs:
           echo GIT_TAG_VERSION=$GIT_TAG_VERSION
           echo "GIT Version:"
           which git 
+          git install
           docker build -t $REPOSITORY_URL/$IMAGE_NAME:$IMAGE_TAG \
             --build-arg GIT_TAG_VERSION=$GIT_TAG_VERSION \
             --build-arg BUILD_ENV=build \
