@@ -48,7 +48,7 @@ module.exports = new GraphQLInputObjectType({
 				'The nature of illness or problem in a coded form or as a reference to an external defined Condition.',
 		},
 		diagnosisReference: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				'The nature of illness or problem in a coded form or as a reference to an external defined Condition.',
 		},

@@ -99,7 +99,7 @@ module.exports = new GraphQLInputObjectType({
 				'Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.',
 		},
 		valueReference: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.',
 		},

@@ -45,7 +45,7 @@ module.exports = new GraphQLInputObjectType({
 				'A flag to indicate that this Coverage is to be used for adjudication of this claim when set to true.',
 		},
 		coverage: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				"Reference to the insurance card level information contained in the Coverage resource. The coverage issuing insurer will use these details to locate the patient's actual coverage within the insurer's information system.",
 		},
