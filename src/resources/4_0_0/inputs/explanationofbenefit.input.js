@@ -116,7 +116,7 @@ module.exports = new GraphQLInputObjectType({
 				'A code to indicate whether the nature of the request is: to request adjudication of products and services previously rendered; or requesting authorization and adjudication for provision in the future; or requesting the non-binding adjudication of the listed products and services which could be provided in the future.',
 		},
 		patient: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				'The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimbursement is sought.',
 		},
@@ -133,17 +133,17 @@ module.exports = new GraphQLInputObjectType({
 			description: 'The date this resource was created.',
 		},
 		enterer: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'Individual who created the claim, predetermination or preauthorization.',
 		},
 		insurer: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				'The party responsible for authorization, adjudication and reimbursement.',
 		},
 		provider: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				'The provider which is responsible for the claim, predetermination or preauthorization.',
 		},
@@ -168,12 +168,12 @@ module.exports = new GraphQLInputObjectType({
 				'Other claims which are related to this claim such as prior submissions or claims for related services or for the same event.',
 		},
 		prescription: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'Prescription to support the dispensing of pharmacy, device or vision products.',
 		},
 		originalPrescription: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'Original prescription which has been superseded by this prescription to support the dispensing of pharmacy services, medications or products.',
 		},
@@ -183,20 +183,20 @@ module.exports = new GraphQLInputObjectType({
 				'The party to be reimbursed for cost of the products and services according to the terms of the policy.',
 		},
 		referral: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description: 'A reference to a referral resource.',
 		},
 		facility: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description: 'Facility where the services were provided.',
 		},
 		claim: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'The business identifier for the instance of the adjudication request: claim predetermination or preauthorization.',
 		},
 		claimResponse: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'The business identifier for the instance of the adjudication response: claim, predetermination or preauthorization response.',
 		},

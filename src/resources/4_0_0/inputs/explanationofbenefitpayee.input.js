@@ -38,7 +38,7 @@ module.exports = new GraphQLInputObjectType({
 				'Type of Party to be reimbursed: Subscriber, provider, other.',
 		},
 		party: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'Reference to the individual or organization to whom any payment will be made.',
 		},

@@ -94,7 +94,7 @@ module.exports = new GraphQLInputObjectType({
 				'The quantity times the unit price for an additional service or product or charge.',
 		},
 		udi: {
-			type: new GraphQLList(GraphQLString),
+			type: require('./reference.input.js'),
 			description: 'Unique Device Identifiers associated with this line item.',
 		},
 		_noteNumber: {
