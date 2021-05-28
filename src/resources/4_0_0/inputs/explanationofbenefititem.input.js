@@ -154,7 +154,7 @@ module.exports = new GraphQLInputObjectType({
 				'The quantity times the unit price for an additional service or product or charge.',
 		},
 		udi: {
-			type: require('./reference.input.js'),
+			type: new GraphQLList(require('./reference.input.js')),
 			description: 'Unique Device Identifiers associated with this line item.',
 		},
 		bodySite: {
@@ -167,7 +167,7 @@ module.exports = new GraphQLInputObjectType({
 				'A region or surface of the bodySite, e.g. limb region or tooth surface(s).',
 		},
 		encounter: {
-			type: require('./reference.input.js'),
+			type: new GraphQLList(require('./reference.input.js')),
 			description:
 				'A billed item may include goods or services provided in multiple encounters.',
 		},

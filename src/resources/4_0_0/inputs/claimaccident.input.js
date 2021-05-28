@@ -54,7 +54,7 @@ module.exports = new GraphQLInputObjectType({
 			description: 'The physical location of the accident event.',
 		},
 		locationReference: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description: 'The physical location of the accident event.',
 		},
 	}),

@@ -67,7 +67,7 @@ module.exports = new GraphQLInputObjectType({
 				'The sequence number of the sub-details woithin the details within the claim item which this line is intended to replace.',
 		},
 		provider: {
-			type: require('./reference.input.js'),
+			type: new GraphQLList(require('./reference.input.js')),
 			description:
 				'The providers who are authorized for the services rendered to the patient.',
 		},

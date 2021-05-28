@@ -39,7 +39,7 @@ module.exports = new GraphQLInputObjectType({
 				'Type of coverage  (Medical; Dental; Mental Health; Substance Abuse; Vision; Drug; Short Term; Long Term Care; Hospice; Home Health).',
 		},
 		network: {
-			type: new GraphQLList(GraphQLString),
+			type: new GraphQLList(require('./reference.input.js')),
 			description:
 				'Reference to the network that providing the type of coverage.',
 		},

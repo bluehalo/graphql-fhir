@@ -126,7 +126,7 @@ module.exports = new GraphQLInputObjectType({
 			description: 'Where the product or service was provided.',
 		},
 		locationReference: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description: 'Where the product or service was provided.',
 		},
 		quantity: {
@@ -154,7 +154,7 @@ module.exports = new GraphQLInputObjectType({
 				'The quantity times the unit price for an additional service or product or charge.',
 		},
 		udi: {
-			type: new GraphQLList(GraphQLString),
+			type: new GraphQLList(require('./reference.input.js')),
 			description: 'Unique Device Identifiers associated with this line item.',
 		},
 		bodySite: {
@@ -167,7 +167,7 @@ module.exports = new GraphQLInputObjectType({
 				'A region or surface of the bodySite, e.g. limb region or tooth surface(s).',
 		},
 		encounter: {
-			type: new GraphQLList(GraphQLString),
+			type: new GraphQLList(require('./reference.input.js')),
 			description:
 				'The Encounters during which this Claim was created or to which the creation of this record is tightly associated.',
 		},

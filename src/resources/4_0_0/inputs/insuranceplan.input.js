@@ -133,7 +133,7 @@ module.exports = new GraphQLInputObjectType({
 				'An organization which administer other services such as underwriting, customer service and/or claims processing on behalf of the health insurance product owner.',
 		},
 		coverageArea: {
-			type: require('./reference.input.js'),
+			type: new GraphQLList(require('./reference.input.js')),
 			description:
 				"The geographic region in which a health insurance product's benefits apply.",
 		},
@@ -143,12 +143,12 @@ module.exports = new GraphQLInputObjectType({
 				'The contact for the health insurance product for a certain purpose.',
 		},
 		endpoint: {
-			type: require('./reference.input.js'),
+			type: new GraphQLList(require('./reference.input.js')),
 			description:
 				'The technical endpoints providing access to services operated for the health insurance product.',
 		},
 		network: {
-			type: require('./reference.input.js'),
+			type: new GraphQLList(require('./reference.input.js')),
 			description:
 				'Reference to the network included in the health insurance product.',
 		},

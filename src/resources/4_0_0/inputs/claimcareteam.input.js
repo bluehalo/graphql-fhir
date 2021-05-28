@@ -44,7 +44,7 @@ module.exports = new GraphQLInputObjectType({
 			description: 'A number to uniquely identify care team entries.',
 		},
 		provider: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: require('./reference.input.js'),
 			description: 'Member of the team who provided the product or service.',
 		},
 		_responsible: {
