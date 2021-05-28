@@ -136,7 +136,7 @@ module.exports = new GraphQLInputObjectType({
 				'Individual who created the claim, predetermination or preauthorization.',
 		},
 		insurer: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description: 'The Insurer who is target of the request.',
 		},
 		provider: {
@@ -179,7 +179,7 @@ module.exports = new GraphQLInputObjectType({
 			description: 'A reference to a referral resource.',
 		},
 		facility: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description: 'Facility where the services were provided.',
 		},
 		careTeam: {

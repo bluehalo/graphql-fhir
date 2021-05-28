@@ -43,12 +43,12 @@ module.exports = new GraphQLInputObjectType({
 				"Type of plan. For example, 'Platinum' or 'High Deductable'.",
 		},
 		coverageArea: {
-			type: new GraphQLList(GraphQLString),
+			type: new GraphQLList(require('./reference.input.js')),
 			description:
 				"The geographic region in which a health insurance plan's benefits apply.",
 		},
 		network: {
-			type: new GraphQLList(GraphQLString),
+			type: new GraphQLList(require('./reference.input.js')),
 			description:
 				'Reference to the network that providing the type of coverage.',
 		},

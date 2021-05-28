@@ -66,7 +66,7 @@ module.exports = new GraphQLInputObjectType({
 				'The code or reference to a Procedure resource which identifies the clinical intervention performed.',
 		},
 		udi: {
-			type: require('./reference.input.js'),
+			type: new GraphQLList(require('./reference.input.js')),
 			description: 'Unique Device Identifiers associated with this line item.',
 		},
 	}),
