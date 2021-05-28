@@ -62,7 +62,7 @@ module.exports = new GraphQLInputObjectType({
 				'Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.',
 		},
 		organization: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'Organization on behalf of which the contact is acting or for which the contact is working.',
 		},

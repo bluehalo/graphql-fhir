@@ -185,11 +185,11 @@ module.exports = new GraphQLInputObjectType({
 				'A language which may be used to communicate with the patient about his or her health.',
 		},
 		generalPractitioner: {
-			type: new GraphQLList(GraphQLString),
+			type: new GraphQLList(require('./reference.input.js')),
 			description: "Patient's nominated care provider.",
 		},
 		managingOrganization: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description: 'Organization that is the custodian of the patient record.',
 		},
 		link: {
