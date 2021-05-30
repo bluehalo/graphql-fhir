@@ -114,7 +114,7 @@ module.exports = new GraphQLInputObjectType({
 				'A code to indicate whether the nature of the request is: to request adjudication of products and services previously rendered; or requesting authorization and adjudication for provision in the future; or requesting the non-binding adjudication of the listed products and services which could be provided in the future.',
 		},
 		patient: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				'The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for facast reimbursement is sought.',
 		},
@@ -127,17 +127,17 @@ module.exports = new GraphQLInputObjectType({
 			description: 'The date this resource was created.',
 		},
 		insurer: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				'The party responsible for authorization, adjudication and reimbursement.',
 		},
 		requestor: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'The provider which is responsible for the claim, predetermination or preauthorization.',
 		},
 		request: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description: 'Original request resource reference.',
 		},
 		_outcome: {

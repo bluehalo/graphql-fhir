@@ -1,89 +1,50 @@
+const { COLLECTION } = require('../../../../constants');
+const mongo_provider = require('../../../../providers/mongo.common');
+const resource_name = 'ClaimResponse';
+const collection_name = COLLECTION.CLAIMRESPONSE;
 /**
  * @name exports.getClaimResponse
  * @static
  * @summary ClaimResponse resolver.
  */
-module.exports.getClaimResponse = function getClaimResponse(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getClaimResponse = (root, args, context, info) => 
+	mongo_provider.searchById(args, context, resource_name, collection_name);
 
 /**
  * @name exports.getClaimResponseList
  * @static
  * @summary ClaimResponse list resolver.
  */
-module.exports.getClaimResponseList = function getClaimResponseList(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
-
+module.exports.getClaimResponseList = = (root, args, context = {}, info) => 
+	mongo_provider.search(args, context, resource_name, collection_name);
 /**
  * @name exports.getClaimResponseInstance
  * @static
  * @summary ClaimResponse instance resolver.
  */
-module.exports.getClaimResponseInstance = function getClaimResponseInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getClaimResponseInstance = (root, args, context = {},info)  => 
+	mongo_provider.searchById(args, context, resource_name, collection_name);
 
 /**
  * @name exports.createClaimResponse
  * @static
  * @summary Create ClaimResponse resolver.
  */
-module.exports.createClaimResponse = function createClaimResponse(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.createClaimResponse = (root,args,context = {},info) => 
+	mongo_provider.create(args, context, resource_name, collection_name);
 
 /**
  * @name exports.updateClaimResponse
  * @static
  * @summary Update ClaimResponse resolver.
  */
-module.exports.updateClaimResponse = function updateClaimResponse(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.updateClaimResponse = (root,args,context = {},info,) => 
+	mongo_provider.update(args, context, resource_name, collection_name);
 
 /**
  * @name exports.removeClaimResponse
  * @static
  * @summary Remove ClaimResponse resolver.
  */
-module.exports.removeClaimResponse = function removeClaimResponse(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.removeClaimResponse = (root,args,context = {},info) => 
+	mongo_provider.remove(args, context, resource_name, collection_name);
