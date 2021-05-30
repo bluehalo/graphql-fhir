@@ -104,18 +104,23 @@ module.exports.searchById = async (args, context, resource_name, collection_name
  */
  module.exports.search = async (args, context, resource_name, collection_name) => {
     try{
-        const parsed_args = JSON.parse(args._query);
-        if(parsed_args){
-            args = {
-                ...args,
-                ...parsed_args
-            };
+        if(args._query){
+            const parsed_args = JSON.parse(args._query);
+            if(parsed_args){
+                args = {
+                    ...args,
+                    ...parsed_args
+                };
+            }
         }
-    } catch(e){  //ignore bad params 
+    
+        const db = context.server.db;
+        const version = context.version;
+        verifyHasValidScopes(resource_name, 'read', version, "user/*.* patient/*.*");//TODO fix user id and scopes, req.authInfo && req.authInfo.scope);
+    } catch(e){   
+        let error = errorUtils.internal(version, e.message);
+		return errorUtils.formatErrorForGraphQL(error);
     }
-    const db = context.server.db;
-  	const version = context.version;
-    verifyHasValidScopes(resource_name, 'read', version);//TODO fix, req.authInfo && req.authInfo.scope);
     let query;
     if (version === VERSIONS['3_0_1']) {
         query = buildStu3SearchQuery(args);
