@@ -15,7 +15,7 @@ module.exports.getClaimResponse = (root, args, context, info) =>
  * @static
  * @summary ClaimResponse list resolver.
  */
-module.exports.getClaimResponseList = = (root, args, context = {}, info) => 
+module.exports.getClaimResponseList = (root, args, context = {}, info) => 
 	mongo_provider.search(args, context, resource_name, collection_name);
 /**
  * @name exports.getClaimResponseInstance

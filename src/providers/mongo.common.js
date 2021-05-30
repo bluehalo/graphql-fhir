@@ -103,6 +103,8 @@ module.exports.searchById = async (args, context, resource_name, collection_name
  * @return {Resource[] | Resource} array of resources
  */
  module.exports.search = async (args, context, resource_name, collection_name) => {
+    const db = context.server.db;
+    const version = context.version;
     try{
         if(args._query){
             const parsed_args = JSON.parse(args._query);
@@ -114,8 +116,7 @@ module.exports.searchById = async (args, context, resource_name, collection_name
             }
         }
     
-        const db = context.server.db;
-        const version = context.version;
+        
         verifyHasValidScopes(resource_name, 'read', version, "user/*.* patient/*.*");//TODO fix user id and scopes, req.authInfo && req.authInfo.scope);
     } catch(e){   
         let error = errorUtils.internal(version, e.message);
