@@ -31,7 +31,7 @@ module.exports.getClaimList = (root, args, context = {}, info) =>
  * @static
  * @summary Create Claim resolver.
  */
-module.exports.createClaim =(root,args,context = {},info) => 
+module.exports.createClaim = (root,args,context = {},info) => 
 	mongo_provider.create(args, context, resource_name, collection_name);
 	
 /**

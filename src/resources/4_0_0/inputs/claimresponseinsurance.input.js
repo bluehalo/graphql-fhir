@@ -56,7 +56,7 @@ module.exports = new GraphQLInputObjectType({
 				'A flag to indicate that this Coverage is to be used for adjudication of this claim when set to true.',
 		},
 		coverage: {
-			type: new GraphQLNonNull(GraphQLString),
+			type: require('./reference.input.js'),
 			description:
 				"Reference to the insurance card level information contained in the Coverage resource. The coverage issuing insurer will use these details to locate the patient's actual coverage within the insurer's information system.",
 		},
@@ -71,7 +71,7 @@ module.exports = new GraphQLInputObjectType({
 				'A business agreement number established between the provider and the insurer for special business processing purposes.',
 		},
 		claimResponse: {
-			type: GraphQLString,
+			type: require('./reference.input.js'),
 			description:
 				'The result of the adjudication of the line items for the Coverage specified in this insurance.',
 		},
