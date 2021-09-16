@@ -7,18 +7,18 @@
   resolved "https://registry.yarnpkg.com/@asymmetrik/fhir-gql-schema-utils/-/fhir-gql-schema-utils-1.1.1.tgz#df855797fe28c7ccda5af4e684b31fb93e993014"
   integrity sha512-heEKOIgkJSqSEcycuH9h+8eYXRWKQHGD7a8ZQx533lNj91uky4x1uTTFB50QjijH3DUoBQoEii3eOCLft0qUDQ==
 
-"@asymmetrik/sof-graphql-invariant@^1.0.2":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@asymmetrik/sof-graphql-invariant/-/sof-graphql-invariant-1.1.1.tgz#496e252d9610f906471be9afa0c168194fe84119"
-  integrity sha512-CDVuGX9PWpX0jLOeyttQvcmWQDyGu0j+snY3h8/HuW89ITuex15X/wnpbwYSgjcrgPe+NOV4mt8HRUylVMaizw==
+"@asymmetrik/sof-graphql-invariant@^1.1.7-rc1":
+  version "1.1.7-rc1"
+  resolved "https://registry.yarnpkg.com/@asymmetrik/sof-graphql-invariant/-/sof-graphql-invariant-1.1.7-rc1.tgz#c02169a5ee2b2a8e0bad0e59d3bd731f9ca41113"
+  integrity sha512-Kznjw6x7Ps+uItC4liiv0Wbh1JqE29FxNU1ZK3wMxPWTWP1FMWOEQdkhJjHnkInHmGMliczKz+TJ4zELmZvmiw==
   dependencies:
-    "@asymmetrik/sof-scope-checker" "^1.0.2"
-    graphql "^14.0.2"
+    "@asymmetrik/sof-scope-checker" "^1.0.7"
+    graphql "^15.5.3"
 
-"@asymmetrik/sof-scope-checker@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@asymmetrik/sof-scope-checker/-/sof-scope-checker-1.0.2.tgz#6ae403ef8653b8efc4fb84d89989799f0724f2d6"
-  integrity sha512-t5OI7/LsjA0FPrBbGfv8o872FT4jzdWHUTZA+JRbg4EAllyJf4wTHJIPhdDN+y/KC4LGonSA8zEHtjno7HNqHQ==
+"@asymmetrik/sof-scope-checker@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@asymmetrik/sof-scope-checker/-/sof-scope-checker-1.0.7.tgz#f56580977ef4b965b3ae41007ce9b7bbba86c920"
+  integrity sha512-QzLGDRMaVX/R/iAqQu4MuDV29d/0mvSyT1i4p/C3Xi5sSQXPtSa8e/uUChBfpPGOdbIQv1Uv84tkRifRKUKtZA==
 
 "@asymmetrik/sof-strategy@^1.0.2":
   version "1.1.1"
@@ -2322,7 +2322,7 @@ graphql-outfields@^0.9.1:
   resolved "https://registry.yarnpkg.com/graphql-outfields/-/graphql-outfields-0.9.1.tgz#9cc3524d818d4ae30b0fa1ac4353e673aa624d55"
   integrity sha512-qSaGNOCwC3P1q0tU2R/O7C5L9V3wAL9Bw6RMsAHW3Cw7/NYcMdZyJuzUfxvg0zsVrtKwPXCTxyjgUqMTACM9FQ==
 
-graphql@^14.0.2, graphql@^15.3.0, graphql@^15.5.3:
+graphql@^15.3.0, graphql@^15.5.3:
   version "15.5.3"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.5.3.tgz#c72349017d5c9f5446a897fe6908b3186db1da00"
   integrity sha512-sM+jXaO5KinTui6lbK/7b7H/Knj9BpjGxZ+Ki35v7YbUJxxdBCUqNM0h3CRVU1ZF9t5lNiBzvBCSYPvIwxPOQA==
