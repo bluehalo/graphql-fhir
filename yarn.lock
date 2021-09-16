@@ -2,32 +2,6 @@
 # yarn lockfile v1
 
 
-"@asymmetrik/fhir-gql-schema-utils@^1.0.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@asymmetrik/fhir-gql-schema-utils/-/fhir-gql-schema-utils-1.1.1.tgz#df855797fe28c7ccda5af4e684b31fb93e993014"
-  integrity sha512-heEKOIgkJSqSEcycuH9h+8eYXRWKQHGD7a8ZQx533lNj91uky4x1uTTFB50QjijH3DUoBQoEii3eOCLft0qUDQ==
-
-"@asymmetrik/sof-graphql-invariant@^1.0.2":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@asymmetrik/sof-graphql-invariant/-/sof-graphql-invariant-1.1.1.tgz#496e252d9610f906471be9afa0c168194fe84119"
-  integrity sha512-CDVuGX9PWpX0jLOeyttQvcmWQDyGu0j+snY3h8/HuW89ITuex15X/wnpbwYSgjcrgPe+NOV4mt8HRUylVMaizw==
-  dependencies:
-    "@asymmetrik/sof-scope-checker" "^1.0.2"
-    graphql "^14.0.2"
-
-"@asymmetrik/sof-scope-checker@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@asymmetrik/sof-scope-checker/-/sof-scope-checker-1.0.2.tgz#6ae403ef8653b8efc4fb84d89989799f0724f2d6"
-  integrity sha512-t5OI7/LsjA0FPrBbGfv8o872FT4jzdWHUTZA+JRbg4EAllyJf4wTHJIPhdDN+y/KC4LGonSA8zEHtjno7HNqHQ==
-
-"@asymmetrik/sof-strategy@^1.0.2":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@asymmetrik/sof-strategy/-/sof-strategy-1.1.1.tgz#f41e3c7c2a2103df2af6584c005bf4996505e92e"
-  integrity sha512-RE7bUq/6VIDDcwVCreluXHeAZ/cQhhqoBogCYRImSSLzdbsKEDSHH45rs4uOHJug7alUqE3qBgBFpHvz7x90wQ==
-  dependencies:
-    passport-http-bearer "^1.0.1"
-    superagent "^4.1.0"
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -1266,7 +1240,7 @@ cookie@0.4.0:
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.0.tgz#beb437e7022b3b6d49019d088665303ebe9c14ba"
   integrity sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==
 
-cookiejar@^2.1.0, cookiejar@^2.1.2:
+cookiejar@^2.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/cookiejar/-/cookiejar-2.1.2.tgz#dd8a235530752f988f9a0844f3fc589e3111125c"
   integrity sha512-Mw+adcfzPxcPeI+0WlvRrr/3lGVO0bD75SxX6811cxSh1Wbxx7xZBGK1eVtDf6si8rg2lhnUjsVLMFMfbRIuwA==
@@ -2095,7 +2069,7 @@ forever-agent@~0.6.1:
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
   integrity sha1-+8cfDEGt6zf5bFd60e1C2P2sypE=
 
-form-data@^2.3.1, form-data@^2.3.3:
+form-data@^2.3.1:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.5.0.tgz#094ec359dc4b55e7d62e0db4acd76e89fe874d37"
   integrity sha512-WXieX3G/8side6VIqx44ablyULoGruSde5PNTxoUyo5CeyAMX6nVWUd0rgist/EuX655cjhUhTo1Fo3tRYqbcA==
@@ -2322,12 +2296,10 @@ graphql-outfields@^0.9.1:
   resolved "https://registry.yarnpkg.com/graphql-outfields/-/graphql-outfields-0.9.1.tgz#9cc3524d818d4ae30b0fa1ac4353e673aa624d55"
   integrity sha512-qSaGNOCwC3P1q0tU2R/O7C5L9V3wAL9Bw6RMsAHW3Cw7/NYcMdZyJuzUfxvg0zsVrtKwPXCTxyjgUqMTACM9FQ==
 
-graphql@^14.0.2:
-  version "14.4.2"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.4.2.tgz#553a7d546d524663eda49ed6df77577be3203ae3"
-  integrity sha512-6uQadiRgnpnSS56hdZUSvFrVcQ6OF9y6wkxJfKquFtHlnl7+KSuWwSJsdwiK1vybm1HgcdbpGkCpvhvsVQ0UZQ==
-  dependencies:
-    iterall "^1.2.2"
+graphql@^15.5.3:
+  version "15.5.3"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.5.3.tgz#c72349017d5c9f5446a897fe6908b3186db1da00"
+  integrity sha512-sM+jXaO5KinTui6lbK/7b7H/Knj9BpjGxZ+Ki35v7YbUJxxdBCUqNM0h3CRVU1ZF9t5lNiBzvBCSYPvIwxPOQA==
 
 "growl@~> 1.10.0":
   version "1.10.5"
@@ -2968,11 +2940,6 @@ istanbul-reports@^2.2.6:
   integrity sha512-SKi4rnMyLBKe0Jy2uUdx28h8oG7ph2PPuQPvIAh31d+Ci+lSiEu4C+h3oBPuJ9+mPKhOyW0M8gY4U5NM1WLeXA==
   dependencies:
     handlebars "^4.1.2"
-
-iterall@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.2.tgz#92d70deb8028e0c39ff3164fdbf4d8b088130cd7"
-  integrity sha512-yynBb1g+RFUPY64fTrFv7nsjRrENBQJaX2UL+2Szc9REFrSNm1rpSXHGzhmAy7a9uv3vlvgBlXnf9RqmPH1/DA==
 
 jest-changed-files@^24.9.0:
   version "24.9.0"
@@ -3768,11 +3735,6 @@ mime@1.6.0, mime@^1.4.1:
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
 
-mime@^2.4.0:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.4.tgz#bd7b91135fc6b01cde3e9bae33d659b63d8857e5"
-  integrity sha512-LRxmNwziLPT828z+4YkNzloCFC2YM4wrB99k+AV5ZbEyfGNWfG8SO1FUXLmLDBSo89NrJZ4DIWeLjy1CHGhMGA==
-
 mimic-fn@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-1.2.0.tgz#820c86a39334640e99516928bd03fca88057d022"
@@ -4525,7 +4487,7 @@ q@^1.5.1:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
-qs@6.7.0, qs@^6.5.1, qs@^6.6.0:
+qs@6.7.0, qs@^6.5.1:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
@@ -4622,7 +4584,7 @@ read-pkg@^3.0.0:
     normalize-package-data "^2.3.2"
     path-type "^3.0.0"
 
-"readable-stream@2 || 3", readable-stream@^3.0.6, readable-stream@^3.1.1:
+"readable-stream@2 || 3", readable-stream@^3.1.1:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.4.0.tgz#a51c26754658e0a3c21dbf59163bd45ba6f447fc"
   integrity sha512-jItXPLmrSR8jmTRmRWJXCnGJsfy85mB3Wd/uINMXA65yrnFo0cPClFIUWzo2najVNSl+mx7/4W8ttlLWJe99pQ==
@@ -5325,21 +5287,6 @@ superagent@^3.8.3:
     mime "^1.4.1"
     qs "^6.5.1"
     readable-stream "^2.3.5"
-
-superagent@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/superagent/-/superagent-4.1.0.tgz#c465c2de41df2b8d05c165cbe403e280790cdfd5"
-  integrity sha512-FT3QLMasz0YyCd4uIi5HNe+3t/onxMyEho7C3PSqmti3Twgy2rXT4fmkTz6wRL6bTF4uzPcfkUCa8u4JWHw8Ag==
-  dependencies:
-    component-emitter "^1.2.0"
-    cookiejar "^2.1.2"
-    debug "^4.1.0"
-    form-data "^2.3.3"
-    formidable "^1.2.0"
-    methods "^1.1.1"
-    mime "^2.4.0"
-    qs "^6.6.0"
-    readable-stream "^3.0.6"
 
 supports-color@^5.2.0, supports-color@^5.3.0:
   version "5.5.0"
