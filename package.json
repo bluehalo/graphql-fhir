@@ -19,8 +19,7 @@
 		"singleQuote": true
 	},
 	"dependencies": {
-		"@asymmetrik/fhir-gql-schema-utils": "^1.0.1",
-		"@asymmetrik/sof-graphql-invariant": "^1.1.7-rc1",
+		"@asymmetrik/sof-graphql-invariant": "^2.0.0-rc1",
 		"@asymmetrik/sof-strategy": "^1.0.2",
 		"body-parser": "^1.18.3",
 		"compression": "^1.7.2",

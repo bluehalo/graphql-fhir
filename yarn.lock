@@ -2,15 +2,10 @@
 # yarn lockfile v1
 
 
-"@asymmetrik/fhir-gql-schema-utils@^1.0.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@asymmetrik/fhir-gql-schema-utils/-/fhir-gql-schema-utils-1.1.1.tgz#df855797fe28c7ccda5af4e684b31fb93e993014"
-  integrity sha512-heEKOIgkJSqSEcycuH9h+8eYXRWKQHGD7a8ZQx533lNj91uky4x1uTTFB50QjijH3DUoBQoEii3eOCLft0qUDQ==
-
-"@asymmetrik/sof-graphql-invariant@^1.1.7-rc1":
-  version "1.1.7-rc1"
-  resolved "https://registry.yarnpkg.com/@asymmetrik/sof-graphql-invariant/-/sof-graphql-invariant-1.1.7-rc1.tgz#c02169a5ee2b2a8e0bad0e59d3bd731f9ca41113"
-  integrity sha512-Kznjw6x7Ps+uItC4liiv0Wbh1JqE29FxNU1ZK3wMxPWTWP1FMWOEQdkhJjHnkInHmGMliczKz+TJ4zELmZvmiw==
+"@asymmetrik/sof-graphql-invariant@^2.0.0-rc1":
+  version "2.0.0-rc1"
+  resolved "https://registry.yarnpkg.com/@asymmetrik/sof-graphql-invariant/-/sof-graphql-invariant-2.0.0-rc1.tgz#c2bc09152910435b533c10165acdd0c1b52fc019"
+  integrity sha512-XMqrjLq/G2YeENdUDSfv/b6q5Fpr0RRvIsm4eHMqN7Bi6eLVfIHoPAC0eWzbMDxKH0daBHwVPxRK2RwvTcjLzA==
   dependencies:
     "@asymmetrik/sof-scope-checker" "^1.0.7"
     graphql "^15.5.3"
