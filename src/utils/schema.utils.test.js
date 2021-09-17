@@ -33,7 +33,7 @@ describe('Schema Utils Test', () => {
 
 			let result = mapJsonToSchema(json, ContactSchema);
 
-			expect(result.value).toEqual(json);
+			expect(result).toEqual(json);
 		});
 
 		test('should return an error when not being able to coerce values', () => {
@@ -43,10 +43,10 @@ describe('Schema Utils Test', () => {
 				badProperty: 'fubar',
 			};
 
-			let result = mapJsonToSchema(json, ContactSchema);
-
-			expect(result.errors).toHaveLength(1);
-			expect(result.value).not.toBeDefined();
+			expect(() => {
+				mapJsonToSchema(json, ContactSchema)
+			}).toThrow();
+			
 		});
 	});
 });
