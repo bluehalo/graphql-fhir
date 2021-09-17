@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@asymmetrik/sof-graphql-invariant@^2.0.0-rc1":
-  version "2.0.0-rc1"
-  resolved "https://registry.yarnpkg.com/@asymmetrik/sof-graphql-invariant/-/sof-graphql-invariant-2.0.0-rc1.tgz#c2bc09152910435b533c10165acdd0c1b52fc019"
-  integrity sha512-XMqrjLq/G2YeENdUDSfv/b6q5Fpr0RRvIsm4eHMqN7Bi6eLVfIHoPAC0eWzbMDxKH0daBHwVPxRK2RwvTcjLzA==
+"@asymmetrik/sof-graphql-invariant@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@asymmetrik/sof-graphql-invariant/-/sof-graphql-invariant-2.0.0.tgz#b1a503aad012cb219af21c09013e4b534fc04649"
+  integrity sha512-uZmUnkpcvJH49TxORXHrtHVeec/UeExBmBEVoYAkAq8Um8zqB1TpzizEj2UxY+aVcWv+kmGvZ+2sjIvJCaOTMQ==
   dependencies:
     "@asymmetrik/sof-scope-checker" "^1.0.7"
     graphql "^15.5.3"
