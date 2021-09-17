@@ -44,9 +44,8 @@ describe('Schema Utils Test', () => {
 			};
 
 			expect(() => {
-				mapJsonToSchema(json, ContactSchema)
+				mapJsonToSchema(json, ContactSchema);
 			}).toThrow();
-			
 		});
 	});
 });
