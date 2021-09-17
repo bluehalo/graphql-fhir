@@ -118,7 +118,7 @@ function configureRoutes(server, options = {}) {
 					authenticationMiddleware(server),
 					// middleware wrapper for Graphql Express
 					setupGraphqlServer(server, version, {
-						formatError: graphqlErrorFormatter(server.logger, version),
+						customFormatErrorFn: graphqlErrorFormatter(server.logger, version),
 						schema: generateInstanceSchema(version, name, query),
 					}),
 				);
@@ -136,7 +136,7 @@ function configureRoutes(server, options = {}) {
 			authenticationMiddleware(server),
 			// middleware wrapper for Graphql Express
 			setupGraphqlServer(server, version, {
-				formatError: graphqlErrorFormatter(server.logger, version),
+				customFormatErrorFn: graphqlErrorFormatter(server.logger, version),
 				schema: rootSchema,
 			}),
 		);
@@ -148,7 +148,7 @@ function configureRoutes(server, options = {}) {
 				`/${version}/([\$])graphiql`,
 				// middleware wrapper for Graphql Express
 				setupGraphqlServer(server, version, {
-					formatError: graphqlErrorFormatter(server.logger, version),
+					customFormatErrorFn: graphqlErrorFormatter(server.logger, version),
 					schema: rootSchema,
 					graphiql: true,
 				}),
