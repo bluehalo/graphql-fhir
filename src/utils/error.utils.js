@@ -8,7 +8,7 @@ function internal(version, message) {
 		version,
 		'inputs/operationoutcome.input',
 	));
-	let { value } = mapJsonToSchema(
+	let value = mapJsonToSchema(
 		{
 			resourceType: 'OperationOutcome',
 			issue: {
@@ -28,7 +28,7 @@ function notFound(version, message) {
 		version,
 		'inputs/operationoutcome.input',
 	));
-	let { value } = mapJsonToSchema(
+	let value = mapJsonToSchema(
 		{
 			resourceType: 'OperationOutcome',
 			issue: {
@@ -48,7 +48,7 @@ function insufficientScope(version, message) {
 		version,
 		'inputs/operationoutcome.input',
 	));
-	let { value } = mapJsonToSchema(
+	let value = mapJsonToSchema(
 		{
 			resourceType: 'OperationOutcome',
 			issue: {

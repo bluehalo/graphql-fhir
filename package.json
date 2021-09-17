@@ -19,6 +19,8 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@asymmetrik/sof-graphql-invariant": "^2.0.0-rc1",
+    "@asymmetrik/sof-strategy": "^1.1.4",
     "body-parser": "^1.18.3",
     "compression": "^1.7.2",
     "cross-env": "^5.2.0",
@@ -37,6 +39,9 @@
     "validator": "^10.4.0",
     "winston": "^3.0.0",
     "xss": "^1.0.3"
+  },
+  "resolutions": {
+    "graphql": "^15.3.0"
   },
   "devDependencies": {
     "conventional-changelog-cli": "^2.0.11",
