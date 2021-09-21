@@ -12,11 +12,6 @@
   ** formatError to customFormatErrorFn
   ** coerceValue to coerceInputValue
 
-TODO REMEMBER to add the following package back in before merge
-
-- "@asymmetrik/sof-graphql-invariant": "^1.0.2"
-- "@asymmetrik/sof-strategy": "^1.0.2"
-
 ## [1.2.4](https://github.com/Asymmetrik/graphql-fhir/compare/1.2.3...1.2.4) (2019-08-20)
 
 ### Bug Fixes
