@@ -2,9 +2,10 @@
 
 ### Update Dependencies
 
-- upgrade to graphql 15.5.3
+- upgrade to graphql 15.6.0
   ** formatError to customFormatErrorFn
   ** coerceValue to coerceInputValue
+- upgrade other outdated packages
 
 ### Bug Fixes
 

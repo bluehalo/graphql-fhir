@@ -2364,7 +2364,7 @@ graphql-outfields@^0.9.1:
   resolved "https://registry.yarnpkg.com/graphql-outfields/-/graphql-outfields-0.9.1.tgz#9cc3524d818d4ae30b0fa1ac4353e673aa624d55"
   integrity sha512-qSaGNOCwC3P1q0tU2R/O7C5L9V3wAL9Bw6RMsAHW3Cw7/NYcMdZyJuzUfxvg0zsVrtKwPXCTxyjgUqMTACM9FQ==
 
-graphql@^15.3.0, graphql@^15.5.3:
+graphql@^15.3.0, graphql@^15.5.3, graphql@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.6.0.tgz#e69323c6a9780a1a4b9ddf7e35ca8904bb04df02"
   integrity sha512-WJR872Zlc9hckiEPhXgyUftXH48jp2EjO5tgBBOyNMRJZ9fviL2mJBD6CAysk6N5S0r9BTs09Qk39nnJBkvOXQ==
