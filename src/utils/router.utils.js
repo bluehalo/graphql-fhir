@@ -1,6 +1,6 @@
 const authenticationMiddleware = require('../middleware/authentication.middleware');
 const { resolveFromVersion } = require('./resolve.utils');
-const expressGraphql = require('express-graphql');
+const graphqlHTTP = require('express-graphql');
 const errorUtils = require('./error.utils');
 const { VERSION } = require('../config');
 const glob = require('glob');
@@ -44,7 +44,7 @@ function generateInstanceSchema(version, name, query) {
 
 // Helper function for generating graphql server
 function setupGraphqlServer(server, version, options) {
-	return expressGraphql((req, res) => {
+	return graphqlHTTP((req, res) => {
 		let context = { server, req, res, version };
 		return Object.assign({ context }, options);
 	});
@@ -52,7 +52,7 @@ function setupGraphqlServer(server, version, options) {
 
 // Helper for formatting graphql errors
 function graphqlErrorFormatter(logger, version) {
-	return err => {
+	return (err) => {
 		// If we already have a graphql formatted error than this error is probably
 		// intentionally thrown. If it is not, the FHIR spec says for GraphQL errors
 		// to be placed in extensions under a resource property.
@@ -86,7 +86,7 @@ function configureRoutes(server, options = {}) {
 	// We need to setup a server for each route configured in VERSION
 	let { versions = [], resourceConfig = {} } = options;
 
-	versions.forEach(version => {
+	versions.forEach((version) => {
 		// Locate all the profile configurations for setting up routes
 		let config_paths = glob.sync(
 			resolveFromVersion(version, resourceConfig.profilesRelativePath),
@@ -118,7 +118,7 @@ function configureRoutes(server, options = {}) {
 					authenticationMiddleware(server),
 					// middleware wrapper for Graphql Express
 					setupGraphqlServer(server, version, {
-						formatError: graphqlErrorFormatter(server.logger, version),
+						customFormatErrorFn: graphqlErrorFormatter(server.logger, version),
 						schema: generateInstanceSchema(version, name, query),
 					}),
 				);
@@ -136,7 +136,7 @@ function configureRoutes(server, options = {}) {
 			authenticationMiddleware(server),
 			// middleware wrapper for Graphql Express
 			setupGraphqlServer(server, version, {
-				formatError: graphqlErrorFormatter(server.logger, version),
+				customFormatErrorFn: graphqlErrorFormatter(server.logger, version),
 				schema: rootSchema,
 			}),
 		);
@@ -148,7 +148,7 @@ function configureRoutes(server, options = {}) {
 				`/${version}/([\$])graphiql`,
 				// middleware wrapper for Graphql Express
 				setupGraphqlServer(server, version, {
-					formatError: graphqlErrorFormatter(server.logger, version),
+					customFormatErrorFn: graphqlErrorFormatter(server.logger, version),
 					schema: rootSchema,
 					graphiql: true,
 				}),
