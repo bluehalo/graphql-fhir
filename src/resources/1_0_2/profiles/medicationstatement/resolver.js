@@ -33,15 +33,11 @@ module.exports.getMedicationStatementList = function getMedicationStatementList(
  * @static
  * @summary MedicationStatement instance resolver.
  */
-module.exports.getMedicationStatementInstance = function getMedicationStatementInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getMedicationStatementInstance =
+	function getMedicationStatementInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createMedicationStatement

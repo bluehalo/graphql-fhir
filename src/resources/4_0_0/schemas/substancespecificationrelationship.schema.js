@@ -36,8 +36,7 @@ module.exports = new GraphQLObjectType({
 		},
 		substanceReference: {
 			type: new GraphQLUnionType({
-				name:
-					'SubstanceSpecificationrelationshipsubstanceReference_substanceReference_Union',
+				name: 'SubstanceSpecificationrelationshipsubstanceReference_substanceReference_Union',
 				description:
 					'A pointer to another substance, as a resource or just a representational code.',
 				types: () => [require('./substancespecification.schema.js')],

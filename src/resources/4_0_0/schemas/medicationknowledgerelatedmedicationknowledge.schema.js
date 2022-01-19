@@ -43,8 +43,7 @@ module.exports = new GraphQLObjectType({
 			type: new GraphQLList(
 				new GraphQLNonNull(
 					new GraphQLUnionType({
-						name:
-							'MedicationKnowledgerelatedMedicationKnowledgereference_reference_Union',
+						name: 'MedicationKnowledgerelatedMedicationKnowledgereference_reference_Union',
 						description:
 							'Associated documentation about the associated medication knowledge.',
 						types: () => [require('./medicationknowledge.schema.js')],

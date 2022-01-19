@@ -32,9 +32,12 @@ module.exports = {
 	 * and these keys must be unique across the entire application, like routes
 	 */
 	mutation: {
-		MedicinalProductInteractionCreate: MedicinalProductInteractionCreateMutation,
-		MedicinalProductInteractionUpdate: MedicinalProductInteractionUpdateMutation,
-		MedicinalProductInteractionRemove: MedicinalProductInteractionRemoveMutation,
+		MedicinalProductInteractionCreate:
+			MedicinalProductInteractionCreateMutation,
+		MedicinalProductInteractionUpdate:
+			MedicinalProductInteractionUpdateMutation,
+		MedicinalProductInteractionRemove:
+			MedicinalProductInteractionRemoveMutation,
 	},
 	/**
 	 * These properties are so the core router can setup the approriate endpoint

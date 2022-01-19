@@ -49,8 +49,7 @@ module.exports = new GraphQLObjectType({
 		information: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'CoverageEligibilityRequestsupportingInfoinformation_information_Union',
+					name: 'CoverageEligibilityRequestsupportingInfoinformation_information_Union',
 					description:
 						'Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.',
 					types: () => [require('./resource.schema.js')],

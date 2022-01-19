@@ -33,15 +33,11 @@ module.exports.getDocumentManifestList = function getDocumentManifestList(
  * @static
  * @summary DocumentManifest instance resolver.
  */
-module.exports.getDocumentManifestInstance = function getDocumentManifestInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getDocumentManifestInstance =
+	function getDocumentManifestInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createDocumentManifest

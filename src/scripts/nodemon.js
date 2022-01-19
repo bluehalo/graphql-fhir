@@ -11,7 +11,7 @@ nodemon({
 });
 
 nodemon
-	.on('restart', files => {
+	.on('restart', (files) => {
 		logger.verbose(`Nodemon restarting because ${files.join(',')} changed.`);
 	})
 	.on('crash', () => {

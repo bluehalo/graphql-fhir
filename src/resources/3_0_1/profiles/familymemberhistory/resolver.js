@@ -33,15 +33,11 @@ module.exports.getFamilyMemberHistoryList = function getFamilyMemberHistoryList(
  * @static
  * @summary FamilyMemberHistory instance resolver.
  */
-module.exports.getFamilyMemberHistoryInstance = function getFamilyMemberHistoryInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getFamilyMemberHistoryInstance =
+	function getFamilyMemberHistoryInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createFamilyMemberHistory

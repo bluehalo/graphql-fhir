@@ -92,8 +92,7 @@ module.exports = new GraphQLObjectType({
 		},
 		valueReference: {
 			type: new GraphQLUnionType({
-				name:
-					'ExplanationOfBenefitinformationvalueReference_valueReference_Union',
+				name: 'ExplanationOfBenefitinformationvalueReference_valueReference_Union',
 				description:
 					'Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.',
 				types: () => [require('./resource.schema.js')],

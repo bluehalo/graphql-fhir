@@ -33,15 +33,11 @@ module.exports.getMolecularSequenceList = function getMolecularSequenceList(
  * @static
  * @summary MolecularSequence instance resolver.
  */
-module.exports.getMolecularSequenceInstance = function getMolecularSequenceInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getMolecularSequenceInstance =
+	function getMolecularSequenceInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createMolecularSequence

@@ -33,15 +33,11 @@ module.exports.getSpecimenDefinitionList = function getSpecimenDefinitionList(
  * @static
  * @summary SpecimenDefinition instance resolver.
  */
-module.exports.getSpecimenDefinitionInstance = function getSpecimenDefinitionInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getSpecimenDefinitionInstance =
+	function getSpecimenDefinitionInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createSpecimenDefinition

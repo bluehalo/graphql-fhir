@@ -41,8 +41,7 @@ module.exports = new GraphQLObjectType({
 		reference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'ImplementationGuidedefinitionresourcereference_reference_Union',
+					name: 'ImplementationGuidedefinitionresourcereference_reference_Union',
 					description: 'Where this resource is found.',
 					types: () => [require('./resource.schema.js')],
 					resolveType(data) {

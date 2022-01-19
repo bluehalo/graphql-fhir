@@ -33,15 +33,11 @@ module.exports.getExpansionProfileList = function getExpansionProfileList(
  * @static
  * @summary ExpansionProfile instance resolver.
  */
-module.exports.getExpansionProfileInstance = function getExpansionProfileInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getExpansionProfileInstance =
+	function getExpansionProfileInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createExpansionProfile

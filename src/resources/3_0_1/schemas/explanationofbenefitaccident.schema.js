@@ -53,8 +53,7 @@ module.exports = new GraphQLObjectType({
 		},
 		locationReference: {
 			type: new GraphQLUnionType({
-				name:
-					'ExplanationOfBenefitaccidentlocationReference_locationReference_Union',
+				name: 'ExplanationOfBenefitaccidentlocationReference_locationReference_Union',
 				description: 'Where the accident occurred.',
 				types: () => [require('./location.schema.js')],
 				resolveType(data) {

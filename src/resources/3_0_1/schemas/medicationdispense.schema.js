@@ -127,8 +127,7 @@ module.exports = new GraphQLObjectType({
 		medicationReference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'MedicationDispensemedicationReference_medicationReference_Union',
+					name: 'MedicationDispensemedicationReference_medicationReference_Union',
 					description:
 						'Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.',
 					types: () => [require('./medication.schema.js')],
@@ -187,8 +186,7 @@ module.exports = new GraphQLObjectType({
 		supportingInformation: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicationDispensesupportingInformation_supportingInformation_Union',
+					name: 'MedicationDispensesupportingInformation_supportingInformation_Union',
 					description:
 						'Additional information that supports the medication being dispensed.',
 					types: () => [require('./resource.schema.js')],
@@ -210,8 +208,7 @@ module.exports = new GraphQLObjectType({
 		authorizingPrescription: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicationDispenseauthorizingPrescription_authorizingPrescription_Union',
+					name: 'MedicationDispenseauthorizingPrescription_authorizingPrescription_Union',
 					description:
 						'Indicates the medication order that is being dispensed against.',
 					types: () => [require('./medicationrequest.schema.js')],
@@ -343,8 +340,7 @@ module.exports = new GraphQLObjectType({
 		},
 		notDoneReasonReference: {
 			type: new GraphQLUnionType({
-				name:
-					'MedicationDispensenotDoneReasonReference_notDoneReasonReference_Union',
+				name: 'MedicationDispensenotDoneReasonReference_notDoneReasonReference_Union',
 				description: 'Indicates the reason why a dispense was not performed.',
 				types: () => [require('./detectedissue.schema.js')],
 				resolveType(data) {

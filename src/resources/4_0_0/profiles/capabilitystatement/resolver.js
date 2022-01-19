@@ -33,15 +33,11 @@ module.exports.getCapabilityStatementList = function getCapabilityStatementList(
  * @static
  * @summary CapabilityStatement instance resolver.
  */
-module.exports.getCapabilityStatementInstance = function getCapabilityStatementInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getCapabilityStatementInstance =
+	function getCapabilityStatementInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createCapabilityStatement

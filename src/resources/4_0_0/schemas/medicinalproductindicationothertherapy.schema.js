@@ -47,8 +47,7 @@ module.exports = new GraphQLObjectType({
 		medicationReference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'MedicinalProductIndicationotherTherapymedicationReference_medicationReference_Union',
+					name: 'MedicinalProductIndicationotherTherapymedicationReference_medicationReference_Union',
 					description:
 						'Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication.',
 					types: () => [

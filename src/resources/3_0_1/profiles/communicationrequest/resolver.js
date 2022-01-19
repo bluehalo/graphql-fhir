@@ -18,30 +18,22 @@ module.exports.getCommunicationRequest = function getCommunicationRequest(
  * @static
  * @summary CommunicationRequest list resolver.
  */
-module.exports.getCommunicationRequestList = function getCommunicationRequestList(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getCommunicationRequestList =
+	function getCommunicationRequestList(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.getCommunicationRequestInstance
  * @static
  * @summary CommunicationRequest instance resolver.
  */
-module.exports.getCommunicationRequestInstance = function getCommunicationRequestInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getCommunicationRequestInstance =
+	function getCommunicationRequestInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createCommunicationRequest

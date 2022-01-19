@@ -53,8 +53,7 @@ module.exports = new GraphQLObjectType({
 		},
 		patients: {
 			type: new GraphQLUnionType({
-				name:
-					'MeasureReportgroupstratifierstratumpopulationpatients_patients_Union',
+				name: 'MeasureReportgroupstratifierstratumpopulationpatients_patients_Union',
 				description:
 					'This element refers to a List of patient level MeasureReport resources, one for each patient in this population in this stratum.',
 				types: () => [require('./list.schema.js')],

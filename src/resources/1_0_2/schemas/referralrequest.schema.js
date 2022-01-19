@@ -236,8 +236,7 @@ module.exports = new GraphQLObjectType({
 		supportingInformation: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'ReferralRequestsupportingInformation_supportingInformation_Union',
+					name: 'ReferralRequestsupportingInformation_supportingInformation_Union',
 					description:
 						'Any additional (administrative, financial or clinical) information required to support request for referral or transfer of care.  For example: Presenting problems/chief complaints Medical History Family History Alerts Allergy/Intolerance and Adverse Reactions Medications Observations/Assessments (may include cognitive and fundtional assessments) Diagnostic Reports Care Plan.',
 					types: () => [require('./resource.schema.js')],

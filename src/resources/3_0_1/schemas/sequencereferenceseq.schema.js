@@ -59,8 +59,7 @@ module.exports = new GraphQLObjectType({
 		},
 		referenceSeqPointer: {
 			type: new GraphQLUnionType({
-				name:
-					'SequencereferenceSeqreferenceSeqPointer_referenceSeqPointer_Union',
+				name: 'SequencereferenceSeqreferenceSeqPointer_referenceSeqPointer_Union',
 				description:
 					'A Pointer to another Sequence entity as reference sequence.',
 				types: () => [require('./sequence.schema.js')],

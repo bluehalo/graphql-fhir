@@ -167,8 +167,7 @@ module.exports = new GraphQLObjectType({
 		},
 		requestOrganization: {
 			type: new GraphQLUnionType({
-				name:
-					'EligibilityResponserequestOrganization_requestOrganization_Union',
+				name: 'EligibilityResponserequestOrganization_requestOrganization_Union',
 				description:
 					'The organization which is responsible for the services rendered to the patient.',
 				types: () => [require('./organization.schema.js')],

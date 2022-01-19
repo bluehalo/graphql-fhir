@@ -33,15 +33,11 @@ module.exports.getAppointmentResponseList = function getAppointmentResponseList(
  * @static
  * @summary AppointmentResponse instance resolver.
  */
-module.exports.getAppointmentResponseInstance = function getAppointmentResponseInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getAppointmentResponseInstance =
+	function getAppointmentResponseInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createAppointmentResponse

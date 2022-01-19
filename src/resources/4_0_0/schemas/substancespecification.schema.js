@@ -145,8 +145,7 @@ module.exports = new GraphQLObjectType({
 		},
 		referenceInformation: {
 			type: new GraphQLUnionType({
-				name:
-					'SubstanceSpecificationreferenceInformation_referenceInformation_Union',
+				name: 'SubstanceSpecificationreferenceInformation_referenceInformation_Union',
 				description: 'General information detailing this substance.',
 				types: () => [require('./substancereferenceinformation.schema.js')],
 				resolveType(data) {

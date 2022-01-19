@@ -103,8 +103,7 @@ module.exports = new GraphQLObjectType({
 		},
 		manufacturerReference: {
 			type: new GraphQLUnionType({
-				name:
-					'DeviceDefinitionmanufacturerReference_manufacturerReference_Union',
+				name: 'DeviceDefinitionmanufacturerReference_manufacturerReference_Union',
 				description: 'A name of the manufacturer.',
 				types: () => [require('./organization.schema.js')],
 				resolveType(data) {

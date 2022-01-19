@@ -33,15 +33,11 @@ module.exports.getPractitionerRoleList = function getPractitionerRoleList(
  * @static
  * @summary PractitionerRole instance resolver.
  */
-module.exports.getPractitionerRoleInstance = function getPractitionerRoleInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getPractitionerRoleInstance =
+	function getPractitionerRoleInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createPractitionerRole

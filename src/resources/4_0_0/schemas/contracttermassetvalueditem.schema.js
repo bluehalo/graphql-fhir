@@ -42,8 +42,7 @@ module.exports = new GraphQLObjectType({
 		},
 		entityReference: {
 			type: new GraphQLUnionType({
-				name:
-					'ContracttermassetvaluedItementityReference_entityReference_Union',
+				name: 'ContracttermassetvaluedItementityReference_entityReference_Union',
 				description:
 					'Specific type of Contract Valued Item that may be priced.',
 				types: () => [require('./resource.schema.js')],

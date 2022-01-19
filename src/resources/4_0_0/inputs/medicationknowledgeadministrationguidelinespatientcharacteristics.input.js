@@ -10,8 +10,7 @@ const {
  * @summary MedicationKnowledgeadministrationGuidelinespatientCharacteristics Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name:
-		'MedicationKnowledgeadministrationGuidelinespatientCharacteristics_Input',
+	name: 'MedicationKnowledgeadministrationGuidelinespatientCharacteristics_Input',
 	description: '',
 	fields: () => ({
 		_id: {

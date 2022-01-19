@@ -33,15 +33,11 @@ module.exports.getServiceDefinitionList = function getServiceDefinitionList(
  * @static
  * @summary ServiceDefinition instance resolver.
  */
-module.exports.getServiceDefinitionInstance = function getServiceDefinitionInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getServiceDefinitionInstance =
+	function getServiceDefinitionInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createServiceDefinition

@@ -33,15 +33,11 @@ module.exports.getResearchDefinitionList = function getResearchDefinitionList(
  * @static
  * @summary ResearchDefinition instance resolver.
  */
-module.exports.getResearchDefinitionInstance = function getResearchDefinitionInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getResearchDefinitionInstance =
+	function getResearchDefinitionInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createResearchDefinition

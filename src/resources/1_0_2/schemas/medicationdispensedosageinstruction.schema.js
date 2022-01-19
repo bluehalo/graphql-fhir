@@ -79,8 +79,7 @@ module.exports = new GraphQLObjectType({
 		// valueSetReference: http://hl7.org/fhir/ValueSet/approach-site-codes
 		siteReference: {
 			type: new GraphQLUnionType({
-				name:
-					'MedicationDispensedosageInstructionsiteReference_siteReference_Union',
+				name: 'MedicationDispensedosageInstructionsiteReference_siteReference_Union',
 				description:
 					'A coded specification of the anatomic site where the medication first enters the body.',
 				types: () => [require('./bodysite.schema.js')],

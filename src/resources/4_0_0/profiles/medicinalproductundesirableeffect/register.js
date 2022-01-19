@@ -24,7 +24,8 @@ module.exports = {
 	 */
 	query: {
 		MedicinalProductUndesirableEffect: MedicinalProductUndesirableEffectQuery,
-		MedicinalProductUndesirableEffectList: MedicinalProductUndesirableEffectListQuery,
+		MedicinalProductUndesirableEffectList:
+			MedicinalProductUndesirableEffectListQuery,
 	},
 	/**
 	 * Define Mutation Schema's here
@@ -32,9 +33,12 @@ module.exports = {
 	 * and these keys must be unique across the entire application, like routes
 	 */
 	mutation: {
-		MedicinalProductUndesirableEffectCreate: MedicinalProductUndesirableEffectCreateMutation,
-		MedicinalProductUndesirableEffectUpdate: MedicinalProductUndesirableEffectUpdateMutation,
-		MedicinalProductUndesirableEffectRemove: MedicinalProductUndesirableEffectRemoveMutation,
+		MedicinalProductUndesirableEffectCreate:
+			MedicinalProductUndesirableEffectCreateMutation,
+		MedicinalProductUndesirableEffectUpdate:
+			MedicinalProductUndesirableEffectUpdateMutation,
+		MedicinalProductUndesirableEffectRemove:
+			MedicinalProductUndesirableEffectRemoveMutation,
 	},
 	/**
 	 * These properties are so the core router can setup the approriate endpoint

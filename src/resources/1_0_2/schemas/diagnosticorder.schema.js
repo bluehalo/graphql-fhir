@@ -154,8 +154,7 @@ module.exports = new GraphQLObjectType({
 		supportingInformation: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'DiagnosticOrdersupportingInformation_supportingInformation_Union',
+					name: 'DiagnosticOrdersupportingInformation_supportingInformation_Union',
 					description:
 						'Additional clinical information about the patient or specimen that may influence test interpretations.  This includes observations explicitly requested by the producer(filler) to provide context or supporting information needed to complete the order.',
 					types: () => [

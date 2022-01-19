@@ -33,15 +33,11 @@ module.exports.getEvidenceVariableList = function getEvidenceVariableList(
  * @static
  * @summary EvidenceVariable instance resolver.
  */
-module.exports.getEvidenceVariableInstance = function getEvidenceVariableInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getEvidenceVariableInstance =
+	function getEvidenceVariableInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createEvidenceVariable

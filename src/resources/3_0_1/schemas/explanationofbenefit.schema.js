@@ -286,8 +286,7 @@ module.exports = new GraphQLObjectType({
 		},
 		originalPrescription: {
 			type: new GraphQLUnionType({
-				name:
-					'ExplanationOfBenefitoriginalPrescription_originalPrescription_Union',
+				name: 'ExplanationOfBenefitoriginalPrescription_originalPrescription_Union',
 				description:
 					"Original prescription which has been superceded by this prescription to support the dispensing of pharmacy services, medications or products. For example, a physician may prescribe a medication which the pharmacy determines is contraindicated, or for which the patient has an intolerance, and therefor issues a new precription for an alternate medication which has the same theraputic intent. The prescription from the pharmacy becomes the 'prescription' and that from the physician becomes the 'original prescription'.",
 				types: () => [require('./medicationrequest.schema.js')],

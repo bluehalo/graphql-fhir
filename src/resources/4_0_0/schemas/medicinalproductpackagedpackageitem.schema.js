@@ -73,8 +73,7 @@ module.exports = new GraphQLObjectType({
 		manufacturedItem: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicinalProductPackagedpackageItemmanufacturedItem_manufacturedItem_Union',
+					name: 'MedicinalProductPackagedpackageItemmanufacturedItem_manufacturedItem_Union',
 					description:
 						'The manufactured item as contained in the packaged medicinal product.',
 					types: () => [require('./medicinalproductmanufactured.schema.js')],
@@ -103,8 +102,7 @@ module.exports = new GraphQLObjectType({
 		manufacturer: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicinalProductPackagedpackageItemmanufacturer_manufacturer_Union',
+					name: 'MedicinalProductPackagedpackageItemmanufacturer_manufacturer_Union',
 					description: 'Manufacturer of this Package Item.',
 					types: () => [require('./organization.schema.js')],
 					resolveType(data) {

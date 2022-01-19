@@ -120,8 +120,7 @@ module.exports = new GraphQLObjectType({
 		},
 		marketingAuthorization: {
 			type: new GraphQLUnionType({
-				name:
-					'MedicinalProductPackagedmarketingAuthorization_marketingAuthorization_Union',
+				name: 'MedicinalProductPackagedmarketingAuthorization_marketingAuthorization_Union',
 				description: 'Manufacturer of this Package Item.',
 				types: () => [require('./medicinalproductauthorization.schema.js')],
 				resolveType(data) {

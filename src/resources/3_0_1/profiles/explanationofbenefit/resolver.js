@@ -18,30 +18,22 @@ module.exports.getExplanationOfBenefit = function getExplanationOfBenefit(
  * @static
  * @summary ExplanationOfBenefit list resolver.
  */
-module.exports.getExplanationOfBenefitList = function getExplanationOfBenefitList(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getExplanationOfBenefitList =
+	function getExplanationOfBenefitList(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.getExplanationOfBenefitInstance
  * @static
  * @summary ExplanationOfBenefit instance resolver.
  */
-module.exports.getExplanationOfBenefitInstance = function getExplanationOfBenefitInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getExplanationOfBenefitInstance =
+	function getExplanationOfBenefitInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createExplanationOfBenefit

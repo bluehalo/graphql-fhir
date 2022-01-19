@@ -139,8 +139,7 @@ module.exports = new GraphQLObjectType({
 		associatedMedication: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicationKnowledgeassociatedMedication_associatedMedication_Union',
+					name: 'MedicationKnowledgeassociatedMedication_associatedMedication_Union',
 					description:
 						'Associated or related medications.  For example, if the medication is a branded product (e.g. Crestor), this is the Therapeutic Moeity (e.g. Rosuvastatin) or if this is a generic medication (e.g. Rosuvastatin), this would link to a branded product (e.g. Crestor).',
 					types: () => [require('./medication.schema.js')],

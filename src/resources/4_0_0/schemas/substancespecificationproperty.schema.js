@@ -54,8 +54,7 @@ module.exports = new GraphQLObjectType({
 		},
 		definingSubstanceReference: {
 			type: new GraphQLUnionType({
-				name:
-					'SubstanceSpecificationpropertydefiningSubstanceReference_definingSubstanceReference_Union',
+				name: 'SubstanceSpecificationpropertydefiningSubstanceReference_definingSubstanceReference_Union',
 				description:
 					'A substance upon which a defining property depends (e.g. for solubility: in water, in alcohol).',
 				types: () => [

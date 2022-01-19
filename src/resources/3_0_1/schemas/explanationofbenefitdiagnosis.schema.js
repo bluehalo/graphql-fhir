@@ -52,8 +52,7 @@ module.exports = new GraphQLObjectType({
 		diagnosisReference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'ExplanationOfBenefitdiagnosisdiagnosisReference_diagnosisReference_Union',
+					name: 'ExplanationOfBenefitdiagnosisdiagnosisReference_diagnosisReference_Union',
 					description: 'The diagnosis.',
 					types: () => [require('./condition.schema.js')],
 					resolveType(data) {

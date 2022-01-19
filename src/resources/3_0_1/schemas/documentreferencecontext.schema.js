@@ -72,8 +72,7 @@ module.exports = new GraphQLObjectType({
 		},
 		sourcePatientInfo: {
 			type: new GraphQLUnionType({
-				name:
-					'DocumentReferencecontextsourcePatientInfo_sourcePatientInfo_Union',
+				name: 'DocumentReferencecontextsourcePatientInfo_sourcePatientInfo_Union',
 				description:
 					'The Patient Information as known when the document was published. May be a reference to a version specific, or contained.',
 				types: () => [require('./patient.schema.js')],

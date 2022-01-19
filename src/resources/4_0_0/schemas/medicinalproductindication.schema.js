@@ -136,8 +136,7 @@ module.exports = new GraphQLObjectType({
 		undesirableEffect: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicinalProductIndicationundesirableEffect_undesirableEffect_Union',
+					name: 'MedicinalProductIndicationundesirableEffect_undesirableEffect_Union',
 					description:
 						'Describe the undesirable effects of the medicinal product.',
 					types: () => [

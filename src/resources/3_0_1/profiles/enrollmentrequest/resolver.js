@@ -33,15 +33,11 @@ module.exports.getEnrollmentRequestList = function getEnrollmentRequestList(
  * @static
  * @summary EnrollmentRequest instance resolver.
  */
-module.exports.getEnrollmentRequestInstance = function getEnrollmentRequestInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getEnrollmentRequestInstance =
+	function getEnrollmentRequestInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createEnrollmentRequest

@@ -24,7 +24,8 @@ module.exports = {
 	 */
 	query: {
 		MedicinalProductContraindication: MedicinalProductContraindicationQuery,
-		MedicinalProductContraindicationList: MedicinalProductContraindicationListQuery,
+		MedicinalProductContraindicationList:
+			MedicinalProductContraindicationListQuery,
 	},
 	/**
 	 * Define Mutation Schema's here
@@ -32,9 +33,12 @@ module.exports = {
 	 * and these keys must be unique across the entire application, like routes
 	 */
 	mutation: {
-		MedicinalProductContraindicationCreate: MedicinalProductContraindicationCreateMutation,
-		MedicinalProductContraindicationUpdate: MedicinalProductContraindicationUpdateMutation,
-		MedicinalProductContraindicationRemove: MedicinalProductContraindicationRemoveMutation,
+		MedicinalProductContraindicationCreate:
+			MedicinalProductContraindicationCreateMutation,
+		MedicinalProductContraindicationUpdate:
+			MedicinalProductContraindicationUpdateMutation,
+		MedicinalProductContraindicationRemove:
+			MedicinalProductContraindicationRemoveMutation,
 	},
 	/**
 	 * These properties are so the core router can setup the approriate endpoint

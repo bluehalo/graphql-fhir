@@ -171,8 +171,7 @@ module.exports = new GraphQLObjectType({
 		// valueSetReference: http://hl7.org/fhir/ValueSet/condition-code
 		reasonForUseReference: {
 			type: new GraphQLUnionType({
-				name:
-					'MedicationStatementreasonForUseReference_reasonForUseReference_Union',
+				name: 'MedicationStatementreasonForUseReference_reasonForUseReference_Union',
 				description: 'A reason for why the medication is being/was taken.',
 				types: () => [require('./condition.schema.js')],
 				resolveType(data) {
@@ -211,8 +210,7 @@ module.exports = new GraphQLObjectType({
 		supportingInformation: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicationStatementsupportingInformation_supportingInformation_Union',
+					name: 'MedicationStatementsupportingInformation_supportingInformation_Union',
 					description:
 						'Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports the MedicationStatement.',
 					types: () => [require('./resource.schema.js')],
@@ -234,8 +232,7 @@ module.exports = new GraphQLObjectType({
 		medicationReference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'MedicationStatementmedicationReference_medicationReference_Union',
+					name: 'MedicationStatementmedicationReference_medicationReference_Union',
 					description:
 						'Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.',
 					types: () => [require('./medication.schema.js')],

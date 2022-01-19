@@ -37,8 +37,7 @@ module.exports = new GraphQLObjectType({
 		itemReference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'MedicinalProductInteractioninteractantitemReference_itemReference_Union',
+					name: 'MedicinalProductInteractioninteractantitemReference_itemReference_Union',
 					description:
 						'The specific medication, food or laboratory test that interacts.',
 					types: () => [

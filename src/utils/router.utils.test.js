@@ -45,7 +45,7 @@ describe('Router Utils Test', () => {
 				versions: Object.keys(VERSION),
 			});
 			// check the mock
-			mock.calls.forEach(call => {
+			mock.calls.forEach((call) => {
 				// each argument should be called with a function that takes a req and res
 				// and returns them in context with any other provided options
 				let arg = call[0];
