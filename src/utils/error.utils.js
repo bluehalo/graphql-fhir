@@ -8,7 +8,7 @@ function internal(version, message) {
 		version,
 		'inputs/operationoutcome.input',
 	));
-	let value = mapJsonToSchema(
+	return mapJsonToSchema(
 		{
 			resourceType: 'OperationOutcome',
 			issue: {
@@ -19,7 +19,6 @@ function internal(version, message) {
 		},
 		OperationOutcome,
 	);
-	return value;
 }
 
 // Generate an not found error as an operation outcome
@@ -28,7 +27,7 @@ function notFound(version, message) {
 		version,
 		'inputs/operationoutcome.input',
 	));
-	let value = mapJsonToSchema(
+	return mapJsonToSchema(
 		{
 			resourceType: 'OperationOutcome',
 			issue: {
@@ -39,7 +38,6 @@ function notFound(version, message) {
 		},
 		OperationOutcome,
 	);
-	return value;
 }
 
 // Generate an not found error as an operation outcome
@@ -48,7 +46,7 @@ function insufficientScope(version, message) {
 		version,
 		'inputs/operationoutcome.input',
 	));
-	let value = mapJsonToSchema(
+	return mapJsonToSchema(
 		{
 			resourceType: 'OperationOutcome',
 			issue: {
@@ -59,7 +57,6 @@ function insufficientScope(version, message) {
 		},
 		OperationOutcome,
 	);
-	return value;
 }
 
 // Generate an error for GraphQL that puts an operation outcome in the extension field
