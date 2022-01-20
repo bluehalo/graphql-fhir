@@ -1,16 +1,17 @@
-FROM node:11-alpine
+# syntax=docker/dockerfile:1
+FROM node:lts-alpine
 
-# Update any outdated packages
-RUN apk update
+ENV APP_HOME=/srv \
+  TINI_VERSION=v0.19.0
 
-WORKDIR /srv
+WORKDIR ${APP_HOME}
 
-# Move this separately so install get's cached
-COPY package.json /srv/package.json
-RUN yarn install --production
+COPY . ./
 
-# Copy the remaining code over
-COPY . /srv/
+RUN set -eux; \
+  apk update; \
+  yarn install --production
 
-# By default, use the production command
-CMD yarn start
+EXPOSE 3000
+
+CMD ["yarn", "start"]
