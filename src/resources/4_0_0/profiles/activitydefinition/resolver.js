@@ -33,15 +33,11 @@ module.exports.getActivityDefinitionList = function getActivityDefinitionList(
  * @static
  * @summary ActivityDefinition instance resolver.
  */
-module.exports.getActivityDefinitionInstance = function getActivityDefinitionInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getActivityDefinitionInstance =
+	function getActivityDefinitionInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createActivityDefinition

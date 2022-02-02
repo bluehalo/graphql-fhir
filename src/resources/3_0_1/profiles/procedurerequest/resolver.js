@@ -33,15 +33,11 @@ module.exports.getProcedureRequestList = function getProcedureRequestList(
  * @static
  * @summary ProcedureRequest instance resolver.
  */
-module.exports.getProcedureRequestInstance = function getProcedureRequestInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getProcedureRequestInstance =
+	function getProcedureRequestInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createProcedureRequest

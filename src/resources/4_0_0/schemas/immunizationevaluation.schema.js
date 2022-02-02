@@ -148,8 +148,7 @@ module.exports = new GraphQLObjectType({
 		immunizationEvent: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'ImmunizationEvaluationimmunizationEvent_immunizationEvent_Union',
+					name: 'ImmunizationEvaluationimmunizationEvent_immunizationEvent_Union',
 					description: 'The vaccine administration event being evaluated.',
 					types: () => [require('./immunization.schema.js')],
 					resolveType(data) {

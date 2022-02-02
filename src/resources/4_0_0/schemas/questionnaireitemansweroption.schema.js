@@ -85,17 +85,16 @@ module.exports = new GraphQLObjectType({
 		},
 		valueReference: {
 			type: new GraphQLUnionType({
-					name:
-						'QuestionnaireitemanswerOptionvalueReference_valueReference_Union',
-					description:
-						"A potential answer that's allowed as the answer to this question.",
-					types: () => [require('./resource.schema.js')],
-					resolveType(data) {
-						if (data && data.resourceType === 'Resource') {
-							return require('./resource.schema.js');
-						}
-					},
-				}),
+				name: 'QuestionnaireitemanswerOptionvalueReference_valueReference_Union',
+				description:
+					"A potential answer that's allowed as the answer to this question.",
+				types: () => [require('./resource.schema.js')],
+				resolveType(data) {
+					if (data && data.resourceType === 'Resource') {
+						return require('./resource.schema.js');
+					}
+				},
+			}),
 			description:
 				"A potential answer that's allowed as the answer to this question.",
 		},

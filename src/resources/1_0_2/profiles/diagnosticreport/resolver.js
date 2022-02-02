@@ -33,15 +33,11 @@ module.exports.getDiagnosticReportList = function getDiagnosticReportList(
  * @static
  * @summary DiagnosticReport instance resolver.
  */
-module.exports.getDiagnosticReportInstance = function getDiagnosticReportInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getDiagnosticReportInstance =
+	function getDiagnosticReportInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createDiagnosticReport

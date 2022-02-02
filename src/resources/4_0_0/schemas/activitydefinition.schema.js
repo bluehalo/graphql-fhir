@@ -476,8 +476,7 @@ module.exports = new GraphQLObjectType({
 		specimenRequirement: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'ActivityDefinitionspecimenRequirement_specimenRequirement_Union',
+					name: 'ActivityDefinitionspecimenRequirement_specimenRequirement_Union',
 					description:
 						'Defines specimen requirements for the action to be performed, such as required specimens for a lab test.',
 					types: () => [require('./specimendefinition.schema.js')],
@@ -494,8 +493,7 @@ module.exports = new GraphQLObjectType({
 		observationRequirement: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'ActivityDefinitionobservationRequirement_observationRequirement_Union',
+					name: 'ActivityDefinitionobservationRequirement_observationRequirement_Union',
 					description:
 						'Defines observation requirements for the action to be performed, such as body weight or surface area.',
 					types: () => [require('./observationdefinition.schema.js')],
@@ -512,8 +510,7 @@ module.exports = new GraphQLObjectType({
 		observationResultRequirement: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'ActivityDefinitionobservationResultRequirement_observationResultRequirement_Union',
+					name: 'ActivityDefinitionobservationResultRequirement_observationResultRequirement_Union',
 					description:
 						'Defines the observations that are expected to be produced by the action.',
 					types: () => [require('./observationdefinition.schema.js')],

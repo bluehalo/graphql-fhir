@@ -54,8 +54,7 @@ module.exports = new GraphQLObjectType({
 		},
 		indicationReference: {
 			type: new GraphQLUnionType({
-				name:
-					'MedicinalProductspecialDesignationindicationReference_indicationReference_Union',
+				name: 'MedicinalProductspecialDesignationindicationReference_indicationReference_Union',
 				description: 'Condition for which the medicinal use applies.',
 				types: () => [require('./medicinalproductindication.schema.js')],
 				resolveType(data) {

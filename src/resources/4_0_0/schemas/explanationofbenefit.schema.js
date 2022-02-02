@@ -253,8 +253,7 @@ module.exports = new GraphQLObjectType({
 		},
 		originalPrescription: {
 			type: new GraphQLUnionType({
-				name:
-					'ExplanationOfBenefitoriginalPrescription_originalPrescription_Union',
+				name: 'ExplanationOfBenefitoriginalPrescription_originalPrescription_Union',
 				description:
 					'Original prescription which has been superseded by this prescription to support the dispensing of pharmacy services, medications or products.',
 				types: () => [require('./medicationrequest.schema.js')],

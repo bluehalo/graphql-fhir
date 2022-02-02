@@ -33,15 +33,11 @@ module.exports.getHealthcareServiceList = function getHealthcareServiceList(
  * @static
  * @summary HealthcareService instance resolver.
  */
-module.exports.getHealthcareServiceInstance = function getHealthcareServiceInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getHealthcareServiceInstance =
+	function getHealthcareServiceInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createHealthcareService

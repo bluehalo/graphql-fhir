@@ -127,8 +127,7 @@ module.exports = new GraphQLObjectType({
 		authorizingPrescription: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicationDispenseauthorizingPrescription_authorizingPrescription_Union',
+					name: 'MedicationDispenseauthorizingPrescription_authorizingPrescription_Union',
 					description:
 						'Indicates the medication order that is being dispensed against.',
 					types: () => [require('./medicationorder.schema.js')],
@@ -165,8 +164,7 @@ module.exports = new GraphQLObjectType({
 		medicationReference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'MedicationDispensemedicationReference_medicationReference_Union',
+					name: 'MedicationDispensemedicationReference_medicationReference_Union',
 					description:
 						'Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.',
 					types: () => [require('./medication.schema.js')],

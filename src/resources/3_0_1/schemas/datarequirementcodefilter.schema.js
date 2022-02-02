@@ -52,8 +52,7 @@ module.exports = new GraphQLObjectType({
 		},
 		valueSetReference: {
 			type: new GraphQLUnionType({
-				name:
-					'DataRequirementcodeFiltervalueSetReference_valueSetReference_Union',
+				name: 'DataRequirementcodeFiltervalueSetReference_valueSetReference_Union',
 				description:
 					'The valueset for the code filter. The valueSet and value elements are exclusive. If valueSet is specified, the filter will return only those data items for which the value of the code-valued element specified in the path is a member of the specified valueset.',
 				types: () => [require('./valueset.schema.js')],

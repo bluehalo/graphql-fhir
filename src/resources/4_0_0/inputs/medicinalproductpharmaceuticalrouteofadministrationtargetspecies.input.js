@@ -10,8 +10,7 @@ const {
  * @summary MedicinalProductPharmaceuticalrouteOfAdministrationtargetSpecies Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name:
-		'MedicinalProductPharmaceuticalrouteOfAdministrationtargetSpecies_Input',
+	name: 'MedicinalProductPharmaceuticalrouteOfAdministrationtargetSpecies_Input',
 	description: '',
 	fields: () => ({
 		_id: {

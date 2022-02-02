@@ -56,8 +56,7 @@ module.exports = new GraphQLObjectType({
 		admittingDiagnosis: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'EncounterhospitalizationadmittingDiagnosis_admittingDiagnosis_Union',
+					name: 'EncounterhospitalizationadmittingDiagnosis_admittingDiagnosis_Union',
 					description:
 						'The admitting diagnosis field is used to record the diagnosis codes as reported by admitting practitioner. This could be different or in addition to the conditions reported as reason-condition(s) for the encounter.',
 					types: () => [require('./condition.schema.js')],
@@ -112,8 +111,7 @@ module.exports = new GraphQLObjectType({
 		dischargeDiagnosis: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'EncounterhospitalizationdischargeDiagnosis_dischargeDiagnosis_Union',
+					name: 'EncounterhospitalizationdischargeDiagnosis_dischargeDiagnosis_Union',
 					description:
 						'The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete.',
 					types: () => [require('./condition.schema.js')],

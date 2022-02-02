@@ -10,8 +10,7 @@ const {
  * @summary MedicinalProductPharmaceuticalrouteOfAdministrationtargetSpecieswithdrawalPeriod Schema
  */
 module.exports = new GraphQLObjectType({
-	name:
-		'MedicinalProductPharmaceuticalrouteOfAdministrationtargetSpecieswithdrawalPeriod',
+	name: 'MedicinalProductPharmaceuticalrouteOfAdministrationtargetSpecieswithdrawalPeriod',
 	description: '',
 	fields: () => ({
 		_id: {

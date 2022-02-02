@@ -63,8 +63,7 @@ module.exports = new GraphQLObjectType({
 		procedureReference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'ExplanationOfBenefitprocedureprocedureReference_procedureReference_Union',
+					name: 'ExplanationOfBenefitprocedureprocedureReference_procedureReference_Union',
 					description: 'The procedure code.',
 					types: () => [require('./procedure.schema.js')],
 					resolveType(data) {

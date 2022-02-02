@@ -119,8 +119,7 @@ module.exports = new GraphQLObjectType({
 		},
 		participatingOrganization: {
 			type: new GraphQLUnionType({
-				name:
-					'OrganizationAffiliationparticipatingOrganization_participatingOrganization_Union',
+				name: 'OrganizationAffiliationparticipatingOrganization_participatingOrganization_Union',
 				description:
 					'The Participating Organization provides/performs the role(s) defined by the code to the Primary Organization (e.g. providing services or is a member of).',
 				types: () => [require('./organization.schema.js')],
@@ -178,8 +177,7 @@ module.exports = new GraphQLObjectType({
 		healthcareService: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'OrganizationAffiliationhealthcareService_healthcareService_Union',
+					name: 'OrganizationAffiliationhealthcareService_healthcareService_Union',
 					description: 'Healthcare services provided through the role.',
 					types: () => [require('./healthcareservice.schema.js')],
 					resolveType(data) {

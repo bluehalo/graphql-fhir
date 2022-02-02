@@ -49,8 +49,7 @@ module.exports = new GraphQLObjectType({
 		definition: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'CapabilityStatementmessagingsupportedMessagedefinition_definition_Union',
+					name: 'CapabilityStatementmessagingsupportedMessagedefinition_definition_Union',
 					description:
 						'Points to a message definition that identifies the messaging event, message structure, allowed responses, etc.',
 					types: () => [require('./messagedefinition.schema.js')],

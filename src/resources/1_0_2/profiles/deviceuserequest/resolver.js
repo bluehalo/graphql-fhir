@@ -33,15 +33,11 @@ module.exports.getDeviceUseRequestList = function getDeviceUseRequestList(
  * @static
  * @summary DeviceUseRequest instance resolver.
  */
-module.exports.getDeviceUseRequestInstance = function getDeviceUseRequestInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getDeviceUseRequestInstance =
+	function getDeviceUseRequestInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createDeviceUseRequest

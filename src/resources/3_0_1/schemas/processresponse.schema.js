@@ -194,8 +194,7 @@ module.exports = new GraphQLObjectType({
 		communicationRequest: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'ProcessResponsecommunicationRequest_communicationRequest_Union',
+					name: 'ProcessResponsecommunicationRequest_communicationRequest_Union',
 					description:
 						'Request for additional supporting or authorizing information, such as: documents, images or resources.',
 					types: () => [require('./communicationrequest.schema.js')],

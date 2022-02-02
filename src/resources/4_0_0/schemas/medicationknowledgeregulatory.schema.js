@@ -37,8 +37,7 @@ module.exports = new GraphQLObjectType({
 		regulatoryAuthority: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'MedicationKnowledgeregulatoryregulatoryAuthority_regulatoryAuthority_Union',
+					name: 'MedicationKnowledgeregulatoryregulatoryAuthority_regulatoryAuthority_Union',
 					description: 'The authority that is specifying the regulations.',
 					types: () => [require('./organization.schema.js')],
 					resolveType(data) {

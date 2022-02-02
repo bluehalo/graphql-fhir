@@ -122,8 +122,7 @@ module.exports = new GraphQLObjectType({
 		therapeuticIndication: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicinalProductContraindicationtherapeuticIndication_therapeuticIndication_Union',
+					name: 'MedicinalProductContraindicationtherapeuticIndication_therapeuticIndication_Union',
 					description:
 						'Information about the use of the medicinal product in relation to other therapies as part of the indication.',
 					types: () => [require('./medicinalproductindication.schema.js')],

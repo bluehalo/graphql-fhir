@@ -37,8 +37,7 @@ module.exports = new GraphQLObjectType({
 		},
 		medicationReference: {
 			type: new GraphQLUnionType({
-				name:
-					'MedicationOrderdispenseRequestmedicationReference_medicationReference_Union',
+				name: 'MedicationOrderdispenseRequestmedicationReference_medicationReference_Union',
 				description:
 					'Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.',
 				types: () => [require('./medication.schema.js')],

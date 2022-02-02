@@ -33,15 +33,11 @@ module.exports.getDeviceDefinitionList = function getDeviceDefinitionList(
  * @static
  * @summary DeviceDefinition instance resolver.
  */
-module.exports.getDeviceDefinitionInstance = function getDeviceDefinitionInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getDeviceDefinitionInstance =
+	function getDeviceDefinitionInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createDeviceDefinition

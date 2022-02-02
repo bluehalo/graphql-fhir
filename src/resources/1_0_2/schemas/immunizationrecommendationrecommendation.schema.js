@@ -79,8 +79,7 @@ module.exports = new GraphQLObjectType({
 		supportingImmunization: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'ImmunizationRecommendationrecommendationsupportingImmunization_supportingImmunization_Union',
+					name: 'ImmunizationRecommendationrecommendationsupportingImmunization_supportingImmunization_Union',
 					description:
 						'Immunization event history that supports the status and recommendation.',
 					types: () => [require('./immunization.schema.js')],
@@ -97,8 +96,7 @@ module.exports = new GraphQLObjectType({
 		supportingPatientInformation: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'ImmunizationRecommendationrecommendationsupportingPatientInformation_supportingPatientInformation_Union',
+					name: 'ImmunizationRecommendationrecommendationsupportingPatientInformation_supportingPatientInformation_Union',
 					description:
 						'Patient Information that supports the status and recommendation.  This includes patient observations, adverse reactions and allergy/intolerance information.',
 					types: () => [

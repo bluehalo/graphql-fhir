@@ -51,8 +51,7 @@ module.exports = new GraphQLObjectType({
 		definitionReference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'EvidenceVariablecharacteristicdefinitionReference_definitionReference_Union',
+					name: 'EvidenceVariablecharacteristicdefinitionReference_definitionReference_Union',
 					description:
 						'Define members of the evidence element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year).',
 					types: () => [

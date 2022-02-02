@@ -33,15 +33,11 @@ module.exports.getStructureDefinitionList = function getStructureDefinitionList(
  * @static
  * @summary StructureDefinition instance resolver.
  */
-module.exports.getStructureDefinitionInstance = function getStructureDefinitionInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getStructureDefinitionInstance =
+	function getStructureDefinitionInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createStructureDefinition

@@ -134,8 +134,7 @@ module.exports = new GraphQLObjectType({
 		pharmaceuticalProduct: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicinalProductpharmaceuticalProduct_pharmaceuticalProduct_Union',
+					name: 'MedicinalProductpharmaceuticalProduct_pharmaceuticalProduct_Union',
 					description: 'Pharmaceutical aspects of product.',
 					types: () => [require('./medicinalproductpharmaceutical.schema.js')],
 					resolveType(data) {
@@ -153,8 +152,7 @@ module.exports = new GraphQLObjectType({
 		packagedMedicinalProduct: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicinalProductpackagedMedicinalProduct_packagedMedicinalProduct_Union',
+					name: 'MedicinalProductpackagedMedicinalProduct_packagedMedicinalProduct_Union',
 					description: 'Package representation for the product.',
 					types: () => [require('./medicinalproductpackaged.schema.js')],
 					resolveType(data) {

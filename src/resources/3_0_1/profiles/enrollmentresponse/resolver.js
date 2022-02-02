@@ -33,15 +33,11 @@ module.exports.getEnrollmentResponseList = function getEnrollmentResponseList(
  * @static
  * @summary EnrollmentResponse instance resolver.
  */
-module.exports.getEnrollmentResponseInstance = function getEnrollmentResponseInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getEnrollmentResponseInstance =
+	function getEnrollmentResponseInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createEnrollmentResponse

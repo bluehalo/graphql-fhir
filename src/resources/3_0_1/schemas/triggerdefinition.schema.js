@@ -55,8 +55,7 @@ module.exports = new GraphQLObjectType({
 		},
 		eventTimingReference: {
 			type: new GraphQLUnionType({
-				name:
-					'TriggerDefinitioneventTimingReference_eventTimingReference_Union',
+				name: 'TriggerDefinitioneventTimingReference_eventTimingReference_Union',
 				description: 'The timing of the event (if this is a period trigger).',
 				types: () => [require('./schedule.schema.js')],
 				resolveType(data) {

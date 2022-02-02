@@ -141,17 +141,16 @@ module.exports = new GraphQLObjectType({
 		},
 		answerReference: {
 			type: new GraphQLUnionType({
-					name:
-						'QuestionnaireitemenableWhenanswerReference_answerReference_Union',
-					description:
-						'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
-					types: () => [require('./resource.schema.js')],
-					resolveType(data) {
-						if (data && data.resourceType === 'Resource') {
-							return require('./resource.schema.js');
-						}
-					},
-				}),
+				name: 'QuestionnaireitemenableWhenanswerReference_answerReference_Union',
+				description:
+					'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
+				types: () => [require('./resource.schema.js')],
+				resolveType(data) {
+					if (data && data.resourceType === 'Resource') {
+						return require('./resource.schema.js');
+					}
+				},
+			}),
 			description:
 				'A value that the referenced question is tested using the specified operator in order for the item to be enabled.',
 		},

@@ -33,15 +33,11 @@ module.exports.getClinicalImpressionList = function getClinicalImpressionList(
  * @static
  * @summary ClinicalImpression instance resolver.
  */
-module.exports.getClinicalImpressionInstance = function getClinicalImpressionInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getClinicalImpressionInstance =
+	function getClinicalImpressionInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createClinicalImpression

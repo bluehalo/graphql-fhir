@@ -33,15 +33,11 @@ module.exports.getMedicinalProductList = function getMedicinalProductList(
  * @static
  * @summary MedicinalProduct instance resolver.
  */
-module.exports.getMedicinalProductInstance = function getMedicinalProductInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getMedicinalProductInstance =
+	function getMedicinalProductInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createMedicinalProduct

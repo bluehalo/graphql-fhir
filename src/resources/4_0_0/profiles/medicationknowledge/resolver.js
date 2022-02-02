@@ -33,15 +33,11 @@ module.exports.getMedicationKnowledgeList = function getMedicationKnowledgeList(
  * @static
  * @summary MedicationKnowledge instance resolver.
  */
-module.exports.getMedicationKnowledgeInstance = function getMedicationKnowledgeInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getMedicationKnowledgeInstance =
+	function getMedicationKnowledgeInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createMedicationKnowledge

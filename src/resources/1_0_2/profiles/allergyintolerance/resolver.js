@@ -33,15 +33,11 @@ module.exports.getAllergyIntoleranceList = function getAllergyIntoleranceList(
  * @static
  * @summary AllergyIntolerance instance resolver.
  */
-module.exports.getAllergyIntoleranceInstance = function getAllergyIntoleranceInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getAllergyIntoleranceInstance =
+	function getAllergyIntoleranceInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createAllergyIntolerance

@@ -42,8 +42,7 @@ module.exports = new GraphQLObjectType({
 		additiveReference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'SpecimenDefinitiontypeTestedcontaineradditiveadditiveReference_additiveReference_Union',
+					name: 'SpecimenDefinitiontypeTestedcontaineradditiveadditiveReference_additiveReference_Union',
 					description:
 						'Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.',
 					types: () => [require('./substance.schema.js')],

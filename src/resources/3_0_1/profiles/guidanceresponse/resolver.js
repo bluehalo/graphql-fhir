@@ -33,15 +33,11 @@ module.exports.getGuidanceResponseList = function getGuidanceResponseList(
  * @static
  * @summary GuidanceResponse instance resolver.
  */
-module.exports.getGuidanceResponseInstance = function getGuidanceResponseInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getGuidanceResponseInstance =
+	function getGuidanceResponseInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createGuidanceResponse

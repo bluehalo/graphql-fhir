@@ -11,13 +11,13 @@ module.exports = new GraphQLScalarType({
 	description:
 		'Base StructureDefinition for code type: A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents',
 	// TODO: Implement serialization
-	serialize: value => value,
+	serialize: (value) => value,
 	// TODO: Parse and sanitize here, throw a graphql error if things fail
 	parseValue: (value, ast) => {
 		return value;
 	},
 	// TODO: Parse and sanitize here as well, return undefined if unable to parse
-	parseLiteral: ast => {
+	parseLiteral: (ast) => {
 		let { kind, value } = ast;
 		return kind === Kind.STRING ? value : undefined;
 	},

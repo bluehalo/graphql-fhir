@@ -33,15 +33,11 @@ module.exports.getImplementationGuideList = function getImplementationGuideList(
  * @static
  * @summary ImplementationGuide instance resolver.
  */
-module.exports.getImplementationGuideInstance = function getImplementationGuideInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getImplementationGuideInstance =
+	function getImplementationGuideInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createImplementationGuide

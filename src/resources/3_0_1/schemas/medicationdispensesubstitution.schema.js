@@ -60,8 +60,7 @@ module.exports = new GraphQLObjectType({
 		responsibleParty: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'MedicationDispensesubstitutionresponsibleParty_responsibleParty_Union',
+					name: 'MedicationDispensesubstitutionresponsibleParty_responsibleParty_Union',
 					description:
 						'The person or organization that has primary responsibility for the substitution.',
 					types: () => [require('./practitioner.schema.js')],

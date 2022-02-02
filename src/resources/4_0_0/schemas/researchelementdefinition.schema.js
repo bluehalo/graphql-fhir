@@ -179,8 +179,7 @@ module.exports = new GraphQLObjectType({
 		},
 		subjectReference: {
 			type: new GraphQLUnionType({
-				name:
-					'ResearchElementDefinitionsubjectReference_subjectReference_Union',
+				name: 'ResearchElementDefinitionsubjectReference_subjectReference_Union',
 				description:
 					'The intended subjects for the ResearchElementDefinition. If this element is not provided, a Patient subject is assumed, but the subject of the ResearchElementDefinition can be anything.',
 				types: () => [require('./group.schema.js')],

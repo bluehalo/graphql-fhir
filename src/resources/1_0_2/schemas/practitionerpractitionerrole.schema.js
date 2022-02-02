@@ -31,8 +31,7 @@ module.exports = new GraphQLObjectType({
 		},
 		managingOrganization: {
 			type: new GraphQLUnionType({
-				name:
-					'PractitionerpractitionerRolemanagingOrganization_managingOrganization_Union',
+				name: 'PractitionerpractitionerRolemanagingOrganization_managingOrganization_Union',
 				description:
 					'The organization where the Practitioner performs the roles associated.',
 				types: () => [require('./organization.schema.js')],
@@ -80,8 +79,7 @@ module.exports = new GraphQLObjectType({
 		healthcareService: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'PractitionerpractitionerRolehealthcareService_healthcareService_Union',
+					name: 'PractitionerpractitionerRolehealthcareService_healthcareService_Union',
 					description:
 						"The list of healthcare services that this worker provides for this role's Organization/Location(s).",
 					types: () => [require('./healthcareservice.schema.js')],

@@ -18,30 +18,22 @@ module.exports.getChargeItemDefinition = function getChargeItemDefinition(
  * @static
  * @summary ChargeItemDefinition list resolver.
  */
-module.exports.getChargeItemDefinitionList = function getChargeItemDefinitionList(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getChargeItemDefinitionList =
+	function getChargeItemDefinitionList(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.getChargeItemDefinitionInstance
  * @static
  * @summary ChargeItemDefinition instance resolver.
  */
-module.exports.getChargeItemDefinitionInstance = function getChargeItemDefinitionInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getChargeItemDefinitionInstance =
+	function getChargeItemDefinitionInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createChargeItemDefinition

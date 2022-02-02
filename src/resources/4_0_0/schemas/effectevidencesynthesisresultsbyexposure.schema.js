@@ -61,8 +61,7 @@ module.exports = new GraphQLObjectType({
 		riskEvidenceSynthesis: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'EffectEvidenceSynthesisresultsByExposureriskEvidenceSynthesis_riskEvidenceSynthesis_Union',
+					name: 'EffectEvidenceSynthesisresultsByExposureriskEvidenceSynthesis_riskEvidenceSynthesis_Union',
 					description: 'Reference to a RiskEvidenceSynthesis resource.',
 					types: () => [require('./riskevidencesynthesis.schema.js')],
 					resolveType(data) {

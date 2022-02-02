@@ -33,15 +33,11 @@ module.exports.getOperationDefinitionList = function getOperationDefinitionList(
  * @static
  * @summary OperationDefinition instance resolver.
  */
-module.exports.getOperationDefinitionInstance = function getOperationDefinitionInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getOperationDefinitionInstance =
+	function getOperationDefinitionInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createOperationDefinition

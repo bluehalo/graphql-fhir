@@ -137,8 +137,7 @@ module.exports = new GraphQLObjectType({
 		},
 		valueReference: {
 			type: new GraphQLUnionType({
-				name:
-					'QuestionnaireResponseitemanswervalueReference_valueReference_Union',
+				name: 'QuestionnaireResponseitemanswervalueReference_valueReference_Union',
 				description:
 					'The answer (or one of the answers) provided by the respondent to the question.',
 				types: () => [require('./resource.schema.js')],

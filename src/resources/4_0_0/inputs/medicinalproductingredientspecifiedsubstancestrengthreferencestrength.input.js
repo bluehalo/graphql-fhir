@@ -10,8 +10,7 @@ const {
  * @summary MedicinalProductIngredientspecifiedSubstancestrengthreferenceStrength Input Schema
  */
 module.exports = new GraphQLInputObjectType({
-	name:
-		'MedicinalProductIngredientspecifiedSubstancestrengthreferenceStrength_Input',
+	name: 'MedicinalProductIngredientspecifiedSubstancestrengthreferenceStrength_Input',
 	description: '',
 	fields: () => ({
 		_id: {

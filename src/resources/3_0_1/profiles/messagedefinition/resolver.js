@@ -33,15 +33,11 @@ module.exports.getMessageDefinitionList = function getMessageDefinitionList(
  * @static
  * @summary MessageDefinition instance resolver.
  */
-module.exports.getMessageDefinitionInstance = function getMessageDefinitionInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getMessageDefinitionInstance =
+	function getMessageDefinitionInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createMessageDefinition

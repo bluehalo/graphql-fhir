@@ -32,9 +32,12 @@ module.exports = {
 	 * and these keys must be unique across the entire application, like routes
 	 */
 	mutation: {
-		CoverageEligibilityResponseCreate: CoverageEligibilityResponseCreateMutation,
-		CoverageEligibilityResponseUpdate: CoverageEligibilityResponseUpdateMutation,
-		CoverageEligibilityResponseRemove: CoverageEligibilityResponseRemoveMutation,
+		CoverageEligibilityResponseCreate:
+			CoverageEligibilityResponseCreateMutation,
+		CoverageEligibilityResponseUpdate:
+			CoverageEligibilityResponseUpdateMutation,
+		CoverageEligibilityResponseRemove:
+			CoverageEligibilityResponseRemoveMutation,
 	},
 	/**
 	 * These properties are so the core router can setup the approriate endpoint

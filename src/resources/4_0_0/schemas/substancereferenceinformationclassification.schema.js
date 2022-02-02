@@ -48,8 +48,7 @@ module.exports = new GraphQLObjectType({
 		source: {
 			type: new GraphQLList(
 				new GraphQLUnionType({
-					name:
-						'SubstanceReferenceInformationclassificationsource_source_Union',
+					name: 'SubstanceReferenceInformationclassificationsource_source_Union',
 					description: 'Todo.',
 					types: () => [require('./documentreference.schema.js')],
 					resolveType(data) {

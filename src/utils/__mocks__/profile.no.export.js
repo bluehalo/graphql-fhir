@@ -1,4 +1,4 @@
 /**
-* Mock for router tests
-*/
+ * Mock for router tests
+ */
 module.exports = undefined;

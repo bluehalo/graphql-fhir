@@ -33,15 +33,11 @@ module.exports.getVerificationResultList = function getVerificationResultList(
  * @static
  * @summary VerificationResult instance resolver.
  */
-module.exports.getVerificationResultInstance = function getVerificationResultInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getVerificationResultInstance =
+	function getVerificationResultInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createVerificationResult

@@ -46,8 +46,7 @@ module.exports = new GraphQLObjectType({
 		},
 		indicationReference: {
 			type: new GraphQLUnionType({
-				name:
-					'MedicationKnowledgeadministrationGuidelinesindicationReference_indicationReference_Union',
+				name: 'MedicationKnowledgeadministrationGuidelinesindicationReference_indicationReference_Union',
 				description:
 					'Indication for use that apply to the specific administration guidelines.',
 				types: () => [require('./observationdefinition.schema.js')],

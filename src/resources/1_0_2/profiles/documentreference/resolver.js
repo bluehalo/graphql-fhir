@@ -33,15 +33,11 @@ module.exports.getDocumentReferenceList = function getDocumentReferenceList(
  * @static
  * @summary DocumentReference instance resolver.
  */
-module.exports.getDocumentReferenceInstance = function getDocumentReferenceInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getDocumentReferenceInstance =
+	function getDocumentReferenceInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createDocumentReference

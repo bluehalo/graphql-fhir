@@ -33,15 +33,11 @@ module.exports.getEligibilityRequestList = function getEligibilityRequestList(
  * @static
  * @summary EligibilityRequest instance resolver.
  */
-module.exports.getEligibilityRequestInstance = function getEligibilityRequestInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getEligibilityRequestInstance =
+	function getEligibilityRequestInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createEligibilityRequest

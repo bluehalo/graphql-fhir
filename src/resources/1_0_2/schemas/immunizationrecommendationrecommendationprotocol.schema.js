@@ -57,8 +57,7 @@ module.exports = new GraphQLObjectType({
 		},
 		authority: {
 			type: new GraphQLUnionType({
-				name:
-					'ImmunizationRecommendationrecommendationprotocolauthority_authority_Union',
+				name: 'ImmunizationRecommendationrecommendationprotocolauthority_authority_Union',
 				description:
 					'Indicates the authority who published the protocol.  For example, ACIP.',
 				types: () => [require('./organization.schema.js')],

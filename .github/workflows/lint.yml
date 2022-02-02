@@ -1,0 +1,20 @@
+name: Lint
+
+on: push
+
+jobs:
+  run-linter:
+    name: Run Linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Lint
+        run: yarn run prettier-check

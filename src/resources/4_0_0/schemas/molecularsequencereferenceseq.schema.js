@@ -67,8 +67,7 @@ module.exports = new GraphQLObjectType({
 		},
 		referenceSeqPointer: {
 			type: new GraphQLUnionType({
-				name:
-					'MolecularSequencereferenceSeqreferenceSeqPointer_referenceSeqPointer_Union',
+				name: 'MolecularSequencereferenceSeqreferenceSeqPointer_referenceSeqPointer_Union',
 				description:
 					'A pointer to another MolecularSequence entity as reference sequence.',
 				types: () => [require('./molecularsequence.schema.js')],

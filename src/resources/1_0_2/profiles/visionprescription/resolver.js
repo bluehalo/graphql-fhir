@@ -33,15 +33,11 @@ module.exports.getVisionPrescriptionList = function getVisionPrescriptionList(
  * @static
  * @summary VisionPrescription instance resolver.
  */
-module.exports.getVisionPrescriptionInstance = function getVisionPrescriptionInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getVisionPrescriptionInstance =
+	function getVisionPrescriptionInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createVisionPrescription

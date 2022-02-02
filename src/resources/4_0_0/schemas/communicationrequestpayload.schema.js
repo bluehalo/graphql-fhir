@@ -52,8 +52,7 @@ module.exports = new GraphQLObjectType({
 		contentReference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'CommunicationRequestpayloadcontentReference_contentReference_Union',
+					name: 'CommunicationRequestpayloadcontentReference_contentReference_Union',
 					description:
 						'The communicated content (or for multi-part communications, one portion of the communication).',
 					types: () => [require('./resource.schema.js')],

@@ -47,8 +47,7 @@ module.exports = new GraphQLObjectType({
 		nameReference: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'ImplementationGuidedefinitionpagenameReference_nameReference_Union',
+					name: 'ImplementationGuidedefinitionpagenameReference_nameReference_Union',
 					description: 'The source address for the page.',
 					types: () => [require('./binary.schema.js')],
 					resolveType(data) {

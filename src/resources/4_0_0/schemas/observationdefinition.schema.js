@@ -144,8 +144,7 @@ module.exports = new GraphQLObjectType({
 		},
 		validCodedValueSet: {
 			type: new GraphQLUnionType({
-				name:
-					'ObservationDefinitionvalidCodedValueSet_validCodedValueSet_Union',
+				name: 'ObservationDefinitionvalidCodedValueSet_validCodedValueSet_Union',
 				description:
 					'The set of valid coded results for the observations  conforming to this ObservationDefinition.',
 				types: () => [require('./valueset.schema.js')],
@@ -160,8 +159,7 @@ module.exports = new GraphQLObjectType({
 		},
 		normalCodedValueSet: {
 			type: new GraphQLUnionType({
-				name:
-					'ObservationDefinitionnormalCodedValueSet_normalCodedValueSet_Union',
+				name: 'ObservationDefinitionnormalCodedValueSet_normalCodedValueSet_Union',
 				description:
 					'The set of normal coded results for the observations conforming to this ObservationDefinition.',
 				types: () => [require('./valueset.schema.js')],
@@ -176,8 +174,7 @@ module.exports = new GraphQLObjectType({
 		},
 		abnormalCodedValueSet: {
 			type: new GraphQLUnionType({
-				name:
-					'ObservationDefinitionabnormalCodedValueSet_abnormalCodedValueSet_Union',
+				name: 'ObservationDefinitionabnormalCodedValueSet_abnormalCodedValueSet_Union',
 				description:
 					'The set of abnormal coded results for the observation conforming to this ObservationDefinition.',
 				types: () => [require('./valueset.schema.js')],
@@ -192,8 +189,7 @@ module.exports = new GraphQLObjectType({
 		},
 		criticalCodedValueSet: {
 			type: new GraphQLUnionType({
-				name:
-					'ObservationDefinitioncriticalCodedValueSet_criticalCodedValueSet_Union',
+				name: 'ObservationDefinitioncriticalCodedValueSet_criticalCodedValueSet_Union',
 				description:
 					'The set of critical coded results for the observation conforming to this ObservationDefinition.',
 				types: () => [require('./valueset.schema.js')],

@@ -65,8 +65,7 @@ module.exports = new GraphQLObjectType({
 		},
 		valueSetReference: {
 			type: new GraphQLUnionType({
-				name:
-					'ElementDefinitionbindingvalueSetReference_valueSetReference_Union',
+				name: 'ElementDefinitionbindingvalueSetReference_valueSetReference_Union',
 				description:
 					'Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.',
 				types: () => [require('./valueset.schema.js')],

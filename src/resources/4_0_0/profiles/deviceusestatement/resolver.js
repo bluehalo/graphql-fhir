@@ -33,15 +33,11 @@ module.exports.getDeviceUseStatementList = function getDeviceUseStatementList(
  * @static
  * @summary DeviceUseStatement instance resolver.
  */
-module.exports.getDeviceUseStatementInstance = function getDeviceUseStatementInstance(
-	root,
-	args,
-	context = {},
-	info,
-) {
-	let { server, version, req, res } = context;
-	return {};
-};
+module.exports.getDeviceUseStatementInstance =
+	function getDeviceUseStatementInstance(root, args, context = {}, info) {
+		let { server, version, req, res } = context;
+		return {};
+	};
 
 /**
  * @name exports.createDeviceUseStatement

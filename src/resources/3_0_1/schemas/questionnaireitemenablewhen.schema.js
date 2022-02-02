@@ -170,8 +170,7 @@ module.exports = new GraphQLObjectType({
 		// valueSetReference: http://hl7.org/fhir/ValueSet/questionnaire-answers
 		answerReference: {
 			type: new GraphQLUnionType({
-				name:
-					'QuestionnaireitemenableWhenanswerReference_answerReference_Union',
+				name: 'QuestionnaireitemenableWhenanswerReference_answerReference_Union',
 				description:
 					'An answer that the referenced question must match in order for the item to be enabled.',
 				types: () => [require('./resource.schema.js')],

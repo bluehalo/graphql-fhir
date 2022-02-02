@@ -300,8 +300,7 @@ module.exports = new GraphQLObjectType({
 		exposureAlternative: {
 			type: new GraphQLNonNull(
 				new GraphQLUnionType({
-					name:
-						'EffectEvidenceSynthesisexposureAlternative_exposureAlternative_Union',
+					name: 'EffectEvidenceSynthesisexposureAlternative_exposureAlternative_Union',
 					description:
 						'A reference to a EvidenceVariable resource that defines the comparison exposure for the research.',
 					types: () => [require('./evidencevariable.schema.js')],
