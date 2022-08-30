@@ -35,7 +35,7 @@
 		"graphql": "^15.6.0",
 		"graphql-outfields": "^0.9.1",
 		"helmet": "^4.6.0",
-		"moment-timezone": "^0.5.21",
+		"moment-timezone": "^0.5.35",
 		"nodemon": "^2.0.12",
 		"passport": "^0.5.0",
 		"passport-http-bearer": "^1.0.1",
