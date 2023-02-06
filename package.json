@@ -26,31 +26,31 @@
 	"dependencies": {
 		"@asymmetrik/sof-graphql-invariant": "^2.0.0",
 		"@asymmetrik/sof-strategy": "^1.1.4",
-		"body-parser": "^1.18.3",
+		"body-parser": "^1.20.1",
 		"compression": "^1.7.2",
 		"cross-env": "^7.0.3",
-		"express": "^4.16.3",
-		"express-graphql": "^0.9.0",
-		"glob": "^7.1.2",
+		"express": "^4.18.2",
+		"express-graphql": "^0.12.0",
+		"glob": "^8.1.0",
 		"graphql": "^15.6.0",
 		"graphql-outfields": "^0.9.1",
-		"helmet": "^4.6.0",
-		"moment-timezone": "^0.5.21",
-		"nodemon": "^2.0.12",
-		"passport": "^0.5.0",
+		"helmet": "^6.0.1",
+		"moment-timezone": "^0.5.40",
+		"nodemon": "^2.0.20",
+		"passport": "^0.6.0",
 		"passport-http-bearer": "^1.0.1",
-		"sanitize-html": "^2.5.1",
-		"superagent": "^6.1.0",
-		"validator": "^13.6.0",
-		"winston": "^3.0.0",
-		"xss": "^1.0.3"
+		"sanitize-html": "^2.9.0",
+		"superagent": "^8.0.9",
+		"validator": "^13.9.0",
+		"winston": "^3.8.2",
+		"xss": "^1.0.14"
 	},
 	"devDependencies": {
-		"conventional-changelog-cli": "^2.1.1",
+		"conventional-changelog-cli": "^2.2.2",
 		"coveralls": "^3.0.2",
-		"eslint": "^7.32.0",
-		"jest": "^27.4.7",
-		"prettier": "^2.4.1"
+		"eslint": "^8.33.0",
+		"jest": "^29.4.1",
+		"prettier": "^2.8.3"
 	},
 	"resolutions": {
 		"graphql": "^15.6.0"
