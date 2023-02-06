@@ -86,6 +86,8 @@ class Server {
 				helmetConfig || {
 					// Needs https running first
 					hsts: this.env.USE_HTTPS,
+					// GraphQL on OSX
+					contentSecurityPolicy: this.env.IS_PRODUCTION ? undefined : false,
 				},
 			),
 		);
